@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">FIPLY</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="startUe">Starte den Uebungskatalog</string>
+    <string name="startTr">Starte eine Trainingssession</string>
+    <string name="welcome">Willkommen in der FIPLY APP!</string>
 </resources>

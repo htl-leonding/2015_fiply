@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
@@ -11,9 +12,26 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:text="Hello World!"
+        android:text="@string/welcome"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="15dp" />
 
+    <Button
+        android:id="@+id/btStartUe"
+        android:text="@string/startUe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textSize="25dp" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btStartTr"
+        android:text="@string/startTr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textSize="25dp" />
+</LinearLayout>
