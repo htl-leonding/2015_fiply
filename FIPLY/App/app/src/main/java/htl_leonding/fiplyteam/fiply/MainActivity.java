@@ -11,6 +11,7 @@ public class MainActivity extends Activity {
     Button startUe;
     Button startTS;
     Button startEU;
+    Button startMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MainActivity extends Activity {
         startUe = (Button) findViewById(R.id.btStartUe);
         startTS = (Button) findViewById(R.id.btStartTr);
         startEU = (Button) findViewById(R.id.btStartEU);
+        startMenu = (Button) findViewById(R.id.btStartMenu);
 
         startUe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +46,12 @@ public class MainActivity extends Activity {
             }
         });
 
-
-
+        startMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openMenu = new Intent("fiply.MENU");
+                startActivity(openMenu);
+            }
+        });
     }
 }
