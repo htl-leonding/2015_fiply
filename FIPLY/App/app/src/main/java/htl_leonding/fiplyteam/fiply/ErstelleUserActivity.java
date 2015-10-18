@@ -3,7 +3,7 @@ package htl_leonding.fiplyteam.fiply;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-public class ErstelleUser_Activity extends AppCompatActivity {
+public class ErstelleUserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
