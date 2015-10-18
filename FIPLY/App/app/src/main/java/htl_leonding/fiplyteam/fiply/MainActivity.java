@@ -9,7 +9,6 @@ public class MainActivity extends Activity {
     Button startUe;
     Button startTr;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
