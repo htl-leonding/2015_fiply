@@ -27,9 +27,9 @@ public class DBAdapter {
             KEY_NAME + " text not null, " +
             KEY_BESCHREIBUNG + " text not null, " +
             KEY_ANLEITUNG + " text not null, " +
-            KEY_MUSKELGRUPPE + "text not null, " +
-            KEY_TIPP +
-            KEY_VIDEO +
+            KEY_MUSKELGRUPPE + " text not null, " +
+            KEY_TIPP + " text not null, " +
+            KEY_VIDEO + " text not null" +
             ");";
 
     private final Context context;
