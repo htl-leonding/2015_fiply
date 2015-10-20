@@ -54,6 +54,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        //TEST Denkmayr
+        //TEST Bersenkowitsch
     }
 }
