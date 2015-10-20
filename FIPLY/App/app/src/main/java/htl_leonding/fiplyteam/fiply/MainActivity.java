@@ -53,5 +53,7 @@ public class MainActivity extends Activity {
                 startActivity(openMenu);
             }
         });
+
+        //TEST
     }
 }
