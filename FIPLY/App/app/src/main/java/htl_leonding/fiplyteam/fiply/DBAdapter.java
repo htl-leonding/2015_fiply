@@ -42,16 +42,19 @@ public class DBAdapter {
         DBHelper = new DatabaseHelper(context);
     }
 
+    //Öffnet die Datenbank
     public DBAdapter open() throws SQLException {
         db = DBHelper.getWritableDatabase();
         return this;
     }
 
+    // Beendet die Datenbank
     public void close() {
         DBHelper.close();
     }
 
-    public long insertTitle(String name, String beschreibung, String anleitung,
+    //Gibt eine Uebung in die Datenbank ein
+    public long insertUebung(String name, String beschreibung, String anleitung,
                             String muskelgruppe, String tipp, String video) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_NAME, name);
@@ -63,10 +66,12 @@ public class DBAdapter {
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
 
-    public boolean deleteTitle(long rowId) {
+    //Löscht eine Uebung
+    public boolean deleteUebung(long rowId) {
         return db.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
     }
 
+    //Liefert alle Uebungen zurück
     public Cursor getAllUebungen() {
         return db.query(DATABASE_TABLE, new String[]{
                         KEY_ROWID,
@@ -79,8 +84,36 @@ public class DBAdapter {
                 null, null, null, null, null);
     }
 
+    //Liefert eine bestimmte Uebung zurück
+    public Cursor getUebung(long rowId) throws SQLException {
+        Cursor myCursor = db.query(true, DATABASE_TABLE, new String[]{
+                        KEY_ROWID,
+                        KEY_NAME,
+                        KEY_BESCHREIBUNG,
+                        KEY_ANLEITUNG,
+                        KEY_MUSKELGRUPPE,
+                        KEY_TIPP,
+                        KEY_VIDEO},
+                KEY_ROWID + "=" + rowId,
+                null, null, null, null, null);
+        if (myCursor != null) {
+            myCursor.moveToFirst();
+        }
+        return myCursor;
+    }
 
-
+    //Updated eine bestimmte Uebung
+    public boolean updateUebung(long rowId, String name, String beschreibung, String anleitung,
+                                String muskelgruppe, String tipp, String video) {
+        ContentValues updatedValues = new ContentValues();
+        updatedValues.put(KEY_NAME, name);
+        updatedValues.put(KEY_BESCHREIBUNG, beschreibung);
+        updatedValues.put(KEY_ANLEITUNG, anleitung);
+        updatedValues.put(KEY_MUSKELGRUPPE, muskelgruppe);
+        updatedValues.put(KEY_TIPP, tipp);
+        updatedValues.put(KEY_VIDEO, video);
+        return db.update(DATABASE_TABLE, updatedValues, KEY_ROWID + "=" + rowId, null) > 0;
+    }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
@@ -96,9 +129,8 @@ public class DBAdapter {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion
                     + " to " + newVersion + ", which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS titles");
+            db.execSQL("DROP TABLE IF EXISTS uebungen");
             onCreate(db);
         }
     }
-
 }
