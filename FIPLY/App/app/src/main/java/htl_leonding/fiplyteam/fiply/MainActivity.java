@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
         startMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openMenu = new Intent("fiply.MENU");
+                Intent openMenu = new Intent("fiply.MENUACTIVITY");
                 startActivity(openMenu);
             }
         });
