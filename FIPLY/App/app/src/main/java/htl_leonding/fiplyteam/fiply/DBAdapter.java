@@ -1,13 +1,15 @@
 package htl_leonding.fiplyteam.fiply;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBAdapter {
-    public static final String KEY_ID = "_id";
+    public static final String KEY_ROWID = "_id";
     public static final String KEY_NAME = "name";
     public static final String KEY_MUSKELGRUPPE = "muskelgruppe";
     public static final String KEY_BESCHREIBUNG = "beschreibung";
@@ -21,7 +23,7 @@ public class DBAdapter {
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_CREATE = "create table " + DATABASE_TABLE +
-            " (" + KEY_ID + " integer primary key autoincrement, " +
+            " (" + KEY_ROWID + " integer primary key autoincrement, " +
             KEY_NAME + " text not null, " +
             KEY_BESCHREIBUNG + " text not null, " +
             KEY_ANLEITUNG + " text not null, " +
@@ -48,6 +50,37 @@ public class DBAdapter {
     public void close() {
         DBHelper.close();
     }
+
+    public long insertTitle(String name, String beschreibung, String anleitung,
+                            String muskelgruppe, String tipp, String video) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_NAME, name);
+        initialValues.put(KEY_BESCHREIBUNG, beschreibung);
+        initialValues.put(KEY_ANLEITUNG, anleitung);
+        initialValues.put(KEY_MUSKELGRUPPE, muskelgruppe);
+        initialValues.put(KEY_TIPP, tipp);
+        initialValues.put(KEY_VIDEO, video);
+        return db.insert(DATABASE_TABLE, null, initialValues);
+    }
+
+    public boolean deleteTitle(long rowId) {
+        return db.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
+    }
+
+    public Cursor getAllUebungen() {
+        return db.query(DATABASE_TABLE, new String[]{
+                        KEY_ROWID,
+                        KEY_NAME,
+                        KEY_BESCHREIBUNG,
+                        KEY_ANLEITUNG,
+                        KEY_MUSKELGRUPPE,
+                        KEY_TIPP,
+                        KEY_VIDEO},
+                null, null, null, null, null);
+    }
+
+
+
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
