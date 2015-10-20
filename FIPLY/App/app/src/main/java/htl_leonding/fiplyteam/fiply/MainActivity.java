@@ -53,7 +53,5 @@ public class MainActivity extends Activity {
                 startActivity(openMenu);
             }
         });
-
-        //TE
     }
 }
