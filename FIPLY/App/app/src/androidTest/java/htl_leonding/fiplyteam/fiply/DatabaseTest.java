@@ -12,7 +12,6 @@ public class DatabaseTest extends AndroidTestCase {
         super.setUp();
         RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
         dbA = new DBAdapter(context);
-        dbA.open();
     }
 
     @Override
@@ -22,19 +21,21 @@ public class DatabaseTest extends AndroidTestCase {
     }
 
     public void testAddUebung() {
+        Cursor c;
         dbA.open();
         dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
-        Cursor c = dbA.getUebung(1);
+        c = dbA.getUebung(1);
         assertEquals("Curls", c.getString(1));
     }
 
-    public void testGetAll() {
+    public void testGetAllUebungen() {
+        Cursor c;
         dbA.open();
         dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
         dbA.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
         dbA.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
 
-        Cursor c = dbA.getAllUebungen();
+        c = dbA.getAllUebungen();
 
         c.moveToFirst();
         assertEquals("Curls", c.getString(1));
@@ -47,5 +48,14 @@ public class DatabaseTest extends AndroidTestCase {
         c.moveToNext();
         assertEquals("Benchpress", c.getString(1));
         assertEquals("Testtipp", c.getString(5));
+    }
+
+    public void testUpdateUebung() {
+        Cursor c;
+        dbA.open();
+        dbA.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        dbA.updateUebung(1, "Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        c = dbA.getUebung(1);
+        assertEquals("Curls", c.getString(1));
     }
 }
