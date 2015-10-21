@@ -82,7 +82,7 @@ public class DBAdapter {
                         KEY_MUSKELGRUPPE,
                         KEY_TIPP,
                         KEY_VIDEO},
-                null, null, null, null, null);
+                null, null, null, null, KEY_NAME + " ASC");
     }
 
     //Liefert eine bestimmte Uebung zurück
@@ -137,6 +137,20 @@ public class DBAdapter {
             myCursor.moveToFirst();
         }
         return myCursor;
+    }
+
+    //Liefert alle Uebungen zurück
+    public Cursor getUebungenByMuskelgruppe(String Muskelgruppe) {
+        return db.query(DATABASE_TABLE, new String[]{
+                        KEY_ROWID,
+                        KEY_NAME,
+                        KEY_BESCHREIBUNG,
+                        KEY_ANLEITUNG,
+                        KEY_MUSKELGRUPPE,
+                        KEY_TIPP,
+                        KEY_VIDEO},
+                KEY_MUSKELGRUPPE + "=" + "'" + Muskelgruppe + "'",
+                null, null, null, KEY_NAME + " ASC", null);
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
