@@ -20,12 +20,24 @@ public class DatabaseTest extends AndroidTestCase {
         dbA.close();
     }
 
-    public void testInsertUebung() {
+    public void testGetUebung() {
         Cursor c;
         dbA.open();
         dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
         c = dbA.getUebung(1);
         assertEquals("Curls", c.getString(1));
+    }
+
+    public void testGetUebungByName() {
+        Cursor c;
+        dbA.open();
+        dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        dbA.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        dbA.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        c = dbA.getUebungByName("Curls");
+        assertEquals("Curls", c.getString(1));
+        c = dbA.getUebungByName("Squatten");
+        assertEquals("Squatten", c.getString(1));
     }
 
     public void testGetAllUebungen() {

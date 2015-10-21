@@ -116,8 +116,27 @@ public class DBAdapter {
         return db.update(DATABASE_TABLE, updatedValues, KEY_ROWID + "=" + rowId, null) > 0;
     }
 
+    //Liefert die Anzahl aller Uebungen zurück
     public int getUebungCount() {
         return (int) DatabaseUtils.queryNumEntries(db, "uebungen");
+    }
+
+    //Liefert die Übung mit dem passenden Namen Zurück
+    public Cursor getUebungByName(String name) throws SQLException {
+        Cursor myCursor = db.query(true, DATABASE_TABLE, new String[]{
+                        KEY_ROWID,
+                        KEY_NAME,
+                        KEY_BESCHREIBUNG,
+                        KEY_ANLEITUNG,
+                        KEY_MUSKELGRUPPE,
+                        KEY_TIPP,
+                        KEY_VIDEO},
+                KEY_NAME + "=" + "'" + name + "'",
+                null, null, null, null, null);
+        if (myCursor != null) {
+            myCursor.moveToFirst();
+        }
+        return myCursor;
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
