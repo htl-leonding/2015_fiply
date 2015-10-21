@@ -3,6 +3,7 @@ package htl_leonding.fiplyteam.fiply;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -113,6 +114,10 @@ public class DBAdapter {
         updatedValues.put(KEY_TIPP, tipp);
         updatedValues.put(KEY_VIDEO, video);
         return db.update(DATABASE_TABLE, updatedValues, KEY_ROWID + "=" + rowId, null) > 0;
+    }
+
+    public int getUebungCount() {
+        return (int) DatabaseUtils.queryNumEntries(db, "uebungen");
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
