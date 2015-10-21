@@ -82,7 +82,7 @@ public class DBAdapter {
                         KEY_MUSKELGRUPPE,
                         KEY_TIPP,
                         KEY_VIDEO},
-                null, null, null, null, null);
+                null, null, null, null, KEY_NAME + " ASC");
     }
 
     //Liefert eine bestimmte Uebung zurück
@@ -116,8 +116,41 @@ public class DBAdapter {
         return db.update(DATABASE_TABLE, updatedValues, KEY_ROWID + "=" + rowId, null) > 0;
     }
 
+    //Liefert die Anzahl aller Uebungen zurück
     public int getUebungCount() {
         return (int) DatabaseUtils.queryNumEntries(db, "uebungen");
+    }
+
+    //Liefert die Übung mit dem passenden Namen Zurück
+    public Cursor getUebungByName(String name) throws SQLException {
+        Cursor myCursor = db.query(true, DATABASE_TABLE, new String[]{
+                        KEY_ROWID,
+                        KEY_NAME,
+                        KEY_BESCHREIBUNG,
+                        KEY_ANLEITUNG,
+                        KEY_MUSKELGRUPPE,
+                        KEY_TIPP,
+                        KEY_VIDEO},
+                KEY_NAME + "=" + "'" + name + "'",
+                null, null, null, null, null);
+        if (myCursor != null) {
+            myCursor.moveToFirst();
+        }
+        return myCursor;
+    }
+
+    //Liefert alle Uebungen zurück
+    public Cursor getUebungenByMuskelgruppe(String Muskelgruppe) {
+        return db.query(DATABASE_TABLE, new String[]{
+                        KEY_ROWID,
+                        KEY_NAME,
+                        KEY_BESCHREIBUNG,
+                        KEY_ANLEITUNG,
+                        KEY_MUSKELGRUPPE,
+                        KEY_TIPP,
+                        KEY_VIDEO},
+                KEY_MUSKELGRUPPE + "=" + "'" + Muskelgruppe + "'",
+                null, null, null, KEY_NAME + " ASC", null);
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {

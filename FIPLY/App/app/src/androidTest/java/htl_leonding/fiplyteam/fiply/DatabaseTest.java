@@ -20,7 +20,7 @@ public class DatabaseTest extends AndroidTestCase {
         dbA.close();
     }
 
-    public void testInsertUebung() {
+    public void testGetUebung() {
         Cursor c;
         dbA.open();
         dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
@@ -28,26 +28,60 @@ public class DatabaseTest extends AndroidTestCase {
         assertEquals("Curls", c.getString(1));
     }
 
-    public void testGetAllUebungen() {
+    public void testGetUebungByName() {
         Cursor c;
         dbA.open();
         dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
         dbA.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
         dbA.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        c = dbA.getUebungByName("Curls");
+        assertEquals("Curls", c.getString(1));
+        c = dbA.getUebungByName("Squatten");
+        assertEquals("Squatten", c.getString(1));
+    }
+
+    public void testGetAllUebungen() {
+        Cursor c;
+        dbA.open();
+        dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        dbA.insertUebung("Squatten", "TestbeschreibungSquatten", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        dbA.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TesttippBenchpress", "Testvideo");
 
         c = dbA.getAllUebungen();
 
         c.moveToFirst();
+        assertEquals("Benchpress", c.getString(1));
+        assertEquals("TesttippBenchpress", c.getString(5));
+
+        c.moveToNext();
         assertEquals("Curls", c.getString(1));
         assertEquals("https://www.youtube.com/watch?v=FtAz_85aVxE", c.getString(6));
 
         c.moveToNext();
         assertEquals("Squatten", c.getString(1));
-        assertEquals("Testbeschreibung", c.getString(2));
+        assertEquals("TestbeschreibungSquatten", c.getString(2));
+    }
+
+    public void testGetUebungenByMuskelgruppe() {
+        Cursor c;
+        dbA.open();
+        dbA.insertUebung("TestBizepsC", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        dbA.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        dbA.insertUebung("TestBizepsA", "Testbeschreibung", "Testanleitung", "Bizeps", "Testtipp", "Testvideo");
+        dbA.insertUebung("TestBizepsB", "Testbeschreibung", "Testanleitung", "Bizeps", "Testtipp", "Testvideo");
+        dbA.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+
+        c = dbA.getUebungenByMuskelgruppe("Bizeps");
+
+        c.moveToFirst();
+        assertEquals("TestBizepsA", c.getString(1));
 
         c.moveToNext();
-        assertEquals("Benchpress", c.getString(1));
-        assertEquals("Testtipp", c.getString(5));
+        assertEquals("TestBizepsB", c.getString(1));
+
+        c.moveToNext();
+        assertEquals("TestBizepsC", c.getString(1));
+
     }
 
     public void testUpdateUebung() {
