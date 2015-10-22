@@ -4,8 +4,8 @@ import android.app.ListActivity;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.GridView;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 public class UebungskatalogActivity extends ListActivity {
@@ -53,7 +53,7 @@ public class UebungskatalogActivity extends ListActivity {
                     new String[]{"name"},
                     new int[]{android.R.id.text1}, 0);
 
-            GridView gv = (GridView) findViewById(R.id.list);
+            ListView gv = (ListView) findViewById(android.R.id.list);
             gv.setAdapter(adapter);
         }
 
