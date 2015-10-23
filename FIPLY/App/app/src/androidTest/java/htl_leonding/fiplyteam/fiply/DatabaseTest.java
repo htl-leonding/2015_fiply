@@ -20,6 +20,7 @@ public class DatabaseTest extends AndroidTestCase {
         dbA.close();
     }
 
+    //testet das get einer Uebung mittels insert und get
     public void testGetUebung() {
         Cursor c;
         dbA.open();
@@ -28,6 +29,7 @@ public class DatabaseTest extends AndroidTestCase {
         assertEquals("Curls", c.getString(1));
     }
 
+    //testet das get einer Uebung über den Namen mittels insert und get
     public void testGetUebungByName() {
         Cursor c;
         dbA.open();
@@ -40,6 +42,7 @@ public class DatabaseTest extends AndroidTestCase {
         assertEquals("Squatten", c.getString(1));
     }
 
+    //testet das get aller Uebungen mittels insert und getAllUebungen
     public void testGetAllUebungen() {
         Cursor c;
         dbA.open();
@@ -62,6 +65,7 @@ public class DatabaseTest extends AndroidTestCase {
         assertEquals("TestbeschreibungSquatten", c.getString(2));
     }
 
+    //testet das get aller Uebungen einer bestimmten Muskelgruppe mittels insert und getUebungenByMuskelgruppe
     public void testGetUebungenByMuskelgruppe() {
         Cursor c;
         dbA.open();
@@ -84,6 +88,7 @@ public class DatabaseTest extends AndroidTestCase {
 
     }
 
+    //testet das update einer Uebung mittels insert und updateUebung
     public void testUpdateUebung() {
         Cursor c;
         dbA.open();
@@ -93,8 +98,10 @@ public class DatabaseTest extends AndroidTestCase {
         assertEquals("Curls", c.getString(1));
     }
 
+    //testet das count aller Uebungen mittels insert und getUebungCount
     public void testCountUebungen() {
         dbA.open();
+        assertEquals(0, dbA.getUebungCount());
         dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
         dbA.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
         dbA.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
@@ -102,5 +109,30 @@ public class DatabaseTest extends AndroidTestCase {
         dbA.insertUebung("Deadlift", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
         dbA.insertUebung("Skullcrusher", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
         assertEquals(6, dbA.getUebungCount());
+    }
+
+    //testet das delete einer Uebung mittels insert, getUebungCount und deleteUebung
+    public void testDeleteUebung() {
+        dbA.open();
+        dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        dbA.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        assertEquals(2, dbA.getUebungCount());
+        dbA.deleteUebung(1);
+        assertEquals(1, dbA.getUebungCount());
+    }
+
+    //testet das delete aller Uebungen mittels insert, getUebungCount und deleteAllUebungen
+    public void testDeleteAllUebungen() {
+        dbA.open();
+        assertEquals(0, dbA.getUebungCount());
+        dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        dbA.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        dbA.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        dbA.insertUebung("Dips", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        dbA.insertUebung("Deadlift", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        dbA.insertUebung("Skullcrusher", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "Testtipp", "Testvideo");
+        assertEquals(6, dbA.getUebungCount());
+        dbA.deleteAllUebungen();
+        assertEquals(0, dbA.getUebungCount());
     }
 }

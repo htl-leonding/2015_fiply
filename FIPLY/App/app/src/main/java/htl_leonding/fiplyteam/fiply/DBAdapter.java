@@ -72,6 +72,11 @@ public class DBAdapter {
         return db.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
     }
 
+    //Löscht alle Uebungen
+    public boolean deleteAllUebungen() {
+        return db.delete(DATABASE_TABLE, null, null) > 0;
+    }
+
     //Liefert alle Uebungen zurück
     public Cursor getAllUebungen() {
         return db.query(DATABASE_TABLE, new String[]{
@@ -139,7 +144,7 @@ public class DBAdapter {
         return myCursor;
     }
 
-    //Liefert alle Uebungen zurück
+    //Liefert alle Uebungen für eine bestimmte Muskelgruppe zurück
     public Cursor getUebungenByMuskelgruppe(String Muskelgruppe) {
         return db.query(DATABASE_TABLE, new String[]{
                         KEY_ROWID,
@@ -152,6 +157,7 @@ public class DBAdapter {
                 KEY_MUSKELGRUPPE + "=" + "'" + Muskelgruppe + "'",
                 null, null, null, KEY_NAME + " ASC", null);
     }
+
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
