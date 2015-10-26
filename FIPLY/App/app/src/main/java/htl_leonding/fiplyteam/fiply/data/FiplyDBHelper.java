@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import htl_leonding.fiplyteam.fiply.data.FiplyContract.KeyValueEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 
 public class FiplyDBHelper extends SQLiteOpenHelper {
@@ -39,6 +40,14 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
                 ");";
         Log.d(LOG_TAG, SQL_CREATE_UEBUNGEN_TABLE);
         db.execSQL(SQL_CREATE_UEBUNGEN_TABLE);
+
+        final String SQL_CREATE_KEYVALUE_TABLE = "create table " + UebungenEntry.TABLE_NAME +
+                " (" + UebungenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
+                KeyValueEntry.COLUMN_KEY + " text not null, " +
+                KeyValueEntry.TABLE_NAME + " text not null" +
+                ");";
+        Log.d(LOG_TAG, SQL_CREATE_KEYVALUE_TABLE);
+        db.execSQL(SQL_CREATE_KEYVALUE_TABLE);
     }
 
     @Override

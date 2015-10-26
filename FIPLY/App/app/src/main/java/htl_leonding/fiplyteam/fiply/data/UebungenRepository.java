@@ -44,7 +44,17 @@ public class UebungenRepository {
         return FiplyDBHelper.getInstance(repoContext).getReadableDatabase();
     }
 
-    //Gibt eine Uebung in die Datenbank ein
+    /**
+     * Gibt eine Uebung in die Datenbank ein
+     *
+     * @param name         Der Name
+     * @param beschreibung Die Beschreibung
+     * @param anleitung    Die Anleitung
+     * @param muskelgruppe Die Muskelgruppe
+     * @param ZIELGRUPPE   Die Zielgruppe (Anfänger, Profi, usw...)
+     * @param video        Der Videolink
+     * @return liefert ein long mit der id zurück
+     */
     public long insertUebung(String name, String beschreibung, String anleitung,
                             String muskelgruppe, String ZIELGRUPPE, String video) {
         ContentValues initialValues = new ContentValues();
@@ -57,17 +67,30 @@ public class UebungenRepository {
         return db.insert(UebungenEntry.TABLE_NAME, null, initialValues);
     }
 
-    //Löscht eine Uebung
-    public boolean deleteUebung(long rowId) {
-        return db.delete(UebungenEntry.TABLE_NAME, UebungenEntry.COLUMN_ROWID + "=" + rowId, null) > 0;
+    /**
+     * Löscht eine Uebung
+     *
+     * @param rowId Id der zu löschenden Entry
+     * @return Anzahl der gelöschten Uebungen
+     */
+    public long deleteUebung(long rowId) {
+        return db.delete(UebungenEntry.TABLE_NAME, UebungenEntry.COLUMN_ROWID + "=" + rowId, null);
     }
 
-    //Löscht alle Uebungen
-    public boolean deleteAllUebungen() {
-        return db.delete(UebungenEntry.TABLE_NAME, null, null) > 0;
+    /**
+     * Löscht alle Uebungen
+     *
+     * @return Anzahl der gelöschten Uebungen
+     */
+    public long deleteAllUebungen() {
+        return db.delete(UebungenEntry.TABLE_NAME, null, null);
     }
 
-    //Liefert alle Uebungen zurück
+    /**
+     * Liefert alle Uebungen zurück
+     *
+     * @return Alle Uebungen
+     */
     public Cursor getAllUebungen() {
         return db.query(UebungenEntry.TABLE_NAME, new String[]{
                         UebungenEntry.COLUMN_ROWID,
@@ -80,7 +103,12 @@ public class UebungenRepository {
                 null, null, null, null, UebungenEntry.COLUMN_NAME + " ASC");
     }
 
-    //Liefert eine bestimmte Uebung zurück
+    /**
+     * Liefert eine bestimmte Uebung zurück
+     * @param rowId Die Id der gesuchten Uebung
+     * @return die gesuchte Uebung
+     * @throws SQLException
+     */
     public Cursor getUebung(long rowId) throws SQLException {
         Cursor myCursor = db.query(true, UebungenEntry.TABLE_NAME, new String[]{
                         UebungenEntry.COLUMN_ROWID,
@@ -98,8 +126,19 @@ public class UebungenRepository {
         return myCursor;
     }
 
-    //Updated eine bestimmte Uebung
-    public boolean updateUebung(long rowId, String name, String beschreibung, String anleitung,
+    /**
+     * Updated eine bestimmte Uebung
+     *
+     * @param rowId        Die Id
+     * @param name         Der neue Name
+     * @param beschreibung Die neue Beschreibung
+     * @param anleitung    Die neue Anleitung
+     * @param muskelgruppe Die neue Muskelgruppe
+     * @param ZIELGRUPPE   Die neue Zielgruppe (Anfänger, Profi, usw...)
+     * @param video        Der neue Videolink
+     * @return Anzahl der geupdateten Uebungen
+     */
+    public long updateUebung(long rowId, String name, String beschreibung, String anleitung,
                                 String muskelgruppe, String ZIELGRUPPE, String video) {
         ContentValues updatedValues = new ContentValues();
         updatedValues.put(UebungenEntry.COLUMN_NAME, name);
@@ -108,15 +147,24 @@ public class UebungenRepository {
         updatedValues.put(UebungenEntry.COLUMN_MUSKELGRUPPE, muskelgruppe);
         updatedValues.put(UebungenEntry.COLUMN_ZIELGRUPPE, ZIELGRUPPE);
         updatedValues.put(UebungenEntry.COLUMN_VIDEO, video);
-        return db.update(UebungenEntry.TABLE_NAME, updatedValues, UebungenEntry.COLUMN_ROWID + "=" + rowId, null) > 0;
+        return db.update(UebungenEntry.TABLE_NAME, updatedValues, UebungenEntry.COLUMN_ROWID + "=" + rowId, null);
     }
 
-    //Liefert die Anzahl aller Uebungen zurück
-    public int getUebungCount() {
-        return (int) DatabaseUtils.queryNumEntries(db, "uebungen");
+    /**
+     * Liefert die Anzahl aller Uebungen zurück
+     *
+     * @return Anzahl aller Uebungen
+     */
+    public long getUebungCount() {
+        return DatabaseUtils.queryNumEntries(db, UebungenEntry.TABLE_NAME);
     }
 
-    //Liefert die Übung mit dem passenden Namen Zurück
+    /**
+     * Liefert die Übung mit dem passenden Namen Zurück
+     * @param name Name nach welchem eine Uebung gesucht werden soll
+     * @return gesuchte Uebung
+     * @throws SQLException
+     */
     public Cursor getUebungByName(String name) throws SQLException {
         Cursor myCursor = db.query(true, UebungenEntry.TABLE_NAME, new String[]{
                         UebungenEntry.COLUMN_ROWID,
@@ -134,7 +182,11 @@ public class UebungenRepository {
         return myCursor;
     }
 
-    //Liefert alle Uebungen für eine bestimmte Muskelgruppe zurück
+    /**
+     * Liefert alle Uebungen für eine bestimmte Muskelgruppe zurück
+     * @param Muskelgruppe Die Muskelgruppe nach welcher Uebungen gesucht werden sollen
+     * @return alle Uebungen einer bestimmten Muskelgruppe
+     */
     public Cursor getUebungenByMuskelgruppe(String Muskelgruppe) {
         return db.query(UebungenEntry.TABLE_NAME, new String[]{
                         UebungenEntry.COLUMN_ROWID,
@@ -148,10 +200,12 @@ public class UebungenRepository {
                 null, null, null, UebungenEntry.COLUMN_NAME + " ASC", null);
     }
 
-    //Dropt und created anschließend die Datenbank
-    public void reCreateDatabase() {
+    /**
+     * Dropt und created anschließend die UebungenTabelle
+     */
+    public void reCreateUebungenTable() {
         db.execSQL("DROP TABLE IF EXISTS " + UebungenEntry.TABLE_NAME + ";");
-        final String SQL_CREATE_UEBUNGEN_TABLE = "create table " + UebungenEntry.TABLE_NAME +
+        db.execSQL("create table " + UebungenEntry.TABLE_NAME +
                 " (" + UebungenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
                 UebungenEntry.COLUMN_NAME + " text not null, " +
                 UebungenEntry.COLUMN_BESCHREIBUNG + " text not null, " +
@@ -159,8 +213,7 @@ public class UebungenRepository {
                 UebungenEntry.COLUMN_MUSKELGRUPPE + " text not null, " +
                 UebungenEntry.COLUMN_ZIELGRUPPE + " text not null, " +
                 UebungenEntry.COLUMN_VIDEO + " text not null" +
-                ");";
-        db.execSQL(SQL_CREATE_UEBUNGEN_TABLE);
+                ");");
     }
 
 }

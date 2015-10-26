@@ -2,9 +2,6 @@ package htl_leonding.fiplyteam.fiply.data;
 
 import android.provider.BaseColumns;
 
-/**
- * Created by Andreas on 26.10.2015.
- */
 public class FiplyContract {
 
     /**
@@ -23,11 +20,11 @@ public class FiplyContract {
         public static final String COLUMN_VIDEO = "video";
     }
 
-    /*public static final class KeyValue implements  BaseColumns {
+    public static final class KeyValueEntry implements BaseColumns {
         public static final String TABLE_NAME = "keyvalue";
 
         public static final String COLUMN_VALUE = "value";
         public static final String COLUMN_KEY = "key";
 
-    }*/
+    }
 }
