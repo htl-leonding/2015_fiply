@@ -148,5 +148,19 @@ public class UebungenRepository {
                 null, null, null, UebungenEntry.COLUMN_NAME + " ASC", null);
     }
 
+    //Dropt und created anschließend die Datenbank
+    public void reCreateDatabase() {
+        db.execSQL("DROP TABLE IF EXISTS " + UebungenEntry.TABLE_NAME + ";");
+        final String SQL_CREATE_UEBUNGEN_TABLE = "create table " + UebungenEntry.TABLE_NAME +
+                " (" + UebungenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
+                UebungenEntry.COLUMN_NAME + " text not null, " +
+                UebungenEntry.COLUMN_BESCHREIBUNG + " text not null, " +
+                UebungenEntry.COLUMN_ANLEITUNG + " text not null, " +
+                UebungenEntry.COLUMN_MUSKELGRUPPE + " text not null, " +
+                UebungenEntry.COLUMN_ZIELGRUPPE + " text not null, " +
+                UebungenEntry.COLUMN_VIDEO + " text not null" +
+                ");";
+        db.execSQL(SQL_CREATE_UEBUNGEN_TABLE);
+    }
 
 }

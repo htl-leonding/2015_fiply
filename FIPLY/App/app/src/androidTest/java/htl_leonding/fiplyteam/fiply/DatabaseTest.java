@@ -18,7 +18,7 @@ public class DatabaseTest extends AndroidTestCase {
     protected void setUp() throws Exception {
         UebungenRepository.setContext(mContext);
         rep = UebungenRepository.getInstance();
-        rep.deleteAllUebungen();
+        rep.reCreateDatabase();
     }
 
     @Override

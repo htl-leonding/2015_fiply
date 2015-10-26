@@ -7,9 +7,6 @@ import android.util.Log;
 
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 
-/**
- * Created by Andreas on 26.10.2015.
- */
 public class FiplyDBHelper extends SQLiteOpenHelper {
 
     public static final String LOG_TAG = FiplyDBHelper.class.getSimpleName();
@@ -31,8 +28,6 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //db.execSQL("drop table" +  UebungenEntry.TABLE_NAME + ";");
-
         final String SQL_CREATE_UEBUNGEN_TABLE = "create table " + UebungenEntry.TABLE_NAME +
                 " (" + UebungenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
                 UebungenEntry.COLUMN_NAME + " text not null, " +
