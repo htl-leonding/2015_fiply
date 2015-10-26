@@ -8,11 +8,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import htl_leonding.fiplyteam.fiply.data.DBAdapter;
+
 public class UebungskatalogActivity extends ListActivity {
 
-
     DBAdapter dbA;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

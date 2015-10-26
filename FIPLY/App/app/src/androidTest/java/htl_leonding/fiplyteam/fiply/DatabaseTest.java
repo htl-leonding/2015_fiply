@@ -1,23 +1,19 @@
 package htl_leonding.fiplyteam.fiply;
 
-import android.database.Cursor;
 import android.test.AndroidTestCase;
-import android.test.RenamingDelegatingContext;
 
 public class DatabaseTest extends AndroidTestCase {
+
+    FiplyDBHelper dbHelper = new FiplyDBHelper(mContext);
+    SQLiteDatabase dbA = dbHelper.getWritableDatabase();
     private DBAdapter dbA;
 
     @Override
     protected void setUp() throws Exception {
-        super.setUp();
-        RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
-        dbA = new DBAdapter(context);
     }
 
     @Override
     protected void tearDown() throws Exception {
-        super.tearDown();
-        dbA.close();
     }
 
     //testet das get einer Uebung mittels insert und get
