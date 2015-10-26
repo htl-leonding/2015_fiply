@@ -1,20 +1,33 @@
 package htl_leonding.fiplyteam.fiply;
 
 import android.app.ListActivity;
+import android.database.Cursor;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+
+import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
 public class UebungskatalogActivity extends ListActivity {
-/*
-    UebungenRepository dbA;
+
+    UebungenRepository rep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungskatalog);
-        dbA = new UebungenRepository(this);
-        dbA.open();
+        UebungenRepository.setContext(this);
+        rep = UebungenRepository.getInstance();
+        rep.deleteAllUebungen();
         InsertTestUebungen();
-
-        //c = dba.getAllUebungen();
+        InsertTestUebungen();
+        InsertTestUebungen();
+        InsertTestUebungen();
+        InsertTestUebungen();
+        InsertTestUebungen();
+        InsertTestUebungen();
     }
 
     @Override
@@ -25,13 +38,12 @@ public class UebungskatalogActivity extends ListActivity {
     }
 
     private void InsertTestUebungen() {
-        dbA.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
-        dbA.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
-        dbA.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
-        dbA.insertUebung("Dips", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
-        dbA.insertUebung("Deadlift", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
-        dbA.insertUebung("Skullcrusher", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
-
+        rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
+        rep.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
+        rep.insertUebung("Dips", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Deadlift", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
+        rep.insertUebung("Skullcrusher", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
     }
 
     public class ActivityDatabaseAccess extends AsyncTask<String, Void, String> {
@@ -51,11 +63,9 @@ public class UebungskatalogActivity extends ListActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            c = dbA.getAllUebungen();
-
-
+            c = rep.getAllUebungen();
             return "Success";
         }
     }
-          */
+
 }

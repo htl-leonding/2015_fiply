@@ -47,7 +47,6 @@ public class UebungenRepository {
     //Gibt eine Uebung in die Datenbank ein
     public long insertUebung(String name, String beschreibung, String anleitung,
                             String muskelgruppe, String ZIELGRUPPE, String video) {
-
         ContentValues initialValues = new ContentValues();
         initialValues.put(UebungenEntry.COLUMN_NAME, name);
         initialValues.put(UebungenEntry.COLUMN_BESCHREIBUNG, beschreibung);
@@ -148,4 +147,6 @@ public class UebungenRepository {
                 UebungenEntry.COLUMN_MUSKELGRUPPE + "=" + "'" + Muskelgruppe + "'",
                 null, null, null, UebungenEntry.COLUMN_NAME + " ASC", null);
     }
+
+
 }
