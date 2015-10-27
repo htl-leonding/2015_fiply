@@ -13,7 +13,7 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
     public static final String LOG_TAG = FiplyDBHelper.class.getSimpleName();
 
     private static final String DATABASE_NAME = "FiplyDB";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
 
     private static FiplyDBHelper instance;
 
@@ -41,10 +41,10 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
         Log.d(LOG_TAG, SQL_CREATE_UEBUNGEN_TABLE);
         db.execSQL(SQL_CREATE_UEBUNGEN_TABLE);
 
-        final String SQL_CREATE_KEYVALUE_TABLE = "create table " + UebungenEntry.TABLE_NAME +
-                " (" + UebungenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
-                KeyValueEntry.COLUMN_KEY + " text not null, " +
-                KeyValueEntry.TABLE_NAME + " text not null" +
+        final String SQL_CREATE_KEYVALUE_TABLE = "create table " + KeyValueEntry.TABLE_NAME +
+                " (" +
+                KeyValueEntry.COLUMN_KEY + " text primary key not null, " +
+                KeyValueEntry.COLUMN_VALUE + " text not null" +
                 ");";
         Log.d(LOG_TAG, SQL_CREATE_KEYVALUE_TABLE);
         db.execSQL(SQL_CREATE_KEYVALUE_TABLE);
@@ -53,6 +53,7 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + UebungenEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KeyValueEntry.TABLE_NAME);
         onCreate(db);
     }
 }

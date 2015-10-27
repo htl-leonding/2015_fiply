@@ -63,8 +63,8 @@ public class KeyValueRepository {
      * @param key der Key
      * @return Anzahl der gelöschten KeyValue-Entries
      */
-    public long deleteUebung(String key) {
-        return db.delete(KeyValueEntry.TABLE_NAME, KeyValueEntry.COLUMN_KEY + "=" + key, null);
+    public long deleteKeyValue(String key) {
+        return db.delete(KeyValueEntry.TABLE_NAME, KeyValueEntry.COLUMN_KEY + "=" + "'" + key + "'", null);
     }
 
     /**
@@ -81,8 +81,8 @@ public class KeyValueRepository {
      *
      * @return Alle KeyValues
      */
-    public Cursor getAllKeyValue() {
-        return db.query(FiplyContract.UebungenEntry.TABLE_NAME, new String[]{
+    public Cursor getAllKeyValues() {
+        return db.query(KeyValueEntry.TABLE_NAME, new String[]{
                         KeyValueEntry.COLUMN_KEY,
                         KeyValueEntry.COLUMN_VALUE},
                 null, null, null, null, KeyValueEntry.COLUMN_KEY + " ASC");
@@ -96,10 +96,10 @@ public class KeyValueRepository {
      * @throws SQLException
      */
     public Cursor getKeyValue(String key) throws SQLException {
-        Cursor myCursor = db.query(true, FiplyContract.UebungenEntry.TABLE_NAME, new String[]{
+        Cursor myCursor = db.query(true, KeyValueEntry.TABLE_NAME, new String[]{
                         KeyValueEntry.COLUMN_KEY,
                         KeyValueEntry.COLUMN_VALUE},
-                KeyValueEntry.COLUMN_KEY + "=" + key,
+                KeyValueEntry.COLUMN_KEY + "=" + "'" + key + "'",
                 null, null, null, null, null);
         if (myCursor != null) {
             myCursor.moveToFirst();
@@ -118,7 +118,7 @@ public class KeyValueRepository {
         ContentValues updatedValues = new ContentValues();
         updatedValues.put(KeyValueEntry.COLUMN_KEY, key);
         updatedValues.put(KeyValueEntry.COLUMN_VALUE, value);
-        return db.update(KeyValueEntry.TABLE_NAME, updatedValues, KeyValueEntry.COLUMN_KEY + "=" + key, null);
+        return db.update(KeyValueEntry.TABLE_NAME, updatedValues, KeyValueEntry.COLUMN_KEY + "=" + "'" + key + "'", null);
     }
 
     /**
@@ -135,10 +135,10 @@ public class KeyValueRepository {
      */
     public void reCreateKeyValueTable() {
         db.execSQL("DROP TABLE IF EXISTS " + KeyValueEntry.TABLE_NAME + ";");
-        db.execSQL("create table " + FiplyContract.UebungenEntry.TABLE_NAME +
-                " (" + FiplyContract.UebungenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
-                KeyValueEntry.COLUMN_KEY + " text not null, " +
-                KeyValueEntry.TABLE_NAME + " text not null" +
+        db.execSQL("create table " + KeyValueEntry.TABLE_NAME +
+                " (" +
+                KeyValueEntry.COLUMN_KEY + " text primary key not null, " +
+                KeyValueEntry.COLUMN_VALUE + " text not null" +
                 ");");
     }
 }
