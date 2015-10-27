@@ -18,7 +18,7 @@ public class DatabaseTest extends AndroidTestCase {
     protected void setUp() throws Exception {
         UebungenRepository.setContext(mContext);
         rep = UebungenRepository.getInstance();
-        rep.reCreateDatabase();
+        rep.reCreateUebungenTable();
     }
 
     @Override
@@ -78,25 +78,24 @@ public class DatabaseTest extends AndroidTestCase {
         rep.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
 
         c = rep.getUebungenByMuskelgruppe("Bizeps");
-
         c.moveToFirst();
         assertEquals("TestBizepsA", c.getString(1));
-
         c.moveToNext();
         assertEquals("TestBizepsB", c.getString(1));
-
         c.moveToNext();
         assertEquals("TestBizepsC", c.getString(1));
-
     }
 
     //testet das update einer Uebung mittels insert und updateUebung
     public void testUpdateUebung() throws SQLException {
         Cursor c;
+        long updateUebungReturn;
         rep.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
-        rep.updateUebung(1, "Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        updateUebungReturn = rep.updateUebung(1, "Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        assertEquals(1, updateUebungReturn);
         c = rep.getUebung(1);
         assertEquals("Curls", c.getString(1));
+
     }
 
     //testet das count aller Uebungen mittels insert und getUebungCount
@@ -113,15 +112,18 @@ public class DatabaseTest extends AndroidTestCase {
 
     //testet das delete einer Uebung mittels insert, getUebungCount und deleteUebung
     public void testDeleteUebung() {
+        long deleteUebungReturn;
         rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
         rep.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
         assertEquals(2, rep.getUebungCount());
-        rep.deleteUebung(1);
+        deleteUebungReturn = rep.deleteUebung(1);
+        assertEquals(1, deleteUebungReturn);
         assertEquals(1, rep.getUebungCount());
     }
 
     //testet das delete aller Uebungen mittels insert, getUebungCount und deleteAllUebungen
     public void testDeleteAllUebungen() {
+        long deleteAllUebungenReturn;
         assertEquals(0, rep.getUebungCount());
         rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
         rep.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
@@ -130,7 +132,22 @@ public class DatabaseTest extends AndroidTestCase {
         rep.insertUebung("Deadlift", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
         rep.insertUebung("Skullcrusher", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
         assertEquals(6, rep.getUebungCount());
-        rep.deleteAllUebungen();
+        deleteAllUebungenReturn = rep.deleteAllUebungen();
+        assertEquals(6, deleteAllUebungenReturn);
         assertEquals(0, rep.getUebungCount());
+    }
+
+    public void testReturnOnInsert() throws SQLException {
+        Cursor c;
+        long insertReturn;
+        rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
+        rep.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
+        insertReturn = rep.insertUebung("Dips", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Deadlift", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
+        rep.insertUebung("Skullcrusher", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
+
+        c = rep.getUebung(insertReturn);
+        assertEquals("Dips", c.getString(1));
     }
 }
