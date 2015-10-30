@@ -1,18 +1,28 @@
 package htl_leonding.fiplyteam.fiply;
 
+import android.app.ExpandableListActivity;
 import android.app.ListActivity;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import java.sql.SQLException;
+
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
-public class UebungskatalogActivity extends ListActivity {
+public class UebungskatalogActivity extends ExpandableListActivity {
 
     UebungenRepository rep;
+    ExpandableListAdapter adapter;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +32,9 @@ public class UebungskatalogActivity extends ListActivity {
         rep = UebungenRepository.getInstance();
         rep.deleteAllUebungen();
         InsertTestUebungen();
-        InsertTestUebungen();
-        InsertTestUebungen();
-        InsertTestUebungen();
-        InsertTestUebungen();
-        InsertTestUebungen();
-        InsertTestUebungen();
+        context = this;
     }
+
 
     @Override
     protected void onStart() {
@@ -51,13 +57,13 @@ public class UebungskatalogActivity extends ListActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            ListAdapter adapter = new SimpleCursorAdapter(UebungskatalogActivity.this,
-                    android.R.layout.activity_list_item,
-                    c,
-                    new String[]{"name"},
-                    new int[]{android.R.id.text1}, 0);
 
-            ListView gv = (ListView) findViewById(android.R.id.list);
+            try {
+                adapter = new ExpandableListAdapter(context, rep.getHeaderNamesForUebungskatalog(), rep.getChildDataForUebungskatalog());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            ExpandableListView gv = (ExpandableListView) findViewById(android.R.id.list);
             gv.setAdapter(adapter);
         }
 

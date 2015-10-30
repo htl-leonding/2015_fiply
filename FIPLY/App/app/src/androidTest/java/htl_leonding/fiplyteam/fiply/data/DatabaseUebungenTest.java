@@ -28,6 +28,7 @@ public class DatabaseUebungenTest extends AndroidTestCase {
     public void testGetUebung() throws SQLException {
         Cursor c;
         rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
         c = rep.getUebung(1);
         assertEquals("Curls", c.getString(1));
     }

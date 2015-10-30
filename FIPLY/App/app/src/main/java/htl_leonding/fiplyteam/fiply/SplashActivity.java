@@ -5,15 +5,22 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import javax.annotation.Resource;
+import javax.annotation.Resources;
+
+import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
+
 import static java.lang.Thread.sleep;
 
 public class SplashActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // UebungenRepository.setContext(this);
         setContentView(R.layout.activity_splash);
-
         SleepIntentTask sleepIntentTask = new SleepIntentTask();
         sleepIntentTask.execute("");
 
@@ -25,6 +32,8 @@ public class SplashActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
+
+          //  UebungenRepository.getInstance().getUebungenFromResources();
             try {
                 sleep(3500);
             } catch (InterruptedException e) {

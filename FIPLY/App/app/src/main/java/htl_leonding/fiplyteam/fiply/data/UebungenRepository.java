@@ -1,20 +1,29 @@
 package htl_leonding.fiplyteam.fiply.data;
 
+import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 
+
+import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 
-public class UebungenRepository {
+public class UebungenRepository extends Service{
 
     private static Context repoContext;
-    SQLiteDatabase db = getWritableDatabase();
+     SQLiteDatabase db = getWritableDatabase();
 
     private static UebungenRepository instance;
 
@@ -216,4 +225,46 @@ public class UebungenRepository {
                 ");");
     }
 
+    public void getUebungenFromResources(){
+        String[] values;
+
+        Resources res = getResources();
+        TypedArray uebungen = res.obtainTypedArray(R.array.uebungsArray);
+        for(int i = 0; i < uebungen.length(); i++) {
+            values = uebungen.getString(i).split(";");
+            insertUebung(values[0], values[1], values[2], values[3], values[4], values[5]);
+        }
+    }
+
+    public String[] getHeaderNamesForUebungskatalog() throws SQLException {
+        String[] headerNames = new String[(int)getUebungCount()];
+
+
+
+        for(int i = 1; i < (int)getUebungCount(); i++) {
+            headerNames[i-1] = getUebung(i).getString(1);
+        }
+        return headerNames;
+
+    }
+
+    public HashMap<String, String[]> getChildDataForUebungskatalog() throws SQLException {
+        HashMap<String, String[]> childData = new HashMap<>((int)getUebungCount());
+        String[] values = new String[5];
+        for(int i = 1; i < (int)getUebungCount(); i++) {
+            for(int j = 1; j <= values.length; j++) {
+                values[i-1] = getUebung(i).getString(j++);
+            }
+            childData.put(getUebung(i).getString(1), values);
+        }
+
+        return childData;
+    }
+
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
 }
