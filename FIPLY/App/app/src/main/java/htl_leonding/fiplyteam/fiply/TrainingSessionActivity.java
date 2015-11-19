@@ -5,16 +5,23 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class TrainingSessionActivity extends AppCompatActivity {
 
-    EditText tvStopwatchCountDown;
-    Button btStopwatchStart;
-    Button btStopwatchReset;
+    EditText tvTimer;
+    Button btTimerStart;
+    Button btTimerReset;
+
+//    EditText tvStopwatch;
+    //  Button btStopwatchStart;
+    //Button btStopwatchReset;
+
     long milliSecondsTotal;
     CountDownTimer cdt;
+    Chronometer mChronometer;
 
     public long getMilliSecondsTotal() {
         return milliSecondsTotal;
@@ -28,37 +35,42 @@ public class TrainingSessionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training_session);
-        tvStopwatchCountDown = (EditText) findViewById(R.id.tvStopwatchCountDown);
-        btStopwatchStart = (Button) findViewById(R.id.tsStopwatchBtStart);
-        btStopwatchReset = (Button) findViewById(R.id.tsStopwatchBtReset);
+        tvTimer = (EditText) findViewById(R.id.tvTimer);
+        btTimerStart = (Button) findViewById(R.id.tsTimerBtStart);
+        btTimerReset = (Button) findViewById(R.id.tsTimerBtReset);
+        //tvStopwatch = (EditText) findViewById(R.id.tvStopwatch);
+        //btStopwatchStart = (Button) findViewById(R.id.tsStopwatchBtStart);
+        //btStopwatchReset = (Button) findViewById(R.id.tsStopwatchBtReset);
+
+        mChronometer = new Chronometer(this);
 
         setMilliSecondsTotal(30000);
-        tvStopwatchCountDown.setText("" + getMilliSecondsTotal() / 1000);
+        tvTimer.setText("" + getMilliSecondsTotal() / 1000);
 
-        btStopwatchStart.setOnClickListener(new View.OnClickListener() {
+        btTimerStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btStopwatchStart.getText().equals("Start")) {//Start the Timer
-                    createNewTimer(Long.valueOf(tvStopwatchCountDown.getText().toString()) * 1000);
-                    tvStopwatchCountDown.setCursorVisible(false);
-                    btStopwatchStart.setText("Pause");
-                } else if (btStopwatchStart.getText().equals("Pause")) {//Pause the Timer
+                if (btTimerStart.getText().equals("Start")) {//Start the Timer
+                    createNewTimer(Long.valueOf(tvTimer.getText().toString()) * 1000);
+                    tvTimer.setCursorVisible(false);
+                    btTimerStart.setText("Pause");
+                } else if (btTimerStart.getText().equals("Pause")) {//Pause the Timer
                     cdt.cancel();
-                    btStopwatchStart.setText("Continue");
-                } else if (btStopwatchStart.getText().equals("Continue")) {//Continue the Timer
-                    btStopwatchStart.setText("Pause");
-                    createNewTimer(Long.valueOf(tvStopwatchCountDown.getText().toString()) * 1000);
+                    btTimerStart.setText("Continue");
+                } else if (btTimerStart.getText().equals("Continue")) {//Continue the Timer
+                    btTimerStart.setText("Pause");
+                    createNewTimer(Long.valueOf(tvTimer.getText().toString()) * 1000);
                 }
             }
         });
 
-        btStopwatchReset.setOnClickListener(new View.OnClickListener() {
+        btTimerReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cdt.cancel();
-                tvStopwatchCountDown.setText("" + getMilliSecondsTotal() / 1000);
-                tvStopwatchCountDown.setCursorVisible(true);
-                btStopwatchStart.setText("Start");
+                tvTimer.setText("" + getMilliSecondsTotal() / 1000);
+                tvTimer.setCursorVisible(true);
+                btTimerStart.setText("Start");
             }
         });
     }
@@ -66,12 +78,12 @@ public class TrainingSessionActivity extends AppCompatActivity {
     public void createNewTimer(long timerLength) {
         cdt = new CountDownTimer(timerLength, 1000) {
             public void onTick(long millisUntilFinished) {
-                tvStopwatchCountDown.setText("" + millisUntilFinished / 1000);
+                tvTimer.setText("" + millisUntilFinished / 1000);
             }
 
             public void onFinish() {
-                tvStopwatchCountDown.setText("" + getMilliSecondsTotal() / 1000);
-                Toast.makeText(getApplicationContext(), "Tolle Arbeit!", Toast.LENGTH_SHORT);
+                tvTimer.setText("" + getMilliSecondsTotal() / 1000);
+                Toast.makeText(getApplicationContext(), "Tolle Arbeit!", Toast.LENGTH_SHORT).show();
             }
         };
         cdt.start();

@@ -9,7 +9,8 @@
     <string name="titleTS">Willkommen in einer Traingssession!</string>
     <string name="titleEU">Willkommen in der Usererstellung!</string>
     <string name="startMenu">Starte das Menu</string>
+    <string name="tsTimerBtStart">Start</string>
+    <string name="tsTimerBtReset">Reset</string>
     <string name="tsStopwatchBtStart">Start</string>
-    <string name="tsStopwatchBtPause">Pause</string>
     <string name="tsStopwatchBtReset">Reset</string>
 </resources>

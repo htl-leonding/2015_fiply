@@ -10,28 +10,57 @@
     tools:context="htl_leonding.fiplyteam.fiply.TrainingSessionActivity">
 
     <EditText
-        android:id="@+id/tvStopwatchCountDown"
+        android:id="@+id/tvTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
         android:inputType="number"
-        android:textSize="200sp" />
+        android:textSize="150sp" />
+
+    <Button
+        android:id="@+id/tsTimerBtStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTimer"
+        android:text="@string/tsTimerBtStart"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/tsTimerBtReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTimer"
+        android:layout_toRightOf="@+id/tsTimerBtStart"
+        android:text="@string/tsTimerBtReset"
+        android:textSize="20sp" />
+
+    <!--
+    <EditText
+        android:id="@+id/tvStopwatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:inputType="number"
+        android:textSize="150sp" />
 
     <Button
         android:id="@+id/tsStopwatchBtStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvStopwatchCountDown"
+        android:layout_below="@+id/tvStopwatch"
         android:text="@string/tsStopwatchBtStart"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/tsStopwatchBtReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvStopwatchCountDown"
+        android:layout_below="@id/tvStopwatch"
         android:layout_toRightOf="@+id/tsStopwatchBtStart"
         android:text="@string/tsStopwatchBtReset"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
+    -->
 </RelativeLayout>
