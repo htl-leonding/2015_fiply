@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 public class TrainingSessionActivity extends AppCompatActivity {
 
-    EditText tvCountDown;
-    Button btStart;
-    Button btReset;
+    EditText tvStopwatchCountDown;
+    Button btStopwatchStart;
+    Button btStopwatchReset;
     long milliSecondsTotal;
     CountDownTimer cdt;
 
@@ -28,37 +28,37 @@ public class TrainingSessionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training_session);
-        tvCountDown = (EditText) findViewById(R.id.tvCountDown);
-        btStart = (Button) findViewById(R.id.tsbtStart);
-        btReset = (Button) findViewById(R.id.tsbtReset);
+        tvStopwatchCountDown = (EditText) findViewById(R.id.tvStopwatchCountDown);
+        btStopwatchStart = (Button) findViewById(R.id.tsStopwatchBtStart);
+        btStopwatchReset = (Button) findViewById(R.id.tsStopwatchBtReset);
 
         setMilliSecondsTotal(30000);
-        tvCountDown.setText("" + getMilliSecondsTotal() / 1000);
+        tvStopwatchCountDown.setText("" + getMilliSecondsTotal() / 1000);
 
-        btStart.setOnClickListener(new View.OnClickListener() {
+        btStopwatchStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btStart.getText().equals("Start")) {//Start the Timer
-                    createNewTimer(Long.valueOf(tvCountDown.getText().toString()) * 1000);
-                    tvCountDown.setCursorVisible(false);
-                    btStart.setText("Pause");
-                } else if (btStart.getText().equals("Pause")) {//Pause the Timer
+                if (btStopwatchStart.getText().equals("Start")) {//Start the Timer
+                    createNewTimer(Long.valueOf(tvStopwatchCountDown.getText().toString()) * 1000);
+                    tvStopwatchCountDown.setCursorVisible(false);
+                    btStopwatchStart.setText("Pause");
+                } else if (btStopwatchStart.getText().equals("Pause")) {//Pause the Timer
                     cdt.cancel();
-                    btStart.setText("Continue");
-                } else if (btStart.getText().equals("Continue")) {//Continue the Timer
-                    btStart.setText("Pause");
-                    createNewTimer(Long.valueOf(tvCountDown.getText().toString()) * 1000);
+                    btStopwatchStart.setText("Continue");
+                } else if (btStopwatchStart.getText().equals("Continue")) {//Continue the Timer
+                    btStopwatchStart.setText("Pause");
+                    createNewTimer(Long.valueOf(tvStopwatchCountDown.getText().toString()) * 1000);
                 }
             }
         });
 
-        btReset.setOnClickListener(new View.OnClickListener() {
+        btStopwatchReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cdt.cancel();
-                tvCountDown.setText("" + getMilliSecondsTotal() / 1000);
-                tvCountDown.setCursorVisible(true);
-                btStart.setText("Start");
+                tvStopwatchCountDown.setText("" + getMilliSecondsTotal() / 1000);
+                tvStopwatchCountDown.setCursorVisible(true);
+                btStopwatchStart.setText("Start");
             }
         });
     }
@@ -66,11 +66,11 @@ public class TrainingSessionActivity extends AppCompatActivity {
     public void createNewTimer(long timerLength) {
         cdt = new CountDownTimer(timerLength, 1000) {
             public void onTick(long millisUntilFinished) {
-                tvCountDown.setText("" + millisUntilFinished / 1000);
+                tvStopwatchCountDown.setText("" + millisUntilFinished / 1000);
             }
 
             public void onFinish() {
-                tvCountDown.setText("" + getMilliSecondsTotal() / 1000);
+                tvStopwatchCountDown.setText("" + getMilliSecondsTotal() / 1000);
                 Toast.makeText(getApplicationContext(), "Tolle Arbeit!", Toast.LENGTH_SHORT);
             }
         };

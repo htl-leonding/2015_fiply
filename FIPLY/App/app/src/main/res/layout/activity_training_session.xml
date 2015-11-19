@@ -3,35 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="htl_leonding.fiplyteam.fiply.TrainingSessionActivity">
 
     <EditText
-        android:id="@+id/tvCountDown"
+        android:id="@+id/tvStopwatchCountDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
-        android:textSize="200sp"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textSize="200sp" />
 
     <Button
-        android:id="@+id/tsbtStart"
+        android:id="@+id/tsStopwatchBtStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvCountDown"
-        android:textSize="30sp"
-        android:text="@string/tsbtStart" />
+        android:layout_below="@+id/tvStopwatchCountDown"
+        android:text="@string/tsStopwatchBtStart"
+        android:textSize="30sp" />
 
     <Button
-        android:id="@+id/tsbtReset"
+        android:id="@+id/tsStopwatchBtReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvCountDown"
-        android:layout_toRightOf="@+id/tsbtStart"
-        android:textSize="30sp"
-        android:text="@string/tsbtReset" />
+        android:layout_below="@id/tvStopwatchCountDown"
+        android:layout_toRightOf="@+id/tsStopwatchBtStart"
+        android:text="@string/tsStopwatchBtReset"
+        android:textSize="30sp" />
 </RelativeLayout>
