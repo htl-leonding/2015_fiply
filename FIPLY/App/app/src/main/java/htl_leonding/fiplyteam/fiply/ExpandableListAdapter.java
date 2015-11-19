@@ -9,6 +9,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Gerald on 30/10/2015.
@@ -16,10 +17,10 @@ import java.util.HashMap;
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
 
-    private String[] uebungsListHeader;
-    private HashMap<String, String[]> uebungsListChildren;
+    private List<String> uebungsListHeader;
+    private HashMap<String, List<String>> uebungsListChildren;
 
-    public ExpandableListAdapter(Context context,String[] uebungsListHeader, HashMap<String, String[]> uebungsListChildren){
+    public ExpandableListAdapter(Context context, List<String> uebungsListHeader, HashMap<String, List<String>> uebungsListChildren) {
         this.context = context;
         this.uebungsListHeader = uebungsListHeader;
         this.uebungsListChildren = uebungsListChildren;
@@ -27,22 +28,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
-        return 0;
+        return this.uebungsListHeader.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return 0;
+        return this.uebungsListChildren.get(this.uebungsListHeader.get(groupPosition))
+                .size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return this.uebungsListHeader[groupPosition];
+        return this.uebungsListHeader.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this.uebungsListChildren.get(this.uebungsListHeader[groupPosition])[childPosition];
+        return this.uebungsListChildren.get(this.uebungsListHeader.get(groupPosition))
+                .get(childPosition);
     }
 
     @Override
@@ -52,7 +55,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public long getChildId(int groupPosition, int childPosition) {
-        return 0;
+        return childPosition;
     }
 
     @Override

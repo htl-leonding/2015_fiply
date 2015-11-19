@@ -15,7 +15,8 @@ import android.util.Log;
 
 import java.sql.SQLException;
 import java.util.HashMap;
-
+import java.util.LinkedList;
+import java.util.List;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
@@ -23,9 +24,8 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 public class UebungenRepository extends Service{
 
     private static Context repoContext;
-     SQLiteDatabase db = getWritableDatabase();
-
     private static UebungenRepository instance;
+    SQLiteDatabase db = getWritableDatabase();
 
     public static UebungenRepository getInstance(){
         if (instance == null)
@@ -236,26 +236,31 @@ public class UebungenRepository extends Service{
         }
     }
 
-    public String[] getHeaderNamesForUebungskatalog() throws SQLException {
-        String[] headerNames = new String[(int)getUebungCount()];
+    public List<String> getHeaderNamesForUebungskatalog() throws SQLException {
+        List<String> headerNames = new LinkedList<>();
+        Cursor uebung = getAllUebungen();
+        uebung.moveToFirst();
 
-
-
-        for(int i = 1; i < (int)getUebungCount(); i++) {
-            headerNames[i-1] = getUebung(i).getString(1);
+        for (int i = 0; i < uebung.getCount(); i++) {
+            headerNames.add(uebung.getString(1));
+            uebung.moveToNext();
         }
         return headerNames;
-
     }
 
-    public HashMap<String, String[]> getChildDataForUebungskatalog() throws SQLException {
-        HashMap<String, String[]> childData = new HashMap<>((int)getUebungCount());
-        String[] values = new String[5];
-        for(int i = 1; i < (int)getUebungCount(); i++) {
-            for(int j = 1; j <= values.length; j++) {
-                values[i-1] = getUebung(i).getString(j++);
+    public HashMap<String, List<String>> getChildDataForUebungskatalog() throws SQLException {
+        HashMap<String, List<String>> childData = new HashMap<>((int) getUebungCount());
+        Cursor uebung = getAllUebungen();
+        uebung.moveToFirst();
+        List<String> values = new LinkedList<>();
+        for (int i = 0; i < (int) getUebungCount(); i++) {
+            values.clear();
+            for (int j = 1; j < 5; j++) {
+                values.add(uebung.getString(j + 1));
             }
-            childData.put(getUebung(i).getString(1), values);
+
+            childData.put(uebung.getString(1), values);
+            uebung.moveToNext();
         }
 
         return childData;
