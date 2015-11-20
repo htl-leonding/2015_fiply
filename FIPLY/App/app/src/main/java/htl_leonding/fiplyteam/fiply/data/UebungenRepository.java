@@ -1,22 +1,31 @@
 package htl_leonding.fiplyteam.fiply.data;
 
+import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
+import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 
-public class UebungenRepository {
+public class UebungenRepository extends Service{
 
     private static Context repoContext;
-    SQLiteDatabase db = getWritableDatabase();
-
     private static UebungenRepository instance;
+    SQLiteDatabase db = getWritableDatabase();
 
     public static UebungenRepository getInstance(){
         if (instance == null)
@@ -216,4 +225,51 @@ public class UebungenRepository {
                 ");");
     }
 
+    public void getUebungenFromResources(){
+        String[] values;
+
+        Resources res = getResources();
+        TypedArray uebungen = res.obtainTypedArray(R.array.uebungsArray);
+        for(int i = 0; i < uebungen.length(); i++) {
+            values = uebungen.getString(i).split(";");
+            insertUebung(values[0], values[1], values[2], values[3], values[4], values[5]);
+        }
+    }
+
+    public List<String> getHeaderNamesForUebungskatalog() throws SQLException {
+        List<String> headerNames = new LinkedList<>();
+        Cursor uebung = getAllUebungen();
+        uebung.moveToFirst();
+
+        for (int i = 0; i < uebung.getCount(); i++) {
+            headerNames.add(uebung.getString(1));
+            uebung.moveToNext();
+        }
+        return headerNames;
+    }
+
+    public HashMap<String, List<String>> getChildDataForUebungskatalog() throws SQLException {
+        HashMap<String, List<String>> childData = new HashMap<>((int) getUebungCount());
+        Cursor uebung = getAllUebungen();
+        uebung.moveToFirst();
+        List<String> values = new LinkedList<>();
+        for (int i = 0; i < (int) getUebungCount(); i++) {
+            values.clear();
+            for (int j = 1; j < 5; j++) {
+                values.add(uebung.getString(j + 1));
+            }
+
+            childData.put(uebung.getString(1), values);
+            uebung.moveToNext();
+        }
+
+        return childData;
+    }
+
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
 }

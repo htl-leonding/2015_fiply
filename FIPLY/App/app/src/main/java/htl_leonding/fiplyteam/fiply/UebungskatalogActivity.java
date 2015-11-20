@@ -1,18 +1,21 @@
 package htl_leonding.fiplyteam.fiply;
 
-import android.app.ListActivity;
+import android.app.ExpandableListActivity;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.ExpandableListView;
+
+import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
-public class UebungskatalogActivity extends ListActivity {
+public class UebungskatalogActivity extends ExpandableListActivity {
 
     UebungenRepository rep;
+    ExpandableListAdapter adapter;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +28,9 @@ public class UebungskatalogActivity extends ListActivity {
         InsertTestUebungen();
         InsertTestUebungen();
         InsertTestUebungen();
-        InsertTestUebungen();
-        InsertTestUebungen();
-        InsertTestUebungen();
+        context = this;
     }
+
 
     @Override
     protected void onStart() {
@@ -39,11 +41,11 @@ public class UebungskatalogActivity extends ListActivity {
 
     private void InsertTestUebungen() {
         rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Squatten", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
-        rep.insertUebung("Benchpress", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
+        rep.insertUebung("Squatten", "Testbeschreibung Squatten", "Testanleitung Squatten", "Beine", "SquattenZIELGRUPPE", "Testvideo");
+        rep.insertUebung("Benchpress", "Testbeschreibung Benchpress", "Testanleitung Benchpress", "Brust", "TestZIELGRUPPE", "Testvideo");
         rep.insertUebung("Dips", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Deadlift", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
-        rep.insertUebung("Skullcrusher", "Testbeschreibung", "Testanleitung", "Testmuskelgruppe", "TestZIELGRUPPE", "Testvideo");
+        rep.insertUebung("Deadlift", "Testbeschreibung Deadlift", "Testanleitung", "Arme", "TestZIELGRUPPE", "Testvideo");
+        rep.insertUebung("Skullcrusher", "Testbeschreibung Skullcrusher", "Testanleitung", "Trizeps", "TestZIELGRUPPE", "Testvideo");
     }
 
     public class ActivityDatabaseAccess extends AsyncTask<String, Void, String> {
@@ -51,13 +53,13 @@ public class UebungskatalogActivity extends ListActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            ListAdapter adapter = new SimpleCursorAdapter(UebungskatalogActivity.this,
-                    android.R.layout.activity_list_item,
-                    c,
-                    new String[]{"name"},
-                    new int[]{android.R.id.text1}, 0);
 
-            ListView gv = (ListView) findViewById(android.R.id.list);
+            try {
+                adapter = new ExpandableListAdapter(context, rep.getHeaderNamesForUebungskatalog(), rep.getChildDataForUebungskatalog());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            ExpandableListView gv = (ExpandableListView) findViewById(android.R.id.list);
             gv.setAdapter(adapter);
         }
 
