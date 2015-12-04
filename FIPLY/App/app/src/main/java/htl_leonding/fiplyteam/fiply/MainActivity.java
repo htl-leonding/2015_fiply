@@ -1,8 +1,11 @@
 package htl_leonding.fiplyteam.fiply;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +18,22 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
+    FragmentManager fragmentManager = getFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        TestFragment();;
+    }
+
+    public void TestFragment() {
+        ErstelleUserActivity fragment = new ErstelleUserActivity();
+        fragmentTransaction.add(R.id.FragmentErstelleUser, fragment);
+        fragmentTransaction.commit();
+
+    }
+/*
     Button startUe;
     Button startTS;
     Button startEU;
@@ -123,4 +142,5 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
+*/
 }

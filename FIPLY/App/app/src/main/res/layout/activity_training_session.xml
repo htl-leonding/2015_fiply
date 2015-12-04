@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="htl_leonding.fiplyteam.fiply.TrainingSessionActivity">
 
+
     <EditText
         android:id="@+id/tvTimer"
         android:layout_width="wrap_content"
