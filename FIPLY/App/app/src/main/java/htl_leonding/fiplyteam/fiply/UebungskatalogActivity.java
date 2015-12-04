@@ -1,6 +1,6 @@
 package htl_leonding.fiplyteam.fiply;
 
-import android.app.ExpandableListActivity;
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
-public class UebungskatalogActivity extends ExpandableListActivity {
+public class UebungskatalogActivity extends Activity {
 
     UebungenRepository rep;
     ExpandableListAdapter adapter;
