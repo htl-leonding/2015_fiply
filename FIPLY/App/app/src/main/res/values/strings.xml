@@ -2,13 +2,12 @@
     <string name="app_name">FIPLY</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="welcome">Willkommen in der FIPLY APP!</string>
-    <string name="startUe">Starte den Uebungskatalog-Prototypen</string>
-    <string name="startTr">Starte den Trainingssession-Prototypen</string>
-    <string name="startEU">Starte den Usererstellung-Prototypen</string>
+    <string name="startUe">Uebungskatalog</string>
+    <string name="startTr">Trainingssession</string>
+    <string name="startEU">Usererstellung</string>
     <string name="titleUe">Willkommen im Übungskatalog!</string>
     <string name="titleTS">Willkommen in einer Traingssession!</string>
     <string name="titleEU">Willkommen in der Usererstellung!</string>
-    <string name="startMenu">Starte das Menu</string>
     <string name="tsTimerBtStart">Start</string>
     <string name="tsTimerBtReset">Reset</string>
     <string name="tsStopwatchBtStart">Start</string>
