@@ -24,36 +24,30 @@
 
     <Button
         android:id="@+id/btStartUe"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="@string/startUe" />
+        android:textSize="25dp"
+        android:text="@string/startUe"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:id="@+id/btStartTr"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="@string/startTr" />
+        android:textSize="25dp"
+        android:text="@string/startTr"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:id="@+id/btStartEU"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="@string/startEU" />
-
-    <Button
-        android:id="@+id/btStartMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="@string/startMenu"
-        android:textSize="35dp" />
+        android:textSize="25dp"
+        android:text="@string/startEU"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
 
     <ListView android:id="@+id/navlist"
@@ -61,8 +55,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#111"/>
+        android:divider="#E0F2F1"
+        android:dividerHeight="1dp"
+        android:background="#009688" />
 
 </android.support.v4.widget.DrawerLayout>
