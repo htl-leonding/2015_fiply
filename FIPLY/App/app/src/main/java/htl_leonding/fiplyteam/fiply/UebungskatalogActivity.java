@@ -1,17 +1,17 @@
 package htl_leonding.fiplyteam.fiply;
 
-import android.app.ExpandableListActivity;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 
 import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
-public class UebungskatalogActivity extends ExpandableListActivity {
+public class UebungskatalogActivity extends AppCompatActivity {
 
     UebungenRepository rep;
     ExpandableListAdapter adapter;
