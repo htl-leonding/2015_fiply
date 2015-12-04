@@ -6,4 +6,6 @@
     <color name="background_material_light">#fafafa</color>
     <color name="black">#000000</color>
     <color name="colorText">#FFFFFF</color>
+    <color name="colorTextDark">#000000</color>
+    <color name="primary_text_default_material_light">#deffffff</color>
 </resources>

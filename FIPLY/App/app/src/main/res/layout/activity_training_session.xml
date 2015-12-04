@@ -16,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
         android:inputType="number"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="150sp" />
 
     <Button
@@ -23,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTimer"
+        android:background="@color/colorPrimary"
         android:text="@string/tsTimerBtStart"
         android:textSize="20sp" />
 
@@ -32,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvTimer"
         android:layout_toRightOf="@+id/tsTimerBtStart"
+        android:background="@color/colorPrimary"
         android:text="@string/tsTimerBtReset"
         android:textSize="20sp" />
 

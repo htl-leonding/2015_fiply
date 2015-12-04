@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         startTS = (Button) findViewById(R.id.btStartTr);
         startEU = (Button) findViewById(R.id.btStartEU);
         mDrawerList = (ListView) findViewById(R.id.navlist);
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
 
@@ -94,8 +94,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addDrawerItems() {
-        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, navArray);
+        mAdapter = new ArrayAdapter<>(this, R.layout.navlist_content, R.id.navlist_content, navArray);
         mDrawerList.setAdapter(mAdapter);
+
     }
 
     private void setupDrawer() {
