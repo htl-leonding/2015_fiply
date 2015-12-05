@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestRule;

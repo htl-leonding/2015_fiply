@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply;
+package htl_leonding.fiplyteam.fiply.fragments;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -9,15 +9,13 @@ import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class TrainingSessionActivity extends AppCompatActivity {
+import htl_leonding.fiplyteam.fiply.R;
+
+public class FTrainingssession extends AppCompatActivity {
 
     EditText tvTimer;
     Button btTimerStart;
     Button btTimerReset;
-
-//    EditText tvStopwatch;
-    //  Button btStopwatchStart;
-    //Button btStopwatchReset;
 
     long milliSecondsTotal;
     CountDownTimer cdt;
@@ -38,10 +36,6 @@ public class TrainingSessionActivity extends AppCompatActivity {
         tvTimer = (EditText) findViewById(R.id.tvTimer);
         btTimerStart = (Button) findViewById(R.id.tsTimerBtStart);
         btTimerReset = (Button) findViewById(R.id.tsTimerBtReset);
-        //tvStopwatch = (EditText) findViewById(R.id.tvStopwatch);
-        //btStopwatchStart = (Button) findViewById(R.id.tsStopwatchBtStart);
-        //btStopwatchReset = (Button) findViewById(R.id.tsStopwatchBtReset);
-
         mChronometer = new Chronometer(this);
 
         setMilliSecondsTotal(30000);

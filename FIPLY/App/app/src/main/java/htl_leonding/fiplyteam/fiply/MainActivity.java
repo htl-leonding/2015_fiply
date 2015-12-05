@@ -1,11 +1,9 @@
 package htl_leonding.fiplyteam.fiply;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,13 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import htl_leonding.fiplyteam.fiply.fragments.FMain;
 
-public class MainActivity extends AppCompatActivity {
-    Button startUe;
-    Button startTS;
-    Button startEU;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ListView mDrawerList;
     ArrayAdapter<String> mAdapter;
     String[] navArray = {"Main", "TrainingSession", "Uebungskatalog", "ErstelleUser", "Splash"};
@@ -31,43 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startUe = (Button) findViewById(R.id.btStartUe);
-        startTS = (Button) findViewById(R.id.btStartTr);
-        startEU = (Button) findViewById(R.id.btStartEU);
         mDrawerList = (ListView) findViewById(R.id.navlist);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
-
-        startUe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openUe = new Intent("fiply.UEBUNGSKATALOGACTIVITY");
-                startActivity(openUe);
-            }
-        });
-
-        startTS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openTS = new Intent("fiply.TRAININGSESSIONACTIVITY");
-                startActivity(openTS);
-            }
-        });
-
-        startEU.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                ErstelleUserActivity erstelleUserActivity = new ErstelleUserActivity();
-
-                fragmentTransaction.replace(android.R.id.content, erstelleUserActivity);
-                fragmentTransaction.commit();
-                //Intent openEU = new Intent("fiply.ERSTELLEUSERACTIVITY");
-                //startActivity(openEU);
-            }
-        });
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -85,8 +49,14 @@ public class MainActivity extends AppCompatActivity {
         addDrawerItems();
         setupDrawer();
 
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FMain fMain = new FMain();
+        fragmentTransaction.replace(android.R.id.content, fMain);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -104,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
     private void addDrawerItems() {
         mAdapter = new ArrayAdapter<>(this, R.layout.navlist_content, R.id.navlist_content, navArray);
         mDrawerList.setAdapter(mAdapter);
-
     }
 
     private void setupDrawer() {
@@ -132,4 +101,8 @@ public class MainActivity extends AppCompatActivity {
         return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
+    }
 }

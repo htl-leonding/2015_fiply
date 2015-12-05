@@ -1,40 +1,41 @@
-package htl_leonding.fiplyteam.fiply;
+package htl_leonding.fiplyteam.fiply.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-
 import java.sql.SQLException;
-
+import htl_leonding.fiplyteam.fiply.ExpandableListAdapter;
+import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
-public class UebungskatalogActivity extends Activity {
-
+public class FUebungskatalog extends Fragment {
     UebungenRepository rep;
     ExpandableListAdapter adapter;
     Context context;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uebungskatalog);
-        UebungenRepository.setContext(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //UebungenRepository.setContext(this);
         rep = UebungenRepository.getInstance();
         rep.deleteAllUebungen();
         InsertTestUebungen();
         InsertTestUebungen();
         InsertTestUebungen();
         InsertTestUebungen();
-        context = this;
+        //context = this;
+        return inflater.inflate(R.layout.activity_uebungskatalog, container, false);
     }
 
-
     @Override
-    protected void onStart() {
-        super.onStart();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         ActivityDatabaseAccess dbaccess = new ActivityDatabaseAccess();
         dbaccess.execute("");
     }
@@ -59,7 +60,7 @@ public class UebungskatalogActivity extends Activity {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            ExpandableListView gv = (ExpandableListView) findViewById(android.R.id.list);
+            ExpandableListView gv = (ExpandableListView) getView().findViewById(android.R.id.list);
             gv.setAdapter(adapter);
         }
 
