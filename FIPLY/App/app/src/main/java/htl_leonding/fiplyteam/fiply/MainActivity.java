@@ -1,5 +1,7 @@
 package htl_leonding.fiplyteam.fiply;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -56,8 +58,14 @@ public class MainActivity extends AppCompatActivity {
         startEU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openEU = new Intent("fiply.ERSTELLEUSERACTIVITY");
-                startActivity(openEU);
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                ErstelleUserActivity erstelleUserActivity = new ErstelleUserActivity();
+
+                fragmentTransaction.replace(android.R.id.content, erstelleUserActivity);
+                fragmentTransaction.commit();
+                //Intent openEU = new Intent("fiply.ERSTELLEUSERACTIVITY");
+                //startActivity(openEU);
             }
         });
 
