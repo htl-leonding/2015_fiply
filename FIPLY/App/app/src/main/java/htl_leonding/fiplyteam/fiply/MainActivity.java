@@ -17,23 +17,6 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
-
-    FragmentManager fragmentManager = getFragmentManager();
-    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-    @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        TestFragment();;
-    }
-
-    public void TestFragment() {
-        ErstelleUserActivity fragment = new ErstelleUserActivity();
-        fragmentTransaction.add(R.id.FragmentErstelleUser, fragment);
-        fragmentTransaction.commit();
-
-    }
-/*
     Button startUe;
     Button startTS;
     Button startEU;
@@ -148,5 +131,5 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
-*/
+
 }

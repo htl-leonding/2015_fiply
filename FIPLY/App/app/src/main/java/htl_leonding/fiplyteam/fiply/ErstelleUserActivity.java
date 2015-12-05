@@ -11,24 +11,8 @@ import android.view.ViewGroup;
 public class ErstelleUserActivity extends Fragment {
 
     @Override
-<<<<<<< HEAD
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_erstelle_user_,container,false);
-=======
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_erstelle_user_);
->>>>>>> origin/Refactor-NavigationDrawer
-    }
-
-    @Nullable
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_erstelle_user_, container, false);
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
 }
