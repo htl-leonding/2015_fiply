@@ -14,4 +14,12 @@
     <string name="tsStopwatchBtReset">Reset</string>
     <string name="drawer_open">Navigationsleiste öffnen</string>
     <string name="drawer_close">Navigationsleiste schließen</string>
+
+    <string-array name="navigationArray">
+        <item>Mainmenü</item>
+        <item>Trainingssession</item>
+        <item>Übungskatalog</item>
+        <item>Usererstellung</item>
+    </string-array>
+
 </resources>

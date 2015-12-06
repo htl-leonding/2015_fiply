@@ -6,7 +6,13 @@
     android:layout_height="match_parent"
     tools:context="htl_leonding.fiplyteam.fiply.MainActivity">
 
-    <android.support.design.widget.NavigationView android:id="@+id/navlist"
+    <FrameLayout
+        android:id="@+id/fraPlace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ListView
+        android:id="@+id/navlist"
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"

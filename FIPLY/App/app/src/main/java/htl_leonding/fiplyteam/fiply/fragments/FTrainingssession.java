@@ -2,8 +2,11 @@ package htl_leonding.fiplyteam.fiply.fragments;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
@@ -11,7 +14,7 @@ import android.widget.Toast;
 
 import htl_leonding.fiplyteam.fiply.R;
 
-public class FTrainingssession extends AppCompatActivity {
+public class FTrainingssession extends Fragment {
 
     EditText tvTimer;
     Button btTimerStart;
@@ -30,13 +33,17 @@ public class FTrainingssession extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_training_session);
-        tvTimer = (EditText) findViewById(R.id.tvTimer);
-        btTimerStart = (Button) findViewById(R.id.tsTimerBtStart);
-        btTimerReset = (Button) findViewById(R.id.tsTimerBtReset);
-        mChronometer = new Chronometer(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_trainingssession, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        tvTimer = (EditText) getView().findViewById(R.id.tvTimer);
+        btTimerStart = (Button) getView().findViewById(R.id.tsTimerBtStart);
+        btTimerReset = (Button) getView().findViewById(R.id.tsTimerBtReset);
+        mChronometer = new Chronometer(getActivity());
 
         setMilliSecondsTotal(30000);
         tvTimer.setText("" + getMilliSecondsTotal() / 1000);
@@ -77,7 +84,7 @@ public class FTrainingssession extends AppCompatActivity {
 
             public void onFinish() {
                 tvTimer.setText("" + getMilliSecondsTotal() / 1000);
-                Toast.makeText(getApplicationContext(), "Tolle Arbeit!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "Tolle Arbeit!", Toast.LENGTH_SHORT).show();
             }
         };
         cdt.start();

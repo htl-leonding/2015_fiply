@@ -1,6 +1,4 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -41,6 +39,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:background="@color/colorPrimary"
-        android:text="@string/startEU"/>
-
-    </LinearLayout>
+        android:text="@string/startEU"
+        android:textSize="25dp" />
+</LinearLayout>
