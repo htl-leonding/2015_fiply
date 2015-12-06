@@ -18,21 +18,21 @@
         </activity>
 
 
-        <activity android:name=".UebungskatalogActivity">
+        <activity android:name=".fragments.FUebungskatalog">
             <intent-filter>
                 <action android:name="fiply.UEBUNGSKATALOGACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".TrainingSessionActivity">
+        <activity android:name=".fragments.FTrainingssession">
             <intent-filter>
                 <action android:name="fiply.TRAININGSESSIONACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ErstelleUserActivity">
+        <activity android:name=".fragments.FUsererstellung">
             <intent-filter>
                 <action android:name="fiply.ERSTELLEUSERACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
