@@ -18,6 +18,9 @@ public class SplashActivity extends AppCompatActivity {
         sleepIntentTask.execute("");
     }
 
+    /**
+     * Dieser Task führt zuerst ein Sleep aus bevor er einen Intent auf MainActivity durchführt
+     */
     public class SleepIntentTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -28,7 +31,8 @@ public class SplashActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             Intent openMain = new Intent("fiply.MAINACTIVITY");
-            openMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            //Diese Flags verhindern dass man durch Klicken des BackButtons auf diese Activity zurückkommt.
+            openMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(openMain);
             return "Success";
         }

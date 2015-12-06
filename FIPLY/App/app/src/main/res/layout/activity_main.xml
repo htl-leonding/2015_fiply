@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context="htl_leonding.fiplyteam.fiply.MainActivity">
 
+    <!-- FrameLayout in das die Fragments geladen werden -->
     <FrameLayout
         android:id="@+id/fraPlace"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!-- ListView die im NavigationDrawer dargestellt wird -->
     <ListView
         android:id="@+id/navlist"
         android:layout_width="250dp"

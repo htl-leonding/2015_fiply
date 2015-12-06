@@ -21,6 +21,14 @@ public class FUebungskatalog extends Fragment {
     Context context;
     ExpandableListView gv;
 
+    /**
+     * Lädt das fragment_uebungskatalog in das FrameLayout der MainActivity
+     *
+     * @param inflater           default
+     * @param container          default
+     * @param savedInstanceState default
+     * @return View die ins FrameLayout geladen wird
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         UebungenRepository.setContext(getActivity());
@@ -33,6 +41,12 @@ public class FUebungskatalog extends Fragment {
         return inflater.inflate(R.layout.fragment_uebungskatalog, container, false);
     }
 
+    /**
+     * Wird aufgerufen nachdem die View aufgebaut ist und dient dem setzen der OnClickListener
+     *
+     * @param view               default
+     * @param savedInstanceState default
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -46,6 +60,9 @@ public class FUebungskatalog extends Fragment {
         gv.setAdapter(adapter);
     }
 
+    /**
+     * Fügt ein paar Testübungen in die Datenbank ein um die ExpandableListView darstellen zu können
+     */
     private void InsertTestUebungen() {
         rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
         rep.insertUebung("Squatten", "Testbeschreibung Squatten", "Testanleitung Squatten", "Beine", "SquattenZIELGRUPPE", "Testvideo");

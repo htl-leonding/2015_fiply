@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
     String mActivityTitle;
     String[] navArray = new String[4];
 
+    /**
+     * Wird beim Ersten Aufruf der MainActivity aufgerufen und dient dem setzen der OnClickListener
+     *
+     * @param savedInstanceState default
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,64 +43,83 @@ public class MainActivity extends AppCompatActivity {
         Resources res = getResources();
         navArray = res.getStringArray(R.array.navigationArray);
 
+        /**
+         * Bei Drücken eines Elements des NavigationDrawers wird eine FragmentTransaction durchgeführt,
+         * in der das Fragment des gedrückten Elements in das FrameLayout der MainActivity geladen wird
+         */
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                 /*
-                try {
-                }
-                    Class classToBeOpened = Class.forName("htl_leonding.fiplyteam.fiply." + navArray[position] + "Activity");
-                    Intent startClass = new Intent(MainActivity.this, classToBeOpened);
-                    startActivity(startClass);
-
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-                */
                 displayView(position);
             }
         });
 
+        //Übergibt dem NavigationDrawer die Elemente die er enthalten soll
         addDrawerItems();
+        //Konfiguriert den navigationDrawer
         setupDrawer();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //Lädt das FMain Fragment in das FrameLayout der MainActivity
         FMain fMain = new FMain();
-        fragmentTransaction.replace(R.id.fraPlace, fMain);
-        fragmentTransaction.commit();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fraPlace, fMain).commit();
     }
 
+    /**
+     * Wird nachdem erstellen der View aufgerufen und stellt sicher
+     * dass der NavigationDrawer und die Activity synchron sind
+     *
+     * @param savedInstanceState default
+     */
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
     }
 
+    /**
+     * Teilt der DrawerNavigation mit wenn sich die Configuration ändert
+     *
+     * @param newConfig default
+     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    /**
+     * Übergibt dem NavigationDrawer die Elemente die er enthalten soll
+     */
     private void addDrawerItems() {
         mAdapter = new ArrayAdapter<>(this, R.layout.navigation_list, R.id.navlist_content, navArray);
         mDrawerList.setAdapter(mAdapter);
     }
 
+    /**
+     * Konfiguriert den NavigationDrawer und behandelt das Verhalten beim öffnen und schließen
+     */
     private void setupDrawer() {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.drawer_open, R.string.drawer_close) {
 
+            /**
+             * Behandelt das Verhalten beim Öffnen des NavigationDrawers
+             *
+             * @param drawerView default
+             */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle("Navigation");
                 invalidateOptionsMenu();
             }
 
+            /**
+             * Behandelt das Verhalten beim Schließen des NavigationDrawers
+             * @param view default
+             */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 getSupportActionBar().setTitle(mActivityTitle);
@@ -106,12 +130,20 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
+    /**
+     * Teilt dem NavigationDrawer mit wenn ein Item gefrückt wird
+     * @param item  Fragment das ins FrameLayout der MainActivity geladen werden soll
+     * @return Fragment das ins FrameLayout der MainActivity geladen werden soll
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * Lädt das Fragment, dass sich an der jeweiligen Position in der Liste befindet, in das FrameLayout der MainActivity
+     * @param position  Position in der Liste des NavigationDrawers
+     */
     private void displayView(int position) {
         Fragment fragment = null;
         switch (position) {
@@ -133,7 +165,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fraPlace, fragment).commit();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fraPlace, fragment);
+        fragmentTransaction.commit();
 
         mDrawerList.setItemChecked(position, true);
         mDrawerList.setSelection(position);

@@ -32,11 +32,26 @@ public class FTrainingssession extends Fragment {
         this.milliSecondsTotal = milliSecondsTotal;
     }
 
+    /**
+     * Lädt das fragment_trainingssession in das FrameLayout der MainActivity
+     *
+     * @param inflater           default
+     * @param container          default
+     * @param savedInstanceState default
+     * @return View die ins FrameLayout geladen wird
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_trainingssession, container, false);
     }
 
+    /**
+     * Wird aufgerufen nachdem die View aufgebaut ist und dient dem setzen der OnClickListener
+     *
+     * @param view               default
+     * @param savedInstanceState default
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -48,6 +63,11 @@ public class FTrainingssession extends Fragment {
         setMilliSecondsTotal(30000);
         tvTimer.setText("" + getMilliSecondsTotal() / 1000);
 
+        /**
+         * Bei Drücken des Start Buttons wird der Timer gestartet
+         * Bei erneutem Drücken wird der Timer pausiert
+         * Danach dient er abwechselnd dem Weiterzählen oder pausieren
+         */
         btTimerStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +85,9 @@ public class FTrainingssession extends Fragment {
             }
         });
 
+        /**
+         * Stellt den ursprünglichen Zustand des Timers wieder her
+         */
         btTimerReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +99,10 @@ public class FTrainingssession extends Fragment {
         });
     }
 
+    /**
+     * Erstellt einen neuen Timer der in einem EditText angezeigt wird
+     * @param timerLength   Zeit in ms
+     */
     public void createNewTimer(long timerLength) {
         cdt = new CountDownTimer(timerLength, 1000) {
             public void onTick(long millisUntilFinished) {
