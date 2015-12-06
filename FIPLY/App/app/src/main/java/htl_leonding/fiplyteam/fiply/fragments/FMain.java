@@ -12,59 +12,86 @@ import android.widget.Button;
 import htl_leonding.fiplyteam.fiply.R;
 
 public class FMain extends Fragment {
-    Button startUe;
-    Button startTS;
-    Button startEU;
+    Button startUeb;
+    Button startTra;
+    Button startUse;
 
+    /**
+     * Lädt das fragment_main in das FrameLayout der MainActivity
+     *
+     * @param inflater           default
+     * @param container          default
+     * @param savedInstanceState default
+     * @return View die ins FrameLayout geladen wird
+     */
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        return inflater.inflate(R.layout.fragment_main, container, false);
+    }
+
+    /**
+     * Wird aufgerufen nachdem die View aufgebaut ist und dient dem setzen der OnClickListener
+     *
+     * @param view               default
+     * @param savedInstanceState default
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        startUe = (Button) getView().findViewById(R.id.btStartUe);
-        startTS = (Button) getView().findViewById(R.id.btStartTr);
-        startEU = (Button) getView().findViewById(R.id.btStartEU);
+        startUeb = (Button) getView().findViewById(R.id.btStartUe);
+        startTra = (Button) getView().findViewById(R.id.btStartTr);
+        startUse = (Button) getView().findViewById(R.id.btStartEU);
 
-        startUe.setOnClickListener(new View.OnClickListener() {
+        /**
+         * Bei Drücken des Uebungskatalog Buttons wird eine FragmentTransaction durchgeführt,
+         * in der das Fragment des Uebungskatalog in das FrameLayout der MainActivity geladen wird
+         */
+        startUeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.addToBackStack(null);
                 FUebungskatalog fUebungskatalog = new FUebungskatalog();
-                fragmentTransaction.replace(R.id.fraPlace, fUebungskatalog);
-                fragmentTransaction.commit();
+                displayView(fUebungskatalog);
             }
         });
 
-        startTS.setOnClickListener(new View.OnClickListener() {
+        /**
+         * Bei Drücken des Trainingssession Buttons wird eine FragmentTransaction durchgeführt,
+         * in der das Fragment der Trainingssession in das FrameLayout der MainActivity geladen wird
+         */
+        startTra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.addToBackStack(null);
                 FTrainingssession fTrainingssession = new FTrainingssession();
-                fragmentTransaction.replace(R.id.fraPlace, fTrainingssession);
-                fragmentTransaction.commit();
+                displayView(fTrainingssession);
             }
         });
 
-        startEU.setOnClickListener(new View.OnClickListener() {
+        /**
+         * Bei Drücken des Usererstellung Buttons wird eine FragmentTransaction durchgeführt,
+         * in der das Fragment der Usererstellung in das FrameLayout der MainActivity geladen wird
+         */
+        startUse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.addToBackStack(null);
                 FUsererstellung fUsererstellung = new FUsererstellung();
-                fragmentTransaction.replace(R.id.fraPlace, fUsererstellung);
-                fragmentTransaction.commit();
+                displayView(fUsererstellung);
             }
         });
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        return inflater.inflate(R.layout.fragment_main, container, false);
+    /**
+     * Ersetzt das FrameLayout der MainActivity mit dem übergebenem Fragment
+     *
+     * @param fragment Fragment das in das FrameLayout geladen werden soll
+     */
+    private void displayView(Fragment fragment) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fraPlace, fragment);
+        fragmentTransaction.commit();
     }
 }
