@@ -67,6 +67,10 @@ public class FUebungskatalog extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle args = new Bundle();
                 args.putString("name", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(1));
+                args.putString("muskelgruppe", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(2));
+                args.putString("zielgruppe", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(3));
+                args.putString("beschreibung", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(4));
+                args.putString("anleitung", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(5));
                 args.putString("video", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(6));
                 FUebungDetail fUebungDetail = new FUebungDetail();
                 fUebungDetail.setArguments(args);
@@ -89,11 +93,11 @@ public class FUebungskatalog extends Fragment {
      */
     private void InsertTestUebungen() {
         rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "");
-        rep.insertUebung("Squatten", "Testbeschreibung Squatten", "Testanleitung Squatten", "Beine", "SquattenZIELGRUPPE", "https://www.youtube.com/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Benchpress", "Testbeschreibung Benchpress", "Testanleitung Benchpress", "Brust", "TestZIELGRUPPE", "https://www.youtube.com/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Dips", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Deadlift", "Testbeschreibung Deadlift", "Testanleitung", "Arme", "TestZIELGRUPPE", "https://www.youtube.com/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Skullcrusher", "Testbeschreibung Skullcrusher", "Testanleitung", "Trizeps", "TestZIELGRUPPE", "https://www.youtube.com/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Squatten", "Testbeschreibung Squatten", "Testanleitung Squatten", "Beine", "SquattenZIELGRUPPE", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Benchpress", "Testbeschreibung Benchpress", "Testanleitung Benchpress", "Brust", "TestZIELGRUPPE", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Dips", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Deadlift", "Testbeschreibung Deadlift", "Testanleitung", "Arme", "TestZIELGRUPPE", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Skullcrusher", "Testbeschreibung Skullcrusher", "Testanleitung", "Trizeps", "TestZIELGRUPPE", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
     }
 
     /*
