@@ -236,13 +236,13 @@ public class UebungenRepository extends Service{
         }
     }
 
-    public List<String> getHeaderNamesForUebungskatalog() throws SQLException {
-        List<String> headerNames = new LinkedList<>();
+    public String[] getHeaderNamesForUebungskatalog() throws SQLException {
         Cursor uebung = getAllUebungen();
+        String[] headerNames = new String[uebung.getCount()];
         uebung.moveToFirst();
 
         for (int i = 0; i < uebung.getCount(); i++) {
-            headerNames.add(uebung.getString(1));
+            headerNames[i] = uebung.getString(1);
             uebung.moveToNext();
         }
         return headerNames;

@@ -7,11 +7,14 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/expListViewParent"
+        android:id="@+id/ueListViewItem"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:textColor="@color/colorText"
-        android:textSize="17dp" />
+        android:background="@color/colorPrimary"
+        android:layout_margin="2dp"
+        android:textSize="25dp" />
+
 
 </LinearLayout>
