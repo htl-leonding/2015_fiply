@@ -1,17 +1,13 @@
 package htl_leonding.fiplyteam.fiply.fragments;
 
-import android.net.Uri;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.VideoView;
 
 import htl_leonding.fiplyteam.fiply.R;
 
@@ -73,9 +69,9 @@ public class FUebungDetail extends Fragment {
         tvUebungDesc.setText(uebungsDesc);
         tvUebungAnl.setText(uebungsAnl);
 
-
-        wvUebungVideo.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         wvUebungVideo.setWebChromeClient(new WebChromeClient());
+        //wvUebungVideo.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
         wvUebungVideo.loadUrl(uebungsVideo);
     }
 }
