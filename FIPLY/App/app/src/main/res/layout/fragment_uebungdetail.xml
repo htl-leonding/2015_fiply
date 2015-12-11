@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:scrollbarAlwaysDrawVerticalTrack="true"
     android:weightSum="1">
 
     <TextView
@@ -14,95 +16,104 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/colorTextDark"
-        android:textSize="30dp" />
-
-    <WebView
-        android:id="@+id/detailUebungVideo"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_below="@+id/staticDetailAnleitung"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        android:layout_weight="0.47" />
+        android:textSize="30dp"
+        android:text="@string/detailName"/>
 
     <TextView
         android:id="@+id/staticDetailMuskelGruppe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/detailUebungVideo"
-        android:layout_below="@+id/detailUebungName"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/detailUebungName"
         android:text="@string/detailMG"
-        android:textColor="@color/colorTextDark" />
+        android:textColor="@color/colorTextDark"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"/>
 
     <TextView
         android:id="@+id/detailMuskelGruppe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/detailDesc"
-        android:layout_toEndOf="@id/staticDetailMuskelGruppe"
-        android:gravity="right"
-        android:text="New Text"
-        android:textAlignment="gravity"
-        android:textColor="@color/colorTextDark" />
-
-    <TextView
-        android:id="@+id/staticDetailBeschreibung"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/staticDetailZielGruppe"
-        android:layout_below="@+id/staticDetailMuskelGruppe"
-        android:text="@string/detailDesc"
-        android:textColor="@color/colorTextDark"/>
-
-    <TextView
-        android:id="@+id/staticDetailZielGruppe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/staticDetailAnleitung"
-        android:layout_below="@+id/staticDetailBeschreibung"
-        android:text="@string/detailZG"
-        android:textColor="@color/colorTextDark"/>
-
-    <TextView
-        android:id="@+id/staticDetailAnleitung"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/staticDetailMuskelGruppe"
-        android:layout_below="@+id/staticDetailZielGruppe"
-        android:text="@string/detailAnl"
-        android:textColor="@color/colorTextDark"/>
-
-    <TextView
-        android:id="@+id/detailDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/detailMuskelGruppe"
-        android:layout_alignTop="@+id/staticDetailBeschreibung"
-        android:gravity="right"
-        android:text="New Text"
-        android:textAlignment="gravity"
-        android:textColor="@color/colorTextDark" />
+        android:layout_below="@id/detailUebungName"
+        android:layout_toRightOf="@id/staticDetailMuskelGruppe"
+        android:layout_alignParentEnd="true"
+        android:text="Test Muskelgruppe"
+        android:textColor="@color/colorTextDark"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"/>
 
     <TextView
         android:id="@+id/detailZielGruppe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/detailDesc"
-        android:layout_below="@+id/detailDesc"
-        android:gravity="right"
-        android:text="New Text"
-        android:textAlignment="gravity"
-        android:textColor="@color/colorTextDark" />
+        android:layout_below="@+id/detailMuskelGruppe"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@id/detailMuskelGruppe"
+        android:text="Test Zielgruppe"
+        android:textColor="@color/colorTextDark"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"/>
 
     <TextView
-        android:id="@+id/detailAnl"
+        android:id="@+id/staticDetailZielGruppe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/detailZielGruppe"
-        android:layout_alignTop="@+id/staticDetailAnleitung"
-        android:gravity="right"
-        android:text="New Text"
-        android:textAlignment="gravity"
-        android:textColor="@color/colorTextDark" />
+        android:layout_alignStart="@id/staticDetailMuskelGruppe"
+        android:layout_below="@+id/staticDetailMuskelGruppe"
+        android:text="@string/detailZG"
+        android:textColor="@color/colorTextDark"/>
+
+    <TextView
+        android:id="@+id/detailBeschreibung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailZielGruppe"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@id/detailZielGruppe"
+        android:text="Test Beschreibung"
+        android:textColor="@color/colorTextDark"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"/>
+
+    <TextView
+        android:id="@+id/staticDetailBeschreibung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/staticDetailZielGruppe"
+        android:layout_below="@+id/detailZielGruppe"
+        android:text="@string/detailDesc"
+        android:textColor="@color/colorTextDark"/>
+
+    <TextView
+        android:id="@+id/detailAnleitung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailBeschreibung"
+        android:layout_alignLeft="@id/detailBeschreibung"
+        android:text="Test Anleitung"
+        android:textColor="@color/colorTextDark"
+        android:layout_marginRight="5dp"/>
+
+    <TextView
+        android:id="@+id/staticDetailAnleitung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/staticDetailBeschreibung"
+        android:layout_below="@+id/detailBeschreibung"
+        android:text="@string/detailAnl"
+        android:textColor="@color/colorTextDark"/>
+
+    <WebView
+        android:id="@+id/detailUebungVideo"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_below="@+id/detailAnleitung"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"/>
 
 </RelativeLayout>
+    </ScrollView>
