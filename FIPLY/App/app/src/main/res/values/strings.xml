@@ -13,7 +13,11 @@
     <string name="tsStopwatchBtStart">Start</string>
     <string name="tsStopwatchBtReset">Reset</string>
     <string name="drawer_open">Navigationsleiste öffnen</string>
-    <string name="drawer_close">Navigationsleiste schließen</string>
+    <string name="drawer_close">Navigationsleiste öffnen</string>
+    <string name="detailMG">Muskelgruppe: </string>
+    <string name="detailZG">Zielgruppe: </string>
+    <string name="detailDesc">Beschreibung: </string>
+    <string name="detailAnl">Anleitung: </string>
 
     <string-array name="navigationArray">
         <item>Mainmenü</item>
