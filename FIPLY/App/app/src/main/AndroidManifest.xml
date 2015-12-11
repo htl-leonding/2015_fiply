@@ -5,10 +5,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
 
         <activity
@@ -18,28 +19,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".fragments.FUebungskatalog">
-            <intent-filter>
-                <action android:name="fiply.UEBUNGSKATALOGACTIVITY" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".fragments.FTrainingssession">
-            <intent-filter>
-                <action android:name="fiply.TRAININGSESSIONACTIVITY" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".fragments.FUsererstellung">
-            <intent-filter>
-                <action android:name="fiply.ERSTELLEUSERACTIVITY" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        
 
         <activity android:name=".SplashActivity">
             <intent-filter>
