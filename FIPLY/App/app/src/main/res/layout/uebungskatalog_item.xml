@@ -15,6 +15,4 @@
         android:background="@color/colorPrimary"
         android:layout_margin="2dp"
         android:textSize="25dp" />
-
-
 </LinearLayout>

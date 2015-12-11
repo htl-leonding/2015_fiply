@@ -1,23 +1,19 @@
 package htl_leonding.fiplyteam.fiply.fragments;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
-import java.sql.SQLException;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
@@ -67,10 +63,10 @@ public class FUebungskatalog extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle args = new Bundle();
                 args.putString("name", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(1));
-                args.putString("muskelgruppe", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(2));
-                args.putString("zielgruppe", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(3));
-                args.putString("beschreibung", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(4));
-                args.putString("anleitung", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(5));
+                args.putString("beschreibung", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(2));
+                args.putString("anleitung", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(3));
+                args.putString("muskelgruppe", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(4));
+                args.putString("zielgruppe", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(5));
                 args.putString("video", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(6));
                 FUebungDetail fUebungDetail = new FUebungDetail();
                 fUebungDetail.setArguments(args);
@@ -92,12 +88,12 @@ public class FUebungskatalog extends Fragment {
      * Fügt ein paar Testübungen in die Datenbank ein um die ExpandableListView darstellen zu können
      */
     private void InsertTestUebungen() {
-        rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "");
-        rep.insertUebung("Squatten", "Testbeschreibung Squatten", "Testanleitung Squatten", "Beine", "SquattenZIELGRUPPE", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Benchpress", "Testbeschreibung Benchpress", "Testanleitung Benchpress", "Brust", "TestZIELGRUPPE", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Dips", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Deadlift", "Testbeschreibung Deadlift", "Testanleitung", "Arme", "TestZIELGRUPPE", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
-        rep.insertUebung("Skullcrusher", "Testbeschreibung Skullcrusher", "Testanleitung", "Trizeps", "TestZIELGRUPPE", "https://www.youtube.com/embed/watch?v=FtAz_85aVxE");
+        rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
+        rep.insertUebung("Squatten", "Testbeschreibung Squatten", "Testanleitung Squatten", "Beine", "SquattenZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
+        rep.insertUebung("Benchpress", "Testbeschreibung Benchpress", "Testanleitung Benchpress", "Brust", "TestZIELGRUPPE", "https://www.youtube.com/embed/esQi683XR44");
+        rep.insertUebung("Dips", "Testbeschreibung Dips", "Testanleitung Dips", "Trizeps", "Langsam durchführen", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
+        rep.insertUebung("Deadlift", "Testbeschreibung Deadlift", "Testanleitung", "Arme", "TestZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
+        rep.insertUebung("Skullcrusher", "Testbeschreibung Skullcrusher das hier ist eine sehr lange Beschreibung um das Layout in der detailansicht des uebungskatalogs zu testen", "Testanleitung das hier ist eine sehr lange testanleitung um das layout in der uebungsdetailview zu testen", "Trizeps", "TestZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
     }
 
     /*

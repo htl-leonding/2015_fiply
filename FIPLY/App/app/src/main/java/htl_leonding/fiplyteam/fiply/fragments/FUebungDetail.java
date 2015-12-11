@@ -1,17 +1,13 @@
 package htl_leonding.fiplyteam.fiply.fragments;
 
-import android.net.Uri;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.VideoView;
 
 import htl_leonding.fiplyteam.fiply.R;
 
@@ -27,15 +23,11 @@ public class FUebungDetail extends Fragment {
     String uebungsDesc;
     String uebungsAnl;
 
-
     TextView tvUebungName;
     TextView tvUebungZG;
     TextView tvUebungMG;
     TextView tvUebungDesc;
     TextView tvUebungAnl;
-
-
-
     WebView wvUebungVideo;
 
     @Override
@@ -60,8 +52,8 @@ public class FUebungDetail extends Fragment {
         tvUebungName = (TextView) getView().findViewById(R.id.detailUebungName);
         tvUebungMG = (TextView) getView().findViewById(R.id.detailMuskelGruppe);
         tvUebungZG = (TextView) getView().findViewById(R.id.detailZielGruppe);
-        tvUebungDesc = (TextView) getView().findViewById(R.id.detailDesc);
-        tvUebungAnl = (TextView) getView().findViewById(R.id.detailAnl);
+        tvUebungDesc = (TextView) getView().findViewById(R.id.detailBeschreibung);
+        tvUebungAnl = (TextView) getView().findViewById(R.id.detailAnleitung);
 
         wvUebungVideo = (WebView) getView().findViewById(R.id.detailUebungVideo);
 
@@ -73,9 +65,9 @@ public class FUebungDetail extends Fragment {
         tvUebungDesc.setText(uebungsDesc);
         tvUebungAnl.setText(uebungsAnl);
 
-
-        wvUebungVideo.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         wvUebungVideo.setWebChromeClient(new WebChromeClient());
+        //wvUebungVideo.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
         wvUebungVideo.loadUrl(uebungsVideo);
     }
 }
