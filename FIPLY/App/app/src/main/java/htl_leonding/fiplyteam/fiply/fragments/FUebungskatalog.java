@@ -93,7 +93,7 @@ public class FUebungskatalog extends Fragment {
         rep.insertUebung("Benchpress", "Testbeschreibung Benchpress", "Testanleitung Benchpress", "Brust", "TestZIELGRUPPE", "https://www.youtube.com/embed/esQi683XR44");
         rep.insertUebung("Dips", "Testbeschreibung Dips", "Testanleitung Dips", "Trizeps", "Langsam durchführen", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
         rep.insertUebung("Deadlift", "Testbeschreibung Deadlift", "Testanleitung", "Arme", "TestZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
-        rep.insertUebung("Skullcrusher", "Testbeschreibung Skullcrusher", "Testanleitung", "Trizeps", "TestZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
+        rep.insertUebung("Skullcrusher", "Testbeschreibung Skullcrusher das hier ist eine sehr lange Beschreibung um das Layout in der detailansicht des uebungskatalogs zu testen", "Testanleitung das hier ist eine sehr lange testanleitung um das layout in der uebungsdetailview zu testen", "Trizeps", "TestZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
     }
 
     /*

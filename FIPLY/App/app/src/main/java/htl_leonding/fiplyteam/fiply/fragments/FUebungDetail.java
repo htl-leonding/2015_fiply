@@ -23,15 +23,11 @@ public class FUebungDetail extends Fragment {
     String uebungsDesc;
     String uebungsAnl;
 
-
     TextView tvUebungName;
     TextView tvUebungZG;
     TextView tvUebungMG;
     TextView tvUebungDesc;
     TextView tvUebungAnl;
-
-
-
     WebView wvUebungVideo;
 
     @Override
@@ -56,8 +52,8 @@ public class FUebungDetail extends Fragment {
         tvUebungName = (TextView) getView().findViewById(R.id.detailUebungName);
         tvUebungMG = (TextView) getView().findViewById(R.id.detailMuskelGruppe);
         tvUebungZG = (TextView) getView().findViewById(R.id.detailZielGruppe);
-        tvUebungDesc = (TextView) getView().findViewById(R.id.detailDesc);
-        tvUebungAnl = (TextView) getView().findViewById(R.id.detailAnl);
+        tvUebungDesc = (TextView) getView().findViewById(R.id.detailBeschreibung);
+        tvUebungAnl = (TextView) getView().findViewById(R.id.detailAnleitung);
 
         wvUebungVideo = (WebView) getView().findViewById(R.id.detailUebungVideo);
 

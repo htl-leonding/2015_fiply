@@ -18,6 +18,7 @@
     <string name="detailZG">Zielgruppe: </string>
     <string name="detailDesc">Beschreibung: </string>
     <string name="detailAnl">Anleitung: </string>
+    <string name="detailName">Dummy-Name</string>
 
     <string-array name="navigationArray">
         <item>Mainmenü</item>
