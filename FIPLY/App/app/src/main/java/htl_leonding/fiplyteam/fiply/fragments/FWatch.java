@@ -11,9 +11,6 @@ import android.widget.Chronometer;
 
 import htl_leonding.fiplyteam.fiply.R;
 
-/**
- * Created by Andreas on 29.12.2015.
- */
 public class FWatch extends Fragment {
 
     private long capturedTime;

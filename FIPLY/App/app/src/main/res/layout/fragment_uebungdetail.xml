@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
 <RelativeLayout
     android:layout_width="fill_parent"
@@ -9,13 +13,22 @@
     android:orientation="vertical"
     android:weightSum="1">
 
+<CheckBox
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Video"
+    android:checked="false"
+    android:layout_alignParentRight="true"
+    android:id="@+id/cbVideo"
+    android:buttonTint="@color/black"/>
+
     <TextView
         android:id="@+id/detailUebungName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:textColor="@color/colorTextDark"
         android:textSize="30dp"
         android:text="@string/detailName"/>
@@ -114,7 +127,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:visibility="gone"/>
 
 </RelativeLayout>
     </ScrollView>

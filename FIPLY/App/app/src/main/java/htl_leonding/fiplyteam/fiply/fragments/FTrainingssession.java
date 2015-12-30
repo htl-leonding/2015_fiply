@@ -54,12 +54,14 @@ public class FTrainingssession extends Fragment {
         args.putString("muskelgruppe", "TestMuskelgruppe");
         args.putString("zielgruppe", "TestZielgruppe");
         args.putString("video", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
+        args.putBoolean("showVideo", false);
         fragmentUebung.setArguments(args);
         FWatch fragmentWatch = new FWatch();
+        FMusic fragmentMusic = new FMusic();
 
         displayUebung(fragmentUebung);
         displayWatch(fragmentWatch);
-        //displayMusic(fragment);
+        displayMusic(fragmentMusic);
 
         return inflater.inflate(R.layout.fragment_trainingssession, container, false);
     }
@@ -134,7 +136,7 @@ public class FTrainingssession extends Fragment {
 //        };
 //        cdt.start();
 //    }
-
+//
     private void displayUebung(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -147,10 +149,10 @@ public class FTrainingssession extends Fragment {
         fragmentTransaction.replace(R.id.fraTsWatch, fragment);
         fragmentTransaction.commit();
     }
-//    private void displayMusic(Fragment fragment) {
-//        FragmentManager fragmentManager = getFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fraTsMusic, fragment);
-//        fragmentTransaction.commit();
-//    }
+    private void displayMusic(Fragment fragment) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fraTsMusic, fragment);
+        fragmentTransaction.commit();
+    }
 }
