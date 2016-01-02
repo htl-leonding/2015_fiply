@@ -2,6 +2,7 @@ package htl_leonding.fiplyteam.fiply.fragments;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,11 +26,24 @@ public class FMusic extends Fragment {
     SeekBar progressBar;
     FMusicList fMusicList;
     MediaPlayer mp = new MediaPlayer();
+    Handler mHandler = new Handler();
+
 //    private static FMusic ourInstance = new FMusic();
 
 //    public static FMusic getInstance() {
 //        return ourInstance;
 //    }
+private Runnable mUpdateTimeTask = new Runnable() {
+    @Override
+    public void run() {
+        long totalDur = mp.getDuration();
+        long currentDur = mp.getCurrentPosition();
+
+        int progress = getProgressPercentage(currentDur, totalDur);
+        progressBar.setProgress(progress);
+        mHandler.postDelayed(this, 100);
+    }
+};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -100,6 +114,7 @@ public class FMusic extends Fragment {
             mp.prepare(); //abspielen ermöglichen (Prepared-State)
             progressBar.setProgress(0);
             progressBar.setMax(100);
+            updateProgressBar();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,6 +142,20 @@ public class FMusic extends Fragment {
             e.printStackTrace();
         }
         btnPlay.setText("Play");
+    }
+
+    private void updateProgressBar() {
+        mHandler.postDelayed(mUpdateTimeTask, 100);
+    }
+
+    public int getProgressPercentage(long currentDuration, long totalDuration) {
+        Double percentage;
+
+        long currentSeconds = (int) (currentDuration / 1000);
+        long totalSeconds = (int) (totalDuration / 1000);
+
+        percentage = (((double) currentSeconds) / totalSeconds) * 100;
+        return percentage.intValue();
     }
 
     public Boolean getListOpen() {
