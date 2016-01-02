@@ -1,20 +1,13 @@
 package htl_leonding.fiplyteam.fiply.fragments;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Chronometer;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.displayFragment;
 
 public class FTrainingssession extends Fragment {
 
@@ -59,9 +52,9 @@ public class FTrainingssession extends Fragment {
         FWatch fragmentWatch = new FWatch();
         FMusic fragmentMusic = new FMusic();
 
-        displayUebung(fragmentUebung);
-        displayWatch(fragmentWatch);
-        displayMusic(fragmentMusic);
+        displayFragment.displayTSUebung(fragmentUebung, getFragmentManager());
+        displayFragment.displayTSWatch(fragmentWatch, getFragmentManager());
+        displayFragment.displayTSMusic(fragmentMusic, getFragmentManager());
 
         return inflater.inflate(R.layout.fragment_trainingssession, container, false);
     }
@@ -137,22 +130,4 @@ public class FTrainingssession extends Fragment {
 //        cdt.start();
 //    }
 //
-    private void displayUebung(Fragment fragment) {
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fraTsUebungsview, fragment);
-        fragmentTransaction.commit();
-    }
-    private void displayWatch(Fragment fragment) {
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fraTsWatch, fragment);
-        fragmentTransaction.commit();
-    }
-    private void displayMusic(Fragment fragment) {
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fraTsMusic, fragment);
-        fragmentTransaction.commit();
-    }
 }
