@@ -8,46 +8,54 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tvSongname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Songname - HERE"/>
 
     <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
         android:layout_below="@+id/tvSongname" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
         android:id="@+id/btnMuPlay"
-        android:layout_below="@id/seekBar"/>
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop"
+        android:layout_below="@id/seekBar"
+        android:text="Play" />
+
+    <Button
         android:id="@+id/btnMuStop"
-        android:layout_below="@id/seekBar"
-        android:layout_toRightOf="@id/btnMuPlay"/>
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="B"
+        android:layout_below="@id/seekBar"
+        android:layout_toRightOf="@id/btnMuPlay"
+        android:text="Stop" />
+
+    <Button
         android:id="@+id/btnMuBack"
-        android:layout_below="@id/seekBar"
-        android:layout_toRightOf="@id/btnMuStop"/>
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="F"
-        android:id="@+id/btnMuForward"
         android:layout_below="@id/seekBar"
-        android:layout_toRightOf="@id/btnMuBack"/>
+        android:layout_toRightOf="@id/btnMuStop"
+        android:text="B" />
+
+    <Button
+        android:id="@+id/btnMuForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBar"
+        android:layout_toRightOf="@id/btnMuBack"
+        android:text="F" />
+
+    <Button
+        android:id="@+id/btnMuList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/seekBar"
+        android:text="List" />
 
 </RelativeLayout>
