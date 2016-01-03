@@ -22,5 +22,4 @@ public class displayFragment {
         fragmentTransaction.replace(R.id.fraTsMusic, display, "Music");
         fragmentTransaction.commit();
     }
-
 }
