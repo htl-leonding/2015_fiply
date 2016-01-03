@@ -11,7 +11,7 @@
         android:id="@+id/tvMuSongname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Songname - HERE"/>
+        android:text="@string/songNotFound" />
 
     <TextView
         android:id="@+id/tvMuCurrentDur"
@@ -39,41 +39,41 @@
 
     <Button
         android:id="@+id/btnMuPlay"
-        android:layout_width="wrap_content"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarMu"
-        android:text="Play" />
+        android:text="@string/songPlay" />
 
     <Button
         android:id="@+id/btnMuStop"
-        android:layout_width="wrap_content"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarMu"
         android:layout_toRightOf="@id/btnMuPlay"
-        android:text="Stop" />
+        android:text="@string/songStop" />
 
     <Button
-        android:id="@+id/btnMuBack"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnMuLast"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarMu"
         android:layout_toRightOf="@id/btnMuStop"
-        android:text="B" />
+        android:text="@string/songLast" />
 
     <Button
-        android:id="@+id/btnMuForward"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnMuNext"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarMu"
-        android:layout_toRightOf="@id/btnMuBack"
-        android:text="F" />
+        android:layout_toRightOf="@id/btnMuLast"
+        android:text="@string/songNext" />
 
     <Button
         android:id="@+id/btnMuList"
-        android:layout_width="wrap_content"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/seekBarMu"
-        android:text="List" />
+        android:text="@string/songList" />
 
 </RelativeLayout>
