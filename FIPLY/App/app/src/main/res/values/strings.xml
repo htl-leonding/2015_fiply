@@ -19,6 +19,13 @@
     <string name="detailDesc">Beschreibung: </string>
     <string name="detailAnl">Anleitung: </string>
     <string name="detailName">Dummy-Name</string>
+    <string name="songPlay">Play</string>
+    <string name="songPause">Pause</string>
+    <string name="songStop">Stop</string>
+    <string name="songNext">&#187;</string>
+    <string name="songLast">&#171;</string>
+    <string name="songList">&#8801;</string>
+    <string name="songNotFound">Keine Songs hefunden</string>
 
     <string-array name="navigationArray">
         <item>Mainmenü</item>

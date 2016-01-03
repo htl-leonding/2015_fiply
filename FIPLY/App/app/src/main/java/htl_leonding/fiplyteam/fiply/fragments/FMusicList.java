@@ -18,9 +18,10 @@ import htl_leonding.fiplyteam.fiply.ReadMusic;
 
 public class FMusicList extends ListFragment {
 
-    ArrayList<HashMap<String, String>> songs = new ArrayList<>();
-    ArrayList<HashMap<String, String>> songsData;
+    ArrayList<HashMap<String, String>> songs;
+    //ReadMusic rm = ReadMusic.getInstance();
     ListView listView;
+    ReadMusic rm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,16 +33,11 @@ public class FMusicList extends ListFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        songsData = new ArrayList<>();
-        ReadMusic rm = new ReadMusic();
-        this.songs = rm.getSongs();
+        rm = ReadMusic.getInstance();
+        //songs = new ArrayList<>();
+        //this.songs = rm.getSongs();
 
-        for (int i = 0; i < songs.size(); i++) {
-            HashMap<String, String> song = songs.get(i);
-            songsData.add(song);
-        }
-
-        ListAdapter adapter = new SimpleAdapter(getActivity(), songs, R.layout.music_item,
+        ListAdapter adapter = new SimpleAdapter(getActivity(), rm.getSongs(), R.layout.music_item,
                 new String[]{"songTitle"}, new int[]{R.id.songTitle});
         setListAdapter(adapter);
 
@@ -50,14 +46,15 @@ public class FMusicList extends ListFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FMusic fm = (FMusic) getFragmentManager().findFragmentByTag("Music");
-                fm.changeSong(getSongsData().get(position).get("songTitle"));
+                fm.changeSong(position);
+                //fm.changeSong(songs.get(position).get("songTitle"));
                 //Toast.makeText(getActivity(), getSongsData().get(position).get("songTitle"), Toast.LENGTH_LONG).show();
                 fm.play();
             }
         });
     }
 
-    public ArrayList<HashMap<String, String>> getSongsData() {
-        return songsData;
+    public ArrayList<HashMap<String, String>> getSongs() {
+        return songs;
     }
 }

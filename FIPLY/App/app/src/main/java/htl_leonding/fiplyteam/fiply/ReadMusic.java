@@ -8,7 +8,18 @@ import java.util.HashMap;
 
 public class ReadMusic {
     public static String PATH_MUSIC = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Music";
+    private static ReadMusic instance;
     private ArrayList<HashMap<String, String>> songs = new ArrayList<>();
+
+    private ReadMusic() {
+    }
+
+    public static ReadMusic getInstance() {
+        if (ReadMusic.instance == null) {
+            ReadMusic.instance = new ReadMusic();
+        }
+        return ReadMusic.instance;
+    }
 
     public ArrayList<HashMap<String, String>> getSongs() {
         File home = new File(PATH_MUSIC);
