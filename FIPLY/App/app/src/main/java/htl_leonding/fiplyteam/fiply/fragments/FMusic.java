@@ -18,11 +18,11 @@ import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.ReadMusic;
 import htl_leonding.fiplyteam.fiply.displayFragment;
 
-public class FMusic extends Fragment {
+public class FMusic extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     Button btnPlay, btnStop, btnBack, btnForward, btnList;
     Boolean listOpen = false;
-    TextView tvSongname;
+    TextView tvSongname, tvCurrentDur, tvTotalDur;
     SeekBar progressBar;
     FMusicList fMusicList;
     MediaPlayer mp = new MediaPlayer();
@@ -33,11 +33,14 @@ public class FMusic extends Fragment {
 //    public static FMusic getInstance() {
 //        return ourInstance;
 //    }
-private Runnable mUpdateTimeTask = new Runnable() {
+private Runnable mUpdateDurTask = new Runnable() {
     @Override
     public void run() {
         long totalDur = mp.getDuration();
         long currentDur = mp.getCurrentPosition();
+
+        tvCurrentDur.setText(millisecondsToHMS(currentDur));
+        tvTotalDur.setText(millisecondsToHMS(totalDur));
 
         int progress = getProgressPercentage(currentDur, totalDur);
         progressBar.setProgress(progress);
@@ -60,10 +63,14 @@ private Runnable mUpdateTimeTask = new Runnable() {
         btnBack = (Button) getActivity().findViewById(R.id.btnMuBack);
         btnForward = (Button) getActivity().findViewById(R.id.btnMuForward);
         btnList = (Button) getActivity().findViewById(R.id.btnMuList);
-        tvSongname = (TextView) getActivity().findViewById(R.id.tvSongname);
-        progressBar = (SeekBar) getActivity().findViewById(R.id.seekBar);
+        tvSongname = (TextView) getActivity().findViewById(R.id.tvMuSongname);
+        tvCurrentDur = (TextView) getActivity().findViewById(R.id.tvMuCurrentDur);
+        tvTotalDur = (TextView) getActivity().findViewById(R.id.tvMuTotalDur);
+        progressBar = (SeekBar) getActivity().findViewById(R.id.seekBarMu);
 
         fMusicList = new FMusicList();
+
+        progressBar.setOnSeekBarChangeListener(this);
 
         btnBack.setVisibility(View.GONE);
         btnForward.setVisibility(View.GONE);
@@ -104,7 +111,7 @@ private Runnable mUpdateTimeTask = new Runnable() {
                 }
             }
         });
-        changeSong("test");
+        changeSong("test10min");
     }
 
     public void changeSong(String fileName) {
@@ -145,17 +152,59 @@ private Runnable mUpdateTimeTask = new Runnable() {
     }
 
     private void updateProgressBar() {
-        mHandler.postDelayed(mUpdateTimeTask, 100);
+        mHandler.postDelayed(mUpdateDurTask, 100);
     }
 
-    public int getProgressPercentage(long currentDuration, long totalDuration) {
+    public String millisecondsToHMS(long milliseconds) {
+        String hms = "";
+        int hours = (int) (milliseconds / (1000 * 60 * 60));
+        int minutes = (int) (milliseconds % (1000 * 60 * 60)) / (1000 * 60);
+        int seconds = (int) ((milliseconds % (1000 * 60 * 60)) % (1000 * 60)) / 1000;
+
+        if (hours > 0)
+            hms = hours + ":";
+
+        if (minutes < 10 && hours > 0)
+            hms += "0" + minutes + ":";
+        else
+            hms += minutes + ":";
+
+        if (seconds < 10)
+            hms += "0" + seconds;
+        else
+            hms += seconds;
+
+        return hms;
+    }
+
+    public int getProgressPercentage(long currentDur, long totalDur) {
         Double percentage;
 
-        long currentSeconds = (int) (currentDuration / 1000);
-        long totalSeconds = (int) (totalDuration / 1000);
+        long currentSeconds = (int) (currentDur / 1000);
+        long totalSeconds = (int) (totalDur / 1000);
 
         percentage = (((double) currentSeconds) / totalSeconds) * 100;
         return percentage.intValue();
+    }
+
+    public int setCurrentDuration(int progress, int totalDur) {
+        return (int) (((double) progress / 100) * ((double) totalDur / 1000)) * 1000;
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+        mHandler.removeCallbacks(mUpdateDurTask);
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        mHandler.removeCallbacks(mUpdateDurTask);
+        mp.seekTo(setCurrentDuration(seekBar.getProgress(), mp.getDuration()));
+        updateProgressBar();
     }
 
     public Boolean getListOpen() {
@@ -166,3 +215,5 @@ private Runnable mUpdateTimeTask = new Runnable() {
         this.listOpen = listOpen;
     }
 }
+
+
