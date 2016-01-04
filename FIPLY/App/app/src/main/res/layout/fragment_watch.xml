@@ -9,46 +9,46 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <Chronometer
+        android:id="@+id/myChronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:id="@+id/myChronometer"
-        android:layout_above="@+id/watchStart"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/watchStart"
+        android:layout_above="@+id/btnWatchStart"
+        android:layout_alignEnd="@+id/btnWatchStart"
         android:layout_alignParentStart="true"
-        android:background="@drawable/buttonshape"
+        android:layout_alignParentTop="true"
         android:layout_margin="2dp"
-        android:paddingLeft="5dp"/>
+        android:background="@drawable/buttonshape"
+        android:paddingLeft="5dp"
+        android:textSize="35dp" />
 
     <Button
+        android:id="@+id/btnWatchReset"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Reset"
-        android:id="@+id/watchReset"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/watchStart"
+        android:layout_margin="2dp"
+        android:layout_toEndOf="@+id/btnWatchStart"
         android:background="@drawable/buttonshape"
-        android:layout_margin="2dp"/>
+        android:text="@string/watchReset" />
 
     <Button
+        android:id="@+id/btnWatchStart"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Start"
-        android:id="@+id/watchStart"
-        android:layout_alignTop="@+id/watchStop"
         android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnWatchLap"
+        android:layout_margin="2dp"
         android:background="@drawable/buttonshape"
-        android:layout_margin="2dp"/>
+        android:text="@string/watchStart" />
 
     <Button
+        android:id="@+id/btnWatchLap"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Stop"
-        android:id="@+id/watchStop"
-        android:layout_below="@+id/watchReset"
-        android:layout_alignStart="@+id/watchReset"
+        android:layout_alignStart="@+id/btnWatchReset"
+        android:layout_below="@+id/btnWatchReset"
+        android:layout_margin="2dp"
         android:background="@drawable/buttonshape"
-        android:layout_margin="2dp"/>
+        android:text="@string/watchLap" />
 
 </RelativeLayout>
