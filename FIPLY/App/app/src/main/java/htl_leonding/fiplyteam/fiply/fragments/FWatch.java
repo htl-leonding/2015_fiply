@@ -32,8 +32,6 @@ public class FWatch extends Fragment {
         watchReset = (Button) getActivity().findViewById(R.id.btnWatchReset);
         watchLap = (Button) getActivity().findViewById(R.id.btnWatchLap);
 
-        watchLap.setClickable(false);
-
         watchStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +88,8 @@ public class FWatch extends Fragment {
                 }
             }
         });
+
+        watchLap.setClickable(false);
     }
 
     public long getCapturedTime() {

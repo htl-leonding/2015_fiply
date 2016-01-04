@@ -8,10 +8,6 @@
     <string name="titleUe">Willkommen im Übungskatalog!</string>
     <string name="titleTS">Willkommen in einer Traingssession!</string>
     <string name="titleEU">Willkommen in der Usererstellung!</string>
-    <string name="tsTimerBtStart">Start</string>
-    <string name="tsTimerBtReset">Reset</string>
-    <string name="tsStopwatchBtStart">Start</string>
-    <string name="tsStopwatchBtReset">Reset</string>
     <string name="drawer_open">Navigationsleiste öffnen</string>
     <string name="drawer_close">Navigationsleiste öffnen</string>
     <string name="detailMG">Muskelgruppe: </string>
@@ -31,6 +27,12 @@
     <string name="watchContinue">Continue</string>
     <string name="watchReset">Reset</string>
     <string name="watchLap">Lap</string>
+    <string name="timerStart">Start</string>
+    <string name="timerPause">Pause</string>
+    <string name="timerContinue">Continue</string>
+    <string name="timerReset">Reset</string>
+    <string name="navWatch">Watch</string>
+    <string name="navTimer">Timer</string>
 
 
     <string-array name="navigationArray">
