@@ -13,9 +13,10 @@ import htl_leonding.fiplyteam.fiply.R;
 
 public class FWatch extends Fragment {
 
-    private long capturedTime;
     Chronometer chrono;
-    Button watchStart, watchStop, watchReset;
+    Button watchStart, watchReset, watchLap;
+    Boolean isChronoRunning = false, isShowingLap = false;
+    private long capturedTime;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -27,41 +28,68 @@ public class FWatch extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         chrono = (Chronometer) getActivity().findViewById(R.id.myChronometer);
-        watchStart = (Button) getActivity().findViewById(R.id.watchStart);
-        watchStop = (Button) getActivity().findViewById(R.id.watchStop);
-        watchReset=(Button) getActivity().findViewById(R.id.watchReset);
-        watchStop.setClickable(false);
+        watchStart = (Button) getActivity().findViewById(R.id.btnWatchStart);
+        watchReset = (Button) getActivity().findViewById(R.id.btnWatchReset);
+        watchLap = (Button) getActivity().findViewById(R.id.btnWatchLap);
 
         watchStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                watchStart.setClickable(false);
-                watchStop.setClickable(true);
-                watchStart.setText("Continue");
-                chrono.setBase(SystemClock.elapsedRealtime() + getCapturedTime());
-                chrono.start();
-            }
-        });
-        watchStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                watchStart.setClickable(true);
-                watchStop.setClickable(false);
-                setCapturedTime(chrono.getBase() - SystemClock.elapsedRealtime());
-                chrono.stop();
+                if (!getIsChronoRunning()) {
+                    watchStart.setText(R.string.watchPause);
+                    setIsChronoRunning(true);
+                    chrono.setBase(SystemClock.elapsedRealtime() + getCapturedTime());
+                    chrono.start();
+                    watchLap.setClickable(true);
+                    setIsShowingLap(false);
+                } else if (getIsShowingLap()) {
+                    watchStart.setText(R.string.watchPause);
+                    chrono.start();
+                    watchLap.setClickable(true);
+                    watchLap.setText(R.string.watchLap);
+                    setIsShowingLap(false);
+                } else {
+                    setIsChronoRunning(false);
+                    watchStart.setText(R.string.watchContinue);
+                    setCapturedTime(chrono.getBase() - SystemClock.elapsedRealtime());
+                    chrono.stop();
+                    watchLap.setClickable(false);
+                    setIsShowingLap(false);
+                }
             }
         });
         watchReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                watchStart.setClickable(true);
-                watchStop.setClickable(false);
-                watchStart.setText("Start");
-                chrono.stop();
+                watchStart.setText(R.string.watchStart);
                 setCapturedTime(0);
+                setIsChronoRunning(false);
                 chrono.setBase(SystemClock.elapsedRealtime());
+                chrono.stop();
+                watchLap.setClickable(false);
+                watchLap.setText(R.string.watchLap);
+                setIsShowingLap(false);
             }
         });
+        watchLap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getIsShowingLap()) {
+                    watchStart.setText(R.string.watchPause);
+                    chrono.start();
+                    setIsShowingLap(false);
+                    watchLap.setClickable(true);
+                    watchLap.setText(R.string.watchLap);
+                } else {
+                    setIsShowingLap(true);
+                    watchLap.setText(R.string.watchContinue);
+                    watchStart.setText(R.string.watchContinue);
+                    chrono.stop();
+                }
+            }
+        });
+
+        watchLap.setClickable(false);
     }
 
     public long getCapturedTime() {
@@ -70,5 +98,21 @@ public class FWatch extends Fragment {
 
     public void setCapturedTime(long capturedTime) {
         this.capturedTime = capturedTime;
+    }
+
+    public Boolean getIsChronoRunning() {
+        return isChronoRunning;
+    }
+
+    public void setIsChronoRunning(Boolean chronoRunning) {
+        this.isChronoRunning = chronoRunning;
+    }
+
+    public Boolean getIsShowingLap() {
+        return isShowingLap;
+    }
+
+    public void setIsShowingLap(Boolean isShowingLap) {
+        this.isShowingLap = isShowingLap;
     }
 }

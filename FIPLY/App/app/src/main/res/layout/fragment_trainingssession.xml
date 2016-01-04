@@ -13,74 +13,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"/>
     <FrameLayout
-        android:id="@+id/fraTsWatch"
+        android:id="@+id/fraTsClocksNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/fraTsMusic"/>
+        android:layout_above="@id/fraTsMusic"
+        android:layout_alignParentRight="true" />
+    <FrameLayout
+        android:id="@+id/fraTsClocks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/fraTsMusic"
+        android:layout_alignParentLeft="true" />
+
     <FrameLayout
         android:id="@+id/fraTsUebung"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_above="@id/fraTsWatch"/>
+        android:layout_above="@id/fraTsClocksNav" />
 
-
-
-    <!--<EditText-->
-        <!--android:id="@+id/tvTimer"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_below="@id/fraTrainingssession"-->
-        <!--android:inputType="number"-->
-        <!--android:textColor="@color/colorPrimaryDark"-->
-        <!--android:textSize="150sp" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/tsTimerBtStart"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/tvTimer"-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--android:text="@string/tsTimerBtStart"-->
-        <!--android:textSize="20sp" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/tsTimerBtReset"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/tvTimer"-->
-        <!--android:layout_toRightOf="@+id/tsTimerBtStart"-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--android:text="@string/tsTimerBtReset"-->
-        <!--android:textSize="20sp" />-->
-
-    <!--&lt;!&ndash;-->
-    <!--<EditText-->
-        <!--android:id="@+id/tvStopwatch"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:inputType="number"-->
-        <!--android:textSize="150sp" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/tsStopwatchBtStart"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/tvStopwatch"-->
-        <!--android:text="@string/tsStopwatchBtStart"-->
-        <!--android:textSize="20sp" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/tsStopwatchBtReset"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/tvStopwatch"-->
-        <!--android:layout_toRightOf="@+id/tsStopwatchBtStart"-->
-        <!--android:text="@string/tsStopwatchBtReset"-->
-        <!--android:textSize="20sp" />-->
-    <!--&ndash;&gt;-->
 </RelativeLayout>

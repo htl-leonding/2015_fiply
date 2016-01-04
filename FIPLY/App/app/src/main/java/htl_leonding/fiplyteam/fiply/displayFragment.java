@@ -11,15 +11,21 @@ public class displayFragment {
         fragmentTransaction.commit();
     }
 
-    public static void displayTSWatch(Fragment display, FragmentManager fManager) {
+    public static void displayTSClock(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fraTsWatch, display);
+        fragmentTransaction.replace(R.id.fraTsClocks, display);
         fragmentTransaction.commit();
     }
 
     public static void displayTSMusic(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fraTsMusic, display, "Music");
+        fragmentTransaction.replace(R.id.fraTsMusic, display, "TSMusic");
+        fragmentTransaction.commit();
+    }
+
+    public static void displayTSClocksNav(Fragment display, FragmentManager fManager) {
+        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fraTsClocksNav, display);
         fragmentTransaction.commit();
     }
 }

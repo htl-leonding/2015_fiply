@@ -45,7 +45,7 @@ public class FMusicList extends ListFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FMusic fm = (FMusic) getFragmentManager().findFragmentByTag("Music");
+                FMusic fm = (FMusic) getFragmentManager().findFragmentByTag("TSMusic");
                 fm.changeSong(position);
                 //fm.changeSong(songs.get(position).get("songTitle"));
                 //Toast.makeText(getActivity(), getSongsData().get(position).get("songTitle"), Toast.LENGTH_LONG).show();
