@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 /**
  * Created by Gerildo on 09.01.2016.
@@ -40,6 +41,13 @@ public class FCreateUser extends Fragment {
         btCUS2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                KeyValueRepository kvRep = KeyValueRepository.getInstance();
+
+                kvRep.insertKeyValue("userName", etName.getText().toString());
+                kvRep.insertKeyValue("userEmail", etEmail.getText().toString());
+
+
                 FCreateUser2 fcreateUser2 = new FCreateUser2();
                 displayView(fcreateUser2);
             }

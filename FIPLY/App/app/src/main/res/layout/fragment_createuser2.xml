@@ -35,16 +35,16 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/sbHeight"
         android:layout_toStartOf="@+id/swGender"
-        android:text="Small Text"
+        android:text="Male"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tbFemale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/swGender"
         android:layout_toEndOf="@+id/swGender"
-        android:text="Small Text"
+        android:text="Female"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
