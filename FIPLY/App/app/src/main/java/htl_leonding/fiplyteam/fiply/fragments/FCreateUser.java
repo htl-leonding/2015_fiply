@@ -51,9 +51,9 @@ public class FCreateUser extends Fragment {
                 }
 
 
-                //FCreateUser2 fcreateUser2 = new FCreateUser2();
-                //fcreateUser2.setArguments(userArgs);
-                //displayView(fcreateUser2);
+                FCreateUser2 fcreateUser2 = new FCreateUser2();
+                fcreateUser2.setArguments(userArgs);
+                displayView(fcreateUser2);
             }
         });
 
