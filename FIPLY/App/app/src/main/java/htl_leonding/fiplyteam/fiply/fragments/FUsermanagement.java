@@ -1,5 +1,6 @@
 package htl_leonding.fiplyteam.fiply.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,11 +18,10 @@ public class FUsermanagement extends Fragment {
 //    Button btCreate;
 //    Button btEdit;
 //    Button btChoose;
-
     Button btNext;
     Button btPrev;
-    int pageId;
-    KeyValueRepository kvr = KeyValueRepository.getInstance();
+    int pageId = 1;
+    KeyValueRepository kvr;
 
     /**
      * Lädt das fragment_usererstellung in das FrameLayout der MainActivity
@@ -38,35 +38,10 @@ public class FUsermanagement extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-//        btCreate = (Button) getView().findViewById(R.id.btCreate);
-//        btChoose = (Button) getView().findViewById(R.id.btChoose);
-//        btEdit = (Button) getView().findViewById(R.id.btEdit);
-//
-//
-//        btCreate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FCreateUser fCreateUser = new FCreateUser();
-//                displayView(fCreateUser);
-//            }
-//        });
-//
-//        btCreate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FEditUser fEditUser = new FEditUser();
-//                displayView(fEditUser);
-//            }
-//        });
-//
-//        btCreate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FChooseUser fChooseUser = new FChooseUser();
-//                displayView(fChooseUser);
-//            }
-//        });
-//
+
+        KeyValueRepository.setContext(getContext());
+        kvr = KeyValueRepository.getInstance();
+
         btNext = (Button) getActivity().findViewById(R.id.btUserNext);
         btPrev = (Button) getActivity().findViewById(R.id.btUserPrevious);
 
@@ -77,17 +52,22 @@ public class FUsermanagement extends Fragment {
             @Override
             public void onClick(View v) {
                 switch (getPageId()){
-                    case 1: displayViewP2();
+                    case 1:
                         btPrev.setText("Previous");
                         FCreateUser f = (FCreateUser) getFragmentManager().findFragmentByTag("NamePage");
-                        kvr.insertKeyValue("userFirstName", "");
+                        //kvr.insertKeyValue("firstName", f.getFirstName());
+                        //kvr.insertKeyValue("lastName", f.getLastName());
+                        displayViewP2();
                         break;
-                    case 2: displayViewP3();
+                    case 2:
+                        displayViewP3();
                         break;
-                    case 3: displayViewP4();
+                    case 3:
                         btNext.setText("Save");
+                        displayViewP4();
                         break;
-                    case 4:displayViewPMain();
+                    case 4:
+                        displayViewPMain();
                         break;
                 }
             }
@@ -118,6 +98,7 @@ public class FUsermanagement extends Fragment {
     }
 
     private void displayViewP1() {
+        setPageId(1);
         FCreateUser fragment = new FCreateUser();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -127,6 +108,7 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.commit();
     }
     private void displayViewP2() {
+        setPageId(2);
         FCreateUser2 fragment = new FCreateUser2();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -136,6 +118,7 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.commit();
     }
     private void displayViewP3() {
+        setPageId(3);
         FCreateUser3 fragment = new FCreateUser3();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -145,6 +128,7 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.commit();
     }
     private void displayViewP4() {
+        setPageId(4);
         FCreateUser4 fragment = new FCreateUser4();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -159,7 +143,7 @@ public class FUsermanagement extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fraUserInput, fragment);
+        fragmentTransaction.replace(R.id.fraPlace, fragment);
         fragmentTransaction.commit();
     }
 

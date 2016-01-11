@@ -77,5 +77,4 @@ public class FCreateUser extends Fragment {
         fragmentTransaction.replace(this.getId(), fragment);
         fragmentTransaction.commit();
     }
-
 }
