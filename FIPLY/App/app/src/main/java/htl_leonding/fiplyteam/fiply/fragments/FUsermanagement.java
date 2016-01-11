@@ -10,17 +10,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 public class FUsermanagement extends Fragment {
 
-    Button btCreate;
-    Button btEdit;
-    Button btChoose;
+//    Button btCreate;
+//    Button btEdit;
+//    Button btChoose;
 
-
+    Button btNext;
+    Button btPrev;
+    int pageId;
+    KeyValueRepository kvr = KeyValueRepository.getInstance();
 
     /**
-     * Lädt das fragment_usermanagement in das FrameLayout der MainActivity
+     * Lädt das fragment_usererstellung in das FrameLayout der MainActivity
      *
      * @param inflater           default
      * @param container          default
@@ -29,52 +33,141 @@ public class FUsermanagement extends Fragment {
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
         return inflater.inflate(R.layout.fragment_usermanagement, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        btCreate = (Button) getView().findViewById(R.id.btCreate);
-        btChoose = (Button) getView().findViewById(R.id.btChoose);
-        btEdit = (Button) getView().findViewById(R.id.btEdit);
+//        btCreate = (Button) getView().findViewById(R.id.btCreate);
+//        btChoose = (Button) getView().findViewById(R.id.btChoose);
+//        btEdit = (Button) getView().findViewById(R.id.btEdit);
+//
+//
+//        btCreate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FCreateUser fCreateUser = new FCreateUser();
+//                displayView(fCreateUser);
+//            }
+//        });
+//
+//        btCreate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FEditUser fEditUser = new FEditUser();
+//                displayView(fEditUser);
+//            }
+//        });
+//
+//        btCreate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FChooseUser fChooseUser = new FChooseUser();
+//                displayView(fChooseUser);
+//            }
+//        });
+//
+        btNext = (Button) getActivity().findViewById(R.id.btUserNext);
+        btPrev = (Button) getActivity().findViewById(R.id.btUserPrevious);
 
+        btNext.setText("Next");
+        btPrev.setText("Cancel");
 
-        btCreate.setOnClickListener(new View.OnClickListener() {
+        btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FCreateUser fCreateUser = new FCreateUser();
-                displayView(fCreateUser);
+                switch (getPageId()){
+                    case 1: displayViewP2();
+                        btPrev.setText("Previous");
+                        FCreateUser f = (FCreateUser) getFragmentManager().findFragmentByTag("NamePage");
+                        kvr.insertKeyValue("userFirstName", "");
+                        break;
+                    case 2: displayViewP3();
+                        break;
+                    case 3: displayViewP4();
+                        btNext.setText("Save");
+                        break;
+                    case 4:displayViewPMain();
+                        break;
+                }
             }
         });
 
-        btEdit.setOnClickListener(new View.OnClickListener() {
+        btPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FEditUser fEditUser = new FEditUser();
-                displayView(fEditUser);
+                switch (getPageId()){
+                    case 1: displayViewPMain();
+                        break;
+                    case 2: displayViewP1();
+                        btPrev.setText("Cancel");
+                        break;
+                    case 3: displayViewP2();
+                        break;
+                    case 4: displayViewP3();
+                        btNext.setText("Next");
+                        break;
+                    default:
+                }
             }
         });
 
-        btChoose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FChooseUser fChooseUser = new FChooseUser();
-                displayView(fChooseUser);
-            }
-        });
+        displayViewP1();
 
         super.onViewCreated(view, savedInstanceState);
     }
 
-    private void displayView(Fragment fragment) {
+    private void displayViewP1() {
+        FCreateUser fragment = new FCreateUser();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(this.getId(), fragment);
+        fragmentTransaction.replace(R.id.fraUserInput, fragment, "NamePage");
+        fragmentTransaction.commit();
+    }
+    private void displayViewP2() {
+        FCreateUser2 fragment = new FCreateUser2();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fraUserInput, fragment, "AgePage");
+        fragmentTransaction.commit();
+    }
+    private void displayViewP3() {
+        FCreateUser3 fragment = new FCreateUser3();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fraUserInput, fragment, "SliderPage");
+        fragmentTransaction.commit();
+    }
+    private void displayViewP4() {
+        FCreateUser4 fragment = new FCreateUser4();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fraUserInput, fragment, "Proficiency");
+        fragmentTransaction.commit();
+    }
+    private void displayViewPMain() {
+        FMain fragment = new FMain();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fraUserInput, fragment);
         fragmentTransaction.commit();
     }
 
+    public int getPageId() {
+        return pageId;
+    }
+
+    public void setPageId(int pageId) {
+        this.pageId = pageId;
+    }
 }
