@@ -57,9 +57,17 @@ public class FCreateUser extends Fragment {
             }
         });
 
+
         super.onViewCreated(view, savedInstanceState);
     }
 
+    public String getFirstName() {
+        return etFirstName.getText().toString();
+    }
+
+    public String getLastName() {
+        return etLastName.getText().toString();
+    }
 
     private void displayView(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
