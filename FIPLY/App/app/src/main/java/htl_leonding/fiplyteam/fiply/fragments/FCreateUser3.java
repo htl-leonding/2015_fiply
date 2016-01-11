@@ -32,7 +32,7 @@ public class FCreateUser3 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public Date getDateOfBirth() {
-        return new Date(dpAge.getYear(), dpAge.getMonth(), dpAge.getDayOfMonth());
+    public String getDateOfBirth() {
+        return new Date(dpAge.getYear(), dpAge.getMonth(), dpAge.getDayOfMonth()).toString();
     }
 }

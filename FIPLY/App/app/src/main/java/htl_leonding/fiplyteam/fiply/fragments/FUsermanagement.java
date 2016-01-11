@@ -1,6 +1,5 @@
 package htl_leonding.fiplyteam.fiply.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -55,19 +54,28 @@ public class FUsermanagement extends Fragment {
                     case 1:
                         btPrev.setText("Previous");
                         FCreateUser f = (FCreateUser) getFragmentManager().findFragmentByTag("NamePage");
-                        //kvr.insertKeyValue("firstName", f.getFirstName());
-                        //kvr.insertKeyValue("lastName", f.getLastName());
+                        kvr.insertKeyValue("firstName", f.getFirstName());
+                        kvr.insertKeyValue("lastName", f.getLastName());
                         displayViewP2();
                         break;
                     case 2:
                         displayViewP3();
+                        FCreateUser2 a = (FCreateUser2) getFragmentManager().findFragmentByTag("SliderPage");
+                        kvr.insertKeyValue("userHeight", a.getHeight());
+                        kvr.insertKeyValue("userWeight", a.getWeight());
+
                         break;
                     case 3:
                         btNext.setText("Save");
+                        FCreateUser3 s = (FCreateUser3) getFragmentManager().findFragmentByTag("AgePage");
+                        kvr.insertKeyValue("userDateOfBirth", s.getDateOfBirth());
+
                         displayViewP4();
                         break;
                     case 4:
                         displayViewPMain();
+                        FCreateUser4 p = (FCreateUser4) getFragmentManager().findFragmentByTag("proficiencyPage");
+                        kvr.insertKeyValue("userProficiency", p.getProficiency());
                         break;
                 }
             }

@@ -33,12 +33,12 @@ public class FCreateUser2 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public int getHeight() {
-        return sbHeight.getProgress();
+    public String getHeight() {
+        return String.valueOf(sbHeight.getProgress());
     }
 
-    public int getWeight() {
-        return sbWeight.getProgress();
+    public String getWeight() {
+        return String.valueOf(sbWeight.getProgress());
     }
 
 }
