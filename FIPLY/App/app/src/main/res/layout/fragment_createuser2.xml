@@ -5,46 +5,20 @@
     android:orientation="vertical">
 
     <SeekBar
-        android:id="@+id/sbAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="56dp" />
-
-    <Switch
-        android:id="@+id/swGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sbAge"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="84dp" />
-
-    <SeekBar
         android:id="@+id/sbHeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/sbAge"
-        android:layout_below="@+id/swGender"
-        android:layout_marginTop="92dp" />
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:rotation="270" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/sbHeight"
-        android:layout_toStartOf="@+id/swGender"
-        android:text="Male"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/tbFemale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/swGender"
-        android:layout_toEndOf="@+id/swGender"
-        android:text="Female"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:text="Height" />
 
 </RelativeLayout>

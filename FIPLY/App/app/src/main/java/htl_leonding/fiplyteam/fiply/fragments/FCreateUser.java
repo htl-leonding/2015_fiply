@@ -20,21 +20,23 @@ import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 public class FCreateUser extends Fragment {
 
     Button btCUS2;
-    EditText etName;
-    EditText etEmail;
+    EditText etFirstName;
+    EditText etLastName;
+    Bundle userArgs;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userArgs = new Bundle();
         return inflater.inflate(R.layout.fragment_createuser, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        etName = (EditText) getView().findViewById(R.id.etName);
-        etEmail = (EditText) getView().findViewById(R.id.etEmail);
+        etFirstName = (EditText) getView().findViewById(R.id.etFirstName);
+        etLastName = (EditText) getView().findViewById(R.id.etLastName);
         btCUS2 = (Button) getView().findViewById(R.id.btCUS2);
 
 
@@ -43,13 +45,15 @@ public class FCreateUser extends Fragment {
             public void onClick(View v) {
 
                 KeyValueRepository kvRep = KeyValueRepository.getInstance();
+                if (etFirstName.getText().length() > 0 && etLastName.getText().length() > 0) {
+                    userArgs.putString("userFirstName", etFirstName.getText().toString());
+                    userArgs.putString("userLastName", etLastName.getText().toString());
+                }
 
-                kvRep.insertKeyValue("userName", etName.getText().toString());
-                kvRep.insertKeyValue("userEmail", etEmail.getText().toString());
 
-
-                FCreateUser2 fcreateUser2 = new FCreateUser2();
-                displayView(fcreateUser2);
+                //FCreateUser2 fcreateUser2 = new FCreateUser2();
+                //fcreateUser2.setArguments(userArgs);
+                //displayView(fcreateUser2);
             }
         });
 
@@ -62,7 +66,7 @@ public class FCreateUser extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fraPlace, fragment);
+        fragmentTransaction.replace(this.getId(), fragment);
         fragmentTransaction.commit();
     }
 

@@ -24,7 +24,7 @@
         android:text=" Next Step" />
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
@@ -33,13 +33,13 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/etName"
+        android:layout_alignStart="@+id/etFirstName"
         android:layout_below="@+id/textView4"
         android:ems="10"
-        android:inputType="textEmailAddress" />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView3"
@@ -47,13 +47,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/userCreateWelcome"
         android:layout_centerHorizontal="true"
-        android:text="Name:" />
+        android:text="Vorname:" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textView3"
-        android:layout_below="@+id/etName"
-        android:text="E-Mail:" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Nachname:" />
 </RelativeLayout>

@@ -11,7 +11,7 @@ import android.widget.Button;
 
 import htl_leonding.fiplyteam.fiply.R;
 
-public class FUsererstellung extends Fragment {
+public class FUsermanagement extends Fragment {
 
     Button btCreate;
     Button btEdit;
@@ -20,7 +20,7 @@ public class FUsererstellung extends Fragment {
 
 
     /**
-     * Lädt das fragment_usererstellung in das FrameLayout der MainActivity
+     * Lädt das fragment_usermanagement in das FrameLayout der MainActivity
      *
      * @param inflater           default
      * @param container          default
@@ -31,7 +31,7 @@ public class FUsererstellung extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        return inflater.inflate(R.layout.fragment_usererstellung, container, false);
+        return inflater.inflate(R.layout.fragment_usermanagement, container, false);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class FUsererstellung extends Fragment {
             }
         });
 
-        btCreate.setOnClickListener(new View.OnClickListener() {
+        btEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FEditUser fEditUser = new FEditUser();
@@ -57,7 +57,7 @@ public class FUsererstellung extends Fragment {
             }
         });
 
-        btCreate.setOnClickListener(new View.OnClickListener() {
+        btChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FChooseUser fChooseUser = new FChooseUser();
@@ -73,7 +73,7 @@ public class FUsererstellung extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fraPlace, fragment);
+        fragmentTransaction.replace(this.getId(), fragment);
         fragmentTransaction.commit();
     }
 
