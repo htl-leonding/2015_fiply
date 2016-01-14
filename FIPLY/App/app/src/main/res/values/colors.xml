@@ -8,4 +8,10 @@
     <color name="colorText">#FFFFFF</color>
     <color name="colorTextDark">#000000</color>
     <color name="primary_text_default_material_light">#deffffff</color>
+
+    <color name="awesome">#FFA500</color>
+    <color name="tsPrimary">#93DB70</color>
+    <color name="tsSecondary">#AEEEEE</color>
+    <color name="tsTertiary">#006BFF</color>
+
 </resources>

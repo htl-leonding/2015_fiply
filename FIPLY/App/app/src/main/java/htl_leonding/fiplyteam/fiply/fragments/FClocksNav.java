@@ -28,23 +28,23 @@ public class FClocksNav extends Fragment {
         btnNavWatch = (Button) getActivity().findViewById(R.id.btnNavWatch);
         btnNavTimer = (Button) getActivity().findViewById(R.id.btnNavTimer);
 
-        btnNavWatch.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        btnNavTimer.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        btnNavWatch.setBackgroundColor(getResources().getColor(R.color.tsPrimary));
+        btnNavTimer.setBackgroundColor(getResources().getColor(R.color.tsSecondary));
 
         btnNavWatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayFragment.displayTSClock(new FWatch(), getFragmentManager());
-                btnNavWatch.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                btnNavTimer.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                btnNavWatch.setBackgroundColor(getResources().getColor(R.color.tsPrimary));
+                btnNavTimer.setBackgroundColor(getResources().getColor(R.color.tsSecondary));
             }
         });
         btnNavTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayFragment.displayTSClock(new FCountdown(), getFragmentManager());
-                btnNavWatch.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                btnNavTimer.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                btnNavWatch.setBackgroundColor(getResources().getColor(R.color.tsSecondary));
+                btnNavTimer.setBackgroundColor(getResources().getColor(R.color.tsPrimary));
             }
         });
 
