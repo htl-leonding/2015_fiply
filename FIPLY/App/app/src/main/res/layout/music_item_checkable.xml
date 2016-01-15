@@ -3,12 +3,12 @@
     android:id="@+id/music_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
-    <TextView
+    <CheckBox
         android:id="@+id/songTitle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="@color/darkPrimary"
-        android:padding="5dp"/>
+        android:buttonTint="@color/darkPrimary"/>
 </LinearLayout>
