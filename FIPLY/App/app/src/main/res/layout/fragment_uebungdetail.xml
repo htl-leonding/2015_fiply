@@ -31,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="left"
         android:text="@string/detailName"
-        android:textColor="@color/colorTextDark"
+        android:textColor="@color/darkTextColor"
         android:textSize="30dp" />
 
     <TextView
@@ -44,7 +44,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
         android:text="@string/detailMG"
-        android:textColor="@color/colorTextDark" />
+        android:textColor="@color/darkTextColor" />
 
     <TextView
         android:id="@+id/detailMuskelGruppe"
@@ -56,7 +56,7 @@
         android:layout_marginRight="5dp"
         android:layout_toRightOf="@id/staticDetailMuskelGruppe"
         android:text="Test Muskelgruppe"
-        android:textColor="@color/colorTextDark" />
+        android:textColor="@color/darkTextColor" />
 
     <TextView
         android:id="@+id/detailZielGruppe"
@@ -68,7 +68,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginRight="5dp"
         android:text="Test Zielgruppe"
-        android:textColor="@color/colorTextDark" />
+        android:textColor="@color/darkTextColor" />
 
     <TextView
         android:id="@+id/staticDetailZielGruppe"
@@ -77,7 +77,7 @@
         android:layout_alignStart="@id/staticDetailMuskelGruppe"
         android:layout_below="@+id/staticDetailMuskelGruppe"
         android:text="@string/detailZG"
-        android:textColor="@color/colorTextDark"/>
+        android:textColor="@color/darkTextColor"/>
 
     <TextView
         android:id="@+id/detailBeschreibung"
@@ -89,7 +89,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginRight="5dp"
         android:text="Test Beschreibung"
-        android:textColor="@color/colorTextDark" />
+        android:textColor="@color/darkTextColor" />
 
     <TextView
         android:id="@+id/staticDetailBeschreibung"
@@ -98,7 +98,7 @@
         android:layout_alignStart="@id/staticDetailZielGruppe"
         android:layout_below="@+id/detailZielGruppe"
         android:text="@string/detailDesc"
-        android:textColor="@color/colorTextDark"/>
+        android:textColor="@color/darkTextColor"/>
 
     <TextView
         android:id="@+id/detailAnleitung"
@@ -108,7 +108,7 @@
         android:layout_below="@id/detailBeschreibung"
         android:layout_marginRight="5dp"
         android:text="Test Anleitung"
-        android:textColor="@color/colorTextDark" />
+        android:textColor="@color/darkTextColor" />
 
     <TextView
         android:id="@+id/staticDetailAnleitung"
@@ -117,7 +117,7 @@
         android:layout_alignStart="@id/staticDetailBeschreibung"
         android:layout_below="@+id/detailBeschreibung"
         android:text="@string/detailAnl"
-        android:textColor="@color/colorTextDark"/>
+        android:textColor="@color/darkTextColor"/>
 
     <WebView
         android:id="@+id/detailUebungVideo"
