@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/fraTsMusic"
-        android:background="@color/darkTertiary">
+        android:background="@drawable/clockstabsshape">
 
         <FrameLayout
             android:id="@+id/fraTsClocksNav"
@@ -23,6 +23,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:background="@color/darkPrimary"
+            android:layout_alignTop="@id/fraTsClocksNav"
+            android:layout_alignBottom="@id/fraTsClocksNav"
+            android:layout_toLeftOf="@id/fraTsClocksNav"/>
 
         <FrameLayout
             android:id="@+id/fraTsClocks"

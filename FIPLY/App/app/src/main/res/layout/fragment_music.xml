@@ -11,7 +11,8 @@
         android:id="@+id/tvMuSongname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/songNotFound" />
+        android:text="@string/songNotFound"
+        android:textColor="@color/darkPrimary"/>
 
     <TextView
         android:id="@+id/tvMuCurrentDur"
@@ -19,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvMuSongname"
-        android:text="0:00" />
+        android:text="0:00"
+        android:textColor="@color/darkPrimary"/>
 
     <TextView
         android:id="@+id/tvMuTotalDur"
@@ -27,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tvMuSongname"
-        android:text="0:00" />
+        android:text="0:00"
+        android:textColor="@color/darkPrimary"/>
 
     <SeekBar
         android:id="@+id/seekBarMu"

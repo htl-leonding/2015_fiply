@@ -128,19 +128,27 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
 
     public void changeSong(int songIndex) {
         configureMediaPlayer(!getPlaylist().isEmpty());
-
-        setSongIndex(songIndex);
-        try {
-            mp.reset();
-            //mp.setDataSource(getPlaylist().get(songIndex).get("songPath") + File.separator + getPlaylist().get(songIndex).get("songTitle") + ".mp3"); //setzen der Datensource (Initialized-State)
-            mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath")); //setzen der Datensource (Initialized-State)
-            mp.prepare(); //abspielen ermöglichen (Prepared-State)
-            progressBar.setProgress(0);
-            updateProgressBar();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(getPlaylist().isEmpty())
+        {
+           configureMediaPlayer(false);
         }
-        //tvSongname.setText(getPlaylist().get(songIndex).get("songTitle"));
+        else
+        {
+            configureMediaPlayer(true);
+            tvSongname.setText(getPlaylist().get(songIndex).get("songTitle"));
+            setSongIndex(songIndex);
+            try {
+                mp.reset();
+                //mp.setDataSource(getPlaylist().get(songIndex).get("songPath") + File.separator + getPlaylist().get(songIndex).get("songTitle") + ".mp3"); //setzen der Datensource (Initialized-State)
+                mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath")); //setzen der Datensource (Initialized-State)
+                mp.prepare(); //abspielen ermöglichen (Prepared-State)
+                progressBar.setProgress(0);
+                updateProgressBar();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            tvSongname.setText(getPlaylist().get(songIndex).get("songTitle"));
+        }
     }
 
     private void configureMediaPlayer(boolean enable) {
