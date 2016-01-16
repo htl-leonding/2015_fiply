@@ -10,9 +10,9 @@
         android:id="@+id/ueListViewItem"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-        android:textColor="@color/colorText"
-        android:background="@color/darkNavigation"
         android:layout_margin="2dp"
+        android:background="@color/darkTertiary"
+        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
+        android:textColor="@color/darkTextColor"
         android:textSize="25dp" />
 </LinearLayout>

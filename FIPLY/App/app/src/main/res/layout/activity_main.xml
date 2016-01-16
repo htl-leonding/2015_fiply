@@ -20,7 +20,7 @@
         android:layout_gravity="start"
         android:background="@color/darkNavigation"
         android:choiceMode="singleChoice"
-        android:divider="@color/colorAccent"
+        android:divider="@color/darkSecondary"
         android:dividerHeight="1dp" />
 
 </android.support.v4.widget.DrawerLayout>
