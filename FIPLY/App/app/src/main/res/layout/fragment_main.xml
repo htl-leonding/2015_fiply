@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@color/darkNavigation"
+        android:background="@color/darkMenuButtons"
         android:text="@string/startUe"
         android:textSize="25dp" />
 
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@color/darkNavigation"
+        android:background="@color/darkMenuButtons"
         android:text="@string/startTr"
         android:textSize="25dp" />
 
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@color/darkNavigation"
+        android:background="@color/darkMenuButtons"
         android:text="@string/startEU"
         android:textSize="25dp" />
 
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@color/darkNavigation"
+        android:background="@color/darkMenuButtons"
         android:text="@string/startPlaylist"
         android:textSize="25dp" />
 

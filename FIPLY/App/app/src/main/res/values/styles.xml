@@ -1,10 +1,10 @@
 <resources>
+    <!-- Base application theme. -->
+    <style name="AppThemeDark" parent="Theme.AppCompat">
+        <item name="android:colorPrimary">@color/darkPrimary</item>
+        <item name="android:colorPrimaryDark">@color/darkSecondary</item>
+        <item name="android:windowBackground">@color/darkSecondary</item>
+        <item name="android:navigationBarColor">@color/darkSecondary</item>
+    </style>
 
-<!-- Base application theme. -->
-<style name="AppTheme" parent="@style/Theme.AppCompat.Light">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/darkNavigation</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-</style>
 </resources>
