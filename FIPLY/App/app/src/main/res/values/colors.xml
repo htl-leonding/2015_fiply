@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#009688</color>
-    <color name="colorPrimaryDark">#424242</color>
-    <color name="colorAccent">#E0F2F1</color>
-    <color name="background_material_light">#fafafa</color>
-    <color name="black">#000000</color>
-    <color name="colorText">#FFFFFF</color>
-    <color name="colorTextDark">#000000</color>
-    <color name="primary_text_default_material_light">#deffffff</color>
+    <color name="darkPrimary">#FFA500</color>
+    <color name="darkSecondary">#363534</color>
+    <color name="darkTextColorLight">#FFA500</color>
+    <color name="darkTextColorDark">#000000</color>
+    <color name="darkNavigationDivider">#00000000</color>
+    <!-- unused -->
+    <color name="darkNavigationText">#7CFC00</color>
+    <color name="darkNavigationBackground">#00000000</color>
+    <!-- unused -->
+    <color name="darkMenuButtons">#FFA500</color>
+
+    <color name="lightPrimary">#FFA500</color>
+    <color name="lightSecondary">#c4b69e</color>
+    <color name="lightTertiary">#363534</color>
+    <color name="lightTextColorLight">#FFA500</color>
+    <color name="lightTextColorDark">#000000</color>
+    <color name="lightNavigation">#5f5f5f</color>
 </resources>

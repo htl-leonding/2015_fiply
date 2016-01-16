@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkSecondary">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutPl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btPlAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btPlAdd"/>
+
+        <Button
+            android:id="@+id/btPlSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btPlSave"/>
+
+        <Switch
+            android:id="@+id/switchPl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mode" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etPlName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/linearLayoutPl"
+        android:text="@string/etPlName"/>
+
+    <ListView
+        android:id="@+id/lvPlSongs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/etPlName"
+        android:layout_alignParentTop="true"
+        android:choiceMode="multipleChoice" />
+
+</RelativeLayout>

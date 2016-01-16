@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <help_text/>
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>10</x>
+      <y>290</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>User</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>250</x>
+      <y>50</y>
+      <w>231</w>
+      <h>531</h>
+    </coordinates>
+    <panel_attributes>// Modify the text below and
+// observe the element preview.
+FIPLY - Use Case Diagram</panel_attributes>
+    <additional_attributes/>
+    <custom_code>//Modify the code below to define the element's behavior.
+//
+//Example:  Change the line
+//  y += printCenter(textline,y);
+//to
+//  y += 2*printCenter(textline,y);
+//and observe the element preview.
+
+int y=textHeight();
+
+drawRectangle(0,0,width,height);
+
+for(String textline : textlines) {
+	y += printCenter(textline,y);
+}</custom_code>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>270</x>
+      <y>290</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*Statistik einsehen*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>270</x>
+      <y>80</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*Übungskatalog einsehen*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>270</x>
+      <y>150</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*Trainingsplan generieren*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>270</x>
+      <y>220</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*Trainingsplan exportieren*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>270</x>
+      <y>360</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*Fortschritte einsehen*
+*und teilen*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>270</x>
+      <y>430</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*Trainingssession*
+*durchführen*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>270</x>
+      <y>500</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*Musik hören*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>100</y>
+      <w>230</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>170</y>
+      <w>230</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>240</y>
+      <w>230</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>300</y>
+      <w>230</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>310</y>
+      <w>230</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>210.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>310</y>
+      <w>230</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>210.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>310</y>
+      <w>230</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>210.0;220.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>30</x>
+      <y>300</y>
+      <w>60</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes>40.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>

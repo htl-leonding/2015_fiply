@@ -5,6 +5,7 @@
     <string name="startUe">Uebungskatalog</string>
     <string name="startTr">Trainingssession</string>
     <string name="startEU">Usererstellung</string>
+    <string name="startPlaylist">Playlistverwaltung</string>
     <string name="titleUe">Willkommen im Übungskatalog!</string>
     <string name="titleTS">Willkommen in einer Traingssession!</string>
     <string name="titleEU">Willkommen in der Usererstellung!</string>
@@ -21,7 +22,7 @@
     <string name="songNext">&#187;</string>
     <string name="songLast">&#171;</string>
     <string name="songList">&#8801;</string>
-    <string name="songNotFound">Keine Songs hefunden</string>
+    <string name="songNotFound">Keine Songs gefunden</string>
     <string name="watchStart">Start</string>
     <string name="watchPause">Pause</string>
     <string name="watchContinue">Continue</string>
@@ -33,13 +34,16 @@
     <string name="timerReset">Reset</string>
     <string name="navWatch">Watch</string>
     <string name="navTimer">Timer</string>
-
+    <string name="etPlName">Playlistname</string>
+    <string name="btPlSave">Save</string>
+    <string name="btPlAdd">Add</string>
 
     <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>
         <item>Usererstellung</item>
+        <item>Playlists</item>
     </string-array>
 
 </resources>

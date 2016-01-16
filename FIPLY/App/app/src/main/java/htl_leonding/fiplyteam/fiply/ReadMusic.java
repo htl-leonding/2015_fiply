@@ -24,7 +24,7 @@ public class ReadMusic {
     public ArrayList<HashMap<String, String>> getSongs() {
         File home = new File(PATH_MUSIC);
 
-        if (home.listFiles(new FileExtensionFilter()).length > 0) {
+        if (home.listFiles(new FileExtensionFilter()) != null) {
             for (File file : home.listFiles(new FileExtensionFilter())) {
                 HashMap<String, String> song = new HashMap<>();
                 song.put("songTitle", file.getName().substring(0, (file.getName().length() - 4)));

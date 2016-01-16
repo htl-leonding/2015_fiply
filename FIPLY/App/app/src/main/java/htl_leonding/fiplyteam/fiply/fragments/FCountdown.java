@@ -68,8 +68,8 @@ public class FCountdown extends Fragment {
             }
 
             public void onFinish() {
-                etTimer.setText("" + 30000);
-                Toast.makeText(getActivity().getApplicationContext(), "Tolle Arbeit!", Toast.LENGTH_SHORT).show();
+                etTimer.setText("" + 30);
+                Toast.makeText(getActivity(), "Tolle Arbeit!", Toast.LENGTH_SHORT).show();
             }
         };
         cdt.start();

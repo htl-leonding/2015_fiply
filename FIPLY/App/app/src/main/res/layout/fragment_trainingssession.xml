@@ -1,34 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/fraTsMusic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
-    <FrameLayout
-        android:id="@+id/fraTsClocksNav"
+        android:layout_alignParentBottom="true"
+        android:background="@color/darkSecondary" />
+
+    <RelativeLayout
+        android:id="@+id/clocksLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/fraTsMusic"
-        android:layout_alignParentRight="true" />
-    <FrameLayout
-        android:id="@+id/fraTsClocks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/fraTsMusic"
-        android:layout_alignParentLeft="true" />
+        android:background="@drawable/clockstabsshape">
+
+        <FrameLayout
+            android:id="@+id/fraTsClocksNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/fraTsClocksNav"
+            android:layout_alignTop="@id/fraTsClocksNav"
+            android:layout_toLeftOf="@id/fraTsClocksNav"
+            android:background="@color/darkPrimary" />
+
+        <FrameLayout
+            android:id="@+id/fraTsClocks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/fraTsUebung"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_above="@id/fraTsClocksNav" />
+        android:layout_above="@id/clocksLayout"
+        android:background="@color/darkSecondary" />
 
 </RelativeLayout>

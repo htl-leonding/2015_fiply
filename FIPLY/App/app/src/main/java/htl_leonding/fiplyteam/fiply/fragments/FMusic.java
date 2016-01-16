@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -21,7 +21,7 @@ import htl_leonding.fiplyteam.fiply.displayFragment;
 
 public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener, SeekBar.OnSeekBarChangeListener {
 
-    Button btnPlay, btnStop, btnLast, btnNext, btnList;
+    ImageButton btnPlay, btnStop, btnLast, btnNext, btnList;
     Boolean listOpen = false;
     TextView tvSongname, tvCurrentDur, tvTotalDur;
     SeekBar progressBar;
@@ -31,6 +31,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     Handler mHandler = new Handler();
     ArrayList<HashMap<String, String>> playlist;
     int songIndex;
+
     private Runnable mUpdateDurTask = new Runnable() {
         @Override
         public void run() {
@@ -52,29 +53,15 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         return inflater.inflate(R.layout.fragment_music, container, false);
     }
 
-//    public void changeSong(String fileName) {
-//        try {
-//            mp.reset();
-//            mp.setDataSource(ReadMusic.PATH_MUSIC + File.separator + fileName + ".mp3"); //setzen der Datensource (Initialized-State)
-//            mp.prepare(); //abspielen ermöglichen (Prepared-State)
-//            progressBar.setProgress(0);
-//            progressBar.setMax(100);
-//            updateProgressBar();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        tvSongname.setText(fileName);
-//    }
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnPlay = (Button) getActivity().findViewById(R.id.btnMuPlay);
-        btnStop = (Button) getActivity().findViewById(R.id.btnMuStop);
-        btnLast = (Button) getActivity().findViewById(R.id.btnMuLast);
-        btnNext = (Button) getActivity().findViewById(R.id.btnMuNext);
-        btnList = (Button) getActivity().findViewById(R.id.btnMuList);
+        btnPlay = (ImageButton) getActivity().findViewById(R.id.btnMuPlay);
+        btnStop = (ImageButton) getActivity().findViewById(R.id.btnMuStop);
+        btnLast = (ImageButton) getActivity().findViewById(R.id.btnMuLast);
+        btnNext = (ImageButton) getActivity().findViewById(R.id.btnMuNext);
+        btnList = (ImageButton) getActivity().findViewById(R.id.btnMuList);
         tvSongname = (TextView) getActivity().findViewById(R.id.tvMuSongname);
         tvCurrentDur = (TextView) getActivity().findViewById(R.id.tvMuCurrentDur);
         tvTotalDur = (TextView) getActivity().findViewById(R.id.tvMuTotalDur);
@@ -85,8 +72,6 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         progressBar.setOnSeekBarChangeListener(this);
         mp.setOnCompletionListener(this);
 
-        //btnBack.setVisibility(View.GONE);
-        //btnForward.setVisibility(View.GONE);
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,14 +85,12 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
                 stop();
             }
         });
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 nextSong();
             }
         });
-
         btnLast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,6 +102,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
             @Override
             public void onClick(View v) {
                 if (getListOpen()) {
+                    btnList.setImageResource(R.drawable.listviewunpressed);
                     setListOpen(false);
                     FUebungDetail fragmentUebung = new FUebungDetail();
                     Bundle args = new Bundle();
@@ -133,6 +117,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
 
                     displayFragment.displayTSUebung(fragmentUebung, getFragmentManager());
                 } else {
+                    btnList.setImageResource(R.drawable.listviewpressed);
                     setListOpen(true);
                     displayFragment.displayTSUebung(fMusicList, getFragmentManager());
                 }
@@ -144,27 +129,53 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     }
 
     public void changeSong(int songIndex) {
-        setSongIndex(songIndex);
-        try {
-            mp.reset();
-            //mp.setDataSource(getPlaylist().get(songIndex).get("songPath") + File.separator + getPlaylist().get(songIndex).get("songTitle") + ".mp3"); //setzen der Datensource (Initialized-State)
-            mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath")); //setzen der Datensource (Initialized-State)
-            mp.prepare(); //abspielen ermöglichen (Prepared-State)
-            progressBar.setProgress(0);
-            updateProgressBar();
-        } catch (Exception e) {
-            e.printStackTrace();
+        configureMediaPlayer(!getPlaylist().isEmpty());
+        if(getPlaylist().isEmpty())
+        {
+           configureMediaPlayer(false);
         }
-        tvSongname.setText(getPlaylist().get(songIndex).get("songTitle"));
+        else
+        {
+            configureMediaPlayer(true);
+            tvSongname.setText(getPlaylist().get(songIndex).get("songTitle"));
+            setSongIndex(songIndex);
+            try {
+                mp.reset();
+                //mp.setDataSource(getPlaylist().get(songIndex).get("songPath") + File.separator + getPlaylist().get(songIndex).get("songTitle") + ".mp3"); //setzen der Datensource (Initialized-State)
+                mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath")); //setzen der Datensource (Initialized-State)
+                mp.prepare(); //abspielen ermöglichen (Prepared-State)
+                progressBar.setProgress(0);
+                updateProgressBar();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            tvSongname.setText(getPlaylist().get(songIndex).get("songTitle"));
+        }
+    }
+
+    private void configureMediaPlayer(boolean enable) {
+        btnPlay.setClickable(enable);
+        btnStop.setClickable(enable);
+        btnLast.setClickable(enable);
+        btnNext.setClickable(enable);
+        btnList.setClickable(enable);
+        tvSongname.setClickable(enable);
+        tvCurrentDur.setClickable(enable);
+        tvTotalDur.setClickable(enable);
+        progressBar.setClickable(enable);
+        if (enable)
+            progressBar.setVisibility(View.VISIBLE);
+        else
+            progressBar.setVisibility(View.INVISIBLE);
     }
 
     public void play() {
         if (mp.isPlaying()) {
             mp.pause();
-            btnPlay.setText(R.string.songPlay);
+            btnPlay.setImageResource(R.drawable.play);
         } else {
             mp.start();
-            btnPlay.setText(R.string.songPause);
+            btnPlay.setImageResource(R.drawable.pause);
         }
     }
 
@@ -178,7 +189,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         } catch (IOException e) {
             e.printStackTrace();
         }
-        btnPlay.setText(R.string.songPlay);
+        btnPlay.setImageResource(R.drawable.play);
     }
 
     public void nextSong() {
