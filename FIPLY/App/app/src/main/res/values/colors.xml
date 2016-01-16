@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="awesome">#FFA500</color>
     <color name="darkPrimary">#FFA500</color>
-    <color name="darkSecondary">#c4b69e</color>
-    <color name="darkTertiary">#363534</color>
-    <color name="darkTextColor">#FFA500</color>
-    <color name="darkButtonTextColor">#000000</color>
-    <color name="darkNavigation">#5f5f5f</color>
+    <color name="darkSecondary">#363534</color>
+    <color name="darkTextColorLight">#FFA500</color>
+    <color name="darkTextColorDark">#000000</color>
+    <color name="darkNavigationDivider">#00000000</color>
+    <!-- unused -->
+    <color name="darkNavigationText">#7CFC00</color>
+    <color name="darkNavigationBackground">#00000000</color>
+    <!-- unused -->
+    <color name="darkMenuButtons">#FFA500</color>
 
-
+    <color name="lightPrimary">#FFA500</color>
+    <color name="lightSecondary">#c4b69e</color>
+    <color name="lightTertiary">#363534</color>
+    <color name="lightTextColorLight">#FFA500</color>
+    <color name="lightTextColorDark">#000000</color>
+    <color name="lightNavigation">#5f5f5f</color>
 </resources>

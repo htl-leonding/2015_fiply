@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
         android:gravity="center"
-        android:textColor="@color/darkTextColor"
+        android:textColor="@color/darkNavigationText"
         android:textSize="25dp" />
 
 </LinearLayout>
