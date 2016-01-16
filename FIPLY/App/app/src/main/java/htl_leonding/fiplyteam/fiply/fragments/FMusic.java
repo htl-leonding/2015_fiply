@@ -102,6 +102,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
             @Override
             public void onClick(View v) {
                 if (getListOpen()) {
+                    btnList.setImageResource(R.drawable.listviewunpressed);
                     setListOpen(false);
                     FUebungDetail fragmentUebung = new FUebungDetail();
                     Bundle args = new Bundle();
@@ -116,6 +117,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
 
                     displayFragment.displayTSUebung(fragmentUebung, getFragmentManager());
                 } else {
+                    btnList.setImageResource(R.drawable.listviewpressed);
                     setListOpen(true);
                     displayFragment.displayTSUebung(fMusicList, getFragmentManager());
                 }

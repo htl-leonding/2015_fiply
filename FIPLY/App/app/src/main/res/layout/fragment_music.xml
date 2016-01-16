@@ -45,7 +45,10 @@
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarMu"
+        android:layout_centerVertical="true"
         android:adjustViewBounds="true"
+        android:background="@color/darkSecondary"
+        android:padding="2dp"
         android:scaleType="fitCenter"
         android:src="@drawable/play"
         android:text="@string/songPlay" />
@@ -55,8 +58,11 @@
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarMu"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@id/btnMuPlay"
         android:adjustViewBounds="true"
+        android:background="@color/darkSecondary"
+        android:padding="2dp"
         android:scaleType="fitCenter"
         android:src="@drawable/stop" />
 
@@ -65,8 +71,11 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarMu"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@id/btnMuStop"
         android:adjustViewBounds="true"
+        android:background="@color/darkSecondary"
+        android:padding="2dp"
         android:scaleType="fitCenter"
         android:src="@drawable/last" />
 
@@ -75,8 +84,11 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarMu"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@id/btnMuLast"
         android:adjustViewBounds="true"
+        android:background="@color/darkSecondary"
+        android:padding="2dp"
         android:scaleType="fitCenter"
         android:src="@drawable/next" />
 
@@ -86,8 +98,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/seekBarMu"
+        android:layout_centerVertical="true"
         android:adjustViewBounds="true"
+        android:background="@color/darkSecondary"
+        android:padding="2dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/listviewpressed" />
+        android:src="@drawable/listviewunpressed" />
 
 </RelativeLayout>
