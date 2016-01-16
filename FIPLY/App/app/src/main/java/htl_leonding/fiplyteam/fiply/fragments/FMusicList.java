@@ -19,7 +19,6 @@ import htl_leonding.fiplyteam.fiply.ReadMusic;
 public class FMusicList extends ListFragment {
 
     ArrayList<HashMap<String, String>> songs;
-    //ReadMusic rm = ReadMusic.getInstance();
     ListView listView;
     ReadMusic rm;
 
@@ -34,8 +33,6 @@ public class FMusicList extends ListFragment {
         super.onViewCreated(view, savedInstanceState);
 
         rm = ReadMusic.getInstance();
-        //songs = new ArrayList<>();
-        //this.songs = rm.getSongs();
 
         ListAdapter adapter = new SimpleAdapter(getActivity(), rm.getSongs(), R.layout.music_item,
                 new String[]{"songTitle"}, new int[]{R.id.songTitle});
@@ -47,8 +44,6 @@ public class FMusicList extends ListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FMusic fm = (FMusic) getFragmentManager().findFragmentByTag("TSMusic");
                 fm.changeSong(position);
-                //fm.changeSong(songs.get(position).get("songTitle"));
-                //Toast.makeText(getActivity(), getSongsData().get(position).get("songTitle"), Toast.LENGTH_LONG).show();
                 fm.play();
             }
         });

@@ -96,27 +96,4 @@ public class FUebungskatalog extends Fragment {
         rep.insertUebung("Deadlift", "Testbeschreibung Deadlift", "Testanleitung", "Arme", "TestZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
         rep.insertUebung("Skullcrusher", "Testbeschreibung Skullcrusher das hier ist eine sehr lange Beschreibung um das Layout in der detailansicht des uebungskatalogs zu testen", "Testanleitung das hier ist eine sehr lange testanleitung um das layout in der uebungsdetailview zu testen", "Trizeps", "TestZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
     }
-
-    /*
-    public class ActivityDatabaseAccess extends AsyncTask<String, Void, String> {
-        Cursor c;
-
-        @Override
-        protected void onPostExecute(String result) {
-
-            try {
-                adapter = new ExpandableListAdapter(context, rep.getHeaderNamesForUebungskatalog(), rep.getChildDataForUebungskatalog());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            gv.setAdapter(adapter);
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            c = rep.getAllUebungen();
-            return "Success";
-        }
-    }
-    */
 }

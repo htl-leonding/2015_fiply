@@ -8,5 +8,7 @@
     <TextView
         android:id="@+id/songTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:textColor="@color/darkPrimary"
+        android:padding="5dp"/>
 </LinearLayout>
