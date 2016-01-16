@@ -19,7 +19,6 @@ import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
  */
 public class FCreateUser extends Fragment {
 
-    Button btCUS2;
     EditText etFirstName;
     EditText etLastName;
     Bundle userArgs;
@@ -37,25 +36,8 @@ public class FCreateUser extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         etFirstName = (EditText) getView().findViewById(R.id.etFirstName);
         etLastName = (EditText) getView().findViewById(R.id.etLastName);
-        btCUS2 = (Button) getView().findViewById(R.id.btCUS2);
 
 
-        btCUS2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                KeyValueRepository kvRep = KeyValueRepository.getInstance();
-                if (etFirstName.getText().length() > 0 && etLastName.getText().length() > 0) {
-                    userArgs.putString("userFirstName", etFirstName.getText().toString());
-                    userArgs.putString("userLastName", etLastName.getText().toString());
-                }
-
-
-                FCreateUser2 fcreateUser2 = new FCreateUser2();
-                fcreateUser2.setArguments(userArgs);
-                displayView(fcreateUser2);
-            }
-        });
 
 
         super.onViewCreated(view, savedInstanceState);

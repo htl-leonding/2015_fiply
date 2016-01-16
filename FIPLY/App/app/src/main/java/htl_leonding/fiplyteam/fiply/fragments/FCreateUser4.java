@@ -23,7 +23,7 @@ public class FCreateUser4 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        return inflater.inflate(R.layout.fragment_createuser, container, false);
+        return inflater.inflate(R.layout.fragment_createuser4, container, false);
     }
 
     @Override
