@@ -16,9 +16,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import htl_leonding.fiplyteam.fiply.fragments.FMain;
+import htl_leonding.fiplyteam.fiply.fragments.FPlaylist;
 import htl_leonding.fiplyteam.fiply.fragments.FTrainingssession;
 import htl_leonding.fiplyteam.fiply.fragments.FUebungskatalog;
-import htl_leonding.fiplyteam.fiply.fragments.FUsererstellung;
+import htl_leonding.fiplyteam.fiply.fragments.FUsermanagement;
 
 public class MainActivity extends AppCompatActivity {
     ListView mDrawerList;
@@ -157,9 +158,11 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new FUebungskatalog();
                 break;
             case 3:
-                fragment = new FUsererstellung();
+                fragment = new FUsermanagement();
                 break;
-
+            case 4:
+                fragment = new FPlaylist();
+                break;
             default:
                 break;
         }

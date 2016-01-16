@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/darkNavigation"
         android:text="@string/startUe"
         android:textSize="25dp" />
 
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/darkNavigation"
         android:text="@string/startTr"
         android:textSize="25dp" />
 
@@ -39,7 +39,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/darkNavigation"
         android:text="@string/startEU"
         android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btStartPlaylist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="@color/darkNavigation"
+        android:text="@string/startPlaylist"
+        android:textSize="25dp" />
+
 </LinearLayout>
