@@ -1,10 +1,7 @@
-package htl_leonding.fiplyteam.fiply;
+﻿package htl_leonding.fiplyteam.fiply;
 
-<<<<<<< HEAD
 import android.content.Context;
-=======
 import android.app.Activity;
->>>>>>> refs/remotes/origin/master
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
