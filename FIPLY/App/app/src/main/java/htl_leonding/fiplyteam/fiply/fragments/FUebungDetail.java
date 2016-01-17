@@ -94,7 +94,7 @@ public class FUebungDetail extends Fragment {
         wvUebungVideo.setWebChromeClient(new WebChromeClient());
         //wvUebungVideo.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         if (Configuration.ORIENTATION_LANDSCAPE == 1) {
-            wvUebungVideo.loadUrl(uebungsVideo + "?FS?autoplay");
+            wvUebungVideo.loadUrl(uebungsVideo + "?autoplay=1");
         } else
             wvUebungVideo.loadUrl(uebungsVideo);
 

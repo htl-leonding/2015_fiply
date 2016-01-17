@@ -8,11 +8,11 @@
         android:id="@+id/userCreateWelcome"
         android:layout_width="300dp"
         android:layout_height="150dp"
-        android:text="Willkommen bei Fiply! Bitte geben sie nun ihre Daten ein, damit wir ihnen einen persönlichen Trainingsplan erstellen können."
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp" />
+        android:layout_marginTop="45dp"
+        android:text="Willkommen bei Fiply! Bitte geben sie nun ihre Daten ein, damit wir ihnen einen persönlichen Trainingsplan erstellen können."
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
         android:id="@+id/etFirstName"
@@ -27,26 +27,26 @@
         android:id="@+id/etLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_alignStart="@+id/etFirstName"
         android:layout_below="@+id/textView4"
-        android:layout_alignStart="@+id/etFirstName" />
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vorname:"
         android:layout_below="@+id/userCreateWelcome"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp" />
+        android:layout_marginTop="53dp"
+        android:text="Vorname:" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nachname:"
-        android:layout_below="@+id/etFirstName"
         android:layout_alignStart="@+id/textView3"
-        android:layout_marginTop="85dp" />
+        android:layout_below="@+id/etFirstName"
+        android:layout_marginTop="52dp"
+        android:text="Nachname:" />
 </RelativeLayout>
