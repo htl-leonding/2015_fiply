@@ -8,9 +8,10 @@
         android:id="@+id/sbHeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="false"
-        android:rotation="270" />
+        android:rotation="270"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:splitTrack="false" />
 
     <SeekBar
         android:id="@+id/sbWeight"
@@ -18,6 +19,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Size"
+        android:id="@+id/textView2"
+        android:layout_above="@+id/sbHeight"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Weight"
+        android:id="@+id/textView5"
+        android:layout_above="@+id/sbWeight"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

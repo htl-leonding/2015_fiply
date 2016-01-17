@@ -4,11 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <DatePicker
-        android:id="@+id/dpAge"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:maxDate="12.12.2037"
-        android:minDate="01.01.1915" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Age"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal" />
+
+    <NumberPicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/numberPicker" />
 </LinearLayout>
