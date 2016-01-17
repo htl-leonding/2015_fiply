@@ -1,10 +1,10 @@
 package htl_leonding.fiplyteam.fiply;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import org.json.JSONException;
 
@@ -12,7 +12,7 @@ import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
 import static java.lang.Thread.sleep;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends Activity {
 
     Context context;
     UebungenRepository rep;
