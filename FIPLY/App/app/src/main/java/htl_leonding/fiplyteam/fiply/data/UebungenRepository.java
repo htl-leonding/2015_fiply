@@ -243,37 +243,7 @@ public class UebungenRepository extends Service {
         }
 
     }
-
-    public String[] getHeaderNamesForUebungskatalog() throws SQLException {
-        Cursor uebung = getAllUebungen();
-        String[] headerNames = new String[uebung.getCount()];
-        uebung.moveToFirst();
-
-        for (int i = 0; i < uebung.getCount(); i++) {
-            headerNames[i] = uebung.getString(1);
-            uebung.moveToNext();
-        }
-        return headerNames;
-    }
-
-    public HashMap<String, List<String>> getChildDataForUebungskatalog() throws SQLException {
-        HashMap<String, List<String>> childData = new HashMap<>((int) getUebungCount());
-        Cursor uebung = getAllUebungen();
-        uebung.moveToFirst();
-        List<String> values = new LinkedList<>();
-        for (int i = 0; i < (int) getUebungCount(); i++) {
-            values.clear();
-            for (int j = 1; j < 5; j++) {
-                values.add(uebung.getString(j + 1));
-            }
-
-            childData.put(uebung.getString(1), values);
-            uebung.moveToNext();
-        }
-
-        return childData;
-    }
-
+    
 
     @Nullable
     @Override
