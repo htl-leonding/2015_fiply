@@ -6,10 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Switch;
@@ -26,7 +24,7 @@ public class FPlaylist extends Fragment {
     ArrayList<HashMap<String, String>> songs;
 
     ListView lvSongs;
-    Button btAdd, btSave;
+    ImageButton btAdd, btDelete;
     Switch listSwitch;
     EditText etName;
 
@@ -41,8 +39,8 @@ public class FPlaylist extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         lvSongs = (ListView) getActivity().findViewById(R.id.lvPlSongs);
-        btAdd = (Button) getActivity().findViewById(R.id.btPlAdd);
-        btSave = (Button) getActivity().findViewById(R.id.btPlSave);
+        btAdd = (ImageButton) getActivity().findViewById(R.id.btPlAdd);
+        btDelete = (ImageButton) getActivity().findViewById(R.id.btPlDelete);
         listSwitch = (Switch) getActivity().findViewById(R.id.switchPl);
         etName = (EditText) getActivity().findViewById(R.id.etPlName);
 
