@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -21,7 +21,7 @@ import htl_leonding.fiplyteam.fiply.displayFragment;
 
 public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener, SeekBar.OnSeekBarChangeListener {
 
-    Button btnPlay, btnStop, btnLast, btnNext, btnList;
+    ImageButton btnPlay, btnStop, btnLast, btnNext, btnList;
     Boolean listOpen = false;
     TextView tvSongname, tvCurrentDur, tvTotalDur;
     SeekBar progressBar;
@@ -57,11 +57,11 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnPlay = (Button) getActivity().findViewById(R.id.btnMuPlay);
-        btnStop = (Button) getActivity().findViewById(R.id.btnMuStop);
-        btnLast = (Button) getActivity().findViewById(R.id.btnMuLast);
-        btnNext = (Button) getActivity().findViewById(R.id.btnMuNext);
-        btnList = (Button) getActivity().findViewById(R.id.btnMuList);
+        btnPlay = (ImageButton) getActivity().findViewById(R.id.btnMuPlay);
+        btnStop = (ImageButton) getActivity().findViewById(R.id.btnMuStop);
+        btnLast = (ImageButton) getActivity().findViewById(R.id.btnMuLast);
+        btnNext = (ImageButton) getActivity().findViewById(R.id.btnMuNext);
+        btnList = (ImageButton) getActivity().findViewById(R.id.btnMuList);
         tvSongname = (TextView) getActivity().findViewById(R.id.tvMuSongname);
         tvCurrentDur = (TextView) getActivity().findViewById(R.id.tvMuCurrentDur);
         tvTotalDur = (TextView) getActivity().findViewById(R.id.tvMuTotalDur);
@@ -102,6 +102,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
             @Override
             public void onClick(View v) {
                 if (getListOpen()) {
+                    btnList.setImageResource(R.drawable.listviewunpressed);
                     setListOpen(false);
                     FUebungDetail fragmentUebung = new FUebungDetail();
                     Bundle args = new Bundle();
@@ -116,6 +117,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
 
                     displayFragment.displayTSUebung(fragmentUebung, getFragmentManager());
                 } else {
+                    btnList.setImageResource(R.drawable.listviewpressed);
                     setListOpen(true);
                     displayFragment.displayTSUebung(fMusicList, getFragmentManager());
                 }
@@ -170,10 +172,10 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     public void play() {
         if (mp.isPlaying()) {
             mp.pause();
-            btnPlay.setText(R.string.songPlay);
+            btnPlay.setImageResource(R.drawable.play);
         } else {
             mp.start();
-            btnPlay.setText(R.string.songPause);
+            btnPlay.setImageResource(R.drawable.pause);
         }
     }
 
@@ -187,7 +189,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         } catch (IOException e) {
             e.printStackTrace();
         }
-        btnPlay.setText(R.string.songPlay);
+        btnPlay.setImageResource(R.drawable.play);
     }
 
     public void nextSong() {
