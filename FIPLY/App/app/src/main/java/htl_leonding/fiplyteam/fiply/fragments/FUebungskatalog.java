@@ -36,8 +36,7 @@ public class FUebungskatalog extends Fragment {
         context = getActivity();
         UebungenRepository.setContext(context);
         rep = UebungenRepository.getInstance();
-        rep.deleteAllUebungen();
-        InsertTestUebungen();
+        //InsertTestUebungen();
         return inflater.inflate(R.layout.fragment_uebungskatalog, container, false);
     }
 
