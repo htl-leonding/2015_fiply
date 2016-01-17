@@ -1,45 +1,4 @@
-<resources>
-    <string name="app_name">FIPLY</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="welcome">Willkommen in der FIPLY APP!</string>
-    <string name="startUe">Uebungskatalog</string>
-    <string name="startTr">Trainingssession</string>
-    <string name="startEU">Usererstellung</string>
-    <string name="startPlaylist">Playlistverwaltung</string>
-    <string name="titleUe">Willkommen im Übungskatalog!</string>
-    <string name="titleTS">Willkommen in einer Traingssession!</string>
-    <string name="titleEU">Willkommen in der Usererstellung!</string>
-    <string name="drawer_open">Navigationsleiste öffnen</string>
-    <string name="drawer_close">Navigationsleiste öffnen</string>
-    <string name="detailMG">Muskelgruppe: </string>
-    <string name="detailZG">Zielgruppe: </string>
-    <string name="detailDesc">Beschreibung: </string>
-    <string name="detailAnl">Anleitung: </string>
-    <string name="detailName">Dummy-Name</string>
-    <string name="songPlay">Play</string>
-    <string name="songPause">Pause</string>
-    <string name="songStop">Stop</string>
-    <string name="songNext">&#187;</string>
-    <string name="songLast">&#171;</string>
-    <string name="songList">&#8801;</string>
-    <string name="songNotFound">Keine Songs gefunden</string>
-    <string name="watchStart">Start</string>
-    <string name="watchPause">Pause</string>
-    <string name="watchContinue">Continue</string>
-    <string name="watchReset">Reset</string>
-    <string name="watchLap">Lap</string>
-    <string name="timerStart">Start</string>
-    <string name="timerPause">Pause</string>
-    <string name="timerContinue">Continue</string>
-    <string name="timerReset">Reset</string>
-    <string name="navWatch">Watch</string>
-    <string name="navTimer">Timer</string>
-    <string name="etPlName">Playlistname</string>
-    <string name="btPlSave">Save</string>
-    <string name="btPlAdd">Add</string>
-
-    <string name="exercisecatalog">
-        [
+[
   {
     "Muskelgruppe":"Brust;Mittlere Brust",
     "Name":"Butterfly Seilzug",
@@ -537,15 +496,3 @@
     "Schwierigkeit":"Einfach"
   }
 ]
-    </string>
-
-
-    <string-array name="navigationArray">
-        <item>Mainmenü</item>
-        <item>Trainingssession</item>
-        <item>Übungskatalog</item>
-        <item>Usererstellung</item>
-        <item>Playlists</item>
-    </string-array>
-
-</resources>
