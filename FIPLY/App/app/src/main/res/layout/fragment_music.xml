@@ -40,69 +40,67 @@
         android:layout_toLeftOf="@id/tvMuTotalDur"
         android:layout_toRightOf="@id/tvMuCurrentDur" />
 
-    <ImageButton
-        android:id="@+id/btnMuPlay"
-        android:layout_width="75dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/seekBarMu"
-        android:layout_centerVertical="true"
-        android:adjustViewBounds="true"
-        android:background="@color/darkSecondary"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/play"
-        android:text="@string/songPlay" />
+        android:layout_below="@+id/seekBarMu">
 
-    <ImageButton
-        android:id="@+id/btnMuStop"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/seekBarMu"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/btnMuPlay"
-        android:adjustViewBounds="true"
-        android:background="@color/darkSecondary"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/stop" />
+        <ImageButton
+            android:id="@+id/btnMuLast"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:background="@color/darkSecondary"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/last" />
 
-    <ImageButton
-        android:id="@+id/btnMuLast"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/seekBarMu"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/btnMuStop"
-        android:adjustViewBounds="true"
-        android:background="@color/darkSecondary"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/last" />
+        <ImageButton
+            android:id="@+id/btnMuPlay"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/btnMuLast"
+            android:adjustViewBounds="true"
+            android:background="@color/darkSecondary"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/play"
+            android:text="@string/songPlay" />
 
-    <ImageButton
-        android:id="@+id/btnMuNext"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/seekBarMu"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/btnMuLast"
-        android:adjustViewBounds="true"
-        android:background="@color/darkSecondary"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/next" />
+        <ImageButton
+            android:id="@+id/btnMuStop"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/btnMuPlay"
+            android:adjustViewBounds="true"
+            android:background="@color/darkSecondary"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/stop" />
 
-    <ImageButton
-        android:id="@+id/btnMuList"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/seekBarMu"
-        android:layout_centerVertical="true"
-        android:adjustViewBounds="true"
-        android:background="@color/darkSecondary"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/listviewunpressed" />
+        <ImageButton
+            android:id="@+id/btnMuNext"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/btnMuStop"
+            android:adjustViewBounds="true"
+            android:background="@color/darkSecondary"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/next" />
 
+        <ImageButton
+            android:id="@+id/btnMuList"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:adjustViewBounds="true"
+            android:background="@color/darkSecondary"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/listviewunpressed" />
+    </RelativeLayout>
 </RelativeLayout>
