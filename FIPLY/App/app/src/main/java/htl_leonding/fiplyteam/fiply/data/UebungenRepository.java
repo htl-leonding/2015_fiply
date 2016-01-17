@@ -4,9 +4,6 @@ import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,13 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -240,10 +231,18 @@ public class UebungenRepository extends Service {
     }
 
 
+    public void insertAllExercises() throws JSONException {
+        deleteAllUebungen();
+        String json = repoContext.getResources().getString(R.string.exercisecatalog);
+        JSONArray exercises = new JSONArray(json);
+        JSONObject temp;
+        for (int i = 0; i < exercises.length(); i++) {
+            temp = exercises.getJSONObject(i);
+            Log.wtf("Exercise: ", temp.getString("Name"));
+            insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), "Not Implemented", "https://www.youtube.com/embed/0TjxnrWT8Es");
+        }
 
-
-
-
+    }
 
     public String[] getHeaderNamesForUebungskatalog() throws SQLException {
         Cursor uebung = getAllUebungen();

@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import java.io.FileNotFoundException;
+import org.json.JSONException;
 
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
@@ -37,11 +37,11 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                UebungenRepository.getInstance().insertJSONIntoDB(context);
+                rep.insertAllExercises();
                 sleep(3500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            } catch (FileNotFoundException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             Intent openMain = new Intent("fiply.MAINACTIVITY");
