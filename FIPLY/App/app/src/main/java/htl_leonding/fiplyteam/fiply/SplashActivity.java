@@ -1,4 +1,4 @@
-﻿package htl_leonding.fiplyteam.fiply;
+package htl_leonding.fiplyteam.fiply;
 
 import android.content.Context;
 import android.app.Activity;
