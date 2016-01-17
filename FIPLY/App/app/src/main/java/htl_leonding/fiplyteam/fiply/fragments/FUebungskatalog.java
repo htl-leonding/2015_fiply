@@ -83,16 +83,4 @@ public class FUebungskatalog extends Fragment {
         fragmentTransaction.replace(R.id.fraPlace, fragment);
         fragmentTransaction.commit();
     }
-
-    /**
-     * Fügt ein paar Testübungen in die Datenbank ein um die ExpandableListView darstellen zu können
-     */
-    private void InsertTestUebungen() {
-        rep.insertUebung("Curls", "Mit Gewichten wird gecurlt", "Gewicht nehmen und anschließend curlen", "Bizeps", "Langsam durchführen", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
-        rep.insertUebung("Squatten", "Testbeschreibung Squatten", "Testanleitung Squatten", "Beine", "SquattenZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
-        rep.insertUebung("Benchpress", "Testbeschreibung Benchpress", "Testanleitung Benchpress", "Brust", "TestZIELGRUPPE", "https://www.youtube.com/embed/esQi683XR44");
-        rep.insertUebung("Dips", "Testbeschreibung Dips", "Testanleitung Dips", "Trizeps", "Langsam durchführen", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
-        rep.insertUebung("Deadlift", "Testbeschreibung Deadlift", "Testanleitung", "Arme", "TestZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
-        rep.insertUebung("Skullcrusher", "Testbeschreibung Skullcrusher das hier ist eine sehr lange Beschreibung um das Layout in der detailansicht des uebungskatalogs zu testen", "Testanleitung das hier ist eine sehr lange testanleitung um das layout in der uebungsdetailview zu testen", "Trizeps", "TestZIELGRUPPE", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
-    }
 }
