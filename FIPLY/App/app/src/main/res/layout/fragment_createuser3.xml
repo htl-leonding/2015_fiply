@@ -5,20 +5,33 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tvAgeStat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
         android:text="Age"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal" />
-
-    <NumberPicker
+    <Spinner
+        android:id="@+id/spAge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/numberPicker" />
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tvProfStat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="Proficiency"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spProf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
 </LinearLayout>

@@ -4,31 +4,4 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RadioButton
-        android:id="@+id/rbBeginner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Beginner"
-        android:layout_gravity="center" />
-
-    <RadioButton
-        android:id="@+id/rbAverage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Average"
-        android:layout_gravity="center" />
-
-    <RadioButton
-        android:id="@+id/rbPro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pro"
-        android:layout_gravity="center" />
-
-    <RadioButton
-        android:id="@+id/rbBodybuilder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bodybuilder"
-        android:layout_gravity="center" />
 </LinearLayout>

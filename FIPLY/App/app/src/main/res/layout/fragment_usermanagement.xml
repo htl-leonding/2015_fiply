@@ -19,26 +19,27 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btUserPrevious"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/btUserPrevious"
             android:text="Previous"/>
 
         <Button
+            android:id="@+id/btUserNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/btUserNext"
             android:text="Next"/>
 
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fraUserInput"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btEditUser" />
+        android:layout_above="@+id/btEditUser"
+        android:layout_alignParentTop="true" />
 
     <!--<Button-->
     <!--android:id="@+id/btChoose"-->

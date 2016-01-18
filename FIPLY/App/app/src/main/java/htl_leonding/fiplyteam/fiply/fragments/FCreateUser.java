@@ -8,19 +8,22 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 
 import htl_leonding.fiplyteam.fiply.R;
-import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 /**
  * Created by Gerildo on 09.01.2016.
  */
 public class FCreateUser extends Fragment {
 
-    EditText etFirstName;
-    EditText etLastName;
+    ImageView imgName;
+    ImageView imgGender;
+    EditText etName;
+    Spinner spGender;
     Bundle userArgs;
 
 
@@ -34,24 +37,41 @@ public class FCreateUser extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        etFirstName = (EditText) getView().findViewById(R.id.etFirstName);
-        etLastName = (EditText) getView().findViewById(R.id.etLastName);
-
-
+        etName = (EditText) getView().findViewById(R.id.etName);
+        spGender = (Spinner) getView().findViewById(R.id.spGender);
+        imgName = (ImageView) getView().findViewById(R.id.imgName);
+        imgGender = (ImageView) getView().findViewById(R.id.imgGender);
+        init();
 
 
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public String getFirstName() {
-        return etFirstName.getText().toString();
+    private void init() {
+        //load images
+        imgName.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusername));
+        imgGender.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusergender));
+
+        //init Adapter
+        ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.gender, android.R.layout.simple_spinner_item);
+        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //set Adapter
+        spGender.setAdapter(genderAdapter);
     }
 
-    public String getLastName() {
-        return etLastName.getText().toString();
+    private Bundle prepareBundle() {
+        Bundle data = new Bundle();
+
+        data.putString("name", etName.getText().toString());
+
+        return data;
     }
+
 
     private void displayView(Fragment fragment) {
+        fragment.setArguments(prepareBundle());
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
