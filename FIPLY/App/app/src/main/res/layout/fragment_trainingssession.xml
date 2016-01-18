@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/darkTertiary" />
+        android:background="@color/darkSecondary" />
 
     <RelativeLayout
         android:id="@+id/clocksLayout"
@@ -27,10 +27,10 @@
         <View
             android:layout_width="5dp"
             android:layout_height="wrap_content"
-            android:background="@color/darkPrimary"
-            android:layout_alignTop="@id/fraTsClocksNav"
             android:layout_alignBottom="@id/fraTsClocksNav"
-            android:layout_toLeftOf="@id/fraTsClocksNav"/>
+            android:layout_alignTop="@id/fraTsClocksNav"
+            android:layout_toLeftOf="@id/fraTsClocksNav"
+            android:background="@color/darkPrimary" />
 
         <FrameLayout
             android:id="@+id/fraTsClocks"
@@ -46,6 +46,6 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_above="@id/clocksLayout"
-        android:background="@color/darkTertiary" />
+        android:background="@color/darkSecondary" />
 
 </RelativeLayout>

@@ -54,27 +54,27 @@ public class FUsermanagement extends Fragment {
                     case 1:
                         btPrev.setText("Previous");
                         FCreateUser f = (FCreateUser) getFragmentManager().findFragmentByTag("NamePage");
-                        kvr.insertKeyValue("firstName", f.getFirstName());
-                        kvr.insertKeyValue("lastName", f.getLastName());
+                    //kvr.insertKeyValue("firstName", f.getFirstName());
+                      //  kvr.insertKeyValue("lastName", f.getLastName());
                         displayViewP2();
                         break;
                     case 2:
-                        displayViewP3();
-                        FCreateUser2 a = (FCreateUser2) getFragmentManager().findFragmentByTag("SliderPage");
-                        kvr.insertKeyValue("userHeight", a.getHeight());
-                        kvr.insertKeyValue("userWeight", a.getWeight());
 
+                        FCreateUser2 a = (FCreateUser2) getFragmentManager().findFragmentByTag("SliderPage");
+                        //kvr.insertKeyValue("userHeight", a.getHeight());
+                        //kvr.insertKeyValue("userWeight", a.getWeight());
+                        displayViewP3();
                         break;
                     case 3:
                         btNext.setText("Save");
                         FCreateUser3 s = (FCreateUser3) getFragmentManager().findFragmentByTag("AgePage");
-                        kvr.insertKeyValue("userDateOfBirth", s.getDateOfBirth());
+                        //kvr.insertKeyValue("userDateOfBirth", s.getDateOfBirth());
 
                         displayViewP4();
                         break;
                     case 4:
                         displayViewPMain();
-                        FCreateUser4 p = (FCreateUser4) getFragmentManager().findFragmentByTag("proficiencyPage");
+                        FCreateUser4 p = (FCreateUser4) getFragmentManager().findFragmentByTag("ProficiencyPage");
                         kvr.insertKeyValue("userProficiency", p.getProficiency());
                         break;
                 }
@@ -122,7 +122,7 @@ public class FUsermanagement extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fraUserInput, fragment, "AgePage");
+        fragmentTransaction.replace(R.id.fraUserInput, fragment, "SliderPage");
         fragmentTransaction.commit();
     }
     private void displayViewP3() {
@@ -132,7 +132,7 @@ public class FUsermanagement extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fraUserInput, fragment, "SliderPage");
+        fragmentTransaction.replace(R.id.fraUserInput, fragment, "AgePage");
         fragmentTransaction.commit();
     }
     private void displayViewP4() {

@@ -4,8 +4,6 @@ import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,27 +11,28 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 
-public class UebungenRepository extends Service{
+public class UebungenRepository extends Service {
 
     private static Context repoContext;
     private static UebungenRepository instance;
     SQLiteDatabase db = getWritableDatabase();
 
-    public static UebungenRepository getInstance(){
+    public static UebungenRepository getInstance() {
         if (instance == null)
             instance = new UebungenRepository();
         return instance;
     }
 
-    public static void setContext(Context context){
+    public static void setContext(Context context) {
         repoContext = context;
     }
 
@@ -45,7 +44,7 @@ public class UebungenRepository extends Service{
         return FiplyDBHelper.getInstance(repoContext).getWritableDatabase();
     }
 
-    private SQLiteDatabase getReadableDatabase(){
+    private SQLiteDatabase getReadableDatabase() {
         if (repoContext == null)
             throw new IllegalStateException("Context is null - " + "Set a repoContext in the Repository with setContext()");
 
@@ -65,7 +64,7 @@ public class UebungenRepository extends Service{
      * @return liefert ein long mit der id zurück
      */
     public long insertUebung(String name, String beschreibung, String anleitung,
-                            String muskelgruppe, String ZIELGRUPPE, String video) {
+                             String muskelgruppe, String ZIELGRUPPE, String video) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(UebungenEntry.COLUMN_NAME, name);
         initialValues.put(UebungenEntry.COLUMN_BESCHREIBUNG, beschreibung);
@@ -114,6 +113,7 @@ public class UebungenRepository extends Service{
 
     /**
      * Liefert eine bestimmte Uebung zurück
+     *
      * @param rowId Die Id der gesuchten Uebung
      * @return die gesuchte Uebung
      * @throws SQLException
@@ -148,7 +148,7 @@ public class UebungenRepository extends Service{
      * @return Anzahl der geupdateten Uebungen
      */
     public long updateUebung(long rowId, String name, String beschreibung, String anleitung,
-                                String muskelgruppe, String ZIELGRUPPE, String video) {
+                             String muskelgruppe, String ZIELGRUPPE, String video) {
         ContentValues updatedValues = new ContentValues();
         updatedValues.put(UebungenEntry.COLUMN_NAME, name);
         updatedValues.put(UebungenEntry.COLUMN_BESCHREIBUNG, beschreibung);
@@ -170,6 +170,7 @@ public class UebungenRepository extends Service{
 
     /**
      * Liefert die Übung mit dem passenden Namen Zurück
+     *
      * @param name Name nach welchem eine Uebung gesucht werden soll
      * @return gesuchte Uebung
      * @throws SQLException
@@ -193,6 +194,7 @@ public class UebungenRepository extends Service{
 
     /**
      * Liefert alle Uebungen für eine bestimmte Muskelgruppe zurück
+     *
      * @param Muskelgruppe Die Muskelgruppe nach welcher Uebungen gesucht werden sollen
      * @return alle Uebungen einer bestimmten Muskelgruppe
      */
@@ -225,45 +227,18 @@ public class UebungenRepository extends Service{
                 ");");
     }
 
-    public void getUebungenFromResources(){
-        String[] values;
 
-        Resources res = getResources();
-        TypedArray uebungen = res.obtainTypedArray(R.array.uebungsArray);
-        for(int i = 0; i < uebungen.length(); i++) {
-            values = uebungen.getString(i).split(";");
-            insertUebung(values[0], values[1], values[2], values[3], values[4], values[5]);
-        }
-    }
-
-    public String[] getHeaderNamesForUebungskatalog() throws SQLException {
-        Cursor uebung = getAllUebungen();
-        String[] headerNames = new String[uebung.getCount()];
-        uebung.moveToFirst();
-
-        for (int i = 0; i < uebung.getCount(); i++) {
-            headerNames[i] = uebung.getString(1);
-            uebung.moveToNext();
-        }
-        return headerNames;
-    }
-
-    public HashMap<String, List<String>> getChildDataForUebungskatalog() throws SQLException {
-        HashMap<String, List<String>> childData = new HashMap<>((int) getUebungCount());
-        Cursor uebung = getAllUebungen();
-        uebung.moveToFirst();
-        List<String> values = new LinkedList<>();
-        for (int i = 0; i < (int) getUebungCount(); i++) {
-            values.clear();
-            for (int j = 1; j < 5; j++) {
-                values.add(uebung.getString(j + 1));
-            }
-
-            childData.put(uebung.getString(1), values);
-            uebung.moveToNext();
+    public void insertAllExercises() throws JSONException {
+        deleteAllUebungen();
+        String json = repoContext.getResources().getString(R.string.exercisecatalog);
+        JSONArray exercises = new JSONArray(json);
+        JSONObject temp;
+        for (int i = 0; i < exercises.length(); i++) {
+            temp = exercises.getJSONObject(i);
+            Log.wtf("Exercise: ", temp.getString("Name"));
+            insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), "Not Implemented", "https://www.youtube.com/embed/0TjxnrWT8Es");
         }
 
-        return childData;
     }
 
 

@@ -1,5 +1,6 @@
 package htl_leonding.fiplyteam.fiply.fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -92,7 +93,11 @@ public class FUebungDetail extends Fragment {
 
         wvUebungVideo.setWebChromeClient(new WebChromeClient());
         //wvUebungVideo.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        wvUebungVideo.loadUrl(uebungsVideo);
+        if (Configuration.ORIENTATION_LANDSCAPE == 1) {
+            wvUebungVideo.loadUrl(uebungsVideo + "?autoplay=1");
+        } else
+            wvUebungVideo.loadUrl(uebungsVideo);
+
         setVideoInitialized(true);
     }
 
