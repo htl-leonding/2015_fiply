@@ -11,17 +11,23 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/btPlAdd"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
-            android:text="@string/btPlAdd"/>
+            android:adjustViewBounds="true"
+            android:background="@color/darkSecondary"
+            android:scaleType="fitCenter"
+            android:src="@drawable/add" />
 
-        <Button
-            android:id="@+id/btPlSave"
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/btPlDelete"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
-            android:text="@string/btPlSave"/>
+            android:adjustViewBounds="true"
+            android:background="@color/darkSecondary"
+            android:scaleType="fitCenter"
+            android:src="@drawable/delete" />
 
         <Switch
             android:id="@+id/switchPl"
