@@ -20,6 +20,7 @@
         android:layout_gravity="start"
         android:background="@color/darkNavigationBackground"
         android:divider="@color/darkNavigationDivider"
-        android:dividerHeight="1dp" />
+        android:dividerHeight="1dp"
+        />
 
 </android.support.v4.widget.DrawerLayout>

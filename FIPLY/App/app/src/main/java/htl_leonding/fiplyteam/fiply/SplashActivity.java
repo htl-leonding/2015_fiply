@@ -38,10 +38,11 @@ public class SplashActivity extends Activity {
         protected String doInBackground(String... params) {
             try {
                 rep.insertAllExercises();
-                sleep(3500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
+//                sleep(3500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+            }
+            catch (JSONException e) {
                 e.printStackTrace();
             }
             Intent openMain = new Intent("fiply.MAINACTIVITY");
