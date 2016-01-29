@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 /**
  * Created by Gerald on 11/01/2016.
@@ -34,6 +35,13 @@ public class FCreateUser3 extends Fragment {
         init();
 
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onDestroyView() {
+        KeyValueRepository.getInstance().insertKeyValue("userAge", spAge.getSelectedItem().toString());
+        KeyValueRepository.getInstance().insertKeyValue("userProf", spProf.getSelectedItem().toString());
+        super.onDestroyView();
     }
 
     private void init() {

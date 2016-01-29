@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 /**
  * Created by Gerildo on 10.01.2016.
@@ -25,6 +26,12 @@ public class FCreateUser2 extends Fragment {
         return inflater.inflate(R.layout.fragment_createuser2, container, false);
     }
 
+    @Override
+    public void onDestroyView() {
+        KeyValueRepository.getInstance().insertKeyValue("userHeight", (String.valueOf(sbHeight.getProgress())));
+        KeyValueRepository.getInstance().insertKeyValue("userWeight", (String.valueOf(sbWeight.getProgress())));
+        super.onDestroyView();
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

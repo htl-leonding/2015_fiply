@@ -30,7 +30,6 @@ public class FCreateUser4 extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
-
     public String getProficiency() {
         if (rbBeginner.isChecked()) {
             return "Beginner";

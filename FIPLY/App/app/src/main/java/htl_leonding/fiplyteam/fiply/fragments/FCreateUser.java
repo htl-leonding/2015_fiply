@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 /**
  * Created by Gerildo on 09.01.2016.
@@ -41,8 +42,8 @@ public class FCreateUser extends Fragment {
         spGender = (Spinner) getView().findViewById(R.id.spGender);
         imgName = (ImageView) getView().findViewById(R.id.imgName);
         imgGender = (ImageView) getView().findViewById(R.id.imgGender);
-        init();
 
+        init();
 
         super.onViewCreated(view, savedInstanceState);
     }
@@ -59,6 +60,13 @@ public class FCreateUser extends Fragment {
 
         //set Adapter
         spGender.setAdapter(genderAdapter);
+    }
+
+    @Override
+    public void onDestroyView() {
+        KeyValueRepository.getInstance().insertKeyValue("userName", etName.getText().toString());
+        KeyValueRepository.getInstance().insertKeyValue("userGender", spGender.getSelectedItem().toString());
+        super.onDestroyView();
     }
 
     private Bundle prepareBundle() {
