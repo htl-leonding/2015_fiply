@@ -50,8 +50,8 @@ public class FCreateUser extends Fragment {
 
     private void init() {
         //load images
-        imgName.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusername));
-        imgGender.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusergender));
+        //imgName.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusername));
+        //imgGender.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusergender));
 
         //init Adapter
         ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(getActivity(),
