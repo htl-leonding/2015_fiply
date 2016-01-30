@@ -37,6 +37,7 @@
     <string name="etPlName">Playlistname</string>
     <string name="btPlSave">Save</string>
     <string name="btPlAdd">Add</string>
+    <string name="startTrainPlan">Generiere Trainingsplan</string>
 
     <string name="exercisecatalog">
         [
