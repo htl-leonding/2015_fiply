@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import htl_leonding.fiplyteam.fiply.fragments.FMain;
 import htl_leonding.fiplyteam.fiply.fragments.FPlaylist;
+import htl_leonding.fiplyteam.fiply.fragments.FTrainingsplan;
 import htl_leonding.fiplyteam.fiply.fragments.FTrainingssession;
 import htl_leonding.fiplyteam.fiply.fragments.FUebungskatalog;
 import htl_leonding.fiplyteam.fiply.fragments.FUsermanagement;
@@ -163,6 +164,8 @@ public class MainActivity extends AppCompatActivity {
             case 4:
                 fragment = new FPlaylist();
                 break;
+            case 5:
+                fragment = new FTrainingsplan();
             default:
                 break;
         }

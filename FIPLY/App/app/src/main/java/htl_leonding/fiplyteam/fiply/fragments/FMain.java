@@ -16,6 +16,7 @@ public class FMain extends Fragment {
     Button startTra;
     Button startUse;
     Button startPlaylists;
+    Button startTPlanView;
 
     /**
      * Lädt das fragment_main in das FrameLayout der MainActivity
@@ -45,6 +46,7 @@ public class FMain extends Fragment {
         startTra = (Button) getView().findViewById(R.id.btStartTr);
         startUse = (Button) getView().findViewById(R.id.btStartEU);
         startPlaylists = (Button) getView().findViewById(R.id.btStartPlaylist);
+        startTPlanView = (Button) getView().findViewById(R.id.btStartTrainGen);
 
         /**
          * Bei Drücken des Uebungskatalog Buttons wird eine FragmentTransaction durchgeführt,
@@ -91,6 +93,18 @@ public class FMain extends Fragment {
             public void onClick(View v) {
                 FPlaylist fPlaylist = new FPlaylist();
                 displayView(fPlaylist);
+            }
+        });
+
+        /**
+         * Bei Drücken des Usererstellung Buttons wird eine FragmentTransaction durchgeführt,
+         * in der das Fragment des Trainingsplans in das FrameLayout der MainActivity geladen wird
+         */
+        startTPlanView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FTrainingsplan fTrainingsplan = new FTrainingsplan();
+                displayView(fTrainingsplan);
             }
         });
     }

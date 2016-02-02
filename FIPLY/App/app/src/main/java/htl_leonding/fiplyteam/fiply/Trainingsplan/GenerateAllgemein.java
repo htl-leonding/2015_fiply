@@ -79,9 +79,10 @@ public class GenerateAllgemein {
         }
         this.wochentage = wochentage;
         tPhase = new Trainingsphase(phasenName, phasenTyp, pausenDauer, phasenDauer, saetze, wiederholungen, repmax, startDate);
+        fetchUebungen();
     }
 
-    public void fetchUebungen(){
+    private void fetchUebungen(){
         rep = UebungenRepository.getInstance();
         switch(schema){
             case 1: grabIntoUebungListSchema1(fetchSchema1());
@@ -93,7 +94,7 @@ public class GenerateAllgemein {
         }
     }
 
-    public List<String[]> fetchSchema1(){ // Schema: Bauch-Beine-Po
+    private List<String[]> fetchSchema1(){ // Schema: Bauch-Beine-Po
         Cursor c = rep.getAllUebungen();
 
         int iRowId = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_ROWID);
@@ -114,25 +115,24 @@ public class GenerateAllgemein {
         }
         Collections.shuffle(uebungsList);
         List<String[]> actualUebungen = new LinkedList<String[]>();
-        int bauchCnt = 0;
-        int beineCnt = 0;
-        int poCnt = 0;
+
+        int bellyCnt = 0;
+        int legCnt = 0;
         // AND Schwierigkeitstufe noch berücksichtigen!!!
-        for(String[] uebung : uebungsList){
-            if (uebung[2].contains("Bauch")){
-                if (bauchCnt <= 3) {
-                    actualUebungen.add(uebung);
-                    bauchCnt++;
-                }
-            }else if (uebung[2].contains("Beine")){
-                if (beineCnt <= 3) {
-                    actualUebungen.add(uebung);
-                    beineCnt++;
-                }
-            }else if (uebung[2].contains("Po")){
-                if (poCnt <= 3) {
-                    actualUebungen.add(uebung);
-                    beineCnt++;
+        for(String[] uebung : uebungsList) {
+            if (uebung[2].toUpperCase().contains("PO")){
+                actualUebungen.add(uebung);
+            }else{
+                if (uebung[2].toUpperCase().contains("BEINE")){
+                    if (legCnt < 4) {
+                        actualUebungen.add(uebung);
+                        legCnt++;
+                    }
+                } else if (uebung[2].toUpperCase().contains("BAUCH")){
+                    if (bellyCnt < 4) {
+                        actualUebungen.add(uebung);
+                        bellyCnt++;
+                    }
                 }
             }
         }
@@ -140,7 +140,7 @@ public class GenerateAllgemein {
     }
 
     //TODO
-    public void fetchSchema2(){ // Schema: Oberkörper - Arme
+    private void fetchSchema2(){ // Schema: Oberkörper - Arme
         Cursor c = rep.getAllUebungen();
 
         int iRowId = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_ROWID);
@@ -162,27 +162,44 @@ public class GenerateAllgemein {
     }
 
     //TODO
-    public void fetchSchema3(){ // Schema: Stabilisation (Gesundheit, Rücken)
+    private void fetchSchema3(){ // Schema: Stabilisation (Gesundheit, Rücken)
     }
 
-    public void grabIntoUebungListSchema1(List<String[]> uebungen){
+    private void grabIntoUebungListSchema1(List<String[]> uebungen){
         List<Uebung> finalUebungslist = new LinkedList<Uebung>();
-        int howManyBauch = 0;
-        int howManyBeine = 0;
-        int howManyPo = 0;
+        Boolean legbool = null;
+        Boolean bellybool = null;
         for (String[] element : uebungen){
             Uebung ueb = new Uebung();
             ueb.setUebungsID(element[0]);
             ueb.setUebungsName(element[1]);
-            if (element[2].contains("Bauch")){
-                ueb.setWochenTag(wochentage[howManyBauch]);
-                howManyBauch++;
-            }else if (element[2].contains("Beine")){
-                ueb.setWochenTag(wochentage[howManyBeine]);
-                howManyBeine++;
-            }else if (element[2].contains("Po")){
-                ueb.setWochenTag(wochentage[howManyPo]);
-                howManyPo++;
+
+            if (element[2].toUpperCase().contains("PO")){
+                ueb.setWochenTag(wochentage[0]);
+            }else{
+                if (element[2].toUpperCase().contains("BEINE")){
+                    if (legbool == null){
+                        ueb.setWochenTag(wochentage[0]);
+                        legbool = true;
+                    }else if (legbool){
+                        ueb.setWochenTag(wochentage[1]);
+                        legbool = false;
+                    }else{
+                        ueb.setWochenTag(wochentage[2]);
+                        legbool = true;
+                    }
+                }else if (element[2].toUpperCase().contains("BAUCH")){
+                    if (bellybool == null){
+                        ueb.setWochenTag(wochentage[0]);
+                        bellybool = false;
+                    }else if (bellybool){
+                        ueb.setWochenTag(wochentage[1]);
+                        bellybool = false;
+                    }else{
+                        ueb.setWochenTag(wochentage[2]);
+                        bellybool = true;
+                    }
+                }
             }
             finalUebungslist.add(ueb);
         }

@@ -1,6 +1,7 @@
 package htl_leonding.fiplyteam.fiply.Trainingsplan;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -38,18 +39,18 @@ public class Trainingsphase {
         this.setWiederholungen(wiederholungen);
         this.setRepmax(repmax);
         this.startDate = startDate;
-        setEndingDate(this.startDate);
+        setEndingDate(this.getStartDate());
     }
 
     private void setEndingDate(Date startDate){
         Calendar cal = Calendar.getInstance();
         cal.setTime(startDate);
         int week = cal.get(Calendar.WEEK_OF_YEAR);
-        int endWeek = week + phasenDauer + 1;
+        int endWeek = week + phasenDauer;
         cal = Calendar.getInstance();
         cal.set(Calendar.WEEK_OF_YEAR, endWeek);
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        this.endDate = cal.getTime();
+        endDate = cal.getTime();
     }
 
     public List<Uebung> getUebungListOfToday(){
@@ -72,6 +73,14 @@ public class Trainingsphase {
 
     public List<Uebung> getUebungList() {
         return uebungList;
+    }
+
+    public ArrayList<Uebung> getUebungenAsArrayList(){
+        ArrayList<Uebung> uebungen = new ArrayList<Uebung>();
+        for (Uebung uebung : getUebungList()){
+            uebungen.add(uebung);
+        }
+        return uebungen;
     }
 
     public void setUebungList(List<Uebung> uebungList) {
@@ -136,5 +145,9 @@ public class Trainingsphase {
 
     public void setPhasenTyp(PhasenTyp phasenTyp) {
         this.phasenTyp = phasenTyp;
+    }
+
+    public Date getStartDate() {
+        return startDate;
     }
 }
