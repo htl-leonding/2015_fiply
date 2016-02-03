@@ -37,6 +37,8 @@
     <string name="etPlName">Playlistname</string>
     <string name="btPlSave">Save</string>
     <string name="btPlAdd">Add</string>
+    <string name="sizeString">Size</string>
+    <string name="weightString">Weight</string>
 
     <string name="exercisecatalog">
         [
@@ -540,7 +542,8 @@
     </string>
 
 
-    <string-array name="navigationArray">
+
+  <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>
