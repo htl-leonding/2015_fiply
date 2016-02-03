@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.sql.SQLException;
+
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
@@ -24,6 +26,8 @@ public class FCreateUser2 extends Fragment {
     TextView tvWeight;
     TextView tvHeight;
 
+    KeyValueRepository kvr;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,15 +38,44 @@ public class FCreateUser2 extends Fragment {
 
     @Override
     public void onDestroyView() {
-        KeyValueRepository.getInstance().insertKeyValue("userHeight", (String.valueOf(sbHeight.getProgress())));
-        KeyValueRepository.getInstance().insertKeyValue("userWeight", (String.valueOf(sbWeight.getProgress())));
+        KeyValueRepository.getInstance().updateKeyValue("userHeight", String.valueOf(GetHeight()));
+        KeyValueRepository.getInstance().updateKeyValue("userWeight", String.valueOf(GetWeight()));
         super.onDestroyView();
     }
 
 
+    /**
+     * @return current selected Height
+     */
+    public int GetHeight() {
+        /*
+        Adds 100 to the Seekbar value (0cm-100cm) so you get a range of 100cm-200cm which is more realistic.
+        In the same vein having a range of 0-200 is bad, as the first 100cm of the range are just clutter
+         */
+        return sbHeight.getProgress() + 100;
+    }
+
+    public void SetHeight(int height) {
+        sbHeight.setProgress(height - 100);
+    }
+
+    /**
+     * @return current selected Weight
+     */
+    public int GetWeight() {
+        /*
+
+         */
+        return sbHeight.getProgress() + 40;
+    }
+
+    public void SetWeight(int weight) {
+        sbWeight.setProgress(weight - 40);
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        kvr = KeyValueRepository.getInstance();
 
         sbHeight = (SeekBar) getView().findViewById(R.id.sbHeight);
         sbWeight = (SeekBar) getView().findViewById(R.id.sbWeight);
@@ -52,7 +85,7 @@ public class FCreateUser2 extends Fragment {
         sbHeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvHeight.setText("Größe: " + sbHeight.getProgress());
+                tvHeight.setText("Größe: " + GetHeight());
             }
 
             @Override
@@ -68,7 +101,7 @@ public class FCreateUser2 extends Fragment {
         sbWeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvWeight.setText("Gewicht: " + sbWeight.getProgress());
+                tvWeight.setText("Gewicht: " + GetWeight());
             }
 
             @Override
@@ -81,6 +114,18 @@ public class FCreateUser2 extends Fragment {
 
             }
         });
+
+        try {
+            setSettings();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    private void setSettings() throws SQLException {
+        SetWeight(Integer.getInteger(kvr.getKeyValue("userHeight").getString(0)));
+        SetHeight(Integer.getInteger(kvr.getKeyValue("userWeight").getString(0)));
     }
 }

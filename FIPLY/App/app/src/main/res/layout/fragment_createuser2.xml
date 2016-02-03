@@ -13,7 +13,8 @@
         android:layout_marginLeft="-160dp"
         android:layout_marginRight="160dp"
         android:rotation="270"
-        android:splitTrack="false" />
+        android:splitTrack="false"
+        android:longClickable="false" />
 
     <SeekBar
         android:id="@+id/sbWeight"

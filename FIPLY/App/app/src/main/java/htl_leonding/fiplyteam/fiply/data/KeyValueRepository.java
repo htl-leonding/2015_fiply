@@ -141,4 +141,33 @@ public class KeyValueRepository {
                 KeyValueEntry.COLUMN_VALUE + " text not null" +
                 ");");
     }
+
+    public void setDefaultUserSettings() throws SQLException {
+        if(getKeyValue("userName").equals(null)) {
+            insertKeyValue("userName", "Name");
+            Log.wtf("Defaults: ", "name");
+        }
+        if(getKeyValue("userGender").equals(null)) {
+            insertKeyValue("userGender", "Gender");
+            Log.wtf("Defaults: ", "gender");
+        }
+        if(getKeyValue("userHeight").equals(null)) {
+            insertKeyValue("userHeight", "150");
+            Log.wtf("Defaults: ", "height");
+        }
+        if(getKeyValue("userWeight").equals(null)) {
+            insertKeyValue("userWeight", "80");
+            Log.wtf("Defaults: ", "weight");
+        }
+        if(getKeyValue("userAge").equals(null)) {
+            insertKeyValue("userAge", "21-30");
+            Log.wtf("Defaults: ", "age");
+        }
+        if(getKeyValue("userProf").equals(null)) {
+            insertKeyValue("userProf", "Out of Shape");
+            Log.wtf("Defaults: ", "prof");
+
+        }
+
+    }
 }

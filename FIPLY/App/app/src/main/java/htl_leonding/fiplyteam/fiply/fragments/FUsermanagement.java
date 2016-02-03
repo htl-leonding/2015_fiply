@@ -120,16 +120,6 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.replace(R.id.fraUserInput, fragment, "AgePage");
         fragmentTransaction.commit();
     }
-    private void displayViewP4() {
-        setPageId(4);
-        FCreateUser4 fragment = new FCreateUser4();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fraUserInput, fragment, "Proficiency");
-        fragmentTransaction.commit();
-    }
     private void displayViewPMain() {
         FMain fragment = new FMain();
         FragmentManager fragmentManager = getFragmentManager();
