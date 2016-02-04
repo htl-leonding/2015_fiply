@@ -1,10 +1,12 @@
-package htl_leonding.fiplyteam.fiply;
+package htl_leonding.fiplyteam.fiply.Music;
 
 import android.os.Environment;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import htl_leonding.fiplyteam.fiply.FileExtensionFilter;
 
 public class ReadMusic {
     public static String PATH_MUSIC = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Music";

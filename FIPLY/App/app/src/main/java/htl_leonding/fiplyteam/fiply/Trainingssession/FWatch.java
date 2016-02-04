@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.Trainingssession;
 
 import android.os.Bundle;
 import android.os.SystemClock;

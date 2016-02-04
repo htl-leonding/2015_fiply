@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.uebungskatalog;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import htl_leonding.fiplyteam.fiply.menu.FMain;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
+import htl_leonding.fiplyteam.fiply.user.FCreateUser;
+import htl_leonding.fiplyteam.fiply.user.FCreateUser2;
+import htl_leonding.fiplyteam.fiply.user.FCreateUser3;
 
 public class FUsermanagement extends Fragment {
 

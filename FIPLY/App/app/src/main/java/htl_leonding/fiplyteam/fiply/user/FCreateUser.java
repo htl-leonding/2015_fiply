@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.user;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

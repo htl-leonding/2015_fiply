@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.menu;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,12 +10,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungskatalog;
+import htl_leonding.fiplyteam.fiply.uebungskatalog.FUsermanagement;
+import htl_leonding.fiplyteam.fiply.music.FPlaylist;
+import htl_leonding.fiplyteam.fiply.trainingsplan.FTrainingsplan;
+import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingssession;
 
 public class FMain extends Fragment {
     Button startUeb;
     Button startTra;
     Button startUse;
     Button startPlaylists;
+    Button startTPlanView;
 
     /**
      * Lädt das fragment_main in das FrameLayout der MainActivity
@@ -45,6 +51,7 @@ public class FMain extends Fragment {
         startTra = (Button) getView().findViewById(R.id.btStartTr);
         startUse = (Button) getView().findViewById(R.id.btStartEU);
         startPlaylists = (Button) getView().findViewById(R.id.btStartPlaylist);
+        startTPlanView = (Button) getView().findViewById(R.id.btStartTrainGen);
 
         /**
          * Bei Drücken des Uebungskatalog Buttons wird eine FragmentTransaction durchgeführt,
@@ -91,6 +98,18 @@ public class FMain extends Fragment {
             public void onClick(View v) {
                 FPlaylist fPlaylist = new FPlaylist();
                 displayView(fPlaylist);
+            }
+        });
+
+        /**
+         * Bei Drücken des Usererstellung Buttons wird eine FragmentTransaction durchgeführt,
+         * in der das Fragment des Trainingsplans in das FrameLayout der MainActivity geladen wird
+         */
+        startTPlanView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FTrainingsplan fTrainingsplan = new FTrainingsplan();
+                displayView(fTrainingsplan);
             }
         });
     }

@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.uebungskatalog;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -16,6 +16,7 @@ import android.widget.SimpleCursorAdapter;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
+import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungDetail;
 
 public class FUebungskatalog extends Fragment {
     UebungenRepository rep;

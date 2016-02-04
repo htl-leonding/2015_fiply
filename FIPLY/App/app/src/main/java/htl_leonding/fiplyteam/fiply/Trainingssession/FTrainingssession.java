@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.Trainingssession;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,8 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import htl_leonding.fiplyteam.fiply.Music.FMusic;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.displayFragment;
+import htl_leonding.fiplyteam.fiply.fragments.FClocksNav;
+import htl_leonding.fiplyteam.fiply.fragments.FUebungDetail;
+import htl_leonding.fiplyteam.fiply.fragments.FWatch;
 
 public class FTrainingssession extends Fragment {
 
