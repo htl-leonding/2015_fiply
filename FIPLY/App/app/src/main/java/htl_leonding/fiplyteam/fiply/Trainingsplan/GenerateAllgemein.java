@@ -87,7 +87,7 @@ public class GenerateAllgemein {
         switch(schema){
             case 1: grabIntoUebungListSchema1(fetchSchema1());
                 break;
-            case 2:fetchSchema2();
+            case 2: grabIntoUebungListSchema2(fetchSchema2());
                 break;
             case 3:fetchSchema3();
                 break;
@@ -140,7 +140,95 @@ public class GenerateAllgemein {
     }
 
     //TODO
-    private void fetchSchema2(){ // Schema: Oberkörper - Arme
+    private List<String[]> fetchSchema2(){ // Schema: Oberkörper - Arme
+        Cursor c = rep.getAllUebungen();
+
+        int iRowId = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_ROWID);
+        int iMuskelGruppe = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_MUSKELGRUPPE);
+        int iUebungsName = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_NAME);
+        String rowId;
+        String muskelGruppe;
+        String uebungsName;
+
+        boolean obereBrust = false;
+        boolean mittlereBrust = false;
+        boolean untereBrust = false;
+        boolean ruecken1 = false;
+        boolean ruecken2 = false;
+        boolean hintereSchulter = false;
+        boolean vordereSchulter = false;
+        boolean bizeps = false;
+        boolean trizeps = false;
+
+        List<String[]> uebungsList = new LinkedList<String[]>();
+
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+            muskelGruppe = c.getString(iMuskelGruppe);
+            if (muskelGruppe.contains("Obere Brust") && !obereBrust){
+                obereBrust = true;
+                rowId = c.getString(iRowId);
+                uebungsName = c.getString(iUebungsName);
+                String[] newUebung = {rowId, uebungsName, muskelGruppe};
+                uebungsList.add(newUebung);
+            } else if (muskelGruppe.contains("Untere Brust") && !untereBrust){
+                untereBrust = true;
+                rowId = c.getString(iRowId);
+                uebungsName = c.getString(iUebungsName);
+                String[] newUebung = {rowId, uebungsName, muskelGruppe};
+                uebungsList.add(newUebung);
+            } else if (muskelGruppe.contains("Mittlere Brust") && !mittlereBrust){
+                mittlereBrust = true;
+                rowId = c.getString(iRowId);
+                uebungsName = c.getString(iUebungsName);
+                String[] newUebung = {rowId, uebungsName, muskelGruppe};
+                uebungsList.add(newUebung);
+            } else if (muskelGruppe.contains("Rücken") && ruecken1 == false){
+                ruecken1 = true;
+                rowId = c.getString(iRowId);
+                uebungsName = c.getString(iUebungsName);
+                String[] newUebung = {rowId, uebungsName, muskelGruppe};
+                uebungsList.add(newUebung);
+            } else if ((muskelGruppe.contains("Rücken") && ruecken2 == false)){
+                ruecken2 = true;
+                rowId = c.getString(iRowId);
+                uebungsName = c.getString(iUebungsName);
+                String[] newUebung = {rowId, uebungsName, muskelGruppe};
+                uebungsList.add(newUebung);
+            } else if ((muskelGruppe.contains("Hintere Schulter") && hintereSchulter == false)){
+                hintereSchulter = true;
+                mittlereBrust = false;
+                rowId = c.getString(iRowId);
+                uebungsName = c.getString(iUebungsName);
+                String[] newUebung = {rowId, uebungsName, muskelGruppe};
+                uebungsList.add(newUebung);
+            } else if ((muskelGruppe.contains("Vordere Schulter") && vordereSchulter == false)){
+                vordereSchulter = true;
+                mittlereBrust = false;
+                rowId = c.getString(iRowId);
+                uebungsName = c.getString(iUebungsName);
+                String[] newUebung = {rowId, uebungsName, muskelGruppe};
+                uebungsList.add(newUebung);
+            } else if ((muskelGruppe.contains("Bizeps") && bizeps == false)){
+                bizeps = true;
+                mittlereBrust = false;
+                rowId = c.getString(iRowId);
+                uebungsName = c.getString(iUebungsName);
+                String[] newUebung = {rowId, uebungsName, muskelGruppe};
+                uebungsList.add(newUebung);
+            } else if ((muskelGruppe.contains("Trizeps") && trizeps == false)){
+                trizeps = true;
+                mittlereBrust = false;
+                rowId = c.getString(iRowId);
+                uebungsName = c.getString(iUebungsName);
+                String[] newUebung = {rowId, uebungsName, muskelGruppe};
+                uebungsList.add(newUebung);
+            }
+        }
+        return uebungsList;
+    }
+
+    //TODO
+    private List<String[]> fetchSchema3(){ // Schema: Stabilisation (Gesundheit, Rücken)
         Cursor c = rep.getAllUebungen();
 
         int iRowId = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_ROWID);
@@ -152,17 +240,15 @@ public class GenerateAllgemein {
         List<String[]> uebungsList = new LinkedList<String[]>();
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
             muskelGruppe = c.getString(iMuskelGruppe);
-            if (muskelGruppe.contains("Bauch") || muskelGruppe.contains("Beine") || muskelGruppe.contains("Po")){
+            if (muskelGruppe.contains("Stabilisation")){
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
             }
         }
-    }
-
-    //TODO
-    private void fetchSchema3(){ // Schema: Stabilisation (Gesundheit, Rücken)
+        Collections.shuffle(uebungsList);
+        return uebungsList;
     }
 
     private void grabIntoUebungListSchema1(List<String[]> uebungen){
@@ -204,6 +290,29 @@ public class GenerateAllgemein {
             finalUebungslist.add(ueb);
         }
         getTPhase().setUebungList(finalUebungslist);
+    }
+
+    public void grabIntoUebungListSchema2(List<String[]> uebungen){
+        List<Uebung> finalUebungslist = new LinkedList<Uebung>();
+        for (String[] element : uebungen){
+            Uebung ueb = new Uebung();
+            ueb.setUebungsID(element[0]);
+            ueb.setUebungsName(element[1]);
+
+            if (element[1].contains("Brust")){
+                ueb.setWochenTag(wochentage[0]);
+            } else if (element[1].contains("Rücken") || element[1].contains("Hintere")){
+                ueb.setWochenTag(wochentage[1]);
+            } else {
+                ueb.setWochenTag(wochentage[2]);
+            }
+            finalUebungslist.add(ueb);
+        }
+        getTPhase().setUebungList(finalUebungslist);
+    }
+
+    public void grabIntoUebungListSchema3(List<String[]> uebungen){
+
     }
 
     public Trainingsphase getTPhase() {

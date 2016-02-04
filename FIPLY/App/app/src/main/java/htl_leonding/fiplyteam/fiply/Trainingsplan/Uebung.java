@@ -5,12 +5,11 @@ package htl_leonding.fiplyteam.fiply.Trainingsplan;
  */
 public class Uebung {
     private String uebungsID; // UebungsID = Rowid in der DB
-    private String wochenTag;
+    private String wochenTag; // Mo
     private String uebungsName;
 
     public int getTrainingsgewicht(int wiederholungen, int rm, String uebungsID, String uebungsName){
-        RepMax repMax = new RepMax(rm,wiederholungen);
-        return repMax.getTrainingsgewicht();
+        return 1;
     }
 
     public String getUebungsName() {

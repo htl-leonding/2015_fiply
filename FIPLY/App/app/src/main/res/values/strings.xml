@@ -536,8 +536,66 @@
     \"Durchführung\":\"Beim Ausatmen Beine ausstrecken - nicht ganz durchstrecken,Beim Einatmen die Beine kontrolliert beugen\",
     \"Equipment\":\"Fitnessstudio\",
     \"Schwierigkeit\":\"Einfach\"
+  },
+  {
+    \"Muskelgruppe\":\"Stabilisation,Untere Hüftenmuskulatur Hüftstrecker\",
+    \"Name\":\"Rückenstabilisation\",
+    \"Beschreibung\":\"Auf Händen und Knien am Boden/Matte/Handtuch abstützen (=Bankstellung). Arme und Beine dabei etwa schulterbreit und im 90 Grad Winkel zum Oberkörper. Auf geraden und stabilen Rücken achten.\",
+    \"Durchführung\":\"Winkel im Knie beibehalten und abwechselnd ein Bein anheben bis Oberschenkel und Oberkörper in einer Linie sind und wieder in Grundstellung zurückkehren -> Beinwechsel\",
+    \"Equipment\":\"Matte\",
+    \"Schwierigkeit\":\"Einfach\"
+  }
+  {
+    \"Muskelgruppe\":\"Stabilisation,Gerade Bauchmuskulatur, Unten Hüftbeuger\",
+    \"Name\":\"Hüftheber\",
+    \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme parallel zum Körper als Stütze ablegen. 90 Grad Winkel in den Knien halten (fortgeschritten -> Beine ausstrecken).\",
+    \"Durchführung\":\"Hüfte vom Boden anheben und wieder absenken; dabei stets gesamten Rumpf unter Spannung halten\",
+    \"Equipment\":\"Matte\",
+    \"Schwierigkeit\":\"Einfach\"
+  }
+  {
+    \"Muskelgruppe\":\"Stabilisation,\",
+    \"Name\":\"kkk\",
+    \"Beschreibung\":\"kkk.\",
+    \"Durchführung\":\"kkk\",
+    \"Equipment\":\"Matte\",
+    \"Schwierigkeit\":\"Einfach\"
+  }
+  {
+    \"Muskelgruppe\":\"Stabilisation, Gerade Bauchmuskulatur, Unten Hüftbeuger, Seitliche Bauchmuskulatur\",
+    \"Name\":\"Beinpendel\",
+    \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme im 90 Grad Winkel zum Oberkörper als Stütze ablegen und Beine ausstrecken (90 Grad im Hüftgelenk).\",
+    \"Durchführung\":\"Beine zuerst langsam zu einer Seite – dann zur Grundstellung – und zur anderen Seite abwinkeln (bis ca. 45 Grad Winkel zwischen Boden und Grundstellung)\",
+    \"Equipment\":\"Matte\",
+    \"Schwierigkeit\":\"Einfach\"
+  }
+    {
+    \"Muskelgruppe\":\"Stabilisation, Laterale Kette, Rumpfmuskulatur\",
+    \"Name\":\"Seitliches Hüftheben\",
+    \"Beschreibung\":\"Seitstützposition (side plank) einnehmen (am Unterarm abstützen).\",
+    \"Durchführung\":\"Becken absenken und wieder anheben\",
+    \"Equipment\":\"Matte\",
+    \"Schwierigkeit\":\"Einfach\"
+  }
+    {
+    \"Muskelgruppe\":\"Stabilisation, Gesamte ventrale Kette\",
+    \"Name\":\"Trockenschwimmen\",
+    \"Beschreibung\":\"Bäuchlings auf Boden/Matte/Handtuch hinlegen. Hohlkreuz einnehmen und leichte Gewichte nehmen (Hanteln, Wasserflasche, Handtuch,...). Beine gestreckt und geschlossen vom Körper abheben; Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten\",
+    \"Durchführung\":\"Arme ausstrecken und Beine spreizen\",
+    \"Equipment\":\"Matte\",
+    \"Schwierigkeit\":\"Einfach\"
+  }
+    {
+    \"Muskelgruppe\":\"Stabilisation, Untere Rückenmuskulatur, Trapezmuskel\",
+    \"Name\":\"Rückenstrecker am Gymnastikball\",
+    \"Beschreibung\":\"Bäuchlings auf eine Gymnastikball legen, Knie sind am Boden und Beine angewinkelt. Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten.\",
+    \"Durchführung\":\"Oberkörper absenken und wieder anheben; Arme dabei stets im gleichen Winkel halten.\",
+    \"Equipment\":\"Matte\",
+    \"Schwierigkeit\":\"Einfach\"
   }
 ]
+
+
     </string>
 
 

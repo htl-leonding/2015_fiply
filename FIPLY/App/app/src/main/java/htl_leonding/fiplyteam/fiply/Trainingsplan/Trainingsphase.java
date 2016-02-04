@@ -15,8 +15,8 @@ public class Trainingsphase {
     private String phasenName;
     private PhasenTyp phasenTyp;
     private List<Uebung> uebungList = new LinkedList<Uebung>();
-    private int pausenDauer;
-    private int phasenDauer;
+    private int pausenDauer; // In Sekunden
+    private int phasenDauer; // In Wochen
     private int saetze;
     private int wiederholungen;
     private int repmax;
@@ -42,15 +42,12 @@ public class Trainingsphase {
         setEndingDate(this.getStartDate());
     }
 
-    private void setEndingDate(Date startDate){
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(startDate);
-        int week = cal.get(Calendar.WEEK_OF_YEAR);
-        int endWeek = week + phasenDauer;
-        cal = Calendar.getInstance();
-        cal.set(Calendar.WEEK_OF_YEAR, endWeek);
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        endDate = cal.getTime();
+    private void setEndingDate(Date startDate) {
+        int noOfDays = phasenDauer * 7;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startDate);
+        calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
+        this.endDate = calendar.getTime();
     }
 
     public List<Uebung> getUebungListOfToday(){
