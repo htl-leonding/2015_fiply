@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.security.Key;
+import java.sql.SQLException;
+
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
@@ -18,6 +21,9 @@ import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 public class FCreateUser3 extends Fragment {
     Spinner spAge;
     Spinner spProf;
+    ArrayAdapter<CharSequence> ageAdapter;
+    ArrayAdapter<CharSequence> profAdapter;
+    KeyValueRepository kvr;
 
     @Nullable
     @Override
@@ -28,37 +34,43 @@ public class FCreateUser3 extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
         spAge = (Spinner) getView().findViewById(R.id.spAge);
         spProf = (Spinner) getView().findViewById(R.id.spProf);
-
+        kvr = KeyValueRepository.getInstance();
         init();
-
+        try {
+            setSettings();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
     public void onDestroyView() {
-        KeyValueRepository.getInstance().insertKeyValue("userAge", spAge.getSelectedItem().toString());
-        KeyValueRepository.getInstance().insertKeyValue("userProf", spProf.getSelectedItem().toString());
+        kvr.updateKeyValue("userAge", spAge.getSelectedItem().toString());
+        kvr.updateKeyValue("userProf", spProf.getSelectedItem().toString());
         super.onDestroyView();
     }
 
     private void init() {
 
         //Create Adapters
-        ArrayAdapter<CharSequence> ageAdapter = ArrayAdapter.createFromResource(getActivity(),
+        ageAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.ageGroups, android.R.layout.simple_spinner_item);
         ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ArrayAdapter<CharSequence> profAdapter = ArrayAdapter.createFromResource(getActivity(),
+        profAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.proficiency, android.R.layout.simple_spinner_item);
         profAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         //Set Adapters
         spAge.setAdapter(ageAdapter);
         spProf.setAdapter(profAdapter);
+    }
 
-
+    private void setSettings() throws SQLException {
+        spAge.setSelection(ageAdapter.getPosition(kvr.getKeyValue("userAge").getString(1)));
+        spProf.setSelection(ageAdapter.getPosition(kvr.getKeyValue("userProf").getString(1)));
     }
 
 }

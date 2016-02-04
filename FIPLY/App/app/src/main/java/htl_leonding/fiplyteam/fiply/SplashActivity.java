@@ -8,6 +8,10 @@ import android.os.Bundle;
 
 import org.json.JSONException;
 
+import java.security.Key;
+import java.sql.SQLException;
+
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
 import static java.lang.Thread.sleep;
@@ -16,15 +20,17 @@ public class SplashActivity extends Activity {
 
     Context context;
     UebungenRepository rep;
+    KeyValueRepository kvr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        context = this;
-        UebungenRepository.setContext(context);
+        UebungenRepository.setContext(this);
+        KeyValueRepository.setContext(this);
         rep = UebungenRepository.getInstance();
+        kvr = KeyValueRepository.getInstance();
         SleepIntentTask sleepIntentTask = new SleepIntentTask();
         sleepIntentTask.execute("");
     }
@@ -38,11 +44,11 @@ public class SplashActivity extends Activity {
         protected String doInBackground(String... params) {
             try {
                 rep.insertAllExercises();
-//                sleep(3500);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
+                kvr.setDefaultUserSettings();
             }
             catch (JSONException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
             Intent openMain = new Intent("fiply.MAINACTIVITY");
