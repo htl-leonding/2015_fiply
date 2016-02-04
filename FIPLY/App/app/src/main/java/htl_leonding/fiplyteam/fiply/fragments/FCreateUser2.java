@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -26,6 +27,8 @@ public class FCreateUser2 extends Fragment {
     SeekBar sbHeight;
     TextView tvWeight;
     TextView tvHeight;
+
+    ImageView ivBody;
 
     KeyValueRepository kvr;
 
@@ -134,5 +137,7 @@ public class FCreateUser2 extends Fragment {
 
         SetWeight(Integer.parseInt(kvr.getKeyValue("userWeight").getString(1)));
         SetHeight(Integer.parseInt(kvr.getKeyValue("userHeight").getString(1)));
+        
+        ivBody.setImageDrawable(getResources().getDrawable(R.drawable.userCreationBody));
     }
 }
