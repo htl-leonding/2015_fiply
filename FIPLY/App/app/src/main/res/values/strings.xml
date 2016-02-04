@@ -37,6 +37,8 @@
     <string name="etPlName">Playlistname</string>
     <string name="btPlSave">Save</string>
     <string name="btPlAdd">Add</string>
+    <string name="sizeString">Size</string>
+    <string name="weightString">Weight</string>
 
     <string name="exercisecatalog">
         [
@@ -540,7 +542,8 @@
     </string>
 
 
-    <string-array name="navigationArray">
+
+  <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>
@@ -549,11 +552,8 @@
     </string-array>
 
   <string-array name="proficiency">
-    <item>Out of Shape</item>
-    <item>Average</item>
-    <item>Rather Fit</item>
-    <item>Lifts heavy things regularly</item>
-    <item>Arnold Schwarzenegger</item>
+    <item>Not Fit</item>
+    <item>Fit</item>
   </string-array>
 
   <string-array name="ageGroups">
