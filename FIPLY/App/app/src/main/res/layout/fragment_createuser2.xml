@@ -24,22 +24,20 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/tvSizeStat"
+        android:id="@+id/tvSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sizeString"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_above="@+id/sbHeight"
         android:layout_alignParentStart="true"
         android:layout_marginStart="51dp" />
 
     <TextView
-        android:id="@+id/tvWeightStat"
+        android:id="@+id/tvWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/sbWeight"
         android:layout_centerHorizontal="true"
-        android:text="@string/weightString"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

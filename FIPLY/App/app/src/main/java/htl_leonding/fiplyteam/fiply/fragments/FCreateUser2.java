@@ -3,6 +3,7 @@ package htl_leonding.fiplyteam.fiply.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class FCreateUser2 extends Fragment {
     }
 
     public void SetHeight(int height) {
+        tvHeight.setText("Größe: "+String.valueOf(height));
         sbHeight.setProgress(height - 100);
     }
 
@@ -66,11 +68,13 @@ public class FCreateUser2 extends Fragment {
         /*
 
          */
-        return sbHeight.getProgress() + 40;
+        return sbWeight.getProgress() + 40;
     }
 
     public void SetWeight(int weight) {
+        tvWeight.setText("Gewicht: "+String.valueOf(weight));
         sbWeight.setProgress(weight - 40);
+
     }
 
     @Override
@@ -79,8 +83,8 @@ public class FCreateUser2 extends Fragment {
 
         sbHeight = (SeekBar) getView().findViewById(R.id.sbHeight);
         sbWeight = (SeekBar) getView().findViewById(R.id.sbWeight);
-        tvHeight = (TextView) getView().findViewById(R.id.tvSizeStat);
-        tvWeight = (TextView) getView().findViewById(R.id.tvWeightStat);
+        tvHeight = (TextView) getView().findViewById(R.id.tvSize);
+        tvWeight = (TextView) getView().findViewById(R.id.tvWeight);
 
         sbHeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -125,7 +129,10 @@ public class FCreateUser2 extends Fragment {
     }
 
     private void setSettings() throws SQLException {
-        SetWeight(Integer.getInteger(kvr.getKeyValue("userHeight").getString(0)));
-        SetHeight(Integer.getInteger(kvr.getKeyValue("userWeight").getString(0)));
+        Log.wtf("setSettings(2)", "Height:"+kvr.getKeyValue("userHeight").getString(1));
+        Log.wtf("setSettings(2)", "Weight:"+kvr.getKeyValue("userWeight").getString(1));
+
+        SetWeight(Integer.parseInt(kvr.getKeyValue("userWeight").getString(1)));
+        SetHeight(Integer.parseInt(kvr.getKeyValue("userHeight").getString(1)));
     }
 }

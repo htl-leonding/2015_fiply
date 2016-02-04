@@ -59,7 +59,7 @@ public class FCreateUser extends Fragment {
 
     private void init() {
         //load images
-        //imgName.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusername));
+        //imgName.setImageDrawable(getResources().getDrawable(R.drawable.));
         //imgGender.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusergender));
 
         //init Adapter
@@ -79,9 +79,9 @@ public class FCreateUser extends Fragment {
     }
 
     private void setSettings() throws SQLException {
-        if(kvr.getKeyValue("userGender").getString(0) != "Gender")
-            spGender.setSelection(genderAdapter.getPosition(kvr.getKeyValue("userGender").getString(0)));
+        if(kvr.getKeyValue("userGender").getString(1) != "Gender")
+            spGender.setSelection(genderAdapter.getPosition(kvr.getKeyValue("userGender").getString(1)));
 
-        etName.setText(kvr.getKeyValue("userName").getString(0));
+        etName.setText(kvr.getKeyValue("userName").getString(1));
     }
 }

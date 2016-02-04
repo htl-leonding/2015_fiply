@@ -76,8 +76,6 @@ public class FUsermanagement extends Fragment {
                         btPrev.setText("Cancel");
                         break;
                     case 3: displayViewP2();
-                        break;
-                    case 4: displayViewP3();
                         btNext.setText("Next");
                         break;
                     default:

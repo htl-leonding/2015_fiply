@@ -552,11 +552,8 @@
     </string-array>
 
   <string-array name="proficiency">
-    <item>Out of Shape</item>
-    <item>Average</item>
-    <item>Rather Fit</item>
-    <item>Lifts heavy things regularly</item>
-    <item>Arnold Schwarzenegger</item>
+    <item>Not Fit</item>
+    <item>Fit</item>
   </string-array>
 
   <string-array name="ageGroups">

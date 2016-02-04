@@ -69,8 +69,8 @@ public class FCreateUser3 extends Fragment {
     }
 
     private void setSettings() throws SQLException {
-        spAge.setSelection(ageAdapter.getPosition(kvr.getKeyValue("userAge").getString(0)));
-        spProf.setSelection(ageAdapter.getPosition(kvr.getKeyValue("userProf").getString(0)));
+        spAge.setSelection(ageAdapter.getPosition(kvr.getKeyValue("userAge").getString(1)));
+        spProf.setSelection(ageAdapter.getPosition(kvr.getKeyValue("userProf").getString(1)));
     }
 
 }

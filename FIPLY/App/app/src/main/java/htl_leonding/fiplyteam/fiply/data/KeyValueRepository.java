@@ -143,31 +143,42 @@ public class KeyValueRepository {
     }
 
     public void setDefaultUserSettings() throws SQLException {
-        if(getKeyValue("userName").equals(null)) {
-            insertKeyValue("userName", "Name");
+
+        if (getKeyValue("userName").getString(1).equals("userName")) {
+            updateKeyValue("userName", "Name");
             Log.wtf("Defaults: ", "name");
         }
-        if(getKeyValue("userGender").equals(null)) {
-            insertKeyValue("userGender", "Gender");
+        Log.wtf("Value", getKeyValue("userName").getString(1));
+
+        if (getKeyValue("userGender").getString(1).equals("userGender")) {
+            updateKeyValue("userGender", "Gender");
             Log.wtf("Defaults: ", "gender");
         }
-        if(getKeyValue("userHeight").equals(null)) {
-            insertKeyValue("userHeight", "150");
+        Log.wtf("Value: ", getKeyValue("userGender").getString(0));
+
+        if (getKeyValue("userHeight").getString(1).equals("userHeight")) {
+            updateKeyValue("userHeight", "150");
             Log.wtf("Defaults: ", "height");
         }
-        if(getKeyValue("userWeight").equals(null)) {
-            insertKeyValue("userWeight", "80");
+        Log.wtf("Value: ", getKeyValue("userHeight").getString(1));
+
+        if (getKeyValue("userWeight").getString(1).equals("userWeight")) {
+            updateKeyValue("userWeight", "80");
             Log.wtf("Defaults: ", "weight");
         }
-        if(getKeyValue("userAge").equals(null)) {
-            insertKeyValue("userAge", "21-30");
+        Log.wtf("Value: ", getKeyValue("userWeight").getString(1));
+
+        if (getKeyValue("userAge").getString(1).equals("userAge")) {
+            updateKeyValue("userAge", "21-30");
             Log.wtf("Defaults: ", "age");
         }
-        if(getKeyValue("userProf").equals(null)) {
-            insertKeyValue("userProf", "Out of Shape");
-            Log.wtf("Defaults: ", "prof");
+        Log.wtf("Value: ", getKeyValue("userAge").getString(1));
 
+        if (getKeyValue("userProf").getString(1).equals("userProf")) {
+            updateKeyValue("userProf", "Fit");
+            Log.wtf("Defaults: ", "prof");
         }
+        Log.wtf("Value: ", getKeyValue("userProf").getString(1));
 
     }
 }
