@@ -11,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
@@ -138,6 +136,6 @@ public class FCreateUser2 extends Fragment {
         SetWeight(Integer.parseInt(kvr.getKeyValue("userWeight").getString(1)));
         SetHeight(Integer.parseInt(kvr.getKeyValue("userHeight").getString(1)));
         
-        ivBody.setImageDrawable(getResources().getDrawable(R.drawable.userCreationBody));
+        ivBody.setImageDrawable(getResources().getDrawable(R.drawable.usercreationbody));
     }
 }
