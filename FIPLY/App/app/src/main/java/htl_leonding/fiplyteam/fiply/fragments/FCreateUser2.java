@@ -11,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
@@ -88,7 +86,7 @@ public class FCreateUser2 extends Fragment {
         sbWeight = (SeekBar) getView().findViewById(R.id.sbWeight);
         tvHeight = (TextView) getView().findViewById(R.id.tvSize);
         tvWeight = (TextView) getView().findViewById(R.id.tvWeight);
-
+        ivBody = (ImageView) getView().findViewById(R.id.ivBody);
         sbHeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -138,6 +136,6 @@ public class FCreateUser2 extends Fragment {
         SetWeight(Integer.parseInt(kvr.getKeyValue("userWeight").getString(1)));
         SetHeight(Integer.parseInt(kvr.getKeyValue("userHeight").getString(1)));
         
-        ivBody.setImageDrawable(getResources().getDrawable(R.drawable.userCreationBody));
+        ivBody.setImageDrawable(getResources().getDrawable(R.drawable.usercreationbody));
     }
 }
