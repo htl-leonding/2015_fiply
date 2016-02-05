@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.menu;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.music.FPlaylist;
+import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingssession;
+import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungskatalog;
+import htl_leonding.fiplyteam.fiply.user.FUsermanagement;
 
 public class FMain extends Fragment {
     Button startUeb;

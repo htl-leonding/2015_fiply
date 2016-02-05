@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply;
+package htl_leonding.fiplyteam.fiply.menu;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -15,11 +15,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import htl_leonding.fiplyteam.fiply.fragments.FMain;
-import htl_leonding.fiplyteam.fiply.fragments.FPlaylist;
-import htl_leonding.fiplyteam.fiply.fragments.FTrainingssession;
-import htl_leonding.fiplyteam.fiply.fragments.FUebungskatalog;
-import htl_leonding.fiplyteam.fiply.fragments.FUsermanagement;
+import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.music.FPlaylist;
+import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingssession;
+import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungskatalog;
+import htl_leonding.fiplyteam.fiply.user.FUsermanagement;
 
 public class MainActivity extends AppCompatActivity {
     ListView mDrawerList;

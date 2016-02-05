@@ -1,10 +1,8 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.user;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +16,6 @@ import java.sql.SQLException;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
-/**
- * Created by Gerildo on 09.01.2016.
- */
 public class FCreateUser extends Fragment {
 
     ImageView imgName;
@@ -79,7 +74,7 @@ public class FCreateUser extends Fragment {
     }
 
     private void setSettings() throws SQLException {
-        if(kvr.getKeyValue("userGender").getString(1) != "Gender")
+        if (!kvr.getKeyValue("userGender").getString(1).equals("Gender"))
             spGender.setSelection(genderAdapter.getPosition(kvr.getKeyValue("userGender").getString(1)));
 
         etName.setText(kvr.getKeyValue("userName").getString(1));

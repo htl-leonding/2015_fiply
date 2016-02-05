@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.music;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import htl_leonding.fiplyteam.fiply.R;
-import htl_leonding.fiplyteam.fiply.ReadMusic;
-import htl_leonding.fiplyteam.fiply.displayFragment;
+import htl_leonding.fiplyteam.fiply.trainingssession.displayFragment;
+import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungDetail;
 
 public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener, SeekBar.OnSeekBarChangeListener {
 

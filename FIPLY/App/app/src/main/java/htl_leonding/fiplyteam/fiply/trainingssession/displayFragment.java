@@ -1,8 +1,10 @@
-package htl_leonding.fiplyteam.fiply;
+package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+
+import htl_leonding.fiplyteam.fiply.R;
 
 public class displayFragment {
     public static void displayTSUebung(Fragment display, FragmentManager fManager) {
