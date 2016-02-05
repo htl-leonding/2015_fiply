@@ -83,7 +83,7 @@ public class FCreateUser2 extends Fragment {
         sbWeight = (SeekBar) getView().findViewById(R.id.sbWeight);
         tvHeight = (TextView) getView().findViewById(R.id.tvSize);
         tvWeight = (TextView) getView().findViewById(R.id.tvWeight);
-
+        ivBody = (ImageView) getView().findViewById(R.id.ivBody);
         sbHeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -104,6 +104,7 @@ public class FCreateUser2 extends Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 tvWeight.setText("Gewicht: " + GetWeight());
+
             }
 
             @Override

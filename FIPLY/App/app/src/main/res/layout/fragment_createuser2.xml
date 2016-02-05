@@ -10,11 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="-160dp"
-        android:layout_marginRight="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginRight="-160dp"
         android:rotation="270"
         android:splitTrack="false"
-        android:longClickable="false" />
+        android:longClickable="false"
+        android:indeterminate="false" />
 
     <SeekBar
         android:id="@+id/sbWeight"
@@ -28,9 +29,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_above="@+id/sbHeight"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="51dp" />
+        android:layout_toEndOf="@+id/tvWeight"
+        android:layout_marginLeft="50dp"
+        android:layout_below="@+id/sbHeight" />
 
     <TextView
         android:id="@+id/tvWeight"
@@ -45,6 +46,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/ivBody"
         android:layout_above="@+id/tvWeight"
-        android:layout_alignStart="@+id/tvSize" />
+        android:layout_alignTop="@+id/tvWeight"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:contentDescription="stickman" />
 
 </RelativeLayout>
