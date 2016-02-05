@@ -1,20 +1,18 @@
-package htl_leonding.fiplyteam.fiply;
+package htl_leonding.fiplyteam.fiply.menu;
 
-import android.content.Context;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import org.json.JSONException;
 
-import java.security.Key;
 import java.sql.SQLException;
 
+import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
-
-import static java.lang.Thread.sleep;
 
 public class SplashActivity extends Activity {
 

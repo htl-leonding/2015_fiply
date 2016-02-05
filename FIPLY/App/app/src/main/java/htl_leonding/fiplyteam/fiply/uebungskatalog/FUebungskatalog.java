@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.uebungskatalog;
 
 import android.content.Context;
 import android.database.Cursor;

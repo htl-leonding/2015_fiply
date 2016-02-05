@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply;
+package htl_leonding.fiplyteam.fiply.music;
 
 import android.media.MediaPlayer;
 

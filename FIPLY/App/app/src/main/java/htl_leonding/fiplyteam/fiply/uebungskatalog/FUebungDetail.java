@@ -1,6 +1,5 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.uebungskatalog;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,9 +12,6 @@ import android.widget.TextView;
 
 import htl_leonding.fiplyteam.fiply.R;
 
-/**
- * Created by Gerildo on 08.12.2015.
- */
 public class FUebungDetail extends Fragment {
 
     String uebungsName;
@@ -80,7 +76,7 @@ public class FUebungDetail extends Fragment {
             }
         });
 
-        if(getArguments().getBoolean("showVideo") == true) {
+        if (getArguments().getBoolean("showVideo")) {
             setupVideo();
             checkBox.setChecked(true);
             wvUebungVideo.setVisibility(View.VISIBLE);

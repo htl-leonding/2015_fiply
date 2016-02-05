@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.music;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import htl_leonding.fiplyteam.fiply.R;
-import htl_leonding.fiplyteam.fiply.ReadMusic;
 
 public class FPlaylist extends Fragment {
 
