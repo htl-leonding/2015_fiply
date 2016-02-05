@@ -107,6 +107,7 @@ public class FCreateUser2 extends Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 tvWeight.setText("Gewicht: " + GetWeight());
+
             }
 
             @Override
