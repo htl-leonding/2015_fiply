@@ -151,7 +151,7 @@ public class KeyValueRepository {
         Log.wtf("Value", getKeyValue("userName").getString(1));
 
         if (getKeyValue("userGender").getString(1).equals("userGender")) {
-            updateKeyValue("userGender", "Gender");
+            updateKeyValue("userGender", "Male");
             Log.wtf("Defaults: ", "gender");
         }
         Log.wtf("Value: ", getKeyValue("userGender").getString(0));
