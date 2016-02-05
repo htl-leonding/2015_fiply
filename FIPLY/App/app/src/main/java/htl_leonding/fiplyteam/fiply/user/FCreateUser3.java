@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.user;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,15 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import java.security.Key;
 import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
-/**
- * Created by Gerald on 11/01/2016.
- */
 public class FCreateUser3 extends Fragment {
     Spinner spAge;
     Spinner spProf;

@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.fragments;
+package htl_leonding.fiplyteam.fiply.user;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,9 +16,6 @@ import java.sql.SQLException;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
-/**
- * Created by Gerildo on 10.01.2016.
- */
 public class FCreateUser2 extends Fragment {
 
     SeekBar sbWeight;
