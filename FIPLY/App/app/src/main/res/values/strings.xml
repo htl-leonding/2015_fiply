@@ -1,4 +1,5 @@
 <resources>
+    <string name="videoLink">Video ansehen</string>
     <string name="app_name">FIPLY</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="welcome">Willkommen in der FIPLY APP!</string>
@@ -39,6 +40,7 @@
     <string name="btPlAdd">Add</string>
     <string name="sizeString">Size</string>
     <string name="weightString">Weight</string>
+    <string name="startTrainView">Trainingsview starten</string>
 
     <string name="exercisecatalog">
         [
@@ -536,6 +538,54 @@
     \"Beschreibung\":\"Vollständig anlehnen,Beine etwas mehr als schulterbreit auf das Fußteil stellen,Griffe umgreifen\",
     \"Durchführung\":\"Beim Ausatmen Beine ausstrecken - nicht ganz durchstrecken,Beim Einatmen die Beine kontrolliert beugen\",
     \"Equipment\":\"Fitnessstudio\",
+    \"Schwierigkeit\":\"Einfach\"
+  },
+  {
+    \"Muskelgruppe\":\"Stabilisation,Untere Rückenmuskulatur Hüftstrecker\",
+    \"Name\":\"Rückenstabilisation\",
+    \"Beschreibung\":\"Auf Händen und Knien am Boden/Matte/Handtuch abstützen (=Bankstellung). Arme und Beine dabei etwa schulterbreit und im 90 Grad Winkel zum Oberkörper. Auf geraden und stabilen Rücken achten.\",
+    \"Durchführung\":\"Winkel im Knie beibehalten und abwechselnd ein Bein anheben bis Oberschenkel Linie sind und wieder in Grundstellung zurückkehren -> Beinwechsel.\",
+    \"Equipment\":\"Mappe\",
+    \"Schwierigkeit\":\"Einfach\"
+  },
+  {
+    \"Muskelgruppe\":\"Stabilisation,Gerade Bauchmuskulatur, unten Hüftbeuger\",
+    \"Name\":\"Hüftheber\",
+    \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme parallel zum Körper als Stütze ablegen. 90 Grad Winkel in den Knien halten (fortgeschritten -> Beine ausstrecken).\",
+    \"Durchführung\":\"Hüfte vom Boden anheben und wieder absenken; dabei stets gesamten Rumpf unter Spannung halten.\",
+    \"Equipment\":\"Mappe\",
+    \"Schwierigkeit\":\"Einfach\"
+  },
+  {
+    \"Muskelgruppe\":\"Stabilisation,Gerad Bauchmuskulatur, unten Hüftbeuger, Sietliche Bauchmuskulatur\",
+    \"Name\":\"Beinpendel\",
+    \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme im 90 Grad Winkel zum Oberkörper als Stütze ablegen und Beine ausstrecken (90 Grad im Hüftgelenk) Durchführung.\",
+    \"Durchführung\":\"Beine zuerst langsam zu einer Seite – dann zur Grundstellung – und zur anderen Seite abwinkeln (bis ca. 45 Grad Winkel zwischen Boden und Grundstellung).\",
+    \"Equipment\":\"Mappe\",
+    \"Schwierigkeit\":\"Einfach\"
+  },
+  {
+    \"Muskelgruppe\":\"Stabilisation, Laterale Kette, Rumpfmuskulatur\",
+    \"Name\":\"Seitliches Hüftheben\",
+    \"Beschreibung\":\"Seitstützposition (side plank) einnehmen (am Unterarm abstützen).\",
+    \"Durchführung\":\"Becken absenken und wieder anheben.\",
+    \"Equipment\":\"Mappe\",
+    \"Schwierigkeit\":\"Einfach\"
+  },
+  {
+    \"Muskelgruppe\":\"Stabilisation, Gesamte ventrale Kette\",
+    \"Name\":\"Trockenschwimmen\",
+    \"Beschreibung\":\"Bäuchlings auf Boden/Matte/Handtuch hinlegen. Hohlkreuz einnehmen und leichte Gewichte nehmen (Hanteln, Wasserflasche, Handtuch,...). Beine gestreckt und geschlossen vom Körper abheben; Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten\",
+    \"Durchführung\":\"Arme ausstrecken und Beine spreizen\",
+    \"Equipment\":\"Mappe\",
+    \"Schwierigkeit\":\"Einfach\"
+  },
+  {
+    \"Muskelgruppe\":\"Stabilisation, Untere Rückenmuskulatur\",
+    \"Name\":\"Rückenstrecker am Gymnastikball\",
+    \"Beschreibung\":\"Bäuchlings auf eine Gymnastikball legen, Knie sind am Boden und Beine angewinkelt. Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten.\",
+    \"Durchführung\":\"Oberkörper absenken und wieder anheben; Arme dabei stets im gleichen Winkel halten.\",
+    \"Equipment\":\"Mappe\",
     \"Schwierigkeit\":\"Einfach\"
   }
 ]

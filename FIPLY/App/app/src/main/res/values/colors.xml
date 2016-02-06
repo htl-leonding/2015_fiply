@@ -5,6 +5,7 @@
     <color name="darkTextColorLight">#FFA500</color>
     <color name="darkTextColorDark">#000000</color>
     <color name="darkMenuButtons">#FFA500</color>
+    <color name="darkTextColorFlashy">#FF0000</color>
 
 
     <color name="darkNavigationDivider">#00FFA500</color>

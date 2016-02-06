@@ -24,7 +24,7 @@ public class FTrainingssession extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FUebungDetail fragmentUebung = new FUebungDetail();
+        FTrainingsinstructions fragmentUebung = new FTrainingsinstructions();
         Bundle args = new Bundle();
         args.putString("name", "TestName");
         args.putString("beschreibung", "TestBeschreibung");
