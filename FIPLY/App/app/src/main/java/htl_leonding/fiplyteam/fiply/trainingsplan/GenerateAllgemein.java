@@ -136,7 +136,6 @@ public class GenerateAllgemein {
         return actualUebungen;
     }
 
-    //TODO
     private List<String[]> fetchSchema2(){ // Schema: Oberkörper - Arme
         Cursor c = rep.getAllUebungen();
 
@@ -224,8 +223,7 @@ public class GenerateAllgemein {
         return uebungsList;
     }
 
-    //TODO
-    private List<String[]> fetchSchema3(){ // Schema: Stabilisation (Gesundheit, Rücken)
+    public List<String[]> fetchSchema3(){ // Schema: Stabilisation (Gesundheit, Rücken)
         Cursor c = rep.getAllUebungen();
 
         int iRowId = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_ROWID);
@@ -256,7 +254,7 @@ public class GenerateAllgemein {
             Uebung ueb = new Uebung();
             ueb.setUebungsID(element[0]);
             ueb.setUebungsName(element[1]);
-
+            ueb.setRepmax(repmax);
             if (element[2].toUpperCase().contains("PO")){
                 ueb.setWochenTag(wochentage[0]);
             }else{
@@ -295,6 +293,7 @@ public class GenerateAllgemein {
             Uebung ueb = new Uebung();
             ueb.setUebungsID(element[0]);
             ueb.setUebungsName(element[1]);
+            ueb.setRepmax(repmax);
 
             if (element[1].contains("Brust")){
                 ueb.setWochenTag(wochentage[0]);
@@ -315,27 +314,32 @@ public class GenerateAllgemein {
         ueb.setUebungsID(uebungen.get(0)[0]);
         ueb.setUebungsName(uebungen.get(0)[1]);
         ueb.setWochenTag(wochentage[0]);
+        ueb.setRepmax(0);
         finalUebungslist.add(ueb);
         ueb = new Uebung();
         ueb.setUebungsID(uebungen.get(1)[0]);
         ueb.setUebungsName(uebungen.get(1)[1]);
         ueb.setWochenTag(wochentage[0]);
         finalUebungslist.add(ueb);
+        ueb.setRepmax(0);
         ueb = new Uebung();
         ueb.setUebungsID(uebungen.get(2)[0]);
         ueb.setUebungsName(uebungen.get(2)[1]);
         ueb.setWochenTag(wochentage[1]);
         finalUebungslist.add(ueb);
+        ueb.setRepmax(0);
         ueb = new Uebung();
         ueb.setUebungsID(uebungen.get(3)[0]);
         ueb.setUebungsName(uebungen.get(3)[1]);
         ueb.setWochenTag(wochentage[1]);
         finalUebungslist.add(ueb);
+        ueb.setRepmax(0);
         ueb = new Uebung();
         ueb.setUebungsID(uebungen.get(4)[0]);
         ueb.setUebungsName(uebungen.get(4)[1]);
         ueb.setWochenTag(wochentage[2]);
         finalUebungslist.add(ueb);
+        ueb.setRepmax(0);
         ueb = new Uebung();
         ueb.setUebungsID(uebungen.get(5)[0]);
         ueb.setUebungsName(uebungen.get(5)[1]);

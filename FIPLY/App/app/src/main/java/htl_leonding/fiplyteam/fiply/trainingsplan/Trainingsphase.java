@@ -27,7 +27,7 @@ public class Trainingsphase {
         setEndingDate(startDate);
     }
 
-    public Trainingsphase(String phasenName, PhasenTyp phasenTyp, int pausenDauer, int phasenDauer, int seatze,int wiederholungen, int repmax, Date startDate){
+    public Trainingsphase(String phasenName, PhasenTyp phasenTyp, int pausenDauer, int phasenDauer, int seatze, int wiederholungen, int repmax, Date startDate){
         this.setPhasenName(phasenName);
         this.setPhasenTyp(phasenTyp);
         this.setPausenDauer(pausenDauer);
@@ -53,10 +53,10 @@ public class Trainingsphase {
         String dayofweek = dateFormat.format(now);
         //Mögliche Werte:
         //Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag
-        return getUbeungByDay(dayofweek);
+        return getUebungByDay(dayofweek);
     }
 
-    public List<Uebung> getUbeungByDay(String day){
+    public List<Uebung> getUebungByDay(String day){
         List<Uebung> uebungen = new LinkedList<Uebung>();
         for (Uebung element : getUebungList()){
             if (element.getWochenTag() == day)
@@ -143,5 +143,21 @@ public class Trainingsphase {
 
     public Date getStartDate() {
         return startDate;
+    }
+
+    public String[] getWochentage(){
+        List<String> wochentage = new LinkedList<String>();
+        for (Uebung element : uebungList){
+            if (!wochentage.contains(element.getWochenTag())){
+                wochentage.add(element.getWochenTag());
+            }
+        }
+        int cnt = 0;
+        String[] tage = null;
+        for (String element : wochentage){
+            tage[cnt] = element;
+            cnt++;
+        }
+        return tage;
     }
 }

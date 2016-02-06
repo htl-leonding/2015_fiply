@@ -20,6 +20,7 @@ import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 public class FTrainingsplan extends Fragment {
 
     GenerateAllgemein gAlg;
+    GeneratePhTwoKraftausdauer phTKra;
     Context context;
     ListView lView;
     SimpleCursorAdapter sCAdaptaber;
@@ -31,6 +32,7 @@ public class FTrainingsplan extends Fragment {
         rep = UebungenRepository.getInstance();
         String[] wochentage = {"Montag", "Donnerstag", "Samstag"};
         gAlg = new GenerateAllgemein(true, 3, wochentage, new Date());
+        phTKra = new GeneratePhTwoKraftausdauer(wochentage, new Date(), false);
         return inflater.inflate(R.layout.fragment_trainingsplantest, container, false);
     }
 
@@ -40,22 +42,24 @@ public class FTrainingsplan extends Fragment {
 
         lView = (ListView) getView().findViewById(R.id.testlistview);
 
-        ArrayList<Uebung> uebungsListe = gAlg.getTPhase().getUebungenAsArrayList();
+        ArrayList<Uebung> uebungsListeAllg = gAlg.getTPhase().getUebungenAsArrayList();
+        ArrayList<Uebung> uebungsListePhTKra = phTKra.getTPhase().getUebungenAsArrayList();
+
         Uebung ueb = new Uebung();
         ueb.setUebungsName("Starttermin: " + gAlg.getTPhase().getStartDate().toString());
         ueb.setWochenTag("Endtermin: " + gAlg.getTPhase().getEndDate().toString());
         ueb.setUebungsID("Dauer: " + gAlg.getTPhase().getPhasenDauer() + " Wochen");
 
-        Collections.sort(uebungsListe, new Comparator<Uebung>() {
+        Collections.sort(uebungsListePhTKra, new Comparator<Uebung>() {
             @Override
             public int compare(Uebung lhs, Uebung rhs) {
 
                 return lhs.getWochenTag().compareTo(rhs.getWochenTag());
             }
         });
-        uebungsListe.add(ueb);
+        uebungsListePhTKra.add(ueb);
 
-        UebungsAdapter adapter = new UebungsAdapter(this.getContext(), uebungsListe);
+        UebungsAdapter adapter = new UebungsAdapter(this.getContext(), uebungsListePhTKra);
         lView = (ListView) view.findViewById(R.id.testlistview);
         lView.setAdapter(adapter);
     }
