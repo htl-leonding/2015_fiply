@@ -20,9 +20,6 @@ import htl_leonding.fiplyteam.fiply.trainingsplan.Uebung;
 import htl_leonding.fiplyteam.fiply.trainingsplan.UebungsAdapter;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
-/**
- * Created by daniel on 02.02.16.
- */
 public class FTrainingsplan extends Fragment {
 
     GenerateAllgemein gAlg;

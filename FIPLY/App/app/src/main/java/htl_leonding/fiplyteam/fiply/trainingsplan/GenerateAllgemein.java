@@ -10,9 +10,6 @@ import java.util.List;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
-/**
- * Created by daniel on 30.01.16.
- */
 public class GenerateAllgemein {
     boolean trainiert;
     int schema; // 1 = Bauch-Beine-Po; 2 = Oberkörper-Arme; 3 = Stabilisation(Gesundheit-Rücken)

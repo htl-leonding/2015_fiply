@@ -1,8 +1,5 @@
 package htl_leonding.fiplyteam.fiply.trainingsplan;
 
-/**
- * Created by daniel on 30.01.16.
- */
 public class RepMax {
 
     public static int getTrainingsgewicht(int wiederholungen, int repMax){

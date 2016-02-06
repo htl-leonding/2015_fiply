@@ -1,8 +1,5 @@
 package htl_leonding.fiplyteam.fiply.trainingsplan;
 
-/**
- * Created by daniel on 30.01.16.
- */
 public enum PhasenTyp {
     ALLGEMEIN,                                  // Phase 1: Allgemein
     PHASE2KRAFTAUSDAUER,                        // Phase 2: Kraftausdauer

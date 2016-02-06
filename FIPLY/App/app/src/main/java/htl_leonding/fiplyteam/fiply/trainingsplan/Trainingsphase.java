@@ -8,9 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by daniel on 30.01.16.
- */
 public class Trainingsphase {
     private String phasenName;
     private PhasenTyp phasenTyp;

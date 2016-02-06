@@ -11,9 +11,6 @@ import java.util.ArrayList;
 
 import htl_leonding.fiplyteam.fiply.R;
 
-/**
- * Created by daniel on 02.02.16.
- */
 public class UebungsAdapter extends ArrayAdapter<Uebung> {
 
     public UebungsAdapter(Context context, ArrayList<Uebung> uebungen){
