@@ -4,7 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="htl_leonding.fiplyteam.fiply.MainActivity">
+    tools:context="htl_leonding.fiplyteam.fiply.menu.MainActivity">
 
     <!-- FrameLayout in das die Fragments geladen werden -->
     <FrameLayout
@@ -20,6 +20,7 @@
         android:layout_gravity="start"
         android:background="@color/darkNavigationBackground"
         android:divider="@color/darkNavigationDivider"
-        android:dividerHeight="1dp" />
+        android:dividerHeight="1dp"
+        />
 
 </android.support.v4.widget.DrawerLayout>

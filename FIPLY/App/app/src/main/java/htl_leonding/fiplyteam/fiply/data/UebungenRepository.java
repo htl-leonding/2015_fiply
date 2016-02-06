@@ -16,9 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
@@ -242,36 +239,6 @@ public class UebungenRepository extends Service {
             insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), "Not Implemented", "https://www.youtube.com/embed/0TjxnrWT8Es");
         }
 
-    }
-
-    public String[] getHeaderNamesForUebungskatalog() throws SQLException {
-        Cursor uebung = getAllUebungen();
-        String[] headerNames = new String[uebung.getCount()];
-        uebung.moveToFirst();
-
-        for (int i = 0; i < uebung.getCount(); i++) {
-            headerNames[i] = uebung.getString(1);
-            uebung.moveToNext();
-        }
-        return headerNames;
-    }
-
-    public HashMap<String, List<String>> getChildDataForUebungskatalog() throws SQLException {
-        HashMap<String, List<String>> childData = new HashMap<>((int) getUebungCount());
-        Cursor uebung = getAllUebungen();
-        uebung.moveToFirst();
-        List<String> values = new LinkedList<>();
-        for (int i = 0; i < (int) getUebungCount(); i++) {
-            values.clear();
-            for (int j = 1; j < 5; j++) {
-                values.add(uebung.getString(j + 1));
-            }
-
-            childData.put(uebung.getString(1), values);
-            uebung.moveToNext();
-        }
-
-        return childData;
     }
 
 

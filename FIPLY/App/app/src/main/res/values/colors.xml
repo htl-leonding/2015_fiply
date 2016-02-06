@@ -4,12 +4,15 @@
     <color name="darkSecondary">#363534</color>
     <color name="darkTextColorLight">#FFA500</color>
     <color name="darkTextColorDark">#000000</color>
-    <color name="darkNavigationDivider">#00000000</color>
-    <!-- unused -->
-    <color name="darkNavigationText">#7CFC00</color>
-    <color name="darkNavigationBackground">#00000000</color>
-    <!-- unused -->
     <color name="darkMenuButtons">#FFA500</color>
+
+
+    <color name="darkNavigationDivider">#00FFA500</color>
+    <!-- unused -->
+    <color name="darkNavigationText">#000000</color>
+    <color name="darkNavigationBackground">#96000000</color>
+    <!-- unused -->
+
 
     <color name="lightPrimary">#FFA500</color>
     <color name="lightSecondary">#c4b69e</color>

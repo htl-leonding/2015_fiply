@@ -4,11 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <DatePicker
-        android:id="@+id/dpAge"
+    <TextView
+        android:id="@+id/tvAgeStat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:maxDate="12.12.2037"
-        android:minDate="01.01.1915" />
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="Age"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tvProfStat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="Proficiency"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spProf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
 </LinearLayout>
