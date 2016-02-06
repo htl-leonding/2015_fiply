@@ -86,7 +86,7 @@ public class GenerateAllgemein {
                 break;
             case 2: grabIntoUebungListSchema2(fetchSchema2());
                 break;
-            case 3:fetchSchema3();
+            case 3: grabIntoUebungListSchema3(fetchSchema3());
                 break;
         }
     }

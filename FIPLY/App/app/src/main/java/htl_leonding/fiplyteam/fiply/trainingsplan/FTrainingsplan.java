@@ -30,7 +30,7 @@ public class FTrainingsplan extends Fragment {
         context = getActivity();
         rep = UebungenRepository.getInstance();
         String[] wochentage = {"Montag", "Donnerstag", "Samstag"};
-        gAlg = new GenerateAllgemein(true, 2, wochentage, new Date());
+        gAlg = new GenerateAllgemein(true, 3, wochentage, new Date());
         return inflater.inflate(R.layout.fragment_trainingsplantest, container, false);
     }
 
