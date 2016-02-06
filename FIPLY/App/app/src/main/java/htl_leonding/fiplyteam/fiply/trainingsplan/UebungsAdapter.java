@@ -28,10 +28,12 @@ public class UebungsAdapter extends ArrayAdapter<Uebung> {
         TextView uebungsName = (TextView) convertView.findViewById(R.id.uebungsName);
         TextView uebungsID = (TextView) convertView.findViewById(R.id.uebungsID);
         TextView wochentag = (TextView) convertView.findViewById(R.id.wochentag);
+        TextView muskelgruppe = (TextView) convertView.findViewById(R.id.muskelgruppe);
 
         uebungsName.setText(ueb.getUebungsName());
         uebungsID.setText(ueb.getUebungsID());
         wochentag.setText(ueb.getWochenTag());
+        muskelgruppe.setText(ueb.getMuskelgruppe());
 
         return convertView;
     }
