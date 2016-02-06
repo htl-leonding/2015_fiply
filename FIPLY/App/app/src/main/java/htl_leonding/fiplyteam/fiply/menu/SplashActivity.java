@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import org.json.JSONException;
 
+import java.sql.SQLException;
+
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
@@ -40,11 +42,11 @@ public class SplashActivity extends Activity {
         protected String doInBackground(String... params) {
             try {
                 rep.insertAllExercises();
-//                kvr.setDefaultUserSettings();
+                kvr.setDefaultUserSettings();
             } catch (JSONException e) {
                 e.printStackTrace();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
             Intent openMain = new Intent("fiply.MAINACTIVITY");
             //Diese Flags verhindern dass man durch Klicken des BackButtons auf diese Activity zurückkommt.
