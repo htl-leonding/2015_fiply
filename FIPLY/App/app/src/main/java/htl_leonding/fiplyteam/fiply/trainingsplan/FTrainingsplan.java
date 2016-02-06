@@ -15,9 +15,6 @@ import java.util.Comparator;
 import java.util.Date;
 
 import htl_leonding.fiplyteam.fiply.R;
-import htl_leonding.fiplyteam.fiply.trainingsplan.GenerateAllgemein;
-import htl_leonding.fiplyteam.fiply.trainingsplan.Uebung;
-import htl_leonding.fiplyteam.fiply.trainingsplan.UebungsAdapter;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
 public class FTrainingsplan extends Fragment {
