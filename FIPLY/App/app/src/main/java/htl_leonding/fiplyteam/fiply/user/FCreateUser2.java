@@ -3,6 +3,7 @@ package htl_leonding.fiplyteam.fiply.user;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -128,12 +129,12 @@ public class FCreateUser2 extends Fragment {
     }
 
     private void setSettings() throws SQLException {
-        Log.wtf("setSettings(2)", "Height:"+kvr.getKeyValue("userHeight").getString(1));
-        Log.wtf("setSettings(2)", "Weight:"+kvr.getKeyValue("userWeight").getString(1));
+        Log.wtf("setSettings(2)", "Height:" + kvr.getKeyValue("userHeight").getString(1));
+        Log.wtf("setSettings(2)", "Weight:" + kvr.getKeyValue("userWeight").getString(1));
 
         SetWeight(Integer.parseInt(kvr.getKeyValue("userWeight").getString(1)));
         SetHeight(Integer.parseInt(kvr.getKeyValue("userHeight").getString(1)));
-        
-        ivBody.setImageDrawable(getResources().getDrawable(R.drawable.usercreationbody));
+
+        ivBody.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.userbody));
     }
 }

@@ -51,7 +51,7 @@ public class FUsermanagement extends Fragment {
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (getPageId()){
+                switch (getPageId()) {
                     case 1:
                         btPrev.setText("Previous");
                         displayViewP2();
@@ -70,13 +70,15 @@ public class FUsermanagement extends Fragment {
         btPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (getPageId()){
-                    case 1: displayViewPMain();
+                switch (getPageId()) {
+                    case 1:
+                        displayViewPMain();
                         break;
-                    case 2: displayViewP1();
-                        btPrev.setText("Cancel");
-                        break;
-                    case 3: displayViewP2();
+//                    case 2: displayViewP1();
+//                        btPrev.setText("Cancel");
+//                        break;
+                    case 3:
+                        displayViewP2();
                         btNext.setText("Next");
                         break;
                     default:
@@ -84,21 +86,21 @@ public class FUsermanagement extends Fragment {
             }
         });
 
-        displayViewP1();
+//        displayViewP1();
 
         super.onViewCreated(view, savedInstanceState);
     }
 
-    private void displayViewP1() {
-        setPageId(1);
-        FCreateUser fragment = new FCreateUser();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fraUserInput, fragment, "NamePage");
-        fragmentTransaction.commit();
-    }
+    //    private void displayViewP1() {
+//        setPageId(1);
+//        FCreateUser fragment = new FCreateUser();
+//        FragmentManager fragmentManager = getFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.replace(R.id.fraUserInput, fragment, "NamePage");
+//        fragmentTransaction.commit();
+//    }
     private void displayViewP2() {
         setPageId(2);
         FCreateUser2 fragment = new FCreateUser2();
