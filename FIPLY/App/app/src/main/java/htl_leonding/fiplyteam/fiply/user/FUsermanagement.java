@@ -15,9 +15,7 @@ import htl_leonding.fiplyteam.fiply.menu.FMain;
 
 public class FUsermanagement extends Fragment {
 
-    //    Button btCreate;
-//    Button btEdit;
-//    Button btChoose;
+
     Button btNext;
     Button btPrev;
     int pageId = 1;
@@ -74,9 +72,9 @@ public class FUsermanagement extends Fragment {
                     case 1:
                         displayViewPMain();
                         break;
-//                    case 2: displayViewP1();
-//                        btPrev.setText("Cancel");
-//                        break;
+                    case 2: displayViewP1();
+                        btPrev.setText("Cancel");
+                        break;
                     case 3:
                         displayViewP2();
                         btNext.setText("Next");
@@ -86,21 +84,21 @@ public class FUsermanagement extends Fragment {
             }
         });
 
-//        displayViewP1();
+        displayViewP1();
 
         super.onViewCreated(view, savedInstanceState);
     }
 
-    //    private void displayViewP1() {
-//        setPageId(1);
-//        FCreateUser fragment = new FCreateUser();
-//        FragmentManager fragmentManager = getFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.replace(R.id.fraUserInput, fragment, "NamePage");
-//        fragmentTransaction.commit();
-//    }
+        private void displayViewP1() {
+        setPageId(1);
+        FCreateUser fragment = new FCreateUser();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fraUserInput, fragment, "NamePage");
+        fragmentTransaction.commit();
+    }
     private void displayViewP2() {
         setPageId(2);
         FCreateUser2 fragment = new FCreateUser2();

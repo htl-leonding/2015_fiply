@@ -1,7 +1,7 @@
 package htl_leonding.fiplyteam.fiply.user;
 
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -74,9 +74,6 @@ public class FCreateUser extends Fragment {
     }
 
     private void setSettings() throws SQLException {
-        if (!kvr.getKeyValue("userGender").getString(1).equals("Gender"))
-            spGender.setSelection(genderAdapter.getPosition(kvr.getKeyValue("userGender").getString(1)));
-
         etName.setText(kvr.getKeyValue("userName").getString(1));
     }
 }

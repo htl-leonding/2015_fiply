@@ -142,42 +142,15 @@ public class KeyValueRepository {
     }
 
     public void setDefaultUserSettings() throws SQLException {
+        if (getKeyValue("isUserCustomized").getCount() == 0) {
+            insertKeyValue("userName","Name");
+            insertKeyValue("userGender","Male");
+            insertKeyValue("userWeight","80");
+            insertKeyValue("userHeight","180");
+            insertKeyValue("userAge","21-30");
+            insertKeyValue("userProf","Not Fit");
 
-        if (getKeyValue("userName").getString(1).equals("userName")) {
-            updateKeyValue("userName", "Name");
-            Log.wtf("Defaults: ", "name");
+            insertKeyValue("isUserCustomized", "true");
         }
-        Log.wtf("Value", getKeyValue("userName").getString(1));
-
-        if (getKeyValue("userGender").getString(1).equals("userGender")) {
-            updateKeyValue("userGender", "Male");
-            Log.wtf("Defaults: ", "gender");
-        }
-        Log.wtf("Value: ", getKeyValue("userGender").getString(0));
-
-        if (getKeyValue("userHeight").getString(1).equals("userHeight")) {
-            updateKeyValue("userHeight", "150");
-            Log.wtf("Defaults: ", "height");
-        }
-        Log.wtf("Value: ", getKeyValue("userHeight").getString(1));
-
-        if (getKeyValue("userWeight").getString(1).equals("userWeight")) {
-            updateKeyValue("userWeight", "80");
-            Log.wtf("Defaults: ", "weight");
-        }
-        Log.wtf("Value: ", getKeyValue("userWeight").getString(1));
-
-        if (getKeyValue("userAge").getString(1).equals("userAge")) {
-            updateKeyValue("userAge", "21-30");
-            Log.wtf("Defaults: ", "age");
-        }
-        Log.wtf("Value: ", getKeyValue("userAge").getString(1));
-
-        if (getKeyValue("userProf").getString(1).equals("userProf")) {
-            updateKeyValue("userProf", "Fit");
-            Log.wtf("Defaults: ", "prof");
-        }
-        Log.wtf("Value: ", getKeyValue("userProf").getString(1));
-
     }
 }
