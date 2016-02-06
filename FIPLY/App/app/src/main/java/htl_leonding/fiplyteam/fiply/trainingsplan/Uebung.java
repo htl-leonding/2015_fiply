@@ -7,7 +7,7 @@ public class Uebung {
     private int repmax;
     private String muskelgruppe;
 
-    public int getTrainingsgewicht(int wiederholungen, int rm, String uebungsID, String uebungsName){
+    public int getTrainingsgewicht(int wiederholungen, int rm, String uebungsID, String uebungsName) {
         return 1;
     }
 

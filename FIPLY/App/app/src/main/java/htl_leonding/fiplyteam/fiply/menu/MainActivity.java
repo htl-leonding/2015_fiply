@@ -133,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Teilt dem NavigationDrawer mit wenn ein Item gefrückt wird
-     * @param item  Fragment das ins FrameLayout der MainActivity geladen werden soll
+     *
+     * @param item Fragment das ins FrameLayout der MainActivity geladen werden soll
      * @return Fragment das ins FrameLayout der MainActivity geladen werden soll
      */
     @Override
@@ -143,7 +144,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Lädt das Fragment, dass sich an der jeweiligen Position in der Liste befindet, in das FrameLayout der MainActivity
-     * @param position  Position in der Liste des NavigationDrawers
+     *
+     * @param position Position in der Liste des NavigationDrawers
      */
     private void displayView(int position) {
         Fragment fragment = null;

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.music.FMusic;
-import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungDetail;
 
 public class FTrainingssession extends Fragment {
 

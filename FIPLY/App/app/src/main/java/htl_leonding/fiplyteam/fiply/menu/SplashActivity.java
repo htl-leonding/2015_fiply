@@ -41,8 +41,7 @@ public class SplashActivity extends Activity {
             try {
                 rep.insertAllExercises();
 //                kvr.setDefaultUserSettings();
-            }
-            catch (JSONException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
 //            } catch (SQLException e) {
 //                e.printStackTrace();

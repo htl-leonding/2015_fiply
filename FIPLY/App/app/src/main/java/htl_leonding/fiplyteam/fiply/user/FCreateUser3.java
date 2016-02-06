@@ -30,8 +30,8 @@ public class FCreateUser3 extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        spAge = (Spinner) getView().findViewById(R.id.spAge);
-        spProf = (Spinner) getView().findViewById(R.id.spProf);
+        spAge = (Spinner) getActivity().findViewById(R.id.spAge);
+        spProf = (Spinner) getActivity().findViewById(R.id.spProf);
         kvr = KeyValueRepository.getInstance();
         init();
         try {

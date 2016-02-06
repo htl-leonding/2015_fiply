@@ -14,13 +14,13 @@ public class GenerateAllgemein {
     boolean trainiert;
     int schema; // 1 = Bauch-Beine-Po; 2 = Oberkörper-Arme; 3 = Stabilisation(Gesundheit-Rücken)
     String[] wochentage;
-    private Trainingsphase tPhase;
-    private int uebungenAnzahl;
     UebungenRepository rep;
     int repmax = 55;
     int wiederholungen;
+    private Trainingsphase tPhase;
+    private int uebungenAnzahl;
 
-    public GenerateAllgemein(boolean trainiert, int schema, String[] wochentage, Date startDate){
+    public GenerateAllgemein(boolean trainiert, int schema, String[] wochentage, Date startDate) {
         String phasenName;
         PhasenTyp phasenTyp;
         int pausenDauer;
@@ -38,17 +38,16 @@ public class GenerateAllgemein {
             phasenDauer = 4;
             saetze = 3;
             wiederholungen = 25;
-        }
-        else {
+        } else {
             phasenDauer = 8;
             saetze = 2;
             wiederholungen = 20;
         }
         repmax = 55;
         this.schema = schema;
-        if (!trainiert){
+        if (!trainiert) {
             wiederholungen = 20;
-            switch (schema){
+            switch (schema) {
                 case 1:
                     uebungenAnzahl = 9;
                     break;
@@ -59,10 +58,9 @@ public class GenerateAllgemein {
                     uebungenAnzahl = 8;
                     break;
             }
-        }
-        else{
+        } else {
             wiederholungen = 25;
-            switch (schema){
+            switch (schema) {
                 case 1:
                     uebungenAnzahl = 9;
                     break;
@@ -79,19 +77,22 @@ public class GenerateAllgemein {
         fetchUebungen();
     }
 
-    private void fetchUebungen(){
+    private void fetchUebungen() {
         rep = UebungenRepository.getInstance();
-        switch(schema){
-            case 1: grabIntoUebungListSchema1(fetchSchema1());
+        switch (schema) {
+            case 1:
+                grabIntoUebungListSchema1(fetchSchema1());
                 break;
-            case 2: grabIntoUebungListSchema2(fetchSchema2());
+            case 2:
+                grabIntoUebungListSchema2(fetchSchema2());
                 break;
-            case 3: grabIntoUebungListSchema3(fetchSchema3());
+            case 3:
+                grabIntoUebungListSchema3(fetchSchema3());
                 break;
         }
     }
 
-    private List<String[]> fetchSchema1(){ // Schema: Bauch-Beine-Po
+    private List<String[]> fetchSchema1() { // Schema: Bauch-Beine-Po
         Cursor c = rep.getAllUebungen();
 
         int iRowId = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_ROWID);
@@ -101,9 +102,9 @@ public class GenerateAllgemein {
         String muskelGruppe;
         String uebungsName;
         List<String[]> uebungsList = new LinkedList<String[]>();
-        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             muskelGruppe = c.getString(iMuskelGruppe);
-            if (muskelGruppe.contains("Bauch") || muskelGruppe.contains("Beine") || muskelGruppe.contains("Po")){
+            if (muskelGruppe.contains("Bauch") || muskelGruppe.contains("Beine") || muskelGruppe.contains("Po")) {
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
@@ -116,16 +117,16 @@ public class GenerateAllgemein {
         int bellyCnt = 0;
         int legCnt = 0;
         // AND Schwierigkeitstufe noch berücksichtigen!!!
-        for(String[] uebung : uebungsList) {
-            if (uebung[2].toUpperCase().contains("PO")){
+        for (String[] uebung : uebungsList) {
+            if (uebung[2].toUpperCase().contains("PO")) {
                 actualUebungen.add(uebung);
-            }else{
-                if (uebung[2].toUpperCase().contains("BEINE")){
+            } else {
+                if (uebung[2].toUpperCase().contains("BEINE")) {
                     if (legCnt < 4) {
                         actualUebungen.add(uebung);
                         legCnt++;
                     }
-                } else if (uebung[2].toUpperCase().contains("BAUCH")){
+                } else if (uebung[2].toUpperCase().contains("BAUCH")) {
                     if (bellyCnt < 4) {
                         actualUebungen.add(uebung);
                         bellyCnt++;
@@ -136,7 +137,7 @@ public class GenerateAllgemein {
         return actualUebungen;
     }
 
-    private List<String[]> fetchSchema2(){ // Schema: Oberkörper - Arme
+    private List<String[]> fetchSchema2() { // Schema: Oberkörper - Arme
         Cursor c = rep.getAllUebungen();
 
         int iRowId = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_ROWID);
@@ -158,60 +159,60 @@ public class GenerateAllgemein {
 
         List<String[]> uebungsList = new LinkedList<String[]>();
 
-        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             muskelGruppe = c.getString(iMuskelGruppe);
-            if (muskelGruppe.contains("Obere Brust") && !obereBrust){
+            if (muskelGruppe.contains("Obere Brust") && !obereBrust) {
                 obereBrust = true;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if (muskelGruppe.contains("Untere Brust") && !untereBrust){
+            } else if (muskelGruppe.contains("Untere Brust") && !untereBrust) {
                 untereBrust = true;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if (muskelGruppe.contains("Mittlere Brust") && !mittlereBrust){
+            } else if (muskelGruppe.contains("Mittlere Brust") && !mittlereBrust) {
                 mittlereBrust = true;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if (muskelGruppe.contains("Rücken") && ruecken1 == false){
+            } else if (muskelGruppe.contains("Rücken") && ruecken1 == false) {
                 ruecken1 = true;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Rücken") && ruecken2 == false)){
+            } else if ((muskelGruppe.contains("Rücken") && ruecken2 == false)) {
                 ruecken2 = true;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Hintere Schulter") && hintereSchulter == false)){
+            } else if ((muskelGruppe.contains("Hintere Schulter") && hintereSchulter == false)) {
                 hintereSchulter = true;
                 mittlereBrust = false;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Vordere Schulter") && vordereSchulter == false)){
+            } else if ((muskelGruppe.contains("Vordere Schulter") && vordereSchulter == false)) {
                 vordereSchulter = true;
                 mittlereBrust = false;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Bizeps") && bizeps == false)){
+            } else if ((muskelGruppe.contains("Bizeps") && bizeps == false)) {
                 bizeps = true;
                 mittlereBrust = false;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Trizeps") && trizeps == false)){
+            } else if ((muskelGruppe.contains("Trizeps") && trizeps == false)) {
                 trizeps = true;
                 mittlereBrust = false;
                 rowId = c.getString(iRowId);
@@ -223,7 +224,7 @@ public class GenerateAllgemein {
         return uebungsList;
     }
 
-    public List<String[]> fetchSchema3(){ // Schema: Stabilisation (Gesundheit, Rücken)
+    public List<String[]> fetchSchema3() { // Schema: Stabilisation (Gesundheit, Rücken)
         Cursor c = rep.getAllUebungen();
 
         int iRowId = c.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_ROWID);
@@ -233,9 +234,9 @@ public class GenerateAllgemein {
         String muskelGruppe;
         String uebungsName;
         List<String[]> uebungsList = new LinkedList<String[]>();
-        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             muskelGruppe = c.getString(iMuskelGruppe);
-            if (muskelGruppe.contains("Stabilisation")){
+            if (muskelGruppe.contains("Stabilisation")) {
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
@@ -246,37 +247,37 @@ public class GenerateAllgemein {
         return uebungsList;
     }
 
-    private void grabIntoUebungListSchema1(List<String[]> uebungen){
+    private void grabIntoUebungListSchema1(List<String[]> uebungen) {
         List<Uebung> finalUebungslist = new LinkedList<Uebung>();
         Boolean legbool = null;
         Boolean bellybool = null;
-        for (String[] element : uebungen){
+        for (String[] element : uebungen) {
             Uebung ueb = new Uebung();
             ueb.setUebungsID(element[0]);
             ueb.setUebungsName(element[1]);
             ueb.setRepmax(repmax);
-            if (element[2].toUpperCase().contains("PO")){
+            if (element[2].toUpperCase().contains("PO")) {
                 ueb.setWochenTag(wochentage[0]);
-            }else{
-                if (element[2].toUpperCase().contains("BEINE")){
-                    if (legbool == null){
+            } else {
+                if (element[2].toUpperCase().contains("BEINE")) {
+                    if (legbool == null) {
                         ueb.setWochenTag(wochentage[0]);
                         legbool = true;
-                    }else if (legbool){
+                    } else if (legbool) {
                         ueb.setWochenTag(wochentage[1]);
                         legbool = false;
-                    }else{
+                    } else {
                         ueb.setWochenTag(wochentage[2]);
                         legbool = true;
                     }
-                }else if (element[2].toUpperCase().contains("BAUCH")){
-                    if (bellybool == null){
+                } else if (element[2].toUpperCase().contains("BAUCH")) {
+                    if (bellybool == null) {
                         ueb.setWochenTag(wochentage[0]);
                         bellybool = false;
-                    }else if (bellybool){
+                    } else if (bellybool) {
                         ueb.setWochenTag(wochentage[1]);
                         bellybool = false;
-                    }else{
+                    } else {
                         ueb.setWochenTag(wochentage[2]);
                         bellybool = true;
                     }
@@ -287,17 +288,17 @@ public class GenerateAllgemein {
         getTPhase().setUebungList(finalUebungslist);
     }
 
-    public void grabIntoUebungListSchema2(List<String[]> uebungen){
+    public void grabIntoUebungListSchema2(List<String[]> uebungen) {
         List<Uebung> finalUebungslist = new LinkedList<Uebung>();
-        for (String[] element : uebungen){
+        for (String[] element : uebungen) {
             Uebung ueb = new Uebung();
             ueb.setUebungsID(element[0]);
             ueb.setUebungsName(element[1]);
             ueb.setRepmax(repmax);
 
-            if (element[1].contains("Brust")){
+            if (element[1].contains("Brust")) {
                 ueb.setWochenTag(wochentage[0]);
-            } else if (element[1].contains("Rücken") || element[1].contains("Hintere")){
+            } else if (element[1].contains("Rücken") || element[1].contains("Hintere")) {
                 ueb.setWochenTag(wochentage[1]);
             } else {
                 ueb.setWochenTag(wochentage[2]);
@@ -307,7 +308,7 @@ public class GenerateAllgemein {
         getTPhase().setUebungList(finalUebungslist);
     }
 
-    public void grabIntoUebungListSchema3(List<String[]> uebungen){
+    public void grabIntoUebungListSchema3(List<String[]> uebungen) {
         List<Uebung> finalUebungslist = new LinkedList<Uebung>();
         Collections.shuffle(uebungen);
         Uebung ueb = new Uebung();

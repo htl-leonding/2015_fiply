@@ -13,9 +13,8 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract.KeyValueEntry;
 
 public class KeyValueRepository {
     private static Context repoContext;
-    SQLiteDatabase db = getWritableDatabase();
-
     private static KeyValueRepository instance;
+    SQLiteDatabase db = getWritableDatabase();
 
     public static KeyValueRepository getInstance() {
         if (instance == null)

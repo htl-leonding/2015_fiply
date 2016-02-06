@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+    >
 
     <SeekBar
         android:id="@+id/sbHeight"
@@ -12,26 +13,29 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="160dp"
         android:layout_marginRight="-160dp"
+        android:indeterminate="false"
+        android:longClickable="false"
         android:rotation="270"
         android:splitTrack="false"
-        android:longClickable="false"
-        android:indeterminate="false" />
+        />
 
     <SeekBar
         android:id="@+id/sbWeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        />
 
     <TextView
         android:id="@+id/tvSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_toEndOf="@+id/tvWeight"
+        android:layout_below="@+id/sbHeight"
         android:layout_marginLeft="50dp"
-        android:layout_below="@+id/sbHeight" />
+        android:layout_toEndOf="@+id/tvWeight"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        />
 
     <TextView
         android:id="@+id/tvWeight"
@@ -39,16 +43,18 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/sbWeight"
         android:layout_centerHorizontal="true"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        />
 
     <ImageView
+        android:id="@+id/ivBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ivBody"
         android:layout_above="@+id/tvWeight"
-        android:layout_alignTop="@+id/tvWeight"
         android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/tvWeight"
         android:layout_marginLeft="50dp"
-        android:contentDescription="stickman" />
+        android:contentDescription="stickman"
+        />
 
 </RelativeLayout>

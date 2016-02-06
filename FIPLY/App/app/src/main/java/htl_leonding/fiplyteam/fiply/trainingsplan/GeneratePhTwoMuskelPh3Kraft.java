@@ -25,14 +25,14 @@ public class GeneratePhTwoMuskelPh3Kraft {
     private UebungenRepository rep;
     private String[] muskelgruppen;
 
-    public GeneratePhTwoMuskelPh3Kraft(String[] wochentage, Date startDate, String ziel, String[] muskelgruppen){
+    public GeneratePhTwoMuskelPh3Kraft(String[] wochentage, Date startDate, String ziel, String[] muskelgruppen) {
         this.setStartDate(startDate);
         this.setWochentage(wochentage);
         this.setUebungsanzahl(muskelgruppen.length * 3);
         this.setZiel(ziel);
-        if (getZiel().equals("Muskelaufbau")){
+        if (getZiel().equals("Muskelaufbau")) {
             this.phasendauer = 8;
-        }else{
+        } else {
             this.phasendauer = 4;
         }
         this.setSaetze(3);
@@ -75,7 +75,7 @@ public class GeneratePhTwoMuskelPh3Kraft {
                     String[] newUebung = {rowId, uebungsName, wochentage[count1], muskelGruppe};
                     uebungsList.add(newUebung);
                     count1++;
-                }else if (muskelGruppe.toUpperCase().contains(getMuskelgruppen()[1].toUpperCase()) && count2 < 3){
+                } else if (muskelGruppe.toUpperCase().contains(getMuskelgruppen()[1].toUpperCase()) && count2 < 3) {
                     rowId = c.getString(iRowId);
                     uebungsName = c.getString(iUebungsName);
                     String[] newUebung = {rowId, uebungsName, wochentage[count2], muskelGruppe};
@@ -90,13 +90,13 @@ public class GeneratePhTwoMuskelPh3Kraft {
                     String[] newUebung = {rowId, uebungsName, wochentage[count1], muskelGruppe};
                     uebungsList.add(newUebung);
                     count1++;
-                }else if (muskelGruppe.toUpperCase().contains(getMuskelgruppen()[1].toUpperCase()) && count2 < 3){
+                } else if (muskelGruppe.toUpperCase().contains(getMuskelgruppen()[1].toUpperCase()) && count2 < 3) {
                     rowId = c.getString(iRowId);
                     uebungsName = c.getString(iUebungsName);
                     String[] newUebung = {rowId, uebungsName, wochentage[count2], muskelGruppe};
                     uebungsList.add(newUebung);
                     count2++;
-                } else if (muskelGruppe.toUpperCase().contains(getMuskelgruppen()[2].toUpperCase()) && count3 < 3){
+                } else if (muskelGruppe.toUpperCase().contains(getMuskelgruppen()[2].toUpperCase()) && count3 < 3) {
                     rowId = c.getString(iRowId);
                     uebungsName = c.getString(iUebungsName);
                     String[] newUebung = {rowId, uebungsName, wochentage[count3], muskelGruppe};
@@ -108,9 +108,9 @@ public class GeneratePhTwoMuskelPh3Kraft {
         return uebungsList;
     }
 
-    private void fetchIntoUebungen(List<String[]> uebungsListe){
+    private void fetchIntoUebungen(List<String[]> uebungsListe) {
         Uebung ueb;
-        for (String[] element : uebungsListe){
+        for (String[] element : uebungsListe) {
             ueb = new Uebung();
             ueb.setUebungsID(element[0]);
             ueb.setUebungsName(element[1]);
@@ -217,7 +217,7 @@ public class GeneratePhTwoMuskelPh3Kraft {
         this.uebungen = uebungen;
     }
 
-    public Trainingsphase getTPhase(){
+    public Trainingsphase getTPhase() {
         return this.tphas;
     }
 }

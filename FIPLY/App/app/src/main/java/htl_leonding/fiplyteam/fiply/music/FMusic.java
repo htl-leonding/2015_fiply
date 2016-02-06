@@ -130,12 +130,9 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
 
     public void changeSong(int songIndex) {
         configureMediaPlayer(!getPlaylist().isEmpty());
-        if(getPlaylist().isEmpty())
-        {
-           configureMediaPlayer(false);
-        }
-        else
-        {
+        if (getPlaylist().isEmpty()) {
+            configureMediaPlayer(false);
+        } else {
             configureMediaPlayer(true);
             tvSongname.setText(getPlaylist().get(songIndex).get("songTitle"));
             setSongIndex(songIndex);

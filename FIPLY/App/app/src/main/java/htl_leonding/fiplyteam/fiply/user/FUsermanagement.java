@@ -15,7 +15,7 @@ import htl_leonding.fiplyteam.fiply.menu.FMain;
 
 public class FUsermanagement extends Fragment {
 
-//    Button btCreate;
+    //    Button btCreate;
 //    Button btEdit;
 //    Button btChoose;
     Button btNext;
@@ -111,6 +111,7 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.replace(R.id.fraUserInput, fragment, "SliderPage");
         fragmentTransaction.commit();
     }
+
     private void displayViewP3() {
         setPageId(3);
         FCreateUser3 fragment = new FCreateUser3();
@@ -121,6 +122,7 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.replace(R.id.fraUserInput, fragment, "AgePage");
         fragmentTransaction.commit();
     }
+
     private void displayViewPMain() {
         FMain fragment = new FMain();
         FragmentManager fragmentManager = getFragmentManager();

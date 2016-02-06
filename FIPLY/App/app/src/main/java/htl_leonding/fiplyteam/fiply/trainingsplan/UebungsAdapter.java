@@ -13,7 +13,7 @@ import htl_leonding.fiplyteam.fiply.R;
 
 public class UebungsAdapter extends ArrayAdapter<Uebung> {
 
-    public UebungsAdapter(Context context, ArrayList<Uebung> uebungen){
+    public UebungsAdapter(Context context, ArrayList<Uebung> uebungen) {
         super(context, 0, uebungen);
     }
 

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/darkSecondary">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/darkSecondary"
+    >
 
     <LinearLayout
         android:id="@+id/linearLayoutPl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <ImageButton
             android:id="@+id/btPlAdd"
@@ -18,7 +20,8 @@
             android:adjustViewBounds="true"
             android:background="@color/darkSecondary"
             android:scaleType="fitCenter"
-            android:src="@drawable/plusorangesmall" />
+            android:src="@drawable/plusorangesmall"
+            />
 
         <ImageButton
             android:id="@+id/btPlDelete"
@@ -27,13 +30,15 @@
             android:adjustViewBounds="true"
             android:background="@color/darkSecondary"
             android:scaleType="fitCenter"
-            android:src="@drawable/minusorangesmall" />
+            android:src="@drawable/minusorangesmall"
+            />
 
         <Switch
             android:id="@+id/switchPl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mode" />
+            android:text="Mode"
+            />
 
     </LinearLayout>
 
@@ -42,7 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/linearLayoutPl"
-        android:text="@string/etPlName"/>
+        android:text="@string/etPlName"
+        />
 
     <ListView
         android:id="@+id/lvPlSongs"
@@ -50,6 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/etPlName"
         android:layout_alignParentTop="true"
-        android:choiceMode="multipleChoice" />
+        android:choiceMode="multipleChoice"
+        />
 
 </RelativeLayout>

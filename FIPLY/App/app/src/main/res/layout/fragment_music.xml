@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+    >
 
     <TextView
         android:id="@+id/tvMuSongname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/songNotFound"
-        android:textColor="@color/darkPrimary"/>
+        android:textColor="@color/darkPrimary"
+        />
 
     <TextView
         android:id="@+id/tvMuCurrentDur"
@@ -21,7 +23,8 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvMuSongname"
         android:text="0:00"
-        android:textColor="@color/darkPrimary"/>
+        android:textColor="@color/darkPrimary"
+        />
 
     <TextView
         android:id="@+id/tvMuTotalDur"
@@ -30,7 +33,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tvMuSongname"
         android:text="0:00"
-        android:textColor="@color/darkPrimary"/>
+        android:textColor="@color/darkPrimary"
+        />
 
     <SeekBar
         android:id="@+id/seekBarMu"
@@ -38,12 +42,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvMuSongname"
         android:layout_toLeftOf="@id/tvMuTotalDur"
-        android:layout_toRightOf="@id/tvMuCurrentDur" />
+        android:layout_toRightOf="@id/tvMuCurrentDur"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/seekBarMu">
+        android:layout_below="@+id/seekBarMu"
+        >
 
         <ImageButton
             android:id="@+id/btnMuLast"
@@ -55,7 +61,8 @@
             android:background="@color/darkSecondary"
             android:padding="2dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/last" />
+            android:src="@drawable/last"
+            />
 
         <ImageButton
             android:id="@+id/btnMuPlay"
@@ -67,7 +74,8 @@
             android:padding="2dp"
             android:scaleType="fitCenter"
             android:src="@drawable/play"
-            android:text="@string/songPlay" />
+            android:text="@string/songPlay"
+            />
 
         <ImageButton
             android:id="@+id/btnMuStop"
@@ -78,7 +86,8 @@
             android:background="@color/darkSecondary"
             android:padding="2dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/stop" />
+            android:src="@drawable/stop"
+            />
 
         <ImageButton
             android:id="@+id/btnMuNext"
@@ -90,7 +99,8 @@
             android:background="@color/darkSecondary"
             android:padding="2dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/next" />
+            android:src="@drawable/next"
+            />
 
         <ImageButton
             android:id="@+id/btnMuList"
@@ -101,6 +111,7 @@
             android:background="@color/darkSecondary"
             android:padding="2dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/listviewunpressed" />
+            android:src="@drawable/listviewunpressed"
+            />
     </RelativeLayout>
 </RelativeLayout>

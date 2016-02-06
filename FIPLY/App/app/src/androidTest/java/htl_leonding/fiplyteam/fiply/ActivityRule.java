@@ -30,17 +30,17 @@ import org.junit.runners.model.Statement;
 /**
  * A JUnit {@link Rule @Rule} which launches an activity when your test starts. Stop extending
  * gross {@code ActivityInstrumentationBarfCase2}!
- * <p>
+ * <p/>
  * Usage:
  * <pre>{@code
  * &#064;Rule
  * public final ActivityRule<ExampleActivity> example =
  *     new ActivityRule<>(ExampleActivity.class);
  * }</pre>
- *
+ * <p/>
  * This will automatically launch the activity for each test method. The instance will also be
  * created sooner should you need to use it in a {@link Before @Before} method.
- * <p>
+ * <p/>
  * You can also customize the way in which the activity is launched by overriding
  * {@link #getLaunchIntent(String, Class)} and customizing or replacing the {@link Intent}.
  * <pre>{@code
@@ -82,15 +82,19 @@ public class ActivityRule<T extends Activity> implements TestRule {
         return activity;
     }
 
-    /** Get the {@link Instrumentation} instance for this test. */
+    /**
+     * Get the {@link Instrumentation} instance for this test.
+     */
     public final Instrumentation instrumentation() {
         launchActivity();
         return instrumentation;
     }
 
-    @Override public final Statement apply(final Statement base, Description description) {
+    @Override
+    public final Statement apply(final Statement base, Description description) {
         return new Statement() {
-            @Override public void evaluate() throws Throwable {
+            @Override
+            public void evaluate() throws Throwable {
                 launchActivity();
 
                 base.evaluate();
