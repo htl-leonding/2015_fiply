@@ -1,6 +1,6 @@
 package htl_leonding.fiplyteam.fiply.trainingssession;
 
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -61,7 +61,12 @@ public class FTrainingsinstructions extends Fragment{
         View.OnClickListener clickVideo = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Neues Video anzeigen
+                Intent showFullVideo = new Intent("fiply.VIDEO");
+                //Bundle extras = new Bundle();
+                //extras.putString("videoLink", "asdasdasdadadas");
+                //showFullVideo.putExtras(extras);
+                showFullVideo.putExtra("videoLink",uebungsVideo);
+                startActivity(showFullVideo);
             }
         };
 

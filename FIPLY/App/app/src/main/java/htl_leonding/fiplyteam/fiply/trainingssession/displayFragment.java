@@ -1,5 +1,6 @@
 package htl_leonding.fiplyteam.fiply.trainingssession;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -28,6 +29,15 @@ public class displayFragment {
     public static void displayTSClocksNav(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         fragmentTransaction.replace(R.id.fraTsClocksNav, display);
+        fragmentTransaction.commit();
+    }
+
+    public static void displayFullscreenVideo(Fragment display, FragmentManager fManager, String videoLink) {
+        Bundle args = new Bundle();
+        args.putString("videoLink", videoLink);
+        display.setArguments(args);
+        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fraPlace, display);
         fragmentTransaction.commit();
     }
 }
