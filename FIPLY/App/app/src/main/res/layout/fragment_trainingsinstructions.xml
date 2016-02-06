@@ -112,14 +112,14 @@
 
         <ImageButton
             android:id="@+id/ibLinkVideo"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_below="@id/detailAnleitung"
             android:adjustViewBounds="true"
             android:background="@color/darkSecondary"
             android:padding="3dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/videoplay2small"
+            android:src="@drawable/videoplay2redsmall"
             />
 
         <TextView
@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/videoLink"
-            android:textColor="@color/darkTextColorLight"
+            android:textColor="@color/darkTextColorFlashy"
             android:padding="3dp"
             android:textSize="16dp"
             android:layout_below="@id/detailAnleitung"
