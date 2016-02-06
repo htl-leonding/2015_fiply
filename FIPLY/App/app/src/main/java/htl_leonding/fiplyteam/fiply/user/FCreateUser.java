@@ -3,6 +3,7 @@ package htl_leonding.fiplyteam.fiply.user;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +14,13 @@ import android.widget.Spinner;
 
 import java.sql.SQLException;
 
-import javax.annotation.Nullable;
-
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 public class FCreateUser extends Fragment {
 
-    ImageView imgName;
     final ThreadLocal<ImageView> imgGender = new ThreadLocal<>();
+    ImageView imgName;
     EditText etName;
     Spinner spGender;
     ArrayAdapter<CharSequence> genderAdapter;
@@ -37,10 +36,10 @@ public class FCreateUser extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         kvr = KeyValueRepository.getInstance();
-        etName = (EditText) getView().findViewById(R.id.etName);
-        spGender = (Spinner) getView().findViewById(R.id.spGender);
-        imgName = (ImageView) getView().findViewById(R.id.imgName);
-        imgGender.set((ImageView) getView().findViewById(R.id.imgGender));
+        etName = (EditText) getActivity().findViewById(R.id.etName);
+        spGender = (Spinner) getActivity().findViewById(R.id.spGender);
+        imgName = (ImageView) getActivity().findViewById(R.id.imgName);
+        imgGender.set((ImageView) getActivity().findViewById(R.id.imgGender));
 
         init();
 

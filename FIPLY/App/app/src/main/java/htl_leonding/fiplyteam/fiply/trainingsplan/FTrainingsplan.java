@@ -21,6 +21,8 @@ public class FTrainingsplan extends Fragment {
 
     GenerateAllgemein gAlg;
     GeneratePhTwoKraftausdauer phTKra;
+    GeneratePhTwoMuskelPh3Kraft phTwoMusPhThreeKraft;
+
     Context context;
     ListView lView;
     SimpleCursorAdapter sCAdaptaber;
@@ -29,10 +31,15 @@ public class FTrainingsplan extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         context = getActivity();
+
         rep = UebungenRepository.getInstance();
         String[] wochentage = {"Montag", "Donnerstag", "Samstag"};
-        gAlg = new GenerateAllgemein(true, 3, wochentage, new Date());
-        phTKra = new GeneratePhTwoKraftausdauer(wochentage, new Date(), false);
+        String[] muskelgruppen = {"Brust", "Po", "Schulter"};
+
+        gAlg = new GenerateAllgemein(true, 1, wochentage, new Date());
+        phTKra = new GeneratePhTwoKraftausdauer(wochentage, new Date(), true);
+        phTwoMusPhThreeKraft = new GeneratePhTwoMuskelPh3Kraft(wochentage, new Date(), "Muskelaufbau", muskelgruppen);
+
         return inflater.inflate(R.layout.fragment_trainingsplantest, container, false);
     }
 
@@ -40,26 +47,28 @@ public class FTrainingsplan extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        lView = (ListView) getView().findViewById(R.id.testlistview);
+        lView = (ListView) getActivity().findViewById(R.id.testlistview);
 
         ArrayList<Uebung> uebungsListeAllg = gAlg.getTPhase().getUebungenAsArrayList();
         ArrayList<Uebung> uebungsListePhTKra = phTKra.getTPhase().getUebungenAsArrayList();
+        ArrayList<Uebung> uebungsListePhTwoMusPhThreeKraft = phTKra.getTPhase().getUebungenAsArrayList();
 
         Uebung ueb = new Uebung();
-        ueb.setUebungsName("Starttermin: " + gAlg.getTPhase().getStartDate().toString());
-        ueb.setWochenTag("Endtermin: " + gAlg.getTPhase().getEndDate().toString());
-        ueb.setUebungsID("Dauer: " + gAlg.getTPhase().getPhasenDauer() + " Wochen");
+        ueb.setUebungsName("Starttermin: " + phTwoMusPhThreeKraft.getTPhase().getStartDate().toString());
+        ueb.setWochenTag("Endtermin: " + phTwoMusPhThreeKraft.getTPhase().getEndDate().toString());
+        ueb.setUebungsID("Dauer: " + phTwoMusPhThreeKraft.getTPhase().getPhasenDauer());
+        ueb.setMuskelgruppe("Lol");
 
-        Collections.sort(uebungsListePhTKra, new Comparator<Uebung>() {
+        Collections.sort(uebungsListePhTwoMusPhThreeKraft, new Comparator<Uebung>() {
             @Override
             public int compare(Uebung lhs, Uebung rhs) {
 
                 return lhs.getWochenTag().compareTo(rhs.getWochenTag());
             }
         });
-        uebungsListePhTKra.add(ueb);
+        uebungsListePhTwoMusPhThreeKraft.add(ueb);
 
-        UebungsAdapter adapter = new UebungsAdapter(this.getContext(), uebungsListePhTKra);
+        UebungsAdapter adapter = new UebungsAdapter(this.getContext(), uebungsListePhTwoMusPhThreeKraft);
         lView = (ListView) view.findViewById(R.id.testlistview);
         lView.setAdapter(adapter);
     }

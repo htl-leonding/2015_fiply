@@ -56,7 +56,7 @@ public class FCreateUser2 extends Fragment {
     }
 
     public void SetHeight(int height) {
-        tvHeight.setText("Größe: "+String.valueOf(height));
+        tvHeight.setText("Größe: " + String.valueOf(height));
         sbHeight.setProgress(height - 100);
     }
 
@@ -71,7 +71,7 @@ public class FCreateUser2 extends Fragment {
     }
 
     public void SetWeight(int weight) {
-        tvWeight.setText("Gewicht: "+String.valueOf(weight));
+        tvWeight.setText("Gewicht: " + String.valueOf(weight));
         sbWeight.setProgress(weight - 40);
 
     }
@@ -80,11 +80,11 @@ public class FCreateUser2 extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         kvr = KeyValueRepository.getInstance();
 
-        sbHeight = (SeekBar) getView().findViewById(R.id.sbHeight);
-        sbWeight = (SeekBar) getView().findViewById(R.id.sbWeight);
-        tvHeight = (TextView) getView().findViewById(R.id.tvSize);
-        tvWeight = (TextView) getView().findViewById(R.id.tvWeight);
-        ivBody = (ImageView) getView().findViewById(R.id.ivBody);
+        sbHeight = (SeekBar) getActivity().findViewById(R.id.sbHeight);
+        sbWeight = (SeekBar) getActivity().findViewById(R.id.sbWeight);
+        tvHeight = (TextView) getActivity().findViewById(R.id.tvSize);
+        tvWeight = (TextView) getActivity().findViewById(R.id.tvWeight);
+        ivBody = (ImageView) getActivity().findViewById(R.id.ivBody);
         sbHeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

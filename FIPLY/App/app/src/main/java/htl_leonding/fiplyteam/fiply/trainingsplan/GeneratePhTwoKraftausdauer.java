@@ -10,28 +10,26 @@ import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
 public class GeneratePhTwoKraftausdauer {
     String[] wochentage;
-    private Trainingsphase tPhase;
     UebungenRepository rep;
-    int repmax = 80;
-    int wiederholungen;
+    List<Uebung> uebungen;
+    private Trainingsphase tPhase;
     private Date startDate;
     private Date endDate;
-    List<Uebung> uebungen;
 
-    public GeneratePhTwoKraftausdauer(String[] wochentage, Date startDate,  boolean muscle){
+    public GeneratePhTwoKraftausdauer(String[] wochentage, Date startDate, boolean muscle) {
         this.wochentage = wochentage;
         this.setStartDate(startDate);
         tPhase = new Trainingsphase("Phase 2: Kraftausdauer", PhasenTyp.PHASE2KRAFTAUSDAUER, 60, 8, 3, 20, 80, getStartDate());
         setFirstConcept();
-        if (muscle){
+        if (muscle) {
             setMuscleConcept();
-        }else{
+        } else {
             setStabilizedConcept();
         }
         tPhase.setUebungList(uebungen);
     }
 
-    private void setFirstConcept(){
+    private void setFirstConcept() {
         String[] wedays = {"Montag", "Dienstag", "Mittwoch"};
         GenerateAllgemein gAlg = new GenerateAllgemein(false, 1, wedays, getStartDate());
         Trainingsphase tPhase = gAlg.getTPhase();
@@ -39,18 +37,19 @@ public class GeneratePhTwoKraftausdauer {
         boolean del1 = false, del2 = false, del3 = false;
         uebungen = new LinkedList<Uebung>();
         uebungen = tPhase.getUebungList();
-        for (Uebung element : uebungen){
-            if (!del1 && element.getWochenTag() == wedays[0]){
+        System.out.println("Groesse: " + uebungen.size());
+        for (Uebung element : uebungen) {
+            if (!del1 && element.getWochenTag() == wedays[0]) {
                 del1 = true;
                 udel1 = element;
             }
-            if (!del2 && element.getWochenTag() == wedays[1]){
+            if (!del2 && element.getWochenTag() == wedays[1]) {
                 del2 = true;
                 udel2 = element;
             }
-            if (!del3 && element.getWochenTag() == wedays[2]){
-                del2 = true;
-                udel2 = element;
+            if (!del3 && element.getWochenTag() == wedays[2]) {
+                del3 = true;
+                udel3 = element;
             }
         }
         uebungen.remove(udel1);
@@ -58,17 +57,17 @@ public class GeneratePhTwoKraftausdauer {
         uebungen.remove(udel3);
         Collections.shuffle(uebungen);
         int cnt = 0;
-        for (Uebung element : uebungen){
-            if (cnt < 3){
+        for (Uebung element : uebungen) {
+            if (cnt < 3) {
                 element.setWochenTag(wochentage[0]);
-            }else{
+            } else {
                 element.setWochenTag(wochentage[1]);
             }
             cnt++;
         }
     }
 
-    private void setMuscleConcept(){
+    private void setMuscleConcept() {
         String[] wedays = {"Montag", "Dienstag", "Mittwoch"};
         GenerateAllgemein gAlg = new GenerateAllgemein(false, 2, wedays, getStartDate());
         Trainingsphase tPhase = gAlg.getTPhase();
@@ -76,16 +75,16 @@ public class GeneratePhTwoKraftausdauer {
         Uebung udel1 = null, udel2 = null, udel3 = null;
         boolean del1 = false, del2 = false, del3 = false;
         uebs = tPhase.getUebungList();
-        for (Uebung element : uebs){
-            if (!del1 && element.getWochenTag() == wedays[0]){
+        for (Uebung element : uebs) {
+            if (!del1 && element.getWochenTag() == wedays[0]) {
                 del1 = true;
                 udel1 = element;
             }
-            if (!del2 && element.getWochenTag() == wedays[1]){
+            if (!del2 && element.getWochenTag() == wedays[1]) {
                 del2 = true;
                 udel2 = element;
             }
-            if (!del3 && element.getWochenTag() == wedays[2]){
+            if (!del3 && element.getWochenTag() == wedays[2]) {
                 del2 = true;
                 udel2 = element;
             }
@@ -94,19 +93,19 @@ public class GeneratePhTwoKraftausdauer {
         uebs.remove(udel2);
         uebs.remove(udel3);
         Collections.shuffle(uebs);
-        for (Uebung element : uebs){
+        for (Uebung element : uebs) {
             element.setWochenTag(wochentage[2]);
             element.setRepmax(80);
         }
         uebungen.addAll(uebs);
     }
 
-    private void setStabilizedConcept(){
+    private void setStabilizedConcept() {
         String[] wedays = {"Montag", "Dienstag", "Mittwoch"};
         GenerateAllgemein gAlg = new GenerateAllgemein(false, 3, wedays, getStartDate());
         Trainingsphase tPhase = gAlg.getTPhase();
         List<Uebung> uebs = tPhase.getUebungList();
-        for (Uebung element : uebs){
+        for (Uebung element : uebs) {
             element.setWochenTag(wochentage[2]);
             element.setRepmax(0);
         }

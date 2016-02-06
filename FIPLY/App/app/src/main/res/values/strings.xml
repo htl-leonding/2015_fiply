@@ -592,8 +592,7 @@
     </string>
 
 
-
-  <string-array name="navigationArray">
+    <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>
@@ -601,23 +600,23 @@
         <item>Playlists</item>
     </string-array>
 
-  <string-array name="proficiency">
-    <item>Not Fit</item>
-    <item>Fit</item>
-  </string-array>
+    <string-array name="proficiency">
+        <item>Not Fit</item>
+        <item>Fit</item>
+    </string-array>
 
-  <string-array name="ageGroups">
-    <item>16-20</item>
-    <item>21-30</item>
-    <item>31-40</item>
-    <item>41-50</item>
-    <item>50+</item>
-  </string-array>
+    <string-array name="ageGroups">
+        <item>16-20</item>
+        <item>21-30</item>
+        <item>31-40</item>
+        <item>41-50</item>
+        <item>50+</item>
+    </string-array>
 
-  <string-array name="gender">
-    <item>Male</item>
-    <item>Female</item>
-    <item>Other</item>
-  </string-array>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
 
 </resources>

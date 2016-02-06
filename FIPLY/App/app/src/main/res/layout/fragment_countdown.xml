@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+    >
 
     <Button
         android:id="@+id/btnTimerStart"
@@ -13,20 +14,22 @@
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
         android:background="@drawable/buttonshape"
-        android:text="@string/timerStart" />
+        android:text="@string/timerStart"
+        />
 
     <EditText
         android:id="@+id/etTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_margin="2dp"
-        android:inputType="number"
-        android:textSize="30dp"
-        android:textColor="@color/darkPrimary"
-        android:layout_toRightOf="@id/btnTimerStart"
-        android:layout_alignTop="@id/btnTimerStart"
         android:layout_alignBottom="@id/btnTimerStart"
-        android:background="@null"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignTop="@id/btnTimerStart"
+        android:layout_margin="2dp"
+        android:layout_toRightOf="@id/btnTimerStart"
+        android:background="@null"
+        android:inputType="number"
+        android:textColor="@color/darkPrimary"
+        android:textSize="30dp"
+        />
 
 </RelativeLayout>

@@ -21,13 +21,13 @@ public class Trainingsphase {
     private Date startDate;
     private Date endDate;
 
-    public Trainingsphase(Date startDate, int phasenDauer){
+    public Trainingsphase(Date startDate, int phasenDauer) {
         this.startDate = startDate;
         this.phasenDauer = phasenDauer;
         setEndingDate(startDate);
     }
 
-    public Trainingsphase(String phasenName, PhasenTyp phasenTyp, int pausenDauer, int phasenDauer, int seatze, int wiederholungen, int repmax, Date startDate){
+    public Trainingsphase(String phasenName, PhasenTyp phasenTyp, int pausenDauer, int phasenDauer, int seatze, int wiederholungen, int repmax, Date startDate) {
         this.setPhasenName(phasenName);
         this.setPhasenTyp(phasenTyp);
         this.setPausenDauer(pausenDauer);
@@ -47,7 +47,7 @@ public class Trainingsphase {
         this.endDate = calendar.getTime();
     }
 
-    public List<Uebung> getUebungListOfToday(){
+    public List<Uebung> getUebungListOfToday() {
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.GERMAN);
         String dayofweek = dateFormat.format(now);
@@ -56,9 +56,9 @@ public class Trainingsphase {
         return getUebungByDay(dayofweek);
     }
 
-    public List<Uebung> getUebungByDay(String day){
+    public List<Uebung> getUebungByDay(String day) {
         List<Uebung> uebungen = new LinkedList<Uebung>();
-        for (Uebung element : getUebungList()){
+        for (Uebung element : getUebungList()) {
             if (element.getWochenTag() == day)
                 uebungen.add(element);
         }
@@ -69,16 +69,16 @@ public class Trainingsphase {
         return uebungList;
     }
 
-    public ArrayList<Uebung> getUebungenAsArrayList(){
+    public void setUebungList(List<Uebung> uebungList) {
+        this.uebungList = uebungList;
+    }
+
+    public ArrayList<Uebung> getUebungenAsArrayList() {
         ArrayList<Uebung> uebungen = new ArrayList<Uebung>();
-        for (Uebung uebung : getUebungList()){
+        for (Uebung uebung : getUebungList()) {
             uebungen.add(uebung);
         }
         return uebungen;
-    }
-
-    public void setUebungList(List<Uebung> uebungList) {
-        this.uebungList = uebungList;
     }
 
     public int getPausenDauer() {
@@ -145,16 +145,16 @@ public class Trainingsphase {
         return startDate;
     }
 
-    public String[] getWochentage(){
+    public String[] getWochentage() {
         List<String> wochentage = new LinkedList<String>();
-        for (Uebung element : uebungList){
-            if (!wochentage.contains(element.getWochenTag())){
+        for (Uebung element : uebungList) {
+            if (!wochentage.contains(element.getWochenTag())) {
                 wochentage.add(element.getWochenTag());
             }
         }
         int cnt = 0;
         String[] tage = null;
-        for (String element : wochentage){
+        for (String element : wochentage) {
             tage[cnt] = element;
             cnt++;
         }

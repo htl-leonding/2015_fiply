@@ -54,19 +54,19 @@ public class FUebungskatalog extends Fragment {
         String[] fromColumns = {rep.getAllUebungen().getColumnName(1)};
 
 
-        uebungenLV = (ListView) getView().findViewById(R.id.ueList);
+        uebungenLV = (ListView) getActivity().findViewById(R.id.ueList);
         ueAdapter = new SimpleCursorAdapter(context, R.layout.uebungskatalog_item, rep.getAllUebungen(), fromColumns, toViews, 0);
         uebungenLV.setAdapter(ueAdapter);
         uebungenLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle args = new Bundle();
-                args.putString("name", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(1));
+                args.putString("name", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(1));
                 args.putString("beschreibung", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(2));
                 args.putString("anleitung", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(3));
                 args.putString("muskelgruppe", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(4));
                 args.putString("zielgruppe", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(5));
-                args.putString("video", ((Cursor)uebungenLV.getItemAtPosition(position)).getString(6));
+                args.putString("video", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(6));
                 args.putBoolean("showVideo", true);
                 FUebungDetail fUebungDetail = new FUebungDetail();
                 fUebungDetail.setArguments(args);

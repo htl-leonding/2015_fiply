@@ -3,6 +3,7 @@ package htl_leonding.fiplyteam.fiply.trainingssession;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,25 +28,24 @@ public class FClocksNav extends Fragment {
         btnNavWatch = (Button) getActivity().findViewById(R.id.btnNavWatch);
         btnNavTimer = (Button) getActivity().findViewById(R.id.btnNavTimer);
 
-        btnNavWatch.setBackgroundColor(getResources().getColor(R.color.darkPrimary));
-        btnNavTimer.setBackgroundColor(getResources().getColor(R.color.darkSecondary));
+        btnNavWatch.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.darkPrimary));
+        btnNavTimer.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.darkSecondary));
 
         btnNavWatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayFragment.displayTSClock(new FWatch(), getFragmentManager());
-                btnNavWatch.setBackgroundColor(getResources().getColor(R.color.darkPrimary));
-                btnNavTimer.setBackgroundColor(getResources().getColor(R.color.darkSecondary));
+                btnNavWatch.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.darkPrimary));
+                btnNavTimer.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.darkSecondary));
             }
         });
         btnNavTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayFragment.displayTSClock(new FCountdown(), getFragmentManager());
-                btnNavWatch.setBackgroundColor(getResources().getColor(R.color.darkSecondary));
-                btnNavTimer.setBackgroundColor(getResources().getColor(R.color.darkPrimary));
+                btnNavWatch.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.darkSecondary));
+                btnNavTimer.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.darkPrimary));
             }
         });
-
     }
 }

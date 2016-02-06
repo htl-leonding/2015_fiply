@@ -28,14 +28,14 @@ public class EspressoTest {
 
     //Testet, ob sich die MainActivity geöffnet ist - am Anfang - und ob die korrekte Überschrift angezeigt wird.
     @Test
-    public void test01_mainActivity(){
+    public void test01_mainActivity() {
         String title = getInstrumentation().getTargetContext().getResources().getString(R.string.welcome);
         onView(withText(title)).check(ViewAssertions.matches(isDisplayed()));
     }
 
     //Testet, ob sich der Trainingskatalog öffnen lässt und ob die korrekte Überschrift angezeigt wird.
     @Test
-    public void test02_katalogOeffnen(){
+    public void test02_katalogOeffnen() {
         onView(withId(R.id.btStartUe)).perform(click());
         String title = getInstrumentation().getTargetContext().getResources().getString(R.string.titleUe);
         onView(withText(title)).check(ViewAssertions.matches(isDisplayed()));

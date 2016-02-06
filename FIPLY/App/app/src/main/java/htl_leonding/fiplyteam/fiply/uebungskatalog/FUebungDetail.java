@@ -47,12 +47,12 @@ public class FUebungDetail extends Fragment {
         uebungsAnl = getArguments().getString("anleitung");
 
 
-        tvUebungName = (TextView) getView().findViewById(R.id.detailUebungName);
-        tvUebungMG = (TextView) getView().findViewById(R.id.detailMuskelGruppe);
-        tvUebungZG = (TextView) getView().findViewById(R.id.detailZielGruppe);
-        tvUebungDesc = (TextView) getView().findViewById(R.id.detailBeschreibung);
-        tvUebungAnl = (TextView) getView().findViewById(R.id.detailAnleitung);
-        checkBox = (CheckBox) getView().findViewById(R.id.cbVideo);
+        tvUebungName = (TextView) getActivity().findViewById(R.id.detailUebungName);
+        tvUebungMG = (TextView) getActivity().findViewById(R.id.detailMuskelGruppe);
+        tvUebungZG = (TextView) getActivity().findViewById(R.id.detailZielGruppe);
+        tvUebungDesc = (TextView) getActivity().findViewById(R.id.detailBeschreibung);
+        tvUebungAnl = (TextView) getActivity().findViewById(R.id.detailAnleitung);
+        checkBox = (CheckBox) getActivity().findViewById(R.id.cbVideo);
 
         tvUebungName.setText(uebungsName);
         tvUebungZG.setText(uebungsZG);
@@ -65,12 +65,11 @@ public class FUebungDetail extends Fragment {
             public void onClick(View v) {
                 boolean checked = checkBox.isChecked();
                 if (checked) {
-                    if(!getVideoInitialized())
-                    {
+                    if (!getVideoInitialized()) {
                         setupVideo();
                     }
                     wvUebungVideo.setVisibility(View.VISIBLE);
-                } else{
+                } else {
                     wvUebungVideo.setVisibility(View.GONE);
                 }
             }
@@ -82,9 +81,9 @@ public class FUebungDetail extends Fragment {
             wvUebungVideo.setVisibility(View.VISIBLE);
         }
     }
-    public void setupVideo()
-    {
-        wvUebungVideo = (WebView) getView().findViewById(R.id.detailUebungVideo);
+
+    public void setupVideo() {
+        wvUebungVideo = (WebView) getActivity().findViewById(R.id.detailUebungVideo);
         wvUebungVideo.getSettings().setJavaScriptEnabled(true);
 
         wvUebungVideo.setWebChromeClient(new WebChromeClient());

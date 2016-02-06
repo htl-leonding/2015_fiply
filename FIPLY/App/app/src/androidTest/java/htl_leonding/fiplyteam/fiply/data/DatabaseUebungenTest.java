@@ -95,6 +95,7 @@ public class DatabaseUebungenTest extends AndroidTestCase {
 
     /**
      * testet das update einer Uebung mittels insert und updateUebung
+     *
      * @throws SQLException
      */
     public void testUpdateUebung() throws SQLException {
@@ -158,6 +159,7 @@ public class DatabaseUebungenTest extends AndroidTestCase {
 
     /**
      * testet den Returnwert eines insert-Statements
+     *
      * @throws SQLException
      */
     public void testReturnOnInsert() throws SQLException {

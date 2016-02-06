@@ -5,8 +5,9 @@ public class Uebung {
     private String wochenTag; // Mo
     private String uebungsName;
     private int repmax;
+    private String muskelgruppe;
 
-    public int getTrainingsgewicht(int wiederholungen, int rm, String uebungsID, String uebungsName){
+    public int getTrainingsgewicht(int wiederholungen, int rm, String uebungsID, String uebungsName) {
         return 1;
     }
 
@@ -40,5 +41,13 @@ public class Uebung {
 
     public void setRepmax(int repmax) {
         this.repmax = repmax;
+    }
+
+    public String getMuskelgruppe() {
+        return muskelgruppe;
+    }
+
+    public void setMuskelgruppe(String muskelgruppe) {
+        this.muskelgruppe = muskelgruppe;
     }
 }

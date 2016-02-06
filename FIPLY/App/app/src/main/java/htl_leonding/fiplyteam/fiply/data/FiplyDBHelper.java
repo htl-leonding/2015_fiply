@@ -21,7 +21,7 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static FiplyDBHelper getInstance(Context context){
+    public static FiplyDBHelper getInstance(Context context) {
         if (instance == null)
             instance = new FiplyDBHelper(context);
         return instance;

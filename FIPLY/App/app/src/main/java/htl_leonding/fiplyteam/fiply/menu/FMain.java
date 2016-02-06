@@ -47,11 +47,11 @@ public class FMain extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        startUeb = (Button) getView().findViewById(R.id.btStartUe);
-        startTra = (Button) getView().findViewById(R.id.btStartTr);
-        startUse = (Button) getView().findViewById(R.id.btStartEU);
-        startPlaylists = (Button) getView().findViewById(R.id.btStartPlaylist);
-        startTrainplan = (Button) getView().findViewById(R.id.btStartTrainView);
+        startUeb = (Button) getActivity().findViewById(R.id.btStartUe);
+        startTra = (Button) getActivity().findViewById(R.id.btStartTr);
+        startUse = (Button) getActivity().findViewById(R.id.btStartEU);
+        startPlaylists = (Button) getActivity().findViewById(R.id.btStartPlaylist);
+        startTrainplan = (Button) getActivity().findViewById(R.id.btStartTrainView);
 
         /**
          * Bei Drücken des Uebungskatalog Buttons wird eine FragmentTransaction durchgeführt,
