@@ -3,6 +3,7 @@ package htl_leonding.fiplyteam.fiply.user;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,6 @@ import android.widget.Spinner;
 
 import java.sql.SQLException;
 
-import javax.annotation.Nullable;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
