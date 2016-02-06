@@ -31,8 +31,8 @@ public class FTrainingsplan extends Fragment {
         context = getActivity();
         rep = UebungenRepository.getInstance();
         String[] wochentage = {"Montag", "Donnerstag", "Samstag"};
-        gAlg = new GenerateAllgemein(true, 3, wochentage, new Date());
-        phTKra = new GeneratePhTwoKraftausdauer(wochentage, new Date(), false);
+        gAlg = new GenerateAllgemein(true, 1, wochentage, new Date());
+        phTKra = new GeneratePhTwoKraftausdauer(wochentage, new Date(), true);
         return inflater.inflate(R.layout.fragment_trainingsplantest, container, false);
     }
 

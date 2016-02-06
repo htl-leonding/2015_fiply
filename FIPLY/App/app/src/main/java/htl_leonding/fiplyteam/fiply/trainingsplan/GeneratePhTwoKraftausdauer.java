@@ -12,8 +12,6 @@ public class GeneratePhTwoKraftausdauer {
     String[] wochentage;
     private Trainingsphase tPhase;
     UebungenRepository rep;
-    int repmax = 80;
-    int wiederholungen;
     private Date startDate;
     private Date endDate;
     List<Uebung> uebungen;
@@ -39,6 +37,7 @@ public class GeneratePhTwoKraftausdauer {
         boolean del1 = false, del2 = false, del3 = false;
         uebungen = new LinkedList<Uebung>();
         uebungen = tPhase.getUebungList();
+        System.out.println("Groesse: " + uebungen.size());
         for (Uebung element : uebungen){
             if (!del1 && element.getWochenTag() == wedays[0]){
                 del1 = true;
@@ -49,8 +48,8 @@ public class GeneratePhTwoKraftausdauer {
                 udel2 = element;
             }
             if (!del3 && element.getWochenTag() == wedays[2]){
-                del2 = true;
-                udel2 = element;
+                del3 = true;
+                udel3 = element;
             }
         }
         uebungen.remove(udel1);
