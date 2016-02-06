@@ -309,7 +309,39 @@ public class GenerateAllgemein {
     }
 
     public void grabIntoUebungListSchema3(List<String[]> uebungen){
-
+        List<Uebung> finalUebungslist = new LinkedList<Uebung>();
+        Collections.shuffle(uebungen);
+        Uebung ueb = new Uebung();
+        ueb.setUebungsID(uebungen.get(0)[0]);
+        ueb.setUebungsName(uebungen.get(0)[1]);
+        ueb.setWochenTag(wochentage[0]);
+        finalUebungslist.add(ueb);
+        ueb = new Uebung();
+        ueb.setUebungsID(uebungen.get(1)[0]);
+        ueb.setUebungsName(uebungen.get(1)[1]);
+        ueb.setWochenTag(wochentage[0]);
+        finalUebungslist.add(ueb);
+        ueb = new Uebung();
+        ueb.setUebungsID(uebungen.get(2)[0]);
+        ueb.setUebungsName(uebungen.get(2)[1]);
+        ueb.setWochenTag(wochentage[1]);
+        finalUebungslist.add(ueb);
+        ueb = new Uebung();
+        ueb.setUebungsID(uebungen.get(3)[0]);
+        ueb.setUebungsName(uebungen.get(3)[1]);
+        ueb.setWochenTag(wochentage[1]);
+        finalUebungslist.add(ueb);
+        ueb = new Uebung();
+        ueb.setUebungsID(uebungen.get(4)[0]);
+        ueb.setUebungsName(uebungen.get(4)[1]);
+        ueb.setWochenTag(wochentage[2]);
+        finalUebungslist.add(ueb);
+        ueb = new Uebung();
+        ueb.setUebungsID(uebungen.get(5)[0]);
+        ueb.setUebungsName(uebungen.get(5)[1]);
+        ueb.setWochenTag(wochentage[2]);
+        finalUebungslist.add(ueb);
+        getTPhase().setUebungList(finalUebungslist);
     }
 
     public Trainingsphase getTPhase() {
