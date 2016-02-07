@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/staticDetailMuskelGruppe"
             android:layout_below="@+id/staticDetailMuskelGruppe"
-            android:text="@string/detailZG"
+            android:text="@string/detailEquip"
             android:textColor="@color/darkTextColorLight"
             />
 

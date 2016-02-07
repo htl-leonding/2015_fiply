@@ -64,9 +64,33 @@
             android:text="Test Muskelgruppe"
             android:textColor="@color/darkTextColorLight"
             />
+        <TextView
+            android:id="@+id/detailDifficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/detailUebungName"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Test Muskelgruppe"
+            android:textColor="@color/darkTextColorLight"
+            />
 
         <TextView
-            android:id="@+id/detailZielGruppe"
+            android:id="@+id/staticDetailDifficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/detailUebungName"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/staticDetailDifficulty"
+            android:text="Schwierigkeit: "
+            android:textColor="@color/darkTextColorLight"
+            />
+
+        <TextView
+            android:id="@+id/detailEquipment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/detailMuskelGruppe"
@@ -74,17 +98,17 @@
             android:layout_below="@+id/detailMuskelGruppe"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
-            android:text="Test Zielgruppe"
+            android:text="Test Equipment"
             android:textColor="@color/darkTextColorLight"
             />
 
         <TextView
-            android:id="@+id/staticDetailZielGruppe"
+            android:id="@+id/staticDetailEquipment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/staticDetailMuskelGruppe"
             android:layout_below="@+id/staticDetailMuskelGruppe"
-            android:text="@string/detailZG"
+            android:text="@string/detailEquip"
             android:textColor="@color/darkTextColorLight"
             />
 
@@ -144,6 +168,15 @@
             android:layout_marginTop="20dp"
             android:visibility="gone"
             />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detailAnl"
+            android:textColor="@color/darkTextColorLight"
+            android:layout_below="@+id/staticDetailEquipment"
+            android:layout_alignEnd="@+id/detailAnleitung" />
 
     </RelativeLayout>
 </ScrollView>
