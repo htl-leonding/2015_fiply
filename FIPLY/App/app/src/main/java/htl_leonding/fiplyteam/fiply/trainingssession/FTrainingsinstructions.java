@@ -20,7 +20,7 @@ import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 public class FTrainingsinstructions extends Fragment {
 
     TextView tvUebungName, tvUebungSchwierigkeit, tvUebungMuskelgruppe, tvUebungBeschreibung, tvUebungAnleitung,
-             tvLinkVideo, tvUebungEquipment, tvUebungGewicht, tvUebungSaetze, tvUebungWiederholungen;
+            tvLinkVideo, tvUebungEquipment, tvUebungGewicht, tvUebungSaetze, tvUebungWiederholungen;
     ImageButton ibLinkVideo;
     Button btnNextUeb, btnLastUeb, btnHideClocks, btnHideMusic;
 
@@ -63,28 +63,23 @@ public class FTrainingsinstructions extends Fragment {
             public void onClick(View v) {
                 if (getActivity().findViewById(R.id.clocksLayout).getVisibility() != View.GONE) {
                     getActivity().findViewById(R.id.clocksLayout).setVisibility(View.GONE);
-
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 } else {
                     getActivity().findViewById(R.id.clocksLayout).setVisibility(View.VISIBLE);
-
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
             }
         });
-
 
         btnHideMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (getActivity().findViewById(R.id.musicLayout).getVisibility() != View.GONE) {
                     getActivity().findViewById(R.id.musicLayout).setVisibility(View.GONE);
-
                     getActivity().findViewById(R.id.clocksLayout).invalidate();
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 } else {
                     getActivity().findViewById(R.id.musicLayout).setVisibility(View.VISIBLE);
-
                     getActivity().findViewById(R.id.clocksLayout).invalidate();
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
