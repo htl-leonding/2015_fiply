@@ -2,6 +2,7 @@ package htl_leonding.fiplyteam.fiply.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
@@ -50,5 +51,18 @@ public class PhasenRepository {
         initialValues.put(PhasenEntry.COLUMN_SAETZE, saetze);
         initialValues.put(PhasenEntry.COLUMN_WIEDERHOLUNGEN, wiederholungen);
         return db.insert(PhasenEntry.TABLE_NAME, null, initialValues);
+    }
+
+    public Cursor getAllPhasen(){
+        return db.query(PhasenEntry.TABLE_NAME, new String[]{
+                        PhasenEntry.COLUMN_ROWID,
+                        PhasenEntry.COLUMN_STARTDATE,
+                        PhasenEntry.COLUMN_ENDDATE,
+                        PhasenEntry.COLUMN_PHASENNAME,
+                        PhasenEntry.COLUMN_PAUSENDAUER,
+                        PhasenEntry.COLUMN_SAETZE,
+                        PhasenEntry.COLUMN_WIEDERHOLUNGEN,
+                },
+                null, null, null, null, PhasenEntry.COLUMN_PHASENNAME + " ASC");
     }
 }

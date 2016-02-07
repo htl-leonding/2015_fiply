@@ -151,6 +151,9 @@ public class KeyValueRepository {
             insertKeyValue("userProf","Not Fit");
 
             insertKeyValue("isUserCustomized", "true");
+
+
+            insertKeyValue("trainingsphasenloaded", "false");
         }
     }
 }

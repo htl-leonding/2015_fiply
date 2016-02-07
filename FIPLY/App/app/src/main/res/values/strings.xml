@@ -46,7 +46,14 @@
     <string name="detailGewicht">Gewicht:</string>
     <string name="detailEquipment">Equipment:</string>
     <string name="detailWiederholungen">Wiederholungen:</string>
-
+    <string name="sessionsettingstitle">!Go Go Go!</string>
+    <string name="alertnoplan">Sie haben noch keinen Trainingsplan!</string>
+    <string name="ok">Okay</string>
+    <string name="choosedaybt">Tag auswählen</string>
+    <string name="btnLastUeb">Zurück</string>
+    <string name="btnNextUeb">Weiter</string>
+    <string name="btnMusicHide">Musik</string>
+    <string name="btnClocksHide">Uhren</string>
     <string name="exercisecatalog">
         [
   {

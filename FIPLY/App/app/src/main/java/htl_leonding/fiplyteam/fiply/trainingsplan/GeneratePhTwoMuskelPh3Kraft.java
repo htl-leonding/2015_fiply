@@ -44,8 +44,9 @@ public class GeneratePhTwoMuskelPh3Kraft {
         setUebungen(new LinkedList<Uebung>());
         List<String[]> list = setUebungen();
         fetchIntoUebungen(list);
-        tphas = new Trainingsphase("Phase 2: Muskelaufbau; Phase 3: Kraftausdauer", PhasenTyp.PHASE2MUSKELAUFBAUPHASE3KRAFTAUSDAUER, getPausendauer(), getPhasendauer(), getSaetze(), getWiederholungen(), getRepmax(), getStartDate());
+        tphas = new Trainingsphase("Phase 2: Muskelaufbau; Phase 3: Kraftausdauer", getPausendauer(), getPhasendauer(), getSaetze(), getWiederholungen(), getRepmax(), getStartDate());
         tphas.setUebungList(uebungen);
+        System.out.println("Size: " + tphas.getUebungenAsArrayList().size());
     }
 
     private List<String[]> setUebungen() {
@@ -62,12 +63,8 @@ public class GeneratePhTwoMuskelPh3Kraft {
         int count2 = 0;
         int count3 = 0;
 
-        String[] mgruppe = null;
-        String mgrup;
-        String lolgrup;
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             muskelGruppe = c.getString(iMuskelGruppe);
-            mgrup = getMuskelgruppen()[0];
             if (getUebungsanzahl() == 6) {
                 if (muskelGruppe.toUpperCase().contains(getMuskelgruppen()[0].toUpperCase()) && count1 < 3) {
                     rowId = c.getString(iRowId);
@@ -83,8 +80,7 @@ public class GeneratePhTwoMuskelPh3Kraft {
                     count2++;
                 }
             } else {
-                lolgrup = muskelGruppe.toUpperCase();
-                if (lolgrup.contains(mgrup.toUpperCase()) && count1 < 3) {
+                if (muskelGruppe.toUpperCase().contains(getMuskelgruppen()[0].toUpperCase()) && count1 < 3) {
                     rowId = c.getString(iRowId);
                     uebungsName = c.getString(iUebungsName);
                     String[] newUebung = {rowId, uebungsName, wochentage[count1], muskelGruppe};

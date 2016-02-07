@@ -65,6 +65,17 @@ public class InstruktionenRepository extends Service{
         return db.insert(InstruktionenEntry.TABLE_NAME, null, initialValues);
     }
 
+    public Cursor getAllInstructions(){
+        return db.query(InstruktionenEntry.TABLE_NAME, new String[]{
+                        InstruktionenEntry.COLUMN_ROWID,
+                        InstruktionenEntry.COLUMN_WOCHENTAG,
+                        InstruktionenEntry.COLUMN_REPMAX,
+                        InstruktionenEntry.COLUMN_UEBUNGSID,
+                        InstruktionenEntry.COLUMN_PHASENID
+                },
+                null, null, null, null, InstruktionenEntry.COLUMN_PHASENID + " ASC");
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {

@@ -2,10 +2,11 @@ package htl_leonding.fiplyteam.fiply.trainingsplan;
 
 public class Uebung {
     private String uebungsID; // UebungsID = Rowid in der DB
-    private String wochenTag; // Mo
+    private String wochenTag; //
     private String uebungsName;
     private int repmax;
     private String muskelgruppe;
+    private String phasenId;
 
     public int getTrainingsgewicht(int wiederholungen, int rm, String uebungsID, String uebungsName) {
         return 1;
@@ -49,5 +50,13 @@ public class Uebung {
 
     public void setMuskelgruppe(String muskelgruppe) {
         this.muskelgruppe = muskelgruppe;
+    }
+
+    public String getPhasenId() {
+        return phasenId;
+    }
+
+    public void setPhasenId(String phasenId) {
+        this.phasenId = phasenId;
     }
 }
