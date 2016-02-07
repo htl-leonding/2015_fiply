@@ -1,4 +1,4 @@
-package htl_leonding.fiplyteam.fiply.trainingsplan;
+package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,7 +15,7 @@ public class PlanSessionPort extends Fragment{
     public void startTrainingssession() {
 
 
-/*
+
         FTrainingssession trainingssession = new FTrainingssession();
         Bundle args = new Bundle();
         args.putString("instruktionsid1", "instruktion1");
@@ -24,10 +24,6 @@ public class PlanSessionPort extends Fragment{
         trainingssession.setArguments(args);
 
         displayFragment.displayTSUebung(trainingssession, getFragmentManager());
-        displayFragment.displayTSClocksNav(new FClocksNav(), getFragmentManager());
-        displayFragment.displayTSClock(new FWatch(), getFragmentManager());
-        displayFragment.displayTSMusic(new FMusic(), getFragmentManager());
-*/
         //Fragmentaufruf(repmax, wiederholungen, saetze, pausendauer, List<uebung>()
 
     }
