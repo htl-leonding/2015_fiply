@@ -2,8 +2,10 @@ package htl_leonding.fiplyteam.fiply.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import java.sql.SQLException;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
 
 
@@ -50,5 +52,23 @@ public class PhasenRepository {
         initialValues.put(PhasenEntry.COLUMN_SAETZE, saetze);
         initialValues.put(PhasenEntry.COLUMN_WIEDERHOLUNGEN, wiederholungen);
         return db.insert(PhasenEntry.TABLE_NAME, null, initialValues);
+    }
+
+    public Cursor getPhase(long rowId) throws SQLException {
+        Cursor myCursor = db.query(true, PhasenEntry.TABLE_NAME, new String[]{
+                        PhasenEntry.COLUMN_ROWID,
+                        PhasenEntry.COLUMN_STARTDATE,
+                        PhasenEntry.COLUMN_ENDDATE,
+                        PhasenEntry.COLUMN_PHASENNAME,
+                        PhasenEntry.COLUMN_PHASENDAUER,
+                        PhasenEntry.COLUMN_PAUSENDAUER,
+                        PhasenEntry.COLUMN_SAETZE,
+                        PhasenEntry.COLUMN_WIEDERHOLUNGEN},
+                PhasenEntry.COLUMN_ROWID + "=" + rowId,
+                null, null, null, null, null);
+        if (myCursor != null) {
+            myCursor.moveToFirst();
+        }
+        return myCursor;
     }
 }
