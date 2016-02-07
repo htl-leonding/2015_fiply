@@ -42,6 +42,10 @@
     <string name="sizeString">Size</string>
     <string name="weightString">Weight</string>
     <string name="startTrainView">Trainingsview starten</string>
+    <string name="detailSaetze">Sätze:</string>
+    <string name="detailGewicht">Gewicht:</string>
+    <string name="detailEquipment">Equipment:</string>
+    <string name="detailWiederholungen">Wiederholungen:</string>
 
     <string name="exercisecatalog">
         [
@@ -592,8 +596,7 @@
 ]
     </string>
 
-
-    <string-array name="navigationArray">
+  <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>
