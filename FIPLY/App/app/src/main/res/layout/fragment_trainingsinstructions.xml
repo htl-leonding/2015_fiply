@@ -45,7 +45,7 @@
             android:layout_below="@id/detailUebungName"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="18dp"
             android:layout_toRightOf="@id/staticDetailMuskelGruppe"
             android:text="Test Muskelgruppe"
             android:textColor="@color/darkTextColorLight"
@@ -234,5 +234,48 @@
             android:textSize="16dp"
             />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ibLinkVideo"
+            android:orientation="horizontal"
+            >
+
+                <Button
+                    android:id="@+id/btnUebLast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btnLastUeb"
+                    android:textColor="@color/darkPrimary"
+                    />
+
+                <Button
+                    android:id="@+id/btnUebNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btnNextUeb"
+                    android:textColor="@color/darkPrimary"
+                    />
+
+                <Button
+                    android:id="@+id/btnClocksHide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btnClocksHide"
+                    android:textColor="@color/darkPrimary"
+                />
+
+                <Button
+                    android:id="@+id/btnMusicHide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btnMusicHide"
+                    android:textColor="@color/darkPrimary"
+                    />
+        </LinearLayout>
     </RelativeLayout>
 </ScrollView>

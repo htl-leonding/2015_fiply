@@ -22,7 +22,7 @@ public class displayFragment {
 
     public static void displayTSClock(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fraTsClocks, display);
+        fragmentTransaction.replace(R.id.fraTsClocks, display, "TSClocks");
         fragmentTransaction.commit();
     }
 
@@ -34,7 +34,7 @@ public class displayFragment {
 
     public static void displayTSClocksNav(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fraTsClocksNav, display);
+        fragmentTransaction.replace(R.id.fraTsClocksNav, display, "TSClocksNav");
         fragmentTransaction.commit();
     }
 }
