@@ -8,7 +8,6 @@ public class FiplyContract {
      * Struktur der Datenbanktabelle "Uebungen"
      */
     public static final class UebungenEntry implements BaseColumns {
-
         public static final String TABLE_NAME = "uebungen";
 
         public static final String COLUMN_ROWID = "_id";
@@ -23,6 +22,7 @@ public class FiplyContract {
 
     public static final class KeyValueEntry implements BaseColumns {
         public static final String TABLE_NAME = "keyvalue";
+
         public static final String COLUMN_VALUE = "value";
         public static final String COLUMN_KEY = "key";
 
@@ -30,8 +30,8 @@ public class FiplyContract {
 
     public static final class PhasenEntry implements  BaseColumns {
         public static final String TABLE_NAME = "phasen";
-        public static final String COLUMN_ROWID = "_id";
 
+        public static final String COLUMN_ROWID = "_id";
         public static final String COLUMN_STARTDATE = "startdate";
         public static final String COLUMN_ENDDATE = "enddate";
         public static final String COLUMN_PHASENNAME = "phasenname";
@@ -48,7 +48,6 @@ public class FiplyContract {
         public static final String COLUMN_ROWID = "_id";
         public static final String COLUMN_WOCHENTAG = "wochentag";
         public static final String COLUMN_REPMAX = "repmax";
-
         public static final String COLUMN_UEBUNGSID = "uebungsid";
         public static final String COLUMN_PHASENID = "phasenid";
 

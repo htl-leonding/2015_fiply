@@ -10,13 +10,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.sql.SQLException;
-
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 
@@ -38,7 +35,7 @@ public class UebungenRepository extends Service {
 
     private SQLiteDatabase getWritableDatabase() {
         if (repoContext == null)
-            throw new IllegalStateException("Context is null - " + "Set a repoContext in the Repository with setContext()");
+            throw new IllegalStateException("Context is null - Set a repoContext in the Repository with setContext()");
 
         Log.wtf(FiplyDBHelper.LOG_TAG, "Repository::getWriteableDatabase()");
         return FiplyDBHelper.getInstance(repoContext).getWritableDatabase();
@@ -46,7 +43,7 @@ public class UebungenRepository extends Service {
 
     private SQLiteDatabase getReadableDatabase() {
         if (repoContext == null)
-            throw new IllegalStateException("Context is null - " + "Set a repoContext in the Repository with setContext()");
+            throw new IllegalStateException("Context is null - Set a repoContext in the Repository with setContext()");
 
         Log.wtf(FiplyDBHelper.LOG_TAG, "Repository::getReadableDatabase()");
         return FiplyDBHelper.getInstance(repoContext).getReadableDatabase();
