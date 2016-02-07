@@ -64,17 +64,11 @@ public class FTrainingsinstructions extends Fragment {
                 if (getActivity().findViewById(R.id.clocksLayout).getVisibility() != View.GONE) {
                     getActivity().findViewById(R.id.clocksLayout).setVisibility(View.GONE);
 
-//                    getActivity().findViewById(R.id.musicLayout).invalidate();
-//                    getActivity().findViewById(R.id.clocksLayout).invalidate();
-//                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
-                    getActivity().findViewById(R.id.trainingssession);
+                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 } else {
                     getActivity().findViewById(R.id.clocksLayout).setVisibility(View.VISIBLE);
 
-//                    getActivity().findViewById(R.id.musicLayout).invalidate();
-//                    getActivity().findViewById(R.id.clocksLayout).invalidate();
-//                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
-                    getActivity().findViewById(R.id.trainingssession);
+                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
             }
         });
@@ -86,17 +80,13 @@ public class FTrainingsinstructions extends Fragment {
                 if (getActivity().findViewById(R.id.musicLayout).getVisibility() != View.GONE) {
                     getActivity().findViewById(R.id.musicLayout).setVisibility(View.GONE);
 
-//                    getActivity().findViewById(R.id.musicLayout).invalidate();
-//                    getActivity().findViewById(R.id.clocksLayout).invalidate();
-//                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
-                    getActivity().findViewById(R.id.trainingssession);
+                    getActivity().findViewById(R.id.clocksLayout).invalidate();
+                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 } else {
                     getActivity().findViewById(R.id.musicLayout).setVisibility(View.VISIBLE);
 
-//                    getActivity().findViewById(R.id.musicLayout).invalidate();
-//                    getActivity().findViewById(R.id.clocksLayout).invalidate();
-//                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
-                    getActivity().findViewById(R.id.trainingssession);
+                    getActivity().findViewById(R.id.clocksLayout).invalidate();
+                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
             }
         });
