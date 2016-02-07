@@ -32,9 +32,11 @@ public class FiplyContract {
         public static final String TABLE_NAME = "phasen";
         public static final String COLUMN_ROWID = "_id";
 
+        public static final String COLUMN_STARTDATE = "startdate";
+        public static final String COLUMN_ENDDATE = "enddate";
         public static final String COLUMN_PHASENNAME = "phasenname";
-        public static final String COLUMN_PHASENDAUER = "phasendauer";
-        public static final String COLUMN_PAUSENDAUER = "pausendauer";
+        public static final String COLUMN_PHASENDAUER = "phasendauer"; // In Sekunden
+        public static final String COLUMN_PAUSENDAUER = "pausendauer"; // In Wochen
         public static final String COLUMN_SAETZE = "saetze";
         public static final String COLUMN_WIEDERHOLUNGEN = "wiederholungen";
     }
