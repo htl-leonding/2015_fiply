@@ -34,13 +34,14 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         final String SQL_CREATE_UEBUNGEN_TABLE = "create table " + UebungenEntry.TABLE_NAME +
-                " (" + UebungenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
+                " (" +
+                UebungenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
                 UebungenEntry.COLUMN_NAME + " text not null, " +
                 UebungenEntry.COLUMN_BESCHREIBUNG + " text not null, " +
                 UebungenEntry.COLUMN_ANLEITUNG + " text not null, " +
                 UebungenEntry.COLUMN_MUSKELGRUPPE + " text not null, " +
                 UebungenEntry.COLUMN_SCHWIERIGKEIT + " text not null, " +
-                UebungenEntry.COLUMN_VIDEO + " text not null" +
+                UebungenEntry.COLUMN_VIDEO + " text not null, " +
                 UebungenEntry.COLUMN_EQUIPMENT + " text not null" +
                 ");";
         Log.d(LOG_TAG, SQL_CREATE_UEBUNGEN_TABLE);
@@ -62,7 +63,7 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
                 PhasenEntry.COLUMN_PHASENDAUER + " text not null, " +
                 PhasenEntry.COLUMN_PAUSENDAUER + " text not null, " +
                 PhasenEntry.COLUMN_SAETZE + " text not null, " +
-                PhasenEntry.COLUMN_WIEDERHOLUNGEN + " text not null, " +
+                PhasenEntry.COLUMN_WIEDERHOLUNGEN + " text not null" +
                 ");";
         Log.d(LOG_TAG, SQL_CREATE_PHASEN_TABLE);
         db.execSQL(SQL_CREATE_PHASEN_TABLE);
@@ -72,17 +73,18 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
                 InstruktionenEntry.COLUMN_WOCHENTAG + " text not null, " +
                 InstruktionenEntry.COLUMN_REPMAX + " text not null, " +
                 InstruktionenEntry.COLUMN_UEBUNGSID + " text not null, " +
-                InstruktionenEntry.COLUMN_PHASENID + " text not null, " +
-
+                InstruktionenEntry.COLUMN_PHASENID + " text not null" +
                 ");";
-        Log.d(LOG_TAG, SQL_CREATE_PHASEN_TABLE);
-        db.execSQL(SQL_CREATE_PHASEN_TABLE);
+        Log.d(LOG_TAG, SQL_CREATE_INSTRUKTIONEN_TABLE);
+        db.execSQL(SQL_CREATE_INSTRUKTIONEN_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + UebungenEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + KeyValueEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + PhasenEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + InstruktionenEntry.TABLE_NAME);
         onCreate(db);
     }
 }

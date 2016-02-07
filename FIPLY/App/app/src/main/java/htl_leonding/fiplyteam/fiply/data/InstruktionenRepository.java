@@ -46,7 +46,7 @@ public class InstruktionenRepository extends Service{
         Log.wtf(FiplyDBHelper.LOG_TAG, "Repository::getReadableDatabase()");
         return FiplyDBHelper.getInstance(repoContext).getReadableDatabase();
     }
-    
+
     /**
      * Gibt eine Instruktion in die Datenbank ein
      *

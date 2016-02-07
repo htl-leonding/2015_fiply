@@ -227,21 +227,21 @@ public class UebungenRepository extends Service {
                 UebungenEntry.COLUMN_ANLEITUNG + " text not null, " +
                 UebungenEntry.COLUMN_MUSKELGRUPPE + " text not null, " +
                 UebungenEntry.COLUMN_SCHWIERIGKEIT + " text not null, " +
-                UebungenEntry.COLUMN_VIDEO + " text not null" +
+                UebungenEntry.COLUMN_VIDEO + " text not null, " +
                 UebungenEntry.COLUMN_EQUIPMENT + " text not null" +
                 ");");
     }
 
 
     public void insertAllExercises() throws JSONException {
-        deleteAllUebungen();
+        reCreateUebungenTable();
         String json = repoContext.getResources().getString(R.string.exercisecatalog);
         JSONArray exercises = new JSONArray(json);
         JSONObject temp;
         for (int i = 0; i < exercises.length(); i++) {
             temp = exercises.getJSONObject(i);
             Log.wtf("Exercise: ", temp.getString("Name"));
-            //insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), "Not Implemented", "https://www.youtube.com/embed/0TjxnrWT8Es");
+            insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), temp.getString("Schwierigkeit"), "https://www.youtube.com/embed/0TjxnrWT8Es", temp.getString("Equipment"));
         }
 
     }
