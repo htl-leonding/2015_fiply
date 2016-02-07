@@ -54,6 +54,20 @@ public class PhasenRepository {
         return db.insert(PhasenEntry.TABLE_NAME, null, initialValues);
     }
 
+    public Cursor getAllPhasen(){
+        return db.query(PhasenEntry.TABLE_NAME, new String[]{
+                        PhasenEntry.COLUMN_ROWID,
+                        PhasenEntry.COLUMN_STARTDATE,
+                        PhasenEntry.COLUMN_ENDDATE,
+                        PhasenEntry.COLUMN_PHASENNAME,
+                        PhasenEntry.COLUMN_PHASENDAUER,
+                        PhasenEntry.COLUMN_PAUSENDAUER,
+                        PhasenEntry.COLUMN_SAETZE,
+                        PhasenEntry.COLUMN_WIEDERHOLUNGEN
+                },
+                null, null, null, null, PhasenEntry.COLUMN_STARTDATE + " ASC");
+    }
+
     public Cursor getPhase(long rowId) throws SQLException {
         Cursor myCursor = db.query(true, PhasenEntry.TABLE_NAME, new String[]{
                         PhasenEntry.COLUMN_ROWID,
