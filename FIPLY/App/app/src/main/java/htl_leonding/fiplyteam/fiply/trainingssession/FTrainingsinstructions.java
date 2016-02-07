@@ -14,7 +14,7 @@ import htl_leonding.fiplyteam.fiply.R;
 public class FTrainingsinstructions extends Fragment {
 
     String videoLink = "-";
-    TextView tvUebungName, tvUebungZG, tvUebungMG, tvUebungDesc, tvUebungAnl, tvLinkVideo;
+    TextView tvUebungName, tvUebungSchwierigkeit, tvUebungMuskelgruppe, tvUebungBeschreibung, tvUebungAnleitung, tvLinkVideo;
     ImageButton ibLinkVideo;
 
     @Override
@@ -28,18 +28,20 @@ public class FTrainingsinstructions extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tvUebungName = (TextView) getActivity().findViewById(R.id.detailUebungName);
-        tvUebungMG = (TextView) getActivity().findViewById(R.id.detailMuskelGruppe);
-        tvUebungZG = (TextView) getActivity().findViewById(R.id.detailZielGruppe);
-        tvUebungDesc = (TextView) getActivity().findViewById(R.id.detailBeschreibung);
-        tvUebungAnl = (TextView) getActivity().findViewById(R.id.detailAnleitung);
+        tvUebungMuskelgruppe = (TextView) getActivity().findViewById(R.id.detailMuskelGruppe);
+        tvUebungSchwierigkeit = (TextView) getActivity().findViewById(R.id.detailSchwierigkeit);
+        tvUebungBeschreibung = (TextView) getActivity().findViewById(R.id.detailBeschreibung);
+        tvUebungAnleitung = (TextView) getActivity().findViewById(R.id.detailAnleitung);
 
+        /*
         tvUebungName.setText(getArguments().getString("name"));
-        tvUebungZG.setText(getArguments().getString("zielgruppe"));
-        tvUebungMG.setText(getArguments().getString("muskelgruppe"));
-        tvUebungDesc.setText(getArguments().getString("beschreibung"));
-        tvUebungAnl.setText(getArguments().getString("anleitung"));
-
+        tvUebungSchwierigkeit.setText(getArguments().getString("zielgruppe"));
+        tvUebungMuskelgruppe.setText(getArguments().getString("muskelgruppe"));
+        tvUebungBeschreibung.setText(getArguments().getString("beschreibung"));
+        tvUebungAnleitung.setText(getArguments().getString("anleitung"));
         videoLink = getArguments().getString("video");
+        */
+        videoLink="";
         if (videoLink != null && !videoLink.equals("-")) {
             tvLinkVideo = (TextView) getActivity().findViewById(R.id.tvLinkVideo);
             ibLinkVideo = (ImageButton) getActivity().findViewById(R.id.ibLinkVideo);
