@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ public class FTrainingsinstructions extends Fragment {
             tvLinkVideo, tvUebungEquipment, tvUebungGewicht, tvUebungSaetze, tvUebungWiederholungen;
     ImageButton ibLinkVideo;
     Button btnNextUeb, btnLastUeb, btnHideClocks, btnHideMusic;
+    ScrollView scrollView;
 
     Cursor aktUebung, aktPhase;
     String videoLink = "-", aktUebungsId = "";
@@ -57,17 +59,20 @@ public class FTrainingsinstructions extends Fragment {
         btnLastUeb = (Button) getActivity().findViewById(R.id.btnUebLast);
         btnHideClocks = (Button) getActivity().findViewById(R.id.btnClocksHide);
         btnHideMusic = (Button) getActivity().findViewById(R.id.btnMusicHide);
+        scrollView = (ScrollView) getActivity().findViewById(R.id.scrollViewInstructions);
 
         btnHideClocks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (getActivity().findViewById(R.id.clocksLayout).getVisibility() != View.GONE) {
+                    getActivity().findViewById(R.id.clocksLayout).setAnimation();
                     getActivity().findViewById(R.id.clocksLayout).setVisibility(View.GONE);
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 } else {
                     getActivity().findViewById(R.id.clocksLayout).setVisibility(View.VISIBLE);
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
+                //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
             }
         });
 
@@ -83,6 +88,7 @@ public class FTrainingsinstructions extends Fragment {
                     getActivity().findViewById(R.id.clocksLayout).invalidate();
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
+                //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
             }
         });
 
