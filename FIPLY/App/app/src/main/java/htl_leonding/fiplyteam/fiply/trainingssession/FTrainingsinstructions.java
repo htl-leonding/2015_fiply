@@ -65,7 +65,6 @@ public class FTrainingsinstructions extends Fragment {
             @Override
             public void onClick(View v) {
                 if (getActivity().findViewById(R.id.clocksLayout).getVisibility() != View.GONE) {
-                    getActivity().findViewById(R.id.clocksLayout).setAnimation();
                     getActivity().findViewById(R.id.clocksLayout).setVisibility(View.GONE);
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 } else {
