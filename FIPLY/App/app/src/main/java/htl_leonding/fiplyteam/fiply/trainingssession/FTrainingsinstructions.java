@@ -2,6 +2,7 @@ package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 
@@ -71,7 +73,7 @@ public class FTrainingsinstructions extends Fragment {
                     getActivity().findViewById(R.id.clocksLayout).setVisibility(View.VISIBLE);
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
-                //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                scrollView.post(scrDown); //Das Scrolldown muss so aufgerufen werden um sicherzustellen dass es nach dem invalidate() der Views aufgerufen wird
             }
         });
 
@@ -87,7 +89,21 @@ public class FTrainingsinstructions extends Fragment {
                     getActivity().findViewById(R.id.clocksLayout).invalidate();
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
-                //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                scrollView.post(scrDown); //Das Scrolldown muss so aufgerufen werden um sicherzustellen dass es nach dem invalidate() der Views aufgerufen wird
+            }
+        });
+
+        btnNextUeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnLastUeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -111,6 +127,17 @@ public class FTrainingsinstructions extends Fragment {
         updateUebungsfields(1);
         //updatePhaseAndGewicht();
     }
+
+    /**
+     * Dieses Runnable stellt sicher dass das Scrolldown hinten auf die Liste von UI-Änderungen gesetzt wird
+     * und so erst ausgeführt wird nach den anderen UI-Änderungen
+     */
+    public Runnable scrDown = new Runnable() {
+        @Override
+        public void run() {
+            scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+        }
+    };
 
     public void updateUebungsfields(int ueId) {
         try {
