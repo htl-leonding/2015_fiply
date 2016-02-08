@@ -59,6 +59,7 @@ public class FUsermanagement extends Fragment {
                         displayViewP3();
                         break;
                     case 3:
+                        kvr.updateKeyValue("isUserCustomized","true");
                         displayViewPMain();
                         break;
                 }

@@ -57,7 +57,7 @@ public class FUebungDetail extends Fragment {
         tvUebungEquip = (TextView) getActivity().findViewById(R.id.detailEquipment);
         tvUebungDesc = (TextView) getActivity().findViewById(R.id.detailBeschreibung);
         tvUebungAnl = (TextView) getActivity().findViewById(R.id.detailAnleitung);
-        tvUebungDiff = (TextView) getActivity().findViewById(R.id.detailDifficulty);
+        tvUebungDiff = (TextView) getActivity().findViewById(R.id.detailSchwierigkeit);
         checkBox = (CheckBox) getActivity().findViewById(R.id.cbVideo);
 
         tvUebungName.setText(uebungsName);

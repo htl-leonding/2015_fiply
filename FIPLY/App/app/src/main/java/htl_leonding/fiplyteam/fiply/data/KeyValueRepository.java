@@ -150,10 +150,17 @@ public class KeyValueRepository {
             insertKeyValue("userAge","21-30");
             insertKeyValue("userProf","Not Fit");
 
+
+
             insertKeyValue("isUserCustomized", "true");
 
 
             insertKeyValue("trainingsphasenloaded", "false");
+
+
         }
+        updateKeyValue("filterName","");
+        updateKeyValue("filterMuskelGruppe","");
+
     }
 }

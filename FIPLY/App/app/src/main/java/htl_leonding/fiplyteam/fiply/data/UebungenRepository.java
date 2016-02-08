@@ -213,6 +213,21 @@ public class UebungenRepository extends Service {
                         UebungenEntry.COLUMN_EQUIPMENT},
                 UebungenEntry.COLUMN_MUSKELGRUPPE + "=" + "'" + Muskelgruppe + "'",
                 null, null, null, UebungenEntry.COLUMN_NAME + " ASC", null);
+
+    }
+
+    public Cursor getFilteredUebungen() throws SQLException {
+        return db.query(UebungenEntry.TABLE_NAME, new String[]{
+                        UebungenEntry.COLUMN_ROWID,
+                        UebungenEntry.COLUMN_NAME,
+                        UebungenEntry.COLUMN_BESCHREIBUNG,
+                        UebungenEntry.COLUMN_ANLEITUNG,
+                        UebungenEntry.COLUMN_MUSKELGRUPPE,
+                        UebungenEntry.COLUMN_SCHWIERIGKEIT,
+                        UebungenEntry.COLUMN_VIDEO,
+                        UebungenEntry.COLUMN_EQUIPMENT},
+                UebungenEntry.COLUMN_NAME + " like " + "'%" + KeyValueRepository.getInstance().getKeyValue("filterName").getString(1) + "%'" + " AND " + UebungenEntry.COLUMN_MUSKELGRUPPE + " like '%" + KeyValueRepository.getInstance().getKeyValue("filterMuskelGruppe").getString(1)+"%'" ,
+                null, null, null, UebungenEntry.COLUMN_NAME + " ASC", null);
     }
 
     /**
