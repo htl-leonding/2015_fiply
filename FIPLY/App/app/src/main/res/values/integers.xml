@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="blueInt">160</integer>
+    <integer name="blackInt">0</integer>
+    <integer name="redInt">15539236</integer>
+    <integer name="yellowInt">16773632</integer>
+    <integer name="greenInt">2273612</integer>
+</resources>

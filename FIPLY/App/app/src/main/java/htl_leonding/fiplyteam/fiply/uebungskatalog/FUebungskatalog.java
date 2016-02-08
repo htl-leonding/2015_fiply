@@ -4,23 +4,32 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+
+import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
+import htl_leonding.fiplyteam.fiply.trainingsplan.Uebung;
 
 public class FUebungskatalog extends Fragment {
+    KeyValueRepository kvr;
     UebungenRepository rep;
     Context context;
     ListView uebungenLV;
+    FloatingActionButton openFilter;
     SimpleCursorAdapter ueAdapter;
 
     /**
@@ -49,17 +58,29 @@ public class FUebungskatalog extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        openFilter = (FloatingActionButton) getView().findViewById(R.id.fabFilter);
+        kvr = KeyValueRepository.getInstance();
         int[] toViews = {R.id.ueListViewItem};
         String[] fromColumns = {rep.getAllUebungen().getColumnName(1)};
 
 
+        openFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayView(new FUebungFilter());
+            }
+        });
         uebungenLV = (ListView) getActivity().findViewById(R.id.ueList);
-        ueAdapter = new SimpleCursorAdapter(context, R.layout.uebungskatalog_item, rep.getAllUebungen(), fromColumns, toViews, 0);
+        try {
+            ueAdapter = new SimpleCursorAdapter(context, R.layout.uebungskatalog_item, rep.getFilteredUebungen(), fromColumns, toViews, 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         uebungenLV.setAdapter(ueAdapter);
         uebungenLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 Bundle args = new Bundle();
                 args.putString("name", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(1));
                 args.putString("beschreibung", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(2));
@@ -75,6 +96,7 @@ public class FUebungskatalog extends Fragment {
             }
         });
     }
+
 
     private void displayView(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
