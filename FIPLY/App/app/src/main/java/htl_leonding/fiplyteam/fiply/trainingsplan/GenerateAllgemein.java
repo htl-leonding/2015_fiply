@@ -22,7 +22,6 @@ public class GenerateAllgemein {
 
     public GenerateAllgemein(boolean trainiert, int schema, String[] wochentage, Date startDate) {
         String phasenName;
-        PhasenTyp phasenTyp;
         int pausenDauer;
         int phasenDauer;
         int saetze;
@@ -31,7 +30,6 @@ public class GenerateAllgemein {
 
         //Setting phase configs
         phasenName = "Phase 1: Allgemein";
-        phasenTyp = PhasenTyp.ALLGEMEIN;
         pausenDauer = 60;
         this.trainiert = trainiert;
         if (this.trainiert) {
@@ -73,7 +71,7 @@ public class GenerateAllgemein {
             }
         }
         this.wochentage = wochentage;
-        tPhase = new Trainingsphase(phasenName, phasenTyp, pausenDauer, phasenDauer, saetze, wiederholungen, repmax, startDate);
+        tPhase = new Trainingsphase(phasenName, pausenDauer, phasenDauer, saetze, wiederholungen, repmax, startDate);
         fetchUebungen();
     }
 
@@ -179,42 +177,38 @@ public class GenerateAllgemein {
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if (muskelGruppe.contains("Rücken") && ruecken1 == false) {
+            } else if (muskelGruppe.contains("Rücken") && !ruecken1) {
                 ruecken1 = true;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Rücken") && ruecken2 == false)) {
+            } else if ((muskelGruppe.contains("Rücken") && !ruecken2)) {
                 ruecken2 = true;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Hintere Schulter") && hintereSchulter == false)) {
+            } else if ((muskelGruppe.contains("Hintere Schulter") && !hintereSchulter)) {
                 hintereSchulter = true;
-                mittlereBrust = false;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Vordere Schulter") && vordereSchulter == false)) {
+            } else if ((muskelGruppe.contains("Vordere Schulter") && !vordereSchulter)) {
                 vordereSchulter = true;
-                mittlereBrust = false;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Bizeps") && bizeps == false)) {
+            } else if ((muskelGruppe.contains("Bizeps") && !bizeps)) {
                 bizeps = true;
-                mittlereBrust = false;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
                 uebungsList.add(newUebung);
-            } else if ((muskelGruppe.contains("Trizeps") && trizeps == false)) {
+            } else if ((muskelGruppe.contains("Trizeps") && !trizeps)) {
                 trizeps = true;
-                mittlereBrust = false;
                 rowId = c.getString(iRowId);
                 uebungsName = c.getString(iUebungsName);
                 String[] newUebung = {rowId, uebungsName, muskelGruppe};
@@ -296,9 +290,9 @@ public class GenerateAllgemein {
             ueb.setUebungsName(element[1]);
             ueb.setRepmax(repmax);
 
-            if (element[1].contains("Brust")) {
+            if (element[2].contains("Brust")) {
                 ueb.setWochenTag(wochentage[0]);
-            } else if (element[1].contains("Rücken") || element[1].contains("Hintere")) {
+            } else if (element[2].contains("Rücken") || element[1].contains("Hintere")) {
                 ueb.setWochenTag(wochentage[1]);
             } else {
                 ueb.setWochenTag(wochentage[2]);
