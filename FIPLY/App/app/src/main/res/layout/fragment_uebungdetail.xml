@@ -82,11 +82,10 @@
             android:id="@+id/detailBeschreibung"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="Test Beschreibung"
-            android:textColor="@color/darkTextColorLight"
-            android:layout_below="@+id/detailUebungName"
-            android:layout_alignStart="@+id/detailEquipment" />
+            android:layout_alignLeft="@id/detailEquipment"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/detailEquipment"
+            android:layout_marginBottom="5dp" />
 
         <TextView
             android:id="@+id/staticDetailBeschreibung"

@@ -42,7 +42,18 @@
     <string name="sizeString">Size</string>
     <string name="weightString">Weight</string>
     <string name="startTrainView">Trainingsview starten</string>
-
+    <string name="detailSaetze">Sätze:</string>
+    <string name="detailGewicht">Gewicht:</string>
+    <string name="detailEquipment">Equipment:</string>
+    <string name="detailWiederholungen">Wiederholungen:</string>
+    <string name="sessionsettingstitle">!Go Go Go!</string>
+    <string name="alertnoplan">Sie haben noch keinen Trainingsplan!</string>
+    <string name="ok">Okay</string>
+    <string name="choosedaybt">Tag auswählen</string>
+    <string name="btnLastUeb">Zurück</string>
+    <string name="btnNextUeb">Weiter</string>
+    <string name="btnMusicHide">Musik</string>
+    <string name="btnClocksHide">Uhren</string>
     <string name="exercisecatalog">
         [
   {
@@ -593,10 +604,7 @@
     </string>
 
 
-
-
-
-    <string-array name="navigationArray">
+  <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>
