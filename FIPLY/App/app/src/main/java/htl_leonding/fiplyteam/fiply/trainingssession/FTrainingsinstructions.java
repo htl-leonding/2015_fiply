@@ -71,7 +71,7 @@ public class FTrainingsinstructions extends Fragment {
                     getActivity().findViewById(R.id.clocksLayout).setVisibility(View.VISIBLE);
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
-                //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
             }
         });
 
@@ -87,7 +87,21 @@ public class FTrainingsinstructions extends Fragment {
                     getActivity().findViewById(R.id.clocksLayout).invalidate();
                     getActivity().findViewById(R.id.fraTsUebung).invalidate();
                 }
-                //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });
+
+        btnNextUeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnLastUeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
