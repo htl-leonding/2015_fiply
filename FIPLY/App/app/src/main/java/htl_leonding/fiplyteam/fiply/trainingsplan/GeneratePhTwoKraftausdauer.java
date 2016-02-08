@@ -1,6 +1,7 @@
 package htl_leonding.fiplyteam.fiply.trainingsplan;
 
 
+import java.sql.SQLOutput;
 import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
@@ -19,7 +20,7 @@ public class GeneratePhTwoKraftausdauer {
     public GeneratePhTwoKraftausdauer(String[] wochentage, Date startDate, boolean muscle) {
         this.wochentage = wochentage;
         this.setStartDate(startDate);
-        tPhase = new Trainingsphase("Phase 2: Kraftausdauer", PhasenTyp.PHASE2KRAFTAUSDAUER, 60, 8, 3, 20, 80, getStartDate());
+        tPhase = new Trainingsphase("Phase 2: Kraftausdauer", 60, 8, 3, 20, 80, getStartDate());
         setFirstConcept();
         if (muscle) {
             setMuscleConcept();
@@ -37,7 +38,6 @@ public class GeneratePhTwoKraftausdauer {
         boolean del1 = false, del2 = false, del3 = false;
         uebungen = new LinkedList<Uebung>();
         uebungen = tPhase.getUebungList();
-        System.out.println("Groesse: " + uebungen.size());
         for (Uebung element : uebungen) {
             if (!del1 && element.getWochenTag() == wedays[0]) {
                 del1 = true;
@@ -85,8 +85,8 @@ public class GeneratePhTwoKraftausdauer {
                 udel2 = element;
             }
             if (!del3 && element.getWochenTag() == wedays[2]) {
-                del2 = true;
-                udel2 = element;
+                del3 = true;
+                udel3 = element;
             }
         }
         uebs.remove(udel1);

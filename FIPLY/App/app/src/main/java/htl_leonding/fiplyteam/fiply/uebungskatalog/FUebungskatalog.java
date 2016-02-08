@@ -65,9 +65,10 @@ public class FUebungskatalog extends Fragment {
                 args.putString("beschreibung", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(2));
                 args.putString("anleitung", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(3));
                 args.putString("muskelgruppe", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(4));
-                args.putString("zielgruppe", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(5));
+                args.putString("schwierigkeit", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(5));
                 args.putString("video", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(6));
-                args.putBoolean("showVideo", true);
+                args.putString("equipment", ((Cursor) uebungenLV.getItemAtPosition(position)).getString(7));
+                args.putBoolean("showVideo", false);
                 FUebungDetail fUebungDetail = new FUebungDetail();
                 fUebungDetail.setArguments(args);
                 displayView(fUebungDetail);

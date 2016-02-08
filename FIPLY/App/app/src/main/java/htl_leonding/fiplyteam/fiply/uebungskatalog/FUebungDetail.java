@@ -16,17 +16,21 @@ public class FUebungDetail extends Fragment {
 
     String uebungsName;
     String uebungsVideo;
-    String uebungsZG;
+    String uebungsEquip;
     String uebungsMG;
     String uebungsDesc;
     String uebungsAnl;
+    String uebungsDiff;
+
     Boolean videoInitialized = false;
 
     TextView tvUebungName;
-    TextView tvUebungZG;
+    TextView tvUebungEquip;
     TextView tvUebungMG;
     TextView tvUebungDesc;
     TextView tvUebungAnl;
+    TextView tvUebungDiff;
+
     WebView wvUebungVideo;
     CheckBox checkBox;
 
@@ -41,24 +45,27 @@ public class FUebungDetail extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         uebungsName = getArguments().getString("name");
         uebungsVideo = getArguments().getString("video");
-        uebungsZG = getArguments().getString("zielgruppe");
+        uebungsEquip = getArguments().getString("equipment");
         uebungsMG = getArguments().getString("muskelgruppe");
         uebungsDesc = getArguments().getString("beschreibung");
         uebungsAnl = getArguments().getString("anleitung");
+        uebungsDiff = getArguments().getString("schwierigkeit");
 
 
         tvUebungName = (TextView) getActivity().findViewById(R.id.detailUebungName);
         tvUebungMG = (TextView) getActivity().findViewById(R.id.detailMuskelGruppe);
-        tvUebungZG = (TextView) getActivity().findViewById(R.id.detailZielGruppe);
+        tvUebungEquip = (TextView) getActivity().findViewById(R.id.detailEquipment);
         tvUebungDesc = (TextView) getActivity().findViewById(R.id.detailBeschreibung);
         tvUebungAnl = (TextView) getActivity().findViewById(R.id.detailAnleitung);
+        tvUebungDiff = (TextView) getActivity().findViewById(R.id.detailDifficulty);
         checkBox = (CheckBox) getActivity().findViewById(R.id.cbVideo);
 
         tvUebungName.setText(uebungsName);
-        tvUebungZG.setText(uebungsZG);
+        tvUebungEquip.setText(uebungsEquip);
         tvUebungMG.setText(uebungsMG);
         tvUebungDesc.setText(uebungsDesc);
         tvUebungAnl.setText(uebungsAnl);
+        tvUebungDiff.setText(uebungsDiff);
 
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -24,15 +24,7 @@ public class FTrainingssession extends Fragment {
         super.onCreate(savedInstanceState);
 
         FTrainingsinstructions fragmentUebung = new FTrainingsinstructions();
-        Bundle args = new Bundle();
-        args.putString("name", "TestName");
-        args.putString("beschreibung", "TestBeschreibung");
-        args.putString("anleitung", "TestAnleitung");
-        args.putString("muskelgruppe", "TestMuskelgruppe");
-        args.putString("zielgruppe", "TestZielgruppe");
-        args.putString("video", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
-        args.putBoolean("showVideo", false);
-        fragmentUebung.setArguments(args);
+        fragmentUebung.setArguments(getArguments());
 
         displayFragment.displayTSUebung(fragmentUebung, getFragmentManager());
         displayFragment.displayTSClocksNav(new FClocksNav(), getFragmentManager());

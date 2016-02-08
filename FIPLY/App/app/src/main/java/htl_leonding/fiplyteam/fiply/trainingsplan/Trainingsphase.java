@@ -10,7 +10,6 @@ import java.util.Locale;
 
 public class Trainingsphase {
     private String phasenName;
-    private PhasenTyp phasenTyp;
     private List<Uebung> uebungList = new LinkedList<Uebung>();
     private int pausenDauer; // In Sekunden
     private int phasenDauer; // In Wochen
@@ -27,9 +26,8 @@ public class Trainingsphase {
         setEndingDate(startDate);
     }
 
-    public Trainingsphase(String phasenName, PhasenTyp phasenTyp, int pausenDauer, int phasenDauer, int seatze, int wiederholungen, int repmax, Date startDate) {
+    public Trainingsphase(String phasenName, int pausenDauer, int phasenDauer, int seatze, int wiederholungen, int repmax, Date startDate) {
         this.setPhasenName(phasenName);
-        this.setPhasenTyp(phasenTyp);
         this.setPausenDauer(pausenDauer);
         this.setPhasenDauer(phasenDauer);
         this.setSaetze(saetze);
@@ -79,6 +77,14 @@ public class Trainingsphase {
             uebungen.add(uebung);
         }
         return uebungen;
+    }
+
+    public boolean isActive(){
+        Date newDate = new Date();
+        if (newDate.after(getStartDate()) && newDate.before(getEndDate())){
+            return true;
+        }
+        return false;
     }
 
     public int getPausenDauer() {
@@ -131,14 +137,6 @@ public class Trainingsphase {
 
     public void setPhasenName(String phasenName) {
         this.phasenName = phasenName;
-    }
-
-    public PhasenTyp getPhasenTyp() {
-        return phasenTyp;
-    }
-
-    public void setPhasenTyp(PhasenTyp phasenTyp) {
-        this.phasenTyp = phasenTyp;
     }
 
     public Date getStartDate() {

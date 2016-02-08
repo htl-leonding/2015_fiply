@@ -10,13 +10,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.sql.SQLException;
-
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 
@@ -38,7 +35,7 @@ public class UebungenRepository extends Service {
 
     private SQLiteDatabase getWritableDatabase() {
         if (repoContext == null)
-            throw new IllegalStateException("Context is null - " + "Set a repoContext in the Repository with setContext()");
+            throw new IllegalStateException("Context is null - Set a repoContext in the Repository with setContext()");
 
         Log.wtf(FiplyDBHelper.LOG_TAG, "Repository::getWriteableDatabase()");
         return FiplyDBHelper.getInstance(repoContext).getWritableDatabase();
@@ -46,7 +43,7 @@ public class UebungenRepository extends Service {
 
     private SQLiteDatabase getReadableDatabase() {
         if (repoContext == null)
-            throw new IllegalStateException("Context is null - " + "Set a repoContext in the Repository with setContext()");
+            throw new IllegalStateException("Context is null - Set a repoContext in the Repository with setContext()");
 
         Log.wtf(FiplyDBHelper.LOG_TAG, "Repository::getReadableDatabase()");
         return FiplyDBHelper.getInstance(repoContext).getReadableDatabase();
@@ -55,23 +52,25 @@ public class UebungenRepository extends Service {
     /**
      * Gibt eine Uebung in die Datenbank ein
      *
-     * @param name         Der Name
-     * @param beschreibung Die Beschreibung
-     * @param anleitung    Die Anleitung
-     * @param muskelgruppe Die Muskelgruppe
-     * @param ZIELGRUPPE   Die Zielgruppe (Anfänger, Profi, usw...)
-     * @param video        Der Videolink
+     * @param name          Der Name
+     * @param beschreibung  Die Beschreibung
+     * @param anleitung     Die Anleitung
+     * @param muskelgruppe  Die Muskelgruppe
+     * @param schwierigkeit Die Schwierigkeit (einfach, mittel, schwierig)
+     * @param video         Der Videolink
+     * @param equipment     Das benötigte Equipment
      * @return liefert ein long mit der id zurück
      */
     public long insertUebung(String name, String beschreibung, String anleitung,
-                             String muskelgruppe, String ZIELGRUPPE, String video) {
+                             String muskelgruppe, String schwierigkeit, String video, String equipment) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(UebungenEntry.COLUMN_NAME, name);
         initialValues.put(UebungenEntry.COLUMN_BESCHREIBUNG, beschreibung);
         initialValues.put(UebungenEntry.COLUMN_ANLEITUNG, anleitung);
         initialValues.put(UebungenEntry.COLUMN_MUSKELGRUPPE, muskelgruppe);
-        initialValues.put(UebungenEntry.COLUMN_ZIELGRUPPE, ZIELGRUPPE);
+        initialValues.put(UebungenEntry.COLUMN_SCHWIERIGKEIT, schwierigkeit);
         initialValues.put(UebungenEntry.COLUMN_VIDEO, video);
+        initialValues.put(UebungenEntry.COLUMN_EQUIPMENT, equipment);
         return db.insert(UebungenEntry.TABLE_NAME, null, initialValues);
     }
 
@@ -106,8 +105,9 @@ public class UebungenRepository extends Service {
                         UebungenEntry.COLUMN_BESCHREIBUNG,
                         UebungenEntry.COLUMN_ANLEITUNG,
                         UebungenEntry.COLUMN_MUSKELGRUPPE,
-                        UebungenEntry.COLUMN_ZIELGRUPPE,
-                        UebungenEntry.COLUMN_VIDEO},
+                        UebungenEntry.COLUMN_SCHWIERIGKEIT,
+                        UebungenEntry.COLUMN_VIDEO,
+                        UebungenEntry.COLUMN_EQUIPMENT},
                 null, null, null, null, UebungenEntry.COLUMN_NAME + " ASC");
     }
 
@@ -125,8 +125,9 @@ public class UebungenRepository extends Service {
                         UebungenEntry.COLUMN_BESCHREIBUNG,
                         UebungenEntry.COLUMN_ANLEITUNG,
                         UebungenEntry.COLUMN_MUSKELGRUPPE,
-                        UebungenEntry.COLUMN_ZIELGRUPPE,
-                        UebungenEntry.COLUMN_VIDEO},
+                        UebungenEntry.COLUMN_SCHWIERIGKEIT,
+                        UebungenEntry.COLUMN_VIDEO,
+                        UebungenEntry.COLUMN_EQUIPMENT},
                 UebungenEntry.COLUMN_ROWID + "=" + rowId,
                 null, null, null, null, null);
         if (myCursor != null) {
@@ -135,27 +136,28 @@ public class UebungenRepository extends Service {
         return myCursor;
     }
 
-    /**
+     /**
      * Updated eine bestimmte Uebung
      *
-     * @param rowId        Die Id
-     * @param name         Der neue Name
-     * @param beschreibung Die neue Beschreibung
-     * @param anleitung    Die neue Anleitung
-     * @param muskelgruppe Die neue Muskelgruppe
-     * @param ZIELGRUPPE   Die neue Zielgruppe (Anfänger, Profi, usw...)
-     * @param video        Der neue Videolink
+     * @param name          Der Name
+     * @param beschreibung  Die Beschreibung
+     * @param anleitung     Die Anleitung
+     * @param muskelgruppe  Die Muskelgruppe
+     * @param schwierigkeit Die Schwierigkeit (einfach, mittel, schwierig)
+     * @param video         Der Videolink
+     * @param equipment     Das benötigte Equipment
      * @return Anzahl der geupdateten Uebungen
      */
     public long updateUebung(long rowId, String name, String beschreibung, String anleitung,
-                             String muskelgruppe, String ZIELGRUPPE, String video) {
+                             String muskelgruppe, String schwierigkeit, String video, String equipment) {
         ContentValues updatedValues = new ContentValues();
         updatedValues.put(UebungenEntry.COLUMN_NAME, name);
         updatedValues.put(UebungenEntry.COLUMN_BESCHREIBUNG, beschreibung);
         updatedValues.put(UebungenEntry.COLUMN_ANLEITUNG, anleitung);
         updatedValues.put(UebungenEntry.COLUMN_MUSKELGRUPPE, muskelgruppe);
-        updatedValues.put(UebungenEntry.COLUMN_ZIELGRUPPE, ZIELGRUPPE);
+        updatedValues.put(UebungenEntry.COLUMN_SCHWIERIGKEIT, schwierigkeit);
         updatedValues.put(UebungenEntry.COLUMN_VIDEO, video);
+        updatedValues.put(UebungenEntry.COLUMN_EQUIPMENT, equipment);
         return db.update(UebungenEntry.TABLE_NAME, updatedValues, UebungenEntry.COLUMN_ROWID + "=" + rowId, null);
     }
 
@@ -182,8 +184,9 @@ public class UebungenRepository extends Service {
                         UebungenEntry.COLUMN_BESCHREIBUNG,
                         UebungenEntry.COLUMN_ANLEITUNG,
                         UebungenEntry.COLUMN_MUSKELGRUPPE,
-                        UebungenEntry.COLUMN_ZIELGRUPPE,
-                        UebungenEntry.COLUMN_VIDEO},
+                        UebungenEntry.COLUMN_SCHWIERIGKEIT,
+                        UebungenEntry.COLUMN_VIDEO,
+                        UebungenEntry.COLUMN_EQUIPMENT},
                 UebungenEntry.COLUMN_NAME + "=" + "'" + name + "'",
                 null, null, null, null, null);
         if (myCursor != null) {
@@ -205,8 +208,9 @@ public class UebungenRepository extends Service {
                         UebungenEntry.COLUMN_BESCHREIBUNG,
                         UebungenEntry.COLUMN_ANLEITUNG,
                         UebungenEntry.COLUMN_MUSKELGRUPPE,
-                        UebungenEntry.COLUMN_ZIELGRUPPE,
-                        UebungenEntry.COLUMN_VIDEO},
+                        UebungenEntry.COLUMN_SCHWIERIGKEIT,
+                        UebungenEntry.COLUMN_VIDEO,
+                        UebungenEntry.COLUMN_EQUIPMENT},
                 UebungenEntry.COLUMN_MUSKELGRUPPE + "=" + "'" + Muskelgruppe + "'",
                 null, null, null, UebungenEntry.COLUMN_NAME + " ASC", null);
     }
@@ -222,25 +226,25 @@ public class UebungenRepository extends Service {
                 UebungenEntry.COLUMN_BESCHREIBUNG + " text not null, " +
                 UebungenEntry.COLUMN_ANLEITUNG + " text not null, " +
                 UebungenEntry.COLUMN_MUSKELGRUPPE + " text not null, " +
-                UebungenEntry.COLUMN_ZIELGRUPPE + " text not null, " +
-                UebungenEntry.COLUMN_VIDEO + " text not null" +
+                UebungenEntry.COLUMN_SCHWIERIGKEIT + " text not null, " +
+                UebungenEntry.COLUMN_VIDEO + " text not null, " +
+                UebungenEntry.COLUMN_EQUIPMENT + " text not null" +
                 ");");
     }
 
 
     public void insertAllExercises() throws JSONException {
-        deleteAllUebungen();
+        reCreateUebungenTable();
         String json = repoContext.getResources().getString(R.string.exercisecatalog);
         JSONArray exercises = new JSONArray(json);
         JSONObject temp;
         for (int i = 0; i < exercises.length(); i++) {
             temp = exercises.getJSONObject(i);
             Log.wtf("Exercise: ", temp.getString("Name"));
-            insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), "Not Implemented", "https://www.youtube.com/embed/0TjxnrWT8Es");
+            insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), temp.getString("Schwierigkeit"), "https://www.youtube.com/embed/0TjxnrWT8Es", temp.getString("Equipment"));
         }
 
     }
-
 
     @Nullable
     @Override
