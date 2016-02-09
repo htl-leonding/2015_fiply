@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Switch;
 
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import htl_leonding.fiplyteam.fiply.R;
-import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 
 public class FPlaylist extends Fragment {
@@ -71,7 +69,7 @@ public class FPlaylist extends Fragment {
 //                new String[]{"songTitle"}, new int[]{R.id.songTitle}));
 
         lvSongs.setAdapter(new ArrayAdapter<String>(getActivity(),
-        R.layout.music_item_checkable, songStrings));
+                R.layout.music_item_checkable, songStrings));
 
         lvSongs.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 

@@ -5,8 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PlaylistSongsEntry;
 
 public class PlaylistSongsRepository {
@@ -15,13 +17,15 @@ public class PlaylistSongsRepository {
 
     SQLiteDatabase db = getWritableDatabase();
 
-    public static PlaylistSongsRepository getInstance(){
+    public static PlaylistSongsRepository getInstance() {
         if (instance == null)
             instance = new PlaylistSongsRepository();
         return instance;
     }
 
-    public static void setContext(Context context){repoContext = context;}
+    public static void setContext(Context context) {
+        repoContext = context;
+    }
 
     private SQLiteDatabase getWritableDatabase() {
         if (repoContext == null)
@@ -39,7 +43,7 @@ public class PlaylistSongsRepository {
         return FiplyDBHelper.getInstance(repoContext).getReadableDatabase();
     }
 
-    public ArrayList<HashMap<String, String>> getByPlaylistName(String pname){
+    public ArrayList<HashMap<String, String>> getByPlaylistName(String pname) {
         Cursor c = db.query(true, PlaylistSongsEntry.TABLE_NAME, new String[]{
                         PlaylistSongsEntry.COLUMN_SONGTITLE,
                         PlaylistSongsEntry.COLUMN_SONGPATH},
@@ -61,10 +65,15 @@ public class PlaylistSongsRepository {
         return list;
     }
 
-    public void insertMany(String pname ,ArrayList<HashMap<String, String>> list){
+    public void reenterPlaylist(String pname, ArrayList<HashMap<String, String>> list) {
+        deleteByPlaylistName(pname);
+        insertMany(pname, list);
+    }
+
+    public void insertMany(String pname, ArrayList<HashMap<String, String>> list) {
         ContentValues initialValues;
         for (HashMap<String, String> item : list) {
-            initialValues  = new ContentValues();
+            initialValues = new ContentValues();
             initialValues.put(PlaylistSongsEntry.COLUMN_PLAYLISTNAME, pname);
             initialValues.put(PlaylistSongsEntry.COLUMN_SONGTITLE, item.get("songTitle"));
             initialValues.put(PlaylistSongsEntry.COLUMN_SONGPATH, item.get("songPath"));

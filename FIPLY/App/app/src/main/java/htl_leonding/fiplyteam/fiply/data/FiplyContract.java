@@ -26,7 +26,7 @@ public class FiplyContract {
 
     }
 
-    public static final class PhasenEntry implements  BaseColumns {
+    public static final class PhasenEntry implements BaseColumns {
         public static final String TABLE_NAME = "phasen";
         public static final String COLUMN_ROWID = "_id";
         public static final String COLUMN_STARTDATE = "startdate";
