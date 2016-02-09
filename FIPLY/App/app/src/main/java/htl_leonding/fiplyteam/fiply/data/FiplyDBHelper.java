@@ -9,8 +9,7 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract.KeyValueEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.InstruktionenEntry;
-
-
+import htl_leonding.fiplyteam.fiply.data.FiplyContract.PlaylistSongsEntry;
 
 public class FiplyDBHelper extends SQLiteOpenHelper {
 
@@ -77,6 +76,15 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
                 ");";
         Log.d(LOG_TAG, SQL_CREATE_INSTRUKTIONEN_TABLE);
         db.execSQL(SQL_CREATE_INSTRUKTIONEN_TABLE);
+
+        final String SQL_CREATE_PLAYLISTSONGS_TABLE = "create table " + PlaylistSongsEntry.TABLE_NAME +
+                " (" + PlaylistSongsEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
+                PlaylistSongsEntry.COLUMN_PLAYLISTNAME + " text not null, " +
+                PlaylistSongsEntry.COLUMN_SONGTITLE + " text not null, " +
+                PlaylistSongsEntry.COLUMN_SONGPATH + " text not null" +
+                ");";
+        Log.d(LOG_TAG, SQL_CREATE_PLAYLISTSONGS_TABLE);
+        db.execSQL(SQL_CREATE_PLAYLISTSONGS_TABLE);
     }
 
     @Override
@@ -85,6 +93,7 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + KeyValueEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + PhasenEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + InstruktionenEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + PlaylistSongsEntry.TABLE_NAME);
         onCreate(db);
     }
 }

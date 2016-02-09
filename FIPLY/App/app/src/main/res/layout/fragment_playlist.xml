@@ -13,6 +13,13 @@
         android:orientation="horizontal"
         >
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btnPlaylistSave"
+            android:text="@string/btnPlaylistSave"
+            />
+
         <ImageButton
             android:id="@+id/btPlAdd"
             android:layout_width="75dp"
