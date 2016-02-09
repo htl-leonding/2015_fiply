@@ -53,11 +53,18 @@ public class DatabasePlaylistSongsTest extends AndroidTestCase {
         rep.reenterPlaylist("Rap", rapList);
         assertEquals(6, rep.getByPlaylistName("Classic").size());
         assertEquals(5, rep.getByPlaylistName("Rap").size());
-        assertEquals(0, rep.getByPlaylistName("Pop").size()
-        );
+        assertEquals(0, rep.getByPlaylistName("Pop").size());
+
         rep.deleteByPlaylistName("Classic");
         assertEquals(0, rep.getByPlaylistName("Classic").size());
         assertEquals(5, rep.getByPlaylistName("Rap").size());
+
+        rep.reenterPlaylist("Classic", classicList);
+        assertEquals(6, rep.getByPlaylistName("Classic").size());
+
+        rep.deleteAll();
+        assertEquals(0, rep.getByPlaylistName("Classic").size());
+        assertEquals(0, rep.getByPlaylistName("Rap").size());
     }
 
     public void testReenterPlaylist() throws SQLException {
@@ -69,5 +76,20 @@ public class DatabasePlaylistSongsTest extends AndroidTestCase {
         rep.reenterPlaylist("Classic", rapList);
         assertEquals(5, rep.getByPlaylistName("Classic").size());
         assertEquals(5, rep.getByPlaylistName("Rap").size());
+    }
+
+    public void testGetUniquePlaylistNames() {
+        rep.reenterPlaylist("Classic", classicList);
+        rep.reenterPlaylist("Rap", rapList);
+        assertEquals(2, rep.getPlaylists().size());
+        assertEquals("Classic", rep.getPlaylists().get(0));
+
+        rep.deleteByPlaylistName("Classic");
+        assertEquals(1, rep.getPlaylists().size());
+        assertEquals("Rap", rep.getPlaylists().get(0));
+
+        rep.reenterPlaylist("Classic", classicList);
+        assertEquals(2, rep.getPlaylists().size());
+        assertEquals("Classic", rep.getPlaylists().get(0));
     }
 }

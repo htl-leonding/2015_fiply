@@ -12,13 +12,16 @@ import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
+import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
+import htl_leonding.fiplyteam.fiply.music.ReadMusic;
 
 public class SplashActivity extends Activity {
 
-    Context context;
+    ReadMusic rm;
     UebungenRepository rep;
     KeyValueRepository kvr;
+    PlaylistSongsRepository psr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +30,12 @@ public class SplashActivity extends Activity {
 
         UebungenRepository.setContext(this);
         KeyValueRepository.setContext(this);
+        PlaylistSongsRepository.setContext(this);
         rep = UebungenRepository.getInstance();
         kvr = KeyValueRepository.getInstance();
+        psr = PlaylistSongsRepository.getInstance();
+        rm = ReadMusic.getInstance();
+
         SleepIntentTask sleepIntentTask = new SleepIntentTask();
         sleepIntentTask.execute("");
     }
@@ -42,6 +49,7 @@ public class SplashActivity extends Activity {
         protected String doInBackground(String... params) {
             try {
                 rep.insertAllExercises();
+                psr.reenterPlaylist("All", rm.getSongs());
                 kvr.setDefaultUserSettings();
             } catch (JSONException e) {
                 e.printStackTrace();

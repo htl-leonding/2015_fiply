@@ -8,6 +8,8 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PlaylistSongsEntry;
 
@@ -48,7 +50,7 @@ public class PlaylistSongsRepository {
                         PlaylistSongsEntry.COLUMN_SONGTITLE,
                         PlaylistSongsEntry.COLUMN_SONGPATH},
                 PlaylistSongsEntry.COLUMN_PLAYLISTNAME + "=" + "'" + pname + "'",
-                null, null, null, null, null);
+                null, null, null, PlaylistSongsEntry.COLUMN_PLAYLISTNAME + " ASC", null);
         if (c != null) {
             c.moveToFirst();
         }
@@ -87,6 +89,21 @@ public class PlaylistSongsRepository {
 
     public long deleteAll() {
         return db.delete(PlaylistSongsEntry.TABLE_NAME, null, null);
+    }
+
+    public List<String> getPlaylists() {
+        Cursor c = db.query(true, PlaylistSongsEntry.TABLE_NAME, new String[]{
+                        PlaylistSongsEntry.COLUMN_PLAYLISTNAME},
+                null, null, PlaylistSongsEntry.COLUMN_PLAYLISTNAME, null, PlaylistSongsEntry.COLUMN_PLAYLISTNAME + " ASC", null);
+        if (c != null) {
+            c.moveToFirst();
+        }
+        List<String> list = new LinkedList<>();
+        for (int i = 0; i < c.getCount(); i++) {
+            list.add(c.getString(0));
+            c.moveToNext();
+        }
+        return list;
     }
 
     public void reCreatePlaylistSongsTable() {
