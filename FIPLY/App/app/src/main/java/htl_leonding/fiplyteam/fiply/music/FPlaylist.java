@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class FPlaylist extends Fragment {
     List<String> songTitleStrings, songPathStrings, selectedSongPathStrings;
     ArrayList<HashMap<String, String>> songs, checkedSongs;
     Boolean listPlaylistMode;
+    String aktListName = "";
 
     ListView lvSongs;
     LinearLayout linearLayout;
@@ -67,7 +69,8 @@ public class FPlaylist extends Fragment {
                     refreshSongStringLists();
                     linearLayout.setVisibility(View.VISIBLE);
                     etName.setVisibility(View.VISIBLE);
-                    etName.setText(psrep.getPlaylists().get(position));
+                    aktListName = psrep.getPlaylists().get(position);
+                    etName.setText(aktListName);
 
                     lvSongs.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.music_item_checkable, songTitleStrings));
                     lvSongs.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -99,6 +102,14 @@ public class FPlaylist extends Fragment {
                         if (checked.get(i)) {
                             checkedSongs.add(songs.get(i));
                         }
+                    }
+
+                    if(checkedSongs.isEmpty()) {
+                        Toast.makeText(getActivity(), "Playlist " + etName.getText().toString() + " wurde gelöscht!", Toast.LENGTH_SHORT).show();
+                    } else if(psrep.getPlaylists().contains(etName.getText().toString())) {
+                        Toast.makeText(getActivity(), "Playlist " + etName.getText().toString() + " wurde gespeichert!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Playlist " + etName.getText().toString() + " wurde erstellt!", Toast.LENGTH_SHORT).show();
                     }
                     psrep.reenterPlaylist(etName.getText().toString(), checkedSongs);
                 }
