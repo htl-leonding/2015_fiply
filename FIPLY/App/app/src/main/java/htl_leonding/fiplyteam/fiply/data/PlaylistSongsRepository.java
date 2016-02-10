@@ -87,6 +87,10 @@ public class PlaylistSongsRepository {
         return db.delete(PlaylistSongsEntry.TABLE_NAME, PlaylistSongsEntry.COLUMN_PLAYLISTNAME + "=?", new String[]{name});
     }
 
+    public long deleteBySongPath(String path) {
+        return db.delete(PlaylistSongsEntry.TABLE_NAME, PlaylistSongsEntry.COLUMN_SONGPATH + "=?", new String[]{path});
+    }
+
     public long deleteAll() {
         return db.delete(PlaylistSongsEntry.TABLE_NAME, null, null);
     }

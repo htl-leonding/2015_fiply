@@ -46,6 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/linearLayoutPlaylist"
         android:text="@string/etPlName"
+        android:background="@color/darkPrimary"
+        android:textColor="@color/darkTextColorDark"
+        android:textSize="20dp"
+        android:padding="5dp"
         />
 
     <ListView

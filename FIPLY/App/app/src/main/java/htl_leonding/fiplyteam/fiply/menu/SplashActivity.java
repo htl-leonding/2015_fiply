@@ -9,6 +9,9 @@ import android.os.Bundle;
 import org.json.JSONException;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
@@ -49,7 +52,7 @@ public class SplashActivity extends Activity {
         protected String doInBackground(String... params) {
             try {
                 rep.insertAllExercises();
-                psr.reenterPlaylist("All", rm.getSongs());
+                fillPlaylistDb();
                 kvr.setDefaultUserSettings();
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -61,6 +64,18 @@ public class SplashActivity extends Activity {
             openMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(openMain);
             return "Success";
+        }
+
+        private void fillPlaylistDb() {
+            ArrayList<HashMap<String, String>> alt = psr.getByPlaylistName("All");
+            ArrayList<HashMap<String, String>> neu = rm.getSongs();
+            for (HashMap<String, String> itemAlt : alt) {
+                    if(!neu.contains(itemAlt))
+                    {
+                        psr.deleteBySongPath(itemAlt.get("songPath"));
+                    }
+            }
+            psr.reenterPlaylist("All", rm.getSongs());
         }
     }
 }
