@@ -47,10 +47,10 @@ public class PlaylistSongsRepository {
 
     public ArrayList<HashMap<String, String>> getByPlaylistName(String pname) {
         Cursor c = db.query(true, PlaylistSongsEntry.TABLE_NAME, new String[]{
-                        PlaylistSongsEntry.COLUMN_SONGTITLE,
-                        PlaylistSongsEntry.COLUMN_SONGPATH},
+                        PlaylistSongsEntry.COLUMN_SONGPATH,
+                        PlaylistSongsEntry.COLUMN_SONGTITLE},
                 PlaylistSongsEntry.COLUMN_PLAYLISTNAME + "=" + "'" + pname + "'",
-                null, null, null, PlaylistSongsEntry.COLUMN_PLAYLISTNAME + " ASC", null);
+                null, null, null, PlaylistSongsEntry.COLUMN_SONGTITLE + " ASC", null);
         if (c != null) {
             c.moveToFirst();
         }
@@ -77,8 +77,8 @@ public class PlaylistSongsRepository {
         for (HashMap<String, String> item : list) {
             initialValues = new ContentValues();
             initialValues.put(PlaylistSongsEntry.COLUMN_PLAYLISTNAME, pname);
-            initialValues.put(PlaylistSongsEntry.COLUMN_SONGTITLE, item.get("songTitle"));
             initialValues.put(PlaylistSongsEntry.COLUMN_SONGPATH, item.get("songPath"));
+            initialValues.put(PlaylistSongsEntry.COLUMN_SONGTITLE, item.get("songTitle"));
             db.insert(PlaylistSongsEntry.TABLE_NAME, null, initialValues);
         }
     }

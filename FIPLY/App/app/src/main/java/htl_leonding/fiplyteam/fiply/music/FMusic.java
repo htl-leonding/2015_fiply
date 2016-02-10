@@ -104,22 +104,11 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
                 if (getListOpen()) {
                     btnList.setImageResource(R.drawable.listviewunpressed);
                     setListOpen(false);
-                    FUebungDetail fragmentUebung = new FUebungDetail();
-                    Bundle args = new Bundle();
-                    args.putString("name", "TestName");
-                    args.putString("beschreibung", "TestBeschreibung");
-                    args.putString("anleitung", "TestAnleitung");
-                    args.putString("muskelgruppe", "TestMuskelgruppe");
-                    args.putString("zielgruppe", "TestZielgruppe");
-                    args.putString("video", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
-                    args.putBoolean("showVideo", false);
-                    fragmentUebung.setArguments(args);
-
-                    displayFragment.displayTSUebung(fragmentUebung, getFragmentManager());
+                    displayFragment.displayTSInstruktionAgain(getFragmentManager());
                 } else {
                     btnList.setImageResource(R.drawable.listviewpressed);
                     setListOpen(true);
-                    displayFragment.displayTSUebung(fMusicList, getFragmentManager());
+                    displayFragment.displayTSMusicList(fMusicList, getFragmentManager());
                 }
             }
         });

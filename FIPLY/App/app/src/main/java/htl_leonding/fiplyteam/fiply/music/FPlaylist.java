@@ -11,8 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Switch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,16 +24,16 @@ import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 
 public class FPlaylist extends Fragment {
 
-    ReadMusic rm;
     PlaylistSongsRepository psrep;
-    List<String> songStrings;
-    ArrayList<HashMap<String, String>> songs;
-    ArrayList<HashMap<String, String>> checkedSongs;
+    List<String> songTitleStrings, songPathStrings, selectedSongPathStrings;
+    ArrayList<HashMap<String, String>> songs, checkedSongs;
+    Boolean listPlaylistMode;
+
     ListView lvSongs;
-    ImageButton btAdd, btDelete;
-    Button btnSave;
-    Switch listSwitch;
+    LinearLayout linearLayout;
+    Button btnSave, btnSelectAll, btnSelectNone, btBack;
     EditText etName;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,68 +46,116 @@ public class FPlaylist extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         lvSongs = (ListView) getActivity().findViewById(R.id.lvPlSongs);
-        btAdd = (ImageButton) getActivity().findViewById(R.id.btPlAdd);
-        btDelete = (ImageButton) getActivity().findViewById(R.id.btPlDelete);
-        listSwitch = (Switch) getActivity().findViewById(R.id.switchPl);
+        btBack = (Button) getActivity().findViewById(R.id.btPlBack);
         etName = (EditText) getActivity().findViewById(R.id.etPlName);
         btnSave = (Button) getActivity().findViewById(R.id.btnPlaylistSave);
+        btnSelectAll = (Button) getActivity().findViewById(R.id.btnPlaylistSelectAll);
+        btnSelectNone = (Button) getActivity().findViewById(R.id.btnPlaylistSelectNone);
+        linearLayout = (LinearLayout) getActivity().findViewById(R.id.linearLayoutPlaylist);
 
-        rm = ReadMusic.getInstance();
         PlaylistSongsRepository.setContext(getActivity());
         psrep = PlaylistSongsRepository.getInstance();
 
-        songs = new ArrayList<>(rm.getSongs());
-        checkedSongs = new ArrayList<>();
-        songStrings = new LinkedList<>();
-
-        for (int i = 0; i < songs.size(); i++) {
-            songStrings.add(songs.get(i).get("songTitle"));
-        }
-
-//        lvSongs.setAdapter(new SimpleAdapter(getActivity(), songs,
-//                android.R.layout.simple_list_item_multiple_choice,
-//                new String[]{"songTitle"}, new int[]{R.id.songTitle}));
-
-        lvSongs.setAdapter(new ArrayAdapter<String>(getActivity(),
-                R.layout.music_item_checkable, songStrings));
-
-        lvSongs.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        setUpPlaylistAdapter();
+        refreshSongStringLists();
 
         lvSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                if (lvSongs.isItemChecked(position)) {
-//                    lvSongs.setItemChecked(position,false);
-//                } else {
-//                    lvSongs.setItemChecked(position,true);
-//                }
+                if (listPlaylistMode) {
+                    listPlaylistMode = false;
+                    refreshSongStringLists();
+                    linearLayout.setVisibility(View.VISIBLE);
+                    etName.setVisibility(View.VISIBLE);
+                    etName.setText(psrep.getPlaylists().get(position));
+
+                    lvSongs.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.music_item_checkable, songTitleStrings));
+                    lvSongs.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+                    ArrayList<HashMap<String, String>> selectedList = new ArrayList<>(psrep.getByPlaylistName(etName.getText().toString()));
+                    for (HashMap<String, String> item : selectedList) {
+                        selectedSongPathStrings.add(item.get("songPath"));
+                    }
+                    for (int i = 0; i < songPathStrings.size(); i++) {
+                        if (selectedSongPathStrings.contains(songPathStrings.get(i))) {
+                            lvSongs.setItemChecked(i, true);
+                        } else {
+                            lvSongs.setItemChecked(i, false);
+                        }
+                    }
+                }
             }
         });
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SparseBooleanArray checked = lvSongs.getCheckedItemPositions();
-                checkedSongs.clear();
-                for (int i = 0; i < songs.size(); i++) {
-                    if (checked.get(i)) {
-                        //System.out.println(songs.get(i).get("songPath"));
-                        checkedSongs.add(songs.get(i));
+                if (!etName.getText().toString().equals("All")) {
+                    SparseBooleanArray checked = lvSongs.getCheckedItemPositions();
+                    checkedSongs.clear();
+                    refreshSongStringLists();
+
+                    for (int i = 0; i < songs.size(); i++) {
+                        if (checked.get(i)) {
+                            checkedSongs.add(songs.get(i));
+                        }
                     }
+                    psrep.reenterPlaylist(etName.getText().toString(), checkedSongs);
                 }
+            }
+        });
 
-                psrep.insertMany("Swag", checkedSongs);
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUpPlaylistAdapter();
+            }
+        });
 
-                ArrayList<HashMap<String, String>> s = new ArrayList<>(psrep.getByPlaylistName("Swag"));
+        btnSelectAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refreshSongStringLists();
+                for (int i = 0; i < lvSongs.getCount(); i++) {
+                    lvSongs.setItemChecked(i, true);
+                }
+            }
+        });
 
-                for (int i = 0; i < s.size(); i++) {
-                    if (checked.get(i)) {
-                        System.out.println(s.get(i).get("songPath"));
-                    }
+        btnSelectNone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refreshSongStringLists();
+                for (int i = 0; i < lvSongs.getCount(); i++) {
+                    lvSongs.setItemChecked(i, false);
                 }
             }
         });
     }
 
+    public void refreshSongStringLists()
+    {
+        selectedSongPathStrings.clear();
+        songTitleStrings.clear();
+        songPathStrings.clear();
+        for (int i = 0; i < songs.size(); i++) {
+            songTitleStrings.add(songs.get(i).get("songTitle"));
+            songPathStrings.add(songs.get(i).get("songPath"));
+        }
+    }
 
+    public void setUpPlaylistAdapter()
+    {
+        songs = new ArrayList<>(psrep.getByPlaylistName("All"));
+        checkedSongs = new ArrayList<>();
+        songTitleStrings = new LinkedList<>();
+        songPathStrings = new LinkedList<>();
+        selectedSongPathStrings = new LinkedList<>();
+
+        lvSongs.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.playlist_item, psrep.getPlaylists()));
+        lvSongs.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listPlaylistMode = true;
+        etName.setVisibility(View.GONE);
+        linearLayout.setVisibility(View.GONE);
+    }
 }
