@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class DatabasePlaylistSongsTest extends AndroidTestCase {
     PlaylistSongsRepository rep;
-    ArrayList<HashMap<String, String>> classicList, rapList;
+    ArrayList<HashMap<String, String>> classicList, rapList, rapListNew;
 
     @Override
     protected void setUp() throws Exception {
@@ -28,13 +28,23 @@ public class DatabasePlaylistSongsTest extends AndroidTestCase {
         }
 
         songs = new String[]{"The Next Episode", "Still D.R.E.", "Lose Yourself", "Rap God", "Straight Outta Compton"};
-        paths = new String[]{"PATH/The Next Episode", "PATH/Still D.R.E.", "PATH/Lose Yourself", "PATH/Rap God", "PATH/Straight Outta Compton",};
+        paths = new String[]{"PATH/The Next Episode", "PATH/Still D.R.E.", "PATH/Lose Yourself", "PATH/Rap God", "PATH/Straight Outta Compton"};
         rapList = new ArrayList<>();
         for (int i = 0; i < songs.length; i++) {
             item = new HashMap<>();
             item.put("songTitle", songs[i]);
             item.put("songPath", paths[i]);
             rapList.add(item);
+        }
+
+        songs = new String[]{"The Next Episode", "Still D.R.E.", "Lose Yourself", "Rap God"};
+        paths = new String[]{"PATH/The Next Episode", "PATH/Still D.R.E.", "PATH/Lose Yourself", "PATH/Rap God"};
+        rapListNew = new ArrayList<>();
+        for (int i = 0; i < songs.length; i++) {
+            item = new HashMap<>();
+            item.put("songTitle", songs[i]);
+            item.put("songPath", paths[i]);
+            rapListNew.add(item);
         }
     }
 
@@ -91,5 +101,29 @@ public class DatabasePlaylistSongsTest extends AndroidTestCase {
         rep.reenterPlaylist("Classic", classicList);
         assertEquals(2, rep.getPlaylists().size());
         assertEquals("Classic", rep.getPlaylists().get(0));
+    }
+
+    public void testSortSongs() {
+        rep.reenterPlaylist("Classic", classicList);
+        assertEquals(classicList.get(0).get("songTitle"), "Space Oddity");
+        assertEquals(rep.getByPlaylistName("Classic").get(0).get("songTitle"), "Down Under");
+    }
+
+    public void testDeleteBySongPath() {
+        rep.reenterPlaylist("Classic", classicList);
+        rep.reenterPlaylist("Rap", rapList);
+        rep.reenterPlaylist("Rap2", rapListNew);
+        assertEquals(6, rep.getByPlaylistName("Classic").size());
+        assertEquals(5, rep.getByPlaylistName("Rap").size());
+        assertEquals(4, rep.getByPlaylistName("Rap2").size());
+
+        for (HashMap<String, String> itemAlt : rapList) {
+            if (!rapListNew.contains(itemAlt)) {
+                rep.deleteBySongPath(itemAlt.get("songPath"));
+            }
+        }
+        assertEquals(6, rep.getByPlaylistName("Classic").size());
+        assertEquals(4, rep.getByPlaylistName("Rap").size());
+        assertEquals(4, rep.getByPlaylistName("Rap2").size());
     }
 }
