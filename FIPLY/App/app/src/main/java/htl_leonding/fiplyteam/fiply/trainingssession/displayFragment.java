@@ -14,11 +14,37 @@ public class displayFragment {
         fragmentTransaction.commit();
     }
 
-    public static void displayTSUebung(Fragment display, FragmentManager fManager) {
+    public static void displayTSInstruktion(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fraTsUebung, display);
+        fragmentTransaction.replace(R.id.fraTsUebung, display, "TSInstruktion");
         fragmentTransaction.commit();
     }
+
+    public static void displayTSInstruktionAgain(FragmentManager fManager) {
+        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+        fragmentTransaction.remove(fManager.findFragmentByTag("TSMusicList"));
+        fragmentTransaction.show(fManager.findFragmentByTag("TSInstruktion"));
+        fragmentTransaction.commit();
+    }
+
+    public static void displayTSMusicList(Fragment display, FragmentManager fManager) {
+        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+        fragmentTransaction.hide(fManager.findFragmentByTag("TSInstruktion"));
+        fragmentTransaction.add(R.id.fraTsUebung, display, "TSMusicList");
+        fragmentTransaction.commit();
+    }
+
+//    public static void addToDisplayTSUebung(Fragment display, FragmentManager fManager) {
+//        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+//        fragmentTransaction.add(R.id.fraTsUebung, display, "TSMusicList");
+//        fragmentTransaction.commit();
+//    }
+//
+//    public static void removeFromDisplayTSUebung(FragmentManager fManager) {
+//        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+//        fragmentTransaction.remove(fManager.findFragmentByTag("TSMusicList"));
+//        fragmentTransaction.commit();
+//    }
 
     public static void displayTSClock(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();

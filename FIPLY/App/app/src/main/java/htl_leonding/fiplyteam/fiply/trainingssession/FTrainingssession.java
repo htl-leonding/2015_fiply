@@ -26,7 +26,7 @@ public class FTrainingssession extends Fragment {
         FTrainingsinstructions fragmentUebung = new FTrainingsinstructions();
         fragmentUebung.setArguments(getArguments());
 
-        displayFragment.displayTSUebung(fragmentUebung, getFragmentManager());
+        displayFragment.displayTSInstruktion(fragmentUebung, getFragmentManager());
         displayFragment.displayTSClocksNav(new FClocksNav(), getFragmentManager());
         displayFragment.displayTSClock(new FWatch(), getFragmentManager());
         displayFragment.displayTSMusic(new FMusic(), getFragmentManager());

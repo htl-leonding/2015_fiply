@@ -602,9 +602,13 @@
   }
 ]
     </string>
+    <string name="btnPlaylistSave">Save</string>
+    <string name="btnPlaylistSelectAll">ALL</string>
+    <string name="btnPlaylistSelectNone">NONE</string>
+    <string name="btnPlaylistBack">Back</string>
 
 
-  <string-array name="navigationArray">
+    <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 import htl_leonding.fiplyteam.fiply.trainingssession.displayFragment;
 import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungDetail;
 
@@ -27,10 +28,11 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     SeekBar progressBar;
     FMusicList fMusicList;
     MediaPlayer mp = new MediaPlayer();
-    ReadMusic rm = ReadMusic.getInstance();
     Handler mHandler = new Handler();
     ArrayList<HashMap<String, String>> playlist;
+    PlaylistSongsRepository psrep;
     int songIndex;
+    String aktPlaylist;
 
     private Runnable mUpdateDurTask = new Runnable() {
         @Override
@@ -71,7 +73,8 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         playlist = new ArrayList<>();
         progressBar.setOnSeekBarChangeListener(this);
         mp.setOnCompletionListener(this);
-
+        PlaylistSongsRepository.setContext(getActivity());
+        psrep = PlaylistSongsRepository.getInstance();
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,32 +107,25 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
                 if (getListOpen()) {
                     btnList.setImageResource(R.drawable.listviewunpressed);
                     setListOpen(false);
-                    FUebungDetail fragmentUebung = new FUebungDetail();
-                    Bundle args = new Bundle();
-                    args.putString("name", "TestName");
-                    args.putString("beschreibung", "TestBeschreibung");
-                    args.putString("anleitung", "TestAnleitung");
-                    args.putString("muskelgruppe", "TestMuskelgruppe");
-                    args.putString("zielgruppe", "TestZielgruppe");
-                    args.putString("video", "https://www.youtube.com/embed/ykJmrZ5v0Oo");
-                    args.putBoolean("showVideo", false);
-                    fragmentUebung.setArguments(args);
-
-                    displayFragment.displayTSUebung(fragmentUebung, getFragmentManager());
+                    displayFragment.displayTSInstruktionAgain(getFragmentManager());
                 } else {
                     btnList.setImageResource(R.drawable.listviewpressed);
                     setListOpen(true);
-                    displayFragment.displayTSUebung(fMusicList, getFragmentManager());
+                    displayFragment.displayTSMusicList(fMusicList, getFragmentManager());
                 }
             }
         });
+        aktPlaylist = "All";
         refreshPlaylist();
         progressBar.setMax(100);
-        changeSong(0);
+        setPlaylist(psrep.getByPlaylistName(aktPlaylist));
+        changeSong(0, aktPlaylist);
     }
 
-    public void changeSong(int songIndex) {
+    public void changeSong(int songIndex, String playlist) {
+        aktPlaylist = playlist;
         configureMediaPlayer(!getPlaylist().isEmpty());
+        setPlaylist(psrep.getByPlaylistName(aktPlaylist));
         if (getPlaylist().isEmpty()) {
             configureMediaPlayer(false);
         } else {
@@ -191,22 +187,22 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
 
     public void nextSong() {
         if ((getSongIndex() + 1) < getPlaylist().size())
-            changeSong(getSongIndex() + 1);
+            changeSong(getSongIndex() + 1, aktPlaylist);
         else
-            changeSong(0);
+            changeSong(0, aktPlaylist);
         play();
     }
 
     public void lastSong() {
         if (getSongIndex() > 0)
-            changeSong(getSongIndex() - 1);
+            changeSong(getSongIndex() - 1, aktPlaylist);
         else
-            changeSong(getPlaylist().size() - 1);
+            changeSong(getPlaylist().size() - 1, aktPlaylist);
         play();
     }
 
     public void refreshPlaylist() {
-        setPlaylist(rm.getSongs());
+        setPlaylist(psrep.getByPlaylistName(aktPlaylist));
     }
 
     private void updateProgressBar() {
