@@ -1,14 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal">
+
+    <RadioButton
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/trainingszielMuskelaufbau"
+       android:id="@+id/radioButtonMuskelaufbau"
+       android:layout_marginStart="20dp"
+       android:layout_marginTop="20dp"
+       android:layout_toEndOf="@+id/generateTextViewZiel"
+       android:textSize="15dp"
+       android:textAppearance="@color/darkPrimary"
+       android:theme="@style/CustomTheme"
+       android:textColor="@color/darkPrimary"
+       android:padding="10dp"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trainingszielGesundheit"
+        android:id="@+id/radioButtonGesundheit"
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/radioButtonMuskelaufbau"
+        android:layout_toEndOf="@+id/generateTextViewZiel"
+        android:textSize="15dp"
+        android:textAppearance="@color/darkPrimary"
+        android:theme="@style/CustomTheme"
+        android:textColor="@color/darkPrimary"
+        android:padding="10dp"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trainingszielMaximalKraft"
+        android:id="@+id/radioButtonMaximalKraft"
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/radioButtonGesundheit"
+        android:layout_toEndOf="@+id/generateTextViewZiel"
+        android:textSize="15dp"
+        android:textAppearance="@color/darkPrimary"
+        android:theme="@style/CustomTheme"
+        android:textColor="@color/darkPrimary"
+        android:padding="10dp"/>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButton"
+        android:layout_below="@+id/radioButtonMaximalKraft"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/toggle_selector"
+        android:textOn="@string/toggleOnText"
+        android:textOff="@string/toggleOffText"
+        android:textColor="@color/darkPrimary"
+        android:textAlignment="center"/>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignParentBottom="true"
+        android:progressDrawable="@drawable/progressbar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/generateZiel"
+        android:id="@+id/generateTextViewZiel"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@+id/toggleButton"
+        android:textSize="20dp"
+        android:textColor="@color/darkPrimary"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/generateDatePickText"
+        android:id="@+id/btsetDatePick"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/daypickerlayout"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@+id/toggleButton"
+        android:layout_alignEnd="@+id/toggleButton"
+        android:background="@color/darkMenuButtons"
+        android:textColor="@color/darkSecondary"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choosedaybt"
+        android:layout_below="@id/toggleButton"
+        android:textSize="30dp"
+        android:id="@+id/chooseDaytV"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/darkPrimary"/>
+
+
+
+    <RelativeLayout
+        android:layout_below="@+id/chooseDaytV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="@color/darkPrimary"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/daypickerlayout"
     >
 
-    <ListView
-        android:id="@+id/testlistview"
-        android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerdayoneText"
+            android:text="@string/choosedayoneText"
+            android:layout_alignParentStart="true"
+            android:padding="10dp"
+            android:textColor="@color/darkPrimary"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerdayone"
+            android:layout_toRightOf="@+id/spinnerdayoneText"
+            android:padding="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerdaytwoText"
+            android:text="@string/choosedaytwoText"
+            android:layout_below="@+id/spinnerdayone"
+            android:padding="10dp"
+            android:textColor="@color/darkPrimary"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerdaytwo"
+            android:layout_toRightOf="@+id/spinnerdaytwoText"
+            android:layout_below="@+id/spinnerdayone"
+            android:padding="10dp"
+            android:textColor="@color/darkPrimary"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerdaythreeText"
+            android:text="@string/choosedaythreeText"
+            android:layout_below="@+id/spinnerdaytwo"
+            android:padding="10dp"
+            android:textColor="@color/darkPrimary"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerdaythree"
+            android:layout_toRightOf="@+id/spinnerdaythreeText"
+            android:layout_below="@+id/spinnerdaytwo"
+            android:padding="10dp"
+            android:textColor="@color/darkPrimary"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:id="@+id/generateButton"
+        android:background="@color/darkMenuButtons"
+        android:textColor="@color/darkSecondary"
+        android:text="@string/generatebt"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btsetDatePick"
+        android:textSize="30dp"
+        android:textScaleX="2"
+        android:layout_marginTop="20dp"
         />
-</LinearLayout>
+
+</RelativeLayout>

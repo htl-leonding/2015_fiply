@@ -7,4 +7,16 @@
         <item name="android:navigationBarColor">@color/darkSecondary</item>
     </style>
 
+    <style name="CustomTheme" parent="android:Theme">
+        <item name="android:radioButtonStyle">@style/RadioButton</item>
+    </style>
+    <style name="RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio</item>
+    </style>
+    <style name="datepicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/darkPrimary</item>
+        <item name="colorAccent">@color/darkPrimary</item>
+        <item name="android:calendarTextColor">@color/white</item>
+        <item name="android:windowBackground">@color/darkSecondary</item>
+    </style>
 </resources>

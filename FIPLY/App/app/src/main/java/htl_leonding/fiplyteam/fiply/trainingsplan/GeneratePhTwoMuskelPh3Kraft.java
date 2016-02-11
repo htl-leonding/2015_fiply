@@ -46,7 +46,6 @@ public class GeneratePhTwoMuskelPh3Kraft {
         fetchIntoUebungen(list);
         tphas = new Trainingsphase("Phase 2: Muskelaufbau; Phase 3: Kraftausdauer", getPausendauer(), getPhasendauer(), getSaetze(), getWiederholungen(), getRepmax(), getStartDate());
         tphas.setUebungList(uebungen);
-        System.out.println("Size: " + tphas.getUebungenAsArrayList().size());
     }
 
     private List<String[]> setUebungen() {
@@ -135,10 +134,6 @@ public class GeneratePhTwoMuskelPh3Kraft {
 
     public Trainingsphase getTphas() {
         return tphas;
-    }
-
-    public void setTphas(Trainingsphase tphas) {
-        this.tphas = tphas;
     }
 
     public int getUebungsanzahl() {
