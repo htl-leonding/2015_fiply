@@ -628,7 +628,11 @@
   <string name="successmessagetrain">Dein persönlicher Trainingsplan wurde erfolgreich generiert.</string>
   <string name="fsettingtitle">Übersicht</string>
   <string name="sessionsettingstitle">!! Go Go Go !!</string>
-
+  <string name="heutestehen">"Heute stehen "</string>
+  <string name="uebungenan">" Uebungen an!"</string>
+  <string name="nouebungenfortoday">Heute stehen keine Uebungen an! Wollen Sie die Uebungen eines anderen Tags durchführen?</string>
+  <string name="tvFeedbackGewichtGestemmt">Sie haben gerade 100 kg gestemmt!</string>
+  <string name="tvFeedbackMood">Wie ist es dir bei dem Training gegangen?</string>
 
   <string-array name="navigationArray">
         <item>Mainmenü</item>

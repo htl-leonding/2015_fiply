@@ -2,6 +2,7 @@ package htl_leonding.fiplyteam.fiply.trainingssession;
 
 
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -35,9 +37,8 @@ public class FSettings extends Fragment {
     TextView uebungsText;
     Button chooseDay;
     Button gotosession;
-    PhasenRepository phasenRep;
-    InstruktionenRepository instRep;
     PhasenRepository rep;
+    ProgressBar pBar;
 
     @Nullable
     @Override
@@ -75,6 +76,9 @@ public class FSettings extends Fragment {
         uebungsText = (TextView) getActivity().findViewById(R.id.sessionsettinguebungen);
         chooseDay = (Button) getActivity().findViewById(R.id.choosedaybt);
         gotosession = (Button) getActivity().findViewById(R.id.gotosession);
+        pBar = (ProgressBar) getActivity().findViewById(R.id.progressBar);
+        Drawable draw= getActivity().getDrawable(R.drawable.progressbar);
+        pBar.setProgressDrawable(draw);
 
         gotosession.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +91,8 @@ public class FSettings extends Fragment {
                 Bundle args = new Bundle();
                 args.putInt("uebungAnzahl", port.howManyUebungToday());
                 for (int i = 0; i < port.howManyUebungToday(); i++) {
-                    args.putString("uebung" + (i+1), phase.getUebungListOfToday().get(i).getUebungsID());
-                    args.putInt("gewicht" + (i+1), RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungListOfToday().get(i).getRepmax())));
+                    args.putString("uebung" + (i + 1), phase.getUebungListOfToday().get(i).getUebungsID());
+                    args.putInt("gewicht" + (i + 1), RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungListOfToday().get(i).getRepmax())));
                 }
                 args.putString("phase", rowid);
 
@@ -116,18 +120,14 @@ public class FSettings extends Fragment {
         });
 
         welcomeText.setText(port.getProgress());
+        pBar.setProgress((port.getPhaseIndex()/3)*100 - 10);
 
         if (!port.isAnyUebungToday()){
-            uebungsText.setText("Heute stehen keine Uebungen an! Wollen Sie die Uebungen eines anderen Tags durchführen?");
+            uebungsText.setText(R.string.nouebungenfortoday);
             chooseDay.setVisibility(View.VISIBLE);
         }else {
-            uebungsText.setText("Heute stehen " + port.howManyUebungToday() + " Uebungen an!");
+            uebungsText.setText(R.string.heutestehen + port.howManyUebungToday() + R.string.uebungenan);
             chooseDay.setVisibility(View.INVISIBLE);
-        }
-
-        for (Uebung uebs : port.getCurrentPhase().getUebungListOfToday()){
-            System.out.println(uebs.getUebungsID());
-            System.out.println(uebs.getUebungsName());
         }
     }
 }

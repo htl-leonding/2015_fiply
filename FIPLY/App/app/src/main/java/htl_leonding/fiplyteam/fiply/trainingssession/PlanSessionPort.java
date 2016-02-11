@@ -60,15 +60,26 @@ public class PlanSessionPort {
     }
 
     public String getProgress(){
-        String result = "";
+        String result = "Aktuelle Trainingsphase: ";
         int cnt = 0;
         for (Trainingsphase phase : getPhasenListe()){
             cnt++;
             if (phase.isActive()){
-                result += "Sie sind gerade in der " + cnt + ". von ";
+                result += cnt + " von ";
             }
         }
-        return result + cnt + " Trainingsphasen.";
+        return result + cnt + ".";
+    }
+
+    public int getPhaseIndex(){
+        int cnt = 0;
+        for (Trainingsphase phase : getPhasenListe()){
+            cnt++;
+            if (phase.isActive()){
+                return cnt;
+            }
+        }
+        return 0;
     }
 
     public void init(){
