@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import java.sql.SQLException;
+import java.util.Date;
+
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
 
 
@@ -84,5 +86,12 @@ public class PhasenRepository {
             myCursor.moveToFirst();
         }
         return myCursor;
+    }
+
+    public Cursor getPhaseByStartDate(Date startDate){
+        return db.query(PhasenEntry.TABLE_NAME, new String[]{
+                PhasenEntry.COLUMN_ROWID
+        }, PhasenEntry.COLUMN_STARTDATE + "=" + "'" + startDate.toString() + "'",
+                null, null, null, PhasenEntry.COLUMN_ROWID + " ASC", null);
     }
 }

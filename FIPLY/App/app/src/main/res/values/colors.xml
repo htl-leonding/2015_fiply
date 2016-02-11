@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="darkPrimary">#FFA500</color>
+    <color name="darkPrimary">#ff8400</color>
     <color name="darkSecondary">#363534</color>
-    <color name="darkTextColorLight">#FFA500</color>
+    <color name="darkTextColorLight">#ff8400</color>
     <color name="darkTextColorDark">#000000</color>
-    <color name="darkMenuButtons">#FFA500</color>
+    <color name="darkMenuButtons">#ff8400</color>
     <color name="darkTextColorFlashy">#FF0000</color>
+    <color name="white">#ffffff</color>
+
 
 
     <color name="darkNavigationDivider">#00FFA500</color>
@@ -15,10 +17,10 @@
     <!-- unused -->
 
 
-    <color name="lightPrimary">#FFA500</color>
+    <color name="lightPrimary">#ff8400</color>
     <color name="lightSecondary">#c4b69e</color>
     <color name="lightTertiary">#363534</color>
-    <color name="lightTextColorLight">#FFA500</color>
+    <color name="lightTextColorLight">#ff8400</color>
     <color name="lightTextColorDark">#000000</color>
     <color name="lightNavigation">#5f5f5f</color>
 </resources>

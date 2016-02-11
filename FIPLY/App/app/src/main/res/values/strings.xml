@@ -49,12 +49,19 @@
     <string name="sessionsettingstitle">!Go Go Go!</string>
     <string name="alertnoplan">Sie haben noch keinen Trainingsplan!</string>
     <string name="ok">Okay</string>
-    <string name="choosedaybt">Tag auswählen</string>
+    <string name="choosedaybt">Tage auswählen</string>
     <string name="btnLastUeb">Zurück</string>
     <string name="btnNextUeb">Weiter</string>
     <string name="btnMusicHide">Musik</string>
     <string name="btnClocksHide">Uhren</string>
+    <string name="generateTitle">Trainingsplan generieren</string>
+    <string name="generateZiel">Trainingsziel: </string>
+    <string name="trainingszielMuskelaufbau">Muskelaufbau</string>
+
+
     <string name="exercisecatalog">
+
+
         [
   {
     \"Muskelgruppe\":\"Brust, Mittlere Brust\",
@@ -602,6 +609,20 @@
   }
 ]
     </string>
+  <string name="trainingszielGesundheit">Cardio/Abnahme</string>
+  <string name="trainingszielMaximalKraft">Maximalkraft</string>
+  <string name="toggleButton">Trainiert/Untrainiert</string>
+  <string name="toggleOnText">Trainiert</string>
+  <string name="toggleOffText">Untrainiert</string>
+  <string name="generateDatePickText">Wählen Sie einen Starttermin</string>
+  <string name="chooseDayText">Trainingstage wählen</string>
+  <string name="choosedayoneText">Wähle 1. Tag:</string>
+  <string name="choosedaytwoText">Wähle 2. Tag:</string>
+  <string name="choosedaythreeText">Wähle 3. Tag:</string>
+  <string name="generatebt">Los!!</string>
+  <string name="fehler">Fehler</string>
+  <string name="checkInput">Überprüfen Sie bitte ihre Eingabe.</string>
+  <string name="fertig">Fertig!</string>
 
   <string-array name="navigationArray">
         <item>Mainmenü</item>
