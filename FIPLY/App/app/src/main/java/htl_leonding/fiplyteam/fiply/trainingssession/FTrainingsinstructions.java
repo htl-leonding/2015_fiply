@@ -29,7 +29,8 @@ public class FTrainingsinstructions extends Fragment {
     ScrollView scrollView;
 
     Cursor aktUebung, aktPhase;
-    String videoLink = "-", aktUebungsId = "";
+    int aktUebungNr, maxUebungNr;
+    String videoLink = "-";
     UebungenRepository ueRep;
     PhasenRepository phRep;
 
@@ -62,6 +63,9 @@ public class FTrainingsinstructions extends Fragment {
         btnHideClocks = (Button) getActivity().findViewById(R.id.btnClocksHide);
         btnHideMusic = (Button) getActivity().findViewById(R.id.btnMusicHide);
         scrollView = (ScrollView) getActivity().findViewById(R.id.scrollViewInstructions);
+
+        aktUebungNr = 1;
+        maxUebungNr = 3;
 
         btnHideClocks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,14 +100,32 @@ public class FTrainingsinstructions extends Fragment {
         btnNextUeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                aktUebungNr++;
+                if(!btnLastUeb.isEnabled()){
+                    btnLastUeb.setEnabled(true);
+                }
+                if(aktUebungNr == maxUebungNr)
+                {
+                    btnNextUeb.setEnabled(false);
+                    //show
+                }
+                updateUebungsfields(aktUebungNr);
             }
         });
 
         btnLastUeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                    aktUebungNr--;
+                    if(!btnNextUeb.isEnabled()){
+                        btnNextUeb.setEnabled(true);
+                    }
+                    if(aktUebungNr == 1)
+                    {
+                        btnLastUeb.setEnabled(false);
+                    }
+                    //If shown then disable
+                updateUebungsfields(aktUebungNr);
             }
         });
 
@@ -124,7 +146,7 @@ public class FTrainingsinstructions extends Fragment {
             tvLinkVideo.setOnClickListener(clickVideo);
             ibLinkVideo.setOnClickListener(clickVideo);
         }
-        updateUebungsfields(1);
+        updateUebungsfields(aktUebungNr);
         //updatePhaseAndGewicht();
     }
 
@@ -142,11 +164,10 @@ public class FTrainingsinstructions extends Fragment {
     public void updateUebungsfields(int ueId) {
         try {
             //setAktUebung(ueRep.getUebung(Long.valueOf(getArguments().getString("uebungsid" + ueId))));
-            setAktUebung(ueRep.getUebung(1));
+            setAktUebung(ueRep.getUebung(ueId)); // TEST
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         tvUebungName.setText(getAktUebung().getString(1));
         tvUebungBeschreibung.setText(getAktUebung().getString(2));
         tvUebungAnleitung.setText(getAktUebung().getString(3));
