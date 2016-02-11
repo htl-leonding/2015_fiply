@@ -44,7 +44,8 @@ public class PlanSessionPort {
     }
 
     public boolean isAnyUebungToday(){
-        Trainingsphase phase = getCurrentPhase();
+        if (howManyUebungToday() > 0)
+            return true;
         return false;
     }
 

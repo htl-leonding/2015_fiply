@@ -87,8 +87,8 @@ public class FSettings extends Fragment {
                 Bundle args = new Bundle();
                 args.putInt("uebungAnzahl", port.howManyUebungToday());
                 for (int i = 0; i < port.howManyUebungToday(); i++) {
-                    args.putString("uebung" + i, phase.getUebungListOfToday().get(i).getUebungsID());
-                    args.putInt("gewicht" + i, RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungListOfToday().get(i).getRepmax())));
+                    args.putString("uebung" + (i+1), phase.getUebungListOfToday().get(i).getUebungsID());
+                    args.putInt("gewicht" + (i+1), RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungListOfToday().get(i).getRepmax())));
                 }
                 args.putString("phase", rowid);
 
@@ -123,6 +123,11 @@ public class FSettings extends Fragment {
         }else {
             uebungsText.setText("Heute stehen " + port.howManyUebungToday() + " Uebungen an!");
             chooseDay.setVisibility(View.INVISIBLE);
+        }
+
+        for (Uebung uebs : port.getCurrentPhase().getUebungListOfToday()){
+            System.out.println(uebs.getUebungsID());
+            System.out.println(uebs.getUebungsName());
         }
     }
 }
