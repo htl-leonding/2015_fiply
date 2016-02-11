@@ -67,15 +67,17 @@ public class SplashActivity extends Activity {
         }
 
         private void fillPlaylistDb() {
-            ArrayList<HashMap<String, String>> alt = psr.getByPlaylistName("All");
-            ArrayList<HashMap<String, String>> neu = rm.getSongs();
-            for (HashMap<String, String> itemAlt : alt) {
-                    if(!neu.contains(itemAlt))
-                    {
+            if(!rm.getSongs().isEmpty())
+            {
+                ArrayList<HashMap<String, String>> alt = psr.getByPlaylistName("All");
+                ArrayList<HashMap<String, String>> neu = rm.getSongs();
+                for (HashMap<String, String> itemAlt : alt) {
+                    if (!neu.contains(itemAlt)) {
                         psr.deleteBySongPath(itemAlt.get("songPath"));
                     }
+                }
+                psr.reenterPlaylist("All", rm.getSongs());
             }
-            psr.reenterPlaylist("All", rm.getSongs());
         }
     }
 }
