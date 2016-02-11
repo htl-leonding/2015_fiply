@@ -46,9 +46,7 @@
     <string name="detailGewicht">Gewicht:</string>
     <string name="detailEquipment">Equipment:</string>
     <string name="detailWiederholungen">Wiederholungen:</string>
-    <string name="sessionsettingstitle">!Go Go Go!</string>
-    <string name="alertnoplan">Sie haben noch keinen Trainingsplan!</string>
-    <string name="ok">Okay</string>
+    <string name="alertnoplan">Bitte lassen Sie sich vorher einen Trainingsplan erstellen.</string>
     <string name="choosedaybt">Tage auswählen</string>
     <string name="btnLastUeb">Zurück</string>
     <string name="btnNextUeb">Weiter</string>
@@ -628,6 +626,8 @@
   <string name="btnPlaylistSelectNone">NONE</string>
   <string name="btnPlaylistBack">Back</string>
   <string name="successmessagetrain">Dein persönlicher Trainingsplan wurde erfolgreich generiert.</string>
+  <string name="fsettingtitle">Übersicht</string>
+  <string name="sessionsettingstitle">!! Go Go Go !!</string>
 
 
   <string-array name="navigationArray">

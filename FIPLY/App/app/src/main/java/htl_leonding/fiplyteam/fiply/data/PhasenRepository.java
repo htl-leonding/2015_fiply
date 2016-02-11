@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
 
@@ -89,9 +92,11 @@ public class PhasenRepository {
     }
 
     public Cursor getPhaseByStartDate(Date startDate){
+        DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
+
         return db.query(PhasenEntry.TABLE_NAME, new String[]{
                 PhasenEntry.COLUMN_ROWID
-        }, PhasenEntry.COLUMN_STARTDATE + "=" + "'" + startDate.toString() + "'",
+        }, PhasenEntry.COLUMN_STARTDATE + "=" + "'" + format.format(startDate) + "'",
                 null, null, null, PhasenEntry.COLUMN_ROWID + " ASC", null);
     }
 

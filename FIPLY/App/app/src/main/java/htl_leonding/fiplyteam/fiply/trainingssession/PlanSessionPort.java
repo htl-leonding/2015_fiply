@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.InstruktionenEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
@@ -91,16 +93,15 @@ public class PlanSessionPort {
     }
 
     public String getProgress(){
-        int count = 0;
         String result = "";
+        int cnt = 0;
         for (Trainingsphase phase : phasenListe){
-            count++;
+            cnt++;
             if (phase.isActive()){
-                result += "Sie sind gerade in der " + count + ". von ";
+                result += "Sie sind gerade in der " + cnt + ". von ";
             }
         }
-        result += count + " Trainingsphasen.";
-        return result;
+        return result + cnt + " Trainingsphasen.";
     }
 
     public void init(){
@@ -112,6 +113,7 @@ public class PlanSessionPort {
 
         int iPhasenRowId = cPhasen.getColumnIndex(PhasenEntry.COLUMN_ROWID);
         int iPhasenStartDate = cPhasen.getColumnIndex(PhasenEntry.COLUMN_STARTDATE);
+        int iPhasenEndDate = cPhasen.getColumnIndex(PhasenEntry.COLUMN_ENDDATE);
         int iPhasenName = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PHASENNAME);
         int iPhasenDauer = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PHASENDAUER);
         int iPhasenPausenDauer = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PAUSENDAUER);
@@ -125,6 +127,7 @@ public class PlanSessionPort {
 
         String phasenRowId;
         String phasenStartDate;
+        String phasenEndDate;
         String phasenName;
         String phasenDauer;
         String phasenPausenDauer;
@@ -152,14 +155,16 @@ public class PlanSessionPort {
             instruktListe.add(uebung);
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        Date convertedDate = new Date();
+        DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
+        Date convertedStartDate;
+        Date convertedEndDate;
 
         Trainingsphase tPhase;
         phasenListe = new LinkedList<Trainingsphase>();
         for (cPhasen.moveToFirst(); !cPhasen.isAfterLast(); cPhasen.moveToNext()) {
             phasenRowId = cPhasen.getString(iPhasenRowId);
             phasenStartDate = cPhasen.getString(iPhasenStartDate);
+            phasenEndDate = cPhasen.getString(iPhasenEndDate);
             phasenName = cPhasen.getString(iPhasenName);
             phasenDauer = cPhasen.getString(iPhasenDauer);
             phasenPausenDauer = cPhasen.getString(iPhasenPausenDauer);
@@ -167,12 +172,16 @@ public class PlanSessionPort {
             phasenWiederholungen  = cPhasen.getString(iPhasenWiederholungen);
 
             try {
-                convertedDate = dateFormat.parse(phasenStartDate);
+                convertedStartDate = format.parse(phasenStartDate);
+                convertedEndDate = format.parse(phasenEndDate);
             } catch (Exception e) {
+                convertedStartDate = null;
+                convertedEndDate = null;
             }
 
             tPhase = new Trainingsphase(phasenName, Integer.valueOf(phasenPausenDauer), Integer.valueOf(phasenDauer),
-                    Integer.valueOf(phasenSaetze), Integer.valueOf(phasenWiederholungen), 0, convertedDate);
+                    Integer.valueOf(phasenSaetze), Integer.valueOf(phasenWiederholungen), 0, convertedStartDate);
+            tPhase.setEndDate(convertedEndDate);
             tPhase.setUebungList(getInstruktFromPhasenId(phasenRowId));
 
             phasenListe.add(tPhase);
@@ -193,6 +202,15 @@ public class PlanSessionPort {
         for (Trainingsphase phase : phasenListe){
             if (phase.isActive()){
                 return phase.getWochentage();
+            }
+        }
+        return null;
+    }
+
+    public Trainingsphase getCurrentPhase(){
+        for (Trainingsphase phase : phasenListe){
+            if (phase.isActive()){
+                return phase;
             }
         }
         return null;

@@ -10,12 +10,16 @@ import android.os.Bundle;
 import org.json.JSONException;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract;
@@ -103,13 +107,14 @@ public class SplashActivity extends Activity {
             psr.reenterPlaylist("All", rm.getSongs());
         }
 
-        private void fillTestTrainingsgplan(){
+        private void fillTestTrainingsgplan() {
             phasenRep.deleteAll();
             instRep.deleteAll();
+            DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
             String[] actualdays = new String[] {"Montag", "Donnerstag", "Samstag"};
             Date startDate = new Date();
             Calendar car = Calendar.getInstance();
-            car.set(2016, 1, 1);
+            car.set(2015, 12, 1);
             startDate.setTime(car.getTimeInMillis());
             trainingsphaseList = new LinkedList<Trainingsphase>();
             GenerateAllgemein allgemein = new GenerateAllgemein(true, 1, actualdays, startDate);
@@ -120,11 +125,17 @@ public class SplashActivity extends Activity {
             trainingsphaseList.add(phaseDreiMuskel.getTPhase());
 
             for (Trainingsphase phase : trainingsphaseList){
-
-                phasenRep.insertPhase(phase.getStartDate().toString(), phase.getEndDate().toString(),
+                String dbStartDate = format.format(phase.getStartDate());
+                String dbEndDate = format.format(phase.getEndDate());
+                phasenRep.insertPhase(dbStartDate, dbEndDate,
                         phase.getPhasenName(), String.valueOf(phase.getPhasenDauer()), String.valueOf(phase.getPausenDauer()),
                         String.valueOf(phase.getSaetze()), String.valueOf(phase.getWiederholungen()));
-                Cursor c = phasenRep.getPhaseByStartDate(phase.getStartDate());
+                Cursor c = null;
+                try {
+                    c = phasenRep.getPhaseByStartDate(format.parse(dbStartDate));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 c.moveToFirst();
                 int index = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_ROWID);
                 String rowid = c.getString(index);

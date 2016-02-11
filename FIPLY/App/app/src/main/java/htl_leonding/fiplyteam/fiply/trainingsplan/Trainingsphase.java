@@ -42,7 +42,7 @@ public class Trainingsphase {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(startDate);
         calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
-        this.endDate = calendar.getTime();
+        this.setEndDate(calendar.getTime());
     }
 
     public List<Uebung> getUebungListOfToday() {
@@ -157,5 +157,9 @@ public class Trainingsphase {
             cnt++;
         }
         return tage;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }
