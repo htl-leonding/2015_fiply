@@ -26,7 +26,7 @@ public class Trainingsphase {
         setEndingDate(startDate);
     }
 
-    public Trainingsphase(String phasenName, int pausenDauer, int phasenDauer, int seatze, int wiederholungen, int repmax, Date startDate) {
+    public Trainingsphase(String phasenName, int pausenDauer, int phasenDauer, int saetze, int wiederholungen, int repmax, Date startDate) {
         this.setPhasenName(phasenName);
         this.setPausenDauer(pausenDauer);
         this.setPhasenDauer(phasenDauer);
