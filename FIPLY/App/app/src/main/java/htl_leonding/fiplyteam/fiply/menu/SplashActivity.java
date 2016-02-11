@@ -111,7 +111,7 @@ public class SplashActivity extends Activity {
             phasenRep.deleteAll();
             instRep.deleteAll();
             DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
-            String[] actualdays = new String[] {"Montag", "Donnerstag", "Samstag"};
+            String[] actualdays = new String[] {"Montag", "Freitag", "Samstag"};
             Date startDate = new Date();
             Calendar car = Calendar.getInstance();
             car.set(2015, 12, 1);

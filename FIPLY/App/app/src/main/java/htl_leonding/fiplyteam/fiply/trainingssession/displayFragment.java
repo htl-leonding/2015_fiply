@@ -8,11 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import htl_leonding.fiplyteam.fiply.R;
 
 public class displayFragment {
-    public static void displayTS(Fragment display, FragmentManager fManager) {
-        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fraPlace, display);
-        fragmentTransaction.commit();
-    }
 
     public static void displayTSInstruktion(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
@@ -34,18 +29,6 @@ public class displayFragment {
         fragmentTransaction.commit();
     }
 
-//    public static void addToDisplayTSUebung(Fragment display, FragmentManager fManager) {
-//        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-//        fragmentTransaction.add(R.id.fraTsUebung, display, "TSMusicList");
-//        fragmentTransaction.commit();
-//    }
-//
-//    public static void removeFromDisplayTSUebung(FragmentManager fManager) {
-//        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-//        fragmentTransaction.remove(fManager.findFragmentByTag("TSMusicList"));
-//        fragmentTransaction.commit();
-//    }
-
     public static void displayTSClock(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         fragmentTransaction.replace(R.id.fraTsClocks, display, "TSClocks");
@@ -61,6 +44,12 @@ public class displayFragment {
     public static void displayTSClocksNav(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         fragmentTransaction.replace(R.id.fraTsClocksNav, display, "TSClocksNav");
+        fragmentTransaction.commit();
+    }
+
+    public static void displayTSFeedback(Fragment display, FragmentManager fManager) {
+        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fraPlace, display);
         fragmentTransaction.commit();
     }
 }

@@ -67,13 +67,8 @@ public class FTrainingsinstructions extends Fragment {
         btnEndTraining = (Button) getActivity().findViewById(R.id.btnEndTraining);
         scrollView = (ScrollView) getActivity().findViewById(R.id.scrollViewInstructions);
 
-        final Animation animFadeOut = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_out);
-        final Animation animFadeIn = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in);
-        animFadeOut.setRepeatMode(Animation.INFINITE);
-        animFadeIn.setRepeatMode(Animation.INFINITE);
-
         aktUebungNr = 1;
-        maxUebungNr = 3;
+        maxUebungNr = getArguments().getInt("uebungAnzahl");
 
         btnHideClocks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +145,7 @@ public class FTrainingsinstructions extends Fragment {
         btnEndTraining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "FEEDBACK", Toast.LENGTH_SHORT).show();
+                displayFragment.displayTSFeedback(new FFeedback(), getFragmentManager());
             }
         });
 
@@ -172,7 +167,7 @@ public class FTrainingsinstructions extends Fragment {
             ibLinkVideo.setOnClickListener(clickVideo);
         }
         updateUebungsfields(aktUebungNr);
-        //updatePhaseAndGewicht();
+        updatePhaseAndGewicht();
     }
 
     /**
@@ -188,8 +183,7 @@ public class FTrainingsinstructions extends Fragment {
 
     public void updateUebungsfields(int ueId) {
         try {
-            //setAktUebung(ueRep.getUebung(Long.valueOf(getArguments().getString("uebungsid" + ueId))));
-            setAktUebung(ueRep.getUebung(ueId)); // TEST
+            setAktUebung(ueRep.getUebung(Long.valueOf(getArguments().getString("uebung" + ueId))));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -198,18 +192,17 @@ public class FTrainingsinstructions extends Fragment {
         tvUebungAnleitung.setText(getAktUebung().getString(3));
         tvUebungMuskelgruppe.setText(getAktUebung().getString(4));
         tvUebungSchwierigkeit.setText(getAktUebung().getString(5));
+        tvUebungGewicht.setText(getArguments().getInt("gewicht" + ueId) + " kg");
         setVideoLink(getAktUebung().getString(6));
         tvUebungEquipment.setText(getAktUebung().getString(7));
     }
 
-    public void updatePhaseAndGewicht(Double gewicht, int phId) {
+    public void updatePhaseAndGewicht() {
         try {
-            setAktPhase(phRep.getPhase(Long.valueOf(getArguments().getString("phasenid" + phId))));
+            setAktPhase(phRep.getPhase(Long.valueOf(getArguments().getString("phase"))));
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        tvUebungGewicht.setText(String.valueOf(gewicht) + " kg");
         tvUebungSaetze.setText(getAktPhase().getString(6));
         tvUebungWiederholungen.setText(getAktPhase().getString(7));
     }
