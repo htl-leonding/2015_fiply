@@ -609,6 +609,8 @@
   }
 ]
     </string>
+
+    <string name="facebook_app_id">1541961082763294</string>
   <string name="trainingszielGesundheit">Cardio/Abnahme</string>
   <string name="trainingszielMaximalKraft">Maximalkraft</string>
   <string name="toggleButton">Trainiert/Untrainiert</string>

@@ -159,8 +159,23 @@ public class KeyValueRepository {
 
 
         }
-        updateKeyValue("filterName","");
-        updateKeyValue("filterMuskelGruppe","");
+
+
+        if(getKeyValue("filterName").getCount()==0){
+            insertKeyValue("filterName","");
+        } else {
+            updateKeyValue("filterName","");
+        }
+
+        if(getKeyValue("filterMuskelGruppe").getCount()==0){
+            insertKeyValue("filterMuskelGruppe","");
+        } else {
+            updateKeyValue("filterMuskelGruppe","");
+        }
+
+
+        Log.wtf("kvr test:", getKeyValue("filterName").getString(0));
+        Log.wtf("kvr test:", getKeyValue("filterName").getString(1));
 
     }
 }

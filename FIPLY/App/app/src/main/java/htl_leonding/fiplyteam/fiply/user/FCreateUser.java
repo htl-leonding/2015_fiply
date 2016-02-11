@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import com.facebook.FacebookSdk;
+import com.facebook.login.widget.LoginButton;
 
 import java.sql.SQLException;
 
@@ -22,6 +24,7 @@ public class FCreateUser extends Fragment {
     ImageView imgGender;
     ImageView imgName;
     EditText etName;
+    LoginButton fbLoginButton;
     Spinner spGender;
     ArrayAdapter<CharSequence> genderAdapter;
     KeyValueRepository kvr;

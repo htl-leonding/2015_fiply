@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeDark"
         >
-
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity
             android:name=".menu.MainActivity"
             android:configChanges="keyboardHidden|orientation"
