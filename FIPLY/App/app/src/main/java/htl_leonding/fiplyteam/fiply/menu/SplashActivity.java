@@ -76,8 +76,8 @@ public class SplashActivity extends Activity {
                         psr.deleteBySongPath(itemAlt.get("songPath"));
                     }
                 }
-                psr.reenterPlaylist("All", rm.getSongs());
             }
+            psr.reenterPlaylist("All", rm.getSongs());
         }
     }
 }

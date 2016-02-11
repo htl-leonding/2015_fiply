@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class ReadMusic {
     public static String PATH_MUSIC = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Music";
     private static ReadMusic instance;
-    private ArrayList<HashMap<String, String>> songs = new ArrayList<>();
+    private ArrayList<HashMap<String, String>> songs;
 
     private ReadMusic() {
     }
@@ -23,7 +23,7 @@ public class ReadMusic {
 
     public ArrayList<HashMap<String, String>> getSongs() {
         File home = new File(PATH_MUSIC);
-
+        songs = new ArrayList<>();
         if (home.listFiles(new FileExtensionFilter()) != null) {
             for (File file : home.listFiles(new FileExtensionFilter())) {
                 HashMap<String, String> song = new HashMap<>();
