@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.List;
+
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
@@ -23,6 +25,7 @@ import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
 import htl_leonding.fiplyteam.fiply.menu.FMain;
 import htl_leonding.fiplyteam.fiply.trainingsplan.RepMax;
 import htl_leonding.fiplyteam.fiply.trainingsplan.Trainingsphase;
+import htl_leonding.fiplyteam.fiply.trainingsplan.Uebung;
 
 
 public class FSettings extends Fragment {
@@ -34,6 +37,7 @@ public class FSettings extends Fragment {
     Button gotosession;
     PhasenRepository phasenRep;
     InstruktionenRepository instRep;
+    PhasenRepository rep;
 
     @Nullable
     @Override
@@ -46,7 +50,7 @@ public class FSettings extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        rep = PhasenRepository.getInstance();
         PhasenRepository.setContext(getContext());
         InstruktionenRepository.setContext(getContext());
         port = PlanSessionPort.getInstance();
@@ -75,8 +79,6 @@ public class FSettings extends Fragment {
         gotosession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PhasenRepository.setContext(getContext());
-                PhasenRepository rep = PhasenRepository.getInstance();
                 Trainingsphase phase = port.getCurrentPhase();
                 Cursor c = rep.getPhaseByStartDate(phase.getStartDate());
                 c.moveToFirst();

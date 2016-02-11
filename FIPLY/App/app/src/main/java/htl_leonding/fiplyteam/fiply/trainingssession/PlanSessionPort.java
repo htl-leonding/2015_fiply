@@ -1,13 +1,9 @@
 package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.database.Cursor;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +27,7 @@ public class PlanSessionPort {
     private Cursor cInstruktion;
     private List<Uebung> instruktListe;
     private List<Trainingsphase> phasenListe = new LinkedList<Trainingsphase>();
-    private static PlanSessionPort  instance = null;
+    private static PlanSessionPort instance = null;
 
     public static PlanSessionPort getInstance(){
         if (instance == null) {
@@ -41,50 +37,20 @@ public class PlanSessionPort {
     }
 
     public boolean isGenerated(){
-        if (phasenListe.size() > 0){
+        if (getPhasenListe().size() > 0){
             return true;
         }
         return false;
     }
 
-    public void setUebungenForToday(){
-        FTrainingssession trainingssession = new FTrainingssession();
-        Bundle args = new Bundle();
-        Calendar c = Calendar.getInstance();
-
-        for (Trainingsphase phase : phasenListe){
-            if (phase.isActive()){
-                List<Uebung> uebs = phase.getUebungListOfToday();
-                args.putInt("uebungsanzahl", uebs.size());
-
-                int cnt = 0;
-                for (Uebung ueb : uebs){
-                    args.putString("ueb" + cnt, ueb.getUebungsID());
-                    args.putString("repmax" + cnt, String.valueOf(ueb.getRepmax()));
-                    cnt++;
-                }
-                args.putString("pausendauer", String.valueOf(phase.getPausenDauer()));
-                args.putString("saetze", String.valueOf(phase.getSaetze()));
-                args.putString("wiederholungen", String.valueOf(phase.getWiederholungen()));
-            }
-        }
-        trainingssession.setArguments(args);
-    }
-
     public boolean isAnyUebungToday(){
-        for (Trainingsphase phase : phasenListe) {
-            if (phase.isActive()) {
-                if(phase.getUebungListOfToday().size() > 0){
-                    return true;
-                }
-            }
-        }
+        Trainingsphase phase = getCurrentPhase();
         return false;
     }
 
     public int howManyUebungToday(){
         int count = 0;
-        for (Trainingsphase phase : phasenListe) {
+        for (Trainingsphase phase : getPhasenListe()) {
             if (phase.isActive()) {
                 count = phase.getUebungListOfToday().size();
             }
@@ -95,7 +61,7 @@ public class PlanSessionPort {
     public String getProgress(){
         String result = "";
         int cnt = 0;
-        for (Trainingsphase phase : phasenListe){
+        for (Trainingsphase phase : getPhasenListe()){
             cnt++;
             if (phase.isActive()){
                 result += "Sie sind gerade in der " + cnt + ". von ";
@@ -160,7 +126,7 @@ public class PlanSessionPort {
         Date convertedEndDate;
 
         Trainingsphase tPhase;
-        phasenListe = new LinkedList<Trainingsphase>();
+        setPhasenListe(new LinkedList<Trainingsphase>());
         for (cPhasen.moveToFirst(); !cPhasen.isAfterLast(); cPhasen.moveToNext()) {
             phasenRowId = cPhasen.getString(iPhasenRowId);
             phasenStartDate = cPhasen.getString(iPhasenStartDate);
@@ -184,14 +150,16 @@ public class PlanSessionPort {
             tPhase.setEndDate(convertedEndDate);
             tPhase.setUebungList(getInstruktFromPhasenId(phasenRowId));
 
-            phasenListe.add(tPhase);
+            getPhasenListe().add(tPhase);
         }
     }
 
     private List<Uebung> getInstruktFromPhasenId(String phasenId){
         List<Uebung> resultList = new LinkedList<Uebung>();
+        String id;
         for (Uebung element: instruktListe){
-            if (element.getPhasenId() == phasenId){
+            id = element.getPhasenId();
+            if (id.equals(phasenId)){
                 resultList.add(element);
             }
         }
@@ -199,7 +167,7 @@ public class PlanSessionPort {
     }
 
     public String[] getDays() {
-        for (Trainingsphase phase : phasenListe){
+        for (Trainingsphase phase : getPhasenListe()){
             if (phase.isActive()){
                 return phase.getWochentage();
             }
@@ -208,11 +176,19 @@ public class PlanSessionPort {
     }
 
     public Trainingsphase getCurrentPhase(){
-        for (Trainingsphase phase : phasenListe){
+        for (Trainingsphase phase : getPhasenListe()){
             if (phase.isActive()){
                 return phase;
             }
         }
         return null;
+    }
+
+    public List<Trainingsphase> getPhasenListe() {
+        return phasenListe;
+    }
+
+    public void setPhasenListe(List<Trainingsphase> phasenListe) {
+        this.phasenListe = phasenListe;
     }
 }

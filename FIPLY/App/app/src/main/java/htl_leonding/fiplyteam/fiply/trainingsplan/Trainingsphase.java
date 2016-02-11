@@ -57,7 +57,7 @@ public class Trainingsphase {
     public List<Uebung> getUebungByDay(String day) {
         List<Uebung> uebungen = new LinkedList<Uebung>();
         for (Uebung element : getUebungList()) {
-            if (element.getWochenTag() == day)
+            if (element.getWochenTag().equals(day))
                 uebungen.add(element);
         }
         return uebungen;
