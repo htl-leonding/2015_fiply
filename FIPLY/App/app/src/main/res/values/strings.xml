@@ -623,8 +623,14 @@
   <string name="fehler">Fehler</string>
   <string name="checkInput">Überprüfen Sie bitte ihre Eingabe.</string>
   <string name="fertig">Fertig!</string>
+  <string name="btnPlaylistSave">Save</string>
+  <string name="btnPlaylistSelectAll">ALL</string>
+  <string name="btnPlaylistSelectNone">NONE</string>
+  <string name="btnPlaylistBack">Back</string>
 
-  <string-array name="navigationArray">
+
+
+    <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>

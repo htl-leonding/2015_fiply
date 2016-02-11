@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/music_item"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="horizontal"
-    >
-
-    <CheckBox
-        android:id="@+id/songTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/darkPrimary"
-        android:textColor="@color/darkPrimary"
-        />
-</LinearLayout>
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@android:id/text1"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center_vertical"
+          android:paddingBottom="2dp"
+          android:paddingLeft="4dp"
+          android:paddingRight="2dp"
+          android:paddingTop="2dp"
+          android:textColor="@color/darkPrimary"
+          android:checkMarkTint="@color/darkPrimary"
+          android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+    />

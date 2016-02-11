@@ -19,7 +19,7 @@ import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 public class FCreateUser extends Fragment {
 
-    final ThreadLocal<ImageView> imgGender = new ThreadLocal<>();
+    ImageView imgGender;
     ImageView imgName;
     EditText etName;
     Spinner spGender;
@@ -39,7 +39,7 @@ public class FCreateUser extends Fragment {
         etName = (EditText) getActivity().findViewById(R.id.etName);
         spGender = (Spinner) getActivity().findViewById(R.id.spGender);
         imgName = (ImageView) getActivity().findViewById(R.id.imgName);
-        imgGender.set((ImageView) getActivity().findViewById(R.id.imgGender));
+        imgGender = (ImageView) getActivity().findViewById(R.id.imgGender);
 
         init();
 
@@ -55,7 +55,7 @@ public class FCreateUser extends Fragment {
     private void init() {
         //load images
         imgName.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusername));
-        imgGender.get().setImageDrawable(getResources().getDrawable(R.drawable.fcreateusergender));
+        imgGender.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusergender));
 
         //init Adapter
         genderAdapter = ArrayAdapter.createFromResource(getActivity(),

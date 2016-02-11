@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:columnCount="2"
+    android:rowCount="3">
+
+    <TextView
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:text="Filter Name: "
+        android:id="@+id/staticFilterUebungName"
+        android:layout_weight="0.12"
+        android:layout_row="0"
+        android:layout_column="0" />
+
+    <EditText
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etFilterUebungName"
+        android:layout_row="0"
+        android:layout_column="1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivBodyFilterMask"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:background="@color/darkSecondary"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivBodyFilter"
+        android:layout_gravity="center_horizontal"
+        android:visibility="visible"
+        android:layout_row="1"
+        android:layout_column="0"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply Filter"
+        android:id="@+id/btApplyFilter"
+        android:layout_gravity="center_horizontal"
+        android:layout_row="2"
+        android:layout_column="0" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset Filter"
+        android:id="@+id/btResetFilter"
+        android:layout_gravity="center_horizontal"
+        android:layout_row="2"
+        android:layout_column="0" />
+</GridLayout>
+</ScrollView>

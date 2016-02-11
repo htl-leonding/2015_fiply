@@ -9,16 +9,22 @@ import android.os.Bundle;
 import org.json.JSONException;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
+import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
+import htl_leonding.fiplyteam.fiply.music.ReadMusic;
 
 public class SplashActivity extends Activity {
 
-    Context context;
+    ReadMusic rm;
     UebungenRepository rep;
     KeyValueRepository kvr;
+    PlaylistSongsRepository psr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +33,12 @@ public class SplashActivity extends Activity {
 
         UebungenRepository.setContext(this);
         KeyValueRepository.setContext(this);
+        PlaylistSongsRepository.setContext(this);
         rep = UebungenRepository.getInstance();
         kvr = KeyValueRepository.getInstance();
+        psr = PlaylistSongsRepository.getInstance();
+        rm = ReadMusic.getInstance();
+
         SleepIntentTask sleepIntentTask = new SleepIntentTask();
         sleepIntentTask.execute("");
     }
@@ -42,6 +52,7 @@ public class SplashActivity extends Activity {
         protected String doInBackground(String... params) {
             try {
                 rep.insertAllExercises();
+                fillPlaylistDb();
                 kvr.setDefaultUserSettings();
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -53,6 +64,20 @@ public class SplashActivity extends Activity {
             openMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(openMain);
             return "Success";
+        }
+
+        private void fillPlaylistDb() {
+            if(!rm.getSongs().isEmpty())
+            {
+                ArrayList<HashMap<String, String>> alt = psr.getByPlaylistName("All");
+                ArrayList<HashMap<String, String>> neu = rm.getSongs();
+                for (HashMap<String, String> itemAlt : alt) {
+                    if (!neu.contains(itemAlt)) {
+                        psr.deleteBySongPath(itemAlt.get("songPath"));
+                    }
+                }
+            }
+            psr.reenterPlaylist("All", rm.getSongs());
         }
     }
 }

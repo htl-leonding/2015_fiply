@@ -5,8 +5,15 @@
               android:orientation="vertical"
     >
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerPlaylist"
+        android:background="@color/lightTextColorDark"
+        />
+
     <ListView
-        android:id="@+id/android:list"
+        android:id="@+id/listViewMusicList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
