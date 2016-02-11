@@ -94,4 +94,8 @@ public class PhasenRepository {
         }, PhasenEntry.COLUMN_STARTDATE + "=" + "'" + startDate.toString() + "'",
                 null, null, null, PhasenEntry.COLUMN_ROWID + " ASC", null);
     }
+
+    public void deleteAll(){
+        db.delete(PhasenEntry.TABLE_NAME,null,null);
+    }
 }

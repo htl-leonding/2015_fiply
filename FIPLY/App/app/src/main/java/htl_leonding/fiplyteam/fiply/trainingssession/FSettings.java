@@ -16,6 +16,8 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
+import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
 import htl_leonding.fiplyteam.fiply.menu.FMain;
 
 
@@ -25,6 +27,9 @@ public class FSettings extends Fragment {
     PlanSessionPort port;
     TextView uebungsText;
     Button chooseDay;
+
+    PhasenRepository phasenRep;
+    InstruktionenRepository instRep;
 
     @Nullable
     @Override
@@ -37,7 +42,10 @@ public class FSettings extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        PhasenRepository.setContext(getContext());
+        InstruktionenRepository.setContext(getContext());
         port = PlanSessionPort.getInstance();
+        port.init();
 
         if (!port.isGenerated())
         {
@@ -69,7 +77,6 @@ public class FSettings extends Fragment {
                 fragment.setArguments(args);
                 fragmentTransaction.replace(R.id.fraPlace, fragment);
                 fragmentTransaction.commit();
-
             }
         });
 
@@ -82,8 +89,5 @@ public class FSettings extends Fragment {
             uebungsText.setText("Heute stehen " + port.howManyUebungToday() + " Uebungen an!");
             chooseDay.setVisibility(View.INVISIBLE);
         }
-
-
     }
-
 }

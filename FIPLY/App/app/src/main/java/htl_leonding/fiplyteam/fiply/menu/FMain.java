@@ -12,6 +12,7 @@ import android.widget.Button;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.music.FPlaylist;
 import htl_leonding.fiplyteam.fiply.trainingsplan.FTrainingsplan;
+import htl_leonding.fiplyteam.fiply.trainingssession.FSettings;
 import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingssession;
 import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungskatalog;
 import htl_leonding.fiplyteam.fiply.user.FUsermanagement;
@@ -72,8 +73,8 @@ public class FMain extends Fragment {
         startTra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FTrainingssession fTrainingssession = new FTrainingssession();
-                displayView(fTrainingssession);
+                FSettings fSettings = new FSettings();
+                displayView(fSettings);
             }
         });
 

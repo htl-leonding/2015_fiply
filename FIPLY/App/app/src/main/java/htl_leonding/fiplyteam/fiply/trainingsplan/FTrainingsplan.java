@@ -275,7 +275,7 @@ public class FTrainingsplan extends Fragment {
     private void success() {
         new AlertDialog.Builder(context)
                 .setTitle(R.string.fertig)
-                .setMessage("Dein persöhnlicher Trainingsplan wurde erfolgreich generiert.")
+                .setMessage(R.string.successmessagetrain)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     }

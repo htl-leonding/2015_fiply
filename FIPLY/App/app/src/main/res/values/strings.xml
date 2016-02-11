@@ -41,7 +41,7 @@
     <string name="btPlAdd">Add</string>
     <string name="sizeString">Size</string>
     <string name="weightString">Weight</string>
-    <string name="startTrainView">Trainingsview starten</string>
+    <string name="startTrainView">Trainingsplan generieren</string>
     <string name="detailSaetze">Sätze:</string>
     <string name="detailGewicht">Gewicht:</string>
     <string name="detailEquipment">Equipment:</string>
@@ -627,10 +627,10 @@
   <string name="btnPlaylistSelectAll">ALL</string>
   <string name="btnPlaylistSelectNone">NONE</string>
   <string name="btnPlaylistBack">Back</string>
+  <string name="successmessagetrain">Dein persönlicher Trainingsplan wurde erfolgreich generiert.</string>
 
 
-
-    <string-array name="navigationArray">
+  <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>

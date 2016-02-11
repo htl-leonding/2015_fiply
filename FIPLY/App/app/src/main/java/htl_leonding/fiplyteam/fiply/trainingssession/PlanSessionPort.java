@@ -28,23 +28,12 @@ public class PlanSessionPort {
     private Cursor cPhasen;
     private Cursor cInstruktion;
     private List<Uebung> instruktListe;
-    private List<Trainingsphase> phasenListe;
+    private List<Trainingsphase> phasenListe = new LinkedList<Trainingsphase>();
     private static PlanSessionPort  instance = null;
 
     public static PlanSessionPort getInstance(){
         if (instance == null) {
             instance = new PlanSessionPort();
-            keyv = KeyValueRepository.getInstance();
-            boolean set = false;
-            try {
-                set = Boolean.valueOf(keyv.getKeyValue("trainingsphasenloaded").getString(1));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            if (!set) {
-                instance.init();
-                keyv.updateKeyValue("trainingsphasenloaded", "true");
-            }
         }
         return instance;
     }
@@ -114,7 +103,7 @@ public class PlanSessionPort {
         return result;
     }
 
-    private void init(){
+    public void init(){
         repPhasen = PhasenRepository.getInstance();
         cPhasen = repPhasen.getAllPhasen();
 
