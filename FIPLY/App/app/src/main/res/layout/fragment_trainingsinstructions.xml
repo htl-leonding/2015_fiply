@@ -235,10 +235,20 @@
             android:textSize="16dp"
             />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnEndTraining"
+            android:text="End your Training!"
+            android:layout_below="@id/ibLinkVideo"
+            android:visibility="gone"
+
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/ibLinkVideo"
+            android:layout_below="@id/btnEndTraining"
             android:orientation="horizontal"
             >
 

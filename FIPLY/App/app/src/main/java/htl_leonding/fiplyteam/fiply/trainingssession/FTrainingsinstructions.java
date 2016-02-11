@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
@@ -25,7 +27,7 @@ public class FTrainingsinstructions extends Fragment {
     TextView tvUebungName, tvUebungSchwierigkeit, tvUebungMuskelgruppe, tvUebungBeschreibung, tvUebungAnleitung,
             tvLinkVideo, tvUebungEquipment, tvUebungGewicht, tvUebungSaetze, tvUebungWiederholungen;
     ImageButton ibLinkVideo;
-    Button btnNextUeb, btnLastUeb, btnHideClocks, btnHideMusic;
+    Button btnNextUeb, btnLastUeb, btnHideClocks, btnHideMusic, btnEndTraining;
     ScrollView scrollView;
 
     Cursor aktUebung, aktPhase;
@@ -62,7 +64,13 @@ public class FTrainingsinstructions extends Fragment {
         btnLastUeb = (Button) getActivity().findViewById(R.id.btnUebLast);
         btnHideClocks = (Button) getActivity().findViewById(R.id.btnClocksHide);
         btnHideMusic = (Button) getActivity().findViewById(R.id.btnMusicHide);
+        btnEndTraining = (Button) getActivity().findViewById(R.id.btnEndTraining);
         scrollView = (ScrollView) getActivity().findViewById(R.id.scrollViewInstructions);
+
+        final Animation animFadeOut = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_out);
+        final Animation animFadeIn = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in);
+        animFadeOut.setRepeatMode(Animation.INFINITE);
+        animFadeIn.setRepeatMode(Animation.INFINITE);
 
         aktUebungNr = 1;
         maxUebungNr = 3;
@@ -103,13 +111,17 @@ public class FTrainingsinstructions extends Fragment {
                 aktUebungNr++;
                 if(!btnLastUeb.isEnabled()){
                     btnLastUeb.setEnabled(true);
+                    btnLastUeb.setAlpha(1f);
                 }
                 if(aktUebungNr == maxUebungNr)
                 {
                     btnNextUeb.setEnabled(false);
-                    //show
+                    btnNextUeb.setAlpha(0.25f);
+
+                    btnEndTraining.setVisibility(View.VISIBLE);
                 }
                 updateUebungsfields(aktUebungNr);
+                scrollView.post(scrDown);
             }
         });
 
@@ -119,13 +131,26 @@ public class FTrainingsinstructions extends Fragment {
                     aktUebungNr--;
                     if(!btnNextUeb.isEnabled()){
                         btnNextUeb.setEnabled(true);
+                        btnNextUeb.setAlpha(1f);
                     }
                     if(aktUebungNr == 1)
                     {
                         btnLastUeb.setEnabled(false);
+                        btnLastUeb.setAlpha(0.25f);
                     }
-                    //If shown then disable
+                    if(btnEndTraining.getVisibility() == View.VISIBLE)
+                    {
+                        btnEndTraining.setVisibility(View.GONE);
+                    }
                 updateUebungsfields(aktUebungNr);
+                scrollView.post(scrDown);
+            }
+        });
+
+        btnEndTraining.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "FEEDBACK", Toast.LENGTH_SHORT).show();
             }
         });
 
