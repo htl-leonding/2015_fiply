@@ -629,7 +629,7 @@
   <string name="btnPlaylistSelectAll">ALL</string>
   <string name="btnPlaylistSelectNone">NONE</string>
   <string name="btnPlaylistBack">Back</string>
-
+    <string name="startStatistic">Statistik</string>
 
 
     <string-array name="navigationArray">
@@ -639,6 +639,14 @@
         <item>Usererstellung</item>
         <item>Playlists</item>
     </string-array>
+
+    <string-array name="greetingArray">
+        <item>Guten Morgen</item>
+        <item>Mahlzeit</item>
+        <item>Schönen Nachmittag</item>
+        <item>Guten Abend</item>
+    </string-array>
+
 
     <string-array name="proficiency">
         <item>Not Fit</item>
