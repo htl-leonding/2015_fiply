@@ -14,24 +14,24 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgName"
         android:layout_centerHorizontal="true"
-        android:ems="10"
         android:inputType="textPersonName"
         />
 
     <com.facebook.login.widget.LoginButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/fbLoginButton"
         android:layout_below="@+id/spGender"
-        android:id="@+id/fbLoginButton" />
+        android:layout_centerHorizontal="true" />
 
     <Spinner
         android:id="@+id/spGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
         android:layout_below="@+id/imgGender"
-        android:gravity="center"
-        />
+        android:layout_alignParentStart="false"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/imgName"
@@ -47,8 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/etName"
-        android:layout_toEndOf="@+id/imgName"
-        />
+        android:layout_toEndOf="@+id/imgName" />
 
 
 </RelativeLayout>
