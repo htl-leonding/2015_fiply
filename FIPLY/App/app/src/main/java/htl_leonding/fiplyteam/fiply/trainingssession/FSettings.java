@@ -126,7 +126,9 @@ public class FSettings extends Fragment {
             uebungsText.setText(R.string.nouebungenfortoday);
             chooseDay.setVisibility(View.VISIBLE);
         }else {
-            uebungsText.setText("Heute stehen " + port.howManyUebungToday() + " Übungen an");
+            String heutestehen = getResources().getString(R.string.heutestehen);
+            String uebungenan = getResources().getString(R.string.uebungenan);
+            uebungsText.setText(heutestehen + " " + port.howManyUebungToday() + " " + uebungenan);
             chooseDay.setVisibility(View.INVISIBLE);
         }
     }

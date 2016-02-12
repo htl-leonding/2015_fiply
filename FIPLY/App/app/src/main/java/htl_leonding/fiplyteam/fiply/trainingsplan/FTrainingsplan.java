@@ -352,7 +352,6 @@ public class FTrainingsplan extends Fragment {
             generate.setVisibility(View.INVISIBLE);
             return false;
         }
-
     }
 
     private void setDatePicker(){
