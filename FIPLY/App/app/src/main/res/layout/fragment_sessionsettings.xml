@@ -57,21 +57,54 @@
             android:layout_below="@+id/sessionsettingwelcome"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/choosedaybt"
-            android:id="@+id/choosedaybt"
-            android:layout_below="@+id/sessionsettingwelcome"
-            android:layout_centerHorizontal="true" />
+            android:text="@string/startTrainSession"
+            android:id="@+id/gotosession"
+            android:layout_alignParentBottom="true"
+            android:background="@color/darkMenuButtons"
+            android:textColor="@color/darkSecondary"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+
+            />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listviewuebungen"
+            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@+id/sessionsettingwelcome"
+            android:layout_alignRight="@+id/sessionsettingwelcome"
+            android:layout_below="@+id/sessionsettinguebungen"
+            android:textColor="@color/darkPrimary"
+            />
 
         <Button
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/sessionsettingwelcome"
+            android:layout_alignRight="@+id/sessionsettingwelcome"
+            android:background="@color/darkMenuButtons"
+            android:textColor="@color/darkSecondary"
+            android:text="@string/chooseotheruebung"
+            android:textSize="10dp"
+            android:layout_below="@+id/listviewuebungen"
+            android:layout_marginTop="20dp"
+            android:id="@+id/choosedaybt"
+            />
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/gotosession"
-            android:layout_marginBottom="93dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/sessionsettingstitle" />
+            android:id="@+id/imageViewSleeping"
+            android:layout_below="@+id/choosedaybt"
+            android:layout_alignLeft="@+id/sessionsettingwelcome"
+            android:layout_alignRight="@+id/sessionsettingwelcome"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/sleepingsmall"
+            />
 
     </RelativeLayout>
 </LinearLayout>

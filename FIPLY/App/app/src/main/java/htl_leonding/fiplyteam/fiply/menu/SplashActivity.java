@@ -110,6 +110,7 @@ public class SplashActivity extends Activity {
             kvr.reCreateKeyValueTable();
             uer.reCreateUebungenTable();
             psr.reCreatePlaylistSongsTable();
+            str.reCreateUebungenTable();
             kvr.insertKeyValue("firstStart", "false");
             Log.wtf("DatabaseOnFirstStart?", "reCreatedDatabaseOnFirstStart");
         }
@@ -132,7 +133,7 @@ public class SplashActivity extends Activity {
             phasenRep.deleteAll();
             instRep.deleteAll();
             DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
-            String[] actualdays = new String[] {"Montag", "Freitag", "Samstag"};
+            String[] actualdays = new String[] {"Montag", "Donnerstag", "Samstag"};
             Date startDate = new Date();
             Calendar car = Calendar.getInstance();
             car.set(2015, 12, 1);

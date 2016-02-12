@@ -2,6 +2,7 @@ package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.database.Cursor;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,11 +10,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.InstruktionenEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
 import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
+import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 import htl_leonding.fiplyteam.fiply.trainingsplan.Trainingsphase;
 import htl_leonding.fiplyteam.fiply.trainingsplan.Uebung;
 
@@ -22,9 +25,11 @@ public class PlanSessionPort {
     private static PhasenRepository repPhasen;
     private static InstruktionenRepository repInstruktionen;
     private static KeyValueRepository keyv;
+    private static UebungenRepository uebungRep;
 
     private Cursor cPhasen;
     private Cursor cInstruktion;
+    private Cursor cUebungen;
     private List<Uebung> instruktListe;
     private List<Trainingsphase> phasenListe = new LinkedList<Trainingsphase>();
     private static PlanSessionPort instance = null;
@@ -59,18 +64,6 @@ public class PlanSessionPort {
         return count;
     }
 
-    public String getProgress(){
-        String result = "Aktuelle Trainingsphase: ";
-        int cnt = 0;
-        for (Trainingsphase phase : getPhasenListe()){
-            cnt++;
-            if (phase.isActive()){
-                result += cnt + " von ";
-            }
-        }
-        return result + cnt + ".";
-    }
-
     public int getPhaseIndex(){
         int cnt = 0;
         for (Trainingsphase phase : getPhasenListe()){
@@ -85,6 +78,7 @@ public class PlanSessionPort {
     public void init(){
         repPhasen = PhasenRepository.getInstance();
         cPhasen = repPhasen.getAllPhasen();
+        uebungRep = UebungenRepository.getInstance();
 
         repInstruktionen = InstruktionenRepository.getInstance();
         cInstruktion = repInstruktionen.getAllInstructions();
@@ -130,6 +124,16 @@ public class PlanSessionPort {
             uebung.setRepmax(Integer.valueOf(instruktRepMax));
             uebung.setUebungsID(instruktUebungsId);
             uebung.setPhasenId(instruktPhasenId);
+
+            try {
+                cUebungen = uebungRep.getUebung(Long.valueOf(instruktUebungsId));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            int iUebungsName = cUebungen.getColumnIndex(FiplyContract.UebungenEntry.COLUMN_NAME);
+            cUebungen.moveToFirst();
+            String uebungsName = cUebungen.getString(iUebungsName);
+            uebung.setUebungsName(uebungsName);
             instruktListe.add(uebung);
         }
 

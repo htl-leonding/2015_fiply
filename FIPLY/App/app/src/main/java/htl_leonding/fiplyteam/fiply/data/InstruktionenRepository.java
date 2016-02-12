@@ -86,6 +86,18 @@ public class InstruktionenRepository extends Service{
         }, InstruktionenEntry.COLUMN_PHASENID + "=" + id, null, null, null, null, null);
     }
 
+    public void reCreateInstuktionenTable() {
+        db.execSQL("DROP TABLE IF EXISTS " + FiplyContract.UebungenEntry.TABLE_NAME + ";");
+        final String SQL_CREATE_INSTRUKTIONEN_TABLE = "create table " + InstruktionenEntry.TABLE_NAME +
+                " (" + InstruktionenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
+                InstruktionenEntry.COLUMN_WOCHENTAG + " text not null, " +
+                InstruktionenEntry.COLUMN_REPMAX + " text not null, " +
+                InstruktionenEntry.COLUMN_UEBUNGSID + " text not null, " +
+                InstruktionenEntry.COLUMN_PHASENID + " text not null" +
+                ");";
+        db.execSQL(SQL_CREATE_INSTRUKTIONEN_TABLE);
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
