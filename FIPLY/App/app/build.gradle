@@ -30,4 +30,6 @@ dependencies {
     androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
     compile 'javax.annotation:javax.annotation-api:1.2'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.jjoe64:graphview:4.0.1'
 }

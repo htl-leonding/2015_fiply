@@ -3,10 +3,12 @@
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-    >
+                android:orientation="horizontal">
+
+
 
     <EditText
+
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,6 +17,12 @@
         android:ems="10"
         android:inputType="textPersonName"
         />
+
+    <com.facebook.login.widget.LoginButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spGender"
+        android:id="@+id/fbLoginButton" />
 
     <Spinner
         android:id="@+id/spGender"

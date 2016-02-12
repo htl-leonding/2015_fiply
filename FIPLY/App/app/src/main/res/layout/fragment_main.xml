@@ -70,4 +70,15 @@
         android:textSize="25dp"
         />
 
+    <Button
+        android:id="@+id/btStartStatistic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="@color/darkMenuButtons"
+        android:text="@string/startStatistic"
+        android:textSize="25dp"
+        />
+
 </LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Dummy Text"
+        android:textSize="15dp"
+        android:id="@+id/statisticGreeting" />
+
+
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graphMood"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:seriesType="line"
+        app:seriesColor="#ee0000"
+        android:layout_gravity="right" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graphLift"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:seriesType="line"
+        app:seriesColor="#ee0000"
+        android:layout_gravity="right"/>
+
+</LinearLayout>
+</ScrollView>

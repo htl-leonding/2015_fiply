@@ -1,5 +1,7 @@
 package htl_leonding.fiplyteam.fiply.uebungskatalog;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import htl_leonding.fiplyteam.fiply.R;
@@ -30,9 +33,8 @@ public class FUebungDetail extends Fragment {
     TextView tvUebungDesc;
     TextView tvUebungAnl;
     TextView tvUebungDiff;
+    ImageButton ibDetailVideo;
 
-    WebView wvUebungVideo;
-    CheckBox checkBox;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,7 +60,8 @@ public class FUebungDetail extends Fragment {
         tvUebungDesc = (TextView) getActivity().findViewById(R.id.detailBeschreibung);
         tvUebungAnl = (TextView) getActivity().findViewById(R.id.detailAnleitung);
         tvUebungDiff = (TextView) getActivity().findViewById(R.id.detailSchwierigkeit);
-        checkBox = (CheckBox) getActivity().findViewById(R.id.cbVideo);
+        ibDetailVideo = (ImageButton) getActivity().findViewById((R.id.ibDetailVideo));
+
 
         tvUebungName.setText(uebungsName);
         tvUebungEquip.setText(uebungsEquip);
@@ -67,45 +70,24 @@ public class FUebungDetail extends Fragment {
         tvUebungAnl.setText(uebungsAnl);
         tvUebungDiff.setText(uebungsDiff);
 
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean checked = checkBox.isChecked();
-                if (checked) {
-                    if (!getVideoInitialized()) {
-                        setupVideo();
-                    }
-                    wvUebungVideo.setVisibility(View.VISIBLE);
-                } else {
-                    wvUebungVideo.setVisibility(View.GONE);
+
+        if (uebungsVideo != null && !uebungsVideo.equals("-")) {
+            ibDetailVideo = (ImageButton) getActivity().findViewById(R.id.ibDetailVideo);
+
+            View.OnClickListener clickVideo = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent showFullVideo = new Intent("fiply.VIDEO");
+                    showFullVideo.putExtra("videoLink", uebungsVideo);
+                    startActivity(showFullVideo);
                 }
-            }
-        });
+            };
 
-        if (getArguments().getBoolean("showVideo")) {
-            setupVideo();
-            checkBox.setChecked(true);
-            wvUebungVideo.setVisibility(View.VISIBLE);
+            ibDetailVideo.setOnClickListener(clickVideo);
         }
+
+
     }
 
-    public void setupVideo() {
-        wvUebungVideo = (WebView) getActivity().findViewById(R.id.detailUebungVideo);
-        wvUebungVideo.getSettings().setJavaScriptEnabled(true);
 
-        wvUebungVideo.setWebChromeClient(new WebChromeClient());
-        //wvUebungVideo.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        wvUebungVideo.loadUrl(uebungsVideo);
-
-
-        setVideoInitialized(true);
-    }
-
-    public Boolean getVideoInitialized() {
-        return videoInitialized;
-    }
-
-    public void setVideoInitialized(Boolean videoInitialized) {
-        this.videoInitialized = videoInitialized;
-    }
 }

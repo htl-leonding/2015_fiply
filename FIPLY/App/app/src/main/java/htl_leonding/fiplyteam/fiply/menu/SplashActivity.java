@@ -28,6 +28,7 @@ import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
 import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
+import htl_leonding.fiplyteam.fiply.data.StatisticRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 import htl_leonding.fiplyteam.fiply.music.ReadMusic;
 import htl_leonding.fiplyteam.fiply.trainingsplan.GenerateAllgemein;
@@ -42,6 +43,7 @@ public class SplashActivity extends Activity {
     UebungenRepository uer;
     KeyValueRepository kvr;
     PlaylistSongsRepository psr;
+    StatisticRepository str;
     InstruktionenRepository instRep;
     PhasenRepository phasenRep;
     List<Trainingsphase> trainingsphaseList;
@@ -53,10 +55,12 @@ public class SplashActivity extends Activity {
 
         UebungenRepository.setContext(this);
         KeyValueRepository.setContext(this);
+        StatisticRepository.setContext(this);
         PlaylistSongsRepository.setContext(this);
         uer = UebungenRepository.getInstance();
         kvr = KeyValueRepository.getInstance();
         psr = PlaylistSongsRepository.getInstance();
+        str = StatisticRepository.getInstance();
         rm = ReadMusic.getInstance();
         InstruktionenRepository.setContext(this);
         PhasenRepository.setContext(this);
@@ -107,7 +111,7 @@ public class SplashActivity extends Activity {
             uer.reCreateUebungenTable();
             psr.reCreatePlaylistSongsTable();
             kvr.insertKeyValue("firstStart", "false");
-            Log.wtf("WTF", "reCreatedDatabaseOnFirstStart");
+            Log.wtf("DatabaseOnFirstStart?", "reCreatedDatabaseOnFirstStart");
         }
 
         private void fillPlaylistDb() {
@@ -160,7 +164,6 @@ public class SplashActivity extends Activity {
                     instRep.insertUebung(ueb.getWochenTag(),String.valueOf(ueb.getRepmax()), ueb.getUebungsID(),rowid);
                 }
             }
-
             Cursor c = phasenRep.getAllPhasen();
             Cursor c2;
             int iRowId = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_ROWID);
