@@ -76,9 +76,23 @@ public class InstruktionenRepository extends Service{
                 null, null, null, null, InstruktionenEntry.COLUMN_PHASENID + " ASC");
     }
 
+    public Cursor getInstruktionByPhasenId(String id){
+        return db.query(true, InstruktionenEntry.TABLE_NAME, new String[] {
+                InstruktionenEntry.COLUMN_ROWID,
+                InstruktionenEntry.COLUMN_WOCHENTAG,
+                InstruktionenEntry.COLUMN_REPMAX,
+                InstruktionenEntry.COLUMN_UEBUNGSID,
+                InstruktionenEntry.COLUMN_PHASENID
+        }, InstruktionenEntry.COLUMN_PHASENID + "=" + id, null, null, null, null, null);
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    public void deleteAll() {
+        db.delete(InstruktionenEntry.TABLE_NAME, null, null);
     }
 }

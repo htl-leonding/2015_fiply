@@ -1,15 +1,13 @@
 package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.database.Cursor;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
-import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.InstruktionenEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
@@ -28,72 +26,32 @@ public class PlanSessionPort {
     private Cursor cPhasen;
     private Cursor cInstruktion;
     private List<Uebung> instruktListe;
-    private List<Trainingsphase> phasenListe;
-    private static PlanSessionPort  instance = null;
+    private List<Trainingsphase> phasenListe = new LinkedList<Trainingsphase>();
+    private static PlanSessionPort instance = null;
 
     public static PlanSessionPort getInstance(){
         if (instance == null) {
             instance = new PlanSessionPort();
-            keyv = KeyValueRepository.getInstance();
-            boolean set = false;
-            try {
-                set = Boolean.valueOf(keyv.getKeyValue("trainingsphasenloaded").getString(1));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            if (!set) {
-                instance.init();
-                keyv.updateKeyValue("trainingsphasenloaded", "true");
-            }
         }
         return instance;
     }
 
     public boolean isGenerated(){
-        if (phasenListe.size() > 0){
+        if (getPhasenListe().size() > 0){
             return true;
         }
         return false;
     }
 
-    public void setUebungenForToday(){
-        FTrainingssession trainingssession = new FTrainingssession();
-        Bundle args = new Bundle();
-        Calendar c = Calendar.getInstance();
-
-        for (Trainingsphase phase : phasenListe){
-            if (phase.isActive()){
-                List<Uebung> uebs = phase.getUebungListOfToday();
-                args.putInt("uebungsanzahl", uebs.size());
-
-                int cnt = 0;
-                for (Uebung ueb : uebs){
-                    args.putString("ueb" + cnt, ueb.getUebungsID());
-                    args.putString("repmax" + cnt, String.valueOf(ueb.getRepmax()));
-                    cnt++;
-                }
-                args.putString("pausendauer", String.valueOf(phase.getPausenDauer()));
-                args.putString("saetze", String.valueOf(phase.getSaetze()));
-                args.putString("wiederholungen", String.valueOf(phase.getWiederholungen()));
-            }
-        }
-        trainingssession.setArguments(args);
-    }
-
     public boolean isAnyUebungToday(){
-        for (Trainingsphase phase : phasenListe) {
-            if (phase.isActive()) {
-                if(phase.getUebungListOfToday().size() > 0){
-                    return true;
-                }
-            }
-        }
+        if (howManyUebungToday() > 0)
+            return true;
         return false;
     }
 
     public int howManyUebungToday(){
         int count = 0;
-        for (Trainingsphase phase : phasenListe) {
+        for (Trainingsphase phase : getPhasenListe()) {
             if (phase.isActive()) {
                 count = phase.getUebungListOfToday().size();
             }
@@ -102,19 +60,29 @@ public class PlanSessionPort {
     }
 
     public String getProgress(){
-        int count = 0;
-        String result = "";
-        for (Trainingsphase phase : phasenListe){
-            count++;
+        String result = "Aktuelle Trainingsphase: ";
+        int cnt = 0;
+        for (Trainingsphase phase : getPhasenListe()){
+            cnt++;
             if (phase.isActive()){
-                result += "Sie sind gerade in der " + count + ". von ";
+                result += cnt + " von ";
             }
         }
-        result += count + " Trainingsphasen.";
-        return result;
+        return result + cnt + ".";
     }
 
-    private void init(){
+    public int getPhaseIndex(){
+        int cnt = 0;
+        for (Trainingsphase phase : getPhasenListe()){
+            cnt++;
+            if (phase.isActive()){
+                return cnt;
+            }
+        }
+        return 0;
+    }
+
+    public void init(){
         repPhasen = PhasenRepository.getInstance();
         cPhasen = repPhasen.getAllPhasen();
 
@@ -123,6 +91,7 @@ public class PlanSessionPort {
 
         int iPhasenRowId = cPhasen.getColumnIndex(PhasenEntry.COLUMN_ROWID);
         int iPhasenStartDate = cPhasen.getColumnIndex(PhasenEntry.COLUMN_STARTDATE);
+        int iPhasenEndDate = cPhasen.getColumnIndex(PhasenEntry.COLUMN_ENDDATE);
         int iPhasenName = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PHASENNAME);
         int iPhasenDauer = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PHASENDAUER);
         int iPhasenPausenDauer = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PAUSENDAUER);
@@ -136,6 +105,7 @@ public class PlanSessionPort {
 
         String phasenRowId;
         String phasenStartDate;
+        String phasenEndDate;
         String phasenName;
         String phasenDauer;
         String phasenPausenDauer;
@@ -163,14 +133,16 @@ public class PlanSessionPort {
             instruktListe.add(uebung);
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        Date convertedDate = new Date();
+        DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
+        Date convertedStartDate;
+        Date convertedEndDate;
 
         Trainingsphase tPhase;
-        phasenListe = new LinkedList<Trainingsphase>();
+        setPhasenListe(new LinkedList<Trainingsphase>());
         for (cPhasen.moveToFirst(); !cPhasen.isAfterLast(); cPhasen.moveToNext()) {
             phasenRowId = cPhasen.getString(iPhasenRowId);
             phasenStartDate = cPhasen.getString(iPhasenStartDate);
+            phasenEndDate = cPhasen.getString(iPhasenEndDate);
             phasenName = cPhasen.getString(iPhasenName);
             phasenDauer = cPhasen.getString(iPhasenDauer);
             phasenPausenDauer = cPhasen.getString(iPhasenPausenDauer);
@@ -178,22 +150,28 @@ public class PlanSessionPort {
             phasenWiederholungen  = cPhasen.getString(iPhasenWiederholungen);
 
             try {
-                convertedDate = dateFormat.parse(phasenStartDate);
+                convertedStartDate = format.parse(phasenStartDate);
+                convertedEndDate = format.parse(phasenEndDate);
             } catch (Exception e) {
+                convertedStartDate = null;
+                convertedEndDate = null;
             }
 
             tPhase = new Trainingsphase(phasenName, Integer.valueOf(phasenPausenDauer), Integer.valueOf(phasenDauer),
-                    Integer.valueOf(phasenSaetze), Integer.valueOf(phasenWiederholungen), 0, convertedDate);
+                    Integer.valueOf(phasenSaetze), Integer.valueOf(phasenWiederholungen), 0, convertedStartDate);
+            tPhase.setEndDate(convertedEndDate);
             tPhase.setUebungList(getInstruktFromPhasenId(phasenRowId));
 
-            phasenListe.add(tPhase);
+            getPhasenListe().add(tPhase);
         }
     }
 
     private List<Uebung> getInstruktFromPhasenId(String phasenId){
         List<Uebung> resultList = new LinkedList<Uebung>();
+        String id;
         for (Uebung element: instruktListe){
-            if (element.getPhasenId() == phasenId){
+            id = element.getPhasenId();
+            if (id.equals(phasenId)){
                 resultList.add(element);
             }
         }
@@ -201,11 +179,28 @@ public class PlanSessionPort {
     }
 
     public String[] getDays() {
-        for (Trainingsphase phase : phasenListe){
+        for (Trainingsphase phase : getPhasenListe()){
             if (phase.isActive()){
                 return phase.getWochentage();
             }
         }
         return null;
+    }
+
+    public Trainingsphase getCurrentPhase(){
+        for (Trainingsphase phase : getPhasenListe()){
+            if (phase.isActive()){
+                return phase;
+            }
+        }
+        return null;
+    }
+
+    public List<Trainingsphase> getPhasenListe() {
+        return phasenListe;
+    }
+
+    public void setPhasenListe(List<Trainingsphase> phasenListe) {
+        this.phasenListe = phasenListe;
     }
 }

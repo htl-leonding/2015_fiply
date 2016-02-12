@@ -8,8 +8,8 @@ public class Uebung {
     private String muskelgruppe;
     private String phasenId;
 
-    public int getTrainingsgewicht(int wiederholungen, int rm, String uebungsID, String uebungsName) {
-        return 1;
+    public int getTrainingsgewicht(int wiederholungen, int rm) {
+        return (int)(rm*((102.78)-2.78*wiederholungen))/100;
     }
 
     public String getUebungsName() {

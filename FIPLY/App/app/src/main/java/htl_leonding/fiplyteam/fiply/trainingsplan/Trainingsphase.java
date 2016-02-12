@@ -26,7 +26,7 @@ public class Trainingsphase {
         setEndingDate(startDate);
     }
 
-    public Trainingsphase(String phasenName, int pausenDauer, int phasenDauer, int seatze, int wiederholungen, int repmax, Date startDate) {
+    public Trainingsphase(String phasenName, int pausenDauer, int phasenDauer, int saetze, int wiederholungen, int repmax, Date startDate) {
         this.setPhasenName(phasenName);
         this.setPausenDauer(pausenDauer);
         this.setPhasenDauer(phasenDauer);
@@ -42,7 +42,7 @@ public class Trainingsphase {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(startDate);
         calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
-        this.endDate = calendar.getTime();
+        this.setEndDate(calendar.getTime());
     }
 
     public List<Uebung> getUebungListOfToday() {
@@ -57,7 +57,7 @@ public class Trainingsphase {
     public List<Uebung> getUebungByDay(String day) {
         List<Uebung> uebungen = new LinkedList<Uebung>();
         for (Uebung element : getUebungList()) {
-            if (element.getWochenTag() == day)
+            if (element.getWochenTag().equals(day))
                 uebungen.add(element);
         }
         return uebungen;
@@ -157,5 +157,9 @@ public class Trainingsphase {
             cnt++;
         }
         return tage;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

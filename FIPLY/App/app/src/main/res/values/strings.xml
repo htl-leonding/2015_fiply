@@ -41,14 +41,12 @@
     <string name="btPlAdd">Add</string>
     <string name="sizeString">Size</string>
     <string name="weightString">Weight</string>
-    <string name="startTrainView">Trainingsview starten</string>
+    <string name="startTrainView">Trainingsplan generieren</string>
     <string name="detailSaetze">Sätze:</string>
     <string name="detailGewicht">Gewicht:</string>
     <string name="detailEquipment">Equipment:</string>
     <string name="detailWiederholungen">Wiederholungen:</string>
-    <string name="sessionsettingstitle">!Go Go Go!</string>
-    <string name="alertnoplan">Sie haben noch keinen Trainingsplan!</string>
-    <string name="ok">Okay</string>
+    <string name="alertnoplan">Bitte lassen Sie sich vorher einen Trainingsplan erstellen.</string>
     <string name="choosedaybt">Tage auswählen</string>
     <string name="btnLastUeb">Zurück</string>
     <string name="btnNextUeb">Weiter</string>
@@ -627,10 +625,17 @@
   <string name="btnPlaylistSelectAll">ALL</string>
   <string name="btnPlaylistSelectNone">NONE</string>
   <string name="btnPlaylistBack">Back</string>
+  <string name="successmessagetrain">Dein persönlicher Trainingsplan wurde erfolgreich generiert.</string>
+  <string name="fsettingtitle">Übersicht</string>
+  <string name="sessionsettingstitle">!! Go Go Go !!</string>
+  <string name="nouebungenfortoday">Heute stehen keine Uebungen an! Wollen Sie die Uebungen eines anderen Tags durchführen?</string>
+  <string name="tvFeedbackGewichtGestemmt">Sie haben gerade 100 kg gestemmt!</string>
+  <string name="tvFeedbackMood">Wie ist es dir bei dem Training gegangen?</string>
+  <string name="heutestehen">Heute stehen </string>
+  <string name="uebungenan">Übungen an!</string>
+  <string name="btnFeedbackShowStats">Weiter zur Statistik</string>
 
-
-
-    <string-array name="navigationArray">
+  <string-array name="navigationArray">
         <item>Mainmenü</item>
         <item>Trainingssession</item>
         <item>Übungskatalog</item>
