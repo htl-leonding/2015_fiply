@@ -21,7 +21,9 @@
         android:layout_marginTop="30dp"
         android:background="@color/darkMenuButtons"
         android:text="@string/startTr"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@color/darkSecondary"
+        />
 
     <Button
         android:id="@+id/btStartEU"
@@ -31,7 +33,9 @@
         android:layout_marginTop="30dp"
         android:background="@color/darkMenuButtons"
         android:text="@string/startEU"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@color/darkSecondary"
+        />
 
     <Button
         android:id="@+id/btStartTrainView"
@@ -41,7 +45,9 @@
         android:layout_marginTop="30dp"
         android:background="@color/darkMenuButtons"
         android:text="@string/startTrainView"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@color/darkSecondary"
+        />
 
     <Button
         android:id="@+id/btStartUe"
@@ -51,7 +57,9 @@
         android:layout_marginTop="30dp"
         android:background="@color/darkMenuButtons"
         android:text="@string/startUe"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@color/darkSecondary"
+        />
 
     <Button
         android:id="@+id/btStartPlaylist"
@@ -61,7 +69,9 @@
         android:layout_marginTop="30dp"
         android:background="@color/darkMenuButtons"
         android:text="@string/startPlaylist"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@color/darkSecondary"
+        />
 
     <Button
         android:id="@+id/btStartStatistic"
@@ -71,6 +81,8 @@
         android:layout_marginTop="30dp"
         android:background="@color/darkMenuButtons"
         android:text="@string/startStatistic"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@color/darkSecondary"
+        />
 
 </LinearLayout>
