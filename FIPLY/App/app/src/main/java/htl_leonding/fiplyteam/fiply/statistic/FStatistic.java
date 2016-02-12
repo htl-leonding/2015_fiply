@@ -74,7 +74,7 @@ public class FStatistic extends Fragment {
         gvMood.getViewport().setMaxX(200101);
         gvMood.getViewport().setMinX(150101);
         gvMood.getViewport().setMaxY(5);
-        gvMood.getViewport().setMinY(1);
+        gvMood.getViewport().setMinY(0);
 
 
         gvLift.addSeries(str.getSeriesForLiftedWeight());
@@ -83,6 +83,6 @@ public class FStatistic extends Fragment {
         gvMood.getViewport().setMaxX(200101);
         gvMood.getViewport().setMinX(150101);
         gvMood.getViewport().setMaxY(500);
-        gvMood.getViewport().setMinY(10);
+        gvMood.getViewport().setMinY(0);
     }
 }
