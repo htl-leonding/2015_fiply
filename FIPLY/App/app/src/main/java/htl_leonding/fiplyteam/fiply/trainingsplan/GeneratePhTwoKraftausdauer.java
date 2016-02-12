@@ -1,7 +1,6 @@
 package htl_leonding.fiplyteam.fiply.trainingsplan;
 
 
-import java.sql.SQLOutput;
 import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;

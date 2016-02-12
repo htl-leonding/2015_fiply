@@ -19,7 +19,6 @@ import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.music.FPlaylist;
 import htl_leonding.fiplyteam.fiply.trainingsplan.FTrainingsplan;
 import htl_leonding.fiplyteam.fiply.trainingssession.FSettings;
-import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingssession;
 import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungskatalog;
 import htl_leonding.fiplyteam.fiply.user.FUsermanagement;
 

@@ -5,19 +5,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.sql.SQLException;
-import htl_leonding.fiplyteam.fiply.R;
+
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.InstruktionenEntry;
 
-public class InstruktionenRepository extends Service{
+public class InstruktionenRepository extends Service {
     private static Context repoContext;
     private static InstruktionenRepository instance;
     SQLiteDatabase db = getWritableDatabase();
@@ -50,10 +45,10 @@ public class InstruktionenRepository extends Service{
     /**
      * Gibt eine Instruktion in die Datenbank ein
      *
-     * @param wochentag     Der Wochentag an dem die Instruktion bewältigt werden soll
-     * @param repmax        Beschreibt das Trainingsgewicht
-     * @param uebungsid     Der Verweis auf die zu machende Übung
-     * @param phasenid      Der Verweis auf die Phase in der diese Übung absolviert werden soll
+     * @param wochentag Der Wochentag an dem die Instruktion bewältigt werden soll
+     * @param repmax    Beschreibt das Trainingsgewicht
+     * @param uebungsid Der Verweis auf die zu machende Übung
+     * @param phasenid  Der Verweis auf die Phase in der diese Übung absolviert werden soll
      * @return
      */
     public long insertUebung(String wochentag, String repmax, String uebungsid, String phasenid) {
@@ -65,7 +60,7 @@ public class InstruktionenRepository extends Service{
         return db.insert(InstruktionenEntry.TABLE_NAME, null, initialValues);
     }
 
-    public Cursor getAllInstructions(){
+    public Cursor getAllInstructions() {
         return db.query(InstruktionenEntry.TABLE_NAME, new String[]{
                         InstruktionenEntry.COLUMN_ROWID,
                         InstruktionenEntry.COLUMN_WOCHENTAG,
@@ -76,8 +71,8 @@ public class InstruktionenRepository extends Service{
                 null, null, null, null, InstruktionenEntry.COLUMN_PHASENID + " ASC");
     }
 
-    public Cursor getInstruktionByPhasenId(String id){
-        return db.query(true, InstruktionenEntry.TABLE_NAME, new String[] {
+    public Cursor getInstruktionByPhasenId(String id) {
+        return db.query(true, InstruktionenEntry.TABLE_NAME, new String[]{
                 InstruktionenEntry.COLUMN_ROWID,
                 InstruktionenEntry.COLUMN_WOCHENTAG,
                 InstruktionenEntry.COLUMN_REPMAX,

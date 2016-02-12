@@ -4,12 +4,9 @@ package htl_leonding.fiplyteam.fiply.trainingssession;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,12 +21,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import htl_leonding.fiplyteam.fiply.R;
@@ -73,8 +67,7 @@ public class FSettings extends Fragment {
         InstruktionenRepository.setContext(getContext());
         port = PlanSessionPort.getInstance();
         port.init();
-        if (!port.isGenerated())
-        {
+        if (!port.isGenerated()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage(R.string.alertnoplan)
                     .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
@@ -89,7 +82,7 @@ public class FSettings extends Fragment {
         uebungsText = (TextView) getActivity().findViewById(R.id.sessionsettinguebungen);
         gotosession = (Button) getActivity().findViewById(R.id.gotosession);
         pBar = (ProgressBar) getActivity().findViewById(R.id.progressBar);
-        Drawable draw= getActivity().getDrawable(R.drawable.progressbar);
+        Drawable draw = getActivity().getDrawable(R.drawable.progressbar);
         pBar.setProgressDrawable(draw);
         uebList = (ListView) getActivity().findViewById(R.id.listviewuebungen);
         chooseDay = (Button) getActivity().findViewById(R.id.choosedaybt);
@@ -104,7 +97,7 @@ public class FSettings extends Fragment {
                         getResources().getString(R.string.mittwoch), getResources().getString(R.string.donnerstag),
                         getResources().getString(R.string.freitag), getResources().getString(R.string.samstag),
                         getResources().getString(R.string.sonntag)};
-                b.setItems(types, new DialogInterface.OnClickListener() { 
+                b.setItems(types, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
@@ -146,11 +139,11 @@ public class FSettings extends Fragment {
         pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
 
         uebs = new ArrayList<String>();
-        for (Uebung element : port.getCurrentPhase().getUebungListOfToday()){
+        for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) {
             uebs.add(String.valueOf(element.getUebungsName()));
             Log.wtf("WTF", element.getUebungsName());
         }
-        ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(),R.layout.uebungslist_item,uebs);
+        ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.uebungslist_item, uebs);
         uebList.setAdapter(adapt);
         String heutestehen = getResources().getString(R.string.heutestehen);
         String uebungenan = getResources().getString(R.string.uebungenan);
@@ -159,7 +152,7 @@ public class FSettings extends Fragment {
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.GERMAN);
         title.setText(dateFormat.format(now));
         day = dateFormat.format(now);
-        if (uebs.size() == 0){
+        if (uebs.size() == 0) {
             gotosession.setVisibility(View.INVISIBLE);
             final Animation animRevTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);
             final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate);
@@ -167,7 +160,7 @@ public class FSettings extends Fragment {
             gotosession.setAnimation(animRevTranslate);
             imgView.setAnimation(animTranslate);
 
-        }else{
+        } else {
             gotosession.setVisibility(View.VISIBLE);
             final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate);
             final Animation animRevTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);
@@ -179,25 +172,25 @@ public class FSettings extends Fragment {
 
     private void loadUebungen(String dayyo) {
         uebs = new ArrayList<String>();
-        ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(),R.layout.uebungslist_item,uebs);
+        ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.uebungslist_item, uebs);
         uebList.setAdapter(adapt);
         String esstehen = getResources().getString(R.string.esstehen);
         String uebungenan = getResources().getString(R.string.uebungenan);
         day = dayyo;
-        for (Uebung element : port.getCurrentPhase().getUebungByDay(day)){
+        for (Uebung element : port.getCurrentPhase().getUebungByDay(day)) {
             uebs.add(String.valueOf(element.getUebungsName()));
             Log.wtf("WTF", element.getUebungsName());
         }
         uebungsText.setText(esstehen + " " + port.getCurrentPhase().getUebungByDay(day).size() + " " + uebungenan);
         title.setText(dayyo);
-        if (uebs.size() == 0){
+        if (uebs.size() == 0) {
             gotosession.setVisibility(View.INVISIBLE);
             final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate);
             final Animation animRevTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);
             imgView.setVisibility(View.VISIBLE);
             imgView.setAnimation(animTranslate);
             gotosession.setAnimation(animRevTranslate);
-        }else{
+        } else {
             gotosession.setVisibility(View.VISIBLE);
             final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate);
             final Animation animRevTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);

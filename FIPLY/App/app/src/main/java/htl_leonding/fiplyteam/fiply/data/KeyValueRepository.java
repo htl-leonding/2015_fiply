@@ -9,7 +9,6 @@ import android.util.Log;
 
 import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.Date;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.KeyValueEntry;
@@ -146,31 +145,31 @@ public class KeyValueRepository {
 
     public void setDefaultUserSettings() throws SQLException {
         if (getKeyValue("isUserCustomized").getCount() == 0) {
-            insertKeyValue("userName","Name");
-            insertKeyValue("userGender","Male");
-            insertKeyValue("userWeight","80");
-            insertKeyValue("userHeight","180");
-            insertKeyValue("userAge","21-30");
-            insertKeyValue("userProf","Not Fit");
+            insertKeyValue("userName", "Name");
+            insertKeyValue("userGender", "Male");
+            insertKeyValue("userWeight", "80");
+            insertKeyValue("userHeight", "180");
+            insertKeyValue("userAge", "21-30");
+            insertKeyValue("userProf", "Not Fit");
             insertKeyValue("isUserCustomized", "true");
             insertKeyValue("trainingsphasenloaded", "false");
         }
 
 
-        if(getKeyValue("filterName").getCount()==0){
-            insertKeyValue("filterName","");
+        if (getKeyValue("filterName").getCount() == 0) {
+            insertKeyValue("filterName", "");
         } else {
-            updateKeyValue("filterName","");
+            updateKeyValue("filterName", "");
         }
 
-        if(getKeyValue("filterMuskelGruppe").getCount()==0){
-            insertKeyValue("filterMuskelGruppe","");
+        if (getKeyValue("filterMuskelGruppe").getCount() == 0) {
+            insertKeyValue("filterMuskelGruppe", "");
         } else {
-            updateKeyValue("filterMuskelGruppe","");
+            updateKeyValue("filterMuskelGruppe", "");
         }
 
-        if(getKeyValue("greetings").getCount()==0) {
-            insertKeyValue("greetings","");
+        if (getKeyValue("greetings").getCount() == 0) {
+            insertKeyValue("greetings", "");
         }
         //getGreeting();
 
@@ -181,13 +180,13 @@ public class KeyValueRepository {
 
     //returns the greeting corresponding to the time of day
     public String getGreeting() throws SQLException {
-        if(Calendar.getInstance().getTime().getTime() < 1000)
+        if (Calendar.getInstance().getTime().getTime() < 1000)
             updateKeyValue("greeting", repoContext.getResources().getStringArray(R.array.greetingArray)[0]);
-        else if(Calendar.getInstance().getTime().getTime() < 2000)
+        else if (Calendar.getInstance().getTime().getTime() < 2000)
             updateKeyValue("greeting", repoContext.getResources().getStringArray(R.array.greetingArray)[1]);
-        else if(Calendar.getInstance().getTime().getTime() < 3000)
+        else if (Calendar.getInstance().getTime().getTime() < 3000)
             updateKeyValue("greeting", repoContext.getResources().getStringArray(R.array.greetingArray)[2]);
-        else if(Calendar.getInstance().getTime().getTime() < 4000)
+        else if (Calendar.getInstance().getTime().getTime() < 4000)
             updateKeyValue("greeting", repoContext.getResources().getStringArray(R.array.greetingArray)[3]);
         else
             updateKeyValue("greeting", "Gute Nacht");

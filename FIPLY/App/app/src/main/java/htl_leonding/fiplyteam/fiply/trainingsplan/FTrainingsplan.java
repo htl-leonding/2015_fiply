@@ -3,13 +3,11 @@ package htl_leonding.fiplyteam.fiply.trainingsplan;
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -23,19 +21,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
-import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
 
-
-import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -47,7 +40,6 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
-import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
 public class FTrainingsplan extends Fragment {
 
@@ -84,7 +76,7 @@ public class FTrainingsplan extends Fragment {
     String lastDayTwo;
     String lastDayThree;
 
-    String[] days = new String[] {"Auswählen", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"};
+    String[] days = new String[]{"Auswählen", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"};
     String[] actualdays;
     Date startDate;
 
@@ -106,7 +98,7 @@ public class FTrainingsplan extends Fragment {
         tButton.setGravity(Gravity.TOP);
         tButton.setPadding(0, 10, 0, 0);
         pBar = (ProgressBar) getActivity().findViewById(R.id.progressBar);
-        Drawable draw= getActivity().getDrawable(R.drawable.progressbar);
+        Drawable draw = getActivity().getDrawable(R.drawable.progressbar);
         pBar.setProgressDrawable(draw);
         rbMaximalkraft = (RadioButton) getActivity().findViewById(R.id.radioButtonMaximalKraft);
         rbMuskelaufbau = (RadioButton) getActivity().findViewById(R.id.radioButtonMuskelaufbau);
@@ -130,9 +122,9 @@ public class FTrainingsplan extends Fragment {
         instRep = InstruktionenRepository.getInstance();
         phasenRep = PhasenRepository.getInstance();
         try {
-            if (rep.getKeyValue("userProf").equals("Not Fit")){
+            if (rep.getKeyValue("userProf").equals("Not Fit")) {
                 tButton.setChecked(true);
-            }else {
+            } else {
                 tButton.setChecked(false);
             }
         } catch (SQLException e) {
@@ -191,7 +183,6 @@ public class FTrainingsplan extends Fragment {
         });
 
 
-
         dayone.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -234,6 +225,7 @@ public class FTrainingsplan extends Fragment {
                     thirdSet = true;
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 thirdSet = false;
@@ -243,29 +235,29 @@ public class FTrainingsplan extends Fragment {
     }
 
     private void generateClicked() {
-        if (rbMuskelaufbau.isChecked()){
+        if (rbMuskelaufbau.isChecked()) {
             trainingsphaseList = new LinkedList<Trainingsphase>();
             GenerateAllgemein allgemein = new GenerateAllgemein(!tButton.isChecked(), 1, actualdays, startDate);
             trainingsphaseList.add(allgemein.getTPhase());
-            GeneratePhTwoMuskelPh3Kraft phaseZweiMuskel = new GeneratePhTwoMuskelPh3Kraft(actualdays, allgemein.getTPhase().getEndDate(), "Muskelaufbau", new String[] {"Bauch", "Beine", "Brust"});
+            GeneratePhTwoMuskelPh3Kraft phaseZweiMuskel = new GeneratePhTwoMuskelPh3Kraft(actualdays, allgemein.getTPhase().getEndDate(), "Muskelaufbau", new String[]{"Bauch", "Beine", "Brust"});
             trainingsphaseList.add(phaseZweiMuskel.getTPhase());
-            GeneratePhTwoMaxiPh3Muskel phaseDreiMuskel = new GeneratePhTwoMaxiPh3Muskel(phaseZweiMuskel.getTPhase().getEndDate(),"Muskelaufbau", actualdays);
+            GeneratePhTwoMaxiPh3Muskel phaseDreiMuskel = new GeneratePhTwoMaxiPh3Muskel(phaseZweiMuskel.getTPhase().getEndDate(), "Muskelaufbau", actualdays);
             trainingsphaseList.add(phaseDreiMuskel.getTPhase());
-        }else if (rbMaximalkraft.isChecked()){
+        } else if (rbMaximalkraft.isChecked()) {
             trainingsphaseList = new LinkedList<Trainingsphase>();
             GenerateAllgemein allgemein = new GenerateAllgemein(!tButton.isChecked(), 1, actualdays, startDate);
             trainingsphaseList.add(allgemein.getTPhase());
-            GeneratePhTwoMaxiPh3Muskel phaseZweiMaximalkraft = new GeneratePhTwoMaxiPh3Muskel(allgemein.getTPhase().getEndDate(),"Maximalkraft", actualdays);
+            GeneratePhTwoMaxiPh3Muskel phaseZweiMaximalkraft = new GeneratePhTwoMaxiPh3Muskel(allgemein.getTPhase().getEndDate(), "Maximalkraft", actualdays);
             trainingsphaseList.add(phaseZweiMaximalkraft.getTPhase());
-            GeneratePh3Maxi phaseDreiMaximimalkraft = new GeneratePh3Maxi(phaseZweiMaximalkraft.getTPhase().getEndDate(),actualdays);
+            GeneratePh3Maxi phaseDreiMaximimalkraft = new GeneratePh3Maxi(phaseZweiMaximalkraft.getTPhase().getEndDate(), actualdays);
             trainingsphaseList.add(phaseDreiMaximimalkraft.getTPhase());
-        }else if (rbCardio.isChecked()){
+        } else if (rbCardio.isChecked()) {
             trainingsphaseList = new LinkedList<Trainingsphase>();
             GenerateAllgemein allgemein = new GenerateAllgemein(!tButton.isChecked(), 1, actualdays, startDate);
             trainingsphaseList.add(allgemein.getTPhase());
             GeneratePhTwoKraftausdauer phaseZweiKraftausdauer = new GeneratePhTwoKraftausdauer(actualdays, allgemein.getTPhase().getEndDate(), true);
             trainingsphaseList.add(phaseZweiKraftausdauer.getTPhase());
-            GeneratePhTwoMaxiPh3Muskel phaseDreiMuskel = new GeneratePhTwoMaxiPh3Muskel(phaseZweiKraftausdauer.getTPhase().getEndDate(),"Kraftausdauer", actualdays);
+            GeneratePhTwoMaxiPh3Muskel phaseDreiMuskel = new GeneratePhTwoMaxiPh3Muskel(phaseZweiKraftausdauer.getTPhase().getEndDate(), "Kraftausdauer", actualdays);
             trainingsphaseList.add(phaseDreiMuskel.getTPhase());
         }
         writeToDataBase();
@@ -289,7 +281,7 @@ public class FTrainingsplan extends Fragment {
 
     private void writeToDataBase() {
         DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
-        for (Trainingsphase phase : trainingsphaseList){
+        for (Trainingsphase phase : trainingsphaseList) {
             String dbStartDate = format.format(phase.getStartDate());
             String dbEndDate = format.format(phase.getEndDate());
             phasenRep.insertPhase(dbStartDate, dbEndDate,
@@ -300,26 +292,25 @@ public class FTrainingsplan extends Fragment {
             c.moveToFirst();
             int index = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_ROWID);
             String rowid = c.getString(index);
-            for (Uebung ueb : phase.getUebungList()){
-                instRep.insertUebung(ueb.getWochenTag(),String.valueOf(ueb.getRepmax()), ueb.getUebungsID(),rowid);
+            for (Uebung ueb : phase.getUebungList()) {
+                instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), rowid);
             }
         }
     }
 
 
     private void addProgressChecked(int howMuch) {
-        if ((pBar.getProgress() + howMuch) <= 100){
+        if ((pBar.getProgress() + howMuch) <= 100) {
             progress = pBar.getProgress() + howMuch;
-            if(android.os.Build.VERSION.SDK_INT >= 11){
+            if (android.os.Build.VERSION.SDK_INT >= 11) {
                 ObjectAnimator animation = ObjectAnimator.ofInt(pBar, "progress", progress);
                 animation.setDuration(500);
                 animation.setInterpolator(new DecelerateInterpolator());
                 animation.start();
-            }
-            else
+            } else
                 pBar.setProgress(pBar.getProgress() + howMuch);
         }
-        if (progress == 100){
+        if (progress == 100) {
             if (Validation()) {
                 final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate);
                 generate.startAnimation(animTranslate);
@@ -328,15 +319,15 @@ public class FTrainingsplan extends Fragment {
         }
     }
 
-    public boolean Validation(){
+    public boolean Validation() {
         String xday = dayone.getSelectedItem().toString();
         String yday = daytwo.getSelectedItem().toString();
         String zday = daythree.getSelectedItem().toString();
         if (!xday.equals(days[0]) && !yday.equals(days[0]) && !zday.equals(days[0])
-                && myCalendar.getTime().after(new Date())){
-                actualdays = new String[] {xday, yday, zday};
-                return true;
-        }else{
+                && myCalendar.getTime().after(new Date())) {
+            actualdays = new String[]{xday, yday, zday};
+            return true;
+        } else {
             new AlertDialog.Builder(context)
                     .setTitle(R.string.fehler)
                     .setMessage(R.string.checkInput)
@@ -347,14 +338,14 @@ public class FTrainingsplan extends Fragment {
                     })
                     .setIcon(R.drawable.alertsmall)
                     .show();
-                final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);
-                generate.startAnimation(animTranslate);
+            final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);
+            generate.startAnimation(animTranslate);
             generate.setVisibility(View.INVISIBLE);
             return false;
         }
     }
 
-    private void setDatePicker(){
+    private void setDatePicker() {
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -372,7 +363,7 @@ public class FTrainingsplan extends Fragment {
         setDatePick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialog dialog = new DatePickerDialog(getContext(),R.style.datepicker, date, myCalendar
+                DatePickerDialog dialog = new DatePickerDialog(getContext(), R.style.datepicker, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH));
                 dialog.show();

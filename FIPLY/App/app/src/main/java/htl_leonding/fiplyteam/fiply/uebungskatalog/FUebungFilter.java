@@ -13,8 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
@@ -66,31 +64,31 @@ public class FUebungFilter extends Fragment {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 int tolerance = 25;
-                int evX = (int)event.getX();
-                int evY = (int)event.getY();
+                int evX = (int) event.getX();
+                int evY = (int) event.getY();
                 int clickedColor = getHotspotColor(evX, evY);
                 //RED area is arms
-                if (closeMatch (getResources().getInteger(R.integer.redInt), clickedColor, tolerance)) {
+                if (closeMatch(getResources().getInteger(R.integer.redInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Arme");
                     kvr.updateKeyValue("filterMuskelGruppe", "Arme");
                 }
                 //BLACK area is Breast
-                else if (closeMatch (getResources().getInteger(R.integer.blackInt), clickedColor, tolerance)) {
+                else if (closeMatch(getResources().getInteger(R.integer.blackInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Brust");
                     kvr.updateKeyValue("filterMuskelGruppe", "Brust");
                 }
                 //GREEN area is shoulders
-                else if (closeMatch (getResources().getInteger(R.integer.greenInt), clickedColor, tolerance)) {
+                else if (closeMatch(getResources().getInteger(R.integer.greenInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Schultern");
                     kvr.updateKeyValue("filterMuskelGruppe", "Schultern");
                 }
                 //BLUE are is legs
-                else if(closeMatch (getResources().getInteger(R.integer.blueInt), clickedColor, tolerance)) {
+                else if (closeMatch(getResources().getInteger(R.integer.blueInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Beine");
                     kvr.updateKeyValue("filterMuskelGruppe", "Beine");
                 }
                 //YELLOW area is core(stomach)
-                else if(closeMatch (getResources().getInteger(R.integer.yellowInt), clickedColor, tolerance)) {
+                else if (closeMatch(getResources().getInteger(R.integer.yellowInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Bauch");
                     kvr.updateKeyValue("filterMuskelGruppe", "Bauch");
                 }
@@ -102,17 +100,17 @@ public class FUebungFilter extends Fragment {
     }
 
 
-    public boolean closeMatch (int color1, int color2, int tolerance) {
-        if (Math.abs (Color.red(color1) - Color.red (color2)) > tolerance )
+    public boolean closeMatch(int color1, int color2, int tolerance) {
+        if (Math.abs(Color.red(color1) - Color.red(color2)) > tolerance)
             return false;
-        if (Math.abs(Color.green (color1) - Color.green (color2)) > tolerance )
+        if (Math.abs(Color.green(color1) - Color.green(color2)) > tolerance)
             return false;
-        if (Math.abs (Color.blue (color1) - Color.blue (color2)) > tolerance )
+        if (Math.abs(Color.blue(color1) - Color.blue(color2)) > tolerance)
             return false;
         return true;
     }
 
-    public int getHotspotColor (int x, int y) {
+    public int getHotspotColor(int x, int y) {
 
         bodyFilterMask.setDrawingCacheEnabled(true);
         Bitmap hotspots = Bitmap.createBitmap(bodyFilterMask.getDrawingCache());

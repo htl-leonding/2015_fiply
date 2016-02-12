@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/relLayoutCreateU"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relLayoutCreateU"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
     <EditText
-
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgName"
         android:layout_centerHorizontal="true"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
     <com.facebook.login.widget.LoginButton
+        android:id="@+id/fbLoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fbLoginButton"
         android:layout_below="@+id/spGender"
         android:layout_centerHorizontal="true" />
 
@@ -28,18 +25,17 @@
         android:id="@+id/spGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_below="@+id/imgGender"
         android:layout_alignParentStart="false"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/imgGender"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
 
     <ImageView
         android:id="@+id/imgName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        />
+        android:layout_alignParentTop="true" />
 
     <ImageView
         android:id="@+id/imgGender"

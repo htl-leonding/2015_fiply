@@ -1,55 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-                android:padding="5dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <TextView
+        android:id="@+id/tvFeedbackGewicht"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvFeedbackGewicht"
-        android:text="@string/tvFeedbackGewichtGestemmt"
         android:gravity="center_horizontal"
-        android:textColor="@color/darkTextColorLight"
         android:padding="5dp"
-        />
+        android:text="@string/tvFeedbackGewichtGestemmt"
+        android:textColor="@color/darkTextColorLight" />
 
     <TextView
+        android:id="@+id/tvFeedbackStatic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvFeedbackGewicht"
-        android:id="@+id/tvFeedbackStatic"
-        android:text="@string/tvFeedbackMood"
         android:gravity="center_horizontal"
-        android:textColor="@color/darkTextColorLight"
         android:padding="5dp"
-        />
+        android:text="@string/tvFeedbackMood"
+        android:textColor="@color/darkTextColorLight" />
 
     <RatingBar
+        android:id="@+id/rbFeedbackMood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rbFeedbackMood"
         android:layout_below="@id/tvFeedbackStatic"
-        android:numStars="5"
-        android:rating="3"
-        android:stepSize="1"
         android:layout_centerHorizontal="true"
-        android:progressTint="@color/darkPrimary"
         android:backgroundTint="@color/darkSecondary"
+        android:numStars="5"
         android:padding="5dp"
-        />
+        android:progressTint="@color/darkPrimary"
+        android:rating="3"
+        android:stepSize="1" />
 
     <Button
+        android:id="@+id/btnFeedbackMood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rbFeedbackMood"
-        android:id="@+id/btnFeedbackMood"
-        android:text="@string/btnFeedbackShowStats"
-        android:gravity="center_horizontal"
         android:background="@color/darkPrimary"
-        android:textColor="@color/darkTextColorDark"
+        android:gravity="center_horizontal"
         android:padding="5dp"
-        />
+        android:text="@string/btnFeedbackShowStats"
+        android:textColor="@color/darkTextColorDark" />
 
 </RelativeLayout>

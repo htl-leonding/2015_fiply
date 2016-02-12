@@ -79,9 +79,9 @@ public class Trainingsphase {
         return uebungen;
     }
 
-    public boolean isActive(){
+    public boolean isActive() {
         Date newDate = new Date();
-        if (newDate.after(getStartDate()) && newDate.before(getEndDate())){
+        if (newDate.after(getStartDate()) && newDate.before(getEndDate())) {
             return true;
         }
         return false;
@@ -131,6 +131,10 @@ public class Trainingsphase {
         return endDate;
     }
 
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
     public String getPhasenName() {
         return phasenName;
     }
@@ -157,9 +161,5 @@ public class Trainingsphase {
             cnt++;
         }
         return tage;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 }

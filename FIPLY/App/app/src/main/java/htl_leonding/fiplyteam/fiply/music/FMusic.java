@@ -18,7 +18,6 @@ import java.util.HashMap;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 import htl_leonding.fiplyteam.fiply.trainingssession.displayFragment;
-import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungDetail;
 
 public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener, SeekBar.OnSeekBarChangeListener {
 

@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:saveEnabled="false"
-            android:id="@+id/scrollViewInstructions"
-    >
+    android:id="@+id/scrollViewInstructions"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:saveEnabled="false">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/detailUebungName"
@@ -24,8 +22,7 @@
             android:layout_centerHorizontal="true"
             android:text="@string/detailName"
             android:textColor="@color/darkTextColorLight"
-            android:textSize="25dp"
-            />
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/staticDetailMuskelGruppe"
@@ -35,8 +32,7 @@
             android:layout_below="@id/detailUebungName"
             android:layout_marginLeft="5dp"
             android:text="@string/detailMG"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/detailMuskelGruppe"
@@ -45,12 +41,11 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/detailUebungName"
             android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginLeft="18dp"
+            android:layout_marginRight="5dp"
             android:layout_toRightOf="@id/staticDetailMuskelGruppe"
             android:text="Test Muskelgruppe"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/staticDetailSchwierigkeit"
@@ -59,8 +54,7 @@
             android:layout_alignStart="@id/staticDetailMuskelGruppe"
             android:layout_below="@+id/detailMuskelGruppe"
             android:text="@string/detailSchwierigkeit"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/detailSchwierigkeit"
@@ -72,8 +66,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:text="Test Schwierigkeit"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/staticDetailBeschreibung"
@@ -82,8 +75,7 @@
             android:layout_alignStart="@id/staticDetailSchwierigkeit"
             android:layout_below="@+id/detailSchwierigkeit"
             android:text="@string/detailDesc"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/detailBeschreibung"
@@ -95,8 +87,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:text="Test Beschreibung"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/staticDetailAnleitung"
@@ -105,8 +96,7 @@
             android:layout_alignStart="@id/staticDetailBeschreibung"
             android:layout_below="@+id/detailBeschreibung"
             android:text="@string/detailAnl"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/detailAnleitung"
@@ -117,8 +107,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:text="Test Anleitung"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/staticDetailEquipment"
@@ -127,8 +116,7 @@
             android:layout_alignStart="@id/staticDetailAnleitung"
             android:layout_below="@+id/detailAnleitung"
             android:text="@string/detailEquipment"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/detailEquipment"
@@ -139,8 +127,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:text="Test Equipment"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/staticDetailGewicht"
@@ -149,8 +136,7 @@
             android:layout_alignStart="@id/staticDetailEquipment"
             android:layout_below="@+id/detailEquipment"
             android:text="@string/detailGewicht"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/detailGewicht"
@@ -161,8 +147,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:text="Test Gewicht"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/staticDetailSaetze"
@@ -171,8 +156,7 @@
             android:layout_alignStart="@id/staticDetailGewicht"
             android:layout_below="@+id/detailGewicht"
             android:text="@string/detailSaetze"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/detailSaetze"
@@ -183,8 +167,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:text="Test Saetze"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/staticDetailWiederholungen"
@@ -193,8 +176,7 @@
             android:layout_alignStart="@id/staticDetailSaetze"
             android:layout_below="@+id/detailSaetze"
             android:text="@string/detailWiederholungen"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <TextView
             android:id="@+id/detailWiederholungen"
@@ -205,8 +187,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:text="Test Wiederholungen"
-            android:textColor="@color/darkTextColorLight"
-            />
+            android:textColor="@color/darkTextColorLight" />
 
         <ImageButton
             android:id="@+id/ibLinkVideo"
@@ -217,8 +198,7 @@
             android:background="@color/darkSecondary"
             android:padding="3dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/videoplay2redsmall"
-            />
+            android:src="@drawable/videoplay2redsmall" />
 
         <TextView
             android:id="@+id/tvLinkVideo"
@@ -232,15 +212,14 @@
             android:padding="3dp"
             android:text="@string/videoLink"
             android:textColor="@color/darkTextColorFlashy"
-            android:textSize="16dp"
-            />
+            android:textSize="16dp" />
 
         <Button
+            android:id="@+id/btnEndTraining"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnEndTraining"
-            android:text="End your Training!"
             android:layout_below="@id/ibLinkVideo"
+            android:text="End your Training!"
             android:visibility="gone"
 
             />
@@ -249,44 +228,39 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/btnEndTraining"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnUebLast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/btnLastUeb"
-                    android:textColor="@color/darkPrimary"
-                    />
+            <Button
+                android:id="@+id/btnUebLast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btnLastUeb"
+                android:textColor="@color/darkPrimary" />
 
-                <Button
-                    android:id="@+id/btnUebNext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/btnNextUeb"
-                    android:textColor="@color/darkPrimary"
-                    />
+            <Button
+                android:id="@+id/btnUebNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btnNextUeb"
+                android:textColor="@color/darkPrimary" />
 
-                <Button
-                    android:id="@+id/btnClocksHide"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/btnClocksHide"
-                    android:textColor="@color/darkPrimary"
-                />
+            <Button
+                android:id="@+id/btnClocksHide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btnClocksHide"
+                android:textColor="@color/darkPrimary" />
 
-                <Button
-                    android:id="@+id/btnMusicHide"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/btnMusicHide"
-                    android:textColor="@color/darkPrimary"
-                    />
+            <Button
+                android:id="@+id/btnMusicHide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/btnMusicHide"
+                android:textColor="@color/darkPrimary" />
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

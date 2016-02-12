@@ -1,7 +1,6 @@
 package htl_leonding.fiplyteam.fiply.menu;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -86,8 +85,7 @@ public class SplashActivity extends Activity {
                     if (!kvr.getKeyValue("firstStart").getString(1).equals("false")) {
                         reCreateDatabaseOnFirstStart();
                     }
-                }catch (Exception e)
-                {
+                } catch (Exception e) {
                     reCreateDatabaseOnFirstStart();
                 }
                 uer.insertAllExercises();
@@ -116,8 +114,7 @@ public class SplashActivity extends Activity {
         }
 
         private void fillPlaylistDb() {
-            if(!rm.getSongs().isEmpty())
-            {
+            if (!rm.getSongs().isEmpty()) {
                 ArrayList<HashMap<String, String>> alt = psr.getByPlaylistName("All");
                 ArrayList<HashMap<String, String>> neu = rm.getSongs();
                 for (HashMap<String, String> itemAlt : alt) {
@@ -133,7 +130,7 @@ public class SplashActivity extends Activity {
             phasenRep.deleteAll();
             instRep.deleteAll();
             DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
-            String[] actualdays = new String[] {"Montag", "Donnerstag", "Samstag"};
+            String[] actualdays = new String[]{"Montag", "Donnerstag", "Samstag"};
             Date startDate = new Date();
             Calendar car = Calendar.getInstance();
             car.set(2015, 12, 1);
@@ -141,12 +138,12 @@ public class SplashActivity extends Activity {
             trainingsphaseList = new LinkedList<Trainingsphase>();
             GenerateAllgemein allgemein = new GenerateAllgemein(true, 1, actualdays, startDate);
             trainingsphaseList.add(allgemein.getTPhase());
-            GeneratePhTwoMuskelPh3Kraft phaseZweiMuskel = new GeneratePhTwoMuskelPh3Kraft(actualdays, allgemein.getTPhase().getEndDate(), "Muskelaufbau", new String[] {"Bauch", "Beine", "Brust"});
+            GeneratePhTwoMuskelPh3Kraft phaseZweiMuskel = new GeneratePhTwoMuskelPh3Kraft(actualdays, allgemein.getTPhase().getEndDate(), "Muskelaufbau", new String[]{"Bauch", "Beine", "Brust"});
             trainingsphaseList.add(phaseZweiMuskel.getTPhase());
-            GeneratePhTwoMaxiPh3Muskel phaseDreiMuskel = new GeneratePhTwoMaxiPh3Muskel(phaseZweiMuskel.getTPhase().getEndDate(),"Muskelaufbau", actualdays);
+            GeneratePhTwoMaxiPh3Muskel phaseDreiMuskel = new GeneratePhTwoMaxiPh3Muskel(phaseZweiMuskel.getTPhase().getEndDate(), "Muskelaufbau", actualdays);
             trainingsphaseList.add(phaseDreiMuskel.getTPhase());
 
-            for (Trainingsphase phase : trainingsphaseList){
+            for (Trainingsphase phase : trainingsphaseList) {
                 String dbStartDate = format.format(phase.getStartDate());
                 String dbEndDate = format.format(phase.getEndDate());
                 phasenRep.insertPhase(dbStartDate, dbEndDate,
@@ -161,8 +158,8 @@ public class SplashActivity extends Activity {
                 c.moveToFirst();
                 int index = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_ROWID);
                 String rowid = c.getString(index);
-                for (Uebung ueb : phase.getUebungList()){
-                    instRep.insertUebung(ueb.getWochenTag(),String.valueOf(ueb.getRepmax()), ueb.getUebungsID(),rowid);
+                for (Uebung ueb : phase.getUebungList()) {
+                    instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), rowid);
                 }
             }
             Cursor c = phasenRep.getAllPhasen();
@@ -173,12 +170,12 @@ public class SplashActivity extends Activity {
             String rowid;
             String phasenname;
             String uebid;
-            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
                 rowid = c.getString(iRowId);
                 phasenname = c.getString(iPhasenname);
                 c2 = instRep.getInstruktionByPhasenId(rowid);
                 iRowName = c2.getColumnIndex(FiplyContract.InstruktionenEntry.COLUMN_ROWID);
-                for (c2.moveToFirst(); !c2.isAfterLast(); c2.moveToNext()){
+                for (c2.moveToFirst(); !c2.isAfterLast(); c2.moveToNext()) {
                     uebid = c2.getString(iRowName);
                 }
             }

@@ -23,7 +23,7 @@ public class GeneratePh3Maxi {
     private List<Uebung> uebungen;
     private UebungenRepository rep;
 
-    public GeneratePh3Maxi(Date startDate, String[] wochentage){
+    public GeneratePh3Maxi(Date startDate, String[] wochentage) {
         this.setStartDate(startDate);
         this.setWochentage(wochentage);
         this.setPausenDauer(180);
@@ -53,7 +53,7 @@ public class GeneratePh3Maxi {
         List<String[]> uebungsList = new LinkedList<String[]>();
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             equip = c.getString(iEquip);
-            if (equip.contains("seilzug") || equip.contains("hantel")){
+            if (equip.contains("seilzug") || equip.contains("hantel")) {
                 rowId = c.getString(iRowId);
                 muskelgruppe = c.getString(iMuskelGruppe);
                 uebungsName = c.getString(iUebungsName);
@@ -66,8 +66,8 @@ public class GeneratePh3Maxi {
         Uebung ueb;
         Collections.shuffle(uebungsList);
         List<Uebung> uebs = new LinkedList<Uebung>();
-        for (String[] element : uebungsList){
-            if (element[2].toUpperCase().contains("ARME") && !arme){
+        for (String[] element : uebungsList) {
+            if (element[2].toUpperCase().contains("ARME") && !arme) {
                 arme = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -76,7 +76,7 @@ public class GeneratePh3Maxi {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("RÜCKEN") && !ruecken){
+            } else if (element[2].toUpperCase().contains("RÜCKEN") && !ruecken) {
                 ruecken = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -85,7 +85,7 @@ public class GeneratePh3Maxi {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("SCHULTER") && !schulter){
+            } else if (element[2].toUpperCase().contains("SCHULTER") && !schulter) {
                 schulter = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -94,7 +94,7 @@ public class GeneratePh3Maxi {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("BEINE") && !beine){
+            } else if (element[2].toUpperCase().contains("BEINE") && !beine) {
                 beine = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -103,7 +103,7 @@ public class GeneratePh3Maxi {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("BRUST") && !brust){
+            } else if (element[2].toUpperCase().contains("BRUST") && !brust) {
                 brust = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -112,7 +112,7 @@ public class GeneratePh3Maxi {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("ARME") && !arme2){
+            } else if (element[2].toUpperCase().contains("ARME") && !arme2) {
                 arme2 = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);

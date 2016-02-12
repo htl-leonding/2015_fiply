@@ -6,12 +6,10 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.Future;
 
-import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 
-import static htl_leonding.fiplyteam.fiply.data.FiplyContract.*;
+import static htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 
 public class GeneratePhTwoMaxiPh3Muskel {
     private Date startDate;
@@ -25,13 +23,13 @@ public class GeneratePhTwoMaxiPh3Muskel {
     private UebungenRepository rep;
 
 
-    public GeneratePhTwoMaxiPh3Muskel(Date startDate, String ziel, String[] wochentage){
+    public GeneratePhTwoMaxiPh3Muskel(Date startDate, String ziel, String[] wochentage) {
         this.setStartDate(startDate);
         this.setWochentage(wochentage);
 
-        if (ziel == "Muskelaufbau"){
+        if (ziel == "Muskelaufbau") {
             phasenDauer = 4;
-        }else
+        } else
             phasenDauer = 6;
 
         fetchUebungen();
@@ -58,7 +56,7 @@ public class GeneratePhTwoMaxiPh3Muskel {
         List<String[]> uebungsList = new LinkedList<String[]>();
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             equip = c.getString(iEquip);
-            if (equip.contains("seilzug") || equip.contains("hantel")){
+            if (equip.contains("seilzug") || equip.contains("hantel")) {
                 rowId = c.getString(iRowId);
                 muskelgruppe = c.getString(iMuskelGruppe);
                 uebungsName = c.getString(iUebungsName);
@@ -71,8 +69,8 @@ public class GeneratePhTwoMaxiPh3Muskel {
         Uebung ueb;
         Collections.shuffle(uebungsList);
         List<Uebung> uebs = new LinkedList<Uebung>();
-        for (String[] element : uebungsList){
-            if (element[2].toUpperCase().contains("ARME") && !arme){
+        for (String[] element : uebungsList) {
+            if (element[2].toUpperCase().contains("ARME") && !arme) {
                 arme = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -81,7 +79,7 @@ public class GeneratePhTwoMaxiPh3Muskel {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("RÜCKEN") && !ruecken){
+            } else if (element[2].toUpperCase().contains("RÜCKEN") && !ruecken) {
                 ruecken = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -90,7 +88,7 @@ public class GeneratePhTwoMaxiPh3Muskel {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("SCHULTER") && !schulter){
+            } else if (element[2].toUpperCase().contains("SCHULTER") && !schulter) {
                 schulter = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -99,7 +97,7 @@ public class GeneratePhTwoMaxiPh3Muskel {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("BEINE") && !beine){
+            } else if (element[2].toUpperCase().contains("BEINE") && !beine) {
                 beine = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -108,7 +106,7 @@ public class GeneratePhTwoMaxiPh3Muskel {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("BRUST") && !brust){
+            } else if (element[2].toUpperCase().contains("BRUST") && !brust) {
                 brust = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);
@@ -117,7 +115,7 @@ public class GeneratePhTwoMaxiPh3Muskel {
                 ueb.setUebungsName(element[1]);
                 ueb.setMuskelgruppe(element[2]);
                 uebs.add(ueb);
-            } else if (element[2].toUpperCase().contains("ARME") && !arme2){
+            } else if (element[2].toUpperCase().contains("ARME") && !arme2) {
                 arme2 = true;
                 ueb = new Uebung();
                 ueb.setRepmax(95);

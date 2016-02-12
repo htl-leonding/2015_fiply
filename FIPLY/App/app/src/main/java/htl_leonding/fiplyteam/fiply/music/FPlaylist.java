@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -148,13 +147,12 @@ public class FPlaylist extends Fragment {
         });
     }
 
-    public void hideKeyboard(){
-        InputMethodManager imms = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imms.hideSoftInputFromWindow(getView().getWindowToken(),0);
+    public void hideKeyboard() {
+        InputMethodManager imms = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imms.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
 
-    public void refreshSongStringLists()
-    {
+    public void refreshSongStringLists() {
         selectedSongPathStrings.clear();
         songTitleStrings.clear();
         songPathStrings.clear();
@@ -164,8 +162,7 @@ public class FPlaylist extends Fragment {
         }
     }
 
-    public void setUpPlaylistAdapter()
-    {
+    public void setUpPlaylistAdapter() {
         songs = new ArrayList<>(psrep.getByPlaylistName("All"));
         checkedSongs = new ArrayList<>();
         songTitleStrings = new LinkedList<>();

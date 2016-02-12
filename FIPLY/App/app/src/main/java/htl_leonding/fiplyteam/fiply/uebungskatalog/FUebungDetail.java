@@ -1,15 +1,11 @@
 package htl_leonding.fiplyteam.fiply.uebungskatalog;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 

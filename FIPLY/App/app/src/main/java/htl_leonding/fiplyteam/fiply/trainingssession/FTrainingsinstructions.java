@@ -2,19 +2,15 @@ package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.sql.SQLException;
 
@@ -29,7 +25,16 @@ public class FTrainingsinstructions extends Fragment {
     ImageButton ibLinkVideo;
     Button btnNextUeb, btnLastUeb, btnHideClocks, btnHideMusic, btnEndTraining;
     ScrollView scrollView;
-
+    /**
+     * Dieses Runnable stellt sicher dass das Scrolldown hinten auf die Liste von UI-Änderungen gesetzt wird
+     * und so erst ausgeführt wird nach den anderen UI-Änderungen
+     */
+    public Runnable scrDown = new Runnable() {
+        @Override
+        public void run() {
+            scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+        }
+    };
     Cursor aktUebung, aktPhase;
     int aktUebungNr, maxUebungNr;
     String videoLink = "-";
@@ -104,12 +109,11 @@ public class FTrainingsinstructions extends Fragment {
             @Override
             public void onClick(View v) {
                 aktUebungNr++;
-                if(!btnLastUeb.isEnabled()){
+                if (!btnLastUeb.isEnabled()) {
                     btnLastUeb.setEnabled(true);
                     btnLastUeb.setAlpha(1f);
                 }
-                if(aktUebungNr == maxUebungNr)
-                {
+                if (aktUebungNr == maxUebungNr) {
                     btnNextUeb.setEnabled(false);
                     btnNextUeb.setAlpha(0.25f);
 
@@ -123,20 +127,18 @@ public class FTrainingsinstructions extends Fragment {
         btnLastUeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    aktUebungNr--;
-                    if(!btnNextUeb.isEnabled()){
-                        btnNextUeb.setEnabled(true);
-                        btnNextUeb.setAlpha(1f);
-                    }
-                    if(aktUebungNr == 1)
-                    {
-                        btnLastUeb.setEnabled(false);
-                        btnLastUeb.setAlpha(0.25f);
-                    }
-                    if(btnEndTraining.getVisibility() == View.VISIBLE)
-                    {
-                        btnEndTraining.setVisibility(View.GONE);
-                    }
+                aktUebungNr--;
+                if (!btnNextUeb.isEnabled()) {
+                    btnNextUeb.setEnabled(true);
+                    btnNextUeb.setAlpha(1f);
+                }
+                if (aktUebungNr == 1) {
+                    btnLastUeb.setEnabled(false);
+                    btnLastUeb.setAlpha(0.25f);
+                }
+                if (btnEndTraining.getVisibility() == View.VISIBLE) {
+                    btnEndTraining.setVisibility(View.GONE);
+                }
                 updateUebungsfields(aktUebungNr);
                 scrollView.post(scrDown);
             }
@@ -171,17 +173,6 @@ public class FTrainingsinstructions extends Fragment {
         updateUebungsfields(aktUebungNr);
         updatePhaseAndGewicht();
     }
-
-    /**
-     * Dieses Runnable stellt sicher dass das Scrolldown hinten auf die Liste von UI-Änderungen gesetzt wird
-     * und so erst ausgeführt wird nach den anderen UI-Änderungen
-     */
-    public Runnable scrDown = new Runnable() {
-        @Override
-        public void run() {
-            scrollView.fullScroll(ScrollView.FOCUS_DOWN);
-        }
-    };
 
     public void updateUebungsfields(int ueId) {
         try {

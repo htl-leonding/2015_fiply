@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/darkSecondary"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkSecondary">
 
     <LinearLayout
         android:id="@+id/linearLayoutPlaylist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btnPlaylistSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnPlaylistSave"
-            android:text="@string/btnPlaylistSave"
-            />
+            android:text="@string/btnPlaylistSave" />
 
         <Button
             android:id="@+id/btPlBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btnPlaylistBack"
-            />
+            android:text="@string/btnPlaylistBack" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/btnPlaylistSelectAll"
-            android:text="@string/btnPlaylistSelectAll"/>
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/btnPlaylistSelectAll" />
+
+        <Button
             android:id="@+id/btnPlaylistSelectNone"
-            android:text="@string/btnPlaylistSelectNone"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnPlaylistSelectNone" />
     </LinearLayout>
 
     <EditText
@@ -45,12 +41,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/linearLayoutPlaylist"
-        android:text="@string/etPlName"
         android:background="@color/darkPrimary"
-        android:textColor="@color/darkTextColorDark"
-        android:textSize="20dp"
         android:padding="5dp"
-        />
+        android:text="@string/etPlName"
+        android:textColor="@color/darkTextColorDark"
+        android:textSize="20dp" />
 
     <ListView
         android:id="@+id/lvPlSongs"
@@ -58,7 +53,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/etPlName"
         android:layout_alignParentTop="true"
-        android:choiceMode="multipleChoice"
-        />
+        android:choiceMode="multipleChoice" />
 
 </RelativeLayout>

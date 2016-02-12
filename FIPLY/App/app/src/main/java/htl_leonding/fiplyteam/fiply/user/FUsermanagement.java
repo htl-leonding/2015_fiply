@@ -59,7 +59,7 @@ public class FUsermanagement extends Fragment {
                         displayViewP3();
                         break;
                     case 3:
-                        kvr.updateKeyValue("isUserCustomized","true");
+                        kvr.updateKeyValue("isUserCustomized", "true");
                         displayViewPMain();
                         break;
                 }
@@ -73,7 +73,8 @@ public class FUsermanagement extends Fragment {
                     case 1:
                         displayViewPMain();
                         break;
-                    case 2: displayViewP1();
+                    case 2:
+                        displayViewP1();
                         btPrev.setText("Cancel");
                         break;
                     case 3:
@@ -90,15 +91,16 @@ public class FUsermanagement extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-        private void displayViewP1() {
+    private void displayViewP1() {
         setPageId(1);
         FCreateUser fragment = new FCreateUser();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
-                                                                                                                                                                                                                                                                                                   fragmentTransaction.replace(R.id.fraUserInput, fragment, "NamePage");
+        fragmentTransaction.replace(R.id.fraUserInput, fragment, "NamePage");
         fragmentTransaction.commit();
     }
+
     private void displayViewP2() {
         setPageId(2);
         FCreateUser2 fragment = new FCreateUser2();

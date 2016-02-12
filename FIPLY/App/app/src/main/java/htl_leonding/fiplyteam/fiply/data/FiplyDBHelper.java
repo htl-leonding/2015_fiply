@@ -9,8 +9,8 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract.InstruktionenEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.KeyValueEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PlaylistSongsEntry;
-import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.StatisticEntry;
+import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 
 public class FiplyDBHelper extends SQLiteOpenHelper {
 

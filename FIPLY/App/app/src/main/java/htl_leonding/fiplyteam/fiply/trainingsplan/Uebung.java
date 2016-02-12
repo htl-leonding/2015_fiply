@@ -9,7 +9,7 @@ public class Uebung {
     private String phasenId;
 
     public int getTrainingsgewicht(int wiederholungen, int rm) {
-        return (int)(rm*((102.78)-2.78*wiederholungen))/100;
+        return (int) (rm * ((102.78) - 2.78 * wiederholungen)) / 100;
     }
 
     public String getUebungsName() {

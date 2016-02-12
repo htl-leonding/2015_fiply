@@ -9,16 +9,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.Series;
 
 import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.StatisticRepository;
-import htl_leonding.fiplyteam.fiply.trainingsplan.Uebung;
 
 /**
  * Created by Gerald on 11/02/2016.
@@ -32,8 +29,6 @@ public class FStatistic extends Fragment {
     GraphView gvLift;
 
     LineGraphSeries<WeightLifted> weightLiftedSeries;
-
-
 
 
     @Nullable
@@ -59,8 +54,6 @@ public class FStatistic extends Fragment {
 
         str.insertTestStats();
         fillSeries();
-
-
 
 
         super.onViewCreated(view, savedInstanceState);

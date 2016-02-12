@@ -9,12 +9,10 @@ import android.util.Log;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.Calendar;
-import java.util.Date;
-
-import htl_leonding.fiplyteam.fiply.statistic.MoodTime;
-import htl_leonding.fiplyteam.fiply.statistic.WeightLifted;
 
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.StatisticEntry;
+import htl_leonding.fiplyteam.fiply.statistic.MoodTime;
+import htl_leonding.fiplyteam.fiply.statistic.WeightLifted;
 
 /**
  * Created by Gerald on 12/02/2016.
@@ -25,13 +23,15 @@ public class StatisticRepository {
 
     SQLiteDatabase db = getWritableDatabase();
 
-    public static StatisticRepository getInstance(){
+    public static StatisticRepository getInstance() {
         if (instance == null)
             instance = new StatisticRepository();
         return instance;
     }
 
-    public static void setContext(Context context){repoContext = context;}
+    public static void setContext(Context context) {
+        repoContext = context;
+    }
 
     private SQLiteDatabase getWritableDatabase() {
         if (repoContext == null)
@@ -57,8 +57,6 @@ public class StatisticRepository {
                         StatisticEntry.COLUMN_LIFTEDWEIGHT},
                 null, null, null, null, StatisticEntry.COLUMN_DATE + " ASC");
     }
-
-
 
 
     public LineGraphSeries<WeightLifted> getSeriesForLiftedWeight() {
@@ -101,7 +99,7 @@ public class StatisticRepository {
         return db.insert(StatisticEntry.TABLE_NAME, null, initialValues);
     }
 
-    public long insertDataPointWithDate(String date ,double mood, double weight) {
+    public long insertDataPointWithDate(String date, double mood, double weight) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(StatisticEntry.COLUMN_DATE, date);
         initialValues.put(StatisticEntry.COLUMN_MOOD, mood);
@@ -126,7 +124,7 @@ public class StatisticRepository {
     }
 
     public void deleteAllDataPoints() {
-        db.delete(StatisticEntry.TABLE_NAME,null,null);
+        db.delete(StatisticEntry.TABLE_NAME, null, null);
     }
 
     public void reCreateUebungenTable() {

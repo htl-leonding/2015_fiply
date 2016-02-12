@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,13 +22,15 @@ public class PhasenRepository {
 
     SQLiteDatabase db = getWritableDatabase();
 
-    public static PhasenRepository getInstance(){
+    public static PhasenRepository getInstance() {
         if (instance == null)
             instance = new PhasenRepository();
         return instance;
     }
 
-    public static void setContext(Context context){repoContext = context;}
+    public static void setContext(Context context) {
+        repoContext = context;
+    }
 
     private SQLiteDatabase getWritableDatabase() {
         if (repoContext == null)
@@ -47,7 +50,7 @@ public class PhasenRepository {
 
 
     public long insertPhase(String startDate, String endDate, String phasenName,
-                             String phasenDauer, String pausenDauer, String saetze, String wiederholungen){
+                            String phasenDauer, String pausenDauer, String saetze, String wiederholungen) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(PhasenEntry.COLUMN_STARTDATE, startDate);
         initialValues.put(PhasenEntry.COLUMN_ENDDATE, endDate);
@@ -59,7 +62,7 @@ public class PhasenRepository {
         return db.insert(PhasenEntry.TABLE_NAME, null, initialValues);
     }
 
-    public Cursor getAllPhasen(){
+    public Cursor getAllPhasen() {
         return db.query(PhasenEntry.TABLE_NAME, new String[]{
                         PhasenEntry.COLUMN_ROWID,
                         PhasenEntry.COLUMN_STARTDATE,
@@ -91,12 +94,12 @@ public class PhasenRepository {
         return myCursor;
     }
 
-    public Cursor getPhaseByStartDate(Date startDate){
+    public Cursor getPhaseByStartDate(Date startDate) {
         DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
 
         return db.query(PhasenEntry.TABLE_NAME, new String[]{
-                PhasenEntry.COLUMN_ROWID
-        }, PhasenEntry.COLUMN_STARTDATE + "=" + "'" + format.format(startDate) + "'",
+                        PhasenEntry.COLUMN_ROWID
+                }, PhasenEntry.COLUMN_STARTDATE + "=" + "'" + format.format(startDate) + "'",
                 null, null, null, PhasenEntry.COLUMN_ROWID + " ASC", null);
     }
 
@@ -115,7 +118,7 @@ public class PhasenRepository {
         db.execSQL(SQL_CREATE_PHASEN_TABLE);
     }
 
-    public void deleteAll(){
-        db.delete(PhasenEntry.TABLE_NAME,null,null);
+    public void deleteAll() {
+        db.delete(PhasenEntry.TABLE_NAME, null, null);
     }
 }

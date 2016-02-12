@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -9,102 +10,98 @@
         android:layout_gravity="center_horizontal">
 
         <TextView
+            android:id="@+id/sessionsettingstitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/sessionsettingstitle"
-            android:id="@+id/sessionsettingstitle"
-            android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="@string/sessionsettingstitle"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkPrimary"
-            android:textSize="40dp"/>
+            android:textSize="40dp" />
 
         <TextView
+            android:id="@+id/sessionsettingwelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/sessionsettingwelcome"
-            android:textSize="20dp"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/darkPrimary"
             android:layout_below="@+id/sessionsettingstitle"
             android:layout_centerHorizontal="true"
-            />
+            android:layout_marginTop="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkPrimary"
+            android:textSize="20dp" />
 
         <TextView
+            android:id="@+id/sessionsettinguebungen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/sessionsettinguebungen"
-            android:textSize="20dp"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/darkPrimary"
-            android:layout_below="@+id/sessionsettingwelcome"
-            android:layout_centerHorizontal="true"
             android:layout_alignLeft="@+id/sessionsettingwelcome"
             android:layout_alignRight="@+id/sessionsettingwelcome"
-            android:gravity="center"/>
+            android:layout_below="@+id/sessionsettingwelcome"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkPrimary"
+            android:textSize="20dp" />
 
         <ProgressBar
+            android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
-            android:progressDrawable="@drawable/progressbar"
             android:layout_alignLeft="@+id/sessionsettingwelcome"
             android:layout_alignRight="@+id/sessionsettingwelcome"
+            android:layout_below="@+id/sessionsettingwelcome"
             android:layout_centerInParent="true"
-            android:layout_below="@+id/sessionsettingwelcome"/>
+            android:progressDrawable="@drawable/progressbar" />
 
         <Button
+            android:id="@+id/gotosession"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/startTrainSession"
-            android:id="@+id/gotosession"
             android:layout_alignParentBottom="true"
-            android:background="@color/darkMenuButtons"
-            android:textColor="@color/darkSecondary"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:background="@color/darkMenuButtons"
+            android:text="@string/startTrainSession"
+            android:textColor="@color/darkSecondary"
             android:visibility="invisible"
 
             />
 
         <ListView
+            android:id="@+id/listviewuebungen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listviewuebungen"
-            android:layout_centerHorizontal="true"
             android:layout_alignLeft="@+id/sessionsettingwelcome"
             android:layout_alignRight="@+id/sessionsettingwelcome"
             android:layout_below="@+id/sessionsettinguebungen"
-            android:textColor="@color/darkPrimary"
-            />
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/darkPrimary" />
 
         <Button
+            android:id="@+id/choosedaybt"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/sessionsettingwelcome"
             android:layout_alignRight="@+id/sessionsettingwelcome"
-            android:background="@color/darkMenuButtons"
-            android:textColor="@color/darkSecondary"
-            android:text="@string/chooseotheruebung"
-            android:textSize="10dp"
             android:layout_below="@+id/listviewuebungen"
             android:layout_marginTop="20dp"
-            android:id="@+id/choosedaybt"
-            />
+            android:background="@color/darkMenuButtons"
+            android:text="@string/chooseotheruebung"
+            android:textColor="@color/darkSecondary"
+            android:textSize="10dp" />
 
         <ImageView
+            android:id="@+id/imageViewSleeping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewSleeping"
-            android:layout_below="@+id/choosedaybt"
             android:layout_alignLeft="@+id/sessionsettingwelcome"
             android:layout_alignRight="@+id/sessionsettingwelcome"
+            android:layout_below="@+id/choosedaybt"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/sleepingsmall"
-            />
+            android:src="@drawable/sleepingsmall" />
 
     </RelativeLayout>
 </LinearLayout>
