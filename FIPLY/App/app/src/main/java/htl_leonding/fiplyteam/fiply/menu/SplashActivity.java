@@ -110,6 +110,7 @@ public class SplashActivity extends Activity {
             kvr.reCreateKeyValueTable();
             uer.reCreateUebungenTable();
             psr.reCreatePlaylistSongsTable();
+            str.reCreateUebungenTable();
             kvr.insertKeyValue("firstStart", "false");
             Log.wtf("DatabaseOnFirstStart?", "reCreatedDatabaseOnFirstStart");
         }

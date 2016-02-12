@@ -141,6 +141,7 @@ public class FSettings extends Fragment {
             }
         });
 
+
         welcomeText.setText("Aktuelle Trainingsphase " + port.getPhaseIndex() + " von " + port.getPhasenListe().size() + ".");
         pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
 
