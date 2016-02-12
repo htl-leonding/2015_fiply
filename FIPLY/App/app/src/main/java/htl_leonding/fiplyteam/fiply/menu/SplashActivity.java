@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 
 import org.json.JSONException;
 
@@ -39,7 +40,7 @@ import htl_leonding.fiplyteam.fiply.trainingsplan.Uebung;
 public class SplashActivity extends Activity {
 
     ReadMusic rm;
-    UebungenRepository rep;
+    UebungenRepository uer;
     KeyValueRepository kvr;
     PlaylistSongsRepository psr;
     StatisticRepository str;
@@ -56,7 +57,7 @@ public class SplashActivity extends Activity {
         KeyValueRepository.setContext(this);
         StatisticRepository.setContext(this);
         PlaylistSongsRepository.setContext(this);
-        rep = UebungenRepository.getInstance();
+        uer = UebungenRepository.getInstance();
         kvr = KeyValueRepository.getInstance();
         psr = PlaylistSongsRepository.getInstance();
         str = StatisticRepository.getInstance();
@@ -81,7 +82,15 @@ public class SplashActivity extends Activity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                rep.insertAllExercises();
+                try {
+                    if (!kvr.getKeyValue("firstStart").getString(1).equals("false")) {
+                        reCreateDatabaseOnFirstStart();
+                    }
+                }catch (Exception e)
+                {
+                    reCreateDatabaseOnFirstStart();
+                }
+                uer.insertAllExercises();
                 fillPlaylistDb();
                 kvr.setDefaultUserSettings();
                 fillTestTrainingsgplan();
@@ -95,6 +104,14 @@ public class SplashActivity extends Activity {
             openMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(openMain);
             return "Success";
+        }
+
+        private void reCreateDatabaseOnFirstStart() {
+            kvr.reCreateKeyValueTable();
+            uer.reCreateUebungenTable();
+            psr.reCreatePlaylistSongsTable();
+            kvr.insertKeyValue("firstStart", "false");
+            Log.wtf("DatabaseOnFirstStart?", "reCreatedDatabaseOnFirstStart");
         }
 
         private void fillPlaylistDb() {
@@ -147,7 +164,6 @@ public class SplashActivity extends Activity {
                     instRep.insertUebung(ueb.getWochenTag(),String.valueOf(ueb.getRepmax()), ueb.getUebungsID(),rowid);
                 }
             }
-
             Cursor c = phasenRep.getAllPhasen();
             Cursor c2;
             int iRowId = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_ROWID);

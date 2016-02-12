@@ -96,8 +96,7 @@ public class FUsermanagement extends Fragment {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fraUserInput, fragment, "NamePage");
+                                                                                                                                                                                                                                                                                                   fragmentTransaction.replace(R.id.fraUserInput, fragment, "NamePage");
         fragmentTransaction.commit();
     }
     private void displayViewP2() {

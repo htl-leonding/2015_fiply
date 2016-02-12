@@ -152,15 +152,8 @@ public class KeyValueRepository {
             insertKeyValue("userHeight","180");
             insertKeyValue("userAge","21-30");
             insertKeyValue("userProf","Not Fit");
-
-
-
             insertKeyValue("isUserCustomized", "true");
-
-
             insertKeyValue("trainingsphasenloaded", "false");
-
-
         }
 
 

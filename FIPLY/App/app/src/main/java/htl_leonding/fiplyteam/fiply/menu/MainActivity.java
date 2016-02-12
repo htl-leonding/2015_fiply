@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.music.FPlaylist;
+import htl_leonding.fiplyteam.fiply.trainingsplan.FTrainingsplan;
 import htl_leonding.fiplyteam.fiply.trainingssession.FSettings;
 import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingssession;
 import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungskatalog;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     ActionBarDrawerToggle mDrawerToggle;
     DrawerLayout mDrawerLayout;
     String mActivityTitle;
-    String[] navArray = new String[4];
+    String[] navArray = new String[6];
 
     /**
      * Wird beim Ersten Aufruf der MainActivity aufgerufen und dient dem setzen der OnClickListener
@@ -158,12 +159,15 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new FSettings();
                 break;
             case 2:
-                fragment = new FUebungskatalog();
-                break;
-            case 3:
                 fragment = new FUsermanagement();
                 break;
+            case 3:
+                fragment = new FTrainingsplan();
+                break;
             case 4:
+                fragment = new FUebungskatalog();
+                break;
+            case 5:
                 fragment = new FPlaylist();
                 break;
             default:

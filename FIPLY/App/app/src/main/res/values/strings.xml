@@ -3,10 +3,11 @@
   <string name="app_name">FIPLY</string>
   <string name="title_activity_main">MainActivity</string>
   <string name="welcome">Willkommen in der FIPLY APP!</string>
-  <string name="startUe">Uebungskatalog</string>
-  <string name="startTr">Trainingssession</string>
-  <string name="startEU">Usererstellung</string>
-  <string name="startPlaylist">Playlistverwaltung</string>
+  <string name="startTr">Training</string>
+  <string name="startEU">User</string>
+  <string name="startTrainView">Trainingsplan</string>
+  <string name="startUe">Übungen</string>
+  <string name="startPlaylist">Playlisten</string>
   <string name="titleUe">Willkommen im Übungskatalog!</string>
   <string name="titleTS">Willkommen in einer Traingssession!</string>
   <string name="titleEU">Willkommen in der Usererstellung!</string>
@@ -41,7 +42,6 @@
   <string name="btPlAdd">Add</string>
   <string name="sizeString">Size</string>
   <string name="weightString">Weight</string>
-  <string name="startTrainView">Trainingsplan generieren</string>
   <string name="detailSaetze">Sätze:</string>
   <string name="detailGewicht">Gewicht:</string>
   <string name="detailEquipment">Equipment:</string>
@@ -54,8 +54,8 @@
   <string name="btnClocksHide">Uhren</string>
   <string name="generateTitle">Trainingsplan generieren</string>
   <string name="generateZiel">Trainingsziel: </string>
-  <string name="trainingszielMuskelaufbau">Muskelaufbau</string>
   <string name="facebook_app_id">1541961082763294</string>
+  <string name="trainingszielMuskelaufbau">Muskelaufbau</string>
   <string name="trainingszielGesundheit">Cardio/Abnahme</string>
   <string name="trainingszielMaximalKraft">Maximalkraft</string>
   <string name="toggleButton">Trainiert/Untrainiert</string>
@@ -86,12 +86,13 @@
   <string name="btnFeedbackShowStats">Weiter zur Statistik</string>
 
   <string-array name="navigationArray">
-        <item>Mainmenü</item>
-        <item>Trainingssession</item>
-        <item>Übungskatalog</item>
-        <item>Usererstellung</item>
-        <item>Playlists</item>
-  </string-array>
+        <item>Menü</item>
+        <item>Training</item>
+        <item>User</item>
+        <item>Trainingsplan</item>
+        <item>Übungen</item>
+        <item>Playlisten</item>
+    </string-array>
 
   <string-array name="greetingArray">
       <item>Guten Morgen</item>
@@ -99,7 +100,6 @@
       <item>Schönen Nachmittag</item>
       <item>Guten Abend</item>
   </string-array>
-
 
   <string-array name="proficiency">
       <item>Not Fit</item>
@@ -670,6 +670,4 @@
 }
 ]
   </string>
-
-
 </resources>
