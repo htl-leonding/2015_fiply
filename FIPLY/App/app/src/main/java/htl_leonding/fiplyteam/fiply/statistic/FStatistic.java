@@ -57,6 +57,7 @@ public class FStatistic extends Fragment {
             e.printStackTrace();
         }
 
+        str.insertTestStats();
         fillSeries();
 
 
@@ -66,8 +67,22 @@ public class FStatistic extends Fragment {
     }
 
     //Adds series
-    public void fillSeries(){
+    public void fillSeries() {
         gvMood.addSeries(str.getSeriesForMoodTime());
+        gvMood.getViewport().setXAxisBoundsManual(true);
+        gvMood.getViewport().setYAxisBoundsManual(true);
+        gvMood.getViewport().setMaxX(200101);
+        gvMood.getViewport().setMinX(150101);
+        gvMood.getViewport().setMaxY(5);
+        gvMood.getViewport().setMinY(1);
+
+
         gvLift.addSeries(str.getSeriesForLiftedWeight());
+        gvLift.getViewport().setXAxisBoundsManual(true);
+        gvLift.getViewport().setYAxisBoundsManual(true);
+        gvMood.getViewport().setMaxX(200101);
+        gvMood.getViewport().setMinX(150101);
+        gvMood.getViewport().setMaxY(500);
+        gvMood.getViewport().setMinY(10);
     }
 }

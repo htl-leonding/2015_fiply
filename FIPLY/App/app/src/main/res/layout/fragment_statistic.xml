@@ -21,17 +21,19 @@
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graphMood"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="180dp"
         app:seriesType="line"
-        app:seriesColor="#ee0000" />
+        app:seriesColor="#ee0000"
+        android:layout_gravity="right" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graphLift"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="180dp"
         app:seriesType="line"
-        app:seriesColor="#ee0000" />
+        app:seriesColor="#ee0000"
+        android:layout_gravity="right"/>
 
 </LinearLayout>
 </ScrollView>

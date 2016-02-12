@@ -58,7 +58,6 @@ public class SplashActivity extends Activity {
                 rep.insertAllExercises();
                 fillPlaylistDb();
                 kvr.setDefaultUserSettings();
-                str.insertTestStats();
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
