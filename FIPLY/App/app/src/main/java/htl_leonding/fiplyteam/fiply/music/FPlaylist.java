@@ -1,11 +1,13 @@
 package htl_leonding.fiplyteam.fiply.music;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -104,21 +106,23 @@ public class FPlaylist extends Fragment {
                         }
                     }
 
-                    if(checkedSongs.isEmpty()) {
+                    if (checkedSongs.isEmpty()) {
                         Toast.makeText(getActivity(), "Playlist " + etName.getText().toString() + " wurde gelöscht!", Toast.LENGTH_SHORT).show();
-                    } else if(psrep.getPlaylists().contains(etName.getText().toString())) {
+                    } else if (psrep.getPlaylists().contains(etName.getText().toString())) {
                         Toast.makeText(getActivity(), "Playlist " + etName.getText().toString() + " wurde gespeichert!", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getActivity(), "Playlist " + etName.getText().toString() + " wurde erstellt!", Toast.LENGTH_SHORT).show();
                     }
                     psrep.reenterPlaylist(etName.getText().toString(), checkedSongs);
                 }
+                hideKeyboard();
             }
         });
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideKeyboard();
                 setUpPlaylistAdapter();
             }
         });
@@ -142,6 +146,11 @@ public class FPlaylist extends Fragment {
                 }
             }
         });
+    }
+
+    public void hideKeyboard(){
+        InputMethodManager imms = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imms.hideSoftInputFromWindow(getView().getWindowToken(),0);
     }
 
     public void refreshSongStringLists()
