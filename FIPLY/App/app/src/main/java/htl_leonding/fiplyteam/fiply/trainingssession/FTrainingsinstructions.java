@@ -145,7 +145,9 @@ public class FTrainingsinstructions extends Fragment {
         btnEndTraining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayFragment.displayTSFeedback(new FFeedback(), getFragmentManager());
+                FFeedback fFeedback = new FFeedback();
+                fFeedback.setArguments(getArguments());
+                displayFragment.displayTSFeedback(fFeedback, getFragmentManager());
             }
         });
 

@@ -6,16 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.menu.FMain;
 
 public class FFeedback extends Fragment{
 
     TextView tvGewicht;
+    Button btnStats;
     RatingBar rbMood;
     double mood;
 
@@ -31,17 +34,23 @@ public class FFeedback extends Fragment{
 
         tvGewicht = (TextView) getActivity().findViewById(R.id.tvFeedbackGewicht);
         rbMood = (RatingBar) getActivity().findViewById(R.id.rbFeedbackMood);
+        btnStats = (Button) getActivity().findViewById(R.id.btnFeedbackMood);
 
         rbMood.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 setMood(Double.valueOf(rating));
-                if(getMood() < 3.5 && getMood() > 2.5);
-                {
-                    Toast.makeText(getActivity(), "Tolle Arbeit!", Toast.LENGTH_SHORT).show();
-                }
             }
         });
+
+        btnStats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Methodenaufruf mit getMood und getArguments().getDouble("gesamtgewicht")
+                displayFragment.displayMainMenu(new FMain(), getFragmentManager());
+            }
+        });
+        //tvGewicht.setText("Du hast heute insgesamt " + getArguments().getDouble("gesamtgewicht") + " kg gestemmt!");
     }
 
     public Double getMood() {
