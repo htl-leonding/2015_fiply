@@ -347,8 +347,8 @@ public class FTrainingsplan extends Fragment {
                     })
                     .setIcon(R.drawable.alertsmall)
                     .show();
-            final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);
-            generate.startAnimation(animTranslate);
+                final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);
+                generate.startAnimation(animTranslate);
             generate.setVisibility(View.INVISIBLE);
             return false;
         }

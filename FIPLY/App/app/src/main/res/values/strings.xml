@@ -633,7 +633,20 @@
   <string name="tvFeedbackMood">Wie ist es dir bei dem Training gegangen?</string>
   <string name="heutestehen">Heute stehen </string>
   <string name="uebungenan">Übungen an!</string>
+<<<<<<< Updated upstream
   <string name="btnFeedbackShowStats">Weiter zur Statistik</string>
+=======
+  <string name="startTrainSession">Starte Trainingssession</string>
+  <string name="chooseotheruebung">...oder Übungen eines anderen Tags wählen</string>
+  <string name="montag">Montag</string>
+  <string name="dienstag">Dienstag</string>
+  <string name="mittwoch">Mittwoch</string>
+  <string name="donnerstag">Donnerstag</string>
+  <string name="freitag">Freitag</string>
+  <string name="samstag">Samstag</string>
+  <string name="sonntag">Sonntag</string>
+  <string name="esstehen">Es stehen</string>
+>>>>>>> Stashed changes
 
   <string-array name="navigationArray">
         <item>Mainmenü</item>

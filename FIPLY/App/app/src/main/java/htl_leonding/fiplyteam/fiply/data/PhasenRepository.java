@@ -100,6 +100,21 @@ public class PhasenRepository {
                 null, null, null, PhasenEntry.COLUMN_ROWID + " ASC", null);
     }
 
+    public void reCreatePhasenTable() {
+        db.execSQL("DROP TABLE IF EXISTS " + PhasenEntry.TABLE_NAME + ";");
+        final String SQL_CREATE_PHASEN_TABLE = "create table " + PhasenEntry.TABLE_NAME +
+                " (" + PhasenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
+                PhasenEntry.COLUMN_STARTDATE + " text not null, " +
+                PhasenEntry.COLUMN_ENDDATE + " text not null, " +
+                PhasenEntry.COLUMN_PHASENNAME + " text not null, " +
+                PhasenEntry.COLUMN_PHASENDAUER + " text not null, " +
+                PhasenEntry.COLUMN_PAUSENDAUER + " text not null, " +
+                PhasenEntry.COLUMN_SAETZE + " text not null, " +
+                PhasenEntry.COLUMN_WIEDERHOLUNGEN + " text not null" +
+                ");";
+        db.execSQL(SQL_CREATE_PHASEN_TABLE);
+    }
+
     public void deleteAll(){
         db.delete(PhasenEntry.TABLE_NAME,null,null);
     }
