@@ -11,41 +11,67 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/sessionsettingstitle"
             android:id="@+id/sessionsettingstitle"
-            android:layout_gravity="center_horizontal"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/darkPrimary"
+            android:textSize="40dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=""
             android:id="@+id/sessionsettingwelcome"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/darkPrimary"
             android:layout_below="@+id/sessionsettingstitle"
-            android:layout_marginTop="45dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_centerHorizontal="true"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=""
             android:id="@+id/sessionsettinguebungen"
+            android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/darkPrimary"
             android:layout_below="@+id/sessionsettingwelcome"
-            android:layout_alignStart="@+id/sessionsettingstitle"
-            android:layout_marginTop="28dp" />
+            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@+id/sessionsettingwelcome"
+            android:layout_alignRight="@+id/sessionsettingwelcome"
+            android:gravity="center"/>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:progressDrawable="@drawable/progressbar"
+            android:layout_alignLeft="@+id/sessionsettingwelcome"
+            android:layout_alignRight="@+id/sessionsettingwelcome"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/sessionsettingwelcome"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choosedaybt"
             android:id="@+id/choosedaybt"
-            android:layout_below="@+id/sessionsettinguebungen"
+            android:layout_below="@+id/sessionsettingwelcome"
             android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/gotosession"
+            android:layout_marginBottom="93dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/sessionsettingstitle" />
 
     </RelativeLayout>
 </LinearLayout>

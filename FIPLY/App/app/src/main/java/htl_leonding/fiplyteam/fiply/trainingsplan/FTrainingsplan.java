@@ -33,6 +33,7 @@ import android.widget.ToggleButton;
 
 import java.lang.reflect.Array;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -233,7 +234,6 @@ public class FTrainingsplan extends Fragment {
                     thirdSet = true;
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 thirdSet = false;
@@ -275,7 +275,7 @@ public class FTrainingsplan extends Fragment {
     private void success() {
         new AlertDialog.Builder(context)
                 .setTitle(R.string.fertig)
-                .setMessage("Dein persöhnlicher Trainingsplan wurde erfolgreich generiert.")
+                .setMessage(R.string.successmessagetrain)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     }
@@ -288,11 +288,14 @@ public class FTrainingsplan extends Fragment {
     }
 
     private void writeToDataBase() {
+        DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
         for (Trainingsphase phase : trainingsphaseList){
-
-            phasenRep.insertPhase(phase.getStartDate().toString(), phase.getEndDate().toString(),
+            String dbStartDate = format.format(phase.getStartDate());
+            String dbEndDate = format.format(phase.getEndDate());
+            phasenRep.insertPhase(dbStartDate, dbEndDate,
                     phase.getPhasenName(), String.valueOf(phase.getPhasenDauer()), String.valueOf(phase.getPausenDauer()),
                     String.valueOf(phase.getSaetze()), String.valueOf(phase.getWiederholungen()));
+
             Cursor c = phasenRep.getPhaseByStartDate(startDate);
             c.moveToFirst();
             int index = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_ROWID);
@@ -349,7 +352,6 @@ public class FTrainingsplan extends Fragment {
             generate.setVisibility(View.INVISIBLE);
             return false;
         }
-
     }
 
     private void setDatePicker(){
