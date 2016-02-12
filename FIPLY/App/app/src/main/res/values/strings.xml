@@ -1,612 +1,61 @@
 <resources>
-    <string name="videoLink">Video ansehen</string>
-    <string name="app_name">FIPLY</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="welcome">Willkommen in der FIPLY APP!</string>
-    <string name="startUe">Uebungskatalog</string>
-    <string name="startTr">Trainingssession</string>
-    <string name="startEU">Usererstellung</string>
-    <string name="startPlaylist">Playlistverwaltung</string>
-    <string name="titleUe">Willkommen im Übungskatalog!</string>
-    <string name="titleTS">Willkommen in einer Traingssession!</string>
-    <string name="titleEU">Willkommen in der Usererstellung!</string>
-    <string name="drawer_open">Navigationsleiste öffnen</string>
-    <string name="drawer_close">Navigationsleiste öffnen</string>
-    <string name="detailMG">Muskelgruppe: </string>
-    <string name="detailEquip">Equipment: </string>
-    <string name="detailDesc">Beschreibung: </string>
-    <string name="detailAnl">Anleitung: </string>
-    <string name="detailName">Dummy-Name</string>
-    <string name="detailSchwierigkeit">Schwierigkeit: </string>
-    <string name="songPlay">Play</string>
-    <string name="songPause">Pause</string>
-    <string name="songStop">Stop</string>
-    <string name="songNext">&#187;</string>
-    <string name="songLast">&#171;</string>
-    <string name="songList">&#8801;</string>
-    <string name="songNotFound">Keine Songs gefunden</string>
-    <string name="watchStart">Start</string>
-    <string name="watchPause">Pause</string>
-    <string name="watchContinue">Continue</string>
-    <string name="watchReset">Reset</string>
-    <string name="watchLap">Lap</string>
-    <string name="timerStart">Start</string>
-    <string name="timerPause">Pause</string>
-    <string name="timerContinue">Continue</string>
-    <string name="timerReset">Reset</string>
-    <string name="navWatch">Watch</string>
-    <string name="navTimer">Timer</string>
-    <string name="etPlName">Playlistname</string>
-    <string name="btPlSave">Save</string>
-    <string name="btPlAdd">Add</string>
-    <string name="sizeString">Size</string>
-    <string name="weightString">Weight</string>
-    <string name="startTrainView">Trainingsplan generieren</string>
-    <string name="detailSaetze">Sätze:</string>
-    <string name="detailGewicht">Gewicht:</string>
-    <string name="detailEquipment">Equipment:</string>
-    <string name="detailWiederholungen">Wiederholungen:</string>
-    <string name="alertnoplan">Bitte lassen Sie sich vorher einen Trainingsplan erstellen.</string>
-    <string name="choosedaybt">Tage auswählen</string>
-    <string name="btnLastUeb">Zurück</string>
-    <string name="btnNextUeb">Weiter</string>
-    <string name="btnMusicHide">Musik</string>
-    <string name="btnClocksHide">Uhren</string>
-    <string name="generateTitle">Trainingsplan generieren</string>
-    <string name="generateZiel">Trainingsziel: </string>
-    <string name="trainingszielMuskelaufbau">Muskelaufbau</string>
-
-
-    <string name="exercisecatalog">
-
-
-        [
-  {
-    \"Muskelgruppe\":\"Brust, Mittlere Brust\",
-    \"Name\":\"Butterfly Seilzug\",
-    \"Beschreibung\":\"Griffe auf die hohen Blöcken einstellen,Beide Griffe in Neutralposition greifen und zwischen die Türme stellen,Einen Schritt nach vorne machen und Oberkörper nach vorne beugen\",
-    \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Arme vor die Brust bringen,Kontrolliert in Ausgangsstellung zurückkehren\",
-    \"Equipment\":\"2 Seilzüge\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Schulter,Hintere Schulter\",
-    \"Name\":\"Reverse Butterfly Seilzug\",
-    \"Beschreibung\":\"Griffe auf den hohen Blöcken einstellen und zwischen beide Türme stellen,Überkreuz greifen und 1-2 Schritte nach hinten gehen,Hände gerade vor dem Körper halten\",
-    \"Durchführung\":\"Mit geradem Rücken und fixierten Schultern die Arme nach hinten bewegen - dabei stets eine leichte Beugung im Ellenbogen beibehalten\",
-    \"Equipment\":\"2 Seilzüge\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Arme,Trizeps\",
-    \"Name\":\"Trizepsdrücken Seilzug\",
-    \"Beschreibung\":\"Stange ist auf hohem Block eingestellt,Stange etwa schulterbreit im Obergriff greifen,Ellenbogen stets am Körper halten und Schultern fixieren\",
-    \"Durchführung\":\"Kontrolliert die Stange nach unten drücken bis die Arme beinahe ausgestreckt sind,Ellenbogen stets am Körper halten\",
-    \"Equipment\":\"1 Seilzug\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-        {
-    \"Muskelgruppe\":\"Arme,Bizeps\",
-    \"Name\":\"Bizepscurl Seilzug\",
-    \"Beschreibung\":\"Stange ist auf niedrigem Block eingestellt,Stange etwa schulterbreit im Untergriff greifen,Mit geradem Rücken aufheben\",
-    \"Durchführung\":\"Kontrolliert die Stange nach oben bewegen bis zum Punkt der maximalen Kontraktion,Ellenbogen stets am Körper halten\",
-    \"Equipment\":\"1 Seilzug\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Schultern,Seitliche Schulter\",
-    \"Name\":\"Seitheben Seilzug\",
-    \"Beschreibung\":\"Griffe sind auf niedrigen Blöcken eingestellt,Beide Griffe überkreuz nehmen und zwischen die Türme stellen,Arme hängen schulterbreit nach unten - im Ellenbogen leichte Beugung\",
-    \"Durchführung\":\"Hebe deine fast ausgestreckten Arme kontrolliert beidseitig nach oben, bis sie eine Linie bilden\",
-    \"Equipment\":\"2 Seilzüge\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Brust,Obere Brust\",
-    \"Name\":\"Schrägbankdrücken\",
-    \"Beschreibung\":\"Mit geradem Rücken auf Schrägbank legen,Füße wegspreizen,Stange etwas mehr als schulterbreit greifen,Handgelenke stets über den Ellenbogen halten,Schultern sind fixiert\",
-    \"Durchführung\":\"Hebe die Stange aus der Halterung und führe die Arme etwas nach vorne bis die Stange etwa auf der Höhe der Brustwarzen ist\",
-    \"Equipment\":\"Schrägbank,Langhantel\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Brust,Untere Brust\",
-    \"Name\":\"Negativbankdrücken\",
-    \"Beschreibung\":\"Mit geradem Rücken auf Negativbank legen,Wenn ein Polster vorhanden ist - Beine einklemmen,Stange etwa schulterbreit greifen\",
-    \"Durchführung\":\"Mit fixierten Schultern die Stange kontrolliert in einer Linie zur Brust und wieder nach oben bewegen,Stange in einer Linie bewegen und Brust nicht berühren\",
-    \"Equipment\":\"Negativbank,Langhantel\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Brust,Mittlere Brust\",
-    \"Name\":\"Bankdrücken mit Kurzhanteln\",
-    \"Beschreibung\":\"Mit geradem Rücken auf die Bank legen,Die Arme bilden einen ca 40 Grad Winkel zum Oberkörper,Handgelenke stets über Ellenbogen,Füße auf den Boden spreizen\",
-    \"Durchführung\":\"Hanteln kontrolliert gleichzeitig nach oben drücken,Dabei die Ellenbogen nie ganz durchstrecken\",
-    \"Equipment\":\"Flachbank,2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Brust,Obere Brust\",
-    \"Name\":\"Schrägbankdrücken mit Kurzhanteln\",
-    \"Beschreibung\":\"Mit geradem Rücken auf Schrägbank legen (45-60°) - Je größer der Winkel, desto mehr ist die vordere Schulter beteiligt,Die Arme bilden einen ca 40 Grad Winkel zum Oberkörper,Handgelenke stets über Ellenbogen,Füße auf den Boden spreizen\",
-    \"Durchführung\":\"Hanteln kontrolliert gleichzeitig nach oben drücken,Dabei die Ellenbogen nie ganz durchstrecken\",
-    \"Equipment\":\"Schrägbank,2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Brust,Mittlere Brust\",
-    \"Name\":\"Butterfly KH\",
-    \"Beschreibung\":\"Mit geradem Rücken auf die Bank legen,Die Arme bilden einen ca 40 Grad Winkel zum Oberkörper,Arme zur Seite ausstrecken - leichte Beugung im Ellenbogen stets beibehalten,Füße auf den Boden spreizen\",
-    \"Durchführung\":\"Arme kontrolliert von der Seite vor die Brust bringen - Beugung im Ellenbogen stets beibehalten,Die Hanteln sollen sich nicht berühren,Die Bewegung endet wenn die Hanteln über den Schultern sind,Beim Absenken der Hanteln endet die Bewegung wenn die Ellenbogen auf Körperlängse sind\",
-    \"Equipment\":\"Flachbank,2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Oberer Rücken\",
-    \"Name\":\"Upper Back Gerät\",
-    \"Beschreibung\":\"Sitzpolster so einstellen, dass Brustpolster auf Höhe des Brustbeins it,Griffe so umgreifen, dass die Hände in einer Linie mit den Ellenbogen sind,Deine Arme sollten auf Höhe der Schulter oder etwas tiefer sein\",
-    \"Durchführung\":\"Mit fixierten Schultern Hände nach hinten ziehen, bis Ellenbogen auf Körperlängsachse sind,Griffe wieder kontrolliert nach vorne bringen - dabei die Ellenbogen nie ganz durchstrecken\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Unterer Rücken\",
-    \"Name\":\"Low Row\",
-    \"Beschreibung\":\"Füße gegen die schräge Ablegefläche stellen,Griff umgreifen und auf der Bank so weit nach hinten rutschen, dass im Kniegelenk ein Winkel zwischen 90-160 Grad entsteht,Leichte Beugung im Ellenbogen beibehalten\",
-    \"Durchführung\":\"Oberkörper aufrichten und Rücken gerade halten,Unterer Rücken durchgestreckt oder leicht im Hohlkreuz,Griff kontrolliert nach hinten zur Unterbrust ziehen - am Ende der Bewegung Schulterblätter fest zusammen ziehen,Griff wieder kontrolliert nach vorne bringen\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Brust,Mittlere Brust\",
-    \"Name\":\"Überzüge KH\",
-    \"Beschreibung\":\"Gerader Rücken,Mit beiden Händen eine Kurzhantel im Diamantgriff nehmen,Leichte Beugung im Ellenbogen,Die Ellenbogen sind stets nach vorne Richtung Füße gespannt\",
-    \"Durchführung\":\"Arme kontrolliert nach vorne über den Kopf bringen - solange bis die Kurzhantel über deinem Kopf schwebt. Die Bewegung geschieht nur in der Schulter\",
-    \"Equipment\":\"Flachbank,1 Kurzhantel\",
-    \"Schwierigkeit\":\"Schwierig\"
-  },
-  {
-    \"Muskelgruppe\":\"Brust,Untere Brust\",
-    \"Name\":\"Low-to-High\",
-    \"Beschreibung\":\"Arme hängen vertikal nach unten,Schulterblätter sind fixiert,Unterarme mit KH ca 45 Grad gedreht und bleiben konstnant in diesem Winkel,Beine möglichst eng zusammenstellen\",
-    \"Durchführung\":\"Arme vor der Brust nach oben heben, bis Unterarme etwa parallel zum Boden sind,Diese Spannung kurz halten und dann wieder kontrolliert senken\",
-    \"Equipment\":\"Schrägbank,2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Schwierig\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Oberer Rücken\",
-    \"Name\":\"Rüdern vorgebeugt KH\",
-    \"Beschreibung\":\"Stabiler hüftbreiter Stand,Oberkörpervorneigung von ca 70-80 Grad,Rücken gerade,Unterarme bleiben immer vertikal\",
-    \"Durchführung\":\"Oberarme bis Körperlängsachse ziehen,Arm bis zur vollkommenen Streckung zurückbewegen\",
-    \"Equipment\":\"2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Schulter,Seitliche Schulter\",
-    \"Name\":\"Seitheben KH\",
-    \"Beschreibung\":\"Hüftbreiter aufrechter Stand, Leichte Beugung im Ellenbogen, Kurzhanteln in Neutralstellung zu Oberarm\",
-    \"Durchführung\":\"Rotationsbewegung in der Schulter,Arme nur so weit heben bis sie parallel zum Boden sind, Handgelenke stets über Ellenbogen halten\",
-    \"Equipment\":\"2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Oberer Rücken\",
-    \"Name\":\"T-Bar Rudern Gerät\",
-    \"Beschreibung\":\"Mit Oberkörper flach auf Polster legen und mit Beinen abstützen,Stange im Obergriff umgreifen und aus der Halterung heben\",
-    \"Durchführung\":\"Beim Ausatmen zur Körpermitte ziehen,Anschließend beim Einatmen Arme wieder senken - leichte Beugung im Ellenbogen lassen\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Oberer Rücken,Unterer Rücken\",
-    \"Name\":\"T-Bar Rudern\",
-    \"Beschreibung\":\"Stange zwischen deinen Beinen - schulterbreiter Stand,Enges Lat-Griffstück an der Abgrenzung zwischen Stange und Gewichtern, Beugung in den Knien - Oberkörper so weit wie möglich vorgebeugt,Stets gerader Rücken,Aufheben der Stange wie bei Kreuzheben\",
-    \"Durchführung\":\"Beim Ausatmen Griffstück zu den Bauchmuskeln ziehen - Hände dabei etwa handbreit vom Oberkörper entfernt,Beim Einatmen Stange absenken - leichte Beugung im Ellenbogen beibehalten\",
-    \"Equipment\":\"Langhantel,Griffstück\",
-    \"Schwierigkeit\":\"Schwierig\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Oberer Rücken,Unterer Rücken\",
-    \"Name\":\"Rudern vorgebeugt\",
-    \"Beschreibung\":\"Stabiler hüftbreiter Stand,Oberkörpervorneigung von ca 70-80 Grad,Rücken gerade,Unterarme bleiben immer vertikal\",
-    \"Durchführung\":\"Oberarme bis Körperlängsachse ziehen,Arm bis zur vollkommenen Streckung zurückbewegen\",
-    \"Equipment\":\"Langhantel\",
-    \"Schwierigkeit\":\"Schwierig\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Oberschenkel\",
-    \"Name\":\"Leg Press Gerät\",
-    \"Beschreibung\":\"Mit geradem Rücken vollständig anlehnen,Füße parallel in hüftbreitem Stand auf die Platte stellen - Füße bilden eine Linie mit Knien und Hüfte\",
-    \"Durchführung\":\"Seitliche Griffe umfassen und beim Ausatmen die Beine strecken - aber nicht ganz durchstrecken,Beim Einatmen die Beine kontrolliert beugen - Der Druck kommt von den Fersen\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Beinbizeps\",
-    \"Name\":\"Leg Curl Gerät\",
-    \"Beschreibung\":\"Mit geradem Rücken vollständig anlehnen,Fußpolster so einstellen, dass er zwischen Ferse und Wade sitzt,Seitlichen Griffe umfassen\",
-    \"Durchführung\":\"Fersen nach unten drücken und die Beine so weit wie möglich nach hinten bringen - Fußspitzen anziehen,Beim Einatmen langsm die Beine in Ausgangsstellung bringen - Knie nie ganz durchstrecken\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Po\",
-    \"Name\":\"Glute Machine\",
-    \"Beschreibung\":\"Polster so einstellen, dass er zwischen Ferse und Waden ist - bei manchen Geräten auch in Kniekehle,Haltegriffe festhalten und Oberkörper stabilisieren\",
-    \"Durchführung\":\"Fußspitzen anziehen und Bein strecken,Polster kontrolliert nach oben bringen - nicht mit Schwung arbeiten\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Hintere Schulter\",
-    \"Name\":\"Reverse Butterfly Gerät\",
-    \"Beschreibung\":\"Brust gegen Polster stützen,Rechter Winkel im Knie,Griffe umgreifen - dabei leichten Knick im Ellenbogen behalten,Hände sollten auf Höher der Schulter sein - wenn nicht: Sitzpolster umstellen,Ellbogen stets unter der Hand-Schulter-Linie\",
-    \"Durchführung\":\"Beim Ausatmen die Arme gestreckt so weit wie möglich nach hinten bewegen\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Brust,Mittlere Brust\",
-    \"Name\":\"Chest Press Gerät\",
-    \"Beschreibung\":\"Sitzpolster so einstellen, dass Griffe auf Höhe des Brustbeines sind,Mit geradem Rücken an Lehne anlehnen,Füße auf Boden spreizen\",
-    \"Durchführung\":\"Beim Ausatmen die Arme gleichzeitig und kontrolliert nach vorne strecken,Nicht mit dem Kopf \\"mitdrücken\\",Schultern, Ellenbogen und Hände in einer Ebene\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Bauch,Gerader Bauchmuskel\",
-    \"Name\":\"Abdominal Crunch Gerät\",
-    \"Beschreibung\":\"Füße unter die Polster stellen,Mit geradem Rücken anlehnen,Die Polster umfassen\",
-    \"Durchführung\":\"Bauchnabel fest nach inne ziehen und Spannung aufbauen:Beim Ausatmen Oberkörper nach vorne beugen(Wirbel für Wirbel - dh. Das Brustbein zum Becken führen) - beim Einatmen wieder aufrollen\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Brust,Mittlere Brust\",
-    \"Name\":\"Chest Press\",
-    \"Beschreibung\":\"Mit geradem Rücken vollständig auf die Bank legen - Langhantel sollte etwa auf Augenhöhe sein,Sicherer Stand mit gespreizten Beinen,Schultern fixiert\",
-    \"Durchführung\":\"Stange so greifen, dass deine Hände über den Ellenbogen sind,Mit geraden Handgelenken die Stange aus der Halterung heben,Langhantel etwa auf Nippelhöhe absenken\",
-    \"Equipment\":\"Flachbank,Langhantel\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Oberer Rücken,Unterer Rücken\",
-    \"Name\":\"Einarmiges Rudern KH\",
-    \"Beschreibung\":\"Mit einem Knie auf der Bank abstützen - mit gleichseitigem Arm ebenfalls abstützen,Zweites Bein abspreizen,Rücken stets gerade und unter Spannung halten\",
-    \"Durchführung\":\"Mit geradem Rücken und fixierten Schultern eine Kurzhantel vom Boden in gerader Linie aufheben - Stopp wenn Ellbogen auf Körperlängsachse\",
-    \"Equipment\":\"Flachbank,Kurzhantel\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
-    \"Name\":\"Schulterdrücken KH\",
-    \"Beschreibung\":\"Arme stets vor dem Körper,Hantel über den Ellenbogen - Unterarme immer vertikal\",
-    \"Durchführung\":\"Kontrolliert hochdrücken,Beim Absenken nicht zu tief senken - Oberarme nur etwas tiefer als Schultergelenk\",
-    \"Equipment\":\"2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Oberer Rücken\",
-    \"Name\":\"Latissimus Pulldown\",
-    \"Beschreibung\":\"Polster so einstellen, dass Oberschenkel gut fixiert sind,Stange so umgreifen, dass Hände über den Ellenbogen sind\",
-    \"Durchführung\":\"Beim Ausatmen die Stange kontrolliert vor den Kopf ziehen, den Rücken dabei stets gerade halten, Ellbogen stets vor Körperlängsachse halten\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Unterer Rücken\",
-    \"Name\":\"Hyperextensions\",
-    \"Beschreibung\":\"So in das Gerät stellen, dass Oberschenkel fixiert sind, der Oberkörper jedoch frei beweglich bleibt,Körper bildet eine Linie - Blick nach vorne gerichtet - Arme vor dem Körper verschränkt\",
-    \"Durchführung\":\"Oberkörper so weit Richtung Boden senken, bis ein 90 Grad Winkel in den Beinen entsteht,Kontrolliert den Körper wieder aufrichten bis Körper wieder eine Linie bildet\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Bauch,Gerader Bauchmuskel\",
-    \"Name\":\"Leg Lever\",
-    \"Beschreibung\":\"Mit geradem Rücken hinlegen,Gegengewicht in de Hände nehmen und mit ausgestreckten Armen hinter dem Kopf halten oder Bankende mit den Händen umgreifen\",
-    \"Durchführung\":\"Bauch stets unter Spannung halten und ausgestreckte Beine kontrolliert nach oben bringen bis zum 90 Grad Winkel mit Oberkörper,Beine wieder zum Boden bewegen, dabei den Boden nicht berühhren\",
-    \"Equipment\":\"Matte\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Oberschenkel\",
-    \"Name\":\"Squats\",
-    \"Beschreibung\":\"Schulterbreit unter die Langhantelstange stellen und diese etwa schulterbreit umgreifen, so dass die Arme in etwa auf Höh der Ellenbogen sind,Stange auf die Nackenmuskulatur oder die hintere Schultermuskulatur legen,Mit geradem Rücken und leichter Hohlkreuzstellung die Stange ausheben,Blick nach vorne gerichtet - Rücken gerade - Bauchmuskeln angespannt\",
-    \"Durchführung\":\"Kontrolliert die Beine beugen - dabei wird der Oberkörper nach vorne gebeugt und der Po nach hinten geschoben,Knie müssen stets in die gleiche Richtung zeigen wie Fußspitzen - Knie müssen hinter bis maximal auf gleicher Höhe mit den Fußspitzen sein,Wenn die Oberschenkel etwa parallel (kann stark variieren) zum Boden sind, kontrolliert wieder aufrichten\",
-    \"Equipment\":\"Langhantel\",
-    \"Schwierigkeit\":\"Schwierig\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Beinbizeps,Oberschenkel\",
-    \"Name\":\"Lunges\",
-    \"Beschreibung\":\"Vom aufrechten schulterbreiten Stand einen großen Schritt nach vorne machen,Die Hüfte gerade halten und Balance halten\",
-    \"Durchführung\":\"Hüfte absenken bis das hintere Knie knapp über dem Boden ist,Beim Einatmen wieder in die Ausgangslage zurückkehren,Das Knie des vorderen Fußes nie über die Zehenspitzen zeigen lassen\",
-    \"Equipment\":\"evtl. Zusatzgewicht\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Unterer Rücken,Beine\",
-    \"Name\":\"Kreuzheben\",
-    \"Beschreibung\":\"Schulterbreit vor die Langhantel stellen und etwas breiter als schulterbreit greifen, mindestesn jedoch so breit, dass bei der Ausführung der Übung die Ellenbogen nicht an die Knie stoßen,In die Hocke gehen, Rücken dabei stabil und leicht im Hohlkreuz,Bauchmuskeln sind angespannt - Blick starr nach vorne gerichtet,Der ganze Körper muss unter Spannung stehen und gehalten werden - Zu keinem Zeitpunkt darf der Rücken rund sein!\",
-    \"Durchführung\":\"Beim Aufrichten die Langhantel möglichst nahe am Körper entlang führe,Die Kraft kommt aus den Beinen und dem unteren Rücken,Langsam, gleichmäßig und ohne Schwung die Beine strecken und gleichzeitig den Rücken aufrichten\",
-    \"Equipment\":\"Langhantel\",
-    \"Schwierigkeit\":\"Schwierig\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Waden\",
-    \"Name\":\"Wadenheben\",
-    \"Beschreibung\":\"Suche eine beliebige Erhögung (Brett,Stepper,Gewichtsscheiben etc.) und nimm in jede Hand eine Kurzhantel oder eine Gewichtsscheibe,Mit den Fußballen auf das Brett stellen,Fersen in der Luft hängen lassen\",
-    \"Durchführung\":\"Beim Ausatmen die Fersen abdrücken und die Waden bis zur maximal möglichen Streckung anheben\",
-    \"Equipment\":\"evtl. Zusatzgewicht\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Bauch,Gerader Bauchmuskel\",
-    \"Name\":\"Beinheben hängend am Gerät\",
-    \"Beschreibung\":\"Vollständig anlehnen,Unterarme liegen auf den Armpolstern - die Griffe umgreifen,Beine fast ausgestreckt - nur leichte Beugung im Kniegelenk\",
-    \"Durchführung\":\"Beim Ausatmen die Beine kontrolliert so weit wie möglich nach oben bewegen,Ohne Schwung arbeiten\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
-    \"Name\":\"Schulterdrücken LH\",
-    \"Beschreibung\":\"Schulterbreiter Stand,Langhantel etwas mehr als schulterbreit greifen,Handgelenke stets gerade und über Ellenbogen\",
-    \"Durchführung\":\"Kontrolliert hochdrücken,Beim Absenken nicht zu tief senken - Oberarme nur etwas tiefer als Schultergelenk\",
-    \"Equipment\":\"Langhantel\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
-    \"Name\":\"Schulterdrücken Gerät\",
-    \"Beschreibung\":\"Vollständig anlehnen,Handgelenke über den Ellenbogen,Ellenbogen stets vor dem Körper halten\",
-    \"Durchführung\":\"Kontrolliert hochdrücken,Beim Absenken nicht zu tief senken - Oberarme nur etwas tiefer als Schultergelenk\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Schultern,Seitliche Schulter\",
-    \"Name\":\"Seitheben Gerät\",
-    \"Beschreibung\":\"Vollständig anlehnen,Schultern fixiert - Oberarme am Körper,Polster etwas über Ellenbogen\",
-    \"Durchführung\":\"Mit fixierten Schultern die Oberarme nach oben bewegen - bis Oberarme etwa parallel zum Boden\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
-    \"Name\":\"Frontheben\",
-    \"Beschreibung\":\"Gerader aufrechter Stand - Blick nach vorne gerichtet,Leichte Beugung im Ellenbogen,Kurzhanteln im Obergriff nehmen und leicht nach innen drehen\",
-    \"Durchführung\":\"Hantel von den Oberschenkeln vor den Körper bis Brusthöhe heben - Schultern dabei fixiert halten\",
-    \"Equipment\":\"2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
-    \"Name\":\"Frontheben Seilzug\",
-    \"Beschreibung\":\"Stange am tiefen Block montieren,Mit dem Rücken zum Block stellen und Stange zwischen den Beinen durchführen,Stange im Obergriff greifen\",
-    \"Durchführung\":\"Stange von den Beinen weg mit leichter Beugung im Ellenbogen nach vorne bis auf Brusthöhe heben - Schultern dabei stets fixiert halten\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Schultern,Hintere Schulter\",
-    \"Name\":\"Seitheben vorgebeugt\",
-    \"Beschreibung\":\"Oberkörper mit geradem Rücken nach vorne beugen,Hanteln parallel zum Oberkörper greifen - leichte Beugung im Ellenbogen\",
-    \"Durchführung\":\"Mit fixierten Schultern die Oberarme nach oben bewegen - bis Oberarme etwa parallel zum Boden\",
-    \"Equipment\":\"2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Schultern,Hintere Schulter\",
-    \"Name\":\"Reverse Butterfly Seilzug\",
-    \"Beschreibung\":\"Griffe auf den hohen Blöcken einstellen und zwischen beide Türme stellen,Überkreuz greifen und 1-2 Schritte nach hinten gehen,Hände gerade vor dem Körper halten\",
-    \"Durchführung\":\"Mit geradem Rücken und fixierten Schultern die Arme nach hinten bewegen - dabei stets die gleiche leichte Beugung im Ellenbogen beibehalten\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Oberer Rücken,Nacken\",
-    \"Name\":\"Kinnheben SZ\",
-    \"Beschreibung\":\"Hüftbreiter Stand,SZ-Stange mit einer Handbreite Abstand im Obergriff nehmen,\",
-    \"Durchführung\":\"SZ-Stange senkrecht und eng am Körper nach oben über die Ellenbogen bis zum Kinn heben\",
-    \"Equipment\":\"SZ-Stange\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Rücken,Oberer Rücken,Nacken\",
-    \"Name\":\"Shrugs\",
-    \"Beschreibung\":\"Schulterbreiter Stand,2 Kurzhanteln im Neutralgriff neben dem Körper\",
-    \"Durchführung\":\"Schultern zusammenziehen und und Arme ausgestreckt nach oben ziehen\",
-    \"Equipment\":\"2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Arme,Bizeps\",
-    \"Name\":\"Bizepscurl SZ\",
-    \"Beschreibung\":\"Sz Stange schulterbreit im Untergriff greifen und mit geradem Rücken aufheben\",
-    \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Stange hocheben bis zum Punkt der maximalen Kontraktion,Ellenbogen nicht mitbewegen\",
-    \"Equipment\":\"SZ-Stange\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Arme,Bizeps\",
-    \"Name\":\"Bizepscurl LH\",
-    \"Beschreibung\":\"Langhantel schulterbreit im Untergriff greifen und mit geradem Rücken aufheben\",
-    \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Stange hocheben bis zum Punkt der maximalen Kontraktion,Ellenbogen nicht mitbewegen\",
-    \"Equipment\":\"Langhantel\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Arme,Bizeps\",
-    \"Name\":\"Bizepscurl KH\",
-    \"Beschreibung\":\"Kurzhanteln schulterbreit im Untergriff greifen und mit geradem Rücken aufheben\",
-    \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Kurhanteln hocheben bis zum Punkt der maximalen Kontraktion,Ellenbogen nicht mitbewegen\",
-    \"Equipment\":\"2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Arme,Bizeps\",
-    \"Name\":\"Hammercurls\",
-    \"Beschreibung\":\"Kurzhanteln schulterbreit im Hammergriff greifen und mit geradem Rücken aufheben\",
-    \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Kurhanteln hocheben bis zum Punkt der maximalen Kontraktion,Ellenbogen nicht mitbewegen\",
-    \"Equipment\":\"2 Kurzhanteln\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Arme,Bizeps\",
-    \"Name\":\"Bizepscurl Gerät\",
-    \"Beschreibung\":\"Vollständig anlehnen,Oberarme in Polster legen\",
-    \"Durchführung\":\"Kontrolliert die Arme heben - nicht reißen\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Arme,Trizeps\",
-    \"Name\":\"Kickback KH\",
-    \"Beschreibung\":\"Oberkörper vorgebeugt, Oberarme am Körper entlang - etwa faustbreit vom Oberkörper entfernt,Unterarme vertikal - Hantel in Neutralposition\",
-    \"Durchführung\":\"Arme nach hinten ausstrecken - Ellenbogen stets gleich halten\",
-    \"Equipment\":\"Kurzhantel\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Arme,Trizeps\",
-    \"Name\":\"Frenchpress SZ\",
-    \"Beschreibung\":\"Mit geradem Rücken auf Flachbank legen,SZ-Stange eng im Obergriff nehmen - so, dass Daumen zum Körper zeigen,Oberarme gerade nach oben strecken\",
-    \"Durchführung\":\"Oberarme bleiben stets an der gleichen Position,Von ausgestreckter Position Unterarme Richtung Kopf senken,Wieder bis zur vollständigen Streckung drücken\",
-    \"Equipment\":\"SZ-Stange,Flachbank\",
-    \"Schwierigkeit\":\"Mittel\"
-  },
-  {
-    \"Muskelgruppe\":\"Trizeps\",
-    \"Name\":\"Trizepsdrücken Gerät\",
-    \"Beschreibung\":\"Vollständig anlehnen,Oberarme in Polster legen\",
-    \"Durchführung\":\"Kontrolliert die Arme ausstrecken - nicht reißen\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Bauch,Seitliche Bauchmuskeln,Gerader Bauchmuskel\",
-    \"Name\":\"Rotary Twist Gerät\",
-    \"Beschreibung\":\"Füße unter die Polster stellen,Mit geradem Rücken anlehnen,Die Polster umfassen\",
-    \"Durchführung\":\"Bauchnabel fest nach inne ziehen und Spannung aufbauen,Beim Ausatmen Oberkörper drehen,beim Einatmen wieder zurückdrehen - anschließend die gegenseitige Richtung\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Bauch,Seitliche Bauchmuskeln,Gerader Bauchmuskel\",
-    \"Name\":\"Criss Cross\",
-    \"Beschreibung\":\"Mit geradem Rücken auf die Matte legen,Oberschenkel zeigen vertikal nach oben - 90 Grad Winkel in den Knien,Arme zeigen vertikal nach oben\",
-    \"Durchführung\":\"Linker Arm und rechtes Bein gleichzeitig zu Boden senken und wieder in Ausgangsstellung bewegen,Auf der anderen Seite wiederholen\",
-    \"Equipment\":\"Matte\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Bauch,Gerader Bauchmuskel\",
-    \"Name\":\"Crunch\",
-    \"Beschreibung\":\"Mit geradem Rücken auf die Matte legen,Die Füße so aufstellen, dass in etwa ein 90 Grad Winkel in den Knien entsteht,Hände vor der Brust verschränken\",
-    \"Durchführung\":\"Langsam Wirbel für Wirbel aufrollen,Wieder Wirbel für Wirbel absenken\",
-    \"Equipment\":\"Matte\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Oberschenkel\",
-    \"Name\":\"Beinstrecker Gerät\",
-    \"Beschreibung\":\"Vollständig anlehen,Griffe umgreifen,Polster so einstellen, dass er zwischen Ferse und Waden sitzt,Fußteil so hoch wie möglich stellen\",
-    \"Durchführung\":\"Beim Austmen Fußteil so weit wie möglich nach hinten bewegen - Fußspitzen zeigen nach oben\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Waden\",
-    \"Name\":\"Wadenheben Gerät\",
-    \"Beschreibung\":\"Vollständig anlehnen,Griffe umgreifen,Füße auf das Fußteil stellen\",
-    \"Durchführung\":\"Mit den Fußballen und Zehen das Fußteil so weit wie möglich nach unten drücken\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Abduktor\",
-    \"Name\":\"Abduktor\",
-    \"Beschreibung\":\"Vollständig anlehnen,Polster so einstellen, dass beide Beine parallel und gerade nach vorne zeigen\",
-    \"Durchführung\":\"Beim Ausatmen die Beine bis etwa 50 Grad nach außen drehen,Kontrolliert wieder in Ausgangsstellung zurück\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Adduktor\",
-    \"Name\":\"Adduktor\",
-    \"Beschreibung\":\"Vollständig anlehnen,Polster so einstellen, dass beide Beine etwa im 50 Grad Winkel nach außen zeigen\",
-    \"Durchführung\":\"Beim Ausatmen die Beine nach innen drehen,Beim Ausatmen wieder in die Ausgangsstellung zurückkehren\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Oberschenkel\",
-    \"Name\":\"Beinpresse negativ\",
-    \"Beschreibung\":\"Vollständig anlehnen,Beine etwas mehr als schulterbreit auf das Fußteil stellen,Griffe umgreifen\",
-    \"Durchführung\":\"Beim Ausatmen die Beine ausstrecken - nicht ganz durchstrecken,Griffe nach unten drücken,Beim Einatmen die Beine beugen und die Knie so weit wie möglich zum Oberkörper führen\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Beine,Oberschenkel\",
-    \"Name\":\"Beinpresse liegend\",
-    \"Beschreibung\":\"Vollständig anlehnen,Beine etwas mehr als schulterbreit auf das Fußteil stellen,Griffe umgreifen\",
-    \"Durchführung\":\"Beim Ausatmen Beine ausstrecken - nicht ganz durchstrecken,Beim Einatmen die Beine kontrolliert beugen\",
-    \"Equipment\":\"Fitnessstudio\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Stabilisation,Untere Rückenmuskulatur Hüftstrecker\",
-    \"Name\":\"Rückenstabilisation\",
-    \"Beschreibung\":\"Auf Händen und Knien am Boden/Matte/Handtuch abstützen (=Bankstellung). Arme und Beine dabei etwa schulterbreit und im 90 Grad Winkel zum Oberkörper. Auf geraden und stabilen Rücken achten.\",
-    \"Durchführung\":\"Winkel im Knie beibehalten und abwechselnd ein Bein anheben bis Oberschenkel Linie sind und wieder in Grundstellung zurückkehren -> Beinwechsel.\",
-    \"Equipment\":\"Mappe\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Stabilisation,Gerade Bauchmuskulatur, unten Hüftbeuger\",
-    \"Name\":\"Hüftheber\",
-    \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme parallel zum Körper als Stütze ablegen. 90 Grad Winkel in den Knien halten (fortgeschritten -> Beine ausstrecken).\",
-    \"Durchführung\":\"Hüfte vom Boden anheben und wieder absenken; dabei stets gesamten Rumpf unter Spannung halten.\",
-    \"Equipment\":\"Mappe\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Stabilisation,Gerad Bauchmuskulatur, unten Hüftbeuger, Sietliche Bauchmuskulatur\",
-    \"Name\":\"Beinpendel\",
-    \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme im 90 Grad Winkel zum Oberkörper als Stütze ablegen und Beine ausstrecken (90 Grad im Hüftgelenk) Durchführung.\",
-    \"Durchführung\":\"Beine zuerst langsam zu einer Seite – dann zur Grundstellung – und zur anderen Seite abwinkeln (bis ca. 45 Grad Winkel zwischen Boden und Grundstellung).\",
-    \"Equipment\":\"Mappe\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Stabilisation, Laterale Kette, Rumpfmuskulatur\",
-    \"Name\":\"Seitliches Hüftheben\",
-    \"Beschreibung\":\"Seitstützposition (side plank) einnehmen (am Unterarm abstützen).\",
-    \"Durchführung\":\"Becken absenken und wieder anheben.\",
-    \"Equipment\":\"Mappe\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Stabilisation, Gesamte ventrale Kette\",
-    \"Name\":\"Trockenschwimmen\",
-    \"Beschreibung\":\"Bäuchlings auf Boden/Matte/Handtuch hinlegen. Hohlkreuz einnehmen und leichte Gewichte nehmen (Hanteln, Wasserflasche, Handtuch,...). Beine gestreckt und geschlossen vom Körper abheben; Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten\",
-    \"Durchführung\":\"Arme ausstrecken und Beine spreizen\",
-    \"Equipment\":\"Mappe\",
-    \"Schwierigkeit\":\"Einfach\"
-  },
-  {
-    \"Muskelgruppe\":\"Stabilisation, Untere Rückenmuskulatur\",
-    \"Name\":\"Rückenstrecker am Gymnastikball\",
-    \"Beschreibung\":\"Bäuchlings auf eine Gymnastikball legen, Knie sind am Boden und Beine angewinkelt. Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten.\",
-    \"Durchführung\":\"Oberkörper absenken und wieder anheben; Arme dabei stets im gleichen Winkel halten.\",
-    \"Equipment\":\"Mappe\",
-    \"Schwierigkeit\":\"Einfach\"
-  }
-]
-    </string>
+  <string name="videoLink">Video ansehen</string>
+  <string name="app_name">FIPLY</string>
+  <string name="title_activity_main">MainActivity</string>
+  <string name="welcome">Willkommen in der FIPLY APP!</string>
+  <string name="startUe">Uebungskatalog</string>
+  <string name="startTr">Trainingssession</string>
+  <string name="startEU">Usererstellung</string>
+  <string name="startPlaylist">Playlistverwaltung</string>
+  <string name="titleUe">Willkommen im Übungskatalog!</string>
+  <string name="titleTS">Willkommen in einer Traingssession!</string>
+  <string name="titleEU">Willkommen in der Usererstellung!</string>
+  <string name="drawer_open">Navigationsleiste öffnen</string>
+  <string name="drawer_close">Navigationsleiste öffnen</string>
+  <string name="detailMG">Muskelgruppe: </string>
+  <string name="detailEquip">Equipment: </string>
+  <string name="detailDesc">Beschreibung: </string>
+  <string name="detailAnl">Anleitung: </string>
+  <string name="detailName">Dummy-Name</string>
+  <string name="detailSchwierigkeit">Schwierigkeit: </string>
+  <string name="songPlay">Play</string>
+  <string name="songPause">Pause</string>
+  <string name="songStop">Stop</string>
+  <string name="songNext">&#187;</string>
+  <string name="songLast">&#171;</string>
+  <string name="songList">&#8801;</string>
+  <string name="songNotFound">Keine Songs gefunden</string>
+  <string name="watchStart">Start</string>
+  <string name="watchPause">Pause</string>
+  <string name="watchContinue">Continue</string>
+  <string name="watchReset">Reset</string>
+  <string name="watchLap">Lap</string>
+  <string name="timerStart">Start</string>
+  <string name="timerPause">Pause</string>
+  <string name="timerContinue">Continue</string>
+  <string name="timerReset">Reset</string>
+  <string name="navWatch">Watch</string>
+  <string name="navTimer">Timer</string>
+  <string name="etPlName">Playlistname</string>
+  <string name="btPlSave">Save</string>
+  <string name="btPlAdd">Add</string>
+  <string name="sizeString">Size</string>
+  <string name="weightString">Weight</string>
+  <string name="startTrainView">Trainingsplan generieren</string>
+  <string name="detailSaetze">Sätze:</string>
+  <string name="detailGewicht">Gewicht:</string>
+  <string name="detailEquipment">Equipment:</string>
+  <string name="detailWiederholungen">Wiederholungen:</string>
+  <string name="alertnoplan">Bitte lassen Sie sich vorher einen Trainingsplan erstellen.</string>
+  <string name="choosedaybt">Tage auswählen</string>
+  <string name="btnLastUeb">Zurück</string>
+  <string name="btnNextUeb">Weiter</string>
+  <string name="btnMusicHide">Musik</string>
+  <string name="btnClocksHide">Uhren</string>
+  <string name="generateTitle">Trainingsplan generieren</string>
+  <string name="generateZiel">Trainingsziel: </string>
+  <string name="trainingszielMuskelaufbau">Muskelaufbau</string>
+  <string name="facebook_app_id">1541961082763294</string>
   <string name="trainingszielGesundheit">Cardio/Abnahme</string>
   <string name="trainingszielMaximalKraft">Maximalkraft</string>
   <string name="toggleButton">Trainiert/Untrainiert</string>
@@ -625,6 +74,7 @@
   <string name="btnPlaylistSelectAll">ALL</string>
   <string name="btnPlaylistSelectNone">NONE</string>
   <string name="btnPlaylistBack">Back</string>
+  <string name="startStatistic">Statistik</string>
   <string name="successmessagetrain">Dein persönlicher Trainingsplan wurde erfolgreich generiert.</string>
   <string name="fsettingtitle">Übersicht</string>
   <string name="sessionsettingstitle">!! Go Go Go !!</string>
@@ -641,25 +91,585 @@
         <item>Übungskatalog</item>
         <item>Usererstellung</item>
         <item>Playlists</item>
-    </string-array>
+  </string-array>
 
-    <string-array name="proficiency">
-        <item>Not Fit</item>
-        <item>Fit</item>
-    </string-array>
+  <string-array name="greetingArray">
+      <item>Guten Morgen</item>
+      <item>Mahlzeit</item>
+      <item>Schönen Nachmittag</item>
+      <item>Guten Abend</item>
+  </string-array>
 
-    <string-array name="ageGroups">
-        <item>16-20</item>
-        <item>21-30</item>
-        <item>31-40</item>
-        <item>41-50</item>
-        <item>50+</item>
-    </string-array>
 
-    <string-array name="gender">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Other</item>
-    </string-array>
+  <string-array name="proficiency">
+      <item>Not Fit</item>
+      <item>Fit</item>
+  </string-array>
+
+  <string-array name="ageGroups">
+      <item>16-20</item>
+      <item>21-30</item>
+      <item>31-40</item>
+      <item>41-50</item>
+      <item>50+</item>
+  </string-array>
+
+  <string-array name="gender">
+      <item>Male</item>
+      <item>Female</item>
+      <item>Other</item>
+  </string-array>
+
+  <string name="exercisecatalog">
+
+
+      [
+{
+  \"Muskelgruppe\":\"Brust, Mittlere Brust\",
+  \"Name\":\"Butterfly Seilzug\",
+  \"Beschreibung\":\"Griffe auf die hohen Blöcken einstellen,Beide Griffe in Neutralposition greifen und zwischen die Türme stellen,Einen Schritt nach vorne machen und Oberkörper nach vorne beugen\",
+  \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Arme vor die Brust bringen,Kontrolliert in Ausgangsstellung zurückkehren\",
+  \"Equipment\":\"2 Seilzüge\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Schulter,Hintere Schulter\",
+  \"Name\":\"Reverse Butterfly Seilzug\",
+  \"Beschreibung\":\"Griffe auf den hohen Blöcken einstellen und zwischen beide Türme stellen,Überkreuz greifen und 1-2 Schritte nach hinten gehen,Hände gerade vor dem Körper halten\",
+  \"Durchführung\":\"Mit geradem Rücken und fixierten Schultern die Arme nach hinten bewegen - dabei stets eine leichte Beugung im Ellenbogen beibehalten\",
+  \"Equipment\":\"2 Seilzüge\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Arme,Trizeps\",
+  \"Name\":\"Trizepsdrücken Seilzug\",
+  \"Beschreibung\":\"Stange ist auf hohem Block eingestellt,Stange etwa schulterbreit im Obergriff greifen,Ellenbogen stets am Körper halten und Schultern fixieren\",
+  \"Durchführung\":\"Kontrolliert die Stange nach unten drücken bis die Arme beinahe ausgestreckt sind,Ellenbogen stets am Körper halten\",
+  \"Equipment\":\"1 Seilzug\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+      {
+  \"Muskelgruppe\":\"Arme,Bizeps\",
+  \"Name\":\"Bizepscurl Seilzug\",
+  \"Beschreibung\":\"Stange ist auf niedrigem Block eingestellt,Stange etwa schulterbreit im Untergriff greifen,Mit geradem Rücken aufheben\",
+  \"Durchführung\":\"Kontrolliert die Stange nach oben bewegen bis zum Punkt der maximalen Kontraktion,Ellenbogen stets am Körper halten\",
+  \"Equipment\":\"1 Seilzug\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Schultern,Seitliche Schulter\",
+  \"Name\":\"Seitheben Seilzug\",
+  \"Beschreibung\":\"Griffe sind auf niedrigen Blöcken eingestellt,Beide Griffe überkreuz nehmen und zwischen die Türme stellen,Arme hängen schulterbreit nach unten - im Ellenbogen leichte Beugung\",
+  \"Durchführung\":\"Hebe deine fast ausgestreckten Arme kontrolliert beidseitig nach oben, bis sie eine Linie bilden\",
+  \"Equipment\":\"2 Seilzüge\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Brust,Obere Brust\",
+  \"Name\":\"Schrägbankdrücken\",
+  \"Beschreibung\":\"Mit geradem Rücken auf Schrägbank legen,Füße wegspreizen,Stange etwas mehr als schulterbreit greifen,Handgelenke stets über den Ellenbogen halten,Schultern sind fixiert\",
+  \"Durchführung\":\"Hebe die Stange aus der Halterung und führe die Arme etwas nach vorne bis die Stange etwa auf der Höhe der Brustwarzen ist\",
+  \"Equipment\":\"Schrägbank,Langhantel\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Brust,Untere Brust\",
+  \"Name\":\"Negativbankdrücken\",
+  \"Beschreibung\":\"Mit geradem Rücken auf Negativbank legen,Wenn ein Polster vorhanden ist - Beine einklemmen,Stange etwa schulterbreit greifen\",
+  \"Durchführung\":\"Mit fixierten Schultern die Stange kontrolliert in einer Linie zur Brust und wieder nach oben bewegen,Stange in einer Linie bewegen und Brust nicht berühren\",
+  \"Equipment\":\"Negativbank,Langhantel\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Brust,Mittlere Brust\",
+  \"Name\":\"Bankdrücken mit Kurzhanteln\",
+  \"Beschreibung\":\"Mit geradem Rücken auf die Bank legen,Die Arme bilden einen ca 40 Grad Winkel zum Oberkörper,Handgelenke stets über Ellenbogen,Füße auf den Boden spreizen\",
+  \"Durchführung\":\"Hanteln kontrolliert gleichzeitig nach oben drücken,Dabei die Ellenbogen nie ganz durchstrecken\",
+  \"Equipment\":\"Flachbank,2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Brust,Obere Brust\",
+  \"Name\":\"Schrägbankdrücken mit Kurzhanteln\",
+  \"Beschreibung\":\"Mit geradem Rücken auf Schrägbank legen (45-60°) - Je größer der Winkel, desto mehr ist die vordere Schulter beteiligt,Die Arme bilden einen ca 40 Grad Winkel zum Oberkörper,Handgelenke stets über Ellenbogen,Füße auf den Boden spreizen\",
+  \"Durchführung\":\"Hanteln kontrolliert gleichzeitig nach oben drücken,Dabei die Ellenbogen nie ganz durchstrecken\",
+  \"Equipment\":\"Schrägbank,2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Brust,Mittlere Brust\",
+  \"Name\":\"Butterfly KH\",
+  \"Beschreibung\":\"Mit geradem Rücken auf die Bank legen,Die Arme bilden einen ca 40 Grad Winkel zum Oberkörper,Arme zur Seite ausstrecken - leichte Beugung im Ellenbogen stets beibehalten,Füße auf den Boden spreizen\",
+  \"Durchführung\":\"Arme kontrolliert von der Seite vor die Brust bringen - Beugung im Ellenbogen stets beibehalten,Die Hanteln sollen sich nicht berühren,Die Bewegung endet wenn die Hanteln über den Schultern sind,Beim Absenken der Hanteln endet die Bewegung wenn die Ellenbogen auf Körperlängse sind\",
+  \"Equipment\":\"Flachbank,2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Oberer Rücken\",
+  \"Name\":\"Upper Back Gerät\",
+  \"Beschreibung\":\"Sitzpolster so einstellen, dass Brustpolster auf Höhe des Brustbeins it,Griffe so umgreifen, dass die Hände in einer Linie mit den Ellenbogen sind,Deine Arme sollten auf Höhe der Schulter oder etwas tiefer sein\",
+  \"Durchführung\":\"Mit fixierten Schultern Hände nach hinten ziehen, bis Ellenbogen auf Körperlängsachse sind,Griffe wieder kontrolliert nach vorne bringen - dabei die Ellenbogen nie ganz durchstrecken\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Unterer Rücken\",
+  \"Name\":\"Low Row\",
+  \"Beschreibung\":\"Füße gegen die schräge Ablegefläche stellen,Griff umgreifen und auf der Bank so weit nach hinten rutschen, dass im Kniegelenk ein Winkel zwischen 90-160 Grad entsteht,Leichte Beugung im Ellenbogen beibehalten\",
+  \"Durchführung\":\"Oberkörper aufrichten und Rücken gerade halten,Unterer Rücken durchgestreckt oder leicht im Hohlkreuz,Griff kontrolliert nach hinten zur Unterbrust ziehen - am Ende der Bewegung Schulterblätter fest zusammen ziehen,Griff wieder kontrolliert nach vorne bringen\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Brust,Mittlere Brust\",
+  \"Name\":\"Überzüge KH\",
+  \"Beschreibung\":\"Gerader Rücken,Mit beiden Händen eine Kurzhantel im Diamantgriff nehmen,Leichte Beugung im Ellenbogen,Die Ellenbogen sind stets nach vorne Richtung Füße gespannt\",
+  \"Durchführung\":\"Arme kontrolliert nach vorne über den Kopf bringen - solange bis die Kurzhantel über deinem Kopf schwebt. Die Bewegung geschieht nur in der Schulter\",
+  \"Equipment\":\"Flachbank,1 Kurzhantel\",
+  \"Schwierigkeit\":\"Schwierig\"
+},
+{
+  \"Muskelgruppe\":\"Brust,Untere Brust\",
+  \"Name\":\"Low-to-High\",
+  \"Beschreibung\":\"Arme hängen vertikal nach unten,Schulterblätter sind fixiert,Unterarme mit KH ca 45 Grad gedreht und bleiben konstnant in diesem Winkel,Beine möglichst eng zusammenstellen\",
+  \"Durchführung\":\"Arme vor der Brust nach oben heben, bis Unterarme etwa parallel zum Boden sind,Diese Spannung kurz halten und dann wieder kontrolliert senken\",
+  \"Equipment\":\"Schrägbank,2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Schwierig\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Oberer Rücken\",
+  \"Name\":\"Rüdern vorgebeugt KH\",
+  \"Beschreibung\":\"Stabiler hüftbreiter Stand,Oberkörpervorneigung von ca 70-80 Grad,Rücken gerade,Unterarme bleiben immer vertikal\",
+  \"Durchführung\":\"Oberarme bis Körperlängsachse ziehen,Arm bis zur vollkommenen Streckung zurückbewegen\",
+  \"Equipment\":\"2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Schulter,Seitliche Schulter\",
+  \"Name\":\"Seitheben KH\",
+  \"Beschreibung\":\"Hüftbreiter aufrechter Stand, Leichte Beugung im Ellenbogen, Kurzhanteln in Neutralstellung zu Oberarm\",
+  \"Durchführung\":\"Rotationsbewegung in der Schulter,Arme nur so weit heben bis sie parallel zum Boden sind, Handgelenke stets über Ellenbogen halten\",
+  \"Equipment\":\"2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Oberer Rücken\",
+  \"Name\":\"T-Bar Rudern Gerät\",
+  \"Beschreibung\":\"Mit Oberkörper flach auf Polster legen und mit Beinen abstützen,Stange im Obergriff umgreifen und aus der Halterung heben\",
+  \"Durchführung\":\"Beim Ausatmen zur Körpermitte ziehen,Anschließend beim Einatmen Arme wieder senken - leichte Beugung im Ellenbogen lassen\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Oberer Rücken,Unterer Rücken\",
+  \"Name\":\"T-Bar Rudern\",
+  \"Beschreibung\":\"Stange zwischen deinen Beinen - schulterbreiter Stand,Enges Lat-Griffstück an der Abgrenzung zwischen Stange und Gewichtern, Beugung in den Knien - Oberkörper so weit wie möglich vorgebeugt,Stets gerader Rücken,Aufheben der Stange wie bei Kreuzheben\",
+  \"Durchführung\":\"Beim Ausatmen Griffstück zu den Bauchmuskeln ziehen - Hände dabei etwa handbreit vom Oberkörper entfernt,Beim Einatmen Stange absenken - leichte Beugung im Ellenbogen beibehalten\",
+  \"Equipment\":\"Langhantel,Griffstück\",
+  \"Schwierigkeit\":\"Schwierig\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Oberer Rücken,Unterer Rücken\",
+  \"Name\":\"Rudern vorgebeugt\",
+  \"Beschreibung\":\"Stabiler hüftbreiter Stand,Oberkörpervorneigung von ca 70-80 Grad,Rücken gerade,Unterarme bleiben immer vertikal\",
+  \"Durchführung\":\"Oberarme bis Körperlängsachse ziehen,Arm bis zur vollkommenen Streckung zurückbewegen\",
+  \"Equipment\":\"Langhantel\",
+  \"Schwierigkeit\":\"Schwierig\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Oberschenkel\",
+  \"Name\":\"Leg Press Gerät\",
+  \"Beschreibung\":\"Mit geradem Rücken vollständig anlehnen,Füße parallel in hüftbreitem Stand auf die Platte stellen - Füße bilden eine Linie mit Knien und Hüfte\",
+  \"Durchführung\":\"Seitliche Griffe umfassen und beim Ausatmen die Beine strecken - aber nicht ganz durchstrecken,Beim Einatmen die Beine kontrolliert beugen - Der Druck kommt von den Fersen\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Beinbizeps\",
+  \"Name\":\"Leg Curl Gerät\",
+  \"Beschreibung\":\"Mit geradem Rücken vollständig anlehnen,Fußpolster so einstellen, dass er zwischen Ferse und Wade sitzt,Seitlichen Griffe umfassen\",
+  \"Durchführung\":\"Fersen nach unten drücken und die Beine so weit wie möglich nach hinten bringen - Fußspitzen anziehen,Beim Einatmen langsm die Beine in Ausgangsstellung bringen - Knie nie ganz durchstrecken\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Po\",
+  \"Name\":\"Glute Machine\",
+  \"Beschreibung\":\"Polster so einstellen, dass er zwischen Ferse und Waden ist - bei manchen Geräten auch in Kniekehle,Haltegriffe festhalten und Oberkörper stabilisieren\",
+  \"Durchführung\":\"Fußspitzen anziehen und Bein strecken,Polster kontrolliert nach oben bringen - nicht mit Schwung arbeiten\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Hintere Schulter\",
+  \"Name\":\"Reverse Butterfly Gerät\",
+  \"Beschreibung\":\"Brust gegen Polster stützen,Rechter Winkel im Knie,Griffe umgreifen - dabei leichten Knick im Ellenbogen behalten,Hände sollten auf Höher der Schulter sein - wenn nicht: Sitzpolster umstellen,Ellbogen stets unter der Hand-Schulter-Linie\",
+  \"Durchführung\":\"Beim Ausatmen die Arme gestreckt so weit wie möglich nach hinten bewegen\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Brust,Mittlere Brust\",
+  \"Name\":\"Chest Press Gerät\",
+  \"Beschreibung\":\"Sitzpolster so einstellen, dass Griffe auf Höhe des Brustbeines sind,Mit geradem Rücken an Lehne anlehnen,Füße auf Boden spreizen\",
+  \"Durchführung\":\"Beim Ausatmen die Arme gleichzeitig und kontrolliert nach vorne strecken,Nicht mit dem Kopf \\"mitdrücken\\",Schultern, Ellenbogen und Hände in einer Ebene\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Bauch,Gerader Bauchmuskel\",
+  \"Name\":\"Abdominal Crunch Gerät\",
+  \"Beschreibung\":\"Füße unter die Polster stellen,Mit geradem Rücken anlehnen,Die Polster umfassen\",
+  \"Durchführung\":\"Bauchnabel fest nach inne ziehen und Spannung aufbauen:Beim Ausatmen Oberkörper nach vorne beugen(Wirbel für Wirbel - dh. Das Brustbein zum Becken führen) - beim Einatmen wieder aufrollen\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Brust,Mittlere Brust\",
+  \"Name\":\"Chest Press\",
+  \"Beschreibung\":\"Mit geradem Rücken vollständig auf die Bank legen - Langhantel sollte etwa auf Augenhöhe sein,Sicherer Stand mit gespreizten Beinen,Schultern fixiert\",
+  \"Durchführung\":\"Stange so greifen, dass deine Hände über den Ellenbogen sind,Mit geraden Handgelenken die Stange aus der Halterung heben,Langhantel etwa auf Nippelhöhe absenken\",
+  \"Equipment\":\"Flachbank,Langhantel\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Oberer Rücken,Unterer Rücken\",
+  \"Name\":\"Einarmiges Rudern KH\",
+  \"Beschreibung\":\"Mit einem Knie auf der Bank abstützen - mit gleichseitigem Arm ebenfalls abstützen,Zweites Bein abspreizen,Rücken stets gerade und unter Spannung halten\",
+  \"Durchführung\":\"Mit geradem Rücken und fixierten Schultern eine Kurzhantel vom Boden in gerader Linie aufheben - Stopp wenn Ellbogen auf Körperlängsachse\",
+  \"Equipment\":\"Flachbank,Kurzhantel\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
+  \"Name\":\"Schulterdrücken KH\",
+  \"Beschreibung\":\"Arme stets vor dem Körper,Hantel über den Ellenbogen - Unterarme immer vertikal\",
+  \"Durchführung\":\"Kontrolliert hochdrücken,Beim Absenken nicht zu tief senken - Oberarme nur etwas tiefer als Schultergelenk\",
+  \"Equipment\":\"2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Oberer Rücken\",
+  \"Name\":\"Latissimus Pulldown\",
+  \"Beschreibung\":\"Polster so einstellen, dass Oberschenkel gut fixiert sind,Stange so umgreifen, dass Hände über den Ellenbogen sind\",
+  \"Durchführung\":\"Beim Ausatmen die Stange kontrolliert vor den Kopf ziehen, den Rücken dabei stets gerade halten, Ellbogen stets vor Körperlängsachse halten\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Unterer Rücken\",
+  \"Name\":\"Hyperextensions\",
+  \"Beschreibung\":\"So in das Gerät stellen, dass Oberschenkel fixiert sind, der Oberkörper jedoch frei beweglich bleibt,Körper bildet eine Linie - Blick nach vorne gerichtet - Arme vor dem Körper verschränkt\",
+  \"Durchführung\":\"Oberkörper so weit Richtung Boden senken, bis ein 90 Grad Winkel in den Beinen entsteht,Kontrolliert den Körper wieder aufrichten bis Körper wieder eine Linie bildet\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Bauch,Gerader Bauchmuskel\",
+  \"Name\":\"Leg Lever\",
+  \"Beschreibung\":\"Mit geradem Rücken hinlegen,Gegengewicht in de Hände nehmen und mit ausgestreckten Armen hinter dem Kopf halten oder Bankende mit den Händen umgreifen\",
+  \"Durchführung\":\"Bauch stets unter Spannung halten und ausgestreckte Beine kontrolliert nach oben bringen bis zum 90 Grad Winkel mit Oberkörper,Beine wieder zum Boden bewegen, dabei den Boden nicht berühhren\",
+  \"Equipment\":\"Matte\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Oberschenkel\",
+  \"Name\":\"Squats\",
+  \"Beschreibung\":\"Schulterbreit unter die Langhantelstange stellen und diese etwa schulterbreit umgreifen, so dass die Arme in etwa auf Höh der Ellenbogen sind,Stange auf die Nackenmuskulatur oder die hintere Schultermuskulatur legen,Mit geradem Rücken und leichter Hohlkreuzstellung die Stange ausheben,Blick nach vorne gerichtet - Rücken gerade - Bauchmuskeln angespannt\",
+  \"Durchführung\":\"Kontrolliert die Beine beugen - dabei wird der Oberkörper nach vorne gebeugt und der Po nach hinten geschoben,Knie müssen stets in die gleiche Richtung zeigen wie Fußspitzen - Knie müssen hinter bis maximal auf gleicher Höhe mit den Fußspitzen sein,Wenn die Oberschenkel etwa parallel (kann stark variieren) zum Boden sind, kontrolliert wieder aufrichten\",
+  \"Equipment\":\"Langhantel\",
+  \"Schwierigkeit\":\"Schwierig\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Beinbizeps,Oberschenkel\",
+  \"Name\":\"Lunges\",
+  \"Beschreibung\":\"Vom aufrechten schulterbreiten Stand einen großen Schritt nach vorne machen,Die Hüfte gerade halten und Balance halten\",
+  \"Durchführung\":\"Hüfte absenken bis das hintere Knie knapp über dem Boden ist,Beim Einatmen wieder in die Ausgangslage zurückkehren,Das Knie des vorderen Fußes nie über die Zehenspitzen zeigen lassen\",
+  \"Equipment\":\"evtl. Zusatzgewicht\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Unterer Rücken,Beine\",
+  \"Name\":\"Kreuzheben\",
+  \"Beschreibung\":\"Schulterbreit vor die Langhantel stellen und etwas breiter als schulterbreit greifen, mindestesn jedoch so breit, dass bei der Ausführung der Übung die Ellenbogen nicht an die Knie stoßen,In die Hocke gehen, Rücken dabei stabil und leicht im Hohlkreuz,Bauchmuskeln sind angespannt - Blick starr nach vorne gerichtet,Der ganze Körper muss unter Spannung stehen und gehalten werden - Zu keinem Zeitpunkt darf der Rücken rund sein!\",
+  \"Durchführung\":\"Beim Aufrichten die Langhantel möglichst nahe am Körper entlang führe,Die Kraft kommt aus den Beinen und dem unteren Rücken,Langsam, gleichmäßig und ohne Schwung die Beine strecken und gleichzeitig den Rücken aufrichten\",
+  \"Equipment\":\"Langhantel\",
+  \"Schwierigkeit\":\"Schwierig\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Waden\",
+  \"Name\":\"Wadenheben\",
+  \"Beschreibung\":\"Suche eine beliebige Erhögung (Brett,Stepper,Gewichtsscheiben etc.) und nimm in jede Hand eine Kurzhantel oder eine Gewichtsscheibe,Mit den Fußballen auf das Brett stellen,Fersen in der Luft hängen lassen\",
+  \"Durchführung\":\"Beim Ausatmen die Fersen abdrücken und die Waden bis zur maximal möglichen Streckung anheben\",
+  \"Equipment\":\"evtl. Zusatzgewicht\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Bauch,Gerader Bauchmuskel\",
+  \"Name\":\"Beinheben hängend am Gerät\",
+  \"Beschreibung\":\"Vollständig anlehnen,Unterarme liegen auf den Armpolstern - die Griffe umgreifen,Beine fast ausgestreckt - nur leichte Beugung im Kniegelenk\",
+  \"Durchführung\":\"Beim Ausatmen die Beine kontrolliert so weit wie möglich nach oben bewegen,Ohne Schwung arbeiten\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
+  \"Name\":\"Schulterdrücken LH\",
+  \"Beschreibung\":\"Schulterbreiter Stand,Langhantel etwas mehr als schulterbreit greifen,Handgelenke stets gerade und über Ellenbogen\",
+  \"Durchführung\":\"Kontrolliert hochdrücken,Beim Absenken nicht zu tief senken - Oberarme nur etwas tiefer als Schultergelenk\",
+  \"Equipment\":\"Langhantel\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
+  \"Name\":\"Schulterdrücken Gerät\",
+  \"Beschreibung\":\"Vollständig anlehnen,Handgelenke über den Ellenbogen,Ellenbogen stets vor dem Körper halten\",
+  \"Durchführung\":\"Kontrolliert hochdrücken,Beim Absenken nicht zu tief senken - Oberarme nur etwas tiefer als Schultergelenk\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Schultern,Seitliche Schulter\",
+  \"Name\":\"Seitheben Gerät\",
+  \"Beschreibung\":\"Vollständig anlehnen,Schultern fixiert - Oberarme am Körper,Polster etwas über Ellenbogen\",
+  \"Durchführung\":\"Mit fixierten Schultern die Oberarme nach oben bewegen - bis Oberarme etwa parallel zum Boden\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
+  \"Name\":\"Frontheben\",
+  \"Beschreibung\":\"Gerader aufrechter Stand - Blick nach vorne gerichtet,Leichte Beugung im Ellenbogen,Kurzhanteln im Obergriff nehmen und leicht nach innen drehen\",
+  \"Durchführung\":\"Hantel von den Oberschenkeln vor den Körper bis Brusthöhe heben - Schultern dabei fixiert halten\",
+  \"Equipment\":\"2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
+  \"Name\":\"Frontheben Seilzug\",
+  \"Beschreibung\":\"Stange am tiefen Block montieren,Mit dem Rücken zum Block stellen und Stange zwischen den Beinen durchführen,Stange im Obergriff greifen\",
+  \"Durchführung\":\"Stange von den Beinen weg mit leichter Beugung im Ellenbogen nach vorne bis auf Brusthöhe heben - Schultern dabei stets fixiert halten\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Schultern,Hintere Schulter\",
+  \"Name\":\"Seitheben vorgebeugt\",
+  \"Beschreibung\":\"Oberkörper mit geradem Rücken nach vorne beugen,Hanteln parallel zum Oberkörper greifen - leichte Beugung im Ellenbogen\",
+  \"Durchführung\":\"Mit fixierten Schultern die Oberarme nach oben bewegen - bis Oberarme etwa parallel zum Boden\",
+  \"Equipment\":\"2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Schultern,Hintere Schulter\",
+  \"Name\":\"Reverse Butterfly Seilzug\",
+  \"Beschreibung\":\"Griffe auf den hohen Blöcken einstellen und zwischen beide Türme stellen,Überkreuz greifen und 1-2 Schritte nach hinten gehen,Hände gerade vor dem Körper halten\",
+  \"Durchführung\":\"Mit geradem Rücken und fixierten Schultern die Arme nach hinten bewegen - dabei stets die gleiche leichte Beugung im Ellenbogen beibehalten\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Oberer Rücken,Nacken\",
+  \"Name\":\"Kinnheben SZ\",
+  \"Beschreibung\":\"Hüftbreiter Stand,SZ-Stange mit einer Handbreite Abstand im Obergriff nehmen,\",
+  \"Durchführung\":\"SZ-Stange senkrecht und eng am Körper nach oben über die Ellenbogen bis zum Kinn heben\",
+  \"Equipment\":\"SZ-Stange\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Rücken,Oberer Rücken,Nacken\",
+  \"Name\":\"Shrugs\",
+  \"Beschreibung\":\"Schulterbreiter Stand,2 Kurzhanteln im Neutralgriff neben dem Körper\",
+  \"Durchführung\":\"Schultern zusammenziehen und und Arme ausgestreckt nach oben ziehen\",
+  \"Equipment\":\"2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Arme,Bizeps\",
+  \"Name\":\"Bizepscurl SZ\",
+  \"Beschreibung\":\"Sz Stange schulterbreit im Untergriff greifen und mit geradem Rücken aufheben\",
+  \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Stange hocheben bis zum Punkt der maximalen Kontraktion,Ellenbogen nicht mitbewegen\",
+  \"Equipment\":\"SZ-Stange\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Arme,Bizeps\",
+  \"Name\":\"Bizepscurl LH\",
+  \"Beschreibung\":\"Langhantel schulterbreit im Untergriff greifen und mit geradem Rücken aufheben\",
+  \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Stange hocheben bis zum Punkt der maximalen Kontraktion,Ellenbogen nicht mitbewegen\",
+  \"Equipment\":\"Langhantel\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Arme,Bizeps\",
+  \"Name\":\"Bizepscurl KH\",
+  \"Beschreibung\":\"Kurzhanteln schulterbreit im Untergriff greifen und mit geradem Rücken aufheben\",
+  \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Kurhanteln hocheben bis zum Punkt der maximalen Kontraktion,Ellenbogen nicht mitbewegen\",
+  \"Equipment\":\"2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Arme,Bizeps\",
+  \"Name\":\"Hammercurls\",
+  \"Beschreibung\":\"Kurzhanteln schulterbreit im Hammergriff greifen und mit geradem Rücken aufheben\",
+  \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Kurhanteln hocheben bis zum Punkt der maximalen Kontraktion,Ellenbogen nicht mitbewegen\",
+  \"Equipment\":\"2 Kurzhanteln\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Arme,Bizeps\",
+  \"Name\":\"Bizepscurl Gerät\",
+  \"Beschreibung\":\"Vollständig anlehnen,Oberarme in Polster legen\",
+  \"Durchführung\":\"Kontrolliert die Arme heben - nicht reißen\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Arme,Trizeps\",
+  \"Name\":\"Kickback KH\",
+  \"Beschreibung\":\"Oberkörper vorgebeugt, Oberarme am Körper entlang - etwa faustbreit vom Oberkörper entfernt,Unterarme vertikal - Hantel in Neutralposition\",
+  \"Durchführung\":\"Arme nach hinten ausstrecken - Ellenbogen stets gleich halten\",
+  \"Equipment\":\"Kurzhantel\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Arme,Trizeps\",
+  \"Name\":\"Frenchpress SZ\",
+  \"Beschreibung\":\"Mit geradem Rücken auf Flachbank legen,SZ-Stange eng im Obergriff nehmen - so, dass Daumen zum Körper zeigen,Oberarme gerade nach oben strecken\",
+  \"Durchführung\":\"Oberarme bleiben stets an der gleichen Position,Von ausgestreckter Position Unterarme Richtung Kopf senken,Wieder bis zur vollständigen Streckung drücken\",
+  \"Equipment\":\"SZ-Stange,Flachbank\",
+  \"Schwierigkeit\":\"Mittel\"
+},
+{
+  \"Muskelgruppe\":\"Trizeps\",
+  \"Name\":\"Trizepsdrücken Gerät\",
+  \"Beschreibung\":\"Vollständig anlehnen,Oberarme in Polster legen\",
+  \"Durchführung\":\"Kontrolliert die Arme ausstrecken - nicht reißen\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Bauch,Seitliche Bauchmuskeln,Gerader Bauchmuskel\",
+  \"Name\":\"Rotary Twist Gerät\",
+  \"Beschreibung\":\"Füße unter die Polster stellen,Mit geradem Rücken anlehnen,Die Polster umfassen\",
+  \"Durchführung\":\"Bauchnabel fest nach inne ziehen und Spannung aufbauen,Beim Ausatmen Oberkörper drehen,beim Einatmen wieder zurückdrehen - anschließend die gegenseitige Richtung\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Bauch,Seitliche Bauchmuskeln,Gerader Bauchmuskel\",
+  \"Name\":\"Criss Cross\",
+  \"Beschreibung\":\"Mit geradem Rücken auf die Matte legen,Oberschenkel zeigen vertikal nach oben - 90 Grad Winkel in den Knien,Arme zeigen vertikal nach oben\",
+  \"Durchführung\":\"Linker Arm und rechtes Bein gleichzeitig zu Boden senken und wieder in Ausgangsstellung bewegen,Auf der anderen Seite wiederholen\",
+  \"Equipment\":\"Matte\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Bauch,Gerader Bauchmuskel\",
+  \"Name\":\"Crunch\",
+  \"Beschreibung\":\"Mit geradem Rücken auf die Matte legen,Die Füße so aufstellen, dass in etwa ein 90 Grad Winkel in den Knien entsteht,Hände vor der Brust verschränken\",
+  \"Durchführung\":\"Langsam Wirbel für Wirbel aufrollen,Wieder Wirbel für Wirbel absenken\",
+  \"Equipment\":\"Matte\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Oberschenkel\",
+  \"Name\":\"Beinstrecker Gerät\",
+  \"Beschreibung\":\"Vollständig anlehen,Griffe umgreifen,Polster so einstellen, dass er zwischen Ferse und Waden sitzt,Fußteil so hoch wie möglich stellen\",
+  \"Durchführung\":\"Beim Austmen Fußteil so weit wie möglich nach hinten bewegen - Fußspitzen zeigen nach oben\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Waden\",
+  \"Name\":\"Wadenheben Gerät\",
+  \"Beschreibung\":\"Vollständig anlehnen,Griffe umgreifen,Füße auf das Fußteil stellen\",
+  \"Durchführung\":\"Mit den Fußballen und Zehen das Fußteil so weit wie möglich nach unten drücken\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Abduktor\",
+  \"Name\":\"Abduktor\",
+  \"Beschreibung\":\"Vollständig anlehnen,Polster so einstellen, dass beide Beine parallel und gerade nach vorne zeigen\",
+  \"Durchführung\":\"Beim Ausatmen die Beine bis etwa 50 Grad nach außen drehen,Kontrolliert wieder in Ausgangsstellung zurück\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Adduktor\",
+  \"Name\":\"Adduktor\",
+  \"Beschreibung\":\"Vollständig anlehnen,Polster so einstellen, dass beide Beine etwa im 50 Grad Winkel nach außen zeigen\",
+  \"Durchführung\":\"Beim Ausatmen die Beine nach innen drehen,Beim Ausatmen wieder in die Ausgangsstellung zurückkehren\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Oberschenkel\",
+  \"Name\":\"Beinpresse negativ\",
+  \"Beschreibung\":\"Vollständig anlehnen,Beine etwas mehr als schulterbreit auf das Fußteil stellen,Griffe umgreifen\",
+  \"Durchführung\":\"Beim Ausatmen die Beine ausstrecken - nicht ganz durchstrecken,Griffe nach unten drücken,Beim Einatmen die Beine beugen und die Knie so weit wie möglich zum Oberkörper führen\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Beine,Oberschenkel\",
+  \"Name\":\"Beinpresse liegend\",
+  \"Beschreibung\":\"Vollständig anlehnen,Beine etwas mehr als schulterbreit auf das Fußteil stellen,Griffe umgreifen\",
+  \"Durchführung\":\"Beim Ausatmen Beine ausstrecken - nicht ganz durchstrecken,Beim Einatmen die Beine kontrolliert beugen\",
+  \"Equipment\":\"Fitnessstudio\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Stabilisation,Untere Rückenmuskulatur Hüftstrecker\",
+  \"Name\":\"Rückenstabilisation\",
+  \"Beschreibung\":\"Auf Händen und Knien am Boden/Matte/Handtuch abstützen (=Bankstellung). Arme und Beine dabei etwa schulterbreit und im 90 Grad Winkel zum Oberkörper. Auf geraden und stabilen Rücken achten.\",
+  \"Durchführung\":\"Winkel im Knie beibehalten und abwechselnd ein Bein anheben bis Oberschenkel Linie sind und wieder in Grundstellung zurückkehren -> Beinwechsel.\",
+  \"Equipment\":\"Mappe\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Stabilisation,Gerade Bauchmuskulatur, unten Hüftbeuger\",
+  \"Name\":\"Hüftheber\",
+  \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme parallel zum Körper als Stütze ablegen. 90 Grad Winkel in den Knien halten (fortgeschritten -> Beine ausstrecken).\",
+  \"Durchführung\":\"Hüfte vom Boden anheben und wieder absenken; dabei stets gesamten Rumpf unter Spannung halten.\",
+  \"Equipment\":\"Mappe\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Stabilisation,Gerad Bauchmuskulatur, unten Hüftbeuger, Sietliche Bauchmuskulatur\",
+  \"Name\":\"Beinpendel\",
+  \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme im 90 Grad Winkel zum Oberkörper als Stütze ablegen und Beine ausstrecken (90 Grad im Hüftgelenk) Durchführung.\",
+  \"Durchführung\":\"Beine zuerst langsam zu einer Seite – dann zur Grundstellung – und zur anderen Seite abwinkeln (bis ca. 45 Grad Winkel zwischen Boden und Grundstellung).\",
+  \"Equipment\":\"Mappe\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Stabilisation, Laterale Kette, Rumpfmuskulatur\",
+  \"Name\":\"Seitliches Hüftheben\",
+  \"Beschreibung\":\"Seitstützposition (side plank) einnehmen (am Unterarm abstützen).\",
+  \"Durchführung\":\"Becken absenken und wieder anheben.\",
+  \"Equipment\":\"Mappe\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Stabilisation, Gesamte ventrale Kette\",
+  \"Name\":\"Trockenschwimmen\",
+  \"Beschreibung\":\"Bäuchlings auf Boden/Matte/Handtuch hinlegen. Hohlkreuz einnehmen und leichte Gewichte nehmen (Hanteln, Wasserflasche, Handtuch,...). Beine gestreckt und geschlossen vom Körper abheben; Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten\",
+  \"Durchführung\":\"Arme ausstrecken und Beine spreizen\",
+  \"Equipment\":\"Mappe\",
+  \"Schwierigkeit\":\"Einfach\"
+},
+{
+  \"Muskelgruppe\":\"Stabilisation, Untere Rückenmuskulatur\",
+  \"Name\":\"Rückenstrecker am Gymnastikball\",
+  \"Beschreibung\":\"Bäuchlings auf eine Gymnastikball legen, Knie sind am Boden und Beine angewinkelt. Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten.\",
+  \"Durchführung\":\"Oberkörper absenken und wieder anheben; Arme dabei stets im gleichen Winkel halten.\",
+  \"Equipment\":\"Mappe\",
+  \"Schwierigkeit\":\"Einfach\"
+}
+]
+  </string>
+
 
 </resources>

@@ -54,4 +54,16 @@ public class FiplyContract {
         public static final String COLUMN_SONGTITLE = "songtitle";
         public static final String COLUMN_SONGPATH = "songpath";
     }
+
+
+    public static final class StatisticEntry implements BaseColumns {
+        public static final String TABLE_NAME = "statistics";
+        public static final String COLUMN_ROWID = "_id";
+        public static final String COLUMN_DATE = "timestamp";
+        public static final String COLUMN_MOOD = "mood";
+        public static final String COLUMN_LIFTEDWEIGHT = "liftedweight";
+    }
+
+
+
 }

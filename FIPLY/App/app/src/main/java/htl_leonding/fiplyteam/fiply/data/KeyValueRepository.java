@@ -8,7 +8,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 
+import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.KeyValueEntry;
 
 public class KeyValueRepository {
@@ -159,8 +162,42 @@ public class KeyValueRepository {
 
 
         }
-        updateKeyValue("filterName","");
-        updateKeyValue("filterMuskelGruppe","");
 
+
+        if(getKeyValue("filterName").getCount()==0){
+            insertKeyValue("filterName","");
+        } else {
+            updateKeyValue("filterName","");
+        }
+
+        if(getKeyValue("filterMuskelGruppe").getCount()==0){
+            insertKeyValue("filterMuskelGruppe","");
+        } else {
+            updateKeyValue("filterMuskelGruppe","");
+        }
+
+        if(getKeyValue("greetings").getCount()==0) {
+            insertKeyValue("greetings","");
+        }
+        //getGreeting();
+
+        Log.wtf("kvr test:", getKeyValue("filterName").getString(0));
+        Log.wtf("kvr test:", getKeyValue("filterName").getString(1));
+
+    }
+
+    //returns the greeting corresponding to the time of day
+    public String getGreeting() throws SQLException {
+        if(Calendar.getInstance().getTime().getTime() < 1000)
+            updateKeyValue("greeting", repoContext.getResources().getStringArray(R.array.greetingArray)[0]);
+        else if(Calendar.getInstance().getTime().getTime() < 2000)
+            updateKeyValue("greeting", repoContext.getResources().getStringArray(R.array.greetingArray)[1]);
+        else if(Calendar.getInstance().getTime().getTime() < 3000)
+            updateKeyValue("greeting", repoContext.getResources().getStringArray(R.array.greetingArray)[2]);
+        else if(Calendar.getInstance().getTime().getTime() < 4000)
+            updateKeyValue("greeting", repoContext.getResources().getStringArray(R.array.greetingArray)[3]);
+        else
+            updateKeyValue("greeting", "Gute Nacht");
+        return null;
     }
 }

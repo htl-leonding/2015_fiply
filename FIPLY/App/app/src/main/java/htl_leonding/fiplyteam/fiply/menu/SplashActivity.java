@@ -27,6 +27,7 @@ import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
 import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
+import htl_leonding.fiplyteam.fiply.data.StatisticRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 import htl_leonding.fiplyteam.fiply.music.ReadMusic;
 import htl_leonding.fiplyteam.fiply.trainingsplan.GenerateAllgemein;
@@ -41,6 +42,7 @@ public class SplashActivity extends Activity {
     UebungenRepository rep;
     KeyValueRepository kvr;
     PlaylistSongsRepository psr;
+    StatisticRepository str;
     InstruktionenRepository instRep;
     PhasenRepository phasenRep;
     List<Trainingsphase> trainingsphaseList;
@@ -52,10 +54,12 @@ public class SplashActivity extends Activity {
 
         UebungenRepository.setContext(this);
         KeyValueRepository.setContext(this);
+        StatisticRepository.setContext(this);
         PlaylistSongsRepository.setContext(this);
         rep = UebungenRepository.getInstance();
         kvr = KeyValueRepository.getInstance();
         psr = PlaylistSongsRepository.getInstance();
+        str = StatisticRepository.getInstance();
         rm = ReadMusic.getInstance();
         InstruktionenRepository.setContext(this);
         PhasenRepository.setContext(this);
