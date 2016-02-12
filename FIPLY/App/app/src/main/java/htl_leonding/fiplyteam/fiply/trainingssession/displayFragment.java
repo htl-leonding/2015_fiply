@@ -58,4 +58,18 @@ public class displayFragment {
         fragmentTransaction.replace(R.id.fraPlace, display);
         fragmentTransaction.commit();
     }
+
+    public static void displayTrainingsession(Fragment display, FragmentManager fManager) {
+        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fraPlace, display);
+        fragmentTransaction.commit();
+    }
+
+    public static void displayDialogChooseDay(Fragment display, FragmentManager fManager) {
+        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fraPlace, display);
+        fragmentTransaction.commit();
+    }
 }

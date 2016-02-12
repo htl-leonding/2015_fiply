@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.music.FPlaylist;
+import htl_leonding.fiplyteam.fiply.statistic.FStatistic;
 import htl_leonding.fiplyteam.fiply.trainingsplan.FTrainingsplan;
 import htl_leonding.fiplyteam.fiply.trainingssession.FSettings;
 import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingssession;
@@ -23,6 +24,7 @@ public class FMain extends Fragment {
     Button startUse;
     Button startPlaylists;
     Button startTrainplan;
+    Button startStatistic;
 
     /**
      * Lädt das fragment_main in das FrameLayout der MainActivity
@@ -53,6 +55,7 @@ public class FMain extends Fragment {
         startUse = (Button) getActivity().findViewById(R.id.btStartEU);
         startPlaylists = (Button) getActivity().findViewById(R.id.btStartPlaylist);
         startTrainplan = (Button) getActivity().findViewById(R.id.btStartTrainView);
+        startStatistic = (Button) getActivity().findViewById(R.id.btStartStatistic);
 
         /**
          * Bei Drücken des Uebungskatalog Buttons wird eine FragmentTransaction durchgeführt,
@@ -111,6 +114,16 @@ public class FMain extends Fragment {
             public void onClick(View v) {
                 FTrainingsplan fPlaylist = new FTrainingsplan();
                 displayView(fPlaylist);
+            }
+        });
+
+
+        startStatistic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FStatistic fStatistic = new FStatistic();
+                displayView(fStatistic);
+
             }
         });
     }

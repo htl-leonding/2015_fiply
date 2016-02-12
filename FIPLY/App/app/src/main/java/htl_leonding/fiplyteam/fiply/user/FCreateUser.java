@@ -4,6 +4,7 @@ package htl_leonding.fiplyteam.fiply.user;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import com.facebook.FacebookSdk;
+import com.facebook.login.widget.LoginButton;
 
 import java.sql.SQLException;
 
@@ -22,6 +25,7 @@ public class FCreateUser extends Fragment {
     ImageView imgGender;
     ImageView imgName;
     EditText etName;
+    LoginButton fbLoginButton;
     Spinner spGender;
     ArrayAdapter<CharSequence> genderAdapter;
     KeyValueRepository kvr;
@@ -30,16 +34,19 @@ public class FCreateUser extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getContext());
         return inflater.inflate(R.layout.fragment_createuser, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
         kvr = KeyValueRepository.getInstance();
         etName = (EditText) getActivity().findViewById(R.id.etName);
         spGender = (Spinner) getActivity().findViewById(R.id.spGender);
         imgName = (ImageView) getActivity().findViewById(R.id.imgName);
         imgGender = (ImageView) getActivity().findViewById(R.id.imgGender);
+        fbLoginButton = (LoginButton) getActivity().findViewById(R.id.fbLoginButton);
 
         init();
 

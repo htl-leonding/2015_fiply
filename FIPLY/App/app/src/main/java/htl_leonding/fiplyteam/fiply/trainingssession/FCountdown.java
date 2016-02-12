@@ -70,6 +70,9 @@ public class FCountdown extends Fragment {
             public void onFinish() {
                 etTimer.setText("" + 30);
                 Toast.makeText(getActivity(), "Tolle Arbeit!", Toast.LENGTH_SHORT).show();
+                btTimerStart.setText(R.string.timerContinue);
+                setIsTimerRunning(false);
+                cdt.cancel();
             }
         };
         cdt.start();

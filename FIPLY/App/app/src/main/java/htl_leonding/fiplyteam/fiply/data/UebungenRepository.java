@@ -13,6 +13,8 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.security.Key;
 import java.sql.SQLException;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
@@ -217,17 +219,32 @@ public class UebungenRepository extends Service {
     }
 
     public Cursor getFilteredUebungen() throws SQLException {
-        return db.query(UebungenEntry.TABLE_NAME, new String[]{
-                        UebungenEntry.COLUMN_ROWID,
-                        UebungenEntry.COLUMN_NAME,
-                        UebungenEntry.COLUMN_BESCHREIBUNG,
-                        UebungenEntry.COLUMN_ANLEITUNG,
-                        UebungenEntry.COLUMN_MUSKELGRUPPE,
-                        UebungenEntry.COLUMN_SCHWIERIGKEIT,
-                        UebungenEntry.COLUMN_VIDEO,
-                        UebungenEntry.COLUMN_EQUIPMENT},
-                UebungenEntry.COLUMN_NAME + " like " + "'%" + KeyValueRepository.getInstance().getKeyValue("filterName").getString(1) + "%'" + " AND " + UebungenEntry.COLUMN_MUSKELGRUPPE + " like '%" + KeyValueRepository.getInstance().getKeyValue("filterMuskelGruppe").getString(1)+"%'" ,
-                null, null, null, UebungenEntry.COLUMN_NAME + " ASC", null);
+        KeyValueRepository kvr = KeyValueRepository.getInstance();
+
+        String whereClause = "";
+
+        if(!kvr.getKeyValue("filterName").getString(1).equals("")) {
+            whereClause += UebungenEntry.COLUMN_NAME + " LIKE '%" + kvr.getKeyValue("filterName").getString(1) + "%'";
+            if(!kvr.getKeyValue("filterMuskelGruppe").getString(1).equals("")) {
+                whereClause += " AND ";
+            }
+
+        }
+
+        if(!kvr.getKeyValue("filterMuskelGruppe").getString(1).equals("")) {
+            whereClause += UebungenEntry.COLUMN_MUSKELGRUPPE + " LIKE '%" + kvr.getKeyValue("filterMuskelGruppe").getString(1) + "%'";
+        }
+
+         return db.query(UebungenEntry.TABLE_NAME, new String[]{
+                            UebungenEntry.COLUMN_ROWID,
+                            UebungenEntry.COLUMN_NAME,
+                            UebungenEntry.COLUMN_BESCHREIBUNG,
+                            UebungenEntry.COLUMN_ANLEITUNG,
+                            UebungenEntry.COLUMN_MUSKELGRUPPE,
+                            UebungenEntry.COLUMN_SCHWIERIGKEIT,
+                            UebungenEntry.COLUMN_VIDEO,
+                            UebungenEntry.COLUMN_EQUIPMENT}, whereClause ,null, null, null, UebungenEntry.COLUMN_NAME + " ASC", null);
+
     }
 
     /**

@@ -80,11 +80,7 @@ public class FSettings extends Fragment {
                     .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
             AlertDialog dialog = builder.create();
             dialog.show();
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            Fragment fragment = new FMain();
-            fragmentTransaction.replace(R.id.fraPlace, fragment);
-            fragmentTransaction.commit();
+            displayFragment.displayMainMenu(new FMain(), getFragmentManager());
             onDestroy();
         }
 
@@ -139,13 +135,9 @@ public class FSettings extends Fragment {
                 }
                 args.putString("phase", rowid);
 
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.addToBackStack(null);
                 Fragment fragment = new FTrainingssession();
                 fragment.setArguments(args);
-                fragmentTransaction.replace(R.id.fraPlace, fragment);
-                fragmentTransaction.commit();
+                displayFragment.displayTrainingsession(fragment, getFragmentManager());
             }
         });
 
