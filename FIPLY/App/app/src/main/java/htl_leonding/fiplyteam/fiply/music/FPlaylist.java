@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class FPlaylist extends Fragment {
     ArrayList<HashMap<String, String>> songs, checkedSongs;
     Boolean listPlaylistMode;
     String aktListName = "";
+    TextView tvAbovePlaylistManagement;
 
     ListView lvSongs;
     LinearLayout linearLayout;
@@ -51,6 +53,7 @@ public class FPlaylist extends Fragment {
         lvSongs = (ListView) getActivity().findViewById(R.id.lvPlSongs);
         btBack = (Button) getActivity().findViewById(R.id.btPlBack);
         etName = (EditText) getActivity().findViewById(R.id.etPlName);
+        tvAbovePlaylistManagement = (TextView) getActivity().findViewById(R.id.tvAbovePlaylistManagement);
         btnSave = (Button) getActivity().findViewById(R.id.btnPlaylistSave);
         btnSelectAll = (Button) getActivity().findViewById(R.id.btnPlaylistSelectAll);
         btnSelectNone = (Button) getActivity().findViewById(R.id.btnPlaylistSelectNone);
@@ -70,8 +73,9 @@ public class FPlaylist extends Fragment {
                     refreshSongStringLists();
                     linearLayout.setVisibility(View.VISIBLE);
                     etName.setVisibility(View.VISIBLE);
-                    aktListName = psrep.getPlaylists().get(position);
                     etName.setText(aktListName);
+                    aktListName = psrep.getPlaylists().get(position);
+                    tvAbovePlaylistManagement.setText(R.string.AboveSongManagement);
 
                     lvSongs.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.music_item_checkable, songTitleStrings));
                     lvSongs.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -164,6 +168,13 @@ public class FPlaylist extends Fragment {
 
     public void setUpPlaylistAdapter() {
         songs = new ArrayList<>(psrep.getByPlaylistName("All"));
+        if(songs.isEmpty())
+        {
+            tvAbovePlaylistManagement.setText(R.string.NoSongsFound);
+        }
+        else {
+            tvAbovePlaylistManagement.setText(R.string.AbovePlaylistManagement);
+        }
         checkedSongs = new ArrayList<>();
         songTitleStrings = new LinkedList<>();
         songPathStrings = new LinkedList<>();

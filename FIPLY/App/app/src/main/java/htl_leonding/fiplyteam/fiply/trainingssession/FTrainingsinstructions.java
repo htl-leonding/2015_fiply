@@ -149,6 +149,7 @@ public class FTrainingsinstructions extends Fragment {
             public void onClick(View v) {
                 FFeedback fFeedback = new FFeedback();
                 fFeedback.setArguments(getArguments());
+                fFeedback.setArguments(getArguments());
                 displayFragment.displayTSFeedback(fFeedback, getFragmentManager());
             }
         });
@@ -185,7 +186,7 @@ public class FTrainingsinstructions extends Fragment {
         tvUebungAnleitung.setText(getAktUebung().getString(3));
         tvUebungMuskelgruppe.setText(getAktUebung().getString(4));
         tvUebungSchwierigkeit.setText(getAktUebung().getString(5));
-        tvUebungGewicht.setText(getArguments().getInt("gewicht" + ueId) + " kg");
+        tvUebungGewicht.setText(getArguments().getDouble("gewicht" + ueId) + " kg");
         setVideoLink(getAktUebung().getString(6));
         tvUebungEquipment.setText(getAktUebung().getString(7));
     }

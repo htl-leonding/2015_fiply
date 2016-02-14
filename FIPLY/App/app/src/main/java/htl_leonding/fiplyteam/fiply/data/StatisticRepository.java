@@ -14,9 +14,6 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract.StatisticEntry;
 import htl_leonding.fiplyteam.fiply.statistic.MoodTime;
 import htl_leonding.fiplyteam.fiply.statistic.WeightLifted;
 
-/**
- * Created by Gerald on 12/02/2016.
- */
 public class StatisticRepository {
     private static Context repoContext;
     private static StatisticRepository instance = null;
@@ -119,8 +116,6 @@ public class StatisticRepository {
         insertDataPointWithDate("150306", 5, 60);
         insertDataPointWithDate("150309", 4, 120);
         insertDataPointWithDate("150312", 1, 140);
-
-
     }
 
     public void deleteAllDataPoints() {

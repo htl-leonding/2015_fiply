@@ -680,4 +680,7 @@
 }
 ]
   </string>
+    <string name="NoSongsFound">Keine Songs gefunden</string>
+    <string name="AbovePlaylistManagement">Bitte wählen sie eine Playlist aus die sie bearbeiten wollen</string>
+    <string name="AboveSongManagement">Bitte kreuzen sie alle Songs an die sie in ihre Playlist speichen möchten</string>
 </resources>
