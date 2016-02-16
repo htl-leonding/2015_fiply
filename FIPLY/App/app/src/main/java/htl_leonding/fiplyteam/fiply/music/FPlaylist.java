@@ -170,7 +170,7 @@ public class FPlaylist extends Fragment {
         songs = new ArrayList<>(psrep.getByPlaylistName("All"));
         if(songs.isEmpty())
         {
-            tvAbovePlaylistManagement.setText(R.string.NoSongsFound);
+            tvAbovePlaylistManagement.setText("Keine Songs gefunden unter dem Pfad: " + ReadMusic.PATH_MUSIC);
         }
         else {
             tvAbovePlaylistManagement.setText(R.string.AbovePlaylistManagement);
