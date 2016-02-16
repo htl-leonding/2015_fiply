@@ -26,6 +26,7 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
+import htl_leonding.fiplyteam.fiply.data.PlanRepository;
 import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 import htl_leonding.fiplyteam.fiply.data.StatisticRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
@@ -43,6 +44,7 @@ public class SplashActivity extends Activity {
     KeyValueRepository kvr;
     PlaylistSongsRepository psr;
     StatisticRepository str;
+    PlanRepository prep;
     InstruktionenRepository instRep;
     PhasenRepository phasenRep;
     List<Trainingsphase> trainingsphaseList;
@@ -61,6 +63,10 @@ public class SplashActivity extends Activity {
         psr = PlaylistSongsRepository.getInstance();
         str = StatisticRepository.getInstance();
         rm = ReadMusic.getInstance();
+
+        PlanRepository.setContext(this);
+        prep = PlanRepository.getInstance();
+
         InstruktionenRepository.setContext(this);
         PhasenRepository.setContext(this);
 
@@ -109,8 +115,10 @@ public class SplashActivity extends Activity {
             uer.reCreateUebungenTable();
             psr.reCreatePlaylistSongsTable();
             str.reCreateUebungenTable();
+            prep.reCreatePlanTable();
+            phasenRep.reCreatePhasenTable();
             kvr.insertKeyValue("firstStart", "false");
-            Log.wtf("DatabaseOnFirstStart?", "reCreatedDatabaseOnFirstStart");
+            Log.wtf("Database0OnFirstStart?", "reCreatedDatabaseOnFirstStart");
         }
 
         private void fillPlaylistDb() {
@@ -129,6 +137,8 @@ public class SplashActivity extends Activity {
         private void fillTestTrainingsgplan() {
             phasenRep.deleteAll();
             instRep.deleteAll();
+            prep.deleteAll();
+
             DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
             String[] actualdays = new String[]{"Montag", "Donnerstag", "Samstag"};
             Date startDate = new Date();
@@ -142,13 +152,23 @@ public class SplashActivity extends Activity {
             trainingsphaseList.add(phaseZweiMuskel.getTPhase());
             GeneratePhTwoMaxiPh3Muskel phaseDreiMuskel = new GeneratePhTwoMaxiPh3Muskel(phaseZweiMuskel.getTPhase().getEndDate(), "Muskelaufbau", actualdays);
             trainingsphaseList.add(phaseDreiMuskel.getTPhase());
+            String ziel = getResources().getString(R.string.trainingszielMuskelaufbau);
+            String planName = "Default Trainingsplan";
+
+            String planStartDate = format.format(trainingsphaseList.get(0).getStartDate());
+            String planEndDate = format.format(trainingsphaseList.get(trainingsphaseList.size() - 1).getEndDate());
+            prep.insertPhase(planName, planStartDate, planEndDate, ziel);
+            Cursor cplan = prep.getPlanByName(planName);
+            cplan.moveToFirst();
+            int iPlanId = cplan.getColumnIndex(FiplyContract.PlanEntry.COLUMN_ROWID);
+            String planId = cplan.getString(iPlanId);
 
             for (Trainingsphase phase : trainingsphaseList) {
                 String dbStartDate = format.format(phase.getStartDate());
                 String dbEndDate = format.format(phase.getEndDate());
                 phasenRep.insertPhase(dbStartDate, dbEndDate,
                         phase.getPhasenName(), String.valueOf(phase.getPhasenDauer()), String.valueOf(phase.getPausenDauer()),
-                        String.valueOf(phase.getSaetze()), String.valueOf(phase.getWiederholungen()));
+                        String.valueOf(phase.getSaetze()), String.valueOf(phase.getWiederholungen()), planId);
                 Cursor c = null;
                 try {
                     c = phasenRep.getPhaseByStartDate(format.parse(dbStartDate));

@@ -50,7 +50,7 @@ public class PhasenRepository {
 
 
     public long insertPhase(String startDate, String endDate, String phasenName,
-                            String phasenDauer, String pausenDauer, String saetze, String wiederholungen) {
+                            String phasenDauer, String pausenDauer, String saetze, String wiederholungen, String planId) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(PhasenEntry.COLUMN_STARTDATE, startDate);
         initialValues.put(PhasenEntry.COLUMN_ENDDATE, endDate);
@@ -59,6 +59,8 @@ public class PhasenRepository {
         initialValues.put(PhasenEntry.COLUMN_PAUSENDAUER, pausenDauer);
         initialValues.put(PhasenEntry.COLUMN_SAETZE, saetze);
         initialValues.put(PhasenEntry.COLUMN_WIEDERHOLUNGEN, wiederholungen);
+        initialValues.put(PhasenEntry.COLUMN_PLANID, planId);
+
         return db.insert(PhasenEntry.TABLE_NAME, null, initialValues);
     }
 
@@ -71,7 +73,8 @@ public class PhasenRepository {
                         PhasenEntry.COLUMN_PHASENDAUER,
                         PhasenEntry.COLUMN_PAUSENDAUER,
                         PhasenEntry.COLUMN_SAETZE,
-                        PhasenEntry.COLUMN_WIEDERHOLUNGEN
+                        PhasenEntry.COLUMN_WIEDERHOLUNGEN,
+                        PhasenEntry.COLUMN_PLANID
                 },
                 null, null, null, null, PhasenEntry.COLUMN_STARTDATE + " ASC");
     }
@@ -85,7 +88,8 @@ public class PhasenRepository {
                         PhasenEntry.COLUMN_PHASENDAUER,
                         PhasenEntry.COLUMN_PAUSENDAUER,
                         PhasenEntry.COLUMN_SAETZE,
-                        PhasenEntry.COLUMN_WIEDERHOLUNGEN},
+                        PhasenEntry.COLUMN_WIEDERHOLUNGEN,
+                        PhasenEntry.COLUMN_PLANID},
                 PhasenEntry.COLUMN_ROWID + "=" + rowId,
                 null, null, null, null, null);
         if (myCursor != null) {
@@ -114,6 +118,8 @@ public class PhasenRepository {
                 PhasenEntry.COLUMN_PAUSENDAUER + " text not null, " +
                 PhasenEntry.COLUMN_SAETZE + " text not null, " +
                 PhasenEntry.COLUMN_WIEDERHOLUNGEN + " text not null" +
+                PhasenEntry.COLUMN_PLANID + " text not null" +
+
                 ");";
         db.execSQL(SQL_CREATE_PHASEN_TABLE);
     }

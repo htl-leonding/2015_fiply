@@ -36,6 +36,7 @@ public class FiplyContract {
         public static final String COLUMN_PAUSENDAUER = "pausendauer"; // In Wochen
         public static final String COLUMN_SAETZE = "saetze";
         public static final String COLUMN_WIEDERHOLUNGEN = "wiederholungen";
+        public static final String COLUMN_PLANID = "planid";
     }
 
     public static final class InstruktionenEntry implements BaseColumns {
@@ -62,6 +63,15 @@ public class FiplyContract {
         public static final String COLUMN_DATE = "timestamp";
         public static final String COLUMN_MOOD = "mood";
         public static final String COLUMN_LIFTEDWEIGHT = "liftedweight";
+    }
+
+    public static final class PlanEntry implements  BaseColumns {
+        public static final String TABLE_NAME = "trainingsplaene";
+        public static final String COLUMN_ROWID = "_id";
+        public static final String COLUMN_PLANNAME = "planname";
+        public static final String COLUMN_STARTDATE = "startdate";
+        public static final String COLUMN_ENDDATE = "enddate";
+        public static final String COLUMN_ZIEL = "ziel";
     }
 
 

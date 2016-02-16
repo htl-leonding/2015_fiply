@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_column="9">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/rellayoutplan">
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/plusorangesmall"
+            android:id="@+id/addplan"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/exportpdfsmall"
+            android:id="@+id/exportpdfbt"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_alignParentRight="true"
+            />
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/exportcsvsmall"
+            android:id="@+id/exportcsvbt"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_alignEnd="@+id/exportpdfbt"
+            android:layout_marginRight="70dp"
+            />
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewtrainingsplan"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
+
+
+
