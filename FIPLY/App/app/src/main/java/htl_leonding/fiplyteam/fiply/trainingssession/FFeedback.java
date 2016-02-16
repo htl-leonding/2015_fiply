@@ -10,7 +10,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.StatisticRepository;
 import htl_leonding.fiplyteam.fiply.menu.FMain;
+import htl_leonding.fiplyteam.fiply.statistic.FStatistic;
 
 public class FFeedback extends Fragment {
 
@@ -18,6 +20,7 @@ public class FFeedback extends Fragment {
     Button btnStats;
     RatingBar rbMood;
     double mood;
+    StatisticRepository srep;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,6 +31,9 @@ public class FFeedback extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        StatisticRepository.setContext(getActivity());
+        srep = StatisticRepository.getInstance();
 
         tvGewicht = (TextView) getActivity().findViewById(R.id.tvFeedbackGewicht);
         rbMood = (RatingBar) getActivity().findViewById(R.id.rbFeedbackMood);
@@ -43,11 +49,12 @@ public class FFeedback extends Fragment {
         btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Methodenaufruf mit getMood und getArguments().getDouble("gesamtgewicht")
-                displayFragment.displayMainMenu(new FMain(), getFragmentManager());
+                displayFragment.displayMainMenu(new FStatistic(), getFragmentManager());
             }
         });
-        //tvGewicht.setText("Du hast heute insgesamt " + getArguments().getDouble("gesamtgewicht") + " kg gestemmt!");
+
+        tvGewicht.setText("Du hast heute insgesamt " + getArguments().getDouble("gesamtgewicht") + " kg gestemmt!");
+        srep.insertDataPoint(getMood(), getArguments().getDouble("gesamtgewicht"));
     }
 
     public Double getMood() {

@@ -122,11 +122,15 @@ public class FSettings extends Fragment {
                 String rowid = c.getString(iRowId);
                 Bundle args = new Bundle();
                 args.putInt("uebungAnzahl", phase.getUebungByDay(day).size());
+
+                Double gesgewicht = 0.0;
                 for (int i = 0; i < uebs.size(); i++) {
                     args.putString("uebung" + (i + 1), phase.getUebungByDay(day).get(i).getUebungsID());
-                    args.putInt("gewicht" + (i + 1), RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax())));
+                    args.putDouble("gewicht" + (i + 1), RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax())));
+                    gesgewicht += RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax()))*phase.getWiederholungen()*phase.getSaetze();
                 }
                 args.putString("phase", rowid);
+                args.putDouble("gesamtgewicht", gesgewicht);
 
                 Fragment fragment = new FTrainingssession();
                 fragment.setArguments(args);
