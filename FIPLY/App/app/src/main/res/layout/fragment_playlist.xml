@@ -47,14 +47,6 @@
         android:textColor="@color/darkTextColorDark"
         android:textSize="20dp" />
 
-    <ListView
-        android:id="@+id/lvPlSongs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/etPlName"
-        android:layout_alignParentTop="true"
-        android:choiceMode="multipleChoice" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,5 +54,13 @@
         android:text="@string/NoSongsFound"
         android:id="@+id/tvAbovePlaylistManagement"
         />
+
+    <ListView
+        android:id="@+id/lvPlSongs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/etPlName"
+        android:layout_below="@id/tvAbovePlaylistManagement"
+        android:choiceMode="multipleChoice" />
 
 </RelativeLayout>

@@ -71,11 +71,11 @@ public class FPlaylist extends Fragment {
                 if (listPlaylistMode) {
                     listPlaylistMode = false;
                     refreshSongStringLists();
+                    aktListName = psrep.getPlaylists().get(position);
+                    tvAbovePlaylistManagement.setText(R.string.AboveSongManagement);
                     linearLayout.setVisibility(View.VISIBLE);
                     etName.setVisibility(View.VISIBLE);
                     etName.setText(aktListName);
-                    aktListName = psrep.getPlaylists().get(position);
-                    tvAbovePlaylistManagement.setText(R.string.AboveSongManagement);
 
                     lvSongs.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.music_item_checkable, songTitleStrings));
                     lvSongs.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

@@ -1,5 +1,6 @@
 package htl_leonding.fiplyteam.fiply.trainingssession;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -40,6 +42,7 @@ public class FCountdown extends Fragment {
             @Override
             public void onClick(View v) {
                 setMilliSecondsTotal(Long.valueOf(etTimer.getText().toString()) * 1000);
+                hideKeyboard();
 
                 if (!getIsTimerRunning()) {
                     setIsTimerRunning(true);
@@ -76,6 +79,11 @@ public class FCountdown extends Fragment {
             }
         };
         cdt.start();
+    }
+
+    public void hideKeyboard() {
+        InputMethodManager imms = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imms.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
 
     public long getMilliSecondsTotal() {
