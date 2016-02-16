@@ -15,9 +15,8 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract.UebungenEntry;
 public class FiplyDBHelper extends SQLiteOpenHelper {
 
     public static final String LOG_TAG = FiplyDBHelper.class.getSimpleName();
-
     private static final String DATABASE_NAME = "FiplyDB";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     private static FiplyDBHelper instance;
 
@@ -63,7 +62,8 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
                 PhasenEntry.COLUMN_PHASENDAUER + " text not null, " +
                 PhasenEntry.COLUMN_PAUSENDAUER + " text not null, " +
                 PhasenEntry.COLUMN_SAETZE + " text not null, " +
-                PhasenEntry.COLUMN_WIEDERHOLUNGEN + " text not null" +
+                PhasenEntry.COLUMN_WIEDERHOLUNGEN + " text not null," +
+                PhasenEntry.COLUMN_PLANID + " text not null" +
                 ");";
         Log.d(LOG_TAG, SQL_CREATE_PHASEN_TABLE);
         db.execSQL(SQL_CREATE_PHASEN_TABLE);

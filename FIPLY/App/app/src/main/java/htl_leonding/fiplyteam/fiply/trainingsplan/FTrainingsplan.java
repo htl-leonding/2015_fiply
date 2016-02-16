@@ -40,6 +40,9 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
+import htl_leonding.fiplyteam.fiply.data.PlanRepository;
+
+import static htl_leonding.fiplyteam.fiply.data.FiplyContract.*;
 
 public class FTrainingsplan extends Fragment {
 
@@ -82,7 +85,9 @@ public class FTrainingsplan extends Fragment {
 
     InstruktionenRepository instRep;
     PhasenRepository phasenRep;
+    PlanRepository planRep;
     List<Trainingsphase> trainingsphaseList;
+    String ziel = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -121,6 +126,8 @@ public class FTrainingsplan extends Fragment {
         rep = KeyValueRepository.getInstance();
         instRep = InstruktionenRepository.getInstance();
         phasenRep = PhasenRepository.getInstance();
+        PlanRepository.setContext(getActivity());
+        planRep = PlanRepository.getInstance();
         try {
             if (rep.getKeyValue("userProf").equals("Not Fit")) {
                 tButton.setChecked(true);
@@ -243,6 +250,7 @@ public class FTrainingsplan extends Fragment {
             trainingsphaseList.add(phaseZweiMuskel.getTPhase());
             GeneratePhTwoMaxiPh3Muskel phaseDreiMuskel = new GeneratePhTwoMaxiPh3Muskel(phaseZweiMuskel.getTPhase().getEndDate(), "Muskelaufbau", actualdays);
             trainingsphaseList.add(phaseDreiMuskel.getTPhase());
+            this.ziel = getResources().getString(R.string.trainingszielMuskelaufbau);
         } else if (rbMaximalkraft.isChecked()) {
             trainingsphaseList = new LinkedList<Trainingsphase>();
             GenerateAllgemein allgemein = new GenerateAllgemein(!tButton.isChecked(), 1, actualdays, startDate);
@@ -251,6 +259,7 @@ public class FTrainingsplan extends Fragment {
             trainingsphaseList.add(phaseZweiMaximalkraft.getTPhase());
             GeneratePh3Maxi phaseDreiMaximimalkraft = new GeneratePh3Maxi(phaseZweiMaximalkraft.getTPhase().getEndDate(), actualdays);
             trainingsphaseList.add(phaseDreiMaximimalkraft.getTPhase());
+            this.ziel = getResources().getString(R.string.trainingszielMaximalKraft);
         } else if (rbCardio.isChecked()) {
             trainingsphaseList = new LinkedList<Trainingsphase>();
             GenerateAllgemein allgemein = new GenerateAllgemein(!tButton.isChecked(), 1, actualdays, startDate);
@@ -259,9 +268,14 @@ public class FTrainingsplan extends Fragment {
             trainingsphaseList.add(phaseZweiKraftausdauer.getTPhase());
             GeneratePhTwoMaxiPh3Muskel phaseDreiMuskel = new GeneratePhTwoMaxiPh3Muskel(phaseZweiKraftausdauer.getTPhase().getEndDate(), "Kraftausdauer", actualdays);
             trainingsphaseList.add(phaseDreiMuskel.getTPhase());
+            this.ziel = getResources().getString(R.string.trainingszielGesundheit);
         }
-        writeToDataBase();
+        writeToDataBase(askForName());
         success();
+    }
+
+    private String askForName() {
+        return "NameNotSetYet";
     }
 
     private void success() {
@@ -277,20 +291,31 @@ public class FTrainingsplan extends Fragment {
         final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);
         generate.startAnimation(animTranslate);
         generate.setVisibility(View.INVISIBLE);
+        getFragmentManager().popBackStack();
     }
 
-    private void writeToDataBase() {
+    private void writeToDataBase(String planName) {
         DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
+
+        String planStartDate = format.format(trainingsphaseList.get(0).getStartDate());
+        String planEndDate = format.format(trainingsphaseList.get(trainingsphaseList.size() - 1).getEndDate());
+        planRep.insertPhase(planName, planStartDate, planEndDate, ziel);
+        Cursor cplan = planRep.getPlanByName(planName);
+        cplan.moveToFirst();
+        int iPlanId = cplan.getColumnIndex(PlanEntry.COLUMN_ROWID);
+        String planId = cplan.getString(iPlanId);
+
         for (Trainingsphase phase : trainingsphaseList) {
+
             String dbStartDate = format.format(phase.getStartDate());
             String dbEndDate = format.format(phase.getEndDate());
             phasenRep.insertPhase(dbStartDate, dbEndDate,
                     phase.getPhasenName(), String.valueOf(phase.getPhasenDauer()), String.valueOf(phase.getPausenDauer()),
-                    String.valueOf(phase.getSaetze()), String.valueOf(phase.getWiederholungen()));
+                    String.valueOf(phase.getSaetze()), String.valueOf(phase.getWiederholungen()), planId);
 
             Cursor c = phasenRep.getPhaseByStartDate(startDate);
             c.moveToFirst();
-            int index = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_ROWID);
+            int index = c.getColumnIndex(PhasenEntry.COLUMN_ROWID);
             String rowid = c.getString(index);
             for (Uebung ueb : phase.getUebungList()) {
                 instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), rowid);
