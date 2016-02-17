@@ -118,7 +118,7 @@ public class SplashActivity extends Activity {
             prep.reCreatePlanTable();
             phasenRep.reCreatePhasenTable();
             kvr.insertKeyValue("firstStart", "false");
-            Log.wtf("Database0OnFirstStart?", "reCreatedDatabaseOnFirstStart");
+            Log.wtf("DatabaseOnFirstStart?", "reCreatedDatabaseOnFirstStart");
         }
 
         private void fillPlaylistDb() {
