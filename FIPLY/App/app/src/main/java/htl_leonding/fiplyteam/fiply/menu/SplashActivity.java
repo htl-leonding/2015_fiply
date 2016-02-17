@@ -48,6 +48,7 @@ public class SplashActivity extends Activity {
     InstruktionenRepository instRep;
     PhasenRepository phasenRep;
     List<Trainingsphase> trainingsphaseList;
+    Activity activityReference = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +96,7 @@ public class SplashActivity extends Activity {
                     reCreateDatabaseOnFirstStart();
                 }
                 uer.insertAllExercises();
-                rm.ReadSongsIntoArrayList(getApplicationContext());
+                rm.ReadSongsIntoArrayListWrapper(activityReference, getApplicationContext());
                 fillPlaylistDb();
                 kvr.setDefaultUserSettings();
                 fillTestTrainingsgplan();

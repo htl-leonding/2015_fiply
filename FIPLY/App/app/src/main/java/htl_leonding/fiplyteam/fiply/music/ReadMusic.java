@@ -1,21 +1,31 @@
 package htl_leonding.fiplyteam.fiply.music;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import htl_leonding.fiplyteam.fiply.menu.SplashActivity;
+
 public class ReadMusic {
     public static String PATH_MUSIC = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Music";
     private static ReadMusic instance;
-    private static ArrayList<HashMap<String, String>> songs;
+    private static ArrayList<HashMap<String, String>> songs = new ArrayList<>();
+    final public int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
     private ReadMusic() {
     }
@@ -41,8 +51,40 @@ public class ReadMusic {
         return songs;
     }
 
-    public static void ReadSongsIntoArrayList(Context context) {
-        ContentResolver cr = context.getContentResolver();
+    public void ReadSongsIntoArrayListWrapper(final Activity activity, Context context) {
+        int hasReadStoragePermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (hasReadStoragePermission != PackageManager.PERMISSION_GRANTED) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        showMessageOKCancel("", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+                            }
+                        }, activity);
+                    }
+                });
+                return;
+            }
+            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+            return;
+        }
+        ReadSongsIntoArrayList(context);
+    }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener, Activity activity) {
+        new AlertDialog.Builder(activity)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+
+    public void ReadSongsIntoArrayList(Context context) {
+        ContentResolver cr = context.getApplicationContext().getContentResolver();
 
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String selection = MediaStore.Audio.Media.IS_MUSIC + "!= 0";
@@ -69,7 +111,7 @@ public class ReadMusic {
         cur.close();
     }
 
-    public static ArrayList<HashMap<String, String>> getSongs() {
+    public ArrayList<HashMap<String, String>> getSongs() {
         return songs;
     }
 }
