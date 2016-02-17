@@ -36,7 +36,7 @@ import htl_leonding.fiplyteam.fiply.trainingsplan.Trainingsphase;
 import htl_leonding.fiplyteam.fiply.trainingsplan.Uebung;
 
 
-public class FSettings extends Fragment {
+public class FTrainingsSettings extends Fragment {
 
     TextView welcomeText;
     PlanSessionPort port;

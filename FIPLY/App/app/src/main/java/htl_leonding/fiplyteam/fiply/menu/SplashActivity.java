@@ -1,10 +1,17 @@
 package htl_leonding.fiplyteam.fiply.menu;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -48,7 +55,6 @@ public class SplashActivity extends Activity {
     InstruktionenRepository instRep;
     PhasenRepository phasenRep;
     List<Trainingsphase> trainingsphaseList;
-    Activity activityReference = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +70,6 @@ public class SplashActivity extends Activity {
         psr = PlaylistSongsRepository.getInstance();
         str = StatisticRepository.getInstance();
         rm = ReadMusic.getInstance();
-
         PlanRepository.setContext(this);
         prep = PlanRepository.getInstance();
 
@@ -79,6 +84,8 @@ public class SplashActivity extends Activity {
         SleepIntentTask sleepIntentTask = new SleepIntentTask();
         sleepIntentTask.execute("");
     }
+
+
 
     /**
      * Dieser Task führt zuerst ein Sleep aus bevor er einen Intent auf MainActivity durchführt
@@ -96,8 +103,6 @@ public class SplashActivity extends Activity {
                     reCreateDatabaseOnFirstStart();
                 }
                 uer.insertAllExercises();
-                rm.ReadSongsIntoArrayListWrapper(activityReference, getApplicationContext());
-                fillPlaylistDb();
                 kvr.setDefaultUserSettings();
                 fillTestTrainingsgplan();
             } catch (JSONException e) {
@@ -121,20 +126,6 @@ public class SplashActivity extends Activity {
             phasenRep.reCreatePhasenTable();
             kvr.insertKeyValue("firstStart", "false");
             Log.wtf("DatabaseOnFirstStart?", "reCreatedDatabaseOnFirstStart");
-        }
-
-        private void fillPlaylistDb() {
-            if (!rm.getSongs().isEmpty()) {
-                ArrayList<HashMap<String, String>> alt = psr.getByPlaylistName("All");
-                ArrayList<HashMap<String, String>> neu = rm.getSongs();
-                for (HashMap<String, String> itemAlt : alt) {
-                    if (!neu.contains(itemAlt)) {
-                        Log.i("Songs entfernt", "Der Song " + itemAlt.toString() + " wurde entfernt.");
-                        psr.deleteBySongPath(itemAlt.get("songPath"));
-                    }
-                }
-            }
-            psr.reenterPlaylist("All", rm.getSongs());
         }
 
         private void fillTestTrainingsgplan() {
