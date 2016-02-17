@@ -95,6 +95,7 @@ public class SplashActivity extends Activity {
                     reCreateDatabaseOnFirstStart();
                 }
                 uer.insertAllExercises();
+                rm.ReadSongsIntoArrayList(getApplicationContext());
                 fillPlaylistDb();
                 kvr.setDefaultUserSettings();
                 fillTestTrainingsgplan();
@@ -127,6 +128,7 @@ public class SplashActivity extends Activity {
                 ArrayList<HashMap<String, String>> neu = rm.getSongs();
                 for (HashMap<String, String> itemAlt : alt) {
                     if (!neu.contains(itemAlt)) {
+                        Log.i("Songs entfernt", "Der Song " + itemAlt.toString() + " wurde entfernt.");
                         psr.deleteBySongPath(itemAlt.get("songPath"));
                     }
                 }
