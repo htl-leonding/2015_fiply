@@ -6,3 +6,8 @@ FIPLY/App/.idea/vcs.xml
 *.toc
 *.aux
 *.synctex.gz
+*.blg
+*.bbl
+*.bak
+*.bcf
+*.run.xml
