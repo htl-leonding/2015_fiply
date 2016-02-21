@@ -1,0 +1,149 @@
+\documentclass[FIPLY_base.tex]{subfiles}
+
+\author{Andreas Denkmayr}
+\date{19. Februar 2016}
+
+\begin{document}
+\section{Musik}
+\subsection{Lokalisierung der Musikdateien}
+Am Beginn der Arbeit wurde der Music-Ordner nach mp3-Files durchsucht. 
+
+\ \\  
+\texttt{Dabei wurde der Music-Ordner mit Hilfe eines FileExtensionFilters nach mp3-Dateien durchsucht.}  
+\begin{lstlisting}
+File home = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Music";);
+songs = new ArrayList<>();
+if (home.listFiles(new FileExtensionFilter()) != null) {
+	for (File file : home.listFiles(new FileExtensionFilter())) {
+     		HashMap<String, String> hm = new HashMap<>();
+               	hm.put("songTitle", file.getName());
+                	hm.put("songPath", file.getPath());
+                	songs.add(hm);
+	}
+}    
+\end{lstlisting}
+
+\ \\
+Im Laufe der Entwicklung stellte sich heraus, dass jeder Benutzer seine Musikdateien in einem anderen Ordner und in verschiedenen Dateiformaten abspeichert. 
+Die Lösung für dieses Problem stellt der Android Mediastore dar. 
+Über diesen können Abfragen nach verschiedenen Medientypen z.B.: Musik, Fotos oder Videos durchgeführt werden. Von diesen Medientypen können Name, Pfad, Dateigröße und vieles mehr ausgelesen werden.
+  
+\ \\  
+\texttt{Die Datenabfrage gegenüber dem Mediastore erfolgt über einen ContentResolver mit Hilfe der query()-Methode.}  
+\begin{lstlisting}
+public final @Nullable Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+	return query(uri, projection, selection, selectionArgs, sortOrder, null);
+}
+\end{lstlisting}
+
+\ \\
+\texttt{Für den Musicplayer benötigen wir alle Audiodateien die Musik beinhalten.}
+\begin{lstlisting}
+ContentResolver cr = context.getApplicationContext().getContentResolver();
+Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+String selection = MediaStore.Audio.Media.IS_MUSIC + "!= 0";
+String sortOrder = MediaStore.Audio.Media.TITLE_KEY + " ASC";
+Cursor cur = cr.query(uri, null, selection, null, sortOrder);
+\end{lstlisting}
+
+\ \\
+\texttt{Für jede Zeile im Cursor cur wird eine HashMap aus 2 Strings erstellt die den Titel und den Pfad eines Songs beinhaltet. Diese HashMaps werden anschließend zu einer ArrayList hinzugefügt.}
+\begin{lstlisting}
+songs = new ArrayList<>();
+HashMap<String, String> hm = new HashMap<>();
+while(cur.moveToNext())
+{
+	hm.put("songTitle", cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.TITLE)));
+	hm.put("songPath", cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.DATA)));
+	songs.add(hm);
+}
+\end{lstlisting}
+
+
+
+
+\subsection {Verwalten von Playlists}
+\begin{figure}[h]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.15]{img/musicPlaylistView1}
+	\end{subfigure}
+	\hfil
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.15]{img/musicSongView1}
+	\end{subfigure}
+	\caption{Bei klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2) und mittels der Checkbox sind alle Songs gekennzeichnet die sich in der ausgewählten Playlist befinden.}
+\end{figure}
+
+\ \\
+Im ersten Screenshot sieht man die Auswahl der erstellten Playlists, wobei die Playlist ''All' nicht bearbeitet werden kann und alle eingelesenen Songs darstellt.
+Zusätzlich zu der ''All''-Playlist kann der Benutzer eigene Playlists anlegen und diese auch bearbeiten. Der All und der None Button helfen dem Benutzer schnell alle Songs zu markieren oder die Markierung aller Elemente aufzuheben.
+
+\ \\
+Wird der Save-Button gedrückt wird für alle Positionen abgespeichert ob das Element an der jeweiligen Position markiert ist. Dies erfolgt über ein SparseBooleanArray. 
+Anschließend wird eine Liste erstellt in der nur die angekreuzten Elemente enthalten sind. Diese Liste wird als eine neue Playlist in die PlaylistSongs-Tabelle gespeichert. 
+Dabei wird als Playlistname der eingetragene Titel in das EditText unter der ListView übernommen.
+
+\begin{lstlisting}
+SparseBooleanArray checked = lvSongs.getCheckedItemPositions();
+for (int i = 0; i < songs.size(); i++) {
+    if (checked.get(i)) {
+        checkedSongs.add(songs.get(i));
+    }
+}
+psrep.reenterPlaylist(etName.getText().toString(), checkedSongs);
+\end{lstlisting}
+
+
+
+
+\newpage
+\subsection {Abspielen der Playlists}
+\begin{figure}[h]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.17]{img/musicListenView1}
+	\end{subfigure}
+	\hfil
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.17]{img/musicListenView2}
+	\end{subfigure}
+	\caption{In einem Spinner kann eine Playlist ausgewählt werden. Bei Klick auf einen Song wird dieser abgespielt.}
+\end{figure}
+
+\ \\
+Während der Benutzer sich in einer Traingssession befindet kann jederzeit die Musikwiedergabe gestartet werden.
+Bei Klick auf den Play-Button wird die ''All''-Playlist in alphabetisch aufsteigender Reihenfolge abgespielt. \newline
+Die Playlist beziehungsweise der aktuell abgespielte Song kann geändert werden indem in den Musikmodus gewechselt wird. \newline
+Im Musikmodus wird über den Spinner die Playlist gewechselt. \newline
+In der aktuell ausgewählten Playlist kann man direkt zu einem bestimmten Song wechseln. 
+Dieser wird abgespielt und nach Ende des Songs wird sofort der nächste Playlisteintrag gestartet.
+
+\newpage
+\subsection {MusicControls}
+
+\begin{figure}[h]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.55]{img/musicControls}
+	\end{subfigure}
+	\hfil
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.55]{img/musicControlsPlaying}
+	\end{subfigure}
+	\caption{Die MusicControls in Ruhe und während einer Wiedergabe.}
+\end{figure}
+
+\begin{itemize}
+\item Durch den Zurück und durch den Weiter Button kann auf den vorherigen beziehungsweise auf den nächsten Song gewechselt werden. 
+\item Der Play Button dient dem starten der Musikwiedergabe. \newline
+Während der Musikwiedergabe erscheint an dieser Stelle der Pause Button mit dem man die Musik pausieren kann. 
+\item Der Stop Button beendet die aktuelle Wiedergabe und setzt den Wiedergabefortschritt auf den Beginn des Songs. 
+\item Der Musikmodus Button stellt den aktuellen Modus durch Einfärbung des Buttons dar und ermöglicht einen Wechsel zwischen dem Übungsmodus und dem Musikmodus. \newline
+Im Übungsmodus wird die aktuelle Übung und die Anweisungen zum Trainieren angezeigt. \newline
+Der Musikmodus hingegen ermöglicht ein Wechseln der Playlist und den manuellen Wechsel auf einen bestimmten Song. 
+\item Links von der Fortschrittsleiste wird der Fortschritt des aktuellen Songs im hh:mm:ss Format (ISO 8601) angezeigt. 
+\item Die Fortschrittsleiste wird durch eine SeekBar über diesen Buttons implementiert. Diese SeekBar stellt den aktuellen Fortschritt des aktuellen Songs dar. \newline 
+Bei Klicken auf oder Ziehen an der Fortschrittsleiste kann man den Fortschritt der Wiedergabe manipulieren. 
+\item Rechts von der Fortschrittsleiste wird die Gesamtdauer des Songs im hh:mm:ss Format (ISO 8601) angezeigt.
+\item Der Name des aktuellen Songs wird in einer TextView über den Fortschrittsanzeigen dargestellt.
+\end{itemize}
+
+\end{document}
