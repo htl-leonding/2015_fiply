@@ -13,8 +13,7 @@ import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.music.FPlaylist;
 import htl_leonding.fiplyteam.fiply.statistic.FStatistic;
 import htl_leonding.fiplyteam.fiply.trainingsplan.FPlanManagement;
-import htl_leonding.fiplyteam.fiply.trainingsplan.FTrainingsplan;
-import htl_leonding.fiplyteam.fiply.trainingssession.FSettings;
+import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingsSettings;
 import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungskatalog;
 import htl_leonding.fiplyteam.fiply.user.FUsermanagement;
 
@@ -25,6 +24,7 @@ public class FMain extends Fragment {
     Button startPlaylists;
     Button startTrainplan;
     Button startStatistic;
+    Button startSettings;
 
     /**
      * Lädt das fragment_main in das FrameLayout der MainActivity
@@ -56,6 +56,7 @@ public class FMain extends Fragment {
         startPlaylists = (Button) getActivity().findViewById(R.id.btStartPlaylist);
         startTrainplan = (Button) getActivity().findViewById(R.id.btStartTrainView);
         startStatistic = (Button) getActivity().findViewById(R.id.btStartStatistic);
+        startSettings = (Button) getActivity().findViewById(R.id.btStartSettings);
 
         /**
          * Bei Drücken des Uebungskatalog Buttons wird eine FragmentTransaction durchgeführt,
@@ -76,8 +77,8 @@ public class FMain extends Fragment {
         startTra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FSettings fSettings = new FSettings();
-                displayView(fSettings);
+                FTrainingsSettings fTrainingsSettings = new FTrainingsSettings();
+                displayView(fTrainingsSettings);
             }
         });
 
@@ -124,6 +125,14 @@ public class FMain extends Fragment {
                 FStatistic fStatistic = new FStatistic();
                 displayView(fStatistic);
 
+            }
+        });
+
+        startSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FSettings fSettings = new FSettings();
+                displayView(fSettings);
             }
         });
     }

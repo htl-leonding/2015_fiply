@@ -102,6 +102,7 @@
         <item>Trainingsplan</item>
         <item>Übungen</item>
         <item>Playlisten</item>
+        <item>Einstellungen</item>
     </string-array>
 
     <string-array name="greetingArray">
@@ -684,4 +685,7 @@
     <string name="NoSongsFound">Keine Songs gefunden</string>
     <string name="AbovePlaylistManagement">Bitte wählen sie eine Playlist aus die sie bearbeiten wollen</string>
     <string name="AboveSongManagement">Bitte kreuzen sie alle Songs an die sie in ihre Playlist speichen möchten</string>
+    <string name="tvSettingsMusic">Wenn sie Musik einlesen, können sie Playlisten erstellen und während dem Trainieren Musik hören</string>
+    <string name="btSettingsMusic">Musik einlesen</string>
+    <string name="startSettings">Einstellungen</string>
 </resources>
