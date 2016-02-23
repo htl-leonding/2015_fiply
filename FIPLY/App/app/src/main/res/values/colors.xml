@@ -7,7 +7,7 @@
     <color name="darkMenuButtons">#ff8400</color>
     <color name="darkTextColorFlashy">#FF0000</color>
     <color name="white">#ffffff</color>
-
+    <color name="darkselected">#5d5b5a</color>
 
     <color name="darkNavigationDivider">#00FFA500</color>
     <!-- unused -->

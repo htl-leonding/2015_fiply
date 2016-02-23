@@ -3,6 +3,7 @@ package htl_leonding.fiplyteam.fiply.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -44,7 +45,7 @@ public class PlanRepository {
     }
 
 
-    public long insertPhase(String planName, String startDate, String endDate, String ziel) {
+    public long insertPlan(String planName, String startDate, String endDate, String ziel) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(PlanEntry.COLUMN_PLANNAME, planName);
         initialValues.put(PlanEntry.COLUMN_STARTDATE, startDate);
@@ -85,5 +86,10 @@ public class PlanRepository {
                 PlanEntry.COLUMN_ZIEL
         }
                 ,null,null,null,null, PlanEntry.COLUMN_STARTDATE + " ASC");
+    }
+
+    public long getPlanCount(){
+        return DatabaseUtils.queryNumEntries(db, PlanEntry.TABLE_NAME);
+
     }
 }

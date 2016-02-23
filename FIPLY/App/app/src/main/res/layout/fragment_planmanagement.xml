@@ -3,8 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_column="9">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,7 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listViewtrainingsplan"
-        android:layout_gravity="center_horizontal" />
+        android:layout_margin="10dp"
+        />
 
 </LinearLayout>
 

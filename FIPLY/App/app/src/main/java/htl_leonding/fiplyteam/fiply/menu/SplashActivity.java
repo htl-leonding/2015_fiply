@@ -135,6 +135,8 @@ public class SplashActivity extends Activity {
         }
 
         private void fillTestTrainingsgplan() {
+            if (prep.getPlanCount() > 0)
+                return;
             phasenRep.deleteAll();
             instRep.deleteAll();
             prep.deleteAll();
@@ -157,7 +159,7 @@ public class SplashActivity extends Activity {
 
             String planStartDate = format.format(trainingsphaseList.get(0).getStartDate());
             String planEndDate = format.format(trainingsphaseList.get(trainingsphaseList.size() - 1).getEndDate());
-            prep.insertPhase(planName, planStartDate, planEndDate, ziel);
+            prep.insertPlan(planName, planStartDate, planEndDate, ziel);
             Cursor cplan = prep.getPlanByName(planName);
             cplan.moveToFirst();
             int iPlanId = cplan.getColumnIndex(FiplyContract.PlanEntry.COLUMN_ROWID);
@@ -182,7 +184,7 @@ public class SplashActivity extends Activity {
                     instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), rowid);
                 }
             }
-            Cursor c = phasenRep.getAllPhasen();
+            /*Cursor c = phasenRep.getAllPhasen();
             Cursor c2;
             int iRowId = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_ROWID);
             int iPhasenname = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_PHASENNAME);
@@ -198,7 +200,7 @@ public class SplashActivity extends Activity {
                 for (c2.moveToFirst(); !c2.isAfterLast(); c2.moveToNext()) {
                     uebid = c2.getString(iRowName);
                 }
-            }
+            }*/
         }
     }
 }
