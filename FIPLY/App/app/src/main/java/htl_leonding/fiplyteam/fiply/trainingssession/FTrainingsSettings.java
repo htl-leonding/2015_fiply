@@ -21,6 +21,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.security.Key;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,7 +31,9 @@ import java.util.Locale;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
+import htl_leonding.fiplyteam.fiply.data.PlanRepository;
 import htl_leonding.fiplyteam.fiply.menu.FMain;
 import htl_leonding.fiplyteam.fiply.trainingsplan.RepMax;
 import htl_leonding.fiplyteam.fiply.trainingsplan.Trainingsphase;
@@ -47,8 +51,11 @@ public class FTrainingsSettings extends Fragment {
     ProgressBar pBar;
     ListView uebList;
     TextView title;
+    TextView planname;
     ImageView imgView;
     ArrayList<String> uebs;
+    PlanRepository planRep;
+    KeyValueRepository kvRep;
     String day = "";
 
     @Nullable
@@ -65,23 +72,19 @@ public class FTrainingsSettings extends Fragment {
         rep = PhasenRepository.getInstance();
         PhasenRepository.setContext(getContext());
         InstruktionenRepository.setContext(getContext());
+        PlanRepository.setContext(getContext());
+        planRep = PlanRepository.getInstance();
+        KeyValueRepository.setContext(getContext());
+        kvRep = KeyValueRepository.getInstance();
         port = PlanSessionPort.getInstance();
         port.init();
-        if (!port.isGenerated()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage(R.string.alertnoplan)
-                    .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            displayFragment.displayMainMenu(new FMain(), getFragmentManager());
-            onDestroy();
-        }
 
         title = (TextView) getActivity().findViewById(R.id.sessionsettingstitle);
         welcomeText = (TextView) getActivity().findViewById(R.id.sessionsettingwelcome);
         uebungsText = (TextView) getActivity().findViewById(R.id.sessionsettinguebungen);
         gotosession = (Button) getActivity().findViewById(R.id.gotosession);
         pBar = (ProgressBar) getActivity().findViewById(R.id.progressBar);
+        planname = (TextView) getActivity().findViewById(R.id.currentplanname);
         Drawable draw = getActivity().getDrawable(R.drawable.progressbar);
         pBar.setProgressDrawable(draw);
         uebList = (ListView) getActivity().findViewById(R.id.listviewuebungen);
@@ -101,7 +104,6 @@ public class FTrainingsSettings extends Fragment {
 
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
-
                         dialog.dismiss();
                         loadUebungen(types[position]);
                     }
@@ -127,7 +129,7 @@ public class FTrainingsSettings extends Fragment {
                 for (int i = 0; i < uebs.size(); i++) {
                     args.putString("uebung" + (i + 1), phase.getUebungByDay(day).get(i).getUebungsID());
                     args.putDouble("gewicht" + (i + 1), RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax())));
-                    gesgewicht += RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax()))*phase.getWiederholungen()*phase.getSaetze();
+                    gesgewicht += RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax())) * phase.getWiederholungen() * phase.getSaetze();
                 }
                 args.putString("phase", rowid);
                 args.putDouble("gesamtgewicht", gesgewicht);
@@ -139,14 +141,46 @@ public class FTrainingsSettings extends Fragment {
         });
 
 
+
         welcomeText.setText("Aktuelle Trainingsphase " + port.getPhaseIndex() + " von " + port.getPhasenListe().size() + ".");
         pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
 
         uebs = new ArrayList<String>();
+        if (port.getCurrentPhase() == null) {
+            new android.app.AlertDialog.Builder(getContext())
+                    .setTitle(R.string.fehler)
+                    .setMessage(R.string.choosevalidplan)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .setIcon(R.drawable.alertsmall)
+                    .show();
+            displayFragment.displayMainMenu(new FMain(), getFragmentManager());
+            onDestroy();
+        }try{
         for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) {
             uebs.add(String.valueOf(element.getUebungsName()));
             Log.wtf("WTF", element.getUebungsName());
+        }}catch(Exception e){
+
         }
+        Cursor c = null;
+        String actPlanid = "";
+        try {
+            actPlanid = kvRep.getKeyValue("selectedPlanId").getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(actPlanid);
+        if (!actPlanid.equals("-1")) {
+            c = planRep.getPlanNameById(actPlanid);
+            c.moveToFirst();
+            int iPlanName = c.getColumnIndex(FiplyContract.PlanEntry.COLUMN_PLANNAME);
+            String actPlanName = c.getString(iPlanName);
+            planname.setText("[" + actPlanName + "]");
+        }
+
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.uebungslist_item, uebs);
         uebList.setAdapter(adapt);
         String heutestehen = getResources().getString(R.string.heutestehen);

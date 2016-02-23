@@ -16,6 +16,7 @@ import htl_leonding.fiplyteam.fiply.data.FiplyContract.PhasenEntry;
 import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
+import htl_leonding.fiplyteam.fiply.data.PlanRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
 import htl_leonding.fiplyteam.fiply.trainingsplan.Trainingsphase;
 import htl_leonding.fiplyteam.fiply.trainingsplan.Uebung;
@@ -26,6 +27,8 @@ public class PlanSessionPort {
     private static InstruktionenRepository repInstruktionen;
     private static KeyValueRepository keyv;
     private static UebungenRepository uebungRep;
+    private static PlanRepository planRep;
+
     private static PlanSessionPort instance = null;
     private Cursor cPhasen;
     private Cursor cInstruktion;
@@ -74,10 +77,11 @@ public class PlanSessionPort {
         return 0;
     }
 
-    public void init() {
+    public void init()  {
         repPhasen = PhasenRepository.getInstance();
         cPhasen = repPhasen.getAllPhasen();
         uebungRep = UebungenRepository.getInstance();
+        planRep = PlanRepository.getInstance();
 
         repInstruktionen = InstruktionenRepository.getInstance();
         cInstruktion = repInstruktionen.getAllInstructions();
@@ -90,11 +94,19 @@ public class PlanSessionPort {
         int iPhasenPausenDauer = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PAUSENDAUER);
         int iPhasenSaetze = cPhasen.getColumnIndex(PhasenEntry.COLUMN_SAETZE);
         int iPhasenWiederholungen = cPhasen.getColumnIndex(PhasenEntry.COLUMN_WIEDERHOLUNGEN);
+        int iPlanId = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PLANID);
 
         int iInstruktionWochentag = cInstruktion.getColumnIndex(InstruktionenEntry.COLUMN_WOCHENTAG);
         int iInstruktionRepMax = cInstruktion.getColumnIndex(InstruktionenEntry.COLUMN_REPMAX);
         int iInstruktionUebungsId = cInstruktion.getColumnIndex(InstruktionenEntry.COLUMN_UEBUNGSID);
         int iInstruktionPhasenId = cInstruktion.getColumnIndex(InstruktionenEntry.COLUMN_PHASENID);
+
+        String currentPlanId = "";
+        try {
+            currentPlanId = KeyValueRepository.getInstance().getKeyValue("selectedPlanId").getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         String phasenRowId;
         String phasenStartDate;
@@ -104,6 +116,7 @@ public class PlanSessionPort {
         String phasenPausenDauer;
         String phasenSaetze;
         String phasenWiederholungen;
+        String phasenPlanId;
 
         String instruktWochentag;
         String instruktRepMax;
@@ -151,21 +164,24 @@ public class PlanSessionPort {
             phasenPausenDauer = cPhasen.getString(iPhasenPausenDauer);
             phasenSaetze = cPhasen.getString(iPhasenSaetze);
             phasenWiederholungen = cPhasen.getString(iPhasenWiederholungen);
+            phasenPlanId = cPhasen.getString(iPlanId);
 
-            try {
-                convertedStartDate = format.parse(phasenStartDate);
-                convertedEndDate = format.parse(phasenEndDate);
-            } catch (Exception e) {
-                convertedStartDate = null;
-                convertedEndDate = null;
+            if (phasenPlanId.equals(currentPlanId)) {
+                try {
+                    convertedStartDate = format.parse(phasenStartDate);
+                    convertedEndDate = format.parse(phasenEndDate);
+                } catch (Exception e) {
+                    convertedStartDate = null;
+                    convertedEndDate = null;
+                }
+
+                tPhase = new Trainingsphase(phasenName, Integer.valueOf(phasenPausenDauer), Integer.valueOf(phasenDauer),
+                        Integer.valueOf(phasenSaetze), Integer.valueOf(phasenWiederholungen), 0, convertedStartDate);
+                tPhase.setEndDate(convertedEndDate);
+                tPhase.setUebungList(getInstruktFromPhasenId(phasenRowId));
+
+                getPhasenListe().add(tPhase);
             }
-
-            tPhase = new Trainingsphase(phasenName, Integer.valueOf(phasenPausenDauer), Integer.valueOf(phasenDauer),
-                    Integer.valueOf(phasenSaetze), Integer.valueOf(phasenWiederholungen), 0, convertedStartDate);
-            tPhase.setEndDate(convertedEndDate);
-            tPhase.setUebungList(getInstruktFromPhasenId(phasenRowId));
-
-            getPhasenListe().add(tPhase);
         }
     }
 

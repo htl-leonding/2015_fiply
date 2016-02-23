@@ -10,6 +10,16 @@
         android:layout_gravity="center_horizontal">
 
         <TextView
+            android:id="@+id/currentplanname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkPrimary"
+            android:textSize="15dp" />
+
+        <TextView
             android:id="@+id/sessionsettingstitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

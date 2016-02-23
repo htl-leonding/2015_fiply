@@ -153,6 +153,7 @@ public class KeyValueRepository {
             insertKeyValue("userProf", "Not Fit");
             insertKeyValue("isUserCustomized", "true");
             insertKeyValue("selectedPlan", "-1");
+            insertKeyValue("selectedPlanId", "-1");
         }
 
 
