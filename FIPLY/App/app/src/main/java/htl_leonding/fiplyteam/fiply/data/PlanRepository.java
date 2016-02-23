@@ -61,13 +61,6 @@ public class PlanRepository {
                 null, null, null, PlanEntry.COLUMN_ROWID + " ASC", null);
     }
 
-    public Cursor getPlanNameById(String rowId){
-        return db.query(PlanEntry.TABLE_NAME, new String[]{
-                        PlanEntry.COLUMN_PLANNAME
-                }, PlanEntry.COLUMN_ROWID + "=" + "'" + rowId + "'",
-                null, null, null, PlanEntry.COLUMN_ROWID + " ASC", null);
-    }
-
     public void reCreatePlanTable() {
         db.execSQL("DROP TABLE IF EXISTS " + PlanEntry.TABLE_NAME + ";");
         final String SQL_CREATE_PLAN_TABLE = "create table " + PlanEntry.TABLE_NAME +

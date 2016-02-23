@@ -83,6 +83,17 @@ public class FPlanManagement extends Fragment {
             }
         });
 
+        /*planView.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    changeFocus(planView, Integer.valueOf(Krep.getKeyValue("selectedPlan").getString(1)));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });*/
+
         view.post(new Runnable() {
             @Override
             public void run() {
@@ -102,6 +113,10 @@ public class FPlanManagement extends Fragment {
         selectedItem = newSelection;
         int pos = planView.getFirstVisiblePosition();
 
+        System.out.println(selectedItem);
+        System.out.println(pos);
+        System.out.println(planView.getCount());
+
         planView.getChildAt(selectedItem + pos).setBackgroundResource(R.color.darkselected);
         planView.getChildAt(selectedItem + pos).setBackgroundResource(R.drawable.planlistitemborder);
         planView.getChildAt(selectedItem + pos).findViewById(R.id.imageButtonInfo).setBackgroundResource(R.color.darkselected);
@@ -112,12 +127,6 @@ public class FPlanManagement extends Fragment {
 
         previousItem = selectedItem;
         Krep.updateKeyValue("selectedPlan", String.valueOf(selectedItem));
-        Trainingsplanlistitem plan = (Trainingsplanlistitem) planView.getItemAtPosition(selectedItem);
-        Cursor c = planRep.getPlanByName(plan.getName());
-        c.moveToFirst();
-        int iPlanid = c.getColumnIndex(PlanEntry.COLUMN_ROWID);
-        String planId = c.getString(iPlanid);
-        Krep.updateKeyValue("selectedPlanId", planId);
     }
 
     private ArrayList<Trainingsplanlistitem> initPlans() {

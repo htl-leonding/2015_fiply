@@ -20,8 +20,6 @@ public class Trainingsphase {
     private Date startDate;
     private Date endDate;
 
-    public Trainingsphase(){}
-
     public Trainingsphase(Date startDate, int phasenDauer) {
         this.startDate = startDate;
         this.phasenDauer = phasenDauer;
