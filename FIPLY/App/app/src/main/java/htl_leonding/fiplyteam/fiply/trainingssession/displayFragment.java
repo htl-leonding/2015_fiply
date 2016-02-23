@@ -48,6 +48,7 @@ public class displayFragment {
 
     public static void displayTSFeedback(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.fraPlace, display);
         fragmentTransaction.commit();
     }
@@ -67,7 +68,6 @@ public class displayFragment {
 
     public static void displayDialogChooseDay(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.fraPlace, display);
         fragmentTransaction.commit();
     }

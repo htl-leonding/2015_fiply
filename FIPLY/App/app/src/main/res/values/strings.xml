@@ -686,6 +686,8 @@
     <string name="AbovePlaylistManagement">Bitte wählen sie eine Playlist aus die sie bearbeiten wollen</string>
     <string name="AboveSongManagement">Bitte kreuzen sie alle Songs an die sie in ihre Playlist speichen möchten</string>
     <string name="tvSettingsMusic">Wenn sie Musik einlesen, können sie Playlisten erstellen und während dem Trainieren Musik hören</string>
-    <string name="btSettingsMusic">Musik einlesen</string>
+    <string name="btSettingsMusic">Musik Erlaubnis abfragen</string>
+    <string name="btSettingsCheckPermissions">Unsere App benötigt deine Erlaubnis um Musik abzuspielen</string>
+    <string name="btSettingsRefreshMusic">App neu starten und Musik zur Bibliothek hinzufügen</string>
     <string name="startSettings">Einstellungen</string>
 </resources>
