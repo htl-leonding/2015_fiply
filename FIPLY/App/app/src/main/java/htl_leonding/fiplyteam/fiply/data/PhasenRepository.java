@@ -117,7 +117,7 @@ public class PhasenRepository {
                 PhasenEntry.COLUMN_PHASENDAUER + " text not null, " +
                 PhasenEntry.COLUMN_PAUSENDAUER + " text not null, " +
                 PhasenEntry.COLUMN_SAETZE + " text not null, " +
-                PhasenEntry.COLUMN_WIEDERHOLUNGEN + " text not null, " +
+                PhasenEntry.COLUMN_WIEDERHOLUNGEN + " text not null," +
                 PhasenEntry.COLUMN_PLANID + " text not null" +
                 ");";
         db.execSQL(SQL_CREATE_PHASEN_TABLE);

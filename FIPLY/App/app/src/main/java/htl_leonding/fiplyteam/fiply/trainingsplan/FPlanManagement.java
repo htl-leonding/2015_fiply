@@ -9,23 +9,34 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PlanEntry;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PlanRepository;
 
 
 public class FPlanManagement extends Fragment {
 
     ArrayList<Trainingsplanlistitem> arrayOfPlans;
-    ListView planView;
     PlanRepository planRep;
     Cursor c;
     ImageButton addButton;
+    ImageButton exportCSV;
+    ImageButton exportPDF;
+
+    KeyValueRepository Krep;
+
+    int selectedItem = -1;
+    int previousItem = -1;
 
     @Nullable
     @Override
@@ -33,6 +44,8 @@ public class FPlanManagement extends Fragment {
         getActivity().setTitle(getResources().getString(R.string.titleplanmanagement));
         PlanRepository.setContext(getContext());
         planRep = PlanRepository.getInstance();
+        KeyValueRepository.setContext(getContext());
+        Krep = KeyValueRepository.getInstance();
         return inflater.inflate(R.layout.fragment_planmanagement, container, false);
     }
 
@@ -41,13 +54,14 @@ public class FPlanManagement extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         arrayOfPlans = new ArrayList<Trainingsplanlistitem>();
         arrayOfPlans = initPlans();
-        planView = (ListView) getActivity().findViewById(R.id.listViewtrainingsplan);
-
+        final ListView planView = (ListView) getActivity().findViewById(R.id.listViewtrainingsplan);
         PlanAdapter adapter = new PlanAdapter(getActivity(),R.layout.trainingsplan_item, arrayOfPlans);
 
         planView.setAdapter(adapter);
 
         addButton = (ImageButton) getActivity().findViewById(R.id.addplan);
+        exportCSV = (ImageButton) getActivity().findViewById(R.id.exportcsvbt);
+        exportPDF = (ImageButton) getActivity().findViewById(R.id.exportpdfbt);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +75,58 @@ public class FPlanManagement extends Fragment {
 
             }
         });
+
+        planView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                changeFocus(planView, position);
+            }
+        });
+
+        /*planView.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    changeFocus(planView, Integer.valueOf(Krep.getKeyValue("selectedPlan").getString(1)));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });*/
+
+        view.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    changeFocus(planView, Integer.valueOf(Krep.getKeyValue("selectedPlan").getString(1)));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void changeFocus(ListView planView, int newSelection){
+        if (newSelection == -1 || newSelection == selectedItem || planView == null){
+            return;
+        }
+        selectedItem = newSelection;
+        int pos = planView.getFirstVisiblePosition();
+
+        System.out.println(selectedItem);
+        System.out.println(pos);
+        System.out.println(planView.getCount());
+
+        planView.getChildAt(selectedItem + pos).setBackgroundResource(R.color.darkselected);
+        planView.getChildAt(selectedItem + pos).setBackgroundResource(R.drawable.planlistitemborder);
+        planView.getChildAt(selectedItem + pos).findViewById(R.id.imageButtonInfo).setBackgroundResource(R.color.darkselected);
+        if (previousItem != -1) {
+            planView.getChildAt(previousItem + pos).findViewById(R.id.imageButtonInfo).setBackgroundResource(R.color.darkSecondary);
+            planView.getChildAt(previousItem + pos).setBackgroundResource(R.drawable.unselecteditem);
+        }
+
+        previousItem = selectedItem;
+        Krep.updateKeyValue("selectedPlan", String.valueOf(selectedItem));
     }
 
     private ArrayList<Trainingsplanlistitem> initPlans() {

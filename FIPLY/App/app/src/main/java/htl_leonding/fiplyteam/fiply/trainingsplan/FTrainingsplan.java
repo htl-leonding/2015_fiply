@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -87,6 +89,7 @@ public class FTrainingsplan extends Fragment {
     PhasenRepository phasenRep;
     PlanRepository planRep;
     List<Trainingsphase> trainingsphaseList;
+    private String planName = "";
     String ziel = "";
 
     @Override
@@ -270,12 +273,34 @@ public class FTrainingsplan extends Fragment {
             trainingsphaseList.add(phaseDreiMuskel.getTPhase());
             this.ziel = getResources().getString(R.string.trainingszielGesundheit);
         }
-        writeToDataBase(askForName());
-        success();
+        askForName();
     }
 
     private String askForName() {
-        return "NameNotSetYet";
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Name wählen:");
+        builder.setIcon(R.drawable.questionsmall);
+        final EditText input = new EditText(getContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                planName = input.getText().toString();
+                writeToDataBase();
+                success();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+        return planName;
     }
 
     private void success() {
@@ -294,12 +319,12 @@ public class FTrainingsplan extends Fragment {
         getFragmentManager().popBackStack();
     }
 
-    private void writeToDataBase(String planName) {
+    private void writeToDataBase() {
         DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
 
         String planStartDate = format.format(trainingsphaseList.get(0).getStartDate());
         String planEndDate = format.format(trainingsphaseList.get(trainingsphaseList.size() - 1).getEndDate());
-        planRep.insertPhase(planName, planStartDate, planEndDate, ziel);
+        planRep.insertPlan(planName, planStartDate, planEndDate, ziel);
         Cursor cplan = planRep.getPlanByName(planName);
         cplan.moveToFirst();
         int iPlanId = cplan.getColumnIndex(PlanEntry.COLUMN_ROWID);

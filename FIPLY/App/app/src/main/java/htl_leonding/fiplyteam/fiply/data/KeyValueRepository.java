@@ -152,7 +152,7 @@ public class KeyValueRepository {
             insertKeyValue("userAge", "21-30");
             insertKeyValue("userProf", "Not Fit");
             insertKeyValue("isUserCustomized", "true");
-            insertKeyValue("trainingsphasenloaded", "false");
+            insertKeyValue("selectedPlan", "-1");
         }
 
 
@@ -171,6 +171,7 @@ public class KeyValueRepository {
         if (getKeyValue("greetings").getCount() == 0) {
             insertKeyValue("greetings", "");
         }
+
         //getGreeting();
 
         Log.wtf("kvr test:", getKeyValue("filterName").getString(0));
