@@ -26,7 +26,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     TextView tvSongname, tvCurrentDur, tvTotalDur;
     SeekBar progressBar;
     FMusicList fMusicList;
-    MediaPlayer mp = new MediaPlayer();
+    MediaPlayer mp;
     Handler mHandler = new Handler();
     ArrayList<HashMap<String, String>> playlist;
     PlaylistSongsRepository psrep;
@@ -49,6 +49,12 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     };
 
     @Override
+    public void onPause() {
+        super.onPause();
+        stop();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_music, container, false);
@@ -68,6 +74,7 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         tvTotalDur = (TextView) getActivity().findViewById(R.id.tvMuTotalDur);
         progressBar = (SeekBar) getActivity().findViewById(R.id.seekBarMu);
 
+        mp = new MediaPlayer();
         fMusicList = new FMusicList();
         playlist = new ArrayList<>();
         progressBar.setOnSeekBarChangeListener(this);
