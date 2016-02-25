@@ -76,7 +76,13 @@ while(cur.moveToNext())
 
 \ \\
 Im ersten Screenshot sieht man die Auswahl der erstellten Playlists, wobei die Playlist ''All' nicht bearbeitet werden kann und alle eingelesenen Songs darstellt.
-Zusätzlich zu der ''All''-Playlist kann der Benutzer eigene Playlists anlegen und diese auch bearbeiten. Der All und der None Button helfen dem Benutzer schnell alle Songs zu markieren oder die Markierung aller Elemente aufzuheben.
+Zusätzlich zu der ''All''-Playlist kann der Benutzer eigene Playlists anlegen und diese auch bearbeiten.
+
+\ \\
+Der All und der None Button helfen dem Benutzer schnell alle Songs zu markieren oder die Markierung aller Elemente aufzuheben.
+
+\ \\
+Der Back Button führt zurück zur Playlistauswahl und verwirft alle nicht gespeicherten Änderungen an der aktuellen Playlist.
 
 \ \\
 Wird der Save-Button gedrückt wird für alle Positionen abgespeichert ob das Element an der jeweiligen Position markiert ist. Dies erfolgt über ein SparseBooleanArray. 
@@ -95,9 +101,52 @@ psrep.reenterPlaylist(etName.getText().toString(), checkedSongs);
 
 
 
-
 \newpage
-\subsection {Abspielen der Playlists}
+\subsection {Abspielen der Playlists.}
+\cite{adMediaPlayer}\cite{bMediaPlayer}\cite{wMusicDroid}\cite{yMP3Player}\newline
+Das Abspielen der Songs erfolgt über den MediaPlayer (API level 1). \newline
+Das Wechseln eines Songs wurde mithilfe der changeSong-Methode realisiert. \newline
+Diese Methode nimmt die Playlist und den Index eines Songs in dieser Playlist entgegen, kümmert sich um das Setzen der Datenquelle für den MediaPlayer und bereitet den MediaPlayer auf die Wiedergabe vor. 
+Zusätzlich wird der neue Songname angezeigt und die laufende Aktualisierung der Fortschrittsanzeigen wird durch den Aufruf von updateProgressBar() eingeschaltet. 
+
+\begin{lstlisting}
+public void changeSong(int songIndex, String playlist) {
+    aktPlaylist = playlist;
+    setPlaylist(psrep.getByPlaylistName(aktPlaylist));
+    setSongIndex(songIndex);
+    try {
+        mp.reset();
+        mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath"));
+        mp.prepare();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    progressBar.setProgress(0);
+    updateProgressBar();
+    tvSongname.setText(getPlaylist().get(getSongIndex()).get("songTitle"));
+    tvTotalDur.setText(millisecondsToHMS(mp.getDuration()));
+}
+
+private void updateProgressBar() {
+    mHandler.postDelayed(mUpdateDurTask, 100);
+}
+\end{lstlisting}
+Der mUpdateDurTask aktualisiert die Fortschrittsanzeigen 10 mal pro Sekunde.
+Da mp.getDuration Millisekunden zurückliefert, konvertiert die millisecondsToHMS-Methode die Songdauer in einen Strign im hh:mm:ss Format (ISO 8601).
+
+\begin{lstlisting}
+private Runnable mUpdateDurTask = new Runnable() {
+    @Override
+    public void run() {
+        long currentDur = mp.getCurrentPosition();
+        tvCurrentDur.setText(millisecondsToHMS(currentDur));
+        int progress = getProgressPercentage(currentDur, mp.getDuration());
+        progressBar.setProgress(progress);
+        mHandler.postDelayed(this, 100);
+    }
+};
+\end{lstlisting}
+
 \begin{figure}[h]
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.17]{img/musicListenView1}
@@ -133,10 +182,11 @@ Dieser wird abgespielt und nach Ende des Songs wird sofort der nächste Playlist
 
 \begin{itemize}
 \item Durch den Zurück und durch den Weiter Button kann auf den vorherigen beziehungsweise auf den nächsten Song gewechselt werden. 
-\item Der Play Button dient dem starten der Musikwiedergabe. \newline
+\item Der Play Button dient dem Starten der Musikwiedergabe. \newline
 Während der Musikwiedergabe erscheint an dieser Stelle der Pause Button mit dem man die Musik pausieren kann. 
 \item Der Stop Button beendet die aktuelle Wiedergabe und setzt den Wiedergabefortschritt auf den Beginn des Songs. 
-\item Der Musikmodus Button befindet sich in der Ecke unten rechts. Dieser stellt den aktuellen Modus durch seine Einfärbung dar und ermöglicht einen Wechsel zwischen dem Übungsmodus und dem Musikmodus. \newline
+\item Der Musikmodus Button befindet sich in der Ecke unten rechts. \newline
+Dieser stellt den aktuellen Modus durch seine Einfärbung dar und ermöglicht einen Wechsel zwischen dem Übungsmodus und dem Musikmodus.
 Im Übungsmodus wird die aktuelle Übung und die Anweisungen zum Trainieren angezeigt. \newline
 Der Musikmodus hingegen ermöglicht ein Wechseln der Playlist und den manuellen Wechsel auf einen bestimmten Song. 
 \item Links von der Fortschrittsleiste wird der Fortschritt des aktuellen Songs im hh:mm:ss Format (ISO 8601) angezeigt. 
