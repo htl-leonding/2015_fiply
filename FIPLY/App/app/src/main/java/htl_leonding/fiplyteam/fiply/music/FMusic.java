@@ -36,13 +36,9 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     private Runnable mUpdateDurTask = new Runnable() {
         @Override
         public void run() {
-            long totalDur = mp.getDuration();
             long currentDur = mp.getCurrentPosition();
-
             tvCurrentDur.setText(millisecondsToHMS(currentDur));
-            tvTotalDur.setText(millisecondsToHMS(totalDur));
-
-            int progress = getProgressPercentage(currentDur, totalDur);
+            int progress = getProgressPercentage(currentDur, mp.getDuration());
             progressBar.setProgress(progress);
             mHandler.postDelayed(this, 100);
         }
@@ -125,31 +121,25 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         refreshPlaylist();
         progressBar.setMax(100);
         setPlaylist(psrep.getByPlaylistName(aktPlaylist));
+        configureMediaPlayer(!getPlaylist().isEmpty());
         changeSong(0, aktPlaylist);
     }
 
     public void changeSong(int songIndex, String playlist) {
         aktPlaylist = playlist;
-        configureMediaPlayer(!getPlaylist().isEmpty());
         setPlaylist(psrep.getByPlaylistName(aktPlaylist));
-        if (getPlaylist().isEmpty()) {
-            configureMediaPlayer(false);
-        } else {
-            configureMediaPlayer(true);
-            tvSongname.setText(getPlaylist().get(songIndex).get("songTitle"));
-            setSongIndex(songIndex);
-            try {
-                mp.reset();
-                //mp.setDataSource(getPlaylist().get(songIndex).get("songPath") + File.separator + getPlaylist().get(songIndex).get("songTitle") + ".mp3"); //setzen der Datensource (Initialized-State)
-                mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath")); //setzen der Datensource (Initialized-State)
-                mp.prepare(); //abspielen ermöglichen (Prepared-State)
-                progressBar.setProgress(0);
-                updateProgressBar();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            tvSongname.setText(getPlaylist().get(songIndex).get("songTitle"));
+        setSongIndex(songIndex);
+        try {
+            mp.reset();
+            mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath")); //setzen der Datensource (Initialized-State)
+            mp.prepare(); //abspielen ermöglichen (Prepared-State)
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        progressBar.setProgress(0);
+        updateProgressBar();
+        tvSongname.setText(getPlaylist().get(getSongIndex()).get("songTitle"));
+        tvTotalDur.setText(millisecondsToHMS(mp.getDuration()));
     }
 
     private void configureMediaPlayer(boolean enable) {
