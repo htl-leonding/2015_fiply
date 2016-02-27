@@ -88,13 +88,15 @@ public class SplashActivity extends Activity {
 
         SleepIntentTask sleepIntentTask = new SleepIntentTask();
         sleepIntentTask.execute("");
+
+        startNotifications();
     }
 
-    public void onResume() {
-        super.onResume();
+    private void startNotifications() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         //int minutes = prefs.getInt("interval");
-        int minutes = 1;
+        int minutes = 3;
+  /*
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent i = new Intent(this, NotificationService.class);
         PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
@@ -105,6 +107,20 @@ public class SplashActivity extends Activity {
                     SystemClock.elapsedRealtime() + minutes*60*1000,
                     minutes*60*1000, pi);
         }
+*/
+
+        Calendar calendar = Calendar.getInstance();
+        //calendar.set(Calendar.HOUR_OF_DAY, 13);
+        //calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 16);
+        calendar.set(Calendar.MINUTE, 42);
+        calendar.set(Calendar.SECOND, 0);
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent i = new Intent(this, NotificationService.class);
+        PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
+        am.cancel(pi);
+        am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pi);
     }
 
     /**

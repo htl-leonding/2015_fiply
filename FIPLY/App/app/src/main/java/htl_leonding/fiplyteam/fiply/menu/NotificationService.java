@@ -12,11 +12,22 @@ import android.os.PowerManager;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.app.NotificationCompat;
 
+import java.sql.SQLException;
+
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 public class NotificationService extends Service {
 
+    KeyValueRepository kvr;
     private PowerManager.WakeLock mWakeLock;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        KeyValueRepository.setContext(this);
+        kvr = KeyValueRepository.getInstance();
+    }
 
     /**
      * Simply return null, since our Service will not be communicating with
@@ -38,12 +49,6 @@ public class NotificationService extends Service {
         mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Alarm");
         mWakeLock.acquire();
 
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        if (!cm.getActiveNetworkInfo().isConnected()) {
-            stopSelf();
-            return;
-        }
-
         // do the actual work, in a separate thread
         new PollTask().execute();
     }
@@ -57,11 +62,18 @@ public class NotificationService extends Service {
          */
         @Override
         protected Void doInBackground(Void... params) {
+
             NotificationCompat.Builder mBuilder =
-                    new NotificationCompat.Builder(getApplication())
-                            .setSmallIcon(R.drawable.splash1)
-                            .setContentTitle("My notification")
-                            .setContentText("Hello World!");
+                    null;
+            try {
+                mBuilder = new NotificationCompat.Builder(getApplication())
+                        .setSmallIcon(R.drawable.splash1)
+                        .setContentTitle("FIPLY")
+                        .setContentText(
+                                "YES");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 // Creates an explicit intent for an Activity in your app
             Intent resultIntent = new Intent(getApplication(), MainActivity.class);
 
