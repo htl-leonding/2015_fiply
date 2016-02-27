@@ -22,6 +22,7 @@ import android.util.Log;
 import org.json.JSONException;
 
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -96,33 +97,33 @@ public class SplashActivity extends Activity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         //int minutes = prefs.getInt("interval");
         int minutes = 3;
-  /*
+
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent i = new Intent(this, NotificationService.class);
         PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
         am.cancel(pi);
+
+        // if start hour is later than end hour
+// example: start = 21, end = 07
+        int startHourMilli = 15, endHourMilli = 18;
+// just add one day (in your case in millis)
+        if (startHourMilli > endHourMilli) endHourMilli += 24 * 60 * 60 * 1000;
+// now here you can check without any problems
+        if(System.currentTimeMillis() >= startHourMilli && System.currentTimeMillis() < endHourMilli){
+            // within timeframe, do stuff you need
+        } else {
+            // not in timeframe, find solution
+        }
+
+
+
         // by my own convention, minutes <= 0 means notifications are disabled
         if (minutes > 0) {
             am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                     SystemClock.elapsedRealtime() + minutes*60*1000,
                     minutes*60*1000, pi);
         }
-*/
-
-        Calendar calendar = Calendar.getInstance();
-        //calendar.set(Calendar.HOUR_OF_DAY, 13);
-        //calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.HOUR, 16);
-        calendar.set(Calendar.MINUTE, 48);
-        calendar.set(Calendar.SECOND, 0);
-        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent i = new Intent(this, NotificationService.class);
-        PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
-        am.cancel(pi);
-        am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, calendar.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, pi);
     }
-
     /**
      * Dieser Task führt zuerst ein Sleep aus bevor er einen Intent auf MainActivity durchführt
      */
