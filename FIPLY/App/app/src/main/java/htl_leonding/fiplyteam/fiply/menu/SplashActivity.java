@@ -112,8 +112,8 @@ public class SplashActivity extends Activity {
         Calendar calendar = Calendar.getInstance();
         //calendar.set(Calendar.HOUR_OF_DAY, 13);
         //calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.HOUR_OF_DAY, 16);
-        calendar.set(Calendar.MINUTE, 42);
+        calendar.set(Calendar.HOUR, 16);
+        calendar.set(Calendar.MINUTE, 48);
         calendar.set(Calendar.SECOND, 0);
         AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent i = new Intent(this, NotificationService.class);

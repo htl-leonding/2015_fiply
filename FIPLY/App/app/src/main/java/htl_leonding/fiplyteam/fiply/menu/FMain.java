@@ -145,7 +145,7 @@ public class FMain extends Fragment {
             }
         });
 
-        getActivity().startService(new Intent(getActivity(), NotificationService.class));
+        //getActivity().startService(new Intent(getActivity(), NotificationService.class));
     }
 
     private void notifyUser() {
