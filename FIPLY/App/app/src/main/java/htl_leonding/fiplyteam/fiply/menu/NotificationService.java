@@ -13,6 +13,8 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.app.NotificationCompat;
 
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
@@ -38,103 +40,50 @@ public class NotificationService extends Service {
         return null;
     }
 
-    /**
-     * This is where we initialize. We call this when onStart/onStartCommand is
-     * called by the system. We won't do anything with the intent here, and you
-     * probably won't, either.
-     */
     private void handleIntent(Intent intent) {
-        // obtain the wake lock
         PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
         mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Alarm");
         mWakeLock.acquire();
 
-        // do the actual work, in a separate thread
         new PollTask().execute();
     }
 
     private class PollTask extends AsyncTask<Void, Void, Void> {
-        /**
-         * This is where YOU do YOUR work. There's nothing for me to write here
-         * you have to fill this in. Make your HTTP request(s) or whatever it is
-         * you have to do to get your updates in here, because this is run in a
-         * separate thread
-         */
         @Override
         protected Void doInBackground(Void... params) {
-
-            NotificationCompat.Builder mBuilder =
-                    null;
-            try {
+            Calendar cal = GregorianCalendar.getInstance();
+            cal.setTimeInMillis(System.currentTimeMillis());
+            if(cal.get(Calendar.HOUR_OF_DAY) >= 9 && cal.get(Calendar.HOUR_OF_DAY) <= 20) {
+                NotificationCompat.Builder mBuilder = null;
                 mBuilder = new NotificationCompat.Builder(getApplication())
                         .setSmallIcon(R.drawable.splash1)
                         .setContentTitle("FIPLY")
-                        .setContentText(
-                                "YES");
-            } catch (Exception e) {
-                e.printStackTrace();
+                        .setContentText("YES");
+                Intent resultIntent = new Intent(getApplication(), MainActivity.class);
+                TaskStackBuilder stackBuilder = TaskStackBuilder.create(getApplication());
+                stackBuilder.addParentStack(MainActivity.class);
+                stackBuilder.addNextIntent(resultIntent);
+                PendingIntent resultPendingIntent =
+                        stackBuilder.getPendingIntent(0,
+                                PendingIntent.FLAG_UPDATE_CURRENT);
+                mBuilder.setContentIntent(resultPendingIntent);
+                NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                mNotificationManager.notify(1, mBuilder.build());
             }
-// Creates an explicit intent for an Activity in your app
-            Intent resultIntent = new Intent(getApplication(), MainActivity.class);
-
-// The stack builder object will contain an artificial back stack for the
-// started Activity.
-// This ensures that navigating backward from the Activity leads out of
-// your application to the Home screen.
-            TaskStackBuilder stackBuilder = TaskStackBuilder.create(getApplication());
-// Adds the back stack for the Intent (but not the Intent itself)
-            stackBuilder.addParentStack(MainActivity.class);
-// Adds the Intent that starts the Activity to the top of the stack
-            stackBuilder.addNextIntent(resultIntent);
-            PendingIntent resultPendingIntent =
-                    stackBuilder.getPendingIntent(
-                            0,
-                            PendingIntent.FLAG_UPDATE_CURRENT
-                    );
-            mBuilder.setContentIntent(resultPendingIntent);
-            NotificationManager mNotificationManager =
-                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-// mId allows you to update the notification later on.
-            //mNotificationManager.notify(mId, mBuilder.build());
-            mNotificationManager.notify(1, mBuilder.build());
             return null;
         }
-
-        /**
-         * In here you should interpret whatever you fetched in doInBackground
-         * and push any notifications you need to the status bar, using the
-         * NotificationManager. I will not cover this here, go check the docs on
-         * NotificationManager.
-         *
-         * What you HAVE to do is call stopSelf() after you've pushed your
-         * notification(s). This will:
-         * 1) Kill the service so it doesn't waste precious resources
-         * 2) Call onDestroy() which will release the wake lock, so the device
-         *    can go to sleep again and save precious battery.
-         */
         @Override
         protected void onPostExecute(Void result) {
-            // handle your data
             stopSelf();
         }
     }
 
-    /**
-     * This is called on 2.0+ (API level 5 or higher). Returning
-     * START_NOT_STICKY tells the system to not restart the service if it is
-     * killed because of poor resource (memory/cpu) conditions.
-     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         handleIntent(intent);
         return START_NOT_STICKY;
     }
 
-    /**
-     * In onDestroy() we release our wake lock. This ensures that whenever the
-     * Service stops (killed for resources, stopSelf() called, etc.), the wake
-     * lock will be released.
-     */
     public void onDestroy() {
         super.onDestroy();
         mWakeLock.release();

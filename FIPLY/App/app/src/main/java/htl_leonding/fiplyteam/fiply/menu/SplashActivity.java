@@ -29,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -86,10 +87,8 @@ public class SplashActivity extends Activity {
         phasenRep = PhasenRepository.getInstance();
         trainingsphaseList = new LinkedList<Trainingsphase>();
 
-
         SleepIntentTask sleepIntentTask = new SleepIntentTask();
         sleepIntentTask.execute("");
-
         startNotifications();
     }
 
@@ -103,25 +102,11 @@ public class SplashActivity extends Activity {
         PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
         am.cancel(pi);
 
-        // if start hour is later than end hour
-// example: start = 21, end = 07
-        int startHourMilli = 15, endHourMilli = 18;
-// just add one day (in your case in millis)
-        if (startHourMilli > endHourMilli) endHourMilli += 24 * 60 * 60 * 1000;
-// now here you can check without any problems
-        if(System.currentTimeMillis() >= startHourMilli && System.currentTimeMillis() < endHourMilli){
-            // within timeframe, do stuff you need
-        } else {
-            // not in timeframe, find solution
-        }
-
-
-
         // by my own convention, minutes <= 0 means notifications are disabled
         if (minutes > 0) {
             am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                    SystemClock.elapsedRealtime() + minutes*60*1000,
-                    minutes*60*1000, pi);
+                    SystemClock.elapsedRealtime() + minutes * 60 * 1000,
+                    minutes * 60 * 1000, pi);
         }
     }
     /**
