@@ -116,6 +116,7 @@ public class FPlanManagement extends Fragment {
     }
     AdRequest adRequest = new AdRequest.Builder()
             .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+            .addTestDevice("BAD0FD4427FB4415FF62FD7B3D3B655D")
             .setGender(gender)
             .build();
     mAdView.loadAd(adRequest);
