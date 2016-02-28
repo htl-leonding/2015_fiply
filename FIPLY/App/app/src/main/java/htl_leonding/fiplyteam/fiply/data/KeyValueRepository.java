@@ -7,6 +7,9 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.sql.SQLException;
 import java.util.Calendar;
 
@@ -109,10 +112,10 @@ public class KeyValueRepository {
     }
 
     /**
-     * Liefert den KeyValue zum zugehörigen Key zurück
+     * Liefert den Value zum zugehörigen Key zurück
      *
      * @param key Der Key zu dem der Value gesucht wird
-     * @return gesuchter KeyValue
+     * @return gesuchter Value als String
      * @throws SQLException
      */
     public String getStringValue(String key) throws SQLException {
@@ -129,6 +132,36 @@ public class KeyValueRepository {
             ret = "";
         }
         return ret;
+    }
+
+    /**
+     * Liefert den Value zum zugehörigen Key zurück
+     *
+     * @param key Der Key zu dem der Value gesucht wird
+     * @return gesuchter Value als String
+     * @throws SQLException
+     */
+    public int getGender() throws SQLException {
+        Cursor myCursor = db.query(true, KeyValueEntry.TABLE_NAME, new String[]{
+                        KeyValueEntry.COLUMN_VALUE},
+                KeyValueEntry.COLUMN_KEY + "=" + "'userGender'",
+                null, null, null, null, null);
+        String ret;
+        int gender = AdRequest.GENDER_UNKNOWN;
+        if (myCursor != null) {
+            myCursor.moveToFirst();
+            ret = myCursor.getString(0);
+            if(ret == "Male") {
+                gender = AdRequest.GENDER_MALE;
+            }
+            else if (ret == "Female"){
+                gender = AdRequest.GENDER_FEMALE;
+            }
+            else {
+                gender = AdRequest.GENDER_UNKNOWN;
+            }
+        }
+        return gender;
     }
 
     /**

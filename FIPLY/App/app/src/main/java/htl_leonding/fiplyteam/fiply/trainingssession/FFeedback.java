@@ -62,11 +62,9 @@ public class FFeedback extends Fragment {
         tvGewicht.setText("Du hast heute insgesamt " + getArguments().getDouble("gesamtgewicht") + " kg gestemmt!");
         srep.insertDataPoint(getMood(), getArguments().getDouble("gesamtgewicht"));
 
-        if(mainActivity.mInterstitialAd.isLoaded())
-        {
+        if(mainActivity.mInterstitialAd.isLoaded()) {
             mainActivity.mInterstitialAd.show();
         }
-
         mainActivity.mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {

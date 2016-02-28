@@ -208,20 +208,10 @@ public class MainActivity extends AppCompatActivity {
     public void requestNewInterstitial() {
         int gender;
         try {
-            if(kvr.getKeyValue("userGender").getString(0) == "Male")
-            {
-                gender = AdRequest.GENDER_MALE;
-            }else if (kvr.getKeyValue("userGender").getString(0) == "Female")
-            {
-                gender = AdRequest.GENDER_MALE;
-            }
-            else {
-                gender = AdRequest.GENDER_UNKNOWN;
-            }
+            gender = kvr.getGender();
         } catch (SQLException e) {
             gender = AdRequest.GENDER_UNKNOWN;
         }
-
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .setGender(gender)

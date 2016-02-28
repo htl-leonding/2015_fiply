@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,7 +34,6 @@ public class FPlanManagement extends Fragment {
     ImageButton addButton;
     ImageButton exportCSV;
     ImageButton exportPDF;
-
     KeyValueRepository Krep;
 
     int selectedItem = -1;
@@ -104,6 +105,20 @@ public class FPlanManagement extends Fragment {
                 }
             }
         });
+
+    AdView mAdView = (AdView) getActivity()
+            .findViewById(R.id.planAdView);
+    int gender;
+    try {
+        gender = Krep.getGender();
+    } catch (SQLException e) {
+        gender = AdRequest.GENDER_UNKNOWN;
+    }
+    AdRequest adRequest = new AdRequest.Builder()
+            .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+            .setGender(gender)
+            .build();
+    mAdView.loadAd(adRequest);
     }
 
     public void changeFocus(ListView planView, int newSelection){
