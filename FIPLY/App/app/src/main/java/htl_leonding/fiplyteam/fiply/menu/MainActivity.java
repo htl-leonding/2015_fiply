@@ -15,7 +15,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
+import java.sql.SQLException;
+
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.music.FPlaylist;
 import htl_leonding.fiplyteam.fiply.trainingsplan.FPlanManagement;
 import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingsSettings;
@@ -29,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     String mActivityTitle;
     String[] navArray = new String[6];
+    KeyValueRepository kvr;
+    public InterstitialAd mInterstitialAd;
 
     /**
      * Wird beim Ersten Aufruf der MainActivity aufgerufen und dient dem setzen der OnClickListener
@@ -39,11 +48,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mDrawerList = (ListView) findViewById(R.id.navlist);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
         Resources res = getResources();
         navArray = res.getStringArray(R.array.navigationArray);
+
+        KeyValueRepository.setContext(this);
+        kvr = KeyValueRepository.getInstance();
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        requestNewInterstitial();
 
         /**
          * Bei Drücken eines Elements des NavigationDrawers wird eine FragmentTransaction durchgeführt,
@@ -187,4 +204,30 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList.setSelection(position);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
+
+    public void requestNewInterstitial() {
+        int gender;
+        try {
+            if(kvr.getKeyValue("userGender").getString(0) == "Male")
+            {
+                gender = AdRequest.GENDER_MALE;
+            }else if (kvr.getKeyValue("userGender").getString(0) == "Female")
+            {
+                gender = AdRequest.GENDER_MALE;
+            }
+            else {
+                gender = AdRequest.GENDER_UNKNOWN;
+            }
+        } catch (SQLException e) {
+            gender = AdRequest.GENDER_UNKNOWN;
+        }
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .setGender(gender)
+                .build();
+        mInterstitialAd.loadAd(adRequest);
+    }
+
+
 }

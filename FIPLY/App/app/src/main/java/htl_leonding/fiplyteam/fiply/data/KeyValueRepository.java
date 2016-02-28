@@ -109,6 +109,29 @@ public class KeyValueRepository {
     }
 
     /**
+     * Liefert den KeyValue zum zugehörigen Key zurück
+     *
+     * @param key Der Key zu dem der Value gesucht wird
+     * @return gesuchter KeyValue
+     * @throws SQLException
+     */
+    public String getStringValue(String key) throws SQLException {
+        Cursor myCursor = db.query(true, KeyValueEntry.TABLE_NAME, new String[]{
+                        KeyValueEntry.COLUMN_VALUE},
+                KeyValueEntry.COLUMN_KEY + "=" + "'" + key + "'",
+                null, null, null, null, null);
+        String ret;
+        if (myCursor != null) {
+            myCursor.moveToFirst();
+            ret = myCursor.getString(0);
+        }
+        else {
+            ret = "";
+        }
+        return ret;
+    }
+
+    /**
      * Updated einen bestimmten KeyValueEntry
      *
      * @param key   Der Key der geupdated werden soll
