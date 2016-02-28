@@ -5,7 +5,8 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
@@ -13,7 +14,6 @@ import android.os.PowerManager;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.app.NotificationCompat;
 
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -58,6 +58,7 @@ public class NotificationService extends Service {
                 NotificationCompat.Builder mBuilder = null;
                 mBuilder = new NotificationCompat.Builder(getApplication())
                         .setSmallIcon(getNotificationIcon())
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.notificationicon))
                         .setContentTitle("FIPLY")
                         .setContentText("Notifications Work!")
                         .setAutoCancel(true);
@@ -82,7 +83,7 @@ public class NotificationService extends Service {
 
     private int getNotificationIcon() {
         boolean useWhiteIcon = (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
-        return useWhiteIcon ? R.drawable.splash1 : R.drawable.splash1;
+        return useWhiteIcon ? R.drawable.silhouettesmall : R.drawable.notificationicon;
     }
 
     @Override
