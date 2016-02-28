@@ -690,4 +690,9 @@
     <string name="btSettingsCheckPermissions">Unsere App benötigt deine Erlaubnis um Musik abzuspielen</string>
     <string name="btSettingsRefreshMusic">App neu starten und Musik zur Bibliothek hinzufügen</string>
     <string name="startSettings">Einstellungen</string>
+    <string name="notificationInterval">Zeitspanne zwischen Erinnerungen</string>
+    <string name="notificationIntervalDefault">2</string>
+    <string name="manageMusic">Musik verwalten</string>
+    <string name="preferencesHeaderMusic">Musik</string>
+    <string name="preferencesHeaderNotifications">Notifications</string>
 </resources>

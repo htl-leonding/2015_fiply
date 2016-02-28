@@ -2,13 +2,18 @@ package htl_leonding.fiplyteam.fiply.menu;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -17,12 +22,14 @@ import android.util.Log;
 import org.json.JSONException;
 
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -80,12 +87,9 @@ public class SplashActivity extends Activity {
         phasenRep = PhasenRepository.getInstance();
         trainingsphaseList = new LinkedList<Trainingsphase>();
 
-
         SleepIntentTask sleepIntentTask = new SleepIntentTask();
         sleepIntentTask.execute("");
     }
-
-
 
     /**
      * Dieser Task führt zuerst ein Sleep aus bevor er einen Intent auf MainActivity durchführt

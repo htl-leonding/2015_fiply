@@ -1,9 +1,19 @@
 package htl_leonding.fiplyteam.fiply.menu;
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,10 +141,35 @@ public class FMain extends Fragment {
         startSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FSettings fSettings = new FSettings();
-                displayView(fSettings);
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fraPlace, new FAppSettings())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        startNotifications();
+    }
+
+    private void startNotifications() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        int minutes = Integer.valueOf(prefs.getString("notificationInterval", "0"));
+
+        AlarmManager am = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        Intent i = new Intent(getActivity(), NotificationService.class);
+        PendingIntent pi = PendingIntent.getService(getActivity(), 0, i, 0);
+        am.cancel(pi);
+
+        // by my own convention, minutes <= 0 means notifications are disabled
+        if (minutes > 0) {
+            am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    SystemClock.elapsedRealtime() + minutes * 60 * 1000,
+                    minutes * 60 * 1000, pi);
+        }
     }
 
     /**

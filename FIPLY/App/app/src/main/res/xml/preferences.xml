@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+     android:key="notificationInterval"
+     android:title="@string/notificationInterval"
+     android:defaultValue="@string/notificationIntervalDefault"
+     android:entries="@array/notificationIntervalArray"
+     android:entryValues="@array/notificationIntervalArrayValues"
+     android:summary="%s"
+     />
+
+    <Preference android:key="preferencesMusic"
+        android:title="@string/manageMusic">
+        <intent android:targetPackage="htl_leonding.fiplyteam.fiply"
+                android:targetClass="htl_leonding.fiplyteam.fiply.menu.Settings" />
+    </Preference>
+</PreferenceScreen>
