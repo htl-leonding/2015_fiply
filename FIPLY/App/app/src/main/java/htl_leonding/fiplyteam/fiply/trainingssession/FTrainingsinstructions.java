@@ -11,12 +11,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdListener;
 
 import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
+import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 import htl_leonding.fiplyteam.fiply.data.UebungenRepository;
+import htl_leonding.fiplyteam.fiply.menu.MainActivity;
 
 public class FTrainingsinstructions extends Fragment {
 
@@ -25,6 +31,7 @@ public class FTrainingsinstructions extends Fragment {
     ImageButton ibLinkVideo;
     Button btnNextUeb, btnLastUeb, btnHideClocks, btnHideMusic, btnEndTraining;
     ScrollView scrollView;
+
     /**
      * Dieses Runnable stellt sicher dass das Scrolldown hinten auf die Liste von UI-Änderungen gesetzt wird
      * und so erst ausgeführt wird nach den anderen UI-Änderungen
@@ -40,6 +47,7 @@ public class FTrainingsinstructions extends Fragment {
     String videoLink = "-";
     UebungenRepository ueRep;
     PhasenRepository phRep;
+    PlaylistSongsRepository psr;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,8 +61,10 @@ public class FTrainingsinstructions extends Fragment {
 
         UebungenRepository.setContext(getActivity());
         PhasenRepository.setContext(getActivity());
+        PlaylistSongsRepository.setContext(getActivity());
         ueRep = UebungenRepository.getInstance();
         phRep = PhasenRepository.getInstance();
+        psr = PlaylistSongsRepository.getInstance();
 
         tvUebungName = (TextView) getActivity().findViewById(R.id.detailUebungName);
         tvUebungMuskelgruppe = (TextView) getActivity().findViewById(R.id.detailMuskelGruppe);
@@ -78,29 +88,14 @@ public class FTrainingsinstructions extends Fragment {
         btnHideClocks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity().findViewById(R.id.clocksLayout).getVisibility() != View.GONE) {
-                    getActivity().findViewById(R.id.clocksLayout).setVisibility(View.GONE);
-                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
-                } else {
-                    getActivity().findViewById(R.id.clocksLayout).setVisibility(View.VISIBLE);
-                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
-                }
-                scrollView.post(scrDown); //Das Scrolldown muss so aufgerufen werden um sicherzustellen dass es nach dem invalidate() der Views aufgerufen wird
+                changeClocksVisible();
             }
         });
 
         btnHideMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity().findViewById(R.id.musicLayout).getVisibility() != View.GONE) {
-                    getActivity().findViewById(R.id.musicLayout).setVisibility(View.GONE);
-                    getActivity().findViewById(R.id.clocksLayout).invalidate();
-                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
-                } else {
-                    getActivity().findViewById(R.id.musicLayout).setVisibility(View.VISIBLE);
-                    getActivity().findViewById(R.id.clocksLayout).invalidate();
-                    getActivity().findViewById(R.id.fraTsUebung).invalidate();
-                }
+                changeMusicVisible();
                 scrollView.post(scrDown); //Das Scrolldown muss so aufgerufen werden um sicherzustellen dass es nach dem invalidate() der Views aufgerufen wird
             }
         });
@@ -147,10 +142,7 @@ public class FTrainingsinstructions extends Fragment {
         btnEndTraining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FFeedback fFeedback = new FFeedback();
-                fFeedback.setArguments(getArguments());
-                fFeedback.setArguments(getArguments());
-                displayFragment.displayTSFeedback(fFeedback, getFragmentManager());
+                showFeedback();
             }
         });
 
@@ -173,6 +165,29 @@ public class FTrainingsinstructions extends Fragment {
         }
         updateUebungsfields(aktUebungNr);
         updatePhaseAndGewicht();
+    }
+
+    private void changeClocksVisible() {
+        if (getActivity().findViewById(R.id.clocksLayout).getVisibility() != View.GONE) {
+            getActivity().findViewById(R.id.clocksLayout).setVisibility(View.GONE);
+            getActivity().findViewById(R.id.fraTsUebung).invalidate();
+        } else {
+            getActivity().findViewById(R.id.clocksLayout).setVisibility(View.VISIBLE);
+            getActivity().findViewById(R.id.fraTsUebung).invalidate();
+        }
+        scrollView.post(scrDown); //Das Scrolldown muss so aufgerufen werden um sicherzustellen dass es nach dem invalidate() der Views aufgerufen wird
+    }
+
+    private void changeMusicVisible() {
+        if (getActivity().findViewById(R.id.musicLayout).getVisibility() != View.GONE) {
+            getActivity().findViewById(R.id.musicLayout).setVisibility(View.GONE);
+            getActivity().findViewById(R.id.clocksLayout).invalidate();
+            getActivity().findViewById(R.id.fraTsUebung).invalidate();
+        } else {
+            getActivity().findViewById(R.id.musicLayout).setVisibility(View.VISIBLE);
+            getActivity().findViewById(R.id.clocksLayout).invalidate();
+            getActivity().findViewById(R.id.fraTsUebung).invalidate();
+        }
     }
 
     public void updateUebungsfields(int ueId) {
@@ -199,6 +214,13 @@ public class FTrainingsinstructions extends Fragment {
         }
         tvUebungSaetze.setText(getAktPhase().getString(6));
         tvUebungWiederholungen.setText(getAktPhase().getString(7));
+    }
+
+    public void showFeedback(){
+        FFeedback fFeedback = new FFeedback();
+        fFeedback.setArguments(getArguments());
+        fFeedback.setArguments(getArguments());
+        displayFragment.displayTSFeedback(fFeedback, getFragmentManager());
     }
 
     public Cursor getAktUebung() {

@@ -17,6 +17,7 @@ import java.util.HashMap;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
+import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingsinstructions;
 import htl_leonding.fiplyteam.fiply.trainingssession.displayFragment;
 
 public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener, SeekBar.OnSeekBarChangeListener {
@@ -123,23 +124,29 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         setPlaylist(psrep.getByPlaylistName(aktPlaylist));
         configureMediaPlayer(!getPlaylist().isEmpty());
         changeSong(0, aktPlaylist);
+        if(getPlaylist().isEmpty())
+        {
+            getActivity().findViewById(R.id.musicLayout).setVisibility(View.GONE);
+        }
     }
 
     public void changeSong(int songIndex, String playlist) {
         aktPlaylist = playlist;
         setPlaylist(psrep.getByPlaylistName(aktPlaylist));
         setSongIndex(songIndex);
-        try {
-            mp.reset();
-            mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath")); //setzen der Datensource (Initialized-State)
-            mp.prepare(); //abspielen ermöglichen (Prepared-State)
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!getPlaylist().isEmpty()) {
+            try {
+                mp.reset();
+                mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath")); //setzen der Datensource (Initialized-State)
+                mp.prepare(); //abspielen ermöglichen (Prepared-State)
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            progressBar.setProgress(0);
+            updateProgressBar();
+            tvSongname.setText(getPlaylist().get(getSongIndex()).get("songTitle"));
+            tvTotalDur.setText(millisecondsToHMS(mp.getDuration()));
         }
-        progressBar.setProgress(0);
-        updateProgressBar();
-        tvSongname.setText(getPlaylist().get(getSongIndex()).get("songTitle"));
-        tvTotalDur.setText(millisecondsToHMS(mp.getDuration()));
     }
 
     private void configureMediaPlayer(boolean enable) {
@@ -176,6 +183,9 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
             progressBar.setProgress(0);
             progressBar.setMax(100);
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (IllegalStateException e)
+        {
             e.printStackTrace();
         }
         btnPlay.setImageResource(R.drawable.play);
