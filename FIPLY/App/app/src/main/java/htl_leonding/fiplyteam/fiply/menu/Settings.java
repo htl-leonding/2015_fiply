@@ -9,19 +9,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.text.style.TtsSpan;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,73 +25,72 @@ import java.util.HashMap;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 import htl_leonding.fiplyteam.fiply.music.ReadMusic;
+import htl_leonding.fiplyteam.fiply.trainingssession.ListViewUebung;
 
-public class FSettings extends Fragment {
+public class Settings extends Activity {
     Button btMusic, btRefresh;
+    ListView lvSongs;
     TextView tvSongsCount;
     ReadMusic rm;
     PlaylistSongsRepository psr;
     final public int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        return inflater.inflate(R.layout.fragment_settings, container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        btMusic = (Button) getActivity().findViewById(R.id.btSettingsReadMusic);
-        btRefresh = (Button) getActivity().findViewById(R.id.btSettingsRefreshMusic);
-        tvSongsCount = (TextView) getActivity().findViewById(R.id.tvSettingsSongFoundCount);
+        setContentView(R.layout.activity_settings);
+        btMusic = (Button) findViewById(R.id.btSettingsReadMusic);
+        btRefresh = (Button) findViewById(R.id.btSettingsRefreshMusic);
+        tvSongsCount = (TextView) findViewById(R.id.tvSettingsSongFoundCount);
+        lvSongs = (ListView) findViewById(R.id.lvSettingsSongs);
 
         rm = ReadMusic.getInstance();
-        PlaylistSongsRepository.setContext(getActivity());
+        PlaylistSongsRepository.setContext(this);
         psr = PlaylistSongsRepository.getInstance();
         tvSongsCount.setText("Songs in der Bibliothek: " + psr.getByPlaylistName("All").size());
+        lvSongs.setAdapter(new SimpleAdapter(this, psr.getByPlaylistName("All"), R.layout.music_item,
+                new String[]{"songTitle"}, new int[]{R.id.songTitle}));
 
         btMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CheckMusicPermissionAndReadMusic(getActivity().getApplicationContext());
+                CheckMusicPermissionAndReadMusic(Settings.this);
                 refreshButtonStatus();
             }
         });
         btRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CheckMusicPermissionAndReadMusic(getActivity().getApplicationContext());
+                CheckMusicPermissionAndReadMusic(Settings.this.getApplicationContext());
                 fillPlaylistDb();
                 btRefresh.post(new Runnable() {
                     @Override
                     public void run() {
-                        Intent mStartActivity = new Intent(getContext(), SplashActivity.class);
-                        PendingIntent mPendingIntent = PendingIntent.getActivity(getContext(), 12345, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-                        AlarmManager mgr = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+                        Intent mStartActivity = new Intent(Settings.this, SplashActivity.class);
+                        PendingIntent mPendingIntent = PendingIntent.getActivity(Settings.this, 12345, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                        AlarmManager mgr = (AlarmManager) Settings.this.getSystemService(Context.ALARM_SERVICE);
                         mgr.set(AlarmManager.RTC, System.currentTimeMillis(), mPendingIntent);
                         System.exit(0);
                     }
                 });
             }
         });
-    refreshButtonStatus();
+        refreshButtonStatus();
     }
 
     public void CheckMusicPermissionAndReadMusic(Context context) {
-        int hasReadStoragePermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE);
+        int hasReadStoragePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
         if (hasReadStoragePermission != PackageManager.PERMISSION_GRANTED) {
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 showMessageOKCancel("Um Musik zu hören benötigt FIPLY die Erlaubnis auf den externen Speicher zugreifen zu dürfen.", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ActivityCompat.requestPermissions(FSettings.this.getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+                        ActivityCompat.requestPermissions(Settings.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
                     }
-                }, this.getActivity());
+                }, this);
                 return;
             }
-            ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
             return;
         }
         rm.ReadSongsIntoArrayList(context);
@@ -143,7 +138,7 @@ public class FSettings extends Fragment {
     }
 
     private void refreshButtonStatus() {
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             enableRefresh(true);
         }
         else

@@ -1,29 +1,23 @@
 package htl_leonding.fiplyteam.fiply.menu;
 
-import android.app.Fragment;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 
 import htl_leonding.fiplyteam.fiply.R;
+import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 
 public class FAppSettings extends PreferenceFragmentCompat {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    private Preference pref;
+    PlaylistSongsRepository psr;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.preferences);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        getFragmentManager().beginTransaction().hide(FAppSettings.this).commit();
-        getFragmentManager().beginTransaction().replace(R.id.fraPlace, new FMain()).commit();
+        PlaylistSongsRepository.setContext(getActivity());
+        psr = PlaylistSongsRepository.getInstance();
+        pref = getPreferenceManager().findPreference("preferencesMusic");
+        pref.setSummary(psr.getByPlaylistName("All").size() + " Songs eingelesen");
     }
 }

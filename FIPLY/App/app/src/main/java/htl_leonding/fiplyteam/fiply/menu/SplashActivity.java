@@ -89,26 +89,8 @@ public class SplashActivity extends Activity {
 
         SleepIntentTask sleepIntentTask = new SleepIntentTask();
         sleepIntentTask.execute("");
-        startNotifications();
     }
 
-    private void startNotifications() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        //int minutes = prefs.getInt("interval");
-        int minutes = 3;
-
-        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-        Intent i = new Intent(this, NotificationService.class);
-        PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
-        am.cancel(pi);
-
-        // by my own convention, minutes <= 0 means notifications are disabled
-        if (minutes > 0) {
-            am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                    SystemClock.elapsedRealtime() + minutes * 60 * 1000,
-                    minutes * 60 * 1000, pi);
-        }
-    }
     /**
      * Dieser Task führt zuerst ein Sleep aus bevor er einen Intent auf MainActivity durchführt
      */

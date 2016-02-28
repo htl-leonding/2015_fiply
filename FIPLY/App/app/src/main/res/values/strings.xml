@@ -693,4 +693,6 @@
     <string name="notificationInterval">Zeitspanne zwischen Erinnerungen</string>
     <string name="notificationIntervalDefault">2</string>
     <string name="manageMusic">Musik verwalten</string>
+    <string name="preferencesHeaderMusic">Musik</string>
+    <string name="preferencesHeaderNotifications">Notifications</string>
 </resources>

@@ -9,8 +9,9 @@
      android:summary="%s"
      />
 
-    <Preference android:title="@string/manageMusic" >
-        <intent
+    <Preference android:key="preferencesMusic"
+        android:title="@string/manageMusic">
+        <intent android:targetPackage="htl_leonding.fiplyteam.fiply"
+                android:targetClass="htl_leonding.fiplyteam.fiply.menu.Settings" />
     </Preference>
-
 </PreferenceScreen>

@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new FPlaylist();
                 break;
             case 6:
-                fragment = new FSettings();
+                fragment = new FAppSettings();
                 break;
             default:
                 break;

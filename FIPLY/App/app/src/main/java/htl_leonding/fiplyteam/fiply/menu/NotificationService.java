@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.v4.app.TaskStackBuilder;
@@ -53,12 +54,13 @@ public class NotificationService extends Service {
         protected Void doInBackground(Void... params) {
             Calendar cal = GregorianCalendar.getInstance();
             cal.setTimeInMillis(System.currentTimeMillis());
-            if(cal.get(Calendar.HOUR_OF_DAY) >= 9 && cal.get(Calendar.HOUR_OF_DAY) <= 20) {
+            //if(cal.get(Calendar.HOUR_OF_DAY) >= 9 && cal.get(Calendar.HOUR_OF_DAY) <= 20) {
                 NotificationCompat.Builder mBuilder = null;
                 mBuilder = new NotificationCompat.Builder(getApplication())
-                        .setSmallIcon(R.drawable.splash1)
+                        .setSmallIcon(getNotificationIcon())
                         .setContentTitle("FIPLY")
-                        .setContentText("YES");
+                        .setContentText("Notifications Work!")
+                        .setAutoCancel(true);
                 Intent resultIntent = new Intent(getApplication(), MainActivity.class);
                 TaskStackBuilder stackBuilder = TaskStackBuilder.create(getApplication());
                 stackBuilder.addParentStack(MainActivity.class);
@@ -69,13 +71,18 @@ public class NotificationService extends Service {
                 mBuilder.setContentIntent(resultPendingIntent);
                 NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 mNotificationManager.notify(1, mBuilder.build());
-            }
+            //}
             return null;
         }
         @Override
         protected void onPostExecute(Void result) {
             stopSelf();
         }
+    }
+
+    private int getNotificationIcon() {
+        boolean useWhiteIcon = (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
+        return useWhiteIcon ? R.drawable.splash1 : R.drawable.splash1;
     }
 
     @Override
