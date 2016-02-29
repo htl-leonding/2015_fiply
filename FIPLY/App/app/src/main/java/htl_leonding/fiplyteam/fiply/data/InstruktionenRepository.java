@@ -82,7 +82,7 @@ public class InstruktionenRepository extends Service {
     }
 
     public void reCreateInstuktionenTable() {
-        db.execSQL("DROP TABLE IF EXISTS " + FiplyContract.UebungenEntry.TABLE_NAME + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + FiplyContract.InstruktionenEntry.TABLE_NAME + ";");
         final String SQL_CREATE_INSTRUKTIONEN_TABLE = "create table " + InstruktionenEntry.TABLE_NAME +
                 " (" + InstruktionenEntry.COLUMN_ROWID + " integer primary key autoincrement, " +
                 InstruktionenEntry.COLUMN_WOCHENTAG + " text not null, " +
@@ -91,6 +91,10 @@ public class InstruktionenRepository extends Service {
                 InstruktionenEntry.COLUMN_PHASENID + " text not null" +
                 ");";
         db.execSQL(SQL_CREATE_INSTRUKTIONEN_TABLE);
+    }
+
+    public void deleteByPhasenId(String id){
+        db.delete(FiplyContract.InstruktionenEntry.TABLE_NAME, InstruktionenEntry.COLUMN_PHASENID + "=" + id, null);
     }
 
     @Nullable

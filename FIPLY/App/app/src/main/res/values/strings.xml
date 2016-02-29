@@ -695,4 +695,7 @@
     <string name="manageMusic">Musik verwalten</string>
     <string name="preferencesHeaderMusic">Musik</string>
     <string name="preferencesHeaderNotifications">Notifications</string>
+    <string name="deleteplanquastion">Bitte bestätigen Sie das Löschen des Trainingsplans</string>
+    <string name="delete">Löschen</string>
+    <string name="cancel">Abbrechen</string>
 </resources>

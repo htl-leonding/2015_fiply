@@ -24,6 +24,15 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="wrap_content"
+            android:src="@drawable/minusorangesmall"
+            android:id="@+id/deleteplan"
+            android:adjustViewBounds="true"
+            android:layout_toEndOf="@+id/addplan"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
             android:src="@drawable/exportpdfsmall"
             android:id="@+id/exportpdfbt"
             android:adjustViewBounds="true"

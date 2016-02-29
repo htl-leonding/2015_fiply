@@ -39,16 +39,4 @@
             android:textColor="@color/white"/>
     </LinearLayout>
 
-    <ImageButton
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButtonInfo"
-        android:src="@drawable/informationsmall"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:layout_toRightOf="@+id/planinfolinearlayout"
-        android:background="@color/darkSecondary"
-        android:layout_marginTop="5dp"
-        android:focusableInTouchMode="true"
-        />
 </RelativeLayout>

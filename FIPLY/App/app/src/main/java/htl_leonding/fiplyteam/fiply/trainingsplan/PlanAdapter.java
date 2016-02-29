@@ -42,7 +42,6 @@ public class PlanAdapter extends ArrayAdapter<Trainingsplanlistitem> {
             TextView tt1 = (TextView) v.findViewById(R.id.plannametv);
             TextView tt2 = (TextView) v.findViewById(R.id.trainingszieltv);
             TextView tt3 = (TextView) v.findViewById(R.id.phasendauerbereichtv);
-            ImageButton imgButton = (ImageButton) v.findViewById(R.id.imageButtonInfo);
 
             if (tt1 != null) {
                 tt1.setText(p.getName());
@@ -54,14 +53,6 @@ public class PlanAdapter extends ArrayAdapter<Trainingsplanlistitem> {
 
             if (tt3 != null) {
                 tt3.setText(p.getDauer());
-            }
-            if (imgButton != null){
-                imgButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
             }
         }
 

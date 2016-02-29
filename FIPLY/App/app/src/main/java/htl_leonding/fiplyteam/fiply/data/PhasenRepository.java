@@ -123,6 +123,16 @@ public class PhasenRepository {
         db.execSQL(SQL_CREATE_PHASEN_TABLE);
     }
 
+    public void deleteByPlanId(String id){
+        db.delete(PhasenEntry.TABLE_NAME, PhasenEntry.COLUMN_PLANID + "=" + id, null);
+    }
+
+    public Cursor getIdsByPlanId(String id) {
+        return db.query(true, PhasenEntry.TABLE_NAME, new String[]{
+                PhasenEntry.COLUMN_ROWID,
+        }, PhasenEntry.COLUMN_PLANID + "=" + id, null, null, null, null, null);
+    }
+
     public void deleteAll() {
         db.delete(PhasenEntry.TABLE_NAME, null, null);
     }

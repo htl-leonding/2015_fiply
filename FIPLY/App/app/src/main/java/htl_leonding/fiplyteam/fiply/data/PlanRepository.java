@@ -88,6 +88,10 @@ public class PlanRepository {
                 ,null,null,null,null, PlanEntry.COLUMN_STARTDATE + " ASC");
     }
 
+    public void deleteByPlanId(String id){
+        db.delete(PlanEntry.TABLE_NAME, PlanEntry.COLUMN_ROWID + "=" + id, null);
+    }
+
     public long getPlanCount(){
         return DatabaseUtils.queryNumEntries(db, PlanEntry.TABLE_NAME);
 

@@ -1,11 +1,14 @@
 package htl_leonding.fiplyteam.fiply.trainingsplan;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +24,11 @@ import java.util.ArrayList;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract;
+import htl_leonding.fiplyteam.fiply.data.FiplyContract.InstruktionenEntry;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.PlanEntry;
+import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
+import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
 import htl_leonding.fiplyteam.fiply.data.PlanRepository;
 
 
@@ -32,12 +38,15 @@ public class FPlanManagement extends Fragment {
     PlanRepository planRep;
     Cursor c;
     ImageButton addButton;
+    ImageButton deleteButton;
     ImageButton exportCSV;
     ImageButton exportPDF;
     KeyValueRepository Krep;
 
     int selectedItem = -1;
     int previousItem = -1;
+
+    ListView actualView;
 
     @Nullable
     @Override
@@ -57,9 +66,10 @@ public class FPlanManagement extends Fragment {
         arrayOfPlans = initPlans();
         final ListView planView = (ListView) getActivity().findViewById(R.id.listViewtrainingsplan);
         PlanAdapter adapter = new PlanAdapter(getActivity(),R.layout.trainingsplan_item, arrayOfPlans);
-
+        actualView = planView;
         planView.setAdapter(adapter);
 
+        deleteButton = (ImageButton) getActivity().findViewById(R.id.deleteplan);
         addButton = (ImageButton) getActivity().findViewById(R.id.addplan);
         exportCSV = (ImageButton) getActivity().findViewById(R.id.exportcsvbt);
         exportPDF = (ImageButton) getActivity().findViewById(R.id.exportpdfbt);
@@ -77,23 +87,33 @@ public class FPlanManagement extends Fragment {
             }
         });
 
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(getContext())
+                        .setTitle(R.string.fertig)
+                        .setMessage(R.string.deleteplanquastion)
+                        .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                deletePlan();
+                            }
+                        })
+                        .setNegativeButton(R.string.cancel,new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setIcon(R.drawable.successsmall)
+                        .show();
+            }
+        });
+
         planView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 changeFocus(planView, position);
             }
         });
-
-        /*planView.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    changeFocus(planView, Integer.valueOf(Krep.getKeyValue("selectedPlan").getString(1)));
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        });*/
 
         view.post(new Runnable() {
             @Override
@@ -122,6 +142,48 @@ public class FPlanManagement extends Fragment {
     mAdView.loadAd(adRequest);
     }
 
+    private void deletePlan() {
+        PlanRepository planRep;
+        InstruktionenRepository instruktRep;
+        PhasenRepository phasenRep;
+        PlanRepository.setContext(getContext());
+        InstruktionenRepository.setContext(getContext());
+        PhasenRepository.setContext(getContext());
+
+        planRep = PlanRepository.getInstance();
+        instruktRep = InstruktionenRepository.getInstance();
+        phasenRep = PhasenRepository.getInstance();
+
+        Trainingsplanlistitem item = (Trainingsplanlistitem) actualView.getItemAtPosition(selectedItem);
+        String planId = null;
+        System.out.println("finished");
+
+        int iRowId = c.getColumnIndex(PlanEntry.COLUMN_ROWID);
+        Cursor j = planRep.getPlanByName(item.getName());
+        System.out.println("finished");
+
+        j.moveToFirst();
+        planId = j.getString(iRowId);
+        System.out.println("finished");
+
+        String[] phasenIds = null;
+        Cursor c = phasenRep.getIdsByPlanId(planId);
+        System.out.println("finished");
+        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+            instruktRep.deleteByPhasenId(c.getString(0));
+        }
+        System.out.println("finished");
+
+        phasenRep.deleteByPlanId(planId);
+        planRep.deleteByPlanId(planId);
+        System.out.println("finished");
+
+        selectedItem = -1;
+        previousItem = -1;
+        Krep.updateKeyValue("selectedPlan", String.valueOf(selectedItem));
+        getFragmentManager().popBackStack();
+    }
+
     public void changeFocus(ListView planView, int newSelection){
         if (newSelection == -1 || newSelection == selectedItem || planView == null){
             return;
@@ -135,10 +197,8 @@ public class FPlanManagement extends Fragment {
 
         planView.getChildAt(selectedItem + pos).setBackgroundResource(R.color.darkselected);
         planView.getChildAt(selectedItem + pos).setBackgroundResource(R.drawable.planlistitemborder);
-        planView.getChildAt(selectedItem + pos).findViewById(R.id.imageButtonInfo).setBackgroundResource(R.color.darkselected);
         if (previousItem != -1) {
-            planView.getChildAt(previousItem + pos).findViewById(R.id.imageButtonInfo).setBackgroundResource(R.color.darkSecondary);
-            planView.getChildAt(previousItem + pos).setBackgroundResource(R.drawable.unselecteditem);
+             planView.getChildAt(previousItem + pos).setBackgroundResource(R.drawable.unselecteditem);
         }
 
         previousItem = selectedItem;
