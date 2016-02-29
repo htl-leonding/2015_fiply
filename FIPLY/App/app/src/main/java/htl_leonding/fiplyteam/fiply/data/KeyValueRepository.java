@@ -151,14 +151,17 @@ public class KeyValueRepository {
         if (myCursor != null) {
             myCursor.moveToFirst();
             ret = myCursor.getString(0);
-            if(ret == "Male") {
+            if(ret.equals("Male")) {
                 gender = AdRequest.GENDER_MALE;
+                Log.d("Gender", "Male");
             }
-            else if (ret == "Female"){
+            else if (ret.equals("Female")){
                 gender = AdRequest.GENDER_FEMALE;
+                Log.d("Gender", "Female");
             }
             else {
                 gender = AdRequest.GENDER_UNKNOWN;
+                Log.d("Gender", "Unknown");
             }
         }
         return gender;

@@ -1,8 +1,15 @@
 package htl_leonding.fiplyteam.fiply.menu;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -29,7 +37,7 @@ import htl_leonding.fiplyteam.fiply.trainingssession.FTrainingsSettings;
 import htl_leonding.fiplyteam.fiply.uebungskatalog.FUebungskatalog;
 import htl_leonding.fiplyteam.fiply.user.FUsermanagement;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
     ListView mDrawerList;
     ArrayAdapter<String> mAdapter;
     ActionBarDrawerToggle mDrawerToggle;
@@ -84,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
         FMain fMain = new FMain();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fraPlace, fMain).commit();
+
+        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
+        restartNotifications();
     }
 
     /**
@@ -220,5 +231,28 @@ public class MainActivity extends AppCompatActivity {
         mInterstitialAd.loadAd(adRequest);
     }
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(key.equals("notificationInterval")) {
+            restartNotifications();
+            Toast.makeText(this, "Änderungen der Zeitspanne zwischen den Erinnerungen gespeichert!", Toast.LENGTH_LONG).show();
+        }
+    }
 
+    private void restartNotifications() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        int minutes = Integer.valueOf(prefs.getString("notificationInterval", "0"));
+
+        AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        Intent i = new Intent(this, NotificationService.class);
+        PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
+        am.cancel(pi);
+
+        // by my own convention, minutes <= 0 means notifications are disabled
+        if (minutes > 0) {
+            am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    SystemClock.elapsedRealtime() + minutes * 60 * 1000,
+                    minutes * 60 * 1000, pi);
+        }
+    }
 }

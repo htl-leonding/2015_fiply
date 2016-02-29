@@ -149,29 +149,6 @@ public class FMain extends Fragment {
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        startNotifications();
-    }
-
-    private void startNotifications() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        int minutes = Integer.valueOf(prefs.getString("notificationInterval", "0"));
-
-        AlarmManager am = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-        Intent i = new Intent(getActivity(), NotificationService.class);
-        PendingIntent pi = PendingIntent.getService(getActivity(), 0, i, 0);
-        am.cancel(pi);
-
-        // by my own convention, minutes <= 0 means notifications are disabled
-        if (minutes > 0) {
-            am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                    SystemClock.elapsedRealtime() + minutes * 60 * 1000,
-                    minutes * 60 * 1000, pi);
-        }
-    }
-
     /**
      * Ersetzt das FrameLayout der MainActivity mit dem übergebenem Fragment
      *
