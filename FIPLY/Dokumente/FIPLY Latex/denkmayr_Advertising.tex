@@ -8,7 +8,11 @@
 Mit dem Schalten von Werbung steht eine weitere Einkommensquelle von Apps zur Verfügung.\newline
 Es gibt mehrere Dienste die das Schalten von Werbungen unterstützen. \newline
 Google AdMob ist der populärste dieser Dienste und wird von Google empfohlen. \newline
-Beim Nachforschen und beim Erstellen der Werbungen wurde die Dokumentation zu diesen auf der Google Developers Webseite [\citetitle{gdAdMob} \cite{gdAdMob}] verwendet.
+Beim Nachforschen und beim Erstellen der Werbungen wurde die Dokumentation zu diesen auf der Google Developers Webseite [\citetitle{gdAdMob} \cite{gdAdMob}] verwendet. 
+
+\ \\
+AdMob unterstützt 2 verschiedene Arten von Werbungen. 
+Zum einen gibt es die, sich am Rand des Bildschirms befindlichen, Banner Ads, zum anderen, die den ganzen Bildschirm abdeckenden, Interstitial Ads.
 \ \\
 \begin{figure}[h]
 	\begin{subfigure}[b]{0.3\textwidth}
@@ -24,7 +28,7 @@ Beim Nachforschen und beim Erstellen der Werbungen wurde die Dokumentation zu di
 \newpage
 \subsubsection{Banner Ads}
 Beim Erstellen der Banner wurde die Dokumentation zu diesen auf der Google Developers Webseite [\citetitle{gdBanner} \cite{gdBanner}] verwendet. \newline 
-Banner Ads nehmen einen kleinen Teil des Bildschirms ein. Diese werden meistens in einem Layout File erstellt und dann in einer Activity oder in einem Fragment geladen. Der User kann durch einen Klick auf den Banner auf die beworbene Webseite weitergeleitet werden.
+Banner Ads nehmen einen kleinen Teil des Bildschirms ein. Diese werden in einem layout XML file erstellt und dann in einer Activity oder in einem Fragment geladen. Der User kann durch einen Klick auf den Banner auf die beworbene Webseite weitergeleitet werden.
 \ \\
 \begin{lstlisting}
 <com.google.android.gms.ads.AdView
