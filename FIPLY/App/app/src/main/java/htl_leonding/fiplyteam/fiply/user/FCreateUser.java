@@ -75,12 +75,17 @@ public class FCreateUser extends Fragment {
 
     @Override
     public void onDestroyView() {
-        KeyValueRepository.getInstance().updateKeyValue("userName", etName.getText().toString());
-        KeyValueRepository.getInstance().updateKeyValue("userGender", spGender.getSelectedItem().toString());
+        kvr.updateKeyValue("userName", etName.getText().toString());
+        kvr.updateKeyValue("userGender", spGender.getSelectedItem().toString());
         super.onDestroyView();
     }
 
     private void setSettings() throws SQLException {
         etName.setText(kvr.getKeyValue("userName").getString(1));
+        if(kvr.getKeyValue("userGender").getString(1) == "Male"){
+            spGender.setSelection(0);
+        } else {
+            spGender.setSelection(1);
+        }
     }
 }
