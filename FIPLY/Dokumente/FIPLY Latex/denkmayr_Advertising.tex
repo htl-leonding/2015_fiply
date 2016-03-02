@@ -28,7 +28,7 @@ Zum einen gibt es, die sich am Rand des Bildschirms befindlichen, Banner Ads, zu
 \newpage
 \subsubsection{Banner Ads}
 Beim Erstellen der Banner wurde die Dokumentation zu diesen auf der Google Developers Webseite [\citetitle{gdBanner} \cite{gdBanner}] verwendet. \newline 
-Banner Ads nehmen einen kleinen Teil des Bildschirms ein. Diese werden in einem layout XML file erstellt und dann in einer Activity oder in einem Fragment geladen. Der Benutzer kann durch einen Klick auf den Banner auf die beworbene Webseite weitergeleitet werden.
+Banner Ads nehmen einen kleinen Teil des Bildschirms ein. Diese werden in einem layout XML file erstellt und dann in einer Activity oder in einem Fragment geladen. Der Benutzer kann durch einen Klick auf das Banner auf die beworbene Webseite weitergeleitet werden.
 \ \\
 \begin{lstlisting}
 <com.google.android.gms.ads.AdView
@@ -42,7 +42,7 @@ Banner Ads nehmen einen kleinen Teil des Bildschirms ein. Diese werden in einem 
     ></com.google.android.gms.ads.AdView>
 \end{lstlisting}
 Hier wird ein Banner in einem layout XML file definiert. Dieses Banner befindet sich am Boden der App und überspannt die gesamte Breite des Bildschirms.
-Die oben eingetragene AdUnitId liefert uns TestAds und dient zum Testen.
+Die oben eingetragene ad unit Id liefert uns TestAds und dient zum Testen.
 \ \\
 \begin{lstlisting}
 int gender = AdRequest.GENDER_MALE;
@@ -56,7 +56,7 @@ AdRequest adRequest = new AdRequest.Builder()
 mAdView.loadAd(adRequest);
 \end{lstlisting}
 Dieser Code beinhaltet das Anfordern einer Werbung und anschließend wird das Laden dieser eingeleitet.
-Das Banner wird erst dann sichtbar wenn die Werbung komplett geladen wurde. %Zeitform(wurde/worden ist) 
+Das Banner wird erst dann sichtbar, wenn die Werbung komplett geladen wurde. %Zeitform(wurde/worden ist) 
 Die angeforderte Werbung kann durch Daten wie Geschlecht, Geburtstag oder Position präziser auf den Benutzer abgestimmt werden.
 Diese Abstimmung erfolgt durch die Methoden .setGender(), .setLocation() und .setBirthday().	
 
@@ -73,7 +73,7 @@ mInterstitialAd.
 requestNewInterstitial();
 \end{lstlisting}
 Hier wird eine Interstitial Ad angelegt und anschließend wird eine Werbung für das Interstitial angefordert. 
-Die oben eingetragene AdUnitId liefert uns TestAds und dient zum Testen.
+Die oben eingetragene ad unit Id liefert uns TestAds und dient zum Testen.
 \ \\
 \begin{lstlisting}
 public void requestNewInterstitial() {
