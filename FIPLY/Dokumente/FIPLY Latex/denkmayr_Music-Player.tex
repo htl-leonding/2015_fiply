@@ -5,20 +5,19 @@
 
 \begin{document}
 \section{Musik}
+Beim Erstellen des MediaPlayers wurden diese Quellen verwendet: [\citetitle{adMediaPlayer} \cite{adMediaPlayer}], [\citetitle{bMediaPlayer} \cite{bMediaPlayer}]. % Quellen
 \subsection{Lokalisierung der Musikdateien}
-Am Beginn der Arbeit wurde der Music-Ordner nach mp3-Files durchsucht. 
-
-\ \\  
-\texttt{Dabei wurde der Music-Ordner mit Hilfe eines FileExtensionFilters nach mp3-Dateien durchsucht.}  
+\texttt{Am Beginn der Arbeit wurde der Music-Ordner nach mp3-Files durchsucht.}  
 \begin{lstlisting}
-File home = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Music";);
+File home = new File(Environment.getExternalStorageDirectory()
+	.getAbsolutePath() + "/Music";);
 songs = new ArrayList<>();
 if (home.listFiles(new FileExtensionFilter()) != null) {
 	for (File file : home.listFiles(new FileExtensionFilter())) {
-     		HashMap<String, String> hm = new HashMap<>();
-               	hm.put("songTitle", file.getName());
-                	hm.put("songPath", file.getPath());
-                	songs.add(hm);
+		HashMap<String, String> hm = new HashMap<>();
+		hm.put("songTitle", file.getName());
+		hm.put("songPath", file.getPath());
+		songs.add(hm);
 	}
 }    
 \end{lstlisting}
@@ -46,6 +45,7 @@ String sortOrder = MediaStore.Audio.Media.TITLE_KEY + " ASC";
 Cursor cur = cr.query(uri, null, selection, null, sortOrder);
 \end{lstlisting}
 
+\newpage
 \ \\
 \texttt{Für jede Zeile im Cursor cur wird eine HashMap aus 2 Strings erstellt die den Titel und den Pfad eines Songs beinhaltet. Diese HashMaps werden anschließend zu einer ArrayList hinzugefügt.}
 \begin{lstlisting}
@@ -53,8 +53,10 @@ songs = new ArrayList<>();
 HashMap<String, String> hm = new HashMap<>();
 while(cur.moveToNext())
 {
-	hm.put("songTitle", cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.TITLE)));
-	hm.put("songPath", cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.DATA)));
+	hm.put("songTitle", cur.getString(cur
+		.getColumnIndex(MediaStore.Audio.Media.TITLE)));
+	hm.put("songPath", cur.getString(cur
+		.getColumnIndex(MediaStore.Audio.Media.DATA)));
 	songs.add(hm);
 }
 \end{lstlisting}
@@ -71,7 +73,7 @@ while(cur.moveToNext())
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.15]{img/musicSongView1}
 	\end{subfigure}
-	\caption{Bei klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2) und mittels der Checkbox sind alle Songs gekennzeichnet die sich in der ausgewählten Playlist befinden.}
+	\caption{Bei klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2) und mittels der Checkbox sind alle Songs markiert die sich in der ausgewählten Playlist befinden.}
 \end{figure}
 
 \ \\
@@ -86,8 +88,8 @@ Der Back Button führt zurück zur Playlistauswahl und verwirft alle nicht gespe
 
 \ \\
 Wird der Save-Button gedrückt wird für alle Positionen abgespeichert ob das Element an der jeweiligen Position markiert ist. Dies erfolgt über ein SparseBooleanArray. 
-Anschließend wird eine Liste erstellt in der nur die angekreuzten Elemente enthalten sind. Diese Liste wird als eine neue Playlist in die PlaylistSongs-Tabelle gespeichert. 
-Dabei wird als Playlistname der eingetragene Titel in das EditText unter der ListView übernommen.
+Anschließend wird eine Liste erstellt, in der nur die angekreuzten Elemente enthalten sind. Diese Liste wird als eine neue Playlist in die PlaylistSongs-Tabelle gespeichert. 
+Dabei wird als Playlistname der in das EditText eingetragene Titel unter der ListView übernommen.
 
 \begin{lstlisting}
 SparseBooleanArray checked = lvSongs.getCheckedItemPositions();
@@ -103,7 +105,6 @@ psrep.reenterPlaylist(etName.getText().toString(), checkedSongs);
 
 \newpage
 \subsection {Abspielen der Playlists.}
-\cite{adMediaPlayer}\cite{bMediaPlayer}\cite{wMusicDroid}\cite{yMP3Player}\newline
 Das Abspielen der Songs erfolgt über den MediaPlayer (API level 1). \newline
 Das Wechseln eines Songs wurde mithilfe der changeSong-Methode realisiert. \newline
 Diese Methode nimmt die Playlist und den Index eines Songs in dieser Playlist entgegen, kümmert sich um das Setzen der Datenquelle für den MediaPlayer und bereitet den MediaPlayer auf die Wiedergabe vor. 
@@ -116,14 +117,16 @@ public void changeSong(int songIndex, String playlist) {
     setSongIndex(songIndex);
     try {
         mp.reset();
-        mp.setDataSource(getPlaylist().get(getSongIndex()).get("songPath"));
+        mp.setDataSource(getPlaylist().get(getSongIndex())
+        	.get("songPath"));
         mp.prepare();
     } catch (IOException e) {
         e.printStackTrace();
     }
     progressBar.setProgress(0);
     updateProgressBar();
-    tvSongname.setText(getPlaylist().get(getSongIndex()).get("songTitle"));
+    tvSongname.setText(getPlaylist().get(getSongIndex())
+    	.get("songTitle"));
     tvTotalDur.setText(millisecondsToHMS(mp.getDuration()));
 }
 
@@ -132,7 +135,7 @@ private void updateProgressBar() {
 }
 \end{lstlisting}
 Der mUpdateDurTask aktualisiert die Fortschrittsanzeigen 10 mal pro Sekunde.
-Da mp.getDuration Millisekunden zurückliefert, konvertiert die millisecondsToHMS-Methode die Songdauer in einen Strign im hh:mm:ss Format (ISO 8601).
+Da mp.getDuration Millisekunden zurückliefert, konvertiert die millisecondsToHMS-Methode die Songdauer in einen String im hh:mm:ss Format (ISO 8601).
 
 \begin{lstlisting}
 private Runnable mUpdateDurTask = new Runnable() {
@@ -161,9 +164,9 @@ private Runnable mUpdateDurTask = new Runnable() {
 \ \\
 Während der Benutzer sich in einer Traingssession befindet kann jederzeit die Musikwiedergabe gestartet werden.
 Bei Klick auf den Play-Button wird die ''All''-Playlist in alphabetisch aufsteigender Reihenfolge abgespielt. \newline
-Die Playlist beziehungsweise der aktuell abgespielte Song kann geändert werden indem in den Musikmodus gewechselt wird. \newline
-Im Musikmodus wird über den Spinner die Playlist gewechselt. \newline
-In der aktuell ausgewählten Playlist kann man direkt zu einem bestimmten Song wechseln. 
+Die Playlist beziehungsweise der aktuell abgespielte Song kann geändert werden, indem man durch Klick auf den Musikmodus Button in den Musikmodus gewechselt wird. \newline
+In diesem Modus wird über den Spinner die Playlist gewechselt. \newline
+In der aktuell ausgewählten Playlist kann man direkt zu einem bestimmten Song wechseln, indem man auf den Songtitel klickt. 
 Dieser wird abgespielt und nach Ende des Songs wird sofort der nächste Playlisteintrag gestartet.
 
 \newpage
@@ -190,7 +193,7 @@ Dieser stellt den aktuellen Modus durch seine Einfärbung dar und ermöglicht ei
 Im Übungsmodus wird die aktuelle Übung und die Anweisungen zum Trainieren angezeigt. \newline
 Der Musikmodus hingegen ermöglicht ein Wechseln der Playlist und den manuellen Wechsel auf einen bestimmten Song. 
 \item Links von der Fortschrittsleiste wird der Fortschritt des aktuellen Songs im hh:mm:ss Format (ISO 8601) angezeigt. 
-\item Die Fortschrittsleiste wird durch eine SeekBar über diesen Buttons implementiert. Diese SeekBar stellt den aktuellen Fortschritt des aktuellen Songs dar. \newline 
+\item Die Fortschrittsleiste wird durch eine SeekBar über diesen Buttons implementiert. Diese SeekBar stellt den aktuellen Fortschritt des aktuellen Songs dar. 
 Bei Klicken auf oder Ziehen an der Fortschrittsleiste kann man den Fortschritt der Wiedergabe manipulieren. 
 \item Rechts von der Fortschrittsleiste wird die Gesamtdauer des Songs im hh:mm:ss Format (ISO 8601) angezeigt.
 \item Der Name des aktuellen Songs wird in einer TextView über den Fortschrittsanzeigen dargestellt.
