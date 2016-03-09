@@ -14,17 +14,17 @@ Beim Nachforschen und bei der Implementierung wurden diese Quellen verwendet:
 Permissions legen fest, auf welche Funktionen des Smartphones eine App Zugriff hat.
 Ziel dieses Systems ist es, Apps nur so viel zu erlauben, wie unbedingt nötig.
 Das bedeutet, dass es einer bösartigen App nicht möglich ist, erheblichen Schaden zu verursachen, ohne die entsprechenden Permissions zu haben.
-Da eine Applikation von vornherein keine Permissions besitzt, müssen diese im Manifest deklariert werden.
+Da eine Applikation zu Beginn keine Permissions besitzt, müssen diese im Manifest deklariert werden.
 Android unterstützt mehrere Levels von Permissions.
 \begin{itemize}
-\item \textbf{Normal Permissions} stellen kaum Gefahr für die Privatsphäre des Benutzers oder den Betrieb des Systems dar und werden automatisch erlaubt sobald sie im Manifest angefordert werden.
+\item \textbf{Normal Permissions} stellen kaum Gefahr für die Privatsphäre des Benutzers oder den Betrieb des Systems dar und werden automatisch gegeben sobald sie im Manifest angefordert werden.
 
-\item \textbf{Dangerous Permissions} hingegen können gefährlich für die Privatsphäre des Benutzers werden oder den Betrieb des Systems erheblich stören. 
+\item \textbf{Dangerous Permissions} hingegen, können gefährlich für die Privatsphäre des Benutzers werden oder den Betrieb des Systems erheblich stören. 
 Deshalb müssen Dangerous Permissions nicht nur im Manifest angefordert werden, sondern auch explizit vom Benutzer bestätigt werden.
 
 \item \textbf{Special Permissions} sind die dritte und seltenste Art von Permissions. 
 Diese sind besonders heikel und müssen im Manifest deklariert und über einen Intent angefordert werden.
-Dieser Intent öffnet ein Fenster speziell zur Verwaltung dieser Permission. \newline
+Dieser Intent öffnet ein Fenster, speziell zur Verwaltung dieser Permission. \newline
 Zu diesen Special Permissions gehören die WRITE\_SETTINGS Permission, die Änderungen der Systemeinstellungen ermöglicht, 
 und die SYSTEM\_ALERT\_WINDOW Permission, die es ermöglicht Fenster über allen anderen Apps anzuzeigen.
 \end{itemize}
@@ -43,13 +43,13 @@ Alle Arten von Permissions müssen in das Manifest eingetragen werden.
 \newpage
 \subsection{bis Android 5.1 (API level 22)}
 Wenn auf dem Gerät Android 5.1 (API level 22) oder niedriger installiert ist, werden alle Dangerous und Special Permissions auf der Google Play Store Seite der App angezeigt 
-und müssen bestätigt werden, um die App herunterladen zu können. 
+und müssen vor dem Herunterladen bestätigt werden. 
 Sollten durch ein Update mehr Permissions benötigt werden, müssen diese beim Update bestätigt werden. 
-Die einzige Möglichkeit Permissions zurückzunehmen bietet das Deinstallieren der App.
+Permissions können nur durch die Deinstallation der App zurückgenommen werden.
 
 \subsection{ab Android 6.0 (API level 23)}
 Wenn auf dem Gerät Android 6.0 (API level 23) oder höher installiert ist, wird beim Download aus dem Google Play Store keine Bestätigung der Permissions verlangt.
-Die Permissions werden nun zur Laufzeit der App abgefragt. Diese Abfragen muss der Entwickler selbst erstellen und anzeigen lassen.
+Die Permissions werden nun während der Laufzeit der App abgefragt. Diese Abfragen muss der Entwickler selbst erstellen und anzeigen lassen.
 
 \begin{lstlisting}
 final public int REQUEST_CODE_ASK_PERMISSIONS = 123;
@@ -95,7 +95,7 @@ private void showMessageOKCancel(String message, DialogInterface
 		.show();
 }
 \end{lstlisting}
-Da die Permissions erst zur Laufzeit abgefragt werden, ist es möglich nur manche von diesen zu bestätigen und so die Handlungsbereiche der App nach seinen eigenen Bedürfnissen zu bestimmen.
+Da die Permissions erst während der Laufzeit abgefragt werden, ist es möglich nur manche von diesen zu bestätigen und so die Bereiche, in welche die App eingreifen kann, nach seinen eigenen Bedürfnissen zu kontrollieren.
 Zudem können Permissions jederzeit in den Systemeinstellungen des Geräts zurückgenommen werden.
 
 
