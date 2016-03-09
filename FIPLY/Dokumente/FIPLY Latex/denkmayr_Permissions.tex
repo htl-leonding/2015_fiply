@@ -98,6 +98,12 @@ private void showMessageOKCancel(String message, DialogInterface
 Da die Permissions erst während der Laufzeit abgefragt werden, ist es möglich nur manche von diesen zu bestätigen und so die Bereiche, in welche die App eingreifen kann, nach seinen eigenen Bedürfnissen zu kontrollieren.
 Zudem können Permissions jederzeit in den Systemeinstellungen des Geräts zurückgenommen werden.
 
+\subsection{Permission groups}
+Alle Permissions gehören zu einer Permission group.
+Beim Anfordern einer Dangerous Permission, wird nicht die Permission, sondern die jeweilige Permission group angezeigt. \newline
+So zeigt sowohl eine Anforderung der READ\_CONTACTS Permission, als auch der WRITE\_CONTACTS Permission an, dass Zugriff auf die Kontakte des Geräts benötigt werden.
+Wenn die App eine Dangerous Permission anfordert und die App bereits eine andere Dangerous Permission in dieser Gruppe besitzt, wird die Anfrage automatisch bestätigt.
+Alle Permissions können zu einer Permission group gehören, allerdings sind nur Permission groups von Dangerous Permissions relevant für Benutzer und Entwickler.
 
 
 \end{document}
