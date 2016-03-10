@@ -99,11 +99,9 @@ Da die Permissions erst während der Laufzeit abgefragt werden, ist es möglich 
 Zudem können Permissions jederzeit in den Systemeinstellungen des Geräts zurückgenommen werden.
 
 \subsection{Permission groups}
-Alle Permissions gehören zu einer Permission group.
-Beim Anfordern einer Dangerous Permission, wird nicht die Permission, sondern die jeweilige Permission group angezeigt. \newline
-So zeigt sowohl eine Anforderung der READ\_CONTACTS Permission, als auch der WRITE\_CONTACTS Permission an, dass Zugriff auf die Kontakte des Geräts benötigt werden.
-Wenn die App eine Dangerous Permission anfordert und die App bereits eine andere Dangerous Permission in dieser Gruppe besitzt, wird die Anfrage automatisch bestätigt.
-Alle Permissions können zu einer Permission group gehören, allerdings sind nur Permission groups von Dangerous Permissions relevant für Benutzer und Entwickler.
-
+Permissions werden in Permission groups zusammengefasst.
+Beim Anfordern einer Dangerous Permission, wird nicht die einzelne Permission, sondern die jeweilige Permission group angezeigt.
+Sowohl eine Anforderung der READ\_CONTACTS Permission, als auch der WRITE\_CONTACTS Permission, zeigt an, dass Zugriff auf die Kontakte des Gerätes benötigt wird. Wird eine Dangerous Permission angefordert, während die App schon eine Dangerous Permission derselben Gruppe besitzt, so wird die Anfrage automatisch bestätigt.
+Alle Permissions können einer Permission Group zugeordnet werden, allerdings sind nur Permission Groups von Dangerous Permissions relevant für Benutzer und Entwickler.
 
 \end{document}
