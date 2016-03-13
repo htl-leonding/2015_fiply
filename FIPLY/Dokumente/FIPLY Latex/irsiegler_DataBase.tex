@@ -7,8 +7,11 @@
 
 \section{Datenbank}
 
-\subsection{Beschreibung}
-Als Applikations-Datenbank wird SQLite verwendet, eine sehr einfache und effiziente Lösung.
+In der Datenbank werden alle für die Applikation essentiellen Daten gespeichert.
+
+\subsection{SQLite}
+SQLite ist eine open-source library, sie implementiert ein unabhängiges, serverlosse, zeroconf und transaktionales SQL-database-engine [\citetitle{dbSQLite}\cite{dbSQLite}]
+
 
 \subsection{Zugriff auf die Daten}
 Der Zugriff auf die abgespeicherten Daten erfolgt über 3 Schichten:
@@ -29,10 +32,9 @@ Jedes Repository ist als Singleton implementiert und um darauf zugreifen zu kön
 Repository repository = Repository.getInstance();
 \end{lstlisting}
 
-
-
+\ \\
 In den Repositories muss das Datenbankobjekt mithilfe des DB Helpers instanziert werden ...
-
+\ \\
 \begin{lstlisting}
     SQLiteDatabase db = getWritableDatabase();
 
@@ -44,17 +46,16 @@ In den Repositories muss das Datenbankobjekt mithilfe des DB Helpers instanziert
 			      	  		        .getWritableDatabase();
     }
 \end{lstlisting}
-
-
-
+\ \\
 ... um über dieses Objekt dann mithilfe von SQL-Statements auf die Daten zugreifen bzw. die Daten manipulieren zu können.
+\ \\
 \begin{lstlisting}
 SQLiteDatabase db = getWritableDatabase();
 
 return db.query("SQL-STATEMENT");
 \end{lstlisting}
 
-
+\ \\
 Folgende Repositories sind in der Applikation vorhanden:
 \begin{itemize}
 \item Instruktionen-Repository
