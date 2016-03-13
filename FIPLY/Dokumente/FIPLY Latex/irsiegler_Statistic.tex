@@ -4,30 +4,62 @@
 \date{26. Februar 2016}
 
 \begin{document}
-\section{Statistic}
+\section{Statistik}
 
 \subsection{Beschreibung}
 Die Statistik gibt dem Benutzer eine Übersicht zu seinem Training, in den letzen Tagen/Wochen/Monaten. 
+\ \\
 Es werden verschiedene Statistiken zur Verfügung gestellt, um so viel Informationen wie möglich darzustellen.
-Die Graphen können auf eine bestimmte Zeitdauer beschränkt werden.
 
+\includegraphics[scale=0.5]{img/Statistik}
 
+\newpage
 \subsection{Verfügbare Statistiken}
-\begin{itemize}
-\item Verfassung des Users nach dem Training.
-\item Entwicklung seines gehobenen Gewichts (anfänglich mit 10kg später mit 20kg etc.)
-\item Wieviel Gewicht hat der User an einem Tag, in einer Woche/Monat bewegt.
-\end{itemize}
+\subsubsection{Geistige Verfassung}
+Diese Statistik beschreibt wie es dem Benutzer nach jeder Trainingseinheit geht.
+Er soll auf einer Skala von eins bis fünf seinen geistigen Zustand nach dem Training bewerten, wobei eine höhere Zahl eine bessere Laune beschreibt.
+\subsubsection{Gehobenes Gewicht}
+Nach jeder Trainingseinheit wird angegeben mit wieviel Gewicht die jeweiligen Übungen durchgeführt worden sind.
+Anhand dieser Statistik kann man seine Entwicklung sehr gut verfolgen
+\subsubsection{Insgesamt gestemmtes Gewicht}
+Hier wird festgehalten wieviel Gewicht der Benutzer insgesamt an einem Tag, einer Woche, einem Monat gestemmt hat.
 
-\subsection{Technische Implementierung}
+\newpage
+\subsection{Implementierung}
 \subsubsection{Aufnahme und Speicherung der Werte}
 Die aufzunehmenden Werte werden während bzw. nach der Trainingssession aufgenommen und danach in ihr jeweiliges Repository abgespeichert.
 Die einzelnen Werte für die Statistik werden in unserer SQLite Datenbank in ihren jeweiligen Repositories gespeichert.
-Dabei ist jeder Eintrag eine Kombination aus dem Datum zur Zeit der Aufnahme und dem Wert welcher gespeichert werden soll.
+\ \\
+Dabei ist jeder Eintrag eine eigene Entität welche das Interface DataPointInterface implementiert.
+
+\begin{lstlisting}
+public class MoodTime implements DataPointInterface {
+    private double _timestamp;
+    private double _mood;
+
+    public MoodTime(double x, double y) {
+       _timestamp = x;
+       _mood = y;
+    }
+
+    @Override
+    public double getX() {
+        return _timestamp;
+    }
+
+    @Override
+    public double getY() {
+        return _mood;
+    }
+}
+\end{lstlisting}
+
+\ \\
 
 \subsubsection{Darstellung}
 Zur Darstellung der Statistiken wird GraphView verwendet. GraphView ist eine open-source library für Android zur Erstellung von Diagrammen.
 Verfügbar sind eine vielzahl von Diagramm-Arten wie z.B.: Linien-, Kuchen- und Punktdiagrammen.
+
 
 
 
