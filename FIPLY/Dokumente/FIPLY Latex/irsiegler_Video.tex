@@ -1,0 +1,62 @@
+\documentclass[article,10pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+
+\title{VideoView, WebView, Youtube Android Player API}
+\author{Gerald Irsiegler}
+\date{20. Dezember 2015}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{VideoView}
+\subsection{Beschreibung}
+VideoView ist die native Lösung von Android, Videos in einer App darzustellen. Sie können entweder direkt vom Speicher des Systems oder über einen RTSP-Key auch vom Internet  abgespielt werden.
+\subsection{Vorteile}
+Die native Lösung von Android ist die performanteste aller unserer Optionen.
+\subsection{Probleme}
+Der RTSP-Key ist sehr umständlich abzurufen und die VideoView ist generell eine etwas ältere Lösung.
+
+\section{Youtube Android Player API}
+\subsection{Beschreibung}
+Die Youtube Android Player API ist die von Google entwickelte Lösung ausschließlich Youtube-Videos in einer Android Umgebung abzuspielen.
+\subsection{Vorteile}
+Da die Youtube Android Player API rein für das abspielen von Youtube Videos ist es die beste Lösung für unser Problem.
+\subsection{Probleme}
+Für diese Methode wird leider ein Google Developer Key, den wir derzeit nicht besitzen. benötigt. Weiters muss eine externe App installiert sein damit diese Methode funktioniert.
+\newpage
+
+\section{WebView}
+\subsection{Beschreibung}
+Die WebView erlaubt es HTML-Code oder Websites direkt über deren URL in der App darzustellen.
+\subsection{Vorteile}
+Die WebView ist leicht zu benützen und mit den embeded Links von Youtube können wir unsere Videos leicht einbinden. Weiters ist die WebView sehr flexibel da man auch reinen HTML Code darstellen kann.
+\subsection{Probleme}
+Da es kein direkter Video-Player ist muss der Youtube-Player in die WebView embeded werden, dadurch wird die Perfomance der App beeinträchtigt. Weiters muss die Vollbild Funktionalität selbst implementiert werden, da es noch keine vorgegebene Lösung gibt.
+
+
+\section{Nutzwertanalyse}
+\subsection{KO-Kriterien}
+\begin{itemize}
+\item Die Alternative muss kostenfrei sein.
+\item Die Alternative muss verwendbar sein.
+\end{itemize}
+\subsection{Erfüllung der KO-Kriterien}
+\subsubsection{VideoView}
+Die Video View ist kostenfrei, jedoch nicht verwendbar aufgrund der beschriebenen Probleme.
+\subsubsection{Youtube Android Player API}
+Die Youtube Android Player API ist kostenfrei, jedoch nicht verwendbar aufgrund der beschriebenen Probleme.
+\subsubsection{WebView}
+Die WebView ist sowohl verwendbar als auch kostenfrei.
+\subsection{Schlussfolgerung}
+Da zwei von drei Alternativen durch die KO-Kriterien ausgeschlossen werden können, bleibt nur die WebView über. Deswegen werden wir für unsere App die WebView verwenden und das Video mit dem embeded-Link von Youtube einbinden und anpassen.
+
+
+
+\end{document}
