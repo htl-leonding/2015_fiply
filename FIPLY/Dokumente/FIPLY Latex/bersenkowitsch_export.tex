@@ -1,0 +1,96 @@
+\documentclass[FIPLY_base.tex]{subfiles}
+
+\begin{document}
+\section{Exportieren}
+\subsection{Als CSV exportieren - OpenCSV}
+Die OpenCSV Bibliothek erlaubt dem Java Programmierer eine CSV Datei zu erstellen, speichern, schreiben und lesen.
+In Bezug auf die Diplomarbeit wird diese Technologie verwendet, um den Trainingsplan in eine CSV-Datei abzuspeichern.
+Um den aktuellen Pfad im Android-Dateisystem herauszufinden, gibt es die statische getAbsolutePath()-Methode, die folgens verwendet wird:
+\begin{lstlisting}[caption={Methode, um den aktuellen Pfad herauszufinden.},label=DescriptiveLabel]
+	String path = android.os.Environment
+									.getExternalStorageDirectory()
+									.getAbsolutePath();
+\end{lstlisting}
+Der String \grqq{}path\grqq{} beschreibt nun den Pfad wo die CSV-Datei eingespeichert wird.
+
+\subsubsection{Alternative}
+Eine alternative Möglichkeit zu der OpenCSV Bibliothek wäre, die Funktionen selbst auszuprogrammieren. Da die Verwendung der Bibliothek zeitsparender ist, wird sie der Alternative vorgezogen.
+\subsubsection{Anwendung}
+CSV-Datei lesen:
+\begin{lstlisting}[caption={Verwendung von CSVReader: Möglichkeit 1, iterativ},label=DescriptiveLabel]
+	CSVReader reader = new CSVReader(
+		new FileReader(path + "file.csv"));
+	String [] nextLine;
+	while ((nextLine = reader.readNext()) != null) {
+		// nextLine[] is an array of values from the line
+		System.out.println(nextLine[0] + nextLine[1] + "etc...");
+	}
+
+\end{lstlisting}
+
+Das Objekt reader ist öffnet einen Stream zu der erzielten Datei \grqq{}file.csv\grqq{}. Mittels der Standardfunktion .readNext() wird die nächste Zeile in ein eindimensionales String-Array gespeichert. Jede Arraystelle beschreibt den Inhalt eines Spaltenfeldes in der aktuellen Zeile der CSV-Datei.
+
+\begin{lstlisting}[caption={Verwendung von CSVReader: Möglichkeit 2, alles auf einmal},label=DescriptiveLabel]
+	CSVReader reader = new CSVReader(
+		new FileReader(path + "file.csv"));
+	List myEntries = reader.readAll();
+\end{lstlisting}
+
+Das Objekt reader ist öffnet wieder einen Stream zu der erzielten Datei \grqq{}file.csv\grqq{}. Durch die Standardfunktion .readAll() werden alle Zeilen bis zum Ende der Datei in eine List gespeichert. Das Listenobjekt myEntries ist eine Liste bestehend aus eindimensionalen Arrays, wobei wieder jede Arraystelle sequentiell den Inhalt eines Spaltenfeldes in der CSV-Datei beschreibt.[\citetitle{exportCSVSourceRead} \cite{exportCSVSourceRead}] 
+\ \\
+\ \\
+CSV-Datei schreiben:
+\ \\
+Eine CSV-Datei zu erstellen und schreiben ist genau so einfach wie sie zu lesen. Hierbei wird die Klasse \grqq{}CSVWriter\grqq{} verwendet:
+
+\begin{lstlisting}[caption={Verwendung von CSVWriter: Möglichkeit 1, iterativ},label=DescriptiveLabel]
+	CSVWriter writer = new CSVWriter(
+		new FileWriter(path + "file.csv"));
+	String [] country;
+	while ((country = getNextCountries()) != null){
+		writer.writeNext(country);
+	}
+	writer.close();
+\end{lstlisting}
+Das Objekt writer ist öffnet einen Stream zu der erzielten Datei \grqq{}file.csv\grqq{}. Falls die Datei nicht existiert, wird sie angelegt.
+Die Methode getNextCountries() liefert in diesem Kontext ein eindimensionales Array zurück. Mit dem Befehl .writeNext() werden Strings in dem Array in eine neue Zeile der Datei gespeichert, wobei jede Arraystelle für eine Spalte der Tabellendatei steht.
+\begin{lstlisting}[caption={Verwendung von CSVWriter: Möglichkeit 2, alles auf einmal},label=DescriptiveLabel]
+	CSVWriter writer = new CSVWriter(
+	new FileWriter(path + "file.csv"));
+List<String[]> data = new ArrayList<String[]>();
+data.add(new String[] {"India", "New Delhi"});
+data.add(new String[] {"United States", "Washington D.C"});
+data.add(new String[] {"Germany", "Berlin"});
+writer.writeAll(data);
+
+writer.close();
+}
+\end{lstlisting}
+Das Objekt writer ist öffnet einen Stream zu der erzielten Datei \grqq{}file.csv\grqq{}. Falls die Datei nicht existiert, wird sie angelegt.
+Es wird eine Liste von eindimensionalen Arrays angelegt. Wie auch in den obigen Beispielen steht jede Arraystelle für eine Spalte in der Tabellendatei. Mit dem Befehl .writeAll() werden alle Elemente sequentiell in die Datei gespeichert.
+[\citetitle{exportCSVSourceWrite} \cite{exportCSVSourceWrite}] 
+
+
+\subsection{Emails senden}
+\subsubsection{Mittels Intents}
+Die beste Möglichkeit, um eine Email in Android zu senden, ist das benutzen eines Intents:
+\begin{lstlisting}[caption={Verwendung von CSVWriter: Möglichkeit 2, alles auf einmal},label=DescriptiveLabel]
+File file = new File(path, "file.csv");
+Uri u  =   null;
+u  =   Uri.fromFile(file);
+
+Intent sendIntent = new Intent(Intent.ACTION_SEND);
+sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Dein FIPLY Trainingsplan");
+sendIntent.putExtra(Intent.EXTRA_STREAM, u);
+sendIntent.setType("text/html");
+startActivity(sendIntent);
+\end{lstlisting}
+Das senden von Emails mittels Intents erfolgt damit über externe Applikationen, die diese Funktion anbieten. Bei ausführen des obigen Codes wird der Benutzer gefragt, mit welchem Emailclient auf seinem Smartphone er die Aktion durchführen will. Die Emaildetails werden der externen Applikation mitgegeben, worauf sich diese öffnet und der benutzer dann nur noch auf den \grqq{}senden\grqq{}-Knopf drücken muss. 
+\subsubsection{Vorteile/Nachteile von Intents}
+Der große Vorteil dieser Methode ist es, dass man ohne eigenen Emailclient auskommt. Da die Email über eine andere Applikation versendet wird muss sich der Entwickler nicht weiter um aufwendige Emailclient codierungen kümmern. 
+\ \\
+Ohne bereits installierten Client auf dem Android Gerät ist das senden von Emails über diese vorgehensweise nicht möglich. Ein gutes Beispiel dafür ist das Ausführen der Funktion auf einem Android-Emulator auf einem beliebigen Computer. Standardmäßig ist auf einem Android-Emulator kein Emailclient wie zum Beispiel die Gmail Applikation installiert. Daher kann die Funktion auf einem Emulator nicht getestet werden, bevor man einen manuell installiert. 
+\ \\
+
+
+\end{document}
