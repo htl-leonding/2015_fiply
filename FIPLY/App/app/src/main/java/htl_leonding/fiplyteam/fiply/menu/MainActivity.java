@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             }
         };
         mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
     /**
