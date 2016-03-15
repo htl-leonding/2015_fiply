@@ -4,21 +4,21 @@
 %\date{20. Dezember 2015}
 
 \begin{document}
-\section{Fragments}
-\subsection{Was sind Fragments?}
+\subsection{Fragments}
+\subsubsection{Was sind Fragments?}
 Ein Fragment stellt einen Teil der Benutzeroberfläche einer Activity zur Verfügung, dabei kann man mehrere Fragments in einer Activity verwenden und diese zur Laufzeit auswechseln.
 Da Fragments in mehreren Activities wiederverwendet werden können, müssen Ansichten wie Detailviews oder Listen nur einmal programmiert werden und können überall eingesetzt werden.
 Fragments werden ab Android 3.0 (API level 11) zur Verfügung gestellt. \newline
 [Android Developers \cite{adFragments}\cite{adFragmentsGuide}]
 
-\begin{figure}[h]
+\begin{figure}[H]
 \includegraphics[scale=0.60]{img/fragments_modules}
 \caption{Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet als auch auf einem Handy ein optimales Benutzerinterface anbieten. 
 [Android Developers \cite{adFragmentsGuide}]}
 \end{figure}
 
 \newpage
-\subsection{Der Lifecycle}
+\subsubsection{Der Lifecycle}
 Ein Fragment ist immer in eine Activity eingebunden und daher direkt vom Lifecycle der übergeordneten Activity abhängig.
 Wird die übergeordnete Activity pausiert oder zerstört, werden auch alle zugeordneten Fragments pausiert oder zerstört. %Fragments/Fragmente
 \ \\
@@ -30,7 +30,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
     }
 \end{lstlisting}
 Das Aufbauen der Benutzeransicht erfolgt in der onCreateView() Methode eines Fragments. In diesem Fall wird das layout XML file exampleFragment angezeigt.
-\subsection{Fragment Transactions}
+\subsubsection{Fragment Transactions}
 Mittels Transaktionen lassen sich Fragments hinzufügen, entfernen oder ersetzen.
 Es werden mehrere dieser Aktionen hintereinander abgesetzt und zusammen nach einem commit() ausgeführt.
 Ein Fragment kann mittels addToBackStack() auch zum BackStack hinzugefügt werden, um dadurch, ähnlich wie bei Activites, Navigation mit dem BackButton zu ermöglichen.
@@ -50,7 +50,7 @@ Hier wird ein ExampleFragment erstellt, man ersetzt das Fragment das sich aktuel
 
 
 \newpage
-\subsection{Verwendung von Fragments}
+\subsubsection{Verwendung von Fragments}
 In dieser Arbeit werden Fragments verwendet, um die Benutzeransichten, ausgenommen des NavigationDrawers, anzuzeigen.
 Dabei wird ein FrameLayout im Layoutfile der MainActivity durch ein Fragment mittels der displayView() Methode ersetzt.
 Navigation durch diese Fragments wird mittels den Buttons im FMain oder dem NavigationDrawer ermöglicht.
@@ -78,7 +78,7 @@ Methoden wie diese werden immer wieder verwendet um die Fragment Transactions an
 So sieht ein FrameLayout aus das wir immer wieder verwenden, um darin Fragments anzuzeigen.
 
 \newpage
-\begin{figure}[t] % Bilder aktualisieren
+\begin{figure}[H] % Bilder aktualisieren
 	\begin{subfigure}[h]{0.3\textwidth}
 	\includegraphics[scale=0.20]{img/NavigationDrawer}
 	\end{subfigure}
