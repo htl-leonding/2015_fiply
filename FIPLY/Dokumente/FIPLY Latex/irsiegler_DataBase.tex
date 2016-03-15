@@ -1,0 +1,89 @@
+\documentclass[FIPLY_base.tex]{subfiles}
+
+\author{Gerald Irsiegler}
+\date{26. Februar 2016}
+
+\begin{document}
+
+\section{Datenbank}
+
+In der Datenbank werden alle für die Applikation essentiellen Daten gespeichert.
+
+\subsection{SQLite}
+SQLite ist eine open-source library, sie implementiert ein unabhängiges, serverlosse, zeroconf und transaktionales SQL-database-engine [\citetitle{dbSQLite}\cite{dbSQLite}]
+
+
+\subsection{Zugriff auf die Daten}
+Der Zugriff auf die abgespeicherten Daten erfolgt über 3 Schichten:
+
+\subsubsection{Phsysische Ebene}
+Alle Daten werden im Speicher des Mobilgerätes abgelegt und persistiert. Die Speicherung übernimmt das DBMS von SQLite.
+
+\subsubsection{DB Helper}
+Der DB Helper stellt die Datenbank als Objekt zur Verfügung, welches in den Repositories instanziert wird.
+
+
+\newpage
+\subsubsection{Repositories}
+Die Repositories dienen als Puffer zwischen dem Datenbankobjekt und der Businesslogik.
+Jedes Repository ist als Singleton implementiert und um darauf zugreifen zu können muss es vorerst im Code instanziert werden.
+\\\
+\begin{lstlisting}
+Repository repository = Repository.getInstance();
+\end{lstlisting}
+
+\ \\
+In den Repositories muss das Datenbankobjekt mithilfe des DB Helpers instanziert werden ...
+\ \\
+\begin{lstlisting}
+    SQLiteDatabase db = getWritableDatabase();
+
+    private SQLiteDatabase getWritableDatabase() {
+        if (repoContext == null) 
+            throw new IllegalStateException();
+	  
+        return FiplyDBHelper.getInstance(repoContext)
+			      	  		        .getWritableDatabase();
+    }
+\end{lstlisting}
+\ \\
+... um über dieses Objekt dann mithilfe von SQL-Statements auf die Daten zugreifen bzw. die Daten manipulieren zu können.
+\ \\
+\begin{lstlisting}
+SQLiteDatabase db = getWritableDatabase();
+
+return db.query("SQL-STATEMENT");
+\end{lstlisting}
+
+\ \\
+Folgende Repositories sind in der Applikation vorhanden:
+\begin{itemize}
+\item Instruktionen-Repository
+\item Key-Value-Repository
+\item Phasen-Repository
+\item Plan-Repository
+\item Playlis-Songs-Repository
+\item Statistic-Repository
+\item Uebungen-Repository
+\end{itemize}
+
+\newpage
+\subsection{Contract}
+Der Contract ist eine Datei in welcher die Metadaten der Datenbank zu finden sind.
+Dieser "Vertrag" existert um den makellosen Zugriff auf die Datenbank sicherzustellen.
+Für jede Tabelle in der Datenbank wird im Contract eine eigene Klasse angelegt, diese beinhaltet den Tabellennamen und die Namen aller ihrer Attribute als strings.
+\begin{lstlisting}
+    public static final class UebungenEntry implements BaseColumns {
+        public static final String TABLE_NAME = "uebungen";
+        public static final String COLUMN_ROWID = "_id";
+        public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_MUSKELGRUPPE = "muskelgruppe";
+        public static final String COLUMN_BESCHREIBUNG = "beschreibung";
+        public static final String COLUMN_ANLEITUNG = "anleitung";
+        public static final String COLUMN_SCHWIERIGKEIT = "schwierigkeit";
+        public static final String COLUMN_VIDEO = "video";
+        public static final String COLUMN_EQUIPMENT = "equipment";
+    }
+\end{lstlisting}
+
+\end{document}

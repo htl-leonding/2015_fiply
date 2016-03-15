@@ -1,0 +1,38 @@
+\documentclass[FIPLY_base.tex]{subfiles}
+
+\author{Gerald Irsiegler}
+\date{13. März 2016}
+
+\begin{document}
+\section{Social Media}
+\subsection{Beschreibung}
+Mithilfe der Verknüpfung zu Social Media kann der Benutzer seine Trainingsfortschritte einfach mit seinen Freunden teilen. 
+\subsection{Verknüpfung mit Facebook}
+Die Verknüpfung unserer App mit Facebook erfolgt über die FacebookSDK und den FacebookLoginButton.
+\subsubsection{FacebookSDK}
+Mithilfe dieser SDK kann man den Login verwalten und danach im Namen des Benutzers, mit der Einverständnis des Benutzers, posten.
+Um die Integrität des Logins und des Datenaustausches zu gewähren, hat jede Applikation welche die Facebook SDK implementiert ihre eigene Serien-Nummer.
+Diese wird in der strings.xml gespeichert.
+\begin{lstlisting}
+<string name="facebook_app_id">1541961082763294</string>
+\end{lstlisting}
+\subsubsection{Facebook Login Button}
+Der Facebook Login Button wird von der Facebook SDK zur Verfügung gestellt und kann ganz einfach in das Layout eingefügt werden.
+\begin{lstlisting}
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/fbLoginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spGender"
+        android:layout_centerHorizontal="true" />
+\end{lstlisting}
+
+\newpage
+\subsubsection{Test Account}
+Da die Applikation während der Entwicklung noch nicht veröffentlicht ist, wird ein Facebook-Test-Account benötigt. \ \\
+Die Privatssphäre der Entwickler wird somit auch garantiert, da sonst eine nicht getestete Applikation Postings im Namen der Entwickler, auf deren persönlichen Facebook Seiten machen könnte.
+
+\ \\
+Um einene Test Account anzulegen muss man zuerst einen normalen Facebook Account anlegen und ihn dann in den Einstellungen zu einem Test-Account umändern.
+
+\end{document}
