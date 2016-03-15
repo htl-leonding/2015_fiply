@@ -4,10 +4,10 @@
 %\date{19. Februar 2016}
 
 \begin{document}
-\section{Musik}
+\subsection{Musik}
 [Android Developers \cite{adMediaPlayer}, \citeauthor{bMediaPlayer} \cite{bMediaPlayer}]
 
-\subsection{Lokalisierung der Musikdateien}
+\subsubsection{Lokalisierung der Musikdateien}
 Am Beginn der Arbeit wurde der Music-Ordner nach mp3-Files durchsucht.
 \begin{lstlisting}
 File home = new File(Environment.getExternalStorageDirectory()
@@ -66,8 +66,8 @@ while(cur.moveToNext())
 
 
 
-\subsection {Verwalten von Playlists}
-\begin{figure}[h]
+\subsubsection {Verwalten von Playlists}
+\begin{figure}[H]
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.15]{img/musicPlaylistView1}
 	\end{subfigure}
@@ -107,7 +107,7 @@ psrep.reenterPlaylist(etName.getText().toString(), checkedSongs);
 
 
 \newpage
-\subsection {Abspielen der Playlists.}
+\subsubsection {Abspielen der Playlists.}
 Das Abspielen der Songs erfolgt über den MediaPlayer (API level 1). \newline
 Das Wechseln eines Songs wurde mithilfe der changeSong-Methode realisiert. \newline
 Diese Methode nimmt die Playlist und den Index eines Songs in dieser Playlist entgegen, kümmert sich um das Setzen der Datenquelle für den MediaPlayer und bereitet den MediaPlayer auf die Wiedergabe vor. 
@@ -138,7 +138,7 @@ private void updateProgressBar() {
 }
 \end{lstlisting}
 Der mUpdateDurTask aktualisiert die Fortschrittsanzeigen 10 mal pro Sekunde.
-Da mp.getDuration Millisekunden zurückliefert, konvertiert die millisecondsToHMS-Methode die Songdauer in einen String im hh:mm:ss Format (ISO 8601).
+Da mp.getDuration Millisekunden zurückliefert, konvertiert die \newline millisecondsToHMS-Methode die Songdauer in einen String im hh:mm:ss Format (ISO 8601).
 
 \begin{lstlisting}
 private Runnable mUpdateDurTask = new Runnable() {
@@ -153,7 +153,7 @@ private Runnable mUpdateDurTask = new Runnable() {
 };
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.17]{img/musicListenView1}
 	\end{subfigure}
@@ -173,9 +173,9 @@ In der aktuell ausgewählten Playlist kann man direkt zu einem bestimmten Song w
 Dieser wird abgespielt und nach Ende des Songs wird sofort der nächste Playlisteintrag gestartet.
 
 \newpage
-\subsection {MusicControls}
+\subsubsection {MusicControls}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.55]{img/musicControls}
 	\end{subfigure}
