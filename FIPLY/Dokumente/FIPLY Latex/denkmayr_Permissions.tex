@@ -5,16 +5,23 @@
 
 \begin{document}
 \section{Permissions}
-Beim Nachforschen und bei der Implementierung wurden diese Quellen verwendet: 
-[\citetitle{bPermissions} \cite{bPermissions}],
-[\citetitle{adTPermissions} \cite{adTPermissions}], \newline
-[\citetitle{adGPermissions} \cite{adGPermissions}].
-
-\ \\
 Permissions legen fest, auf welche Funktionen des Smartphones eine App Zugriff hat.
 Ziel dieses Systems ist es, Apps nur so viel zu erlauben, wie unbedingt nötig.
 Das bedeutet, dass es einer bösartigen App nicht möglich ist, erheblichen Schaden zu verursachen, ohne die entsprechenden Permissions zu haben.
-Da eine Applikation zu Beginn keine Permissions besitzt, müssen diese im Manifest deklariert werden.
+Da eine Applikation zu Beginn keine Permissions besitzt, müssen diese im Manifest deklariert werden. \newline
+[\citeauthor{bPermissions} \cite{bPermissions}, Android Developers \cite{adTPermissions}\cite{adGPermissions}]
+\ \\
+\begin{lstlisting}
+<manifest package="htl_leonding.fiplyteam.fiply"
+		xmlns:android="http://schemas.android.com/apk/res/android" >
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+	...
+</manifest>
+\end{lstlisting}
+
+
+\subsection{Arten von Permissions}
 Android unterstützt mehrere Levels von Permissions.
 \begin{itemize}
 \item \textbf{Normal Permissions} stellen kaum Gefahr für die Privatsphäre des Benutzers oder den Betrieb des Systems dar und werden automatisch gegeben sobald sie im Manifest angefordert werden.
@@ -28,17 +35,6 @@ Dieser Intent öffnet ein Fenster, speziell zur Verwaltung dieser Permission. \n
 Zu diesen Special Permissions gehören die WRITE\_SETTINGS Permission, die Änderungen der Systemeinstellungen ermöglicht, 
 und die SYSTEM\_ALERT\_WINDOW Permission, die es ermöglicht Fenster über allen anderen Apps anzuzeigen.
 \end{itemize}
-\ \\
-\begin{lstlisting}
-<manifest package="htl_leonding.fiplyteam.fiply"
-		xmlns:android="http://schemas.android.com/apk/res/android" >
-<uses-permission android:name="android.permission.INTERNET"/>
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-	...
-</manifest>
-\end{lstlisting}
-Alle Arten von Permissions müssen in das Manifest eingetragen werden.
-
 
 \newpage
 \subsection{bis Android 5.1 (API level 22)}

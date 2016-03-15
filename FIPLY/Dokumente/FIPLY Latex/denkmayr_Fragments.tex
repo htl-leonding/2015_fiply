@@ -9,17 +9,18 @@
 Ein Fragment stellt einen Teil der Benutzeroberfläche einer Activity zur Verfügung, dabei kann man mehrere Fragments in einer Activity verwenden und diese zur Laufzeit auswechseln.
 Da Fragments in mehreren Activities wiederverwendet werden können, müssen Ansichten wie Detailviews oder Listen nur einmal programmiert werden und können überall eingesetzt werden.
 Fragments werden ab Android 3.0 (API level 11) zur Verfügung gestellt. \newline
-Bei der Implementierung von Fragments wurde die Dokumentation zu diesen [\citetitle{adFragments} \cite{adFragments}] und der jeweilige Developer Guide [\citetitle{adFragmentsGuide} \cite{adFragmentsGuide}] verwendet. 
+[Android Developers \cite{adFragments}\cite{adFragmentsGuide}]
 
 \begin{figure}[h]
 \includegraphics[scale=0.60]{img/fragments_modules}
-\caption{Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet als auch auf einem Handy ein optimales Benutzerinterface anbieten. [\citetitle{adFragmentsGuide} \cite{adFragmentsGuide}]}
+\caption{Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet als auch auf einem Handy ein optimales Benutzerinterface anbieten. 
+[Android Developers \cite{adFragmentsGuide}]}
 \end{figure}
 
 \newpage
 \subsection{Der Lifecycle}
-Ein Fragment ist immer eingebunden in eine Activity und ist direkt vom Lifecycle der übergeordneten Activity abhängig.
-Wird die übergeordnete Activity pausiert oder zerstört werden auch alle zugeordneten Fragments pausiert oder zerstört.
+Ein Fragment ist immer in eine Activity eingebunden und daher direkt vom Lifecycle der übergeordneten Activity abhängig.
+Wird die übergeordnete Activity pausiert oder zerstört, werden auch alle zugeordneten Fragments pausiert oder zerstört. %Fragments/Fragmente
 \ \\
 \begin{lstlisting}
 @Override
@@ -32,7 +33,7 @@ Das Aufbauen der Benutzeransicht erfolgt in der onCreateView() Methode eines Fra
 \subsection{Fragment Transactions}
 Mittels Transaktionen lassen sich Fragments hinzufügen, entfernen oder ersetzen.
 Es werden mehrere dieser Aktionen hintereinander abgesetzt und zusammen nach einem commit() ausgeführt.
-Ein Fragment kann mittels addToBackStack() auch zum BackStack hinzugefügt werden um dadurch, ähnlich wie bei Activites, Navigation mit dem BackButton zu ermöglichen.
+Ein Fragment kann mittels addToBackStack() auch zum BackStack hinzugefügt werden, um dadurch, ähnlich wie bei Activites, Navigation mit dem BackButton zu ermöglichen.
 Dabei ist zu beachten, dass alle Aktionen vor einem commit() gemeinsam auf den BackStack gelegt werden und bei drücken des BackButtons alle gemeinsam aufgehoben werden.
 Wird addToBackStack() nicht aufgerufen, wird ein Fragment beim Schließen oder beim Wechseln auf ein anderes Fragment zerstört und kann nicht mehr aufgerufen werden.
 
