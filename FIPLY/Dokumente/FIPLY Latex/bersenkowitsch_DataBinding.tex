@@ -6,38 +6,107 @@
 \begin{document}
 
 \section{Datenanbindung}
-Als Datenbindung (engl. Data Binding) bezeichnet man die automatische Weitergabe von Daten zwischen Objekten. Typischerweise werden Daten aus einem Datenobjekt an ein Steuerelement der Benutzeroberfläche weitergegeben. Aber auch zwischen Steuerelementen ist Datenbindung in einigen Frameworks möglich. \footnote{https://www.it-visions.de/}\\
+Als Datenbindung (engl. Data Binding) bezeichnet man die automatische Weitergabe von Daten zwischen Objekten. Typischerweise werden Daten aus einem Datenobjekt an ein Steuerelement der Benutzeroberfläche weitergegeben. Aber auch zwischen Steuerelementen ist Datenbindung in einigen Frameworks möglich. [\citetitle{datbdef} \cite{datbdef}]
+\newline
 Beim Anzeigen von Daten in einer Listenansicht beispielsweise muss man das Steuerungselement nach jeder Veränderung der Daten aktualisieren. Wenn man aber die Technologie des Datenanbindung verwendet, braucht man nur die Objektliste an das Steuerungselement mit einem einfachen Zuweisungsbefehl anbinden. Dadurch erneuert sich die Listenansicht der Daten jedes Mal automatisch, sobald sich die Objektliste auch verändert.
 
-\subsection{Verwendungszweck}
-In erster Linie werden dem Programmierer dadurch viele Zeilen Code erspart. Datenanbindung trennt einen großen Teil des UI codes von den Aktivitäten und Fragmenten, wodurch eine bessere Übersicht über das Projekt verschafft wird. Zusätzlich, dadurch, dass die XML-Layoutdatei direkt auf die gebundenen Objekte und ihre Attribute zugreift, erspart man sich umständliche findViewById Codiereungen, die sehr performancelastig sind. \footnote{"Droidcon NYC 2015 - Data Binding Techniques" \\ https://www.youtube.com/watch?v=WdUbXWztKNY}
 
+\subsection{Verwendungszweck}
+In erster Linie werden dem Programmierer dadurch viele Zeilen Code erspart. Datenanbindung trennt einen großen Teil des UI Codes von den Aktivitäten und Fragmenten, wodurch eine bessere Übersicht über das Projekt verschafft wird. Zusätzlich erspart man sich umständliche findViewById Codiereungen, die sehr performancelastig sind. [\citetitle{datbusing} \cite{datbusing}]
 
 
 \subsection{Vorher}
 
-Hier auf der untigen Grafik sehen wir eine Android XML-Layoutdatei mit dem Code in der zugehörigen Aktivität ohne Datenanbindung. Wir sehen ein LinearLayout mit zwei enthaltenen TextViews. Diesen wird in der Aktivität den Vornamen und den Nachnamen eines Employee Models zugewiesen. Ein Problem ist es, jedes Element eine ID zuweisen zu müssen. Wenn man jetzt mehrere Views mit unterschiedlichen Layout XML-Dateien und gleichnamigen IDs hat und man später die Refactor-Funktion verwenden will, benennt man alle neu, ohne das man es will. Man muss sich für jedes Element eine Unterschiedliche ID einfallen lassen, obwohl manche die selbe Funktion haben. Dadurch entstehen lange und unübersichtliche ID-Namen, die man sich nicht merken kann. Das Problem ist: Es muss immer darauf geachtet werden, keine doppelten IDs zu vergeben.\\
+Hier auf der untigen Grafik sehen wir eine Android XML-Layoutdatei mit dem Code in der zugehörigen Aktivität ohne Datenanbindung. Wir sehen ein LinearLayout mit zwei enthaltenen TextViews. Diesen wird in der Aktivität den Vornamen und den Nachnamen eines Employee Models zugewiesen. Ein Problem ist es, jedes Element eine ID zuweisen zu müssen. Wenn man nun mehrere Views mit unterschiedlichen Layout XML-Dateien und gleichnamigen IDs hat und man später die Refactor-Funktion verwenden will, benennt man alle neu, ohne das man es will. Man muss sich für jedes Element eine Unterschiedliche ID einfallen lassen, obwohl manche die selbe Funktion haben. Dadurch entstehen lange und unübersichtliche ID-Namen, die man sich nicht merken kann. Das Problem ist: Es muss immer darauf geachtet werden, keine doppelten IDs zu vergeben.\\
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.45]{img/DataBinding_vorher}
-\caption{Screenshot des Codes wie er ohne Datenanbindung aussieht}
-\end{figure}
+\begin{lstlisting}[caption={XML Datei vor dem Einsatz von Databinding.},label=DescriptiveLabel]
+<LinearLayout
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<TextView
+		android:id="@id/first_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		tools:text="Bob"/>
+	<TextView
+		android:id="@id/last_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		tools:text="Smith"/>	
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption={Die Activity vor dem Einsatz von DataBinding.},label=DescriptiveLabel]
+public class OldWayActivity extends AppCombatActivity {
+	private static final Employee emp = 
+		Angestellter.getInstance("Bob", "Smith");
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_oldway);
+		
+		TextView firstNameView = 
+			(TextView) findViewById(R.id.first_name);
+		TextView lastNameView = 
+			(TextView) findViewById(R.id.last_name);
+		firstNameView.setText(emp.firstName());
+		lastNameView.setText(emp.lastName());
+	}
+}
+\end{lstlisting}
+
 
 Ein weitere Umständlichkeit ist es, für jedes Element ein findViewById-casting vornehmen zu müssen, wie wir es im Aktivitätencode vorfinden. Dieses Zugriffsverfahren ist, wie bereits oben erwähnt, unnötig performancelastig und kann vermieden werden.
 \subsection{Nacher}
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.45]{img/DataBinding_nacher}
-\caption{Screenshot des Codes wie er mit Datenanbindung aussieht.}
-\end{figure}
+\begin{lstlisting}[caption={XML Datei nach dem Einsatz von Databinding.},label=DescriptiveLabel]
+<layout>
+	<data>
+		<variable
+			name="employee"
+			type="model.Employee"/>
+	</data>
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:Text="@{employee.firstName}"/>
+		<TextView
+	
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:Text="@{employee.lastName}"/>
+</layout>	
+\end{lstlisting}
 
-Auf dieser Grafik sehen wir nun eine Android XML-Layoutdatei mit dem Code in der zugehörigen Aktivität mit der Verwendung von Datenanbindung. Der Unterschied ist, sich keine einzelnen IDs für jedes vorkommende Element mehr ausdenken zu müssen. Ein großer Vorteil ist es, keine findViewById aufrufe mehr machen zu müssen. Man übergibt nur noch das zu bindende Objekt, an dessen Attribute sich die in der Layoutdatei befindenen Elemente orientieren. 
-Ein weitere Pluspunkt: Man erkennt sofort für was welches Steuerelement zuständig ist. Ein Programmierer der sich gerade in ein Projekt einarbeitet erkennt sofort, dass bei der ersten TextView der Vorname eines Employeeobjektes angezeigt wird und bei der anderen der Nachname.\footnote{"Droidcon NYC 2015 - Data Binding Techniques" \\ https://www.youtube.com/watch?v=WdUbXWztKNY}
+
+\begin{lstlisting}[caption={Die Activity vor dem Einsatz von DataBinding.},label=DescriptiveLabel]
+public class BindingActivity extends AppCombatActivity {
+	private static final Employee emp = Angestellter.getInstance("Bob", "Smith");
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		EmployeeItemBinding binding = DataBindingUtil
+			.setContentView(this, R.layout.employee_item);
+		binting.setEmployee(emp)
+
+	}
+}
+\end{lstlisting}
+
+
+Auf dieser Grafik sehen wir nun eine Android XML-Layoutdatei mit dem Code in der zugehörigen Aktivität mit der Verwendung von Datenanbindung. Man muss sich keine eindeutigen IDs für jedes vorkommende Element mehr ausdenken. Ein weiterer Vorteil ist es, keine findViewById Aufrufe durchführen zu müssen. Man übergibt nur noch das zu bindende Objekt, an dessen Attribute sich die in der Layoutdatei befindenden Elemente orientieren. 
+Ein weiterer Pluspunkt: Man erkennt sofort für was welches Steuerelement zuständig ist. Ein Programmierer der sich gerade in ein Projekt einarbeitet, erkennt sofort, dass bei der ersten TextView der Vorname eines Employeeobjektes angezeigt wird und bei der anderen der Nachname.
+
 
 \subsection{Anwendung}
-Bei der verwendung von Datenanbindung muss man darauf achten, eine aktuelle Gradle version zu benutzen (min. 1.3). Zusätzlich muss man in der build.gradle (Module App) Datei innerhalb des android\{\}-Bereichs dataBinding auf enabled=true (dataBinding\{enabled=true\}) setzen, um Datenanbindung möglich zu machen.
+Bei der Verwendung von Datenanbindung muss man darauf achten, eine aktuelle Gradle Version zu benutzen (min. 1.5). Zusätzlich muss man in der build.gradle (Module App) Datei innerhalb des android\{\}-Bereichs dataBinding auf enabled=true (dataBinding\{enabled=true\}) setzen, um Datenanbindung möglich zu machen.
 \subsubsection{In der .xml Datei}
 Gehen wir davon aus, unsere .xml Datei besteht aus einem Linearlayout und zwei TextViews: Remo
 
@@ -61,7 +130,7 @@ Gehen wir davon aus, unsere .xml Datei besteht aus einem Linearlayout und zwei T
 
 \end{lstlisting}
 
-Nun, um Datenanbindung zu ermöglichen, brauchen wir eine Objektklasse auf die wir Referenzieren. In diesem Fall erstellen wir eine Klasse $"$User" mit den String-Attributen firstName und lastName. Die Klasse besteht weiters aus einem Konstruktorfeld mit den Attributen und jeweiliger getter-Felder: 
+Nun, um Datenanbindung zu ermöglichen, brauchen wir eine Objektklasse auf die wir referenzieren. In diesem Fall erstellen wir eine Klasse $"$User" mit den String-Attributen firstName und lastName. Die Klasse besteht weiters aus einem Konstruktorfeld mit den Attributen und den jeweiligen getter-Feldern: 
 
 \begin{lstlisting}[caption={Unsere Objektklasse die bei der Datenanbindung referenziert wird.},label=DescriptiveLabel]
 package com.example.daniel.showcasedatabinding;
@@ -82,13 +151,13 @@ public class User {
 }
 \end{lstlisting}
 
-Haben wir diese erstellt, kann bei der Layoutdatei weitergemacht werden. Wir erstellen nun um unser Layout einen "layout"-Tag. Es folgt ein variable Tag innerhalb eines data Tags. Darin definieren wir eine Variable auf die man innerhalb der Elemente zugreifen kann.
+Ist diese erstellt, kann bei der Layoutdatei weitergemacht werden. Es wird nun ein Layout-Tag erstellt. Es folgt ein variable Tag innerhalb eines data Tags. Darin wird eine Variable definiert, auf die man innerhalb der Elemente zugreifen kann.
 
 \begin{lstlisting}[caption={Die XML Datei nach der Integration einer Datenanbindung.},label=DescriptiveLabel]
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-	    <variable name="user" type="com.example.daniel.showcasedatabinding.User"/>
+	    <variable name="user" type="showcasedatabinding.User"/>
     </data>
     <LinearLayout
 	    android:orientation="vertical"
@@ -130,21 +199,16 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+		ActivityMainBinding binding =
+			DataBindingUtil
+				.setContentView(this, R.layout.activity_main);
 		User user = new User("Max", "Mustermann");
 		binding.setUser(user);
 	}
 }
 \end{lstlisting}
 
-Es wird eine Instanz der generierten Klasse erstellt, welche dann ein Objekt angebunden bekommt, dessen Attribute die Elemente bekommen. Jede Änderung der verwendeten Eigenschaften der erstellten Userinstanz bedeuted auch eine Änderung des Elements, automatisch. \footnote{http://developer.android.com/tools/data-binding/guide.html}
-
-\newpage
-\subsubsection{Quellen:}
-\begin{itemize}
-	\item https://www.it-visions.de/
-	\item "Droidcon NYC 2015 - Data Binding Techniques" \\ https://www.youtube.com/watch?v=WdUbXWztKNY
-	\item http://developer.android.com/tools/data-binding/guide.html
-\end{itemize}
+Es wird eine Instanz der generierten Klasse erstellt, welche dann ein Objekt angebunden bekommt, dessen Attribute die Elemente bekommen. Jede Änderung der verwendeten Eigenschaften der erstellten Userinstanz bedeuted auch eine Änderung des Elements, automatisch. 
+[\citetitle{datbshowcase} \cite{datbshowcase}]
 
 \end{document}

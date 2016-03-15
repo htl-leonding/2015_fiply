@@ -36,6 +36,7 @@ public class ReadMusic {
         return ReadMusic.instance;
     }
 
+    @Deprecated
     public ArrayList<HashMap<String, String>> getSongsFromMusicFolder() {
         File home = new File(PATH_MUSIC);
         songs = new ArrayList<>();

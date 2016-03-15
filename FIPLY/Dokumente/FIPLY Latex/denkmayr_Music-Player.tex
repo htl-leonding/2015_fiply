@@ -1,23 +1,24 @@
 \documentclass[FIPLY_base.tex]{subfiles}
 
-\author{Andreas Denkmayr}
-\date{19. Februar 2016}
+%\author{Andreas Denkmayr}
+%\date{19. Februar 2016}
 
 \begin{document}
 \section{Musik}
-Beim Erstellen des MediaPlayers wurden diese Quellen verwendet: [\citetitle{adMediaPlayer} \cite{adMediaPlayer}], [\citetitle{bMediaPlayer} \cite{bMediaPlayer}]. % Quellen
+[Android Developers \cite{adMediaPlayer}, \citeauthor{bMediaPlayer} \cite{bMediaPlayer}]
+
 \subsection{Lokalisierung der Musikdateien}
-\texttt{Am Beginn der Arbeit wurde der Music-Ordner nach mp3-Files durchsucht.}  
+Am Beginn der Arbeit wurde der Music-Ordner nach mp3-Files durchsucht.
 \begin{lstlisting}
 File home = new File(Environment.getExternalStorageDirectory()
 	.getAbsolutePath() + "/Music";);
 songs = new ArrayList<>();
 if (home.listFiles(new FileExtensionFilter()) != null) {
 	for (File file : home.listFiles(new FileExtensionFilter())) {
-		HashMap<String, String> hm = new HashMap<>();
-		hm.put("songTitle", file.getName());
-		hm.put("songPath", file.getPath());
-		songs.add(hm);
+		HashMap<String, String> song = new HashMap<>();
+		song.put("songTitle", file.getName());
+		song.put("songPath", file.getPath());
+		songs.add(song);
 	}
 }    
 \end{lstlisting}
@@ -28,7 +29,7 @@ Die Lösung für dieses Problem stellt der Android Mediastore dar.
 Über diesen können Abfragen nach verschiedenen Medientypen z.B.: Musik, Fotos oder Videos durchgeführt werden. Von diesen Medientypen können Name, Pfad, Dateigröße und vieles mehr ausgelesen werden.
   
 \ \\  
-\texttt{Die Datenabfrage gegenüber dem Mediastore erfolgt über einen ContentResolver mit Hilfe der query()-Methode.}  
+Die Datenabfrage gegenüber dem Mediastore erfolgt über einen ContentResolver mit Hilfe der query()-Methode.
 \begin{lstlisting}
 public final @Nullable Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
 	return query(uri, projection, selection, selectionArgs, sortOrder, null);
@@ -36,9 +37,10 @@ public final @Nullable Cursor query(@NonNull Uri uri, @Nullable String[] project
 \end{lstlisting}
 
 \ \\
-\texttt{Für den Musicplayer benötigen wir alle Audiodateien die Musik beinhalten.}
+Für den Musicplayer benötigen wir alle Audiodateien, die Musik beinhalten.
 \begin{lstlisting}
-ContentResolver cr = context.getApplicationContext().getContentResolver();
+ContentResolver cr = context.getApplicationContext()
+	.getContentResolver();
 Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
 String selection = MediaStore.Audio.Media.IS_MUSIC + "!= 0";
 String sortOrder = MediaStore.Audio.Media.TITLE_KEY + " ASC";
@@ -47,17 +49,17 @@ Cursor cur = cr.query(uri, null, selection, null, sortOrder);
 
 \newpage
 \ \\
-\texttt{Für jede Zeile im Cursor cur wird eine HashMap aus 2 Strings erstellt die den Titel und den Pfad eines Songs beinhaltet. Diese HashMaps werden anschließend zu einer ArrayList hinzugefügt.}
+Für jede Zeile im Cursor cur wird eine HashMap aus 2 Strings erstellt die den Titel und den Pfad eines Songs beinhaltet. Diese HashMaps werden anschließend zu einer ArrayList hinzugefügt.
 \begin{lstlisting}
 songs = new ArrayList<>();
-HashMap<String, String> hm = new HashMap<>();
+HashMap<String, String> song = new HashMap<>();
 while(cur.moveToNext())
 {
-	hm.put("songTitle", cur.getString(cur
+	song.put("songTitle", cur.getString(cur
 		.getColumnIndex(MediaStore.Audio.Media.TITLE)));
-	hm.put("songPath", cur.getString(cur
+	song.put("songPath", cur.getString(cur
 		.getColumnIndex(MediaStore.Audio.Media.DATA)));
-	songs.add(hm);
+	songs.add(song);
 }
 \end{lstlisting}
 
@@ -73,7 +75,8 @@ while(cur.moveToNext())
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.15]{img/musicSongView1}
 	\end{subfigure}
-	\caption{Bei klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2) und mittels der Checkbox sind alle Songs markiert die sich in der ausgewählten Playlist befinden.}
+	\caption{Bei Klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2). 
+	Mittels der Checkboxenty werden jene Songs markiert, die sich in der ausgewählten Playlist befinden.}
 \end{figure}
 
 \ \\
