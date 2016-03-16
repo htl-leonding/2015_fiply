@@ -8,20 +8,21 @@
 
 \subsection{Beschreibung}
 Der Übungskatalog beinhaltet eine Liste aller verfügbaren Übungen.
+\ \\
 
 \includegraphics[scale=0.4]{img/Uebungskatalog}
 
 \subsection{Implementierung}
 \subsubsection{Expandable List View}
-Die Expandable List View ist eine eigene Implementierung der standard List View. Sie erlaubt es bei tippen auf ein Element weitere Unterelemente darzustellen.
-Im Laufe der Entwicklung wurde festgestellt, dass eine standard List View, mit einem Verweis auf eine Detail-View vorteilhafter wäre.
+Die Expandable List View ist eine eigene Implementierung der Standard List View. Sie erlaubt es bei Tippen auf ein Element weitere Unterelemente darzustellen.
+Im Laufe der Entwicklung wurde festgestellt, dass eine Standard List View, mit einem Verweis auf eine Detail-View vorteilhafter wäre.
 
 \subsubsection{List View}
-Die List View zeigt eine Liste aus Element an. Ein Klick auf ein bestimmtes Element löst eine Callback-Methode aus, von welcher die Detail View aufgerufen wird.
+Die List View zeigt eine Liste bestehend aus Elementen an. Ein Klick auf ein bestimmtes Element löst eine Callback-Methode aus, welche die Detail View aufruft.
 \newpage
 \subsubsection{Einlesen der Übungen}
 Die Informationen über alle Übungen ist in der strings.xml im JSON-Format hinterlegt.
-Jede Übung ist somit ihr eigenes JSON-Objekt. 
+Jede Übung hat somit ihr eigenes JSON-Objekt. 
 
 \begin{lstlisting}
 <string name="exercisecatalog">
@@ -39,11 +40,12 @@ Jede Übung ist somit ihr eigenes JSON-Objekt.
 ]
 </string>
 \end{lstlisting}
-Wie in diesem Exampel erkennbar musste jedes Hochkomma mit einem Backslash escaped werden, da der JSON-String sonst nicht in der strings.xml abgelegt werden könnte.
+\ \\
+Wie in diesem Beispiel erkennbar, muss jedes Hochkomma mit einem Backslash maskiert werden, da der JSON-String sonst nicht in der strings.xml abgelegt werden kann.
 \newpage
 \ \\
-Dieser JSON-String wird in einer Methode in der UebungenRepository eingelesen und die einzelnen Methoden werden in die Datenbank eingefügt.
-
+Dieser JSON-String wird in einer Methode der Klasse UebungenRepository eingelesen und die einzelnen Übungen werden in die Datenbank eingefügt.
+\ \\
 \begin{lstlisting}
     public void insertAllExercises() throws JSONException {
         reCreateUebungenTable();
@@ -64,10 +66,8 @@ Dieser JSON-String wird in einer Methode in der UebungenRepository eingelesen un
                          "https://www.youtube.com/embed/..", 
                          temp.getString("Equipment"));
         }
-
     }
 \end{lstlisting}
-
 \ \\
 Diese Methode wird beim Startup der Applikation, während des SplashScreens, in einem Async-Task aufgerufen und ausgeführt.
 
@@ -77,7 +77,14 @@ Diese Methode wird beim Startup der Applikation, während des SplashScreens, in 
 
 
 \subsection{DetailView}
-\includegraphics[scale=0.4]{img/Uebungskatalog_detail}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.55]{img/Uebungskatalog_detail}
+	\end{subfigure}
+	\hfil
+	\caption{Die DetailView der Übung "Bizepscurl".}
+\end{figure}
+
 
 
 Für jede Übung gibt es eine Detailansicht, in welcher man genaures über jene Übung erfahren kann.
@@ -105,7 +112,13 @@ Die Liste kann auch nach Name der Übung und Muskelgruppe gefiltert werden.
 Der Filter wird über den Floating Action Button aufgerufen, welcher sich in der rechten unteren Ecke des Übungskataloges befindet.
 Die Muskelgruppen-Auswahl erfolgt über das Tippen auf eine bestimmte Muskelgruppe, beim Namen wird rein nach Text filtriert
 
-\includegraphics[scale=0.4]{img/Uebungskatalog_filter}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.55]{img/Uebungskatalog_filter}
+	\end{subfigure}
+	\hfil
+	\caption{Die Filter View.}
+\end{figure}
 \newpage
 
 \subsubsection{Implementierung}
@@ -123,13 +136,27 @@ Jener Auswahlbereich, welchen der Benutzer zu sehen bekommt.
 Dieser Auswahlbereich ist nur die visuelle Stütze für den Benutzer, sie hat keinerlei funktionalen Nutzen.
 
 \ \\
-\includegraphics[scale=0.4]{img/Uebungskatalog_filter_overlay}
+\\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.55]{img/Uebungskatalog_filter_overlay}
+	\end{subfigure}
+	\hfil
+	\caption{Das sichtbare Overlay des Filters.}
+\end{figure}
+
 
 \ \\
 Und eine farbkodierte Maske, welche der Benutzer nicht sieht, mit welcher er aber eigentlich interagiert.
 Bei einem Klick auf die Auswahlfäche kann nachvollzogen werden welche Farbe der angeklickte Bereich hat, somit wird festgestellt welche Muskelgruppe der Benutzer ausgewählt hat.
 
-\includegraphics[scale=0.4]{img/Uebungskatalog_filter_mask}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.55]{img/Uebungskatalog_filter_maskl}
+	\end{subfigure}
+	\hfil
+	\caption{Die nicht sichtbare Maske.}
+\end{figure}
+
 
 \newpage
 \ \\
