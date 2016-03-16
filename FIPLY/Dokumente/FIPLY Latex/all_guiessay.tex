@@ -1,0 +1,110 @@
+\documentclass[FIPLY_base.tex]{subfiles}
+	
+%\author{Daniel Bersenkowitsch}
+	
+\begin{document}
+	
+\section{Designrichtlinien}
+Designrichtlinien sind ein wichtiges Element aller Applikationen, bei denen der kommerzielle Erfolg stark vom Userinterface und dem visuellen Auftritt abhängt. Es werden dabei Tipps und Designinstruktionen von Google angewendet, welche auf der Internetseite https://www.google.com/design/spec/material-design/introduction.html nachzulesen sind. 
+
+\subsection{Der Splashscreen}
+Der Splashscreen ist der erste Screen den der User sieht. Hier wird meist das Logo dargestellt, während im Hintergrund die Daten geladen werden.
+Der Splashscreen sollte nicht zu lange sichtbar oder zu langweilig sein. Der Splashscreen kann folgendermaßen umgesetzt werden:
+\begin{itemize}
+	\item ImageView: Mithilfe einer ImageView lässt sich ein einzelnes Bild darstellen. Dieses Bild ist zur Laufzeit austauschbar.
+	\item VideoView: Ähnlich zur ImageView lässt sich mithilfe einer VideoView ein einzelnes Video darstellen. Es besteht die Möglichkeit, das Video zu pausieren.
+	\item ProgressBar: Mithilfe einer ProgressBar ist es möglich, Fortschritte grafisch darzustellen. Es besteht die Option lediglich eine Cycling Animation anzuzeigen, die nur den Verarbeitungsprozess anstatt des Fortschritts wiedergibt.
+\end{itemize}
+Der Splashscreen beinhaltet eine zentrierte ImageView mit dem FIPLY-Logo als Bild. Diese wird für 3500ms andauert. Der Hintergrund des Splashscreens ist weiß. 
+
+\subsection{Animationen und Transactions}
+Eine Transition ist der Übergange zwischen zwei Activities.
+Der Übergang muss flüssig verlaufen und darf die User Experience nicht unterbrechen. Dies wird durch persistierende Objekte und präzise Bewegungen in den Übergängen erzielt.
+Diese Möglichkeiten stehen zur Verfügung:
+\begin{itemize}
+	\item ViewSwitcher: Ein ViewSwitchers ist ein ViewAnimator, mit dem man zwischen exakt zwei Views hin- und herwechseln kann. 
+	\item TextSwitcher: Ein TextSwitcher ist ein ViewSwitcher, der nur TextViews auswechseln kann. Dieser wird verwendet um Labels zu animieren.
+	\item ImageSwitcher: Ein ImageSwitcher ist ein ViewSwitcher, der nur Bilder auswechseln kann. Dieser wird verwendet um das Wechseln von Bildern zu animieren.
+	\item ViewFlipper: Ein ViewFlipper ist ein ViewAnimator, mit dem man den Wechsel zwischen zwei oder mehreren Views animieren kann.
+	\item Fragment: Mithilfe von Fragments kann man mehrere Ebenen von Views innerhalb einer einzelnen Activity darstellen. Somit bildet ein 
+	Fragment eine auswechselbare Ansicht, die wiederverwendet werden kann.
+\end{itemize}
+Beschreibung unserer Umsetzung:
+\begin{itemize}
+	\item Enter Transition: Die Enter-Transition besteht daraus, dass die aufgerufene Activity aus dem Button der Activity hervorgeht, welche sie ausgelöst hat. Dabei vergrößern sich jeweils die Eckpunkte eines Buttons und schmiegen sich an die Form des Screens an, wobei die neue Activity gleichzeit durch einen transparenten Fade-In-Effekt erscheint. Es soll so wirken, als ob die geöffnete Activity aus dem Button hervorgeht. Wenn eine neue Activity nicht durch einen Button ausgelöst wird, wird diese einfach von der rechten Seite “eingeschoben”.
+	\item Exit Transition: Die Exit-Transition wird genau so wie die Enter-Transition    durchgeführt, nur umgekehrt. Wenn die Activity geschlossen werden soll, verschwindet sie mit einem transparenten Fade-Out Effekt und die Eckpunkte der View schmiegen sich zurück an den Button wodurch sie ausgelöst wurde, sodass die andere Activity wieder angezeigt wird. Falls eine Activity nicht durch einen Button ausgelöst worden ist, wird sie beim Schließen nach rechts aus dem Screen “hinausgeschoben”.
+	\item Splashscreen Exit Transition: Der Splashscreen wird nach seiner Anzeigedauer durch einen transparenten Fade-Out Effekt verschwinden, sodass das Hauptmenü angezeigt wird.
+\end{itemize}
+
+\subsection{Navigation}
+Als Navigation wird das Wechseln von einer Funktion der App zur Nächsten bezeichnet. Dies wird meist durch Buttons erreicht und grafisch mit Transitions dargestellt.
+Die Buttons sollen auch ohne Text sprechend sein was sie bewirken bzw. wohin man mit ihnen navigiert. Dies kann durch bestimmte Zeichen auf den Buttons erreicht werden, z.B.: ein Zahnrad für die Einstellungen oder eine Lupe für eine Suchfunktion. Es sollen auch andere Methoden zur Navigation wie beispielsweise über den Bildschirm wischen verwendet werden.
+So lässt sich dies Umsetzen:
+\begin{itemize}
+	\item Fragments: Mithilfe von Fragments kann man Navigation vortäuschen. Man wechselt dabei nicht zwischen den Activities hin und her, sondern wechselt Teile der aktuellen Ansicht aus.
+	\item PopupMenu: Ein PopupMenu ist ein Menü, das in einer View verankert ist und vor allem für Aktionen innerhalb einer Activity verwendet wird.
+	\item ContextMenu: Ein ContextMenu ist ein Menü, das Aktionen für ein spezielles Item bereitstellt. Ein ContextMenu wird vor allem bei ListViews oder GridViews eingesetzt um Aktionen wie Edit, Share oder Delete für einzelne Items bereitzustellen.
+	\item Buttons: Ein Button ist ein Kontrollelement, das man entweder anklickt oder gedrückt hält, um Aktionen auszuführen.
+	\item NavigationDrawer: Ein NavigationDrawer ist ein Element, das in der linken Hälfte des Bildschirms angezeigt werden kann. Dies wird mittels einem DrawerLayout realisiert, welches eine ListView mit den Zielen der Navigation und ein anderes Layout mit dem Inhalt der Activity enthält.
+	\item OptionsMenu: Ein OptionsMenu ist ein Menü das vor allem Aktionen für die aktuelle Activity bereitstellt. 
+	Bei älteren Geräten (API level 10 or niedriger) wird dieses OptionsMenu im unteren Teil des Bildschirms angezeigt.
+	Ab API level 11 werden die Elemente des OptionsMenu in der AppBar zur Verfügung gestellt.
+	\item Zurücktaste am Gerät: Mithilfe der Zurücktaste kann man auf die zuletzt besuchte Activity zurückspringen.
+\end{itemize}
+In der Applikation soll dies mittels der Technologie des OptionsMenu, der AppBar und den Buttons umgesetzt werden. Das Ergebnis ist eine intuitive Navigation innerhalb der Applikation.
+
+\subsection{Formulare}
+Mittels Formulare kann der Benutzer Daten in das System eingeben, wie beispielsweise bei dem Anlegen eines Userprofils. Formulare sollten so intuitiv wie möglich sein und so wenig wie möglich reine Texteingabe sein. Manchmal ist jedoch eine Texteingabe unumgänglich, wie beispielsweise für die Namenseingabe.
+Behandlung mit Android Studio: (Necessary Evil-Steuerelemente)
+
+\begin{itemize}
+	\item TextView: Eine TextView ist ein kompletter Texteditor, der in seiner Basisform allerdings kein bearbeiten des Textes erlaubt. Die Einsatzmöglichkeiten von TextViews sind beinahe unbegrenzt da Features wie Rechtschreibprüfung, Klickbare Links, Passwortfelder oder auch Eingabemethoden unterstützt werden.
+	\item EditText: Ein EditText ist eine standardmäßig editierbare TextView.
+	\item AutoComplete TextView: Mithilfe eines DropDownMenus werden dem User Vorschläge für die Textvervollständigung angezeigt die mittels Array definiert sind.
+	\item Button: Ist ein Element einer View, das man entweder anklickt oder gedrückt hält, um Aktionen auszuführen.
+\end{itemize}
+
+
+\begin{itemize}
+	\item DatePicker: Mithilfe eines Datepickers kann man ein bestimmtes Datum über einen Spinner oder eine CalendarView auswählen.
+	\item TimePicker: Mithilfe eines TimePickers kann man die Zeit auswählen.
+	\item NumberPicker: Ein NumberPicker erlaubt dem User eine Zahl aus einer vordefinierten Zahlenmenge auszuwählen. Dazu werden 2 Buttons zur Verfügung gestellt die jeweils nach oben oder nach unten zählen.
+	\item Switch: Ein Switch hat 2 Zustände (z.B: on and off) und der Zustand kann durch Klicken oder Ziehen geändert werden.
+	\item CheckBox: Eine CheckBox hat 2 Zustände (checked and unchecked) und dieser kann durch Klicken geändert werden.
+	\item RadioButton: Ein RadioButton hat 2 Zustände (checked and unchecked) und 
+	dieser kann durch Klicken geändert werden. Anders als bei einer 
+	RadioButtons werden meist in einer RadioGroup verwendet.
+	Selektieren eines RadioButtons deselektiert alle anderen RadioButtons dieser Gruppe.
+	\item ToggleButton: Ein ToggleButton hat 2 Zustände (z.B.: on and off) und der Zustand kann durch Klicken geändert werden. Der Zustand wird durch ein Aufleuchten des Buttons angezeigt.
+	\item SeekBar: Eine SeekBar ist eine ProgressBar mit ziehbarem Slider um den Fortschritt zu setzen.
+	\item RatingBar: Eine RatingBar ist eine SeekBar, die den Fortschritt in Sternen anzeigt. Der Fortschritt kann durch Klicken oder Ziehen verändert 
+	werden.
+	\item Spinner: Ein Spinner ermöglicht dem User ein Kindelement aus einer Liste von Kindelementen auszuwählen. Dies wird mittels einem 
+	DropDownMenu realisiert.	
+\end{itemize}
+Um den Benutzern eine komfortable Eingabe anzubieten, kommen überall dort intuitive Steuerelemente zum Einsatz, wo es möglich ist.
+
+\subsection{Datenausgabe}
+Datenausgabe ist der Teil der App wo dem User Information ausgegeben wird, wie beispielsweise der Übungskatalog.
+Die Datenausgabe soll so effizient wie möglich erfolgen. Suchfunktionen bzw. Filter sollen bei jeder Datenausgabe vorhanden sein.
+Dises Optionen stehen uns zur Auswahl:
+\begin{itemize}
+	\item ProgressBar: Mithilfe einer ProgressBar ist es möglich Fortschritt grafisch darzustellen. 
+	\item RatingBar: Eine RatingBar ist eine SeekBar, die den Fortschritt in Sternen anzeigt. Optional kann der Fortschritt durch Klicken oder Ziehen verändert werden.
+	\item ImageView: Mithilfe einer ImageView lässt sich ein einzelnes Bild darstellen und dieses Bild ist auch während der Laufzeit einfach austauschbar.
+	\item VideoView/YoutubeAPI: Ähnlich der ImageView lässt sich mithilfe einer VideoView ein	einzelnes Video darstellen und man hat die Möglichkeit das Video zu starten oder zu pausieren.  
+	\item MediaController: Ein MediaController ist eine View mit Steuerungselementen für den 
+	MediaPlayer. Der Controller sorgt dafür, dass die App synchron mit 
+	dem MediaPlayer läuft.
+	\item CalendarView: Mithilfe einer CalendarView kann man ein Datum in einem Kalender darstellen oder auswählen.
+	\item Clocks: Mithilfe einer TextClock kann man die aktuelle Zeit als formatierten String sowohl im 12-hour als auch im 24-hour Format anzeigen. Mithilfe einer AnalogClock kann man eine Uhrzeit an einer analogen Uhr anzeigen.
+	\item StackView: Mithilfe einer StackView kann man immer ein Kindelement im Vordergrund anzeigen und sieht die restlichen Kindelemente dahinter angeordnet. Das angezeigte Element kann dabei durch jedes andere Kindelement ausgetauscht werden.
+	\item ListView: Zeigt eine vertikale Liste von Elementen an.
+	\item ExpandableListView: Zeigt eine vertikale Liste von Elementen an. Bei Klicken kann ein Element aufgeklappt werden um mehr Informationen anzuzeigen.
+	\item WebView: Eine WebView kann Webseiten anzeigen ohne in den Webbrowser des Geräts wechseln zu müssen. In der WebView sind auch diverse Steuerelemente zur Navigation oder Textsuche enthalten.
+\end{itemize}
+Das ProgressBar Element kommt bei dem Anzeigen der Statistik zum Einsatz. Somit bekommen die User ein visuelles Feedback wie weit sie von ihrem Ziel noch entfernt sind. Die VideoView/Youtube API wird beim Menüpunkt des Anzeigens der Details einer Übung verwendet. Jede Übung besitzt ein Vorschauvideo, welches durch dieses Element wiedergegeben wird. Die ExpandableListView ist die Anzeige des Übungskatalogs. Dieses Element beinhaltet alle zur Verfügung stehenden Übungen, welche durch Einstellungen gefiltert bzw. durchsucht werden können.
+ 
+
+\end{document}
+
