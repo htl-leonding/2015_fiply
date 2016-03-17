@@ -6,10 +6,10 @@
 \begin{document}
 \subsection{GitHub}
 GitHub ist ein System zur kollaborativen Versionsverwaltung für Software-Entwicklungsprojekte.
-Für GitHub gibt es zahlreiche Clients, die meisten von diesen sind Kommandozeilen-Tools.
-Mit diesen Clients ist es möglich, Änderungen an Projekten zu speichern und jederzeit wieder auf vorherige Versionen zugreifen zu können.
+Mit GitHub ist es möglich, Änderungen an Projekten zu speichern und jederzeit wieder auf vorherige Versionen zugreifen zu können.
+Zusätzlich zur Versionsverwaltung bietet GitHub eine große Community, die ihre Projekte mit der Welt teilt und gemeinsam an solchen Projekten entwickelt.
 GitHub bietet viele Statistiken und ermöglicht auch Benutzern, ohne Erfahrung mit Kommandozeilen-Befehlen, einen sehr einfachen Umgang. \newline
-[\citeauthor{t3nGithub} \cite{t3nGithub}, GitHub \cite{github}]
+[\citeauthor{t3nGithub} \cite{t3nGithub}]
 
 \subsubsection{Repositories}
 Jedes Projekt wird in einem Repository, kurz auch Repo, abgespeichert.
@@ -24,21 +24,61 @@ Jeder kann auf die Inhalte des Repos zugreifen, aber der Entwickler entscheidet 
 Will man allerdings ein Private Repository einrichten muss man den Status seines Accounts auf Micro upgraden.
 Dieses Upgrade kostet \$7.00/Monat. In einem Private Repository, kann der Besitzer entscheiden, wer dieses Repo sehen und wer Commits in dieses Repo absetzen kann.
 
-\subsubsection{Branches}
+\subsubsection{Git}
+\begin{quote}
+At the heart of GitHub is an open source version control system (VCS) called Git. Git is responsible for everything GitHub-related that happens locally on your computer.
+\end{quote}
+[GitHub \cite{githubSetUpGit}]
+
+\ \\
+GitHub verwendet Git, ein Programm zur verteilten Versionsverwaltung.
+Der größte Unterschied dieses Systems gegenüber anderen Systemen der Versionsverwaltung liegt in der Abspeicherung der Projekte.
+In Git wird eine lokale Kopie des Repositories angelegt und gewartet.
+Dies benötigt zusätzlichen Speicherplatz, allerdings ermöglicht dieses System eine schnellere Arbeitsweise, da die Übertragung zwischen dem lokalen und dem entfernten Repository in den meisten Arbeitsschritten eliminiert wird. 
+
+
+\newpage
+\begin{wrapfigure}{r}{0.20\textwidth}
+\begin{center}
+	\includegraphics[scale=0.20]{img/GitHub}
+	\caption{Der Ablauf einer Änderung am Code.}
+	\vspace{-90pt}
+\end{center}
+\end{wrapfigure}
+
+\subsubsection{Arbeitskopie}
+Die Arbeitskopie beschreibt die Version eines Projekts, auf der ein Entwickler seine Arbeiten durchführt.
+Zu beginn einer Entwicklung ist die Arbeitskopie auf dem Stand des lokalen Repositories.
+Änderungen werden in der Arbeitskopie durchgeführt. Somit ist das lokale Repo nicht mehr ganz aktuell.
+Sobald eine Funktion implementiert, oder ein Bug gefixt ist, führt der Entwickler ein Commit durch.
+Nun ist das lokale Repository wieder auf dem gleichen Stand wie die Arbeitskopie.
+
+\subsubsection{Lokales Repository}
+Das lokale Repository beinhaltet eine lauffähige Version des Projekts.
+Hier werden alle Commits des Entwicklers zwischengespeichert und können über ein Push auf das entfernte Repository übernommen werden.
+
+\subsubsection{Entferntes Repository}
+Das entfernte Repository ist auf einem Server gespeichert und somit zugänglich für alle berechtigten Personen.
+Dies kann sowohl auf privaten als auch auf öffentlichen Servern, wie beispielsweise den GitHub Servern, geschehen.
+
+\subsubsection{Commit}
+Der Vorgang eine neue Version in das lokale Repository einzureichen, wird als Commit bezeichnet.
+Das bedeutet, dass diese neue Version auf die aktuelle Branch übernommen wird.
+Zu diesen Commits kann zurückgesprungen werden, was eine sehr hohe Transparenz im Entwicklungsvorgang ermöglicht.
+Das Projekt sollte zum Zeitpunkt eines Commits immer lauffähig sein! 
+ 
+\subsubsection{Push}
+Um Änderungen allen Kollaborateuren zur Verfügung zu stellen, wird ein Push durchgeführt.
+Dieser übernimmt alle Änderungen des lokalen Repos in das entfernte Repository.
+Sobald sich die Änderungen auf dem entfernten Repository, beziehungsweise am GitHub Server, befinden, können alle Entwickler die neue Version in ihr lokales Repo übernehmen. 
+ 
+\subsubsection{Branch}
 Innerhalb eines Repositories kann es mehrere Versionen einer Software geben. Diese Versionen werden in verschiedenen Branches abgespeichert.
 Es gibt eine Version im master-Branch, die lauffähig und funktionstüchtig sein sollte.
 Neue Versionen werden in Branches entwickelt und können durch Pull Requests in die Version der master-Branch übernommen werden. 
 Auf diese Weise werden parallele Entwicklungen ermöglicht. Beispielsweise kann an einer Version weiterentwickelt und alle Fehler ausgebessert werden.
 Gleichzeitig kann in einem Branch an größeren Änderungen, zum Beispiel an dem Wechsel auf eine alternative Technologie, gearbeitet werden.
 
-
-\newpage
-\subsubsection{Commits}
-Der Vorgang eine neue Version einzureichen, wird als Commit bezeichnet.
-Das bedeutet, dass diese neue Version auf die aktuelle Branch übernommen wird.
-Zu diesen Commits kann zurückgesprungen werden, was eine sehr hohe Transparenz im Entwicklungsvorgang ermöglicht.
-Das Projekt sollte zum Zeitpunkt eines Commits immer lauffähig sein! 
- 
 \subsubsection{Pull Request}
 Wurde eine Funktion eingebaut oder ein Bug gefixt, kann ein Entwickler die Änderungen seines Branches in den master-Branch mittels einer Pull-Requests übertragen. 
 Ein Administrator des Repositories begutachtet die Änderungen und entscheidet dann, ob er diesen Code in die master-Branch übernehmen will.
@@ -48,19 +88,17 @@ Durch die große Community und Features wie den Entwicklerprofilen ermöglicht G
 Personen können einem Entwickler folgen und so alle seine Projekte und Updates verfolgen.
 Jeder kann sich kostenlos die neueste Version eines Projekts herunterladen, dieses einsetzen insofern die passende Lizenz vorliegt und bei Zustimmung eines Repository Administrators am Projekt mitentwickeln.
 
-\subsubsection{Issues}
+\subsubsection{Integration}
+GitHub lässt sich sehr einfach in populäre Entwicklungsumgebungen integrieren. 
+Sollte so ein Support nicht standardmäßig vorliegen, wird dieser über zahlreiche Extensions ermöglicht.
+
+\subsubsection{Issue}
 Da GitHub auf Kollaborationen ausgelegt ist, bietet die Webseite auch ein Ticketsystem.
 Jeder mit einem kostenlosen Account kann Tickets erstellen. Ein Issue kann von einem Administrator des Repositories einem Entwickler zugeteilt werden.
 Im Rahmen dieses Systems ist ein Austausch der Entwickler mit der Community möglich.
 Diese Tickets weisen auf Bugs im Projekt hin, schlagen Verbesserungen des Codes vor, oder stellen den Entwicklern Fragen.
 Ist das Problem gelöst, kann ein Issue geschlossen werden.
 
-\subsubsection{Integration}
-GitHub lässt sich sehr einfach in die meisten Entwicklungsumgebungen integrieren. 
-Durch den hohen Bekanntheitsgrad wird es von populären IDE's unterstützt.
-Sollte so ein Support nicht standardmäßig vorliegen, werden zahlreiche Extensions angeboten, die diesen ermöglichen.
-
-\newpage
 \subsubsection{.gitignore}
 GitHub bietet die Möglichkeit mehrere .gitignore Dateien anzulegen.
 In diesen .gitignore Files werden Dateien aufgezählt, die von GitHub ignoriert werden sollen. 
@@ -98,8 +136,6 @@ Das .gitignore im root Ordner \begin{verbatim}2015\_fiply\end{verbatim}
 \end{lstlisting}
 Das .gitignore im Ordner unseres Androidprojekts \begin{verbatim}2015_fiply\FIPLY\App\end{verbatim} 
 \end{minipage}
-\ \\
-
 \ \\
 Einträge wie ''*.log'' ignorieren alle Dateien mit dieser Dateiendung. \newline
 Einträge wie ''FIPLY/App/app/app.iml'' ignorieren eine spezifische Datei.
