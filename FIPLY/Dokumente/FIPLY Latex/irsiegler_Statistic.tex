@@ -4,31 +4,37 @@
 %\date{26. Februar 2016}
 
 \begin{document}
-\section{Statistik}
+\subsection{Statistik}
 
-\subsection{Beschreibung}
-Die Statistik gibt dem Benutzer eine Übersicht zu seinem Training, in den letzen Tagen/Wochen/Monaten. 
+\subsubsection{Beschreibung}
+Die Statistik gibt dem Benutzer eine Übersicht zu seinem Training in den letzen Tagen/Wochen/Monaten. 
 \ \\
 Es werden verschiedene Statistiken zur Verfügung gestellt, um so viel Informationen wie möglich darzustellen.
 
-\includegraphics[scale=0.5]{img/Statistik}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.50]{img/Statistik}
+	\end{subfigure}
+	\hfil
+	\caption{Die Statistik.}
+\end{figure}
 
 \newpage
-\subsection{Verfügbare Statistiken}
-\subsubsection{Geistige Verfassung}
+\subsubsection{Verfügbare Statistiken}
+\paragraph{Geistige Verfassung}\ \\
 Diese Statistik beschreibt wie es dem Benutzer nach jeder Trainingseinheit geht.
 Er soll auf einer Skala von eins bis fünf seinen geistigen Zustand nach dem Training bewerten, wobei eine höhere Zahl eine bessere Laune beschreibt.
-\subsubsection{Gehobenes Gewicht}
+\paragraph{Gehobenes Gewicht}\ \\
 Nach jeder Trainingseinheit wird angegeben mit wieviel Gewicht die jeweiligen Übungen durchgeführt worden sind.
 Anhand dieser Statistik kann man seine Entwicklung sehr gut verfolgen
-\subsubsection{Insgesamt gestemmtes Gewicht}
+\paragraph{Insgesamt gestemmtes Gewicht}\ \\
 Hier wird festgehalten wieviel Gewicht der Benutzer insgesamt an einem Tag, einer Woche, einem Monat gestemmt hat.
 
 \newpage
-\subsection{Implementierung}
-\subsubsection{Aufnahme und Speicherung der Werte}
+\subsubsection{Implementierung}
+\paragraph{Aufnahme und Speicherung der Werte}\ \\
 Die aufzunehmenden Werte werden während bzw. nach der Trainingssession aufgenommen und danach in ihr jeweiliges Repository abgespeichert.
-Die einzelnen Werte für die Statistik werden in unserer SQLite Datenbank in ihren jeweiligen Repositories gespeichert.
+Die einzelnen Werte für die Statistik werden in einer SQLite Datenbank in ihren jeweiligen Repositories gespeichert.
 \ \\
 Dabei ist jeder Eintrag eine eigene Entität welche das Interface DataPointInterface implementiert.
 
@@ -37,9 +43,9 @@ public class MoodTime implements DataPointInterface {
     private double _timestamp;
     private double _mood;
 
-    public MoodTime(double x, double y) {
-       _timestamp = x;
-       _mood = y;
+    public MoodTime(double timestamp, double mood) {
+       _timestamp = timestamp;
+       _mood = mood;
     }
 
     @Override
@@ -56,9 +62,9 @@ public class MoodTime implements DataPointInterface {
 
 \ \\
 
-\subsubsection{Darstellung}
-Zur Darstellung der Statistiken wird GraphView verwendet. GraphView ist eine open-source library für Android zur Erstellung von Diagrammen.
-Verfügbar sind eine vielzahl von Diagramm-Arten wie z.B.: Linien-, Kuchen- und Punktdiagrammen.
+\paragraph{Darstellung}\ \\
+Zur Darstellung der Statistiken wird GraphView verwendet. GraphView ist eine open-source Library für Android zur Erstellung von Diagrammen.
+Verfügbar sind eine Vielzahl von Diagramm-Arten wie z.B.: Linien-, Kuchen- und Punktdiagrammen.
 
 
 
