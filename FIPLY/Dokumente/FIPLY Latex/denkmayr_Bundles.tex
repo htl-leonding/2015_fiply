@@ -1,10 +1,104 @@
 \documentclass[FIPLY_base.tex]{subfiles}
 
 %\author{Andreas Denkmayr}
-%\date{25. Februar 2016}
+%\date{17. März 2016}
 
 \begin{document}
 \subsection{Bundles}
-TODO
+Ein Bundle ist ein Objekt, dass einer Vielzahl von Datentypen einen String zuordnen kann, um Daten zwischen Activities und Fragments zu übertragen.
+Die Übergabe des Bundles, und somit der Austausch der Daten, erfolgt über Intents oder Fragment Transactions.
+[\citeauthor{soBundles} \cite{soBundles}]
+
+\begin{lstlisting}
+Bundle innerBundle = new Bundle();
+Bundle outerBundle = new Bundle();
+
+ArrayList<String> arrList = new ArrayList<>();
+outerBundle.putStringArrayList("bundleArrayList", arrList);
+outerBundle.putInt("bundleInt", 123);
+outerBundle.putString("bundleString","Hallo Welt!");
+outerBundle.putDouble("bundleDouble", 12.3);
+outerBundle.putBundle("anotherBundle",innerBundle);
+outerBundle.putBoolean("bundleBoolean",true);
+\end{lstlisting}
+In diesem Beispiel werden Parameter unterschiedlicher Datentypen zu einem Bundle hinzugefügt.
+Das Hinzufügen erfolgt über die zahlreichen put-Methoden. 
+Der erste Parameter ist die Kennzeichnung.
+Über diese Kennzeichnung kann später wieder auf die Daten zugegriffen werden.
+Die zu übertragenden Daten werden als zweiter Parameter in eine put-Methode übergeben.
+
+
+\subsubsection{Datenübertragung zwischen Fragments}
+\begin{lstlisting}
+Bundle args = new Bundle();
+Fragment fragment = new FTrainingssession();
+fragment.setArguments(args);
+
+FragmentManager fragmentManager = getFragmentManager();
+FragmentTransaction fragmentTransaction = fragmentManager
+	.beginTransaction();
+fragmentTransaction.replace(R.id.fraPlace, fragment);
+fragmentTransaction.commit();
+\end{lstlisting} 
+Dieses Bundle wird an ein Fragment angehängt bevor es durch eine FragmentTransaction angezeigt wird.
+
+\ \\
+\textbf{Zugriff auf die Daten}
+\begin{lstlisting}
+Bundle bundleFromBefore = this.getArguments();
+Boolean ergBool = bundleFromBefore.getBoolean("bundleBoolean");
+String ergString = getArguments().getString("bundleString");
+\end{lstlisting}
+Die Methode getArguments() ermöglicht einen Zugriff auf ein zuvor übergebenes Bundle.
+Für jede put-Methode eines Bundles, existiert auch eine get-Methode, die die Daten des jeweiligen Datentyps zurückliefert.
+
+\newpage
+\subsubsection{Datenübertragung zwischen Activities}
+Für die Datenübertragung zwischen Activities gibt es drei mögliche Vorgehensweisen.
+
+\ \\
+\textbf{Bundle des Intents}
+\begin{lstlisting}
+Intent intent = new Intent(this,MainActivity.class);
+Bundle intentBundle = intent.getExtras();
+intentBundle.putString("bundleString", "Hallo Welt!");
+\end{lstlisting} 
+Das Bundle des Intents wird durch put-Methoden erweitert.
+
+\ \\
+\textbf{Neues Bundle}
+\begin{lstlisting}
+Intent intent = new Intent(this,MainActivity.class);
+Bundle newBundle = new Bundle();
+newBundle.putString("bundleString", "Hallo Welt!");
+intent.putExtras(newBundle);
+\end{lstlisting} 
+Es wird ein neues Bundle erstellt und dem Intent mithilfe der putExtras()-Methode hinzugefügt.
+
+\ \\
+\textbf{Abkürzung durch putExtra()}
+\begin{lstlisting}
+Intent intent = new Intent(this,MainActivity.class);
+intent.putExtra("bundleString", "Hallo Welt!");
+\end{lstlisting} 
+Alternativ kann bei Intents auch die putExtra()-Methode verwendet werden. Diese ist für alle Datentypen, die auch ein Bundle unterstützt, verfügbar.
+
+\ \\
+\textbf{Zugriff auf die Daten}
+\begin{lstlisting}
+Bundle bundleFromBefore = this.getIntent().getExtras();
+bundleFromBefore.getBoolean("bundleBoolean");
+getIntent().getExtras().getString("bundleString");
+\end{lstlisting}
+Die Methode getIntent().getExtras() ermöglicht einen Zugriff auf ein, durch einen Intent übergebenes, Bundle.
+
+\ \\
+Alternativ können die Daten durch getExtra-Methoden abgefragt werden.
+\begin{lstlisting}
+getIntent().getBooleanExtra("bundleBoolean", true);
+getIntent().getStringExtra("bundleString");
+\end{lstlisting}
+Bei vielen dieser getExtra-Methoden wird als zweiter Parameter ein Standardwert verlangt.
+
 
 \end{document}

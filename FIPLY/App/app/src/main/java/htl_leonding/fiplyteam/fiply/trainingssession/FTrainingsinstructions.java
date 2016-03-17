@@ -219,7 +219,6 @@ public class FTrainingsinstructions extends Fragment {
     public void showFeedback(){
         FFeedback fFeedback = new FFeedback();
         fFeedback.setArguments(getArguments());
-        fFeedback.setArguments(getArguments());
         displayFragment.displayTSFeedback(fFeedback, getFragmentManager());
     }
 
