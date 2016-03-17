@@ -5,7 +5,7 @@
 
 \begin{document}
 \subsection{NavigationDrawer}
-Der NavigationDrawer ist ein Menü, das die wichtigsten Navigationsoptionen am linken Bildschirmrand darstellt.
+Der NavigationDrawer ist ein Menü, das die wichtigsten Navigationsoptionen am linken Bildschirmrand abbildet.
 Diese Leiste ist meistens versteckt und wird angezeigt sobald der Benutzer mit dem Finger vom linken Rand des Bildschirms in Richtung Bildschirmmitte streicht oder auf das NavigationDrawerIcon klickt.
 Erneutes Klicken auf dieses Icon oder Streichen nach links versteckt den NavigationDrawer. \newline
 [\citeauthor{bNavDrawer} \cite{bNavDrawer}, \citeauthor{bNavDrawerRT} \cite{bNavDrawerRT}, Android Developers \cite{adNavDrawer}]
@@ -48,10 +48,10 @@ Erneutes Klicken auf dieses Icon oder Streichen nach links versteckt den Navigat
 </android.support.v4.widget.DrawerLayout>
 \end{lstlisting}
 \ \\
-Um einen NavigationDrawer zu einer App hinzuzufügen wird ein DrawerLayout als Root-View in dem layout XML file einer Activity deklariert. 
-Eine Root-View beinhaltet alle anderen Views der App. 
+Um einen NavigationDrawer zu einer App hinzuzufügen, wird ein DrawerLayout als Root-View in dem Layout XML File einer Activity deklariert. 
+Eine Root-View beinhaltet alle anderen Ansichten der App. 
 In diesem DrawerLayout wird anschließend eine View angelegt, die dazu verwendet wird den Hauptinhalt der App darzustellen.
-Dabei ist zu Beachten, dass das die View die alle Elemente in sich trägt als erstes Kind des DrawerLayouts deklariert wird.
+Dabei ist zu beachten, dass die View, die alle Elemente in sich trägt, als erstes Kind des DrawerLayouts deklariert wird.
 Da diese View den ganzen Bildschirm befüllen soll müssen die Höhe und die Breite auf ''match\_parent'' gestellt werden.
 \ \\
 Zusätzlich wird eine weitere View hinzugefügt, die die Elemente des NavigationDrawers in sich trägt. 
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 \end{lstlisting}
 \ \\
 Das ist der minimale Code, um einen funktionierenden NavigationDrawer zu erstellen.
-Will man das Design und Verhalten des Icons, zum Öffnen des NavigationDrawers, ändern, ist noch etwas Code nötig.
+Will man das Design und Verhalten des Icons, zum Öffnen des NavigationDrawers, ändern, ist mehr Code nötig.
 Dieser Code wird ebenfalls im onCreate der Activity, die einen NavigationDrawer erhalten soll, ausgeführt.
 \ \\
 \begin{lstlisting}

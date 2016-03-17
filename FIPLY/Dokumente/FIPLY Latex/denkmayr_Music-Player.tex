@@ -75,8 +75,8 @@ while(cur.moveToNext())
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.15]{img/musicSongView1}
 	\end{subfigure}
-	\caption{Bei Klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2). 
-	Mittels der Checkboxenty werden jene Songs markiert, die sich in der ausgewählten Playlist befinden.}
+	\caption{Beim Klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2). 
+	Mittels der Checkboxen werden jene Songs markiert, die sich in der ausgewählten Playlist befinden.}
 \end{figure}
 
 \ \\
@@ -92,7 +92,7 @@ Der Back Button führt zurück zur Playlistauswahl und verwirft alle nicht gespe
 \ \\
 Wird der Save-Button gedrückt wird für alle Positionen abgespeichert ob das Element an der jeweiligen Position markiert ist. Dies erfolgt über ein SparseBooleanArray. 
 Anschließend wird eine Liste erstellt, in der nur die angekreuzten Elemente enthalten sind. Diese Liste wird als eine neue Playlist in die PlaylistSongs-Tabelle gespeichert. 
-Dabei wird als Playlistname der in das EditText eingetragene Titel unter der ListView übernommen.
+Dabei wird als Playlistname, der in das EditText eingetragene Titel unter der ListView übernommen.
 
 \begin{lstlisting}
 SparseBooleanArray checked = lvSongs.getCheckedItemPositions();
@@ -138,7 +138,7 @@ private void updateProgressBar() {
 }
 \end{lstlisting}
 Der mUpdateDurTask aktualisiert die Fortschrittsanzeigen 10 mal pro Sekunde.
-Da mp.getDuration Millisekunden zurückliefert, konvertiert die \newline millisecondsToHMS-Methode die Songdauer in einen String im hh:mm:ss Format (ISO 8601).
+Da mp.getDuration Millisekunden zurückgibt, konvertiert die \newline millisecondsToHMS-Methode die Songdauer in einen String im hh:mm:ss Format (ISO 8601).
 
 \begin{lstlisting}
 private Runnable mUpdateDurTask = new Runnable() {
@@ -161,13 +161,13 @@ private Runnable mUpdateDurTask = new Runnable() {
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.17]{img/musicListenView2}
 	\end{subfigure}
-	\caption{In einem Spinner kann eine Playlist ausgewählt werden. Bei Klick auf einen Song wird dieser abgespielt.}
+	\caption{In einem Spinner kann eine Playlist ausgewählt werden. Beim Klick auf einen Song wird dieser abgespielt.}
 \end{figure}
 
 \ \\
 Während der Benutzer sich in einer Traingssession befindet kann jederzeit die Musikwiedergabe gestartet werden.
 Bei Klick auf den Play-Button wird die ''All''-Playlist in alphabetisch aufsteigender Reihenfolge abgespielt. \newline
-Die Playlist beziehungsweise der aktuell abgespielte Song kann geändert werden, indem man durch Klick auf den Musikmodus Button in den Musikmodus gewechselt wird. \newline
+Die Playlist, beziehungsweise der aktuell abgespielte Song, kann geändert werden, indem man durch Klick auf den Musikmodus Button in den Musikmodus gewechselt wird. \newline
 In diesem Modus wird über den Spinner die Playlist gewechselt. \newline
 In der aktuell ausgewählten Playlist kann man direkt zu einem bestimmten Song wechseln, indem man auf den Songtitel klickt. 
 Dieser wird abgespielt und nach Ende des Songs wird sofort der nächste Playlisteintrag gestartet.
@@ -187,18 +187,18 @@ Dieser wird abgespielt und nach Ende des Songs wird sofort der nächste Playlist
 \end{figure}
 
 \begin{itemize}
-\item Durch den Zurück und durch den Weiter Button kann auf den vorherigen beziehungsweise auf den nächsten Song gewechselt werden. 
+\item Durch den Zurück und den Weiter Button kann auf den vorherigen beziehungsweise auf den nächsten Song gewechselt werden. 
 \item Der Play Button dient dem Starten der Musikwiedergabe. \newline
-Während der Musikwiedergabe erscheint an dieser Stelle der Pause Button mit dem man die Musik pausieren kann. 
+Während der Musikwiedergabe erscheint an dieser Stelle der Pause Button, mit dem man die Musik pausieren kann. 
 \item Der Stop Button beendet die aktuelle Wiedergabe und setzt den Wiedergabefortschritt auf den Beginn des Songs. 
 \item Der Musikmodus Button befindet sich in der Ecke unten rechts. \newline
 Dieser stellt den aktuellen Modus durch seine Einfärbung dar und ermöglicht einen Wechsel zwischen dem Übungsmodus und dem Musikmodus.
-Im Übungsmodus wird die aktuelle Übung und die Anweisungen zum Trainieren angezeigt. \newline
-Der Musikmodus hingegen ermöglicht ein Wechseln der Playlist und den manuellen Wechsel auf einen bestimmten Song. 
-\item Links von der Fortschrittsleiste wird der Fortschritt des aktuellen Songs im hh:mm:ss Format (ISO 8601) angezeigt. 
-\item Die Fortschrittsleiste wird durch eine SeekBar über diesen Buttons implementiert. Diese SeekBar stellt den aktuellen Fortschritt des aktuellen Songs dar. 
-Bei Klicken auf oder Ziehen an der Fortschrittsleiste kann man den Fortschritt der Wiedergabe manipulieren. 
-\item Rechts von der Fortschrittsleiste wird die Gesamtdauer des Songs im hh:mm:ss Format (ISO 8601) angezeigt.
+Im Übungsmodus werden die aktuelle Übung und die Anweisungen zum Trainieren angezeigt. \newline
+Der Musikmodus hingegen, ermöglicht ein Wechseln der Playlist und den manuellen Wechsel auf einen bestimmten Song. 
+\item Die Fortschrittsleiste wird durch eine SeekBar über diesen Buttons implementiert. Diese SeekBar stellt den Fortschritt des aktuellen Songs dar. 
+Bei Klicken auf, oder Ziehen an der Fortschrittsleiste, kann man den Fortschritt der Wiedergabe manipulieren. 
+\item Am linken Ende der Fortschrittsleiste wird der Fortschritt des aktuellen Songs im hh:mm:ss Format (ISO 8601) angezeigt. 
+\item Am rechten Ende der Fortschrittsleiste wird die Gesamtdauer des Songs im hh:mm:ss Format (ISO 8601) angezeigt.
 \item Der Name des aktuellen Songs wird in einer TextView über den Fortschrittsanzeigen dargestellt.
 \end{itemize}
 

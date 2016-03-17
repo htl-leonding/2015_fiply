@@ -6,14 +6,14 @@
 \begin{document}
 \subsection{Fragments}
 \subsubsection{Was sind Fragments?}
-Ein Fragment stellt einen Teil der Benutzeroberfläche einer Activity zur Verfügung, dabei kann man mehrere Fragments in einer Activity verwenden und diese zur Laufzeit auswechseln.
+Ein Fragment stellt einen Teil der Benutzeroberfläche einer Activity zur Verfügung. Dabei kann man mehrere Fragments in einer Activity verwenden und diese zur Laufzeit auswechseln.
 Da Fragments in mehreren Activities wiederverwendet werden können, müssen Ansichten wie Detailviews oder Listen nur einmal programmiert werden und können überall eingesetzt werden.
 Fragments werden ab Android 3.0 (API level 11) zur Verfügung gestellt. \newline
 [Android Developers \cite{adFragments}\cite{adFragmentsGuide}]
 
 \begin{figure}[H]
 \includegraphics[scale=0.60]{img/fragments_modules}
-\caption{Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet als auch auf einem Handy ein optimales Benutzerinterface anbieten. 
+\caption{Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet, als auch auf einem Handy ein optimales Benutzerinterface anbieten. 
 [Android Developers \cite{adFragmentsGuide}]}
 \end{figure}
 
@@ -29,7 +29,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
         return inflater.inflate(R.layout.exampleFragment, container, false);
     }
 \end{lstlisting}
-Das Aufbauen der Benutzeransicht erfolgt in der onCreateView() Methode eines Fragments. In diesem Fall wird das layout XML file exampleFragment angezeigt.
+Das Aufbauen der Benutzeransicht erfolgt in der onCreateView() Methode eines Fragments. In diesem Fall wird das Layout XML File exampleFragment angezeigt.
 \subsubsection{Fragment Transactions}
 Mittels Transaktionen lassen sich Fragments hinzufügen, entfernen oder ersetzen.
 Es werden mehrere dieser Aktionen hintereinander abgesetzt und zusammen nach einem commit() ausgeführt.
@@ -46,15 +46,15 @@ fragmentTransaction.addToBackStack(null);
 fragmentTransaction.replace(R.id.fraPlace, exampleFragment);
 fragmentTransaction.commit();
 \end{lstlisting}
-Hier wird ein ExampleFragment erstellt, man ersetzt das Fragment das sich aktuell im FrameLayout R.id.fraPlace befindet mit dem erstellten exampleFragment und fügt es zum Backstack hinzu.
+Hier wird ein ExampleFragment erstellt. Man ersetzt das Fragment, das sich aktuell im FrameLayout R.id.fraPlace befindet, mit dem erstellten \newline ExampleFragment und fügt es zum Backstack hinzu.
 
 
 \newpage
 \subsubsection{Verwendung von Fragments}
 In dieser Arbeit werden Fragments verwendet, um die Benutzeransichten, ausgenommen des NavigationDrawers, anzuzeigen.
-Dabei wird ein FrameLayout im Layoutfile der MainActivity durch ein Fragment mittels der displayView() Methode ersetzt.
-Navigation durch diese Fragments wird mittels den Buttons im FMain oder dem NavigationDrawer ermöglicht.
-Zusätzlich werden verschachtelte Fragments verwendet um komplexere Ansichten darzustellen. In diesem Fall werden in den layout XML files der Fragments ein oder mehrere FrameLayouts erstellt und die verschachtelten Fragments werden dann in diesen neuen FrameLayouts angezeigt.
+Dabei wird ein FrameLayout im Layoutfile der MainActivity durch ein Fragment, mittels der displayView() Methode, ersetzt.
+Navigation durch diese Fragments, wird mittels den Buttons im FMain oder dem NavigationDrawer ermöglicht.
+Zusätzlich werden verschachtelte Fragments verwendet, um komplexere Ansichten darzustellen. In diesem Fall, werden in den Layout XML Files der Fragments ein oder mehrere FrameLayouts erstellt und die verschachtelten Fragments werden dann in diesen neuen FrameLayouts angezeigt.
 \ \\
 \begin{lstlisting}
 private void displayView(Fragment fragment) {
@@ -66,7 +66,7 @@ private void displayView(Fragment fragment) {
         fragmentTransaction.commit();
     }
 \end{lstlisting}
-Methoden wie diese werden immer wieder verwendet um die Fragment Transactions an einem Ort zusammenzufassen und den Code so lesbarer zu machen.
+Methoden wie diese werden immer wieder verwendet, um die Fragment Transactions an einem Ort zusammenzufassen und den Code so lesbarer zu machen.
 
 \ \\
 \begin{lstlisting}
