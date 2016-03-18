@@ -2,100 +2,72 @@
 \defcounter {refsection}{0}\relax 
 \select@language {ngerman}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6}{\ignorespaces Das Use-Case Diagramm zu der Applikation\relax }}{12}
+\contentsline {figure}{\numberline {6}{\ignorespaces Die Systemarchitektur zu der Applikation\relax }}{13}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 1. Use Cases:\relax }}{13}
+\contentsline {figure}{\numberline {7}{\ignorespaces Das Use-Case Diagramm zu der Applikation\relax }}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8}{\ignorespaces Prozesskette des 1. Use Cases:\relax }}{14}
+\contentsline {figure}{\numberline {8}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 1. Use Cases:\relax }}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {9}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 2. Use Cases:\relax }}{15}
+\contentsline {figure}{\numberline {9}{\ignorespaces Prozesskette des 1. Use Cases:\relax }}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {10}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 3. Use Cases:\relax }}{17}
+\contentsline {figure}{\numberline {10}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 2. Use Cases:\relax }}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {11}{\ignorespaces GUIs f\IeC {\"u}r den alternative Abl\IeC {\"a}ufe des Use Cases:\relax }}{18}
+\contentsline {figure}{\numberline {11}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 3. Use Cases:\relax }}{19}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {12}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 4. Use Cases:\relax }}{20}
+\contentsline {figure}{\numberline {12}{\ignorespaces GUIs f\IeC {\"u}r den alternative Abl\IeC {\"a}ufe des Use Cases:\relax }}{20}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {13}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 4. Use Cases:\relax }}{20}
+\contentsline {figure}{\numberline {13}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 4. Use Cases:\relax }}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {14}{\ignorespaces GUI f\IeC {\"u}r den alternativen Aufruf/Ablauf des 4. Use Cases:\relax }}{22}
+\contentsline {figure}{\numberline {14}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 4. Use Cases:\relax }}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {15}{\ignorespaces GUI f\IeC {\"u}r den alternativen Aufruf/Ablauf des 5. Use Cases:\relax }}{23}
+\contentsline {figure}{\numberline {15}{\ignorespaces GUI f\IeC {\"u}r den alternativen Aufruf/Ablauf des 4. Use Cases:\relax }}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {16}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 6. Use Cases:\relax }}{24}
+\contentsline {figure}{\numberline {16}{\ignorespaces GUI f\IeC {\"u}r den alternativen Aufruf/Ablauf des 5. Use Cases:\relax }}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {17}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 6. Use Cases:\relax }}{25}
+\contentsline {figure}{\numberline {17}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 6. Use Cases:\relax }}{26}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {18}{\ignorespaces Vorgangsvisualisierung der Trainingsplanphasen\relax }}{29}
+\contentsline {figure}{\numberline {18}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 6. Use Cases:\relax }}{27}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {19}{\ignorespaces Der Ablauf einer \IeC {\"A}nderung am Code.\relax }}{36}
+\contentsline {figure}{\numberline {19}{\ignorespaces Vorgangsvisualisierung der Trainingsplanphasen\relax }}{43}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {20}{\ignorespaces Aussehen der Zitate im PDF\relax }}{43}
+\contentsline {figure}{\numberline {20}{\ignorespaces Der Ablauf einer \IeC {\"A}nderung am Code.\relax }}{50}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {21}{\ignorespaces Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet, als auch auf einem Handy ein optimales Benutzerinterface anbieten. [Android Developers \cite {adFragmentsGuide}]\relax }}{60}
+\contentsline {figure}{\numberline {21}{\ignorespaces Aussehen der Zitate im PDF\relax }}{57}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {22}{\ignorespaces Links wird der NavigationDrawer versteckt. Rechts ist der NavigationDrawer ge\IeC {\"o}ffnet.\relax }}{66}
+\contentsline {figure}{\numberline {22}{\ignorespaces Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet, als auch auf einem Handy ein optimales Benutzerinterface anbieten. [Android Developers \cite {adFragmentsGuide}]\relax }}{74}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {23}{\ignorespaces Der erste Schritt der Usererstellung.\relax }}{70}
+\contentsline {figure}{\numberline {23}{\ignorespaces Links wird der NavigationDrawer versteckt. Rechts ist der NavigationDrawer ge\IeC {\"o}ffnet.\relax }}{80}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {24}{\ignorespaces Der Loginscreen von Facebook.\relax }}{70}
+\contentsline {figure}{\numberline {24}{\ignorespaces Der erste Schritt der Usererstellung.\relax }}{84}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {25}{\ignorespaces Der zweite Schritt der Usererstellung.\relax }}{71}
+\contentsline {figure}{\numberline {25}{\ignorespaces Der Loginscreen von Facebook.\relax }}{84}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {26}{\ignorespaces Der dritte Schritt der Usererstellung.\relax }}{72}
+\contentsline {figure}{\numberline {26}{\ignorespaces Der zweite Schritt der Usererstellung.\relax }}{85}
 \defcounter {refsection}{0}\relax 
-<<<<<<< Updated upstream
-\contentsline {figure}{\numberline {27}{\ignorespaces Ansicht des Trainingspl\IeC {\"a}ne\relax }}{77}
+\contentsline {figure}{\numberline {27}{\ignorespaces Der dritte Schritt der Usererstellung.\relax }}{86}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {28}{\ignorespaces Der \IeC {\"U}bungskatalog.\relax }}{78}
+\contentsline {figure}{\numberline {31}{\ignorespaces Der \IeC {\"U}bungskatalog.\relax }}{94}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {29}{\ignorespaces Die DetailView der \IeC {\"U}bung "Bizepscurl".\relax }}{81}
+\contentsline {figure}{\numberline {32}{\ignorespaces Die DetailView der \IeC {\"U}bung "Bizepscurl".\relax }}{97}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {30}{\ignorespaces Die Filter View.\relax }}{82}
+\contentsline {figure}{\numberline {33}{\ignorespaces Die Filter View.\relax }}{98}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {31}{\ignorespaces Das sichtbare Overlay des Filters.\relax }}{83}
+\contentsline {figure}{\numberline {34}{\ignorespaces Das sichtbare Overlay des Filters.\relax }}{99}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {32}{\ignorespaces Die nicht sichtbare Maske.\relax }}{83}
+\contentsline {figure}{\numberline {35}{\ignorespaces Die nicht sichtbare Maske.\relax }}{99}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {33}{\ignorespaces Beim Klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2). Mittels der Checkboxen werden jene Songs markiert, die sich in der ausgew\IeC {\"a}hlten Playlist befinden.\relax }}{90}
+\contentsline {figure}{\numberline {36}{\ignorespaces Beim Klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2). Mittels der Checkboxen werden jene Songs markiert, die sich in der ausgew\IeC {\"a}hlten Playlist befinden.\relax }}{106}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {34}{\ignorespaces In einem Spinner kann eine Playlist ausgew\IeC {\"a}hlt werden. Beim Klick auf einen Song wird dieser abgespielt.\relax }}{93}
+\contentsline {figure}{\numberline {37}{\ignorespaces In einem Spinner kann eine Playlist ausgew\IeC {\"a}hlt werden. Beim Klick auf einen Song wird dieser abgespielt.\relax }}{109}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {35}{\ignorespaces Die MusicControls in Ruhe und w\IeC {\"a}hrend einer Wiedergabe.\relax }}{94}
+\contentsline {figure}{\numberline {38}{\ignorespaces Die MusicControls in Ruhe und w\IeC {\"a}hrend einer Wiedergabe.\relax }}{110}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {36}{\ignorespaces Die Statistik.\relax }}{95}
+\contentsline {figure}{\numberline {39}{\ignorespaces Die Statistik.\relax }}{111}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {37}{\ignorespaces Die Datenbank-Architektur.\relax }}{98}
+\contentsline {figure}{\numberline {40}{\ignorespaces Die Datenbank-Architektur.\relax }}{114}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {41}{\ignorespaces Links ist ein Beispiel f\IeC {\"u}r eine Banner Ad zu sehen. \newline Rechts sieht man ein Beispiel f\IeC {\"u}r eine Interstitial Ad.\relax }}{109}
+\contentsline {figure}{\numberline {44}{\ignorespaces Links ist ein Beispiel f\IeC {\"u}r eine Banner Ad zu sehen. \newline Rechts sieht man ein Beispiel f\IeC {\"u}r eine Interstitial Ad.\relax }}{125}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {42}{\ignorespaces Screenshot von http://instagram.com:\relax }}{118}
+\contentsline {figure}{\numberline {45}{\ignorespaces Screenshot von http://instagram.com:\relax }}{134}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {43}{\ignorespaces Screenshot von http://reddit.com/r/fiply\relax }}{119}
-=======
-\contentsline {figure}{\numberline {30}{\ignorespaces Der \IeC {\"U}bungskatalog.\relax }}{80}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {31}{\ignorespaces Die DetailView der \IeC {\"U}bung "Bizepscurl".\relax }}{83}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {32}{\ignorespaces Die Filter View.\relax }}{84}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {33}{\ignorespaces Das sichtbare Overlay des Filters.\relax }}{85}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {34}{\ignorespaces Die nicht sichtbare Maske.\relax }}{85}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {35}{\ignorespaces Beim Klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2). Mittels der Checkboxen werden jene Songs markiert, die sich in der ausgew\IeC {\"a}hlten Playlist befinden.\relax }}{92}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {36}{\ignorespaces In einem Spinner kann eine Playlist ausgew\IeC {\"a}hlt werden. Beim Klick auf einen Song wird dieser abgespielt.\relax }}{95}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {37}{\ignorespaces Die MusicControls in Ruhe und w\IeC {\"a}hrend einer Wiedergabe.\relax }}{96}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {38}{\ignorespaces Die Statistik.\relax }}{97}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {39}{\ignorespaces Die Datenbank-Architektur.\relax }}{100}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {43}{\ignorespaces Links ist ein Beispiel f\IeC {\"u}r eine Banner Ad zu sehen. \newline Rechts sieht man ein Beispiel f\IeC {\"u}r eine Interstitial Ad.\relax }}{111}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {44}{\ignorespaces Screenshot von http://instagram.com:\relax }}{120}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {45}{\ignorespaces Screenshot von http://reddit.com/r/fiply\relax }}{121}
->>>>>>> Stashed changes
+\contentsline {figure}{\numberline {46}{\ignorespaces Screenshot von http://reddit.com/r/fiply\relax }}{135}
