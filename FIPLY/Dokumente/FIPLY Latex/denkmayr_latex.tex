@@ -5,7 +5,66 @@
 
 \begin{document}
 \subsubsection{Subfiles}
-TODO
-\subsubsection{Quellenangaben}
-TODO
+Um gleichzeitiges Arbeiten zu erleichtern, werden Subfiles verwendet.
+Zusätzlich wird das Arbeiten übersichtlicher, da man sich nicht um ein langes Dokument kümmern muss, sondern Kapitel für Kapitel schreiben und kontrollieren kann.
+Der schriftliche Teil der Diplomarbeit wird in das Basisdokument FIPLY\_base.tex und in eine Vielzahl von Subfiles unterteilt.
+
+\ \\
+Dazu wird das Subfiles Package in das Basisdokument eingebunden.
+Dies erfolgt durch den \verb!\usepackage{subfiles}! Befehl.
+Das Basisdokument enthält die Kapitelüberschriften und bindet die einzelnen Subfiles, mit einem Befehl wie \verb!\subfile{denkmayr_GitHub}!, ein.
+Dieser Befehl verlinkt auf die \verb!denkmayr_GitHub.tex! Datei, die sich im selben Ordner wie das Basisdokument befindet.
+Die Subfiles müssen \verb!\documentclass[FIPLY_base.tex]{subfiles}! in ihrem Header definieren.
+Wird eine PDF aus dem FIPLY\_base.tex Dokument generiert, wird der Inhalt aller angeführten Subfiles in das Basisdokument eingefügt.
+
+\newpage
+\subsubsection{Quellen und Zitate}
+Quellen und Zitierungen werden mithilfe des Biblatex Packages durchgeführt.
+Für die verschiedenen Quellen werden Einträge in der literatur.bib Datei erstellt.
+
+\begin{lstlisting}[language=Python,frame=none]
+@Misc{bNavDrawer,
+	author = {Ben Jakuben},
+	title =  {How to Add a Navigation Drawer in Android},
+	month =  feb,
+	year =   {2016},
+	url =    {http://blog.teamtreehouse.com/add-navigation-drawer-android}
+}
+\end{lstlisting}
+Diese Einträge werden mit dem Programm JabRef verwaltet.
+
+\ \\
+\textbf{Wie wird zitiert?} \newline
+Sind die jeweiligen Zitierungen vorhanden, kann im Text mit Befehlen wie 
+\verb!\cite{bNavDrawer},! \newline 
+\verb!\citeauthor{bNavDrawer},! \newline 
+\verb!\citetitle{bNavDrawer},! \newline
+\verb!\fullcite{bNavDrawer}! \newline
+eine Zitierung eingefügt werden. 
+
+\ \\
+
+\ \\
+So sehen diese Zitierungen in einem generierten PDF aus:
+\begin{figure}[H]
+	\includegraphics[scale=0.5]{img/Citations}
+	\caption{Aussehen der Zitate im PDF}
+\end{figure}
+\ \\
+Um dieses Ergebnis zu erreichen ist es notwendig das Programm biber.exe zu starten bevor eine PDF generiert wird.
+Dieses Programm sucht und ordnet alle angeforderten Zitierungen und fügt diese in den Text ein.
+
+
+%\ \\
+%\cite{bNavDrawer},  
+%
+%\ \\
+%\citeauthor{bNavDrawer},
+%
+%\ \\
+%\citetitle{bNavDrawer}, 
+%
+%\ \\
+%\fullcite{bNavDrawer}
+
 \end{document}

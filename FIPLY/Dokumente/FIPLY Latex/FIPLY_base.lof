@@ -26,32 +26,34 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {17}{\ignorespaces GUI f\IeC {\"u}r den Aufruf/Ablauf des 6. Use Cases:\relax }}{26}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {18}{\ignorespaces Der Ablauf einer \IeC {\"A}nderung am Code.\relax }}{39}
+\contentsline {figure}{\numberline {18}{\ignorespaces Der Ablauf einer \IeC {\"A}nderung am Code.\relax }}{38}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {19}{\ignorespaces Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet, als auch auf einem Handy ein optimales Benutzerinterface anbieten. [Android Developers \cite {adFragmentsGuide}]\relax }}{59}
+\contentsline {figure}{\numberline {19}{\ignorespaces Aussehen der Zitate im PDF\relax }}{44}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {20}{\ignorespaces Bild des NavigationDrawers und des FMains\relax }}{62}
+\contentsline {figure}{\numberline {20}{\ignorespaces Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet, als auch auf einem Handy ein optimales Benutzerinterface anbieten. [Android Developers \cite {adFragmentsGuide}]\relax }}{61}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {21}{\ignorespaces Bei Klicken eines Elements in der ListView wird die zugeh\IeC {\"o}rige DetailView aufgerufen\relax }}{62}
+\contentsline {figure}{\numberline {21}{\ignorespaces Bild des NavigationDrawers und des FMains\relax }}{64}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {22}{\ignorespaces Links wird der NavigationDrawer versteckt. Rechts ist der NavigationDrawer ge\IeC {\"o}ffnet.\relax }}{65}
+\contentsline {figure}{\numberline {22}{\ignorespaces Bei Klicken eines Elements in der ListView wird die zugeh\IeC {\"o}rige DetailView aufgerufen\relax }}{64}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {23}{\ignorespaces Der erste Schritt der Usererstellung.\relax }}{69}
+\contentsline {figure}{\numberline {23}{\ignorespaces Links wird der NavigationDrawer versteckt. Rechts ist der NavigationDrawer ge\IeC {\"o}ffnet.\relax }}{67}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {24}{\ignorespaces Der zweite Schritt der Usererstellung.\relax }}{70}
+\contentsline {figure}{\numberline {24}{\ignorespaces Der erste Schritt der Usererstellung.\relax }}{71}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {25}{\ignorespaces Der dritte Schritt der Usererstellung.\relax }}{71}
+\contentsline {figure}{\numberline {25}{\ignorespaces Der zweite Schritt der Usererstellung.\relax }}{72}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {26}{\ignorespaces Beim Klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2). Mittels der Checkboxen werden jene Songs markiert, die sich in der ausgew\IeC {\"a}hlten Playlist befinden.\relax }}{81}
+\contentsline {figure}{\numberline {26}{\ignorespaces Der dritte Schritt der Usererstellung.\relax }}{73}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {27}{\ignorespaces In einem Spinner kann eine Playlist ausgew\IeC {\"a}hlt werden. Beim Klick auf einen Song wird dieser abgespielt.\relax }}{84}
+\contentsline {figure}{\numberline {27}{\ignorespaces Beim Klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2). Mittels der Checkboxen werden jene Songs markiert, die sich in der ausgew\IeC {\"a}hlten Playlist befinden.\relax }}{83}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {28}{\ignorespaces Die MusicControls in Ruhe und w\IeC {\"a}hrend einer Wiedergabe.\relax }}{85}
+\contentsline {figure}{\numberline {28}{\ignorespaces In einem Spinner kann eine Playlist ausgew\IeC {\"a}hlt werden. Beim Klick auf einen Song wird dieser abgespielt.\relax }}{86}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {29}{\ignorespaces Die Statistik.\relax }}{86}
+\contentsline {figure}{\numberline {29}{\ignorespaces Die MusicControls in Ruhe und w\IeC {\"a}hrend einer Wiedergabe.\relax }}{87}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {33}{\ignorespaces Links ist ein Beispiel f\IeC {\"u}r eine Banner Ad zu sehen. \newline Rechts sieht man ein Beispiel f\IeC {\"u}r eine Interstitial Ad.\relax }}{100}
+\contentsline {figure}{\numberline {30}{\ignorespaces Die Statistik.\relax }}{88}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {34}{\ignorespaces Screenshot von http://instagram.com:\relax }}{109}
+\contentsline {figure}{\numberline {34}{\ignorespaces Links ist ein Beispiel f\IeC {\"u}r eine Banner Ad zu sehen. \newline Rechts sieht man ein Beispiel f\IeC {\"u}r eine Interstitial Ad.\relax }}{100}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {35}{\ignorespaces Screenshot von http://reddit.com/r/fiply\relax }}{110}
+\contentsline {figure}{\numberline {35}{\ignorespaces Screenshot von http://instagram.com:\relax }}{109}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {36}{\ignorespaces Screenshot von http://reddit.com/r/fiply\relax }}{110}
