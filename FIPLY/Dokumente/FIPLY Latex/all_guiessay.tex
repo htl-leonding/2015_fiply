@@ -4,10 +4,10 @@
 	
 \begin{document}
 	
-\section{Designrichtlinien}
+\subsection{Designrichtlinien}
 Designrichtlinien sind ein wichtiges Element aller Applikationen, bei denen der kommerzielle Erfolg stark vom Userinterface und dem visuellen Auftritt abhängt. Es werden dabei Tipps und Designinstruktionen von Google angewendet, welche auf der Internetseite https://www.google.com/design/spec/material-design/introduction.html nachzulesen sind. 
 
-\subsection{Der Splashscreen}
+\subsubsection{Der Splashscreen}
 Der Splashscreen ist der erste Screen den der User sieht. Hier wird meist das Logo dargestellt, während im Hintergrund die Daten geladen werden.
 Der Splashscreen sollte nicht zu lange sichtbar oder zu langweilig sein. Der Splashscreen kann folgendermaßen umgesetzt werden:
 \begin{itemize}
@@ -17,7 +17,7 @@ Der Splashscreen sollte nicht zu lange sichtbar oder zu langweilig sein. Der Spl
 \end{itemize}
 Der Splashscreen beinhaltet eine zentrierte ImageView mit dem FIPLY-Logo als Bild. Diese wird für 3500ms andauert. Der Hintergrund des Splashscreens ist weiß. 
 
-\subsection{Animationen und Transactions}
+\subsubsection{Animationen und Transactions}
 Eine Transition ist der Übergange zwischen zwei Activities.
 Der Übergang muss flüssig verlaufen und darf die User Experience nicht unterbrechen. Dies wird durch persistierende Objekte und präzise Bewegungen in den Übergängen erzielt.
 Diese Möglichkeiten stehen zur Verfügung:
@@ -36,7 +36,7 @@ Beschreibung unserer Umsetzung:
 	\item Splashscreen Exit Transition: Der Splashscreen wird nach seiner Anzeigedauer durch einen transparenten Fade-Out Effekt verschwinden, sodass das Hauptmenü angezeigt wird.
 \end{itemize}
 
-\subsection{Navigation}
+\subsubsection{Navigation}
 Als Navigation wird das Wechseln von einer Funktion der App zur Nächsten bezeichnet. Dies wird meist durch Buttons erreicht und grafisch mit Transitions dargestellt.
 Die Buttons sollen auch ohne Text sprechend sein was sie bewirken bzw. wohin man mit ihnen navigiert. Dies kann durch bestimmte Zeichen auf den Buttons erreicht werden, z.B.: ein Zahnrad für die Einstellungen oder eine Lupe für eine Suchfunktion. Es sollen auch andere Methoden zur Navigation wie beispielsweise über den Bildschirm wischen verwendet werden.
 So lässt sich dies Umsetzen:
@@ -53,7 +53,7 @@ So lässt sich dies Umsetzen:
 \end{itemize}
 In der Applikation soll dies mittels der Technologie des OptionsMenu, der AppBar und den Buttons umgesetzt werden. Das Ergebnis ist eine intuitive Navigation innerhalb der Applikation.
 
-\subsection{Formulare}
+\subsubsection{Formulare}
 Mittels Formulare kann der Benutzer Daten in das System eingeben, wie beispielsweise bei dem Anlegen eines Userprofils. Formulare sollten so intuitiv wie möglich sein und so wenig wie möglich reine Texteingabe sein. Manchmal ist jedoch eine Texteingabe unumgänglich, wie beispielsweise für die Namenseingabe.
 Behandlung mit Android Studio: (Necessary Evil-Steuerelemente)
 
@@ -84,7 +84,7 @@ Behandlung mit Android Studio: (Necessary Evil-Steuerelemente)
 \end{itemize}
 Um den Benutzern eine komfortable Eingabe anzubieten, kommen überall dort intuitive Steuerelemente zum Einsatz, wo es möglich ist.
 
-\subsection{Datenausgabe}
+\subsubsection{Datenausgabe}
 Datenausgabe ist der Teil der App wo dem User Information ausgegeben wird, wie beispielsweise der Übungskatalog.
 Die Datenausgabe soll so effizient wie möglich erfolgen. Suchfunktionen bzw. Filter sollen bei jeder Datenausgabe vorhanden sein.
 Dises Optionen stehen uns zur Auswahl:
