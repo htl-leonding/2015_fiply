@@ -6,34 +6,34 @@
 
 \begin{document}
 
-\section{VideoView}
-\subsection{Beschreibung}
+\subsection{VideoView}
+\subsubsection{Beschreibung}
 VideoView ist die native Lösung von Android, Videos in einer App darzustellen. Sie können entweder direkt vom Speicher des Systems oder über einen RTSP-Key auch vom Internet  abgespielt werden.
-\subsection{Vorteile}
+\subssubsection{Vorteile}
 Die native Lösung von Android ist die performanteste aller unserer Optionen.
-\subsection{Probleme}
+\subsubsection{Probleme}
 Der RTSP-Key ist sehr umständlich abzurufen und die VideoView ist generell eine etwas ältere Lösung.
 
-\section{Youtube Android Player API}
-\subsection{Beschreibung}
+\subsection{Youtube Android Player API}
+\subsubsection{Beschreibung}
 Die Youtube Android Player API ist die von Google entwickelte Lösung ausschließlich Youtube-Videos in einer Android Umgebung abzuspielen.
-\subsection{Vorteile}
+\subsubsection{Vorteile}
 Da die Youtube Android Player API rein für das abspielen von Youtube Videos ist es die beste Lösung für unser Problem.
-\subsection{Probleme}
+\subsubsection{Probleme}
 Für diese Methode wird leider ein Google Developer Key, den wir derzeit nicht besitzen. benötigt. Weiters muss eine externe App installiert sein damit diese Methode funktioniert.
 \newpage
 
-\section{WebView}
-\subsection{Beschreibung}
+\subsection{WebView}
+\subsubsection{Beschreibung}
 Die WebView erlaubt es HTML-Code oder Websites direkt über deren URL in der App darzustellen.
-\subsection{Vorteile}
+\subsubsection{Vorteile}
 Die WebView ist leicht zu benützen und mit den embeded Links von Youtube können wir unsere Videos leicht einbinden. Weiters ist die WebView sehr flexibel da man auch reinen HTML Code darstellen kann.
-\subsection{Probleme}
+\subsubsection{Probleme}
 Da es kein direkter Video-Player ist muss der Youtube-Player in die WebView embeded werden, dadurch wird die Perfomance der App beeinträchtigt. Weiters muss die Vollbild Funktionalität selbst implementiert werden, da es noch keine vorgegebene Lösung gibt.
 
 
-\section{Nutzwertanalyse}
-\subsection{KO-Kriterien}
+\subsection{Nutzwertanalyse}
+\subsubsection{KO-Kriterien}
 \begin{itemize}
 \item Die Alternative muss kostenfrei sein.
 \item Die Alternative muss verwendbar sein.
