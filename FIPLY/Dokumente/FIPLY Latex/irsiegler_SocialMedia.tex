@@ -13,12 +13,12 @@ Die Verknüpfung der App mit Facebook erfolgt über die FacebookSDK und den Face
 Mithilfe dieser SDK kann man den Login verwalten und danach im Namen des Benutzers, mit der Einverständnis des Benutzers, posten.
 Um die Integrität des Logins und des Datenaustausches zu gewähren, hat jede Applikation welche die Facebook SDK implementiert ihre eigene Serien-Nummer.
 Diese wird in der strings.xml gespeichert.
-\begin{lstlisting}
+\begin{lstlisting}  [caption={Die Facebook App ID in der strings.xml.},label=DescriptiveLabel]
 <string name="facebook_app_id">1541961082763294</string>
 \end{lstlisting}
 \paragraph{Facebook Login Button}\ \\
 Der Facebook Login Button wird von der Facebook SDK zur Verfügung gestellt und kann ganz einfach in das Layout eingefügt werden.
-\begin{lstlisting}
+\begin{lstlisting}  [caption={Das xml-layout des FacebookLoginButtons.},label=DescriptiveLabel]
     <com.facebook.login.widget.LoginButton
         android:id="@+id/fbLoginButton"
         android:layout_width="wrap_content"
