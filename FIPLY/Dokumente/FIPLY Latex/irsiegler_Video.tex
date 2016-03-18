@@ -1,52 +1,52 @@
 \documentclass[FIPLY_base.tex]{subfiles}
 
-%\title{VideoView, WebView, Youtube Android Player API}
 %\author{Gerald Irsiegler}
 %\date{20. Dezember 2015}
 
 \begin{document}
-
-\subsection{VideoView}
-\subsubsection{Beschreibung}
-VideoView ist die native Lösung von Android, Videos in einer App darzustellen. Sie können entweder direkt vom Speicher des Systems oder über einen RTSP-Key auch vom Internet  abgespielt werden.
-\subssubsection{Vorteile}
+\subsection{Lösung für die Videodarstellung}
+\subsubsection{VideoView}
+\paragraph{Beschreibung}\ \\
+VideoView ist die native Lösung von Android, Videos in einer App darzustellen. Sie können entweder direkt vom Speicher des Systems oder über einen RTSP-Key (Real-Time Streaming Protocol) auch vom Internet  abgespielt werden.
+\paragraph{Vorteile}\ \\
 Die native Lösung von Android ist die performanteste aller unserer Optionen.
-\subsubsection{Probleme}
+\paragraph{Probleme}\ \\
 Der RTSP-Key ist sehr umständlich abzurufen und die VideoView ist generell eine etwas ältere Lösung.
 
-\subsection{Youtube Android Player API}
-\subsubsection{Beschreibung}
+\subsubsection{Youtube Android Player API}
+\paragraph{Beschreibung}\ \\
 Die Youtube Android Player API ist die von Google entwickelte Lösung ausschließlich Youtube-Videos in einer Android Umgebung abzuspielen.
-\subsubsection{Vorteile}
-Da die Youtube Android Player API rein für das abspielen von Youtube Videos ist es die beste Lösung für unser Problem.
-\subsubsection{Probleme}
-Für diese Methode wird leider ein Google Developer Key, den wir derzeit nicht besitzen. benötigt. Weiters muss eine externe App installiert sein damit diese Methode funktioniert.
+\paragraph{Vorteile}\ \\
+Da die Youtube Android Player API rein für das Abspielen von Youtube Videos konzipiert ist, ist es die beste Lösung für unser Problem.
+\paragraph{Probleme}\ \\
+Für diese Methode wird leider ein Google Developer Key, welcher derzeit nicht verfügbar ist benötigt.\ \\
+Weiters muss die YouTube-App auf dem Mobilgerätes des Benutzers installiert sein damit diese Methode funktioniert.
 \newpage
 
-\subsection{WebView}
-\subsubsection{Beschreibung}
+\subsubsection{WebView}
+\paragraph{Beschreibung}\ \\
 Die WebView erlaubt es HTML-Code oder Websites direkt über deren URL in der App darzustellen.
-\subsubsection{Vorteile}
+\paragraph{Vorteile}\ \\
 Die WebView ist leicht zu benützen und mit den embeded Links von Youtube können wir unsere Videos leicht einbinden. Weiters ist die WebView sehr flexibel da man auch reinen HTML Code darstellen kann.
-\subsubsection{Probleme}
+\paragraph{Probleme}\ \\
 Da es kein direkter Video-Player ist muss der Youtube-Player in die WebView embeded werden, dadurch wird die Perfomance der App beeinträchtigt. Weiters muss die Vollbild Funktionalität selbst implementiert werden, da es noch keine vorgegebene Lösung gibt.
 
 
-\subsection{Nutzwertanalyse}
-\subsubsection{KO-Kriterien}
+\subsubsection{Nutzwertanalyse}
+\paragraph{KO-Kriterien}\ \\
 \begin{itemize}
 \item Die Alternative muss kostenfrei sein.
 \item Die Alternative muss verwendbar sein.
 \end{itemize}
-\subsection{Erfüllung der KO-Kriterien}
-\subsubsection{VideoView}
-Die Video View ist kostenfrei, jedoch nicht verwendbar aufgrund der beschriebenen Probleme.
-\subsubsection{Youtube Android Player API}
-Die Youtube Android Player API ist kostenfrei, jedoch nicht verwendbar aufgrund der beschriebenen Probleme.
-\subsubsection{WebView}
-Die WebView ist sowohl verwendbar als auch kostenfrei.
-\subsection{Schlussfolgerung}
-Da zwei von drei Alternativen durch die KO-Kriterien ausgeschlossen werden können, bleibt nur die WebView über. Deswegen werden wir für unsere App die WebView verwenden und das Video mit dem embeded-Link von Youtube einbinden und anpassen.
+\subsubsection{Erfüllung der KO-Kriterien}
+\paragraph{VideoView}\ \\
+Die Video View ist kostenfrei und verwendbar.
+\paragraph{Youtube Android Player API}\ \\
+Die Youtube Android Player API ist kostenfrei, jedoch nicht verwendbar, da im Moment kein Google-Developer Account verfügbar ist.
+\paragraph{WebView}\ \\
+Die WebView ist kostenfrei und verwendbar.
+\subsubsection{Schlussfolgerung}
+Die WebView Lösung ist die beste Lösung, nicht nur für die Benutzer sondern auch für die Entwickler, daher wird diese in der Applikation benützt.
 
 
 
