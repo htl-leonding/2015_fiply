@@ -9,7 +9,7 @@ Ein Bundle ist ein Objekt, dass einer Vielzahl von Datentypen einen String zuord
 Die Übergabe des Bundles, und somit der Austausch der Daten, erfolgt über Intents oder Fragment Transactions.
 [\citeauthor{soBundles} \cite{soBundles}]
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Erstellen und Befüllen von Bundels},label=DescriptiveLabel]
 Bundle innerBundle = new Bundle();
 Bundle outerBundle = new Bundle();
 
@@ -29,7 +29,7 @@ Die zu übertragenden Daten werden als zweiter Parameter in eine put-Methode üb
 
 
 \subsubsection{Datenübertragung zwischen Fragments}
-\begin{lstlisting}
+\begin{lstlisting}[caption={Das Übergeben eines Bundles bei einer FragmentTransaction},label=DescriptiveLabel]
 Bundle args = new Bundle();
 Fragment fragment = new FTrainingssession();
 fragment.setArguments(args);
@@ -42,9 +42,10 @@ fragmentTransaction.commit();
 \end{lstlisting} 
 Dieses Bundle wird an ein Fragment angehängt bevor es durch eine FragmentTransaction angezeigt wird.
 
+\newpage
 \ \\
 \textbf{Zugriff auf die Daten}
-\begin{lstlisting}
+\begin{lstlisting}[caption={Der Zugriff auf ein Bundle im neuen Fragment},label=DescriptiveLabel]
 Bundle bundleFromBefore = this.getArguments();
 Boolean ergBool = bundleFromBefore.getBoolean("bundleBoolean");
 String ergString = getArguments().getString("bundleString");
@@ -52,13 +53,12 @@ String ergString = getArguments().getString("bundleString");
 Die Methode getArguments() ermöglicht einen Zugriff auf ein zuvor übergebenes Bundle.
 Für jede put-Methode eines Bundles, existiert auch eine get-Methode, die die Daten des jeweiligen Datentyps zurückliefert.
 
-\newpage
 \subsubsection{Datenübertragung zwischen Activities}
 Für die Datenübertragung zwischen Activities gibt es drei mögliche Vorgehensweisen.
 
 \ \\
 \textbf{Bundle des Intents}
-\begin{lstlisting}
+\begin{lstlisting}[caption={Übertragung durch das Bundle des Intents},label=DescriptiveLabel]
 Intent intent = new Intent(this,MainActivity.class);
 Bundle intentBundle = intent.getExtras();
 intentBundle.putString("bundleString", "Hallo Welt!");
@@ -67,25 +67,25 @@ Das Bundle des Intents wird durch put-Methoden erweitert.
 
 \ \\
 \textbf{Neues Bundle}
-\begin{lstlisting}
+\begin{lstlisting}[caption={Übertragung durch einen Intent mit einem neuen Bundle},label=DescriptiveLabel]
 Intent intent = new Intent(this,MainActivity.class);
 Bundle newBundle = new Bundle();
 newBundle.putString("bundleString", "Hallo Welt!");
 intent.putExtras(newBundle);
-\end{lstlisting} 
+\end{lstlisting}
 Es wird ein neues Bundle erstellt und dem Intent mithilfe der putExtras()-Methode hinzugefügt.
 
+\newpage
 \ \\
 \textbf{Abkürzung durch putExtra()}
-\begin{lstlisting}
+\begin{lstlisting}[caption={Abkürzung durch die putExtra()-Methode eines Intents},label=DescriptiveLabel]
 Intent intent = new Intent(this,MainActivity.class);
 intent.putExtra("bundleString", "Hallo Welt!");
 \end{lstlisting} 
 Alternativ kann bei Intents auch die putExtra()-Methode verwendet werden. Diese ist für alle Datentypen, die auch ein Bundle unterstützt, verfügbar.
-
 \ \\
 \textbf{Zugriff auf die Daten}
-\begin{lstlisting}
+\begin{lstlisting}[caption={Zugriff auf die Daten in der neuen Activity durch die getExtras()-Methode},label=DescriptiveLabel]
 Bundle bundleFromBefore = this.getIntent().getExtras();
 bundleFromBefore.getBoolean("bundleBoolean");
 getIntent().getExtras().getString("bundleString");
@@ -94,7 +94,7 @@ Die Methode getIntent().getExtras() ermöglicht einen Zugriff auf ein, durch ein
 
 \ \\
 Alternativ können die Daten durch getExtra-Methoden abgefragt werden.
-\begin{lstlisting}
+\begin{lstlisting}[caption={Zugriff auf die Daten in der neuen Activity durch getExtra()-Methoden},label=DescriptiveLabel]
 getIntent().getBooleanExtra("bundleBoolean", true);
 getIntent().getStringExtra("bundleString");
 \end{lstlisting}
