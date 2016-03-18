@@ -4,23 +4,28 @@
 %\date{26. Februar 2016}
 
 \begin{document}
-\section{Übungskatalog}
+\subsection{Übungskatalog}
 
-\subsection{Beschreibung}
+\subsubsection{Beschreibung}
 Der Übungskatalog beinhaltet eine Liste aller verfügbaren Übungen.
-\ \\
 
-\includegraphics[scale=0.4]{img/Uebungskatalog}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.4]{img/Uebungskatalog}
+	\end{subfigure}
+	\hfil
+	\caption{Der Übungskatalog.}
+\end{figure}
 
-\subsection{Implementierung}
-\subsubsection{Expandable List View}
+\subsubsection{Implementierung}
+\paragraph{Expandable List View}
 Die Expandable List View ist eine eigene Implementierung der Standard List View. Sie erlaubt es bei Tippen auf ein Element weitere Unterelemente darzustellen.
 Im Laufe der Entwicklung wurde festgestellt, dass eine Standard List View, mit einem Verweis auf eine Detail-View vorteilhafter wäre.
 
-\subsubsection{List View}
+\paragraph{List View}
 Die List View zeigt eine Liste bestehend aus Elementen an. Ein Klick auf ein bestimmtes Element löst eine Callback-Methode aus, welche die Detail View aufruft.
 \newpage
-\subsubsection{Einlesen der Übungen}
+\paragraph{Einlesen der Übungen}
 Die Informationen über alle Übungen ist in der strings.xml im JSON-Format hinterlegt.
 Jede Übung hat somit ihr eigenes JSON-Objekt. 
 
@@ -76,7 +81,7 @@ Diese Methode wird beim Startup der Applikation, während des SplashScreens, in 
 \newpage
 
 
-\subsection{DetailView}
+\subsubsection{DetailView}
 \begin{figure}[H]
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.55]{img/Uebungskatalog_detail}
@@ -106,8 +111,8 @@ Die App ändert dann automatisch in den Landschafts-Modus und stellt das Video i
 
 
 
-\subsection{Filter}
-\subsubsection{Beschreibung}
+\subsubsection{Filter}
+\paragraph{Beschreibung}
 Die Liste kann auch nach Name der Übung und Muskelgruppe gefiltert werden. 
 Der Filter wird über den Floating Action Button aufgerufen, welcher sich in der rechten unteren Ecke des Übungskataloges befindet.
 Die Muskelgruppen-Auswahl erfolgt über das Tippen auf eine bestimmte Muskelgruppe, beim Namen wird rein nach Text filtriert
@@ -121,7 +126,7 @@ Die Muskelgruppen-Auswahl erfolgt über das Tippen auf eine bestimmte Muskelgrup
 \end{figure}
 \newpage
 
-\subsubsection{Implementierung}
+\paragraph{Implementierung}
 Für den Filter für Name und Muskelgruppe gibt es jeweils einen Eintrag in der Key-Value-Repository.
 Beim Einlesen der Uebungen werden die Filter automatisch angewandt.
 
