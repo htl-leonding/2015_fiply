@@ -1,92 +1,114 @@
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {1}XML Datei vor dem Einsatz von Databinding.}{50}
+\contentsline {lstlisting}{\numberline {1}Eintrag in die literatur.bib Datei}{43}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {2}Die Activity vor dem Einsatz von DataBinding.}{51}
+\contentsline {lstlisting}{\numberline {2}XML Datei vor dem Einsatz von Databinding.}{51}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {3}XML Datei nach dem Einsatz von Databinding.}{51}
+\contentsline {lstlisting}{\numberline {3}Die Activity vor dem Einsatz von DataBinding.}{52}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4}Die Activity vor dem Einsatz von DataBinding.}{52}
+\contentsline {lstlisting}{\numberline {4}XML Datei nach dem Einsatz von Databinding.}{52}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {5}Layoutcode ohne jedliche Datenanbindung.}{53}
+\contentsline {lstlisting}{\numberline {5}Die Activity vor dem Einsatz von DataBinding.}{53}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {6}Unsere Objektklasse die bei der Datenanbindung referenziert wird.}{53}
+\contentsline {lstlisting}{\numberline {6}Layoutcode ohne jedliche Datenanbindung.}{54}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {7}Die XML Datei nach der Integration einer Datenanbindung.}{54}
+\contentsline {lstlisting}{\numberline {7}Unsere Objektklasse die bei der Datenanbindung referenziert wird.}{54}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {8}Die Aktivit\IeC {\"a}tenklasse nach der Integration einer Datenanbindung.}{55}
+\contentsline {lstlisting}{\numberline {8}Die XML Datei nach der Integration einer Datenanbindung.}{55}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9}Erstellen und Bef\IeC {\"u}llen von Bundels}{62}
+\contentsline {lstlisting}{\numberline {9}Die Aktivit\IeC {\"a}tenklasse nach der Integration einer Datenanbindung.}{56}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {10}Das \IeC {\"U}bergeben eines Bundles bei einer FragmentTransaction}{62}
+\contentsline {lstlisting}{\numberline {10}Deklaration von Permissions im AndroidManifest.xml}{57}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11}Der Zugriff auf ein Bundle im neuen Fragment}{63}
+\contentsline {lstlisting}{\numberline {11}Das Anfordern von Permissions ab Android 6.0}{58}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {12}\IeC {\"U}bertragung durch das Bundle des Intents}{63}
+\contentsline {lstlisting}{\numberline {12}Anzeigen der Permissionsabfrage}{59}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {13}\IeC {\"U}bertragung durch einen Intent mit einem neuen Bundle}{63}
+\contentsline {lstlisting}{\numberline {13}onCreateView() das ein Fragment anzeigt}{61}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {14}Abk\IeC {\"u}rzung durch die putExtra()-Methode eines Intents}{64}
+\contentsline {lstlisting}{\numberline {14}Eine Fragment Transaction}{61}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {15}Zugriff auf die Daten in der neuen Activity durch die getExtras()-Methode}{64}
+\contentsline {lstlisting}{\numberline {15}Die displayView-Methode vereinfacht das Anzeigen eines neuen Fragments}{62}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {16}Zugriff auf die Daten in der neuen Activity durch getExtra()-Methoden}{64}
+\contentsline {lstlisting}{\numberline {16}Die Definition eines FrameLayouts in einem Layout XML File}{62}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {17}Methode, um den aktuellen Pfad herauszufinden.}{73}
+\contentsline {lstlisting}{\numberline {17}Erstellen und Bef\IeC {\"u}llen von Bundels}{63}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {18}Verwendung von CSVReader: M\IeC {\"o}glichkeit 1, iterativ}{73}
+\contentsline {lstlisting}{\numberline {18}Das \IeC {\"U}bergeben eines Bundles bei einer FragmentTransaction}{63}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {19}Verwendung von CSVReader: M\IeC {\"o}glichkeit 2, alles auf einmal}{73}
+\contentsline {lstlisting}{\numberline {19}Der Zugriff auf ein Bundle im neuen Fragment}{64}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {20}Verwendung von CSVWriter: M\IeC {\"o}glichkeit 1, iterativ}{74}
+\contentsline {lstlisting}{\numberline {20}\IeC {\"U}bertragung durch das Bundle des Intents}{64}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {21}Verwendung von CSVWriter: M\IeC {\"o}glichkeit 2, alles auf einmal}{74}
+\contentsline {lstlisting}{\numberline {21}\IeC {\"U}bertragung durch einen Intent mit einem neuen Bundle}{64}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {22}Verwendung von CSVWriter: M\IeC {\"o}glichkeit 2, alles auf einmal}{75}
+\contentsline {lstlisting}{\numberline {22}Abk\IeC {\"u}rzung durch die putExtra()-Methode eines Intents}{65}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {23}Ein JSON-Objekt welches eine \IeC {\"U}bung beschreibt.}{78}
+\contentsline {lstlisting}{\numberline {23}Zugriff auf die Daten in der neuen Activity durch die getExtras()-Methode}{65}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {24}Diese Methode lest den JSON-string ein und f\IeC {\"u}gt die \IeC {\"U}bungen in die Datenbank ein.}{79}
+\contentsline {lstlisting}{\numberline {24}Zugriff auf die Daten in der neuen Activity durch getExtra()-Methoden}{65}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {25}Vergleicht die Farben und setzt den Filter.}{83}
+\contentsline {lstlisting}{\numberline {25}Layout XML File eines NavigationDrawers}{67}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {26}Ermittelt ob zwei Farbwerte \IeC {\"a}hnlich oder gleich sind.}{84}
+\contentsline {lstlisting}{\numberline {26}Minimaler Code eines NavigationDrawers}{68}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {27}Ermittelt den Farbwert des gedr\IeC {\"u}ckten Bereiches.}{84}
+\contentsline {lstlisting}{\numberline {27}Erweiterung des NavigationDrawers um ihn visuell ansprechender zu machen}{68}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {28}Urspr\IeC {\"u}nglicher Ansatz zum Lesen aller mp3-Files im Music-Ordner}{87}
+\contentsline {lstlisting}{\numberline {28}Methode, um den aktuellen Pfad herauszufinden.}{74}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {29}Die query-Methode des Android Source Codes in der \citetitle {acContentResolver} Klasse \cite {acContentResolver}}{87}
+\contentsline {lstlisting}{\numberline {29}Verwendung von CSVReader: M\IeC {\"o}glichkeit 1, iterativ}{74}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {30}Alle Audiodateien, die Musik beinhalten, werden gesucht.}{87}
+\contentsline {lstlisting}{\numberline {30}Verwendung von CSVReader: M\IeC {\"o}glichkeit 2, alles auf einmal}{74}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {31}Speichern der Songverweise in eine ArrayList von HashMaps}{89}
+\contentsline {lstlisting}{\numberline {31}Verwendung von CSVWriter: M\IeC {\"o}glichkeit 1, iterativ}{75}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {32}Speichern der Songverweise in eine ArrayList von HashMaps}{90}
+\contentsline {lstlisting}{\numberline {32}Verwendung von CSVWriter: M\IeC {\"o}glichkeit 2, alles auf einmal}{75}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {33}Die changeSong-Methode}{91}
+\contentsline {lstlisting}{\numberline {33}Verwendung von CSVWriter: M\IeC {\"o}glichkeit 2, alles auf einmal}{76}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {34}Das Runnable aktualisiert die Fortschrittsanzeigen des Musikplayers}{91}
+\contentsline {lstlisting}{\numberline {34}Ein JSON-Objekt welches eine \IeC {\"U}bung beschreibt.}{79}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {35}Ein Datenpunkt f\IeC {\"u}r die Graphen.}{96}
+\contentsline {lstlisting}{\numberline {35}Diese Methode lest den JSON-string ein und f\IeC {\"u}gt die \IeC {\"U}bungen in die Datenbank ein.}{80}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {36}Repository wird instanziert.}{99}
+\contentsline {lstlisting}{\numberline {36}Vergleicht die Farben und setzt den Filter.}{84}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {37}Das Datenbankobjekt db wird instanziert \IeC {\"u}ber den FiplyDBHelper}{99}
+\contentsline {lstlisting}{\numberline {37}Ermittelt ob zwei Farbwerte \IeC {\"a}hnlich oder gleich sind.}{85}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {38}db wird instanziert und ein SQL Statement wird ausgef\IeC {\"u}hrt.}{99}
+\contentsline {lstlisting}{\numberline {38}Ermittelt den Farbwert des gedr\IeC {\"u}ckten Bereiches.}{85}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {39}Eine Contract Klasse, mit allen Metadaten.}{101}
+\contentsline {lstlisting}{\numberline {39}Urspr\IeC {\"u}nglicher Ansatz zum Lesen aller mp3-Files im Music-Ordner}{88}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {40}Die Facebook App ID in der strings.xml.}{102}
+\contentsline {lstlisting}{\numberline {40}Die query-Methode des Android Source Codes in der \citetitle {acContentResolver} Klasse \cite {acContentResolver}}{88}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {41}Das xml-layout des FacebookLoginButtons.}{102}
+\contentsline {lstlisting}{\numberline {41}Alle Audiodateien, die Musik beinhalten, werden gesucht.}{88}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {42}AdView in einem Layout XML File}{109}
+\contentsline {lstlisting}{\numberline {42}Speichern der Songverweise in eine ArrayList von HashMaps}{90}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {43}Anfordern einer Banner Ad}{109}
+\contentsline {lstlisting}{\numberline {43}Speichern der Songverweise in eine ArrayList von HashMaps}{91}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {44}Erstellen und Anfordern einer Interstitial Ad}{110}
+\contentsline {lstlisting}{\numberline {44}Die changeSong-Methode}{92}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {45}Die requestNewInterstitial()-Methode}{110}
+\contentsline {lstlisting}{\numberline {45}Das Runnable aktualisiert die Fortschrittsanzeigen des Musikplayers}{92}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {46}Das Anzeigen einer Interstitial Ad, sobald sie geladen ist}{110}
+\contentsline {lstlisting}{\numberline {46}Ein Datenpunkt f\IeC {\"u}r die Graphen.}{97}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {47}Repository wird instanziert.}{100}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {48}Das Datenbankobjekt db wird instanziert \IeC {\"u}ber den FiplyDBHelper}{100}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {49}db wird instanziert und ein SQL Statement wird ausgef\IeC {\"u}hrt.}{100}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {50}Eine Contract Klasse, mit allen Metadaten.}{102}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {51}Die Facebook App ID in der strings.xml.}{103}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {52}Das xml-layout des FacebookLoginButtons.}{103}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {53}AdView in einem Layout XML File}{110}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {54}Anfordern einer Banner Ad}{110}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {55}Erstellen und Anfordern einer Interstitial Ad}{111}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {56}Die requestNewInterstitial()-Methode}{111}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {57}Das Anzeigen einer Interstitial Ad, sobald sie geladen ist}{111}
