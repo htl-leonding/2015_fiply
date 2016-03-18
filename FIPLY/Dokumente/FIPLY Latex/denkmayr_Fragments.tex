@@ -20,9 +20,9 @@ Fragments werden ab Android 3.0 (API level 11) zur Verfügung gestellt. \newline
 \newpage
 \subsubsection{Der Lifecycle}
 Ein Fragment ist immer in eine Activity eingebunden und daher direkt vom Lifecycle der übergeordneten Activity abhängig.
-Wird die übergeordnete Activity pausiert oder zerstört, werden auch alle zugeordneten Fragments pausiert oder zerstört. %Fragments/Fragmente
-\ \\
-\begin{lstlisting}
+Wird die übergeordnete Activity pausiert oder zerstört, werden auch alle zugeordneten Fragments pausiert oder zerstört. 
+
+\begin{lstlisting}[caption={onCreateView() das ein Fragment anzeigt},label=DescriptiveLabel]
 @Override
 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +37,7 @@ Ein Fragment kann mittels addToBackStack() auch zum BackStack hinzugefügt werde
 Dabei ist zu beachten, dass alle Aktionen vor einem commit() gemeinsam auf den BackStack gelegt werden und bei drücken des BackButtons alle gemeinsam aufgehoben werden.
 Wird addToBackStack() nicht aufgerufen, wird ein Fragment beim Schließen oder beim Wechseln auf ein anderes Fragment zerstört und kann nicht mehr aufgerufen werden.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Eine Fragment Transaction},label=DescriptiveLabel]
 Fragment exampleFragment = new ExampleFragment();
 FragmentManager fragmentManager = getFragmentManager();
 FragmentTransaction fragmentTransaction = fragmentManager
@@ -56,7 +56,7 @@ Dabei wird ein FrameLayout im Layoutfile der MainActivity durch ein Fragment, mi
 Navigation durch diese Fragments, wird mittels den Buttons im FMain oder dem NavigationDrawer ermöglicht.
 Zusätzlich werden verschachtelte Fragments verwendet, um komplexere Ansichten darzustellen. In diesem Fall, werden in den Layout XML Files der Fragments ein oder mehrere FrameLayouts erstellt und die verschachtelten Fragments werden dann in diesen neuen FrameLayouts angezeigt.
 \ \\
-\begin{lstlisting}
+\begin{lstlisting}[caption={Die displayView-Methode vereinfacht das Anzeigen eines neuen Fragments},label=DescriptiveLabel]
 private void displayView(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager
@@ -69,7 +69,7 @@ private void displayView(Fragment fragment) {
 Methoden wie diese werden immer wieder verwendet, um die Fragment Transactions an einem Ort zusammenzufassen und den Code so lesbarer zu machen.
 
 \ \\
-\begin{lstlisting}
+\begin{lstlisting}[caption={Die Definition eines FrameLayouts in einem Layout XML File},label=DescriptiveLabel]
 <FrameLayout
         android:id="@+id/fraPlace"
         android:layout_width="match_parent"

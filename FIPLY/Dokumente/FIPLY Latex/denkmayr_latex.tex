@@ -22,7 +22,7 @@ Wird eine PDF aus dem FIPLY\_base.tex Dokument generiert, wird der Inhalt aller 
 Quellen und Zitierungen werden mithilfe des Biblatex Packages durchgeführt.
 Für die verschiedenen Quellen werden Einträge in der literatur.bib Datei erstellt.
 
-\begin{lstlisting}[language=Python,frame=none]
+\begin{lstlisting}[language=Python,frame=none, caption={Eintrag in die literatur.bib Datei},label=DescriptiveLabel]
 @Misc{bNavDrawer,
 	author = {Ben Jakuben},
 	title =  {How to Add a Navigation Drawer in Android},
@@ -41,8 +41,6 @@ Sind die jeweiligen Zitierungen vorhanden, kann im Text mit Befehlen wie
 \verb!\citetitle{bNavDrawer},! \newline
 \verb!\fullcite{bNavDrawer}! \newline
 eine Zitierung eingefügt werden. 
-
-\ \\
 
 \ \\
 So sehen diese Zitierungen in einem generierten PDF aus:
