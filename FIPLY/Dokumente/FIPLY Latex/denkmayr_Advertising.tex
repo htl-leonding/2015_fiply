@@ -31,7 +31,7 @@ Banner Ads nehmen einen kleinen Teil des Bildschirms ein. Diese werden in einem 
 Der Benutzer wird durch einen Klick auf das Banner, auf die beworbene Webseite weitergeleitet. \newline
 [Google Developers \cite{gdBanner}]
 \ \\
-\begin{lstlisting}
+\begin{lstlisting}[caption={AdView in einem Layout XML File},label=DescriptiveLabel]
 <com.google.android.gms.ads.AdView
     android:id="@+id/planAdView"
     android:layout_width="match_parent"
@@ -45,7 +45,7 @@ Der Benutzer wird durch einen Klick auf das Banner, auf die beworbene Webseite w
 Hier wird ein Banner in einem Layout XML File definiert. Dieses Banner befindet sich am unteren Ende der App und überspannt die gesamte Breite des Bildschirms.
 Die oben eingetragene Ad Unit Id liefert TestAds und dient zum Testen.
 \ \\
-\begin{lstlisting}
+\begin{lstlisting}[caption={Anfordern einer Banner Ad},label=DescriptiveLabel]
 int gender = AdRequest.GENDER_MALE;
 
 AdView mAdView = (AdView) getActivity()
@@ -67,8 +67,7 @@ Interstitial Ads bedecken den gesamten Bildschirm. Wird die Werbung angezeigt, k
 Deshalb eignen sich Interstitials für Apps die gelegentlich zwischen mehreren Bildschirmen wechseln.
 Bei diesen Werbungen ist zu beachten, dass die App im Hintergrund weiterläuft, also sollten laute Tonwiedergaben und ressourcenintensive Benutzerinteraktionen pausiert werden. \newline
 [Google Developers \cite{gdInterstitials}]
-\ \\
-\begin{lstlisting}
+\begin{lstlisting}[caption={Erstellen und Anfordern einer Interstitial Ad},label=DescriptiveLabel]
 mInterstitialAd = new InterstitialAd(this);
 mInterstitialAd.
        		setAdUnitId("ca-app-pub-3940256099942544/1033173712");
@@ -76,8 +75,7 @@ requestNewInterstitial();
 \end{lstlisting}
 Hier wird eine Interstitial Ad angelegt und anschließend eine Werbung für das Interstitial angefordert. 
 Die oben eingetragene Ad Unit Id liefert TestAds und dient zum Testen.
-\ \\
-\begin{lstlisting}
+\begin{lstlisting}[caption={Die requestNewInterstitial()-Methode},label=DescriptiveLabel]
 public void requestNewInterstitial() {
         int gender = AdRequest.GENDER_MALE;
         
@@ -91,7 +89,7 @@ public void requestNewInterstitial() {
 Mit diesem Code wird eine neue Werbung angefordert. Die angeforderte Werbung kann durch Daten wie Geschlecht, Geburtstag oder Position präziser auf den Benutzer abgestimmt werden.
 Diese Abstimmung erfolgt durch die Methoden .setGender(), .setLocation() und .setBirthday().	
 \ \\
-\begin{lstlisting}
+\begin{lstlisting}[caption={Das Anzeigen einer Interstitial Ad, sobald sie geladen ist},label=DescriptiveLabel]
 if(mInterstitialAd.isLoaded()) 
     mInterstitialAd.show();
 \end{lstlisting}

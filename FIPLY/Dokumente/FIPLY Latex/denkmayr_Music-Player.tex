@@ -8,8 +8,7 @@
 [Android Developers \cite{adMediaPlayer}, \citeauthor{bMediaPlayer} \cite{bMediaPlayer}]
 
 \subsubsection{Lokalisierung der Musikdateien}
-Am Beginn der Arbeit wurde der Music-Ordner nach mp3-Files durchsucht.
-\begin{lstlisting}
+\begin{lstlisting}[caption={Ursprünglicher Ansatz zum Lesen aller mp3-Files im Music-Ordner},label=DescriptiveLabel]
 File home = new File(Environment.getExternalStorageDirectory()
 	.getAbsolutePath() + "/Music";);
 songs = new ArrayList<>();
@@ -27,18 +26,13 @@ if (home.listFiles(new FileExtensionFilter()) != null) {
 Im Laufe der Entwicklung stellte sich heraus, dass jeder Benutzer seine Musikdateien in einem anderen Ordner und in verschiedenen Dateiformaten abspeichert. 
 Die Lösung für dieses Problem stellt der Android Mediastore dar. 
 Über diesen können Abfragen nach verschiedenen Medientypen z.B.: Musik, Fotos oder Videos durchgeführt werden. Von diesen Medientypen können Name, Pfad, Dateigröße und vieles mehr ausgelesen werden.
-  
-\ \\  
 Die Datenabfrage gegenüber dem Mediastore erfolgt über einen ContentResolver mit Hilfe der query()-Methode.
-\begin{lstlisting}
+\begin{lstlisting}[caption={Die query-Methode des Android Source Codes in der \citetitle{acContentResolver} Klasse \cite{acContentResolver}},label=DescriptiveLabel]
 public final @Nullable Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
 	return query(uri, projection, selection, selectionArgs, sortOrder, null);
 }
 \end{lstlisting}
-
-\ \\
-Für den Musicplayer benötigen wir alle Audiodateien, die Musik beinhalten.
-\begin{lstlisting}
+\begin{lstlisting}[caption={Alle Audiodateien, die Musik beinhalten, werden gesucht.},label=DescriptiveLabel]
 ContentResolver cr = context.getApplicationContext()
 	.getContentResolver();
 Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
@@ -50,7 +44,7 @@ Cursor cur = cr.query(uri, null, selection, null, sortOrder);
 \newpage
 \ \\
 Für jede Zeile im Cursor cur wird eine HashMap aus 2 Strings erstellt die den Titel und den Pfad eines Songs beinhaltet. Diese HashMaps werden anschließend zu einer ArrayList hinzugefügt.
-\begin{lstlisting}
+\begin{lstlisting}[caption={Speichern der Songverweise in eine ArrayList von HashMaps},label=DescriptiveLabel]
 songs = new ArrayList<>();
 HashMap<String, String> song = new HashMap<>();
 while(cur.moveToNext())
@@ -64,16 +58,14 @@ while(cur.moveToNext())
 \end{lstlisting}
 
 
-
-
 \subsubsection {Verwalten von Playlists}
 \begin{figure}[H]
 	\begin{subfigure}[b]{0.3\textwidth}
-	\includegraphics[scale=0.15]{img/musicPlaylistView1}
+	\includegraphics[scale=0.13]{img/musicPlaylistView1}
 	\end{subfigure}
 	\hfil
 	\begin{subfigure}[b]{0.3\textwidth}
-	\includegraphics[scale=0.15]{img/musicSongView1}
+	\includegraphics[scale=0.13]{img/musicSongView1}
 	\end{subfigure}
 	\caption{Beim Klicken eines Elements in Screenshot 1 werden alle Songs angezeigt (Screenshot 2). 
 	Mittels der Checkboxen werden jene Songs markiert, die sich in der ausgewählten Playlist befinden.}
@@ -94,7 +86,7 @@ Wird der Save-Button gedrückt wird für alle Positionen abgespeichert ob das El
 Anschließend wird eine Liste erstellt, in der nur die angekreuzten Elemente enthalten sind. Diese Liste wird als eine neue Playlist in die PlaylistSongs-Tabelle gespeichert. 
 Dabei wird als Playlistname, der in das EditText eingetragene Titel unter der ListView übernommen.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Speichern der Songverweise in eine ArrayList von HashMaps},label=DescriptiveLabel]
 SparseBooleanArray checked = lvSongs.getCheckedItemPositions();
 for (int i = 0; i < songs.size(); i++) {
     if (checked.get(i)) {
@@ -105,15 +97,14 @@ psrep.reenterPlaylist(etName.getText().toString(), checkedSongs);
 \end{lstlisting}
 
 
-
-\newpage
 \subsubsection {Abspielen der Playlists.}
 Das Abspielen der Songs erfolgt über den MediaPlayer (API level 1). \newline
 Das Wechseln eines Songs wurde mithilfe der changeSong-Methode realisiert. \newline
 Diese Methode nimmt die Playlist und den Index eines Songs in dieser Playlist entgegen, kümmert sich um das Setzen der Datenquelle für den MediaPlayer und bereitet den MediaPlayer auf die Wiedergabe vor. 
 Zusätzlich wird der neue Songname angezeigt und die laufende Aktualisierung der Fortschrittsanzeigen wird durch den Aufruf von updateProgressBar() eingeschaltet. 
 
-\begin{lstlisting}
+\newpage
+\begin{lstlisting}[caption={Die changeSong-Methode},label=DescriptiveLabel]
 public void changeSong(int songIndex, String playlist) {
     aktPlaylist = playlist;
     setPlaylist(psrep.getByPlaylistName(aktPlaylist));
@@ -140,7 +131,8 @@ private void updateProgressBar() {
 Der mUpdateDurTask aktualisiert die Fortschrittsanzeigen 10 mal pro Sekunde.
 Da mp.getDuration Millisekunden zurückgibt, konvertiert die \newline millisecondsToHMS-Methode die Songdauer in einen String im hh:mm:ss Format (ISO 8601).
 
-\begin{lstlisting}
+\ \\
+\begin{lstlisting}[caption={Das Runnable aktualisiert die Fortschrittsanzeigen des Musikplayers},label=DescriptiveLabel]
 private Runnable mUpdateDurTask = new Runnable() {
     @Override
     public void run() {
