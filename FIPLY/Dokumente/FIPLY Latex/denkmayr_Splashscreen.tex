@@ -10,12 +10,11 @@ Im Splashscreen wird das FIPLY Logo angezeigt, um den Benutzer zu unterhalten,
 während die App asynchrone Zugriffe auf die Datenbank durchführt.
 Beim ersten Start werden alle Tabellen erstellt und befüllt.
 Aus diesem Grund dauert das erste Starten besonders lange.
-
 \ \\
 Bei jedem Start wird überprüft, ob der KeyValue firstStart auf false gesetzt ist.
 Beträgt der Wert von firstStart ''false'', wird das Neuerstellen der Datenbank übersprungen.
 Ansonsten wird die Methode reCreateDatabaseOnFirstStart() aufgerufen.
-\begin{lstlisting}
+\begin{lstlisting}[caption={Abfrage ob die App zum Ersten mal ausgeführt wird},label=DescriptiveLabel]
 try {
 	if (!kvr.getKeyValue("firstStart").getString(1).equals("false")) {
 		reCreateDatabaseOnFirstStart();
@@ -27,10 +26,7 @@ uer.insertAllExercises();
 kvr.setDefaultUserSettings();
 fillTestTrainingsgplan();
 \end{lstlisting}
-
-\ \\
-Diese Methode dropt alle Tabellen und erstellt diese neu.
-\begin{lstlisting}
+\begin{lstlisting}[caption={Die reCreateDatabaseOnFirstStart()-Methode löscht alle Tabellen und erstellt diese neu},label=DescriptiveLabel]
 UebungenRepository uer;
 KeyValueRepository kvr;
 PlaylistSongsRepository psr;
@@ -39,7 +35,6 @@ PlanRepository prep;
 InstruktionenRepository instRep;
 PhasenRepository phasenRep;
 [...]
-
 private void reCreateDatabaseOnFirstStart() {
 	kvr.reCreateKeyValueTable();
 	uer.reCreateUebungenTable();
