@@ -29,7 +29,7 @@ Die List View zeigt eine Liste bestehend aus Elementen an. Ein Klick auf ein bes
 Die Informationen über alle Übungen ist in der strings.xml im JSON-Format hinterlegt.
 Jede Übung hat somit ihr eigenes JSON-Objekt. 
 
-\begin{lstlisting}
+\begin{lstlisting} [caption={Ein JSON-Objekt welches eine Übung beschreibt.},label=DescriptiveLabel]
 <string name="exercisecatalog">
 [
 ...,
@@ -51,7 +51,7 @@ Wie in diesem Beispiel erkennbar, muss jedes Hochkomma mit einem Backslash maski
 \ \\
 Dieser JSON-String wird in einer Methode der Klasse UebungenRepository eingelesen und die einzelnen Übungen werden in die Datenbank eingefügt.
 \ \\
-\begin{lstlisting}
+\begin{lstlisting}  [caption={Diese Methode lest den JSON-string ein und fügt die Übungen in die Datenbank ein.},label=DescriptiveLabel]
     public void insertAllExercises() throws JSONException {
         reCreateUebungenTable();
         String json = repoContext.getResources()
@@ -164,7 +164,9 @@ Bei einem Klick auf die Auswahlfäche kann nachvollzogen werden welche Farbe der
 \newpage
 \ \\
 Bei einem Klick auf die Auswahlfläche wird folgende Callback-Methode aufgerufen.
-\begin{lstlisting}
+\begin{lstlisting} [caption={Vergleicht die Farben und setzt den Filter.},label=DescriptiveLabel]
+KeyValueRepository kvr = KeyValueRepository.getInstance();
+
 public boolean onTouch(View v, MotionEvent event) {
    int tolerance = 25;
    int evX = (int) event.getX();
@@ -202,9 +204,9 @@ public boolean onTouch(View v, MotionEvent event) {
 Diese Methode ermittelt die Farbe des gedrückten Bereiches und setzt den Key-Value Eintrag im Repository.
 \newpage
 \ \\
-Die erste verwendete Hilfsmethode ermittelt ob zwei Farbwerte ähnlich oder gleich sind.
+Die erste verwendete Hilfsmethode.
 
-\begin{lstlisting}
+\begin{lstlisting} [caption={Ermittelt  ob zwei Farbwerte ähnlich oder gleich sind.},label=DescriptiveLabel]
     public boolean closeMatch(int color1, int color2, int tolerance) {
         if (Math.abs(Color.red(color1) - Color.red(color2)) > tolerance)
             return false;
@@ -217,8 +219,8 @@ Die erste verwendete Hilfsmethode ermittelt ob zwei Farbwerte ähnlich oder glei
 \end{lstlisting}
 
 \ \\
-Die zweite verwendete Methode ermittelt den Farbwert des gedrückten Bereichs.
-\begin{lstlisting}
+Die zweite verwendete Methode.
+\begin{lstlisting}  [caption={Ermittelt den Farbwert des gedrückten Bereiches.},label=DescriptiveLabel]
     public int getHotspotColor(int x, int y) {
         bodyFilterMask.setDrawingCacheEnabled(true);
         Bitmap hotspots = Bitmap.createBitmap(bodyFilterMask.getDrawingCache());
