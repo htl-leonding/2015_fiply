@@ -11,7 +11,7 @@ Das bedeutet, dass es einer bösartigen App nicht möglich ist, erheblichen Scha
 Da eine Applikation zu Beginn keine Permissions besitzt, müssen diese im Manifest deklariert werden. \newline
 [\citeauthor{bPermissions} \cite{bPermissions}, Android Developers \cite{adTPermissions}\cite{adGPermissions}]
 \ \\
-\begin{lstlisting}
+\begin{lstlisting}[caption={Deklaration von Permissions im AndroidManifest.xml},label=DescriptiveLabel]
 <manifest package="htl_leonding.fiplyteam.fiply"
 		xmlns:android="http://schemas.android.com/apk/res/android" >
 <uses-permission android:name="android.permission.INTERNET"/>
@@ -47,7 +47,7 @@ Permissions können nur durch die Deinstallation der App zurückgenommen werden.
 Wenn auf dem Gerät Android 6.0 (API level 23) oder höher installiert ist, wird beim Download aus dem Google Play Store keine Bestätigung der Permissions verlangt.
 Die Permissions werden nun während der Laufzeit der App abgefragt. Diese Abfragen muss der Entwickler selbst erstellen und anzeigen lassen.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Das Anfordern von Permissions ab Android 6.0},label=DescriptiveLabel]
 final public int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
 public void CheckMusicPermissionAndReadMusic(Context context) {
@@ -61,7 +61,6 @@ public void CheckMusicPermissionAndReadMusic(Context context) {
 		{
 			showMessageOKCancel("Permissionmessage", 
 				new DialogInterface.OnClickListener() {
-				
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				ActivityCompat.requestPermissions(Settings.this,
@@ -80,7 +79,7 @@ public void CheckMusicPermissionAndReadMusic(Context context) {
 }
 \end{lstlisting}
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Anzeigen der Permissionsabfrage},label=DescriptiveLabel]
 private void showMessageOKCancel(String message, DialogInterface
 	.OnClickListener okListener, Activity activity) {
 	new AlertDialog.Builder(activity)

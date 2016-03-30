@@ -3,8 +3,8 @@
 %\author{Daniel Bersenkowitsch}
 
 \begin{document}
-\section{Exportieren}
-\subsection{Als CSV exportieren - OpenCSV}
+\subsection{Exportieren}
+\subsubsection{Als CSV exportieren - OpenCSV}
 Die OpenCSV Bibliothek erlaubt dem Java Programmierer eine CSV Datei zu erstellen, speichern, schreiben und lesen.
 In Bezug auf die Diplomarbeit wird diese Technologie verwendet, um den Trainingsplan in eine CSV-Datei abzuspeichern.
 Um den aktuellen Pfad im Android-Dateisystem herauszufinden, gibt es die statische getAbsolutePath()-Methode, die folgens verwendet wird:
@@ -15,9 +15,9 @@ Um den aktuellen Pfad im Android-Dateisystem herauszufinden, gibt es die statisc
 \end{lstlisting}
 Der String \grqq{}path\grqq{} beschreibt nun den Pfad wo die CSV-Datei eingespeichert wird.
 
-\subsubsection{Alternative}
+\paragraph{Alternative}
 Eine alternative Möglichkeit zu der OpenCSV Bibliothek wäre, die Funktionen selbst auszuprogrammieren. Da die Verwendung der Bibliothek zeitsparender ist, wird sie der Alternative vorgezogen.
-\subsubsection{Anwendung}
+\paragraph{Anwendung}
 CSV-Datei lesen:
 \begin{lstlisting}[caption={Verwendung von CSVReader: Möglichkeit 1, iterativ},label=DescriptiveLabel]
 	CSVReader reader = new CSVReader(
@@ -32,6 +32,7 @@ CSV-Datei lesen:
 
 Das Objekt reader ist öffnet einen Stream zu der erzielten Datei \grqq{}file.csv\grqq{}. Mittels der Standardfunktion .readNext() wird die nächste Zeile in ein eindimensionales String-Array gespeichert. Jede Arraystelle beschreibt den Inhalt eines Spaltenfeldes in der aktuellen Zeile der CSV-Datei.
 
+\
 \begin{lstlisting}[caption={Verwendung von CSVReader: Möglichkeit 2, alles auf einmal},label=DescriptiveLabel]
 	CSVReader reader = new CSVReader(
 		new FileReader(path + "file.csv"));
@@ -73,8 +74,8 @@ Es wird eine Liste von eindimensionalen Arrays angelegt. Wie auch in den obigen 
 [\citetitle{exportCSVSourceWrite} \cite{exportCSVSourceWrite}] 
 
 
-\subsection{Emails senden}
-\subsubsection{Mittels Intents}
+\subsubsection{Emails senden}
+\paragraph{Mittels Intents}
 Die beste Möglichkeit, um eine Email in Android zu senden, ist das benutzen eines Intents:
 \begin{lstlisting}[caption={Verwendung von CSVWriter: Möglichkeit 2, alles auf einmal},label=DescriptiveLabel]
 File file = new File(path, "file.csv");
@@ -88,7 +89,7 @@ sendIntent.setType("text/html");
 startActivity(sendIntent);
 \end{lstlisting}
 Das senden von Emails mittels Intents erfolgt damit über externe Applikationen, die diese Funktion anbieten. Bei ausführen des obigen Codes wird der Benutzer gefragt, mit welchem Emailclient auf seinem Smartphone er die Aktion durchführen will. Die Emaildetails werden der externen Applikation mitgegeben, worauf sich diese öffnet und der benutzer dann nur noch auf den \grqq{}senden\grqq{}-Knopf drücken muss. [\citetitle{exportCSVsendMail} \cite{exportCSVsendMail}]
-\subsubsection{Vorteile/Nachteile von Intents}
+\paragraph{Vorteile/Nachteile von Intents}
 Der große Vorteil dieser Methode ist es, dass man ohne eigenen Emailclient auskommt. Da die Email über eine andere Applikation versendet wird muss sich der Entwickler nicht weiter um aufwendige Emailclient codierungen kümmern. 
 \ \\
 Ohne bereits installierten Client auf dem Android Gerät ist das senden von Emails über diese vorgehensweise nicht möglich. Ein gutes Beispiel dafür ist das Ausführen der Funktion auf einem Android-Emulator auf einem beliebigen Computer. Standardmäßig ist auf einem Android-Emulator kein Emailclient wie zum Beispiel die Gmail Applikation installiert. Daher kann die Funktion auf einem Emulator nicht getestet werden, bevor man einen manuell installiert. 

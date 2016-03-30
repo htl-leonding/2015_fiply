@@ -7,16 +7,28 @@
 
 \begin{document}
 \maketitle
+% KAPITEL ALLGEMEINES
 \tableofcontents
+\newpage
+\subfile{all_erklaerung}
+\newpage
+\subfile{all_abstract}
+\newpage
+\subfile{all_danksagung}
+\newpage
+\subfile{all_autoren}
+\newpage
+\subfile{all_personas}
 
 \newpage % KAPITEL PFLICHTENHEFT
-\subfile{bersenkowitsch_pflichtenheft}
+\subfile{all_pflichtenheft}
 
+\newpage
+\includepdf[pages={1-12}]{prot.pdf}
 
 \newpage % KAPITEL THEORETISCHER HINTERGRUND
 \section{Der Trainingsplan}
 \subfile{bersenkowitsch_Trainingsplan}
-
 
 \newpage % KAPITEL VERWENDETE TECHNOLOGIEN
 \section{Verwendete Technologien}
@@ -25,18 +37,17 @@
 \subfile{bersenkowitsch_androidstudio}
 \subfile{denkmayr_intellij}
 \newpage
+\subsection{LaTeX}
 \subfile{irsiegler_latex}
 \subfile{bersenkowitsch_latex}
 \subfile{denkmayr_latex}
 \subfile{bersenkowitsch_photoshop}
-\subfile{bersenkowitsch_umlet}
-
 
 \newpage % KAPITEL PLANUNG
-\subfile{bersenkowitsch_guiessay}
+\section{Planung}
+\subfile{all_guiessay}
 \newpage
 \subfile{bersenkowitsch_Databinding}
-
 
 \newpage % KAPITEL UMSETZUNG
 \section{Umsetzung}
@@ -66,20 +77,11 @@
 \newpage
 \subfile{irsiegler_SocialMedia}
 \newpage
-\subsection{Notifications}
-\subfile{bersenkowitsch_Notifications}
-\newpage
-\subfile{denkmayr_Notifications}
-
-
-\newpage % KAPITEL DESIGN
-\section{Design} 
 \subfile{bersenkowitsch_icons}
 
 
 \newpage % KAPITEL KOMMERZIALISIERUNG
 \section{Kommerzialisierung}
-\newpage
 \subfile{denkmayr_Advertising}
 \newpage
 \subfile{denkmayr_Donations}
@@ -94,7 +96,10 @@
 \newpage
 \subfile{bersenkowitsch_Promotions} 
 
-
+\newpage
+\lstlistoflistings
+\newpage
+\listoffigures
 \newpage
 \printbibliography
 

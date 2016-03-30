@@ -4,26 +4,32 @@
 %\date{26. Februar 2016}
 
 \begin{document}
-\section{Übungskatalog}
+\subsection{Übungskatalog}
 
-\subsection{Beschreibung}
+\subsubsection{Beschreibung}
 Der Übungskatalog beinhaltet eine Liste aller verfügbaren Übungen.
 
-\includegraphics[scale=0.4]{img/Uebungskatalog}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.4]{img/Uebungskatalog}
+	\end{subfigure}
+	\hfil
+	\caption{Der Übungskatalog.}
+\end{figure}
 
-\subsection{Implementierung}
-\subsubsection{Expandable List View}
-Die Expandable List View ist eine eigene Implementierung der standard List View. Sie erlaubt es bei tippen auf ein Element weitere Unterelemente darzustellen.
-Im Laufe der Entwicklung wurde festgestellt, dass eine standard List View, mit einem Verweis auf eine Detail-View vorteilhafter wäre.
+\subsubsection{Implementierung}
+\paragraph{Expandable List View}
+Die Expandable List View ist eine eigene Implementierung der Standard List View. Sie erlaubt es bei Tippen auf ein Element weitere Unterelemente darzustellen.
+Im Laufe der Entwicklung wurde festgestellt, dass eine Standard List View, mit einem Verweis auf eine Detail-View vorteilhafter wäre.
 
-\subsubsection{List View}
-Die List View zeigt eine Liste aus Element an. Ein Klick auf ein bestimmtes Element löst eine Callback-Methode aus, von welcher die Detail View aufgerufen wird.
+\paragraph{List View}
+Die List View zeigt eine Liste bestehend aus Elementen an. Ein Klick auf ein bestimmtes Element löst eine Callback-Methode aus, welche die Detail View aufruft.
 \newpage
-\subsubsection{Einlesen der Übungen}
+\paragraph{Einlesen der Übungen}
 Die Informationen über alle Übungen ist in der strings.xml im JSON-Format hinterlegt.
-Jede Übung ist somit ihr eigenes JSON-Objekt. 
+Jede Übung hat somit ihr eigenes JSON-Objekt. 
 
-\begin{lstlisting}
+\begin{lstlisting} [caption={Ein JSON-Objekt welches eine Übung beschreibt.},label=DescriptiveLabel]
 <string name="exercisecatalog">
 [
 ...,
@@ -39,12 +45,13 @@ Jede Übung ist somit ihr eigenes JSON-Objekt.
 ]
 </string>
 \end{lstlisting}
-Wie in diesem Exampel erkennbar musste jedes Hochkomma mit einem Backslash escaped werden, da der JSON-String sonst nicht in der strings.xml abgelegt werden könnte.
+\ \\
+Wie in diesem Beispiel erkennbar, muss jedes Hochkomma mit einem Backslash maskiert werden, da der JSON-String sonst nicht in der strings.xml abgelegt werden kann.
 \newpage
 \ \\
-Dieser JSON-String wird in einer Methode in der UebungenRepository eingelesen und die einzelnen Methoden werden in die Datenbank eingefügt.
-
-\begin{lstlisting}
+Dieser JSON-String wird in einer Methode der Klasse UebungenRepository eingelesen und die einzelnen Übungen werden in die Datenbank eingefügt.
+\ \\
+\begin{lstlisting}  [caption={Diese Methode lest den JSON-string ein und fügt die Übungen in die Datenbank ein.},label=DescriptiveLabel]
     public void insertAllExercises() throws JSONException {
         reCreateUebungenTable();
         String json = repoContext.getResources()
@@ -64,10 +71,8 @@ Dieser JSON-String wird in einer Methode in der UebungenRepository eingelesen un
                          "https://www.youtube.com/embed/..", 
                          temp.getString("Equipment"));
         }
-
     }
 \end{lstlisting}
-
 \ \\
 Diese Methode wird beim Startup der Applikation, während des SplashScreens, in einem Async-Task aufgerufen und ausgeführt.
 
@@ -76,8 +81,15 @@ Diese Methode wird beim Startup der Applikation, während des SplashScreens, in 
 \newpage
 
 
-\subsection{DetailView}
-\includegraphics[scale=0.4]{img/Uebungskatalog_detail}
+\subsubsection{DetailView}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.55]{img/Uebungskatalog_detail}
+	\end{subfigure}
+	\hfil
+	\caption{Die DetailView der Übung "Bizepscurl".}
+\end{figure}
+
 
 
 Für jede Übung gibt es eine Detailansicht, in welcher man genaures über jene Übung erfahren kann.
@@ -99,16 +111,22 @@ Die App ändert dann automatisch in den Landschafts-Modus und stellt das Video i
 
 
 
-\subsection{Filter}
-\subsubsection{Beschreibung}
+\subsubsection{Filter}
+\paragraph{Beschreibung}
 Die Liste kann auch nach Name der Übung und Muskelgruppe gefiltert werden. 
 Der Filter wird über den Floating Action Button aufgerufen, welcher sich in der rechten unteren Ecke des Übungskataloges befindet.
 Die Muskelgruppen-Auswahl erfolgt über das Tippen auf eine bestimmte Muskelgruppe, beim Namen wird rein nach Text filtriert
 
-\includegraphics[scale=0.4]{img/Uebungskatalog_filter}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.55]{img/Uebungskatalog_filter}
+	\end{subfigure}
+	\hfil
+	\caption{Die Filter View.}
+\end{figure}
 \newpage
 
-\subsubsection{Implementierung}
+\paragraph{Implementierung}
 Für den Filter für Name und Muskelgruppe gibt es jeweils einen Eintrag in der Key-Value-Repository.
 Beim Einlesen der Uebungen werden die Filter automatisch angewandt.
 
@@ -122,19 +140,33 @@ Um die geklickte Muskelgruppe zu ermitteln, wurden zwei Auswahlbereiche überein
 Jener Auswahlbereich, welchen der Benutzer zu sehen bekommt.
 Dieser Auswahlbereich ist nur die visuelle Stütze für den Benutzer, sie hat keinerlei funktionalen Nutzen.
 
-\ \\
-\includegraphics[scale=0.4]{img/Uebungskatalog_filter_overlay}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.3]{img/Uebungskatalog_filter_overlay}
+	\end{subfigure}
+	\hfil
+	\caption{Das sichtbare Overlay des Filters.}
+\end{figure}
 
-\ \\
+
 Und eine farbkodierte Maske, welche der Benutzer nicht sieht, mit welcher er aber eigentlich interagiert.
 Bei einem Klick auf die Auswahlfäche kann nachvollzogen werden welche Farbe der angeklickte Bereich hat, somit wird festgestellt welche Muskelgruppe der Benutzer ausgewählt hat.
 
-\includegraphics[scale=0.4]{img/Uebungskatalog_filter_mask}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.3\textwidth}
+	\includegraphics[scale=0.3]{img/Uebungskatalog_filter_mask}
+	\end{subfigure}
+	\hfil
+	\caption{Die nicht sichtbare Maske.}
+\end{figure}
+
 
 \newpage
 \ \\
 Bei einem Klick auf die Auswahlfläche wird folgende Callback-Methode aufgerufen.
-\begin{lstlisting}
+\begin{lstlisting} [caption={Vergleicht die Farben und setzt den Filter.},label=DescriptiveLabel]
+KeyValueRepository kvr = KeyValueRepository.getInstance();
+
 public boolean onTouch(View v, MotionEvent event) {
    int tolerance = 25;
    int evX = (int) event.getX();
@@ -172,9 +204,9 @@ public boolean onTouch(View v, MotionEvent event) {
 Diese Methode ermittelt die Farbe des gedrückten Bereiches und setzt den Key-Value Eintrag im Repository.
 \newpage
 \ \\
-Die erste verwendete Hilfsmethode ermittelt ob zwei Farbwerte ähnlich oder gleich sind.
+Die erste verwendete Hilfsmethode.
 
-\begin{lstlisting}
+\begin{lstlisting} [caption={Ermittelt  ob zwei Farbwerte ähnlich oder gleich sind.},label=DescriptiveLabel]
     public boolean closeMatch(int color1, int color2, int tolerance) {
         if (Math.abs(Color.red(color1) - Color.red(color2)) > tolerance)
             return false;
@@ -187,8 +219,8 @@ Die erste verwendete Hilfsmethode ermittelt ob zwei Farbwerte ähnlich oder glei
 \end{lstlisting}
 
 \ \\
-Die zweite verwendete Methode ermittelt den Farbwert des gedrückten Bereichs.
-\begin{lstlisting}
+Die zweite verwendete Methode.
+\begin{lstlisting}  [caption={Ermittelt den Farbwert des gedrückten Bereiches.},label=DescriptiveLabel]
     public int getHotspotColor(int x, int y) {
         bodyFilterMask.setDrawingCacheEnabled(true);
         Bitmap hotspots = Bitmap.createBitmap(bodyFilterMask.getDrawingCache());
