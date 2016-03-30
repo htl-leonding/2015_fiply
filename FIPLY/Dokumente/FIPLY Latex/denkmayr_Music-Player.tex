@@ -4,10 +4,10 @@
 %\date{19. Februar 2016}
 
 \begin{document}
-\subsection{Musik}
+\subsection{ Musik}
 [Android Developers \cite{adMediaPlayer}, \citeauthor{bMediaPlayer} \cite{bMediaPlayer}]
 
-\subsubsection{Lokalisierung der Musikdateien}
+\subsubsection{ Lokalisierung der Musikdateien}
 \begin{lstlisting}[caption={Ursprünglicher Ansatz zum Lesen aller mp3-Files im Music-Ordner},label=DescriptiveLabel]
 File home = new File(Environment.getExternalStorageDirectory()
 	.getAbsolutePath() + "/Music";);
@@ -58,7 +58,7 @@ while(cur.moveToNext())
 \end{lstlisting}
 
 
-\subsubsection {Verwalten von Playlists}
+\subsubsection { Verwalten von Playlists}
 \begin{figure}[H]
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[scale=0.13]{img/musicPlaylistView1}
@@ -97,7 +97,7 @@ psrep.reenterPlaylist(etName.getText().toString(), checkedSongs);
 \end{lstlisting}
 
 
-\subsubsection {Abspielen der Playlists.}
+\subsubsection { Abspielen der Playlists.}
 Das Abspielen der Songs erfolgt über den MediaPlayer (API level 1). \newline
 Das Wechseln eines Songs wurde mithilfe der changeSong-Methode realisiert. \newline
 Diese Methode nimmt die Playlist und den Index eines Songs in dieser Playlist entgegen, kümmert sich um das Setzen der Datenquelle für den MediaPlayer und bereitet den MediaPlayer auf die Wiedergabe vor. 
@@ -165,7 +165,7 @@ In der aktuell ausgewählten Playlist kann man direkt zu einem bestimmten Song w
 Dieser wird abgespielt und nach Ende des Songs wird sofort der nächste Playlisteintrag gestartet.
 
 \newpage
-\subsubsection {MusicControls}
+\subsubsection { MusicControls}
 
 \begin{figure}[H]
 	\begin{subfigure}[b]{0.3\textwidth}
