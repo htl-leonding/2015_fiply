@@ -6,8 +6,12 @@
 \date{19. Februar 2016}
 
 \begin{document}
+\clearscrheadfoot
+\cfoot{\pagemark}
 \maketitle
+
 % KAPITEL ALLGEMEINES
+\newpage
 \tableofcontents
 \newpage
 \subfile{all_erklaerung}
@@ -21,23 +25,25 @@
 \subfile{all_personas}
 
 \newpage % KAPITEL PFLICHTENHEFT
+\cfoot{Daniel Bersenkowitsch, Andreas Denkmayr, Gerald Irsiegler \\\pagemark}
 \subfile{all_pflichtenheft}
-
-\newpage
-\includepdf[pages={1-12}]{prot.pdf}
 
 \newpage % KAPITEL THEORETISCHER HINTERGRUND
 \section{Der Trainingsplan}
+\cfoot{Daniel Bersenkowitsch \\\pagemark}
 \subfile{bersenkowitsch_Trainingsplan}
 
 \newpage % KAPITEL VERWENDETE TECHNOLOGIEN
 \section{Verwendete Technologien}
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_GitHub}
 \newpage
+\cfoot{Daniel Bersenkowitsch, Andreas Denkmayr \\\pagemark}
 \subfile{bersenkowitsch_androidstudio}
 \subfile{denkmayr_intellij}
 \newpage
 \subsection{LaTeX}
+\cfoot{Daniel Bersenkowitsch, Andreas Denkmayr, Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_latex}
 \subfile{bersenkowitsch_latex}
 \subfile{denkmayr_latex}
@@ -45,55 +51,78 @@
 
 \newpage % KAPITEL PLANUNG
 \section{Planung}
+\cfoot{Daniel Bersenkowitsch, Andreas Denkmayr, Gerald Irsiegler \\\pagemark}
 \subfile{all_guiessay}
 \newpage
+\cfoot{Daniel Bersenkowitsch \\\pagemark}
 \subfile{bersenkowitsch_Databinding}
 
 \newpage % KAPITEL UMSETZUNG
 \section{Umsetzung}
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Permissions}
 \newpage
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Fragments}
 \newpage
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Bundles}
 \newpage
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_NavigationDrawer}
 \newpage
+\cfoot{Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_User}
 \newpage
+\cfoot{Daniel Bersenkowitsch \\\pagemark}
 \subfile{bersenkowitsch_export}
 \newpage
+\cfoot{Daniel Bersenkowitsch \\\pagemark}
 \subfile{bersenkowitsch_trainingsplanmgt}
 \newpage
+\cfoot{Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_Exercises}
 \newpage
+\cfoot{Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_Video}
 \newpage
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Music-Player}
 \newpage
+\cfoot{Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_Statistic}
 \newpage
+\cfoot{Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_DataBase}
 \newpage
+\cfoot{Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_SocialMedia}
 \newpage
+\cfoot{Daniel Bersenkowitsch \\\pagemark}
 \subfile{bersenkowitsch_icons}
 
 
 \newpage % KAPITEL KOMMERZIALISIERUNG
 \section{Kommerzialisierung}
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Advertising}
 \newpage
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Donations}
 \newpage
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Freemium} 
 \newpage
+\cfoot{Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_FreePremium} 
 \newpage
+\cfoot{Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_PaidVersion} 
 \newpage
+\cfoot{Gerald Irsiegler \\\pagemark}
 \subfile{irsiegler_SellApp}
 \newpage
+\cfoot{Daniel Bersenkowitsch \\\pagemark}
 \subfile{bersenkowitsch_Promotions} 
 
 \newpage
@@ -102,5 +131,9 @@
 \listoffigures
 \newpage
 \printbibliography
+
+\newpage
+\cfoot{\pagemark}
+\includepdf[pages={1-11}]{prot.pdf}
 
 \end{document}
