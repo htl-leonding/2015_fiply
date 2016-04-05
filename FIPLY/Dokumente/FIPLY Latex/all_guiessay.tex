@@ -38,7 +38,7 @@ Beschreibung unserer Umsetzung:
 
 \subsubsection{Navigation}
 Als Navigation wird das Wechseln von einer Funktion der App zur Nächsten bezeichnet. Dies wird meist durch Buttons erreicht und grafisch mit Transitions dargestellt.
-Die Buttons sollen auch ohne Text sprechend sein was sie bewirken bzw. wohin man mit ihnen navigiert. Dies kann durch bestimmte Zeichen auf den Buttons erreicht werden, z.B.: ein Zahnrad für die Einstellungen oder eine Lupe für eine Suchfunktion. Es sollen auch andere Methoden zur Navigation wie beispielsweise über den Bildschirm wischen verwendet werden.
+Die Buttons sollen auch ohne Text sprechend sein und dem Benutzer vermitteln, welche Funktionen sie bieten. Dies kann durch bestimmte Zeichen auf den Buttons erreicht werden, z.B.: ein Zahnrad für die Einstellungen oder eine Lupe für eine Suchfunktion. Es sollen auch andere Methoden zur Navigation wie beispielsweise über den Bildschirm wischen verwendet werden.
 So lässt sich dies Umsetzen:
 \begin{itemize}
 	\item Fragments: Mithilfe von Fragments kann man Navigation vortäuschen. Man wechselt dabei nicht zwischen den Activities hin und her, sondern wechselt Teile der aktuellen Ansicht aus.
@@ -72,9 +72,8 @@ Behandlung mit Android Studio: (Necessary Evil-Steuerelemente)
 	\item Switch: Ein Switch hat 2 Zustände (z.B: on and off) und der Zustand kann durch Klicken oder Ziehen geändert werden.
 	\item CheckBox: Eine CheckBox hat 2 Zustände (checked and unchecked) und dieser kann durch Klicken geändert werden.
 	\item RadioButton: Ein RadioButton hat 2 Zustände (checked and unchecked) und 
-	dieser kann durch Klicken geändert werden. Anders als bei einer 
-	RadioButtons werden meist in einer RadioGroup verwendet.
-	Selektieren eines RadioButtons deselektiert alle anderen RadioButtons dieser Gruppe.
+	dieser kann durch Klicken geändert werden. Anders als bei einer CheckBox werden diese meist in einer RadioGroup verwendet.
+	Das Selektieren eines RadioButtons deselektiert alle anderen RadioButtons dieser Gruppe.
 	\item ToggleButton: Ein ToggleButton hat 2 Zustände (z.B.: on and off) und der Zustand kann durch Klicken geändert werden. Der Zustand wird durch ein Aufleuchten des Buttons angezeigt.
 	\item SeekBar: Eine SeekBar ist eine ProgressBar mit ziehbarem Slider um den Fortschritt zu setzen.
 	\item RatingBar: Eine RatingBar ist eine SeekBar, die den Fortschritt in Sternen anzeigt. Der Fortschritt kann durch Klicken oder Ziehen verändert 
