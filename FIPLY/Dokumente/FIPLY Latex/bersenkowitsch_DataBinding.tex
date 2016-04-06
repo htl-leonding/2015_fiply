@@ -54,7 +54,7 @@ public class OldWayActivity extends AppCombatActivity {
 	}
 }
 \end{lstlisting}
-
+\ \\
 Ein weitere Umständlichkeit ist es, für jedes Element ein findViewById-casting vornehmen zu müssen, wie wir es im Aktivitätencode vorfinden. Dieses Zugriffsverfahren ist, wie bereits oben erwähnt, unnötig performancelastig und kann vermieden werden.
 \subsubsection{Nacher}
 
@@ -127,7 +127,7 @@ Gehen wir davon aus, unsere .xml Datei besteht aus einem Linearlayout und zwei T
 </LinearLayout>
 
 \end{lstlisting}
-
+\ \\
 Nun, um Datenanbindung zu ermöglichen, brauchen wir eine Objektklasse auf die wir referenzieren. In diesem Fall erstellen wir eine Klasse $"$User" mit den String-Attributen firstName und lastName. Die Klasse besteht weiters aus einem Konstruktorfeld mit den Attributen und den jeweiligen getter-Methoden: 
 
 \begin{lstlisting}[caption={Unsere Objektklasse die bei der Datenanbindung referenziert wird.},label=DescriptiveLabel]
@@ -148,7 +148,7 @@ public class User {
     }
 }
 \end{lstlisting}
-
+\ \\
 Ist diese erstellt, kann bei der Layoutdatei weitergemacht werden. Es wird nun ein Layout-Tag erstellt. Es folgt ein variable Tag innerhalb eines data Tags. Darin wird eine Variable definiert, auf die man innerhalb der Elemente zugreifen kann.
 
 \begin{lstlisting}[caption={Die XML Datei nach der Integration einer Datenanbindung.},label=DescriptiveLabel]
@@ -174,7 +174,7 @@ Ist diese erstellt, kann bei der Layoutdatei weitergemacht werden. Es wird nun e
 	    </LinearLayout>
 </layout>
 \end{lstlisting}
-
+\ \\
 Jetzt können wir unsere ID-Vergabe bei den Elementen löschen und im Text-Tag auf die jeweiligen Attribute des Userobjekts verweisen.
 
 \paragraph{In der .java Klasse}
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
 	}
 }
 \end{lstlisting}
-
+\ \\
 Es wird eine Instanz der generierten Klasse erstellt, welche dann ein Objekt angebunden bekommt, dessen Attribute die Elemente bekommen. Jede Änderung der verwendeten Eigenschaften der erstellten Userinstanz bedeutet auch eine automatische Änderung des Elements. 
 [\citetitle{datbshowcase} \cite{datbshowcase}]
 
