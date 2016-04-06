@@ -1,9 +1,6 @@
 \documentclass[FIPLY_base.tex]{subfiles}
 
 %\author{Daniel Bersenkowitsch}
-
-
-
 \begin{document}
 	\section{Pflichtenheft}
 	
@@ -19,23 +16,26 @@
 	
 	\subsection{Funktionale Anforderungen}
 	Die persönlichen Profildaten werden beim ersten Öffnen der Applikation erfasst. Der Benutzer kann jederzeit einen Trainingskatalog einsehen, in der alle Übungen grafisch nach Muskelgruppen sortiert sind. Jede Übung besitzt eine detaillierte Beschreibung, Anleitung und ein Video der Ausführung. Sobald man alle nötigen Informationen angegeben hat, ist es möglich einen Trainingsplan generieren zu lassen, welcher  als Excel-Tabelle abgespeichert und verschickt werden kann. Wenn man zu trainieren beginnen möchte, kann man eine Trainingssession starten. Dabei gibt es einen eingebauten Musikplayer, der die lokale Musikbibliothek wiedergibt. Die aktuelle Übung wird angezeigt und weiters steht ein Timer zur Verfügung, der vor allem beim Konditionstraining zum Einsatz kommt. Nach jedem Trainingsablauf soll der Benutzer ein Feedback geben, um seine Fortschritte zu vermerken. Die Fortschritte können jederzeit eingesehen und auf Social Networks geteilt werden. Zusätzlich werden einmal wöchentlich Userdaten (z.B.: Gewicht und Gesundheitszustand) abgefragt, um seine Entwicklung akkurat darstellen zu können.
-	\subsubsection{Use Case Diagram (1 bis 6)}
-	\begin{figure}[H]
-		\begin{subfigure}[b]{0.3\textwidth}
-			\centering
-			\includegraphics[scale=0.5]{img/UseCaseDiagram}
-		\end{subfigure}
-		\caption{Die Systemarchitektur zu der Applikation}
-	\end{figure}
-	\newpage
+	
 	\subsubsection{Systemarchitektur}
 	\begin{figure}[H]
 		\begin{subfigure}[b]{0.3\textwidth}
 			\centering
-			\includegraphics[scale=0.6]{img/Systemarchitektur}
+			\includegraphics[scale=0.5]{img/UseCaseDiagram}
+			%\includegraphics[scale=0.6]{img/Systemarchitektur}
 		\end{subfigure}
 		\caption{Das Use-Case Diagramm zu der Applikation}
 	\end{figure}
+	\newpage
+	\subsubsection{Use Case Diagram (1 bis 6)}
+	\begin{figure}[H]
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.75]{img/UseCaseDiagram}
+		\end{subfigure}
+		\caption{Die Systemarchitektur zu der Applikation}
+	\end{figure}
+	\newpage
 	\subsubsection{Use Case Details}
 	UseCase 1: Übungskatalog einsehen
 		\ \\
@@ -80,11 +80,12 @@
 			\pbox{4cm}{3: Anzeigen einer ausgewählten Übung.} & \pbox{4cm}{Der Benutzer der App.} & \pbox{4cm}{Es wird ein kurzes Video zur korrekten Ausführung der Übung präsentiert, inklusive Beschreibung, Tipps bzw. Sicherheitshinweise und eventuellen weiteren Informationen.}  \\ \hline
 		\end{tabular} \\
 	\end{center}
-	\ \\
-	\begin{center}
-		\line(1,0){380}
-	\end{center}
-		\ \\
+	%\ \\
+	%\begin{center}
+	%	\line(1,0){380}
+	%\end{center}
+		%\ \\
+		\newpage
 	UseCase 2: Trainingsplan
 		\ \\
 	\begin{center}
@@ -135,6 +136,7 @@
 			\pbox{4cm}{3: Anzeigen einer ausgewählten Übung.} & \pbox{4cm}{Der Benutzer der App.} & \pbox{4cm}{Es wird eine detaillierte Beschreibung, eine Anleitung und ein Video der Ausführung angezeigt.}  \\ \hline
 		\end{tabular} \\
 	\end{center}
+	\ \\
 	Szenarien für alternative Abläufe: (Misserfolg oder Umwege zum Erfolg)
 		\ \\
 	\begin{center}	
@@ -144,11 +146,12 @@
 			\pbox{4cm}{1} & \pbox{4cm}{Falsche Eingabe bei den Eingabefeldern } & \pbox{4cm}{Die App fordert den Nutzer auf seine fehlerhaften Daten anzupassen.}\\ \hline
 		\end{tabular} \\
 	\end{center}
-		\ \\
-	\begin{center}
-		\line(1,0){380}
-	\end{center}
-		\ \\
+	%	\ \\
+	%\begin{center}
+	%	\line(1,0){380}
+	%\end{center}
+		%\ \\
+		\newpage
 	UseCase 3: Trainingsplan exportieren lassen
 	
 	\begin{center}
@@ -212,17 +215,18 @@
 			\pbox{5cm}{Email (Textfeld)} & \pbox{5cm}{Gültige ist eine formatkorrekte Emailadresse. Alles andere wird als nicht valide erkannt.} \\ \hline
 		\end{tabular} \\
 	\end{center}
-	\ \\
-	\begin{center}
-		\line(1,0){380}
-	\end{center}
-	\ \\
+	%\ \\
+	%\begin{center}
+	%	\line(1,0){380}
+	%\end{center}
+	%\ \\
+	\newpage
 	UseCase 4: Trainingssession durchführen und Musik hören.
 	\ \\
 	\begin{center}
 		\begin{tabular}{| l | l |}
 			\hline
-			\pbox{5cm}{UseCase 3:} & \pbox{5cm}{Trainingssession durchführen und Musik hören.} \\ \hline 
+			\pbox{5cm}{UseCase 4:} & \pbox{5cm}{Trainingssession durchführen und Musik hören.} \\ \hline 
 			\pbox{5cm}{Ziel des Use Cases:} & \pbox{5cm}{Der Benutzer bleibt beim Trainieren konzentriert, kann seine Fortschritte festhalten und wird zusätzlich durch die Musik motiviert. } \\ \hline
 			\pbox{5cm}{Umgebende Systemgrenze:} & \pbox{5cm}{Die Applikation selbst ist die Systemgrenze.} \\ \hline
 			\pbox{5cm}{Vorbedingung:} & \pbox{5cm}{Ein Trainingsplan muss aufbereitet worden sein (Use Case 3).}  \\ \hline
@@ -285,18 +289,20 @@
 		\end{subfigure}
 		\caption{GUI für den alternativen Aufruf/Ablauf des 4. Use Cases:}
 	\end{figure}
+	\ \\
 	Das Startgewicht ist das Gewicht mit dem der Benutzer am Anfang üben soll. Sobald  er mit schwereren Gewichten zu trainieren beginnt, kann er die Veränderung eintragen. Dies wird dann in der Trainingsentwicklung gespeichert. 
 	
-	\begin{center}
-		\line(1,0){380}
-	\end{center}
-	\ \\
+	%\begin{center}
+	%	\line(1,0){380}
+	%\end{center}
+	%\ \\
+	\newpage
 	UseCase 5: Fortschritte/Statistik anzeigen lassen.
 	\ \\
 	\begin{center}
 		\begin{tabular}{| l | l |}
 			\hline
-			\pbox{5cm}{UseCase 3:} & \pbox{5cm}{Fortschritte/Statistik anzeigen lassen.} \\ \hline 
+			\pbox{5cm}{UseCase 5:} & \pbox{5cm}{Fortschritte/Statistik anzeigen lassen.} \\ \hline 
 			\pbox{5cm}{Ziel des Use Cases:} & \pbox{5cm}{Der Benutzer soll durch die Visualisierung seiner Fortschritte motiviert werden.} \\ \hline
 			\pbox{5cm}{Umgebende Systemgrenze:} & \pbox{5cm}{Die Applikation selbst ist die Systemgrenze.} \\ \hline
 			\pbox{5cm}{Vorbedingung:} & \pbox{5cm}{Keine.}  \\ \hline
@@ -313,7 +319,8 @@
 		\end{subfigure}
 		\caption{GUI für den alternativen Aufruf/Ablauf des 5. Use Cases:}
 	\end{figure}
-	\ \\
+	%\ \\
+	\newpage
 	Szenario für den Standardablauf: (Erfolg)
 	\ \\
 	\begin{center}	
@@ -325,16 +332,17 @@
 	\end{center}
 	
 		
-	\begin{center}
-		\line(1,0){380}
-	\end{center}
-	\ \\
+	%\begin{center}
+	%	\line(1,0){380}
+	%\end{center}
+	%\ \\
+	\newpage
 	UseCase 6: Fortschritte auf Facebook teilen.
 	\ \\
 	\begin{center}
 		\begin{tabular}{| l | l |}
 			\hline
-			\pbox{5cm}{UseCase 3:} & \pbox{5cm}{Fortschritte/Statistik anzeigen lassen.} \\ \hline 
+			\pbox{5cm}{UseCase 6:} & \pbox{5cm}{Fortschritte/Statistik anzeigen lassen.} \\ \hline 
 			\pbox{5cm}{Ziel des Use Cases:} & \pbox{5cm}{Dadurch soll eine Community aufgebaut werden und andere dazu motiviert werden die Applikation auch zu benutzen. } \\ \hline
 			\pbox{5cm}{Umgebende Systemgrenze:} & \pbox{5cm}{Die Applikation selbst ist die Systemgrenze.} \\ \hline
 			\pbox{5cm}{Vorbedingung:} & \pbox{5cm}{Ein oder mehrere Trainingssessions müssen durchgeführt worden sein.}  \\ \hline

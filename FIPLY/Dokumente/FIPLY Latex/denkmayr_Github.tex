@@ -22,7 +22,7 @@ Jeder kann auf die Inhalte des Repos zugreifen, aber der Entwickler entscheidet 
 \ \\
 \textbf{Private Repositories} \newline
 Will man allerdings ein Private Repository einrichten muss man den Status seines Accounts auf Micro upgraden.
-Dieses Upgrade kostet \$7.00/Monat. In einem Private Repository, kann der Besitzer entscheiden, wer dieses Repo sehen und wer Commits in dieses Repo absetzen kann.
+Dieses Upgrade kostet \$7.00/Monat. In einem Private Repository, kann der Besitzer entscheiden, wer dieses Repository sehen und wer Commits in dieses Repo absetzen kann.
 
 \subsubsection{Git}
 \begin{quote}
@@ -61,7 +61,7 @@ Dies kann sowohl auf privaten als auch auf öffentlichen Servern, wie beispielsw
 
 \subsubsection{Commit}
 Der Vorgang eine neue Version in das lokale Repository einzureichen, wird als Commit bezeichnet.
-Das bedeutet, dass diese neue Version auf die aktuelle Branch übernommen wird.
+Das bedeutet, dass alle Änderungen auf die aktuelle Branch übernommen werden.
 Zu diesen Commits kann zurückgesprungen werden, was eine sehr hohe Transparenz im Entwicklungsvorgang ermöglicht.
 Das Projekt sollte zum Zeitpunkt eines Commits immer lauffähig sein! 
  
@@ -73,18 +73,18 @@ Sobald sich die Änderungen auf dem entfernten Repository, beziehungsweise am Gi
 \subsubsection{Branch}
 Innerhalb eines Repositories kann es mehrere Versionen einer Software geben. Diese Versionen werden in verschiedenen Branches abgespeichert.
 Es gibt eine Version im master-Branch, die lauffähig und funktionstüchtig sein sollte.
-Neue Versionen werden in Branches entwickelt und können durch Pull Requests in die Version der master-Branch übernommen werden. 
+Neue Versionen werden in Branches entwickelt und können durch Pull Requests in die master-Branch übernommen werden. 
 Auf diese Weise werden parallele Entwicklungen ermöglicht. Beispielsweise kann an einer Version weiterentwickelt und alle Fehler ausgebessert werden.
 Gleichzeitig kann in einem Branch an größeren Änderungen, zum Beispiel an dem Wechsel auf eine alternative Technologie, gearbeitet werden.
 
 \subsubsection{Pull Request}
-Wurde eine Funktion eingebaut oder ein Bug gefixt, kann ein Entwickler die Änderungen seines Branches in den master-Branch mittels einer Pull-Requests übertragen. 
+Wurde eine Funktion eingebaut oder ein Bug gefixt, kann ein Entwickler die Änderungen seiner Branch in die master-Branch mittels einer Pull-Request übertragen. 
 Ein Administrator des Repositories begutachtet die Änderungen und entscheidet dann, ob er diesen Code in die master-Branch übernehmen will.
 
 \subsubsection{Community}
-Durch die große Community und Features wie den Entwicklerprofilen ermöglicht GitHub eine große Vernetzung in der Entwicklergemeinde.
+Durch die große Community und zahlreiche Features so wie den Entwicklerprofilen, ermöglicht GitHub eine große Vernetzung in der Entwicklergemeinde.
 Personen können einem Entwickler folgen und so alle seine Projekte und Updates verfolgen.
-Jeder kann sich kostenlos die neueste Version eines Projekts herunterladen, dieses einsetzen insofern die passende Lizenz vorliegt und bei Zustimmung eines Repository Administrators am Projekt mitentwickeln.
+Jeder kann sich kostenlos die neueste Version eines Projekts herunterladen und diese einsetzen, insofern die passende Lizenz vorliegt. Bei Zustimmung eines Repository Administrators kann am Projekt auch mitentwickelt werden.
 
 \subsubsection{Integration}
 GitHub lässt sich sehr einfach in populäre Entwicklungsumgebungen integrieren. 
@@ -92,16 +92,16 @@ Sollte so ein Support nicht standardmäßig vorliegen, wird dieser über zahlrei
 
 \subsubsection{Issue}
 Da GitHub auf Kollaborationen ausgelegt ist, bietet die Webseite auch ein Ticketsystem.
-Jeder mit einem kostenlosen Account kann Tickets erstellen. Ein Issue kann von einem Administrator des Repositories einem Entwickler zugeteilt werden.
+Jeder mit einem kostenlosen Account kann Tickets erstellen. Ein Issue kann einem Entwickler zugeteilt werden.
 Im Rahmen dieses Systems ist ein Austausch der Entwickler mit der Community möglich.
-Diese Tickets weisen auf Bugs im Projekt hin, schlagen Verbesserungen des Codes vor, oder stellen den Entwicklern Fragen.
+Diese Tickets weisen auf Bugs im Projekt hin, schlagen Verbesserungen des Codes vor oder stellen den Entwicklern Fragen.
 Ist das Problem gelöst, kann ein Issue geschlossen werden.
 
 \subsubsection{.gitignore}
-GitHub bietet die Möglichkeit mehrere .gitignore Dateien anzulegen.
+GitHub bietet die Möglichkeit, mehrere .gitignore Dateien anzulegen.
 In diesen .gitignore Files werden Dateien aufgezählt, die von GitHub ignoriert werden sollen. 
 Dies umfasst hauptsächlich generierte Dateien oder Konfigurationsdateien.
-Dabei werden unnötige Änderungen und Konflikte, mit den Konfigurationsdateien anderer Entwickler, vermieden. 
+Dabei werden unnötige Änderungen und Konflikte mit den Konfigurationsdateien anderer Entwickler vermieden. 
 
 \ \\
 \begin{minipage}{.45\textwidth}
@@ -132,13 +132,13 @@ Das .gitignore im root Ordner \begin{verbatim}2015\_fiply\end{verbatim}
 /build
 /captures
 \end{lstlisting}
-Das .gitignore im Ordner unseres Androidprojekts \begin{verbatim}2015_fiply\FIPLY\App\end{verbatim} 
+Das .gitignore im Ordner des Androidprojekts \begin{verbatim}2015_fiply\FIPLY\App\end{verbatim} 
 \end{minipage}
 \ \\
 Einträge wie ''*.log'' ignorieren alle Dateien mit dieser Dateiendung. \newline
 Einträge wie ''FIPLY/App/app/app.iml'' ignorieren eine spezifische Datei.
 \ \\
-GitHub bietet standardmäßige .gitignore Dateien an, die auf bestimmte Technologien, wie beispielsweise Android, Latex, JavaScript...,  abgestimmt sind.
+GitHub bietet standardmäßige .gitignore Dateien an, die auf bestimmte Technologien, wie beispielsweise Android, LaTeX, JavaScript...,  abgestimmt sind.
 
 \subsubsection{GitHub Desktop}
 GitHub Desktop, ist der Standardclient für GitHub.

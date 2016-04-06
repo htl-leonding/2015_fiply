@@ -5,8 +5,8 @@
 
 \begin{document}
 \subsection{Advertising mit AdMob}
-Mit dem Schalten von Werbung steht eine weitere Einkommensquelle von Apps zur Verfügung.
-Es gibt mehrere Dienste die das Schalten von Werbungen unterstützen.
+Eine der häufigsten Einkommensquellen von Apps, steht mit dem Schalten von Werbung zur Verfügung.
+Es gibt mehrere Dienste, die das Schalten von Werbungen unterstützen.
 Google AdMob ist der populärste dieser Dienste und wird von Google empfohlen.
 
 \ \\
@@ -28,7 +28,7 @@ Zum einen gibt es, die sich am Rand des Bildschirms befindlichen, Banner Ads, zu
 \newpage
 \subsubsection{Banner Ads}
 Banner Ads nehmen einen kleinen Teil des Bildschirms ein. Diese werden in einem Layout XML File erstellt und dann in einer Activity, oder in einem Fragment geladen. 
-Der Benutzer wird durch einen Klick auf das Banner, auf die beworbene Webseite weitergeleitet. \newline
+Der Benutzer wird durch einen Klick auf das Banner auf die beworbene Webseite weitergeleitet. \newline
 [Google Developers \cite{gdBanner}]
 \ \\
 \begin{lstlisting}[caption={AdView in einem Layout XML File},label=DescriptiveLabel]
@@ -75,7 +75,7 @@ requestNewInterstitial();
 \end{lstlisting}
 Hier wird eine Interstitial Ad angelegt und anschließend eine Werbung für das Interstitial angefordert. 
 Die oben eingetragene Ad Unit Id liefert TestAds und dient zum Testen.
-\begin{lstlisting}[caption={Die requestNewInterstitial()-Methode},label=DescriptiveLabel]
+\begin{lstlisting}[caption={Die requestNewInterstitial-Methode},label=DescriptiveLabel]
 public void requestNewInterstitial() {
         int gender = AdRequest.GENDER_MALE;
         
@@ -93,7 +93,7 @@ Diese Abstimmung erfolgt durch die Methoden .setGender(), .setLocation() und .se
 if(mInterstitialAd.isLoaded()) 
     mInterstitialAd.show();
 \end{lstlisting}
-Ist die Werbung geladen kann sie angezeigt werden.
+Ist die Werbung geladen, kann sie angezeigt werden.
 Ebenso sind zahlreiche Methoden im AdListener vorhanden, die es ermöglichen, das Verhalten nach einer Interaktion mit der Werbung zu verwalten.
 Deshalb liegt es nahe, die nächste Werbung im onAdClosed() eines AdListeners zu laden, um diese jederzeit auf Abruf anzeigen zu können.
 
