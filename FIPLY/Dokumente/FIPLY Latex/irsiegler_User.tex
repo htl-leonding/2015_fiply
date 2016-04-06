@@ -19,20 +19,18 @@ Die Verwaltung bzw. Erstellung des Benutzers ist auf folgende drei Schritte aufg
 Im ersten Schritt gibt der Benutzer seinen Namen und sein Geschlecht an.
 Der Name wird in Plain Text eingegeben, während für das Geschlecht ein Spinner zur Verfügung gestellt wird, wobei man aus einer Liste aus: Male, Female und Other auswählen kann.
 Weiters kann er sich hier über den Facebook-Login-Button mit seinem Facebook Account anmelden.
+
 \begin{figure}[H]
-	\begin{subfigure}[b]{0.3\textwidth}
-	\includegraphics[scale=0.55]{img/User_step1}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[scale=0.5]{img/User_step1}
+		\caption{Der erste Schritt der Benutzererstellung.}
 	\end{subfigure}
 	\hfil
-	\caption{Der erste Schritt der Benutzererstellung.}
-	\begin{subfigure}[b]{0.3\textwidth}
-	\includegraphics[scale=0.55]{img/User_facebooklogin}
+	\begin{subfigure}[b]{0.6\textwidth}
+		\includegraphics[scale=0.53]{img/User_facebooklogin}
+		\caption{Der Loginscreen von Facebook.}
 	\end{subfigure}
-	\hfil
-	\caption{Der Loginscreen von Facebook.}
-	
 \end{figure}
-\newpage
 \paragraph{Schritt 2}\ \\
 Im zweiten Schritt gibt der Benutzer seine Körpergröße in Zentimetern (cm) und sein Gewicht in Kilogramm (kg) an.
 
@@ -48,7 +46,6 @@ Das Gewicht kann zwischen 40kg und 140kg auf jeden ganzen Wert eingestellt werde
 	\hfil
 	\caption{Der zweite Schritt der Usererstellung.}
 \end{figure}
-\newpage
 \paragraph{Schritt 3}\ \\
 Im dritten Schritt gibt der Benutzer an in welcher Altersgruppe er sich befindet und wie seine körperliche Verfassung derzeit ist.
 Zur Auswahl stehen bei den Altersgruppen (in Jahren):
@@ -68,8 +65,6 @@ Bei der derzeitigen Verfassung wird angegeben ob man körperlich fit oder unfit 
 	\hfil
 	\caption{Der dritte Schritt der Usererstellung.}
 \end{figure}
-
-\newpage
 
 \subsubsection{Implementierung}
 Alle Daten über den User werden im Key-Value-Repository der Datenbank als Key-Value-Paare abgespeichert. 

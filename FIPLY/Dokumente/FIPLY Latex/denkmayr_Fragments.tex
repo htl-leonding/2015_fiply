@@ -17,7 +17,6 @@ Fragments werden ab Android 3.0 (API level 11) zur Verfügung gestellt. \newline
 [Android Developers \cite{adFragmentsGuide}]}
 \end{figure}
 
-\newpage
 \subsubsection{Der Lifecycle}
 Ein Fragment ist immer in eine Activity eingebunden und daher direkt vom Lifecycle der übergeordneten Activity abhängig.
 Wird die übergeordnete Activity pausiert oder zerstört, werden auch alle zugeordneten Fragments pausiert oder zerstört. 
@@ -49,8 +48,6 @@ fragmentTransaction.commit();
 \end{lstlisting}
 Hier wird ein ExampleFragment erstellt. Man ersetzt das Fragment, das sich aktuell im FrameLayout R.id.fraPlace befindet, mit dem erstellten \newline ExampleFragment und fügt es zum Backstack hinzu.
 
-
-\newpage
 \subsubsection{Verwendung von Fragments}
 In dieser Arbeit werden Fragments verwendet, um die Benutzeransichten, ausgenommen des NavigationDrawers, anzuzeigen.
 Dabei wird ein FrameLayout im Layoutfile der MainActivity durch ein Fragment, mittels der displayView() Methode, ersetzt.
