@@ -219,6 +219,11 @@ public class UebungenRepository extends Service {
 
     }
 
+    /**
+     * Gibt einen Cursor mit allen Übungen die dem Filter entsprechen zurück.
+     * @return Übungen die dem Filter entsprechen
+     * @throws SQLException
+     */
     public Cursor getFilteredUebungen() throws SQLException {
         KeyValueRepository kvr = KeyValueRepository.getInstance();
 
@@ -265,7 +270,10 @@ public class UebungenRepository extends Service {
                 ");");
     }
 
-
+    /**
+     * Lest alle Übungen aus dem JSON-String aus und fügt sie in die DatenBank ein.
+     * @throws JSONException
+     */
     public void insertAllExercises() throws JSONException {
         reCreateUebungenTable();
         String json = repoContext.getResources().getString(R.string.exercisecatalog);

@@ -46,6 +46,11 @@ public class StatisticRepository {
         return FiplyDBHelper.getInstance(repoContext).getReadableDatabase();
     }
 
+
+    /**
+     * 
+     * @return
+     */
     public Cursor getAllDataPoints() {
         return db.query(StatisticEntry.TABLE_NAME, new String[]{
                         StatisticEntry.COLUMN_ROWID,
