@@ -83,6 +83,9 @@ Intent intent = new Intent(this,MainActivity.class);
 intent.putExtra("bundleString", "Hallo Welt!");
 \end{lstlisting} 
 Alternativ kann bei Intents auch die putExtra()-Methode verwendet werden. Diese ist für alle Datentypen, die auch ein Bundle unterstützt, verfügbar.
+
+\ \\
+
 \ \\
 \textbf{Zugriff auf die Daten}
 \begin{lstlisting}[caption={Zugriff auf die Daten in der neuen Activity durch die getExtras()-Methode},label=DescriptiveLabel]
@@ -92,6 +95,7 @@ getIntent().getExtras().getString("bundleString");
 \end{lstlisting}
 Die Methode getIntent().getExtras() ermöglicht einen Zugriff auf ein, durch einen Intent übergebenes, Bundle.
 
+\ \\
 \ \\
 Alternativ können die Daten durch getExtra-Methoden abgefragt werden.
 \begin{lstlisting}[caption={Zugriff auf die Daten in der neuen Activity durch getExtra()-Methoden},label=DescriptiveLabel]
