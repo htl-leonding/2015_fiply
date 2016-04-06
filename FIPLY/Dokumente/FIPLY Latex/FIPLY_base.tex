@@ -7,24 +7,28 @@
 
 \begin{document}
 \clearscrheadfoot
-\cfoot{\pagemark}
-
+\cfoot{}
 % KAPITEL DECKBLATT
 \subfile{all_deckblatt}
+
+\cfoot{\pagemark}
+% ERKLÄRUNG
+\newpage
+\subfile{all_erklaerung}
+% Abstracts
+\newpage
+\subfile{all_abstract}
+
 
 % KAPITEL ALLGEMEINES
 \newpage
 \tableofcontents
 \newpage
-\subfile{all_erklaerung}
-\newpage
-\subfile{all_abstract}
-\newpage
-\subfile{all_danksagung}
-\newpage
 \subfile{all_autoren}
 \newpage
 \subfile{all_personas}
+\newpage
+\subfile{all_danksagung}
 
 \newpage % KAPITEL PFLICHTENHEFT
 \cfoot{Daniel Bersenkowitsch, Andreas Denkmayr, Gerald Irsiegler \\\pagemark}
@@ -42,12 +46,14 @@
 \cfoot{Daniel Bersenkowitsch, Andreas Denkmayr \\\pagemark}
 \subfile{bersenkowitsch_photoshop}
 \subfile{bersenkowitsch_androidstudio}
-\subfile{denkmayr_intellij}
-
-\subsection{LaTeX}
+\newpage
 \cfoot{Daniel Bersenkowitsch, Andreas Denkmayr, Gerald Irsiegler \\\pagemark}
+\subfile{denkmayr_intellij}
+\subsection{LaTeX}
 \subfile{irsiegler_latex}
 \subfile{bersenkowitsch_latex}
+\newpage
+\cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_latex}
 
 \newpage % KAPITEL PLANUNG
@@ -62,10 +68,13 @@
 \section{Umsetzung}
 \cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Permissions}
+\newpage
 \cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Fragments}
+\newpage
 \cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_Bundles}
+\newpage
 \cfoot{Andreas Denkmayr \\\pagemark}
 \subfile{denkmayr_NavigationDrawer}
 \newpage
@@ -125,18 +134,22 @@
 
 \newpage
 \cfoot{Daniel Bersenkowitsch, Andreas Denkmayr, Gerald Irsiegler \\\pagemark}
+\section{Fazit}
 \subfile{all_fazit} 
 
-\cfoot{\pagemark}
 \newpage
-\lstlistoflistings
+\cfoot{\pagemark}
+\printbibliography
 \newpage
 \listoffigures
+\newpage
+\lstlistoflistings
 \newpage
 \printbibliography
 
 \newpage
-\cfoot{\pagemark}
 \includepdf[pages={1-11}]{prot.pdf}
-
+\newpage
+\mbox{}
+\thispagestyle{empty}
 \end{document}
