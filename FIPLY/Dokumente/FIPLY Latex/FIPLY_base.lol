@@ -31,7 +31,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {16}Die Definition eines FrameLayouts in einem Layout XML File}{65}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {17}Erstellen und Bef\IeC {\"u}llen von Bundels}{66}
+\contentsline {lstlisting}{\numberline {17}Erstellen und Bef\IeC {\"u}llen von Bundles}{66}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {18}Das \IeC {\"U}bergeben eines Bundles bei einer FragmentTransaction}{66}
 \defcounter {refsection}{0}\relax 
@@ -103,12 +103,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {52}Das xml-layout des FacebookLoginButtons.}{107}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {53}AdView in einem Layout XML File}{114}
+\contentsline {lstlisting}{\numberline {53}AdView in einem Layout XML File}{113}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {54}Anfordern einer Banner Ad}{114}
+\contentsline {lstlisting}{\numberline {54}Anfordern einer Banner Ad}{113}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {55}Erstellen und Anfordern einer Interstitial Ad}{115}
+\contentsline {lstlisting}{\numberline {55}Erstellen und Anfordern einer Interstitial Ad}{114}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {56}Die requestNewInterstitial()-Methode}{115}
+\contentsline {lstlisting}{\numberline {56}Die requestNewInterstitial-Methode}{114}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {57}Das Anzeigen einer Interstitial Ad, sobald sie geladen ist}{115}
+\contentsline {lstlisting}{\numberline {57}Das Anzeigen einer Interstitial Ad, sobald sie geladen ist}{114}
