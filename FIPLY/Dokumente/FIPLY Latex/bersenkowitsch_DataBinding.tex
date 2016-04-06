@@ -16,7 +16,7 @@ In erster Linie werden dem Programmierer dadurch viele Zeilen Code erspart. Date
 \subsubsection{Vorher}
 
 Auf der unterstehenden Grafik ist eine Android XML-Layoutdatei mit dem Code in der zugehörigen Aktivität ohne Datenanbindung zu sehen. Es besteht aus einem LinearLayout mit zwei enthaltenen TextViews. Diesen wird in der Aktivität der Vornamen und der Nachnamen eines Employee Models zugewiesen. Ein Problem ist es, jedes Element eine ID zuweisen zu müssen. Wenn man nun mehrere Views mit unterschiedlichen Layout XML-Dateien und gleichnamigen IDs hat und man später die Refactor-Funktion verwenden will, benennt man alle neu, ohne das man es will. Man muss für jedes Element eine unterschiedliche ID vergeben, obwohl manche die selbe Funktion haben. Dadurch entstehen lange und unübersichtliche ID-Namen. Das Problem ist: Es muss immer darauf geachtet werden, keine doppelten IDs zu vergeben.\\
-
+\newpage
 \begin{lstlisting}[caption={XML Datei vor dem Einsatz von Databinding.},label=DescriptiveLabel]
 <LinearLayout
 	android:orientation="vertical"
@@ -56,6 +56,8 @@ public class OldWayActivity extends AppCombatActivity {
 \end{lstlisting}
 \ \\
 Ein weitere Umständlichkeit ist es, für jedes Element ein findViewById-casting vornehmen zu müssen, wie wir es im Aktivitätencode vorfinden. Dieses Zugriffsverfahren ist, wie bereits oben erwähnt, unnötig performancelastig und kann vermieden werden.
+
+\newpage
 \subsubsection{Nacher}
 
 \begin{lstlisting}[caption={XML Datei nach dem Einsatz von Databinding.},label=DescriptiveLabel]
