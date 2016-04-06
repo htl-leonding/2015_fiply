@@ -13,10 +13,10 @@
 	Die Applikation kann von jedem benutzt werden, der körperlich aktiv sein will. Der Benutzer lädt sich die Applikation vom Google PlayStore herunter, gibt sein persönliches Profil und Trainingsziel an und erhält seinen angepassten Trainingsplan. Die App kann sowohl zu Hause als auch im Fitness-Studio verwendet werden. Nach jeder Trainingseinheit werden seine Fortschritte vermerkt und können eingesehen werden.
 	
 	\subsubsection{Zielbestimmung}
-	Der User soll bei dem Verfolgen seiner Ziele (Muskelaufbau, Gesundheit, Abnehmen) durch die App unterstützt werden.
+	Der User soll bei dem Verfolgen seiner Ziele (Muskelaufbau, Gesundheit, Kraftausdauer) durch die App unterstützt werden.
 	
 	\subsection{Funktionale Anforderungen}
-	Die persönlichen Profildaten werden beim ersten Öffnen der Applikation erfasst. Der Benutzer kann jederzeit einen Trainingskatalog einsehen, in der alle Übungen grafisch nach Muskelgruppen sortiert sind. Jede Übung besitzt eine detaillierte Beschreibung, Anleitung und ein Video der Ausführung. Sobald man alle nötigen Informationen angegeben hat, ist es möglich einen Trainingsplan generieren zu lassen, welcher  als Excel-Tabelle abgespeichert und verschickt werden kann. Wenn man zu trainieren beginnen möchte, kann man eine Trainingssession starten. Dabei gibt es einen eingebauten Musikplayer, der die lokale Musikbibliothek wiedergibt. Die aktuelle Übung wird angezeigt und weiters steht ein Timer zur Verfügung, der vor allem beim Konditionstraining zum Einsatz kommt. Nach jedem Trainingsablauf soll der Benutzer ein Feedback geben, um seine Fortschritte zu vermerken. Die Fortschritte können jederzeit eingesehen und auf Social Networks geteilt werden. Zusätzlich werden einmal wöchentlich Userdaten (z.B.: Gewicht und Gesundheitszustand) abgefragt, um seine Entwicklung akkurat darstellen zu können.
+	Die persönlichen Profildaten werden beim ersten Öffnen der Applikation erfasst. Der Benutzer kann jederzeit einen Trainingskatalog einsehen, in dem alle Übungen grafisch nach Muskelgruppen sortiert sind. Jede Übung besitzt eine detaillierte Beschreibung, Anleitung und ein Video der Ausführung. Sobald man alle nötigen Informationen angegeben hat, ist es möglich einen Trainingsplan generieren zu lassen, welcher  als Excel-Tabelle abgespeichert und verschickt werden kann. Wenn man zu trainieren beginnen möchte, kann man eine Trainingssession starten. Dabei gibt es einen eingebauten Musikplayer, der die lokale Musikbibliothek wiedergibt. Die aktuelle Übung wird angezeigt und weiters steht ein Timer zur Verfügung, der vor allem beim Konditionstraining zum Einsatz kommt. Nach jedem Trainingsablauf soll der Benutzer ein Feedback geben, um seine Fortschritte zu vermerken. Die Fortschritte können jederzeit eingesehen und auf Social Networks geteilt werden. Zusätzlich werden einmal wöchentlich Userdaten (z.B.: Gewicht und Gesundheitszustand) abgefragt, um seine Entwicklung akkurat darstellen zu können.
 	
 	\subsubsection{Systemarchitektur}
 	\begin{figure}[H]
@@ -329,7 +329,7 @@
 		\caption{GUI für den alternativen Aufruf/Ablauf des 4. Use Cases:}
 	\end{figure}
 	\ \\
-	Das Startgewicht ist das Gewicht mit dem der Benutzer am Anfang üben soll. Sobald  er mit schwereren Gewichten zu trainieren beginnt, kann er die Veränderung eintragen. Dies wird dann in der Trainingsentwicklung gespeichert. 
+	Das Startgewicht ist das Gewicht, mit dem der Benutzer am Anfang üben soll. Sobald  er mit schwereren Gewichten zu trainieren beginnt, kann er die Veränderung eintragen. Dies wird dann in der Trainingsentwicklung gespeichert. 
 	
 	%\begin{center}
 	%	\line(1,0){380}
@@ -443,14 +443,14 @@
 	\end{center}
 	\ \\
 	\subsection{Mengengerüst}
-	Übungskatalog 50-100 Datensätze einmalig in die Übungskatalogtabelle (kaum neue Sätze).
-	Trainingssession 100-200 Datensätze pro Jahr in die Trainingssession-Tabelle.
-	Usersnapshot: 50-55 Datensätze pro Jahr in die Usersnapshot-Tabelle.
+	Übungskatalog: 50-100 Datensätze einmalig in der Übungskatalogtabelle (kaum neue Sätze).
+	Trainingssession: 100-200 Datensätze pro Jahr in der Trainingssessiontabelle.
+	Usersnapshot: 50-55 Datensätze pro Jahr in die Usersnapshottabelle.
 	50-100 Videos werden von Youtube eingebunden.
 	Zusätzlich werden 50-200 komprimierte Fotos abgespeichert werden.
 	
 	\subsection{Risikovermeidung}
-	Sollte Nutzer bei Verwendung der Apps psychische oder physische Schäden davontragen trägt er selbst die Verantwortung.
+	Sollte der Nutzer bei Verwendung der Apps psychische oder physische Schäden davontragen, trägt er selbst die Verantwortung.
 	
 	\subsection{Abnahmekriterien}
 	Die App ist im Google Playstore verfügbar.
