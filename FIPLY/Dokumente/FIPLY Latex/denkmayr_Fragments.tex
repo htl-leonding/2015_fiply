@@ -13,7 +13,7 @@ Fragments werden ab Android 3.0 (API level 11) zur Verfügung gestellt. \newline
 
 \begin{figure}[H]
 \includegraphics[scale=0.60]{img/fragments_modules}
-\caption{Zum Beispiel kann man mithilfe von Fragments Views erstellen, die sowohl auf einem Tablet, als auch auf einem Handy ein optimales Benutzerinterface anbieten. 
+\caption{Optimales Benutzerinterface durch Verwendung von Fragments. 
 [Android Developers \cite{adFragmentsGuide}]}
 \end{figure}
 
@@ -26,7 +26,8 @@ Wird die übergeordnete Activity pausiert oder zerstört, werden auch alle zugeo
 @Override
 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        return inflater.inflate(R.layout.exampleFragment, container, false);
+        return inflater.inflate(R.layout.exampleFragment, 
+        	container, false);
     }
 \end{lstlisting}
 Das Aufbauen der Benutzeransicht erfolgt in der onCreateView() Methode eines Fragments. In diesem Fall wird das Layout XML File exampleFragment angezeigt.
@@ -75,7 +76,7 @@ Methoden wie diese werden immer wieder verwendet, um die Fragment Transactions a
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 \end{lstlisting}
-So sieht ein FrameLayout aus das wir immer wieder verwenden, um darin Fragments anzuzeigen.
+So sieht ein FrameLayout aus, das immer wieder verwendet wird, um darin Fragments anzuzeigen.
 
 %\newpage
 %\begin{figure}[H] % Bilder aktualisieren
