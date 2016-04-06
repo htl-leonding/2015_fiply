@@ -33,7 +33,7 @@ Der Zugriff auf die abgespeicherten Daten erfolgt über 4 Schichten:
 Alle Daten werden im lokalen Speicher des Mobilgerätes abgelegt und persistiert. Die Speicherung übernimmt das DBMS von SQLite.
 
 \paragraph{Datenbankobjekt}\ \\
-Das Datenbankobjekt ist jenes, welches im lokalen Speicher abgelegt ist und von der nächsten Schicht instanziert wird. Es enthält die Informationen über alle in der Datenbank abgespeicherten Daten und erlaubt es auf diese zuzugreifen.
+Das Datenbankobjekt ist jenes, welches im lokalen Speicher abgelegt ist und von der nächsten Schicht instanziert wird. Es enthält die Informationen über alle in der Datenbank abgespeicherten Daten und erlaubt den Zugriff auf diese.
 
 \paragraph{DB Helper}\ \\
 Der DB Helper kapselt das Datenbankobjekt und stellt es den Repositories zur Verfügung. Der DB Helper ist als Singleton implementiert und wird in den Repositories instanziert.
@@ -85,7 +85,7 @@ Folgende Repositories sind in der Applikation vorhanden:
 
 \newpage
 \subsubsection{Contract}
-Der Contract ist eine Datei in welcher die Metadaten der Datenbank zu finden sind.
+Der Contract ist eine Datei in welcher die Metadaten der Datenbank zu gespeichert sind.
 Dieser "Vertrag" existert um den makellosen Zugriff auf die Datenbank sicherzustellen.
 Für jede Tabelle in der Datenbank wird im Contract eine eigene Klasse angelegt, diese beinhaltet den Tabellennamen und die Namen aller ihrer Attribute als strings.
 \begin{lstlisting}[caption={Eine Contract Klasse, mit allen Metadaten.},label=DescriptiveLabel]
