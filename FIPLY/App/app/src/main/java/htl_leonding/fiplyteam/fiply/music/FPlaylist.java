@@ -25,6 +25,9 @@ import java.util.List;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 
+/**
+ * Nähere Dokumentationen befinden sich im schriftlichen teil der Diplomarbeit im Kapitel Music
+ */
 public class FPlaylist extends Fragment {
 
     PlaylistSongsRepository psrep;
