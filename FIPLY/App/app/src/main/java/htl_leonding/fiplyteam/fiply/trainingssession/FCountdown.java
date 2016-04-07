@@ -23,12 +23,24 @@ public class FCountdown extends Fragment {
     long milliSecondsTotal;
     Boolean isTimerRunning = false;
 
+    /**
+     * Hier wird das fragment_countdown fragment angezeigt
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_countdown, container, false);
     }
 
+    /**
+     * Hier werdne alle ViewElemente und Lsitener gesetzt
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -81,6 +93,9 @@ public class FCountdown extends Fragment {
         cdt.start();
     }
 
+    /**
+     * Diese Methode versteckt das virtuelle Keyboard
+     */
     public void hideKeyboard() {
         InputMethodManager imms = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imms.hideSoftInputFromWindow(getView().getWindowToken(), 0);

@@ -51,6 +51,10 @@ public class ReadMusic {
         return songs;
     }
 
+    /**
+     * Der MediaStore wird nach allen Musikdateien durchsucht
+     * @param context
+     */
     public void ReadSongsIntoArrayList(Context context) {
         ContentResolver cr = context.getApplicationContext().getContentResolver();
 
@@ -66,13 +70,13 @@ public class ReadMusic {
 
             if(count > 0)
             {
-                while(cur.moveToNext())
+                while(cur.moveToNext()) //Die gefundenen Songs werden nun in HashMaps gespeichert
                 {
                     HashMap<String, String> hm = new HashMap<>();
                     hm.put("songTitle", cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.TITLE)));
                     hm.put("songPath", cur.getString(cur.getColumnIndex(MediaStore.Audio.Media.DATA)));
                     Log.i("Songs", hm.toString());
-                    songs.add(hm);
+                    songs.add(hm); //Die HashMaps werden nun zu einer Lsite hinzugefügt
                 }
             }
         }

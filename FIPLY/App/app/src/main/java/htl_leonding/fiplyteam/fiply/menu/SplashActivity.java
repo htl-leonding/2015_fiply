@@ -63,6 +63,10 @@ public class SplashActivity extends Activity {
     PhasenRepository phasenRep;
     List<Trainingsphase> trainingsphaseList;
 
+    /**
+     * Hier wird die Activity angezeigt und alle Repositories initialisiert.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +96,7 @@ public class SplashActivity extends Activity {
     }
 
     /**
-     * Dieser Task führt zuerst ein Sleep aus bevor er einen Intent auf MainActivity durchführt
+     * Dieser Task führt mehrere Datenbankinteraktionen aus bevor er einen Intent auf MainActivity durchführt
      */
     public class SleepIntentTask extends AsyncTask<String, Void, String> {
 
@@ -121,6 +125,9 @@ public class SplashActivity extends Activity {
             return "Success";
         }
 
+        /**
+         * Beim ersten Start der App werden alle Datenbanktabellen erstellt.
+         */
         private void reCreateDatabaseOnFirstStart() {
             kvr.reCreateKeyValueTable();
             uer.reCreateUebungenTable();
@@ -182,23 +189,6 @@ public class SplashActivity extends Activity {
                     instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), rowid);
                 }
             }
-            /*Cursor c = phasenRep.getAllPhasen();
-            Cursor c2;
-            int iRowId = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_ROWID);
-            int iPhasenname = c.getColumnIndex(FiplyContract.PhasenEntry.COLUMN_PHASENNAME);
-            int iRowName;
-            String rowid;
-            String phasenname;
-            String uebid;
-            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-                rowid = c.getString(iRowId);
-                phasenname = c.getString(iPhasenname);
-                c2 = instRep.getInstruktionByPhasenId(rowid);
-                iRowName = c2.getColumnIndex(FiplyContract.InstruktionenEntry.COLUMN_ROWID);
-                for (c2.moveToFirst(); !c2.isAfterLast(); c2.moveToNext()) {
-                    uebid = c2.getString(iRowName);
-                }
-            }*/
         }
     }
 }

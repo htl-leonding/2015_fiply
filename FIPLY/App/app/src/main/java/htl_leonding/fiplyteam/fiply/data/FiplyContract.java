@@ -2,11 +2,11 @@ package htl_leonding.fiplyteam.fiply.data;
 
 import android.provider.BaseColumns;
 
+/**
+ * Diese Klasse enthält die Strukturen aller Datenbanktabellen
+ */
 public class FiplyContract {
 
-    /**
-     * Struktur der Datenbanktabelle "Uebungen"
-     */
     public static final class UebungenEntry implements BaseColumns {
         public static final String TABLE_NAME = "uebungen";
         public static final String COLUMN_ROWID = "_id";
@@ -56,7 +56,6 @@ public class FiplyContract {
         public static final String COLUMN_SONGPATH = "songpath";
     }
 
-
     public static final class StatisticEntry implements BaseColumns {
         public static final String TABLE_NAME = "statistics";
         public static final String COLUMN_ROWID = "_id";
@@ -73,6 +72,5 @@ public class FiplyContract {
         public static final String COLUMN_ENDDATE = "enddate";
         public static final String COLUMN_ZIEL = "ziel";
     }
-
 
 }

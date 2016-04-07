@@ -27,12 +27,24 @@ public class FFeedback extends Fragment {
     StatisticRepository srep;
     MainActivity mainActivity;
 
+    /**
+     * Hier wird das fragment_feedback fragment angezeigt
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_feedback, container, false);
     }
 
+    /**
+     * Hier werden alle VuewElemente und Listener gesetzt
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -62,18 +74,18 @@ public class FFeedback extends Fragment {
         tvGewicht.setText("Du hast heute insgesamt " + getArguments().getDouble("gesamtgewicht") + " kg gestemmt!");
         srep.insertDataPoint(getMood(), getArguments().getDouble("gesamtgewicht"));
 
-        if(mainActivity.mInterstitialAd.isLoaded()) {
+        if(mainActivity.mInterstitialAd.isLoaded()) { //wenn die Werbung geladen ist, wird sie angezeigt
             mainActivity.mInterstitialAd.show();
         }
         mainActivity.mInterstitialAd.setAdListener(new AdListener() {
             @Override
-            public void onAdClosed() {
+            public void onAdClosed() { //wird die Werbung geschlossen, wird die nächste bereits geladen
                 super.onAdClosed();
                 mainActivity.requestNewInterstitial();
             }
 
             @Override
-            public void onAdFailedToLoad(int errorCode) {
+            public void onAdFailedToLoad(int errorCode) { //tritt ein Fehler beim Laden einer Werbung auf, wird die nächste bereits geladen
                 super.onAdFailedToLoad(errorCode);
                 mainActivity.requestNewInterstitial();
             }

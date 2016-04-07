@@ -25,12 +25,24 @@ public class FMusicList extends Fragment {
     Spinner spinner;
     PlaylistSongsRepository psrep;
 
+    /**
+     * Hier wird das music_list fragment angezeigt
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.music_list, container, false);
     }
 
+    /**
+     * Hier werden alle Viewelemente gesetzt
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -47,6 +59,13 @@ public class FMusicList extends Fragment {
         spinner.setSelection(psrep.getPlaylists().indexOf("All"));
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * Ein Klick auf ein Element des Spinners ändert den Adapter der ListView (wechselt die Liste aus)
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 changeAdapter((String) spinner.getItemAtPosition(position));
@@ -68,6 +87,10 @@ public class FMusicList extends Fragment {
         });
     }
 
+    /**
+     * Ändert den Afapter der ListView
+     * @param playlist
+     */
     private void changeAdapter(String playlist) {
         listView.setAdapter(new SimpleAdapter(getActivity(), psrep.getByPlaylistName(playlist), R.layout.music_item,
                 new String[]{"songTitle"}, new int[]{R.id.songTitle}));

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     public InterstitialAd mInterstitialAd;
 
     /**
-     * Wird beim Ersten Aufruf der MainActivity aufgerufen und dient dem setzen der OnClickListener
+     * Wird beim Ersten Aufruf der MainActivity aufgerufen und dient dem setzen aller Viewelemente
      *
      * @param savedInstanceState default
      */
@@ -216,6 +216,9 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
+    /**
+     * Eine neue Interstitial-Ad mit passenden Eigenschaften wird angefordert (aber noch nicht angezeigt)
+     */
     public void requestNewInterstitial() {
         int gender;
         try {
@@ -231,6 +234,11 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         mInterstitialAd.loadAd(adRequest);
     }
 
+    /**
+     * Dieser Listener überprüft ob sich die Einstellungen bezüglich Notifications geändert haben
+     * @param sharedPreferences die jeweilige Preference
+     * @param key der Name der geänderten Preference
+     */
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals("notificationInterval")) {
@@ -239,6 +247,11 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         }
     }
 
+    /**
+     * Die Notifications werden gestartet bzw. neu gestarted.
+     * Diese erfolgen in dem in den Preferences gesetzten Intervall.
+     * Quelle: http://it-ride.blogspot.co.at/2010/10/android-implementing-notification.html
+     */
     private void restartNotifications() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         int minutes = Integer.valueOf(prefs.getString("notificationInterval", "0"));

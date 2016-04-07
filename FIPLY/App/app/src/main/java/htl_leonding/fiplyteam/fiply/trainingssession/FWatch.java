@@ -18,12 +18,24 @@ public class FWatch extends Fragment {
     Boolean isChronoRunning = false, isShowingLap = false;
     private long capturedTime;
 
+    /**
+     * Hier wird das fragment_watch fragment angezeigt
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_watch, container, false);
     }
 
+    /**
+     * Hier werden alle ViewElemente und Listener gesetzt
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -32,6 +44,9 @@ public class FWatch extends Fragment {
         watchReset = (Button) getActivity().findViewById(R.id.btnWatchReset);
         watchLap = (Button) getActivity().findViewById(R.id.btnWatchLap);
 
+        /**
+         * Diesr Listener behandelt das Verhalten des Start Buttons
+         */
         watchStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +73,9 @@ public class FWatch extends Fragment {
                 }
             }
         });
+        /**
+         * Dieser Lsitener beinhaltet das Verhalten des Reset Buttons
+         */
         watchReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +89,9 @@ public class FWatch extends Fragment {
                 setIsShowingLap(false);
             }
         });
+        /**
+         * Dieser Listener behandelt das Verhalten des Lap Buttons
+         */
         watchLap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

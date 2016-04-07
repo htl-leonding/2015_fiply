@@ -6,14 +6,26 @@ import android.support.v4.app.FragmentTransaction;
 
 import htl_leonding.fiplyteam.fiply.R;
 
+/**
+ * Diese Klasse beinhaltet mehrer Methoden die alle dazu gedacht sind das ANzeigen von Fragments übersichtlich zu machen
+ */
 public class displayFragment {
 
+    /**
+     * Erstellt das Trainingsinstructions Fragment
+     * @param display
+     * @param fManager
+     */
     public static void displayTSInstruktion(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         fragmentTransaction.replace(R.id.fraTsUebung, display, "TSInstruktion");
         fragmentTransaction.commit();
     }
 
+    /**
+     * Zeigt das Trainingsinstructions Fragment anstatt des MusicList Fragment an
+     * @param fManager
+     */
     public static void displayTSInstruktionAgain(FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         fragmentTransaction.remove(fManager.findFragmentByTag("TSMusicList"));
@@ -21,6 +33,11 @@ public class displayFragment {
         fragmentTransaction.commit();
     }
 
+    /**
+     * Zeigt das MusicList Fragment anstatt des Trainingsinstructions Fragment an
+     * @param display
+     * @param fManager
+     */
     public static void displayTSMusicList(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         fragmentTransaction.hide(fManager.findFragmentByTag("TSInstruktion"));
@@ -66,12 +83,14 @@ public class displayFragment {
         fragmentTransaction.commit();
     }
 
+    @Deprecated
     public static void displayDialogChooseDay(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         fragmentTransaction.replace(R.id.fraPlace, display);
         fragmentTransaction.commit();
     }
 
+    @Deprecated
     public static void displayGeneratePlan(Fragment display, FragmentManager fManager) {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         fragmentTransaction.addToBackStack(null);

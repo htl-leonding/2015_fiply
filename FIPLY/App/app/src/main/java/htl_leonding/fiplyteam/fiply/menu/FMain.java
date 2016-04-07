@@ -128,7 +128,10 @@ public class FMain extends Fragment {
             }
         });
 
-
+        /**
+         * Bei Drücken des Statisitc Buttons wird eine FragmentTransaction durchgeführt,
+         * in der das Fragment der Statisitc in das FrameLayout der MainActivity geladen wird
+         */
         startStatistic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,6 +141,10 @@ public class FMain extends Fragment {
             }
         });
 
+        /**
+         * Bei Drücken des Settings Buttons wird eine FragmentTransaction durchgeführt,
+         * in der das Fragment der Settings in das FrameLayout der MainActivity geladen wird
+         */
         startSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
