@@ -48,7 +48,7 @@ public class PhasenRepository {
         return FiplyDBHelper.getInstance(repoContext).getReadableDatabase();
     }
 
-
+    //Fügt eine Phase in die Tabelle ein.
     public long insertPhase(String startDate, String endDate, String phasenName,
                             String phasenDauer, String pausenDauer, String saetze, String wiederholungen, String planId) {
         ContentValues initialValues = new ContentValues();
@@ -64,6 +64,7 @@ public class PhasenRepository {
         return db.insert(PhasenEntry.TABLE_NAME, null, initialValues);
     }
 
+    //Gibt alle Phasen zurück.
     public Cursor getAllPhasen() {
         return db.query(PhasenEntry.TABLE_NAME, new String[]{
                         PhasenEntry.COLUMN_ROWID,
@@ -79,6 +80,7 @@ public class PhasenRepository {
                 null, null, null, null, PhasenEntry.COLUMN_STARTDATE + " ASC");
     }
 
+    //Gibt eine Phase mit einer bestimmten id zurück.
     public Cursor getPhase(long rowId) throws SQLException {
         Cursor myCursor = db.query(true, PhasenEntry.TABLE_NAME, new String[]{
                         PhasenEntry.COLUMN_ROWID,
@@ -98,6 +100,7 @@ public class PhasenRepository {
         return myCursor;
     }
 
+    // Gibt alle Phasen mit einem bestimmten startDate zurück.
     public Cursor getPhaseByStartDate(Date startDate) {
         DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
 
@@ -107,6 +110,7 @@ public class PhasenRepository {
                 null, null, null, PhasenEntry.COLUMN_ROWID + " ASC", null);
     }
 
+    // Erstellt die Phasentabelle
     public void reCreatePhasenTable() {
         db.execSQL("DROP TABLE IF EXISTS " + PhasenEntry.TABLE_NAME + ";");
         final String SQL_CREATE_PHASEN_TABLE = "create table " + PhasenEntry.TABLE_NAME +
@@ -123,16 +127,19 @@ public class PhasenRepository {
         db.execSQL(SQL_CREATE_PHASEN_TABLE);
     }
 
+    // Löscht eine Phase mit einer bestimmten Id
     public void deleteByPlanId(String id){
         db.delete(PhasenEntry.TABLE_NAME, PhasenEntry.COLUMN_PLANID + "=" + id, null);
     }
 
+    // Gibt alle Phasen mit einer bestimmten Id zurück.
     public Cursor getIdsByPlanId(String id) {
         return db.query(true, PhasenEntry.TABLE_NAME, new String[]{
                 PhasenEntry.COLUMN_ROWID,
         }, PhasenEntry.COLUMN_PLANID + "=" + id, null, null, null, null, null);
     }
 
+    // Löscht alle Phasen aus der Tabelle.
     public void deleteAll() {
         db.delete(PhasenEntry.TABLE_NAME, null, null);
     }

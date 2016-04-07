@@ -44,7 +44,7 @@ public class PlanRepository {
         return FiplyDBHelper.getInstance(repoContext).getReadableDatabase();
     }
 
-
+    // Fügt einen Plan in die Tabelle ein.
     public long insertPlan(String planName, String startDate, String endDate, String ziel) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(PlanEntry.COLUMN_PLANNAME, planName);
@@ -54,6 +54,7 @@ public class PlanRepository {
         return db.insert(PlanEntry.TABLE_NAME, null, initialValues);
     }
 
+    // Gibt einen Plan mit einem bestimmten Namen zurück.
     public Cursor getPlanByName(String name){
         return db.query(PlanEntry.TABLE_NAME, new String[]{
                         PlanEntry.COLUMN_ROWID
@@ -61,6 +62,7 @@ public class PlanRepository {
                 null, null, null, PlanEntry.COLUMN_ROWID + " ASC", null);
     }
 
+    // Erstellt die Plan Tabelle
     public void reCreatePlanTable() {
         db.execSQL("DROP TABLE IF EXISTS " + PlanEntry.TABLE_NAME + ";");
         final String SQL_CREATE_PLAN_TABLE = "create table " + PlanEntry.TABLE_NAME +
@@ -73,10 +75,12 @@ public class PlanRepository {
         db.execSQL(SQL_CREATE_PLAN_TABLE);
     }
 
+    // Löscht alle Pläne aus der Tabelle.
     public void deleteAll() {
         db.delete(PlanEntry.TABLE_NAME, null, null);
     }
 
+    // Gibt alle Pläne zurück.
     public Cursor getAllPlans(){
         return db.query(PlanEntry.TABLE_NAME, new String[]{
                 PlanEntry.COLUMN_ROWID,
@@ -88,10 +92,12 @@ public class PlanRepository {
                 ,null,null,null,null, PlanEntry.COLUMN_STARTDATE + " ASC");
     }
 
+    // Löscht alle Pläne mit einer bestimmten Id.
     public void deleteByPlanId(String id){
         db.delete(PlanEntry.TABLE_NAME, PlanEntry.COLUMN_ROWID + "=" + id, null);
     }
 
+    // Gibt die Anzahl an Plänen zurück.
     public long getPlanCount(){
         return DatabaseUtils.queryNumEntries(db, PlanEntry.TABLE_NAME);
 

@@ -25,6 +25,7 @@ public class GeneratePhTwoMuskelPh3Kraft {
     private UebungenRepository rep;
     private String[] muskelgruppen;
 
+    // Initialisert den Generierungsvorgang
     public GeneratePhTwoMuskelPh3Kraft(String[] wochentage, Date startDate, String ziel, String[] muskelgruppen) {
         this.setStartDate(startDate);
         this.setWochentage(wochentage);
@@ -103,6 +104,7 @@ public class GeneratePhTwoMuskelPh3Kraft {
         return uebungsList;
     }
 
+    // Holt sich die Übungen aus dem Übungskatalog und setzt sie in die Liste
     private void fetchIntoUebungen(List<String[]> uebungsListe) {
         Uebung ueb;
         for (String[] element : uebungsListe) {

@@ -142,6 +142,7 @@ public class FPlanManagement extends Fragment {
     mAdView.loadAd(adRequest);
     }
 
+    // Löscht einen Plan.
     private void deletePlan() {
         PlanRepository planRep;
         InstruktionenRepository instruktRep;
@@ -184,6 +185,7 @@ public class FPlanManagement extends Fragment {
         getFragmentManager().popBackStack();
     }
 
+    // Aktualisiert Fokus der Planliste.
     public void changeFocus(ListView planView, int newSelection){
         if (newSelection == -1 || newSelection == selectedItem || planView == null){
             return;
@@ -205,6 +207,7 @@ public class FPlanManagement extends Fragment {
         Krep.updateKeyValue("selectedPlan", String.valueOf(selectedItem));
     }
 
+    // Initialisiert alle Pläne aus der Datenbank und stellt sie in der Liste da.
     private ArrayList<Trainingsplanlistitem> initPlans() {
         c = planRep.getAllPlans();
         ArrayList<Trainingsplanlistitem> plans = new ArrayList<Trainingsplanlistitem>();

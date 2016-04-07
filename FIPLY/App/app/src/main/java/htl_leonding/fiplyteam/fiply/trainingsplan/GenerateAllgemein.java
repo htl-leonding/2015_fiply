@@ -20,6 +20,7 @@ public class GenerateAllgemein {
     private Trainingsphase tPhase;
     private int uebungenAnzahl;
 
+    // Initialierst die angegebenen Daten
     public GenerateAllgemein(boolean trainiert, int schema, String[] wochentage, Date startDate) {
         String phasenName;
         int pausenDauer;
@@ -75,6 +76,7 @@ public class GenerateAllgemein {
         fetchUebungen();
     }
 
+    // Holt sich alle Übungen aus dem Übungskatalog
     private void fetchUebungen() {
         rep = UebungenRepository.getInstance();
         switch (schema) {
@@ -90,6 +92,7 @@ public class GenerateAllgemein {
         }
     }
 
+    // Organisiert die Übungen zum Schema 1
     private List<String[]> fetchSchema1() { // Schema: Bauch-Beine-Po
         Cursor c = rep.getAllUebungen();
 
@@ -135,6 +138,7 @@ public class GenerateAllgemein {
         return actualUebungen;
     }
 
+    // Organisiert die Übungen zum Schema 2
     private List<String[]> fetchSchema2() { // Schema: Oberkörper - Arme
         Cursor c = rep.getAllUebungen();
 
@@ -218,6 +222,7 @@ public class GenerateAllgemein {
         return uebungsList;
     }
 
+    // Organisiert die Übungen zum Schema 3
     public List<String[]> fetchSchema3() { // Schema: Stabilisation (Gesundheit, Rücken)
         Cursor c = rep.getAllUebungen();
 
@@ -241,6 +246,7 @@ public class GenerateAllgemein {
         return uebungsList;
     }
 
+    // Setzt die Übungen für Schema 1 in die Liste
     private void grabIntoUebungListSchema1(List<String[]> uebungen) {
         List<Uebung> finalUebungslist = new LinkedList<Uebung>();
         Boolean legbool = null;
@@ -282,6 +288,7 @@ public class GenerateAllgemein {
         getTPhase().setUebungList(finalUebungslist);
     }
 
+    // Setzt die Übungen für Schema 2 in die Liste
     public void grabIntoUebungListSchema2(List<String[]> uebungen) {
         List<Uebung> finalUebungslist = new LinkedList<Uebung>();
         for (String[] element : uebungen) {
@@ -302,6 +309,7 @@ public class GenerateAllgemein {
         getTPhase().setUebungList(finalUebungslist);
     }
 
+    // Setzt die Übungen für Schema 3 in die Liste
     public void grabIntoUebungListSchema3(List<String[]> uebungen) {
         List<Uebung> finalUebungslist = new LinkedList<Uebung>();
         Collections.shuffle(uebungen);
@@ -343,6 +351,7 @@ public class GenerateAllgemein {
         getTPhase().setUebungList(finalUebungslist);
     }
 
+    // getter für die Trainingsphase
     public Trainingsphase getTPhase() {
         return tPhase;
     }

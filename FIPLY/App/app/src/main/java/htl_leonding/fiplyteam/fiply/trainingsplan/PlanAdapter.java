@@ -17,6 +17,8 @@ import htl_leonding.fiplyteam.fiply.R;
 
 public class PlanAdapter extends ArrayAdapter<Trainingsplanlistitem> {
 
+    // Planadapter für die Listview mit Plänen (Planmanagement)
+
     public PlanAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }

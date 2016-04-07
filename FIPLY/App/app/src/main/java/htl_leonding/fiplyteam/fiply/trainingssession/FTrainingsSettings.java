@@ -67,7 +67,7 @@ public class FTrainingsSettings extends Fragment {
         InstruktionenRepository.setContext(getContext());
         port = PlanSessionPort.getInstance();
         port.init();
-        if (!port.isGenerated()) {
+        if (!port.isGenerated()) { // Wenn kein Trainingsplan existiert kann diese View nicht besucht werden.
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage(R.string.alertnoplan)
                     .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
@@ -89,7 +89,7 @@ public class FTrainingsSettings extends Fragment {
         imgView = (ImageView) getActivity().findViewById(R.id.imageViewSleeping);
         chooseDay.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // Dialog zum bestellen der Übungen von einem bestimmten Tag.
                 AlertDialog.Builder b = new AlertDialog.Builder(getContext());
                 b.setTitle("Wähle Tag");
                 b.setIcon(R.drawable.questionsmall);
@@ -114,7 +114,7 @@ public class FTrainingsSettings extends Fragment {
 
         gotosession.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // Schreibt die Übungen in ein Bundle und übergibt sie der Trainingssession damit sie gestartet werden kann.
                 Trainingsphase phase = port.getCurrentPhase();
                 Cursor c = rep.getPhaseByStartDate(phase.getStartDate());
                 c.moveToFirst();
@@ -139,11 +139,11 @@ public class FTrainingsSettings extends Fragment {
         });
 
 
-        welcomeText.setText("Aktuelle Trainingsphase " + port.getPhaseIndex() + " von " + port.getPhasenListe().size() + ".");
+        welcomeText.setText("Aktuelle Trainingsphase " + port.getPhaseIndex() + " von " + port.getPhasenListe().size() + "."); // Anzeige aktuelle Trainigsphase
         pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
 
         uebs = new ArrayList<String>();
-        for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) {
+        for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) { // Holt sich die akutellen Übungen und schreibt sie in die Liste
             uebs.add(String.valueOf(element.getUebungsName()));
             Log.wtf("WTF", element.getUebungsName());
         }
@@ -156,7 +156,7 @@ public class FTrainingsSettings extends Fragment {
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.GERMAN);
         title.setText(dateFormat.format(now));
         day = dateFormat.format(now);
-        if (uebs.size() == 0) {
+        if (uebs.size() == 0) { // Wenn übungen anstehen kann man in die Trainingssession gehen.
             gotosession.setVisibility(View.INVISIBLE);
             final Animation animRevTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_revert);
             final Animation animTranslate = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate);
@@ -174,6 +174,7 @@ public class FTrainingsSettings extends Fragment {
         }
     }
 
+    // Lädt die Übungen für den bestimmten Tag.
     private void loadUebungen(String dayyo) {
         uebs = new ArrayList<String>();
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.uebungslist_item, uebs);

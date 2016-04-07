@@ -22,7 +22,7 @@ public class GeneratePhTwoMaxiPh3Muskel {
     private Trainingsphase tPhas;
     private UebungenRepository rep;
 
-
+    // Initialisiert den Generierungsvorgang
     public GeneratePhTwoMaxiPh3Muskel(Date startDate, String ziel, String[] wochentage) {
         this.setStartDate(startDate);
         this.setWochentage(wochentage);
@@ -39,6 +39,7 @@ public class GeneratePhTwoMaxiPh3Muskel {
 
     }
 
+    // Holt sich die Übungen und schreibt sie in die Liste.
     private void fetchUebungen() {
         rep = UebungenRepository.getInstance();
         Cursor c = rep.getAllUebungen();

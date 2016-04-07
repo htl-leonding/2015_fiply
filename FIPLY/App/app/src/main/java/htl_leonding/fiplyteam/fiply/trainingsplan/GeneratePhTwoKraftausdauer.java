@@ -16,6 +16,7 @@ public class GeneratePhTwoKraftausdauer {
     private Date startDate;
     private Date endDate;
 
+    // Initialisiert den Generierungsvorgang
     public GeneratePhTwoKraftausdauer(String[] wochentage, Date startDate, boolean muscle) {
         this.wochentage = wochentage;
         this.setStartDate(startDate);
@@ -29,6 +30,7 @@ public class GeneratePhTwoKraftausdauer {
         tPhase.setUebungList(uebungen);
     }
 
+    // Erstes Phasenkonzept wird generiert
     private void setFirstConcept() {
         String[] wedays = {"Montag", "Dienstag", "Mittwoch"};
         GenerateAllgemein gAlg = new GenerateAllgemein(false, 1, wedays, getStartDate());
@@ -66,6 +68,7 @@ public class GeneratePhTwoKraftausdauer {
         }
     }
 
+    // Muskelphasenkonzept wird generiert
     private void setMuscleConcept() {
         String[] wedays = {"Montag", "Dienstag", "Mittwoch"};
         GenerateAllgemein gAlg = new GenerateAllgemein(false, 2, wedays, getStartDate());

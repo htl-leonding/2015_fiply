@@ -244,6 +244,7 @@ public class FTrainingsplan extends Fragment {
 
     }
 
+    // Generiert einen Trainingsplan
     private void generateClicked() {
         if (rbMuskelaufbau.isChecked()) {
             trainingsphaseList = new LinkedList<Trainingsphase>();
@@ -276,6 +277,7 @@ public class FTrainingsplan extends Fragment {
         askForName();
     }
 
+    // Popup, das nach dem Namen fragt wird hier erstellt.
     private String askForName() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Name wählen:");
@@ -303,6 +305,7 @@ public class FTrainingsplan extends Fragment {
         return planName;
     }
 
+    // Erfolgsmeldung
     private void success() {
         new AlertDialog.Builder(context)
                 .setTitle(R.string.fertig)
@@ -319,6 +322,7 @@ public class FTrainingsplan extends Fragment {
         getFragmentManager().popBackStack();
     }
 
+    // Der Trainingsplan wird in die Datenbank geschrieben.
     private void writeToDataBase() {
         DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
 
@@ -348,7 +352,7 @@ public class FTrainingsplan extends Fragment {
         }
     }
 
-
+    // Updated die Progressbar in dem Fragment
     private void addProgressChecked(int howMuch) {
         if ((pBar.getProgress() + howMuch) <= 100) {
             progress = pBar.getProgress() + howMuch;
@@ -369,6 +373,7 @@ public class FTrainingsplan extends Fragment {
         }
     }
 
+    // Eingabeüberprüfungen
     public boolean Validation() {
         String xday = dayone.getSelectedItem().toString();
         String yday = daytwo.getSelectedItem().toString();
@@ -395,6 +400,7 @@ public class FTrainingsplan extends Fragment {
         }
     }
 
+    // Setzt den Datepicker im Fragment Formular
     private void setDatePicker() {
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -421,6 +427,7 @@ public class FTrainingsplan extends Fragment {
         });
     }
 
+    // Aktualisiert die Datumsanzeige
     private void updateLabel() {
         String myFormat = "dd. MMM yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.GERMANY);

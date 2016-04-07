@@ -60,6 +60,7 @@ public class InstruktionenRepository extends Service {
         return db.insert(InstruktionenEntry.TABLE_NAME, null, initialValues);
     }
 
+    // Gibt einen Curosr mit allen Instruktionen zurück.
     public Cursor getAllInstructions() {
         return db.query(InstruktionenEntry.TABLE_NAME, new String[]{
                         InstruktionenEntry.COLUMN_ROWID,
@@ -71,6 +72,7 @@ public class InstruktionenRepository extends Service {
                 null, null, null, null, InstruktionenEntry.COLUMN_PHASENID + " ASC");
     }
 
+    // Gibt eine Instruktion mit einer bestimmten id zurück.
     public Cursor getInstruktionByPhasenId(String id) {
         return db.query(true, InstruktionenEntry.TABLE_NAME, new String[]{
                 InstruktionenEntry.COLUMN_ROWID,
@@ -81,6 +83,7 @@ public class InstruktionenRepository extends Service {
         }, InstruktionenEntry.COLUMN_PHASENID + "=" + id, null, null, null, null, null);
     }
 
+    // Erstellt die Tabelle
     public void reCreateInstuktionenTable() {
         db.execSQL("DROP TABLE IF EXISTS " + FiplyContract.InstruktionenEntry.TABLE_NAME + ";");
         final String SQL_CREATE_INSTRUKTIONEN_TABLE = "create table " + InstruktionenEntry.TABLE_NAME +
@@ -93,6 +96,7 @@ public class InstruktionenRepository extends Service {
         db.execSQL(SQL_CREATE_INSTRUKTIONEN_TABLE);
     }
 
+    // Löscht eine Instruktion mit einer speziellen PhasenId
     public void deleteByPhasenId(String id){
         db.delete(FiplyContract.InstruktionenEntry.TABLE_NAME, InstruktionenEntry.COLUMN_PHASENID + "=" + id, null);
     }
@@ -103,6 +107,7 @@ public class InstruktionenRepository extends Service {
         return null;
     }
 
+    // Löscht alle Instruktionen.
     public void deleteAll() {
         db.delete(InstruktionenEntry.TABLE_NAME, null, null);
     }

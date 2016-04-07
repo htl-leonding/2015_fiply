@@ -26,6 +26,7 @@ public class Trainingsphase {
         setEndingDate(startDate);
     }
 
+    // Initialisiert eine Trainingsphase mit ihren Parametern.
     public Trainingsphase(String phasenName, int pausenDauer, int phasenDauer, int saetze, int wiederholungen, int repmax, Date startDate) {
         this.setPhasenName(phasenName);
         this.setPausenDauer(pausenDauer);
@@ -45,6 +46,7 @@ public class Trainingsphase {
         this.setEndDate(calendar.getTime());
     }
 
+    // Holt sich die Übungen von dem aktuellen Tag
     public List<Uebung> getUebungListOfToday() {
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.GERMAN);
@@ -54,6 +56,7 @@ public class Trainingsphase {
         return getUebungByDay(dayofweek);
     }
 
+    // Holt sich die Übungen von einem bestimmten Tag
     public List<Uebung> getUebungByDay(String day) {
         List<Uebung> uebungen = new LinkedList<Uebung>();
         for (Uebung element : getUebungList()) {
@@ -63,6 +66,7 @@ public class Trainingsphase {
         return uebungen;
     }
 
+    // Holt sich die gesamte Übungsliste der Trainingsphase
     public List<Uebung> getUebungList() {
         return uebungList;
     }
@@ -79,6 +83,7 @@ public class Trainingsphase {
         return uebungen;
     }
 
+    // Überprüft ob die Trainingsphase aktiv ist.
     public boolean isActive() {
         Date newDate = new Date();
         if (newDate.after(getStartDate()) && newDate.before(getEndDate())) {

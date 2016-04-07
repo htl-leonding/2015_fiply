@@ -23,6 +23,7 @@ public class GeneratePh3Maxi {
     private List<Uebung> uebungen;
     private UebungenRepository rep;
 
+    // Initialisiert den Generierungsvorgang
     public GeneratePh3Maxi(Date startDate, String[] wochentage) {
         this.setStartDate(startDate);
         this.setWochentage(wochentage);
@@ -36,6 +37,7 @@ public class GeneratePh3Maxi {
         tPhas.setUebungList(uebungen);
     }
 
+    // Holt sich die Übungen aus dem Übungskatalog und setzt sie in die Übungsliste
     private void fetchUebungen() {
         rep = UebungenRepository.getInstance();
         Cursor c = rep.getAllUebungen();
@@ -127,19 +129,6 @@ public class GeneratePh3Maxi {
         uebungen.addAll(uebs);
     }
 
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public void setWochentage(String[] wochentage) {
-        this.wochentage = wochentage;
-    }
-
     public Trainingsphase getTPhase() {
         return tPhas;
     }
@@ -195,4 +184,17 @@ public class GeneratePh3Maxi {
     public void setRepMax(int repMax) {
         this.repMax = repMax;
     }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setWochentage(String[] wochentage) {
+        this.wochentage = wochentage;
+    }
+
 }
