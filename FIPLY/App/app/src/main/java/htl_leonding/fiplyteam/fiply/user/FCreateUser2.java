@@ -36,6 +36,9 @@ public class FCreateUser2 extends Fragment {
         return inflater.inflate(R.layout.fragment_createuser2, container, false);
     }
 
+    /**
+     * Wenn die View geschlossen wird, werden die Werte in der KeyValueRepository geupdated.
+     */
     @Override
     public void onDestroyView() {
         KeyValueRepository.getInstance().updateKeyValue("userHeight", String.valueOf(GetHeight()));
@@ -55,6 +58,7 @@ public class FCreateUser2 extends Fragment {
         return sbHeight.getProgress() + 100;
     }
 
+    //Setter für die Höhe
     public void SetHeight(int height) {
         tvHeight.setText("Größe: " + String.valueOf(height));
         sbHeight.setProgress(height - 100);
@@ -76,6 +80,11 @@ public class FCreateUser2 extends Fragment {
 
     }
 
+    /**
+     * Initialisiert das repo und die Layout elemente
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         kvr = KeyValueRepository.getInstance();
@@ -85,6 +94,8 @@ public class FCreateUser2 extends Fragment {
         tvHeight = (TextView) getActivity().findViewById(R.id.tvSize);
         tvWeight = (TextView) getActivity().findViewById(R.id.tvWeight);
         ivBody = (ImageView) getActivity().findViewById(R.id.ivBody);
+
+        //Setzt den OnSeekBarChangeListener für sbHeight, dieser aktualisiert den dargestellten Wert bei einer Änderung des SeekBars
         sbHeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -101,6 +112,7 @@ public class FCreateUser2 extends Fragment {
 
             }
         });
+        //Setzt den OnSeekBarChangeListener für sbWeight, dieser aktualisiert den dargestellten Wert bei einer Änderung des SeekBars
         sbWeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -128,6 +140,10 @@ public class FCreateUser2 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    /**
+     * Setzt die input felder auf den aktuellen Wert, falls einer vorhanden ist.
+     * @throws SQLException
+     */
     private void setSettings() throws SQLException {
         Log.wtf("setSettings(2)", "Height:" + kvr.getKeyValue("userHeight").getString(1));
         Log.wtf("setSettings(2)", "Weight:" + kvr.getKeyValue("userWeight").getString(1));

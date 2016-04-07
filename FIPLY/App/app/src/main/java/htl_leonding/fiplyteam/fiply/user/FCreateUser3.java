@@ -28,6 +28,8 @@ public class FCreateUser3 extends Fragment {
         return inflater.inflate(R.layout.fragment_createuser3, container, false);
     }
 
+    //Initialisiert das repo und die Layout elemente
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         spAge = (Spinner) getActivity().findViewById(R.id.spAge);
@@ -42,6 +44,9 @@ public class FCreateUser3 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    /**
+     * Wenn die View geschlossen wird, werden die Werte in der KeyValueRepository geupdated.
+     */
     @Override
     public void onDestroyView() {
         kvr.updateKeyValue("userAge", spAge.getSelectedItem().toString());
@@ -49,6 +54,7 @@ public class FCreateUser3 extends Fragment {
         super.onDestroyView();
     }
 
+    //Initialisierungsmethode
     private void init() {
 
         //Create Adapters
@@ -64,6 +70,10 @@ public class FCreateUser3 extends Fragment {
         spProf.setAdapter(profAdapter);
     }
 
+    /**
+     * Setzt die input felder auf den aktuellen Wert, falls einer vorhanden ist.
+     * @throws SQLException
+     */
     private void setSettings() throws SQLException {
         spAge.setSelection(ageAdapter.getPosition(kvr.getKeyValue("userAge").getString(1)));
         spProf.setSelection(ageAdapter.getPosition(kvr.getKeyValue("userProf").getString(1)));

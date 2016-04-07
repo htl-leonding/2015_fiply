@@ -13,6 +13,7 @@ import htl_leonding.fiplyteam.fiply.R;
 
 public class FUebungDetail extends Fragment {
 
+    //Daten der Übung
     String uebungsName;
     String uebungsVideo;
     String uebungsEquip;
@@ -21,8 +22,7 @@ public class FUebungDetail extends Fragment {
     String uebungsAnl;
     String uebungsDiff;
 
-    Boolean videoInitialized = false;
-
+    //Layout Elemente
     TextView tvUebungName;
     TextView tvUebungEquip;
     TextView tvUebungMG;
@@ -38,6 +38,12 @@ public class FUebungDetail extends Fragment {
         return inflater.inflate(R.layout.fragment_uebungdetail, container, false);
     }
 
+
+    /**
+     * Initialisiert alle Layout Elemente und setzt die Daten der ausgewählten Übung
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

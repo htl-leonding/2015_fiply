@@ -22,12 +22,17 @@ import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 public class FCreateUser extends Fragment {
 
+    //Layout Elemente
     ImageView imgGender;
     ImageView imgName;
     EditText etName;
     LoginButton fbLoginButton;
     Spinner spGender;
+
+    //Adapter für den Spinner
     ArrayAdapter<CharSequence> genderAdapter;
+
+    //Repositories
     KeyValueRepository kvr;
 
     @Nullable
@@ -38,6 +43,11 @@ public class FCreateUser extends Fragment {
         return inflater.inflate(R.layout.fragment_createuser, container, false);
     }
 
+    /**
+     * Initialisiert das repo und die Layout elemente und ruft die init() Methode auf
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
@@ -59,6 +69,9 @@ public class FCreateUser extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    /**
+     * Initialisierungsmethode
+     */
     private void init() {
         //load images
         imgName.setImageDrawable(getResources().getDrawable(R.drawable.fcreateusername));
@@ -73,6 +86,9 @@ public class FCreateUser extends Fragment {
         spGender.setAdapter(genderAdapter);
     }
 
+    /**
+     * Wenn die View geschlossen wird, werden die Werte in der KeyValueRepository geupdated.
+     */
     @Override
     public void onDestroyView() {
         kvr.updateKeyValue("userName", etName.getText().toString());
@@ -80,6 +96,10 @@ public class FCreateUser extends Fragment {
         super.onDestroyView();
     }
 
+    /**
+     * Setzt die input felder auf den aktuellen Wert, falls einer vorhanden ist.
+     * @throws SQLException
+     */
     private void setSettings() throws SQLException {
         etName.setText(kvr.getKeyValue("userName").getString(1));
         if(kvr.getKeyValue("userGender").getString(1) == "Male"){

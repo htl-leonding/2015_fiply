@@ -18,12 +18,14 @@ import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 
 public class FUebungFilter extends Fragment {
+    //Layout Elemente
     KeyValueRepository kvr;
     EditText filterName;
     ImageView bodyFilter;
     ImageView bodyFilterMask;
     Button applyFilter;
     Button resetFilter;
+
 
     @Nullable
     @Override
@@ -33,6 +35,11 @@ public class FUebungFilter extends Fragment {
 
     }
 
+    /**
+     * Initialisiert das Repo und die Layout Elemente
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         kvr = KeyValueRepository.getInstance();
@@ -45,13 +52,14 @@ public class FUebungFilter extends Fragment {
         bodyFilterMask.setImageDrawable(getResources().getDrawable(R.drawable.userbodycolored));
         bodyFilter.setImageDrawable(getResources().getDrawable(R.drawable.userbody));
 
-
+        //Setzt den OnClickListener für den Button applyFilter, dieser setzt den Filter.
         applyFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 kvr.updateKeyValue("filterName", filterName.getText().toString());
             }
         });
+        //Setzt den OnClickListener für den Button resetFilter, dieser löscht den Filter
         resetFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +68,7 @@ public class FUebungFilter extends Fragment {
             }
         });
 
+        //überprüft auf welchen Bereich der User geklickt hat und setzt den Filter.
         bodyFilterMask.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -99,7 +108,7 @@ public class FUebungFilter extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-
+    //Überprüft ob 2 Farben ähnlich sind um zu überprüfen welchen Bereich er gedrückt hat.
     public boolean closeMatch(int color1, int color2, int tolerance) {
         if (Math.abs(Color.red(color1) - Color.red(color2)) > tolerance)
             return false;
@@ -110,6 +119,7 @@ public class FUebungFilter extends Fragment {
         return true;
     }
 
+    //Gibt die Farbe des gedrückten Punktes zurück
     public int getHotspotColor(int x, int y) {
 
         bodyFilterMask.setDrawingCacheEnabled(true);

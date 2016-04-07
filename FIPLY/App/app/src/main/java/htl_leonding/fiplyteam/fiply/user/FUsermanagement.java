@@ -16,9 +16,14 @@ import htl_leonding.fiplyteam.fiply.menu.FMain;
 public class FUsermanagement extends Fragment {
 
 
+    //Layout Elemente
     Button btNext;
     Button btPrev;
+
+    //Fields
     int pageId = 1;
+
+    //Repositories
     KeyValueRepository kvr;
 
     /**
@@ -34,6 +39,9 @@ public class FUsermanagement extends Fragment {
         return inflater.inflate(R.layout.fragment_usermanagement, container, false);
     }
 
+
+    //Initialisiert das repo und die Layout elemente
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
@@ -46,6 +54,8 @@ public class FUsermanagement extends Fragment {
         btNext.setText("Next");
         btPrev.setText("Cancel");
 
+
+        //onClick Listener für die 2 Navigationsbuttons
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +101,7 @@ public class FUsermanagement extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    //zeigt den ersten Schritt des User managements an
     private void displayViewP1() {
         setPageId(1);
         FCreateUser fragment = new FCreateUser();
@@ -101,6 +112,7 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.commit();
     }
 
+    //zeigt den zweiten Schritt des User managements an
     private void displayViewP2() {
         setPageId(2);
         FCreateUser2 fragment = new FCreateUser2();
@@ -112,6 +124,7 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.commit();
     }
 
+    //zeigt den dritten Schritt des User managements an
     private void displayViewP3() {
         setPageId(3);
         FCreateUser3 fragment = new FCreateUser3();
@@ -123,6 +136,7 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.commit();
     }
 
+    //zeigt das Hauptmenü an
     private void displayViewPMain() {
         FMain fragment = new FMain();
         FragmentManager fragmentManager = getFragmentManager();
@@ -133,6 +147,8 @@ public class FUsermanagement extends Fragment {
         fragmentTransaction.commit();
     }
 
+
+    //Getter und Setter der PageId
     public int getPageId() {
         return pageId;
     }

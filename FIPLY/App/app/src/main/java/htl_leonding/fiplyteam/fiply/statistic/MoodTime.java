@@ -7,23 +7,23 @@ import com.jjoe64.graphview.series.DataPointInterface;
  */
 public class MoodTime implements DataPointInterface {
 
-
-    private double x;
-    private double y;
+    //x und y Koordinaten des Datenpunktes
+    private double _mood;
+    private double _timestamp;
 
 
     public MoodTime(double x, double y) {
-        this.x = x;
-        this.y = y;
+        _mood = x;
+        _timestamp = y;
     }
 
     @Override
     public double getX() {
-        return x;
+        return _mood;
     }
 
     @Override
     public double getY() {
-        return y;
+        return _timestamp;
     }
 }

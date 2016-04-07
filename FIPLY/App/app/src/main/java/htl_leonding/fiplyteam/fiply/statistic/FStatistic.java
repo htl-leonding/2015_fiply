@@ -21,16 +21,25 @@ import htl_leonding.fiplyteam.fiply.data.StatisticRepository;
  * Created by Gerald on 11/02/2016.
  */
 public class FStatistic extends Fragment {
+    //repositories
     KeyValueRepository kvr;
     StatisticRepository str;
 
+    //layout elements
     TextView tvStatisticGreeting;
     GraphView gvMood;
     GraphView gvLift;
 
+    //series of datapoints
     LineGraphSeries<WeightLifted> weightLiftedSeries;
 
 
+    /**
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +47,11 @@ public class FStatistic extends Fragment {
         return inflater.inflate(R.layout.fragment_statistic, container, false);
     }
 
+    /**
+     * Initialisiert die Layout Elemente und setzt die entsprechenden Werte.
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         gvMood = (GraphView) getActivity().findViewById(R.id.graphMood);
@@ -59,7 +73,9 @@ public class FStatistic extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    //Adds series
+    /**
+     * Füllt die Graphen mit den jeweiligen DatenPunkten
+     */
     public void fillSeries() {
         gvMood.addSeries(str.getSeriesForMoodTime());
         gvMood.getViewport().setXAxisBoundsManual(true);

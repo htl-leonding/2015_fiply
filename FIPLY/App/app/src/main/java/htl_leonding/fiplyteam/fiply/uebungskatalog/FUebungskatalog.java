@@ -60,13 +60,14 @@ public class FUebungskatalog extends Fragment {
         int[] toViews = {R.id.ueListViewItem};
         String[] fromColumns = {rep.getAllUebungen().getColumnName(1)};
 
-
+        //Setzt den OnClickListener für den Button openFilter, dieser öffnet die Filter View.
         openFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayView(new FUebungFilter());
             }
         });
+
         uebungenLV = (ListView) getActivity().findViewById(R.id.ueList);
         try {
             ueAdapter = new SimpleCursorAdapter(context, R.layout.uebungskatalog_item, rep.getFilteredUebungen(), fromColumns, toViews, 0);
@@ -74,6 +75,11 @@ public class FUebungskatalog extends Fragment {
             e.printStackTrace();
         }
         uebungenLV.setAdapter(ueAdapter);
+
+        /**
+         * Setzt den OnItemClickListener für die ListView uebungenLV, dieser ruft die DetailView der gedrückten
+         * Übung auf und setzt die Argumente zu den jeweiligen Infos über die Übung
+         */
         uebungenLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -94,7 +100,10 @@ public class FUebungskatalog extends Fragment {
         });
     }
 
-
+    /**
+     * Ruft das übergebene Fragment auf
+     * @param fragment
+     */
     private void displayView(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

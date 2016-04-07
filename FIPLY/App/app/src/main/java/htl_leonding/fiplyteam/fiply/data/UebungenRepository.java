@@ -271,7 +271,7 @@ public class UebungenRepository extends Service {
     }
 
     /**
-     * Lest alle Übungen aus dem JSON-String aus und fügt sie in die DatenBank ein.
+     * Liest alle Übungen aus dem JSON-String aus und fügt sie in die DatenBank ein.
      * @throws JSONException
      */
     public void insertAllExercises() throws JSONException {
