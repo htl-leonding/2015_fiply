@@ -1,0 +1,4 @@
+Google	
+available at https://google.github.io/android-testing-support-library/ 
+under a Creative Commons Attribution 2.5
+http://creativecommons.org/licenses/by/2.5/
