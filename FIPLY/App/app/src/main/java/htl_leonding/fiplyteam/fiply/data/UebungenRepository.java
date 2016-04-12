@@ -282,7 +282,11 @@ public class UebungenRepository extends Service {
         for (int i = 0; i < exercises.length(); i++) {
             temp = exercises.getJSONObject(i);
             Log.wtf("Exercise: ", temp.getString("Name"));
-            insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), temp.getString("Schwierigkeit"), "https://www.youtube.com/embed/0TjxnrWT8Es", temp.getString("Equipment"));
+            try {            insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), temp.getString("Schwierigkeit"), temp.getString("Video"), temp.getString("Equipment"));
+            }catch(Exception e){
+                insertUebung(temp.getString("Name"), temp.getString("Beschreibung"), temp.getString("Durchführung"), temp.getString("Muskelgruppe"), temp.getString("Schwierigkeit"), "https://www.youtube.com/watch?v=0TjxnrWT8Es", temp.getString("Equipment"));
+            }
+
         }
 
     }
