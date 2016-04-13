@@ -34,6 +34,10 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     int songIndex;
     String aktPlaylist;
 
+    /**
+     * Dieser Runnable aktualisiert alle Anzeigen der Musikwiedergabe
+     * und ruft sich selbst all 100ms auf
+     */
     private Runnable mUpdateDurTask = new Runnable() {
         @Override
         public void run() {
@@ -45,18 +49,33 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         }
     };
 
+    /**
+     * wird das Fragment pausiert, so wird die Musik angehalten.
+     */
     @Override
     public void onPause() {
         super.onPause();
         stop();
     }
 
+    /**
+     * Hier wird das fragment_music fragment angezeigt
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_music, container, false);
     }
 
+    /**
+     * Hier werden alle Viewelemente gesetzt
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -130,6 +149,11 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         }
     }
 
+    /**
+     * Der aktuell ausgewählte Song wird geändert.
+     * @param songIndex Der Index des Songs (in der Playliste) der abgespielt werden soll
+     * @param playlist Der Name der Playlist in der sich der Song befindet
+     */
     public void changeSong(int songIndex, String playlist) {
         aktPlaylist = playlist;
         setPlaylist(psrep.getByPlaylistName(aktPlaylist));
@@ -149,6 +173,10 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         }
     }
 
+    /**
+     * Enabled oder Disabled alle Kontrollelemente des MusicPlayers
+     * @param enable true enabled, false disabled
+     */
     private void configureMediaPlayer(boolean enable) {
         btnPlay.setClickable(enable);
         btnStop.setClickable(enable);
@@ -165,6 +193,9 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
             progressBar.setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * Startet die Wiedergabe eines Songs oder pausiert diese wenn bereits eine Wiedergabe im Gang ist.
+     */
     public void play() {
         if (mp.isPlaying()) {
             mp.pause();
@@ -175,6 +206,9 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         }
     }
 
+    /**
+     * Stoppt eine Wiedergabe und bereitet die nächste vor
+     */
     public void stop() {
         try {
             mp.stop();
@@ -191,6 +225,9 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         btnPlay.setImageResource(R.drawable.play);
     }
 
+    /**
+     * Wechselt auf den nächsten Song in der aktuellen Playliste
+     */
     public void nextSong() {
         if ((getSongIndex() + 1) < getPlaylist().size())
             changeSong(getSongIndex() + 1, aktPlaylist);
@@ -199,6 +236,9 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         play();
     }
 
+    /**
+     * Wechselt auf den vorherigen Song in der aktuellen Playlist
+     */
     public void lastSong() {
         if (getSongIndex() > 0)
             changeSong(getSongIndex() - 1, aktPlaylist);
@@ -207,14 +247,25 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         play();
     }
 
+    /**
+     * Aktualisiert die aktuelle Playlist
+     */
     public void refreshPlaylist() {
         setPlaylist(psrep.getByPlaylistName(aktPlaylist));
     }
 
+    /**
+     * Startet die Aktualisierung der Wiedergabeanzeigen
+     */
     private void updateProgressBar() {
         mHandler.postDelayed(mUpdateDurTask, 100);
     }
 
+    /**
+     * Wandelt Millisekunden in einen lesbaren String im hh:mm:ss Format um
+     * @param milliseconds Millisekunden
+     * @return lesbarer String
+     */
     public String millisecondsToHMS(long milliseconds) {
         String hms = "";
         int hours = (int) (milliseconds / (1000 * 60 * 60));
@@ -237,6 +288,12 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         return hms;
     }
 
+    /**
+     * Berechnet den Wiedergabefortschritt in % (für die ProgressBar)
+     * @param currentDur aktueller Fortschritt
+     * @param totalDur gesamter Fortschritt
+     * @return
+     */
     public int getProgressPercentage(long currentDur, long totalDur) {
         Double percentage;
 
@@ -247,6 +304,12 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         return percentage.intValue();
     }
 
+    /**
+     * Berechnet und setzt den Fortschritt des aktuellen Songs (für die ProgressBar)
+     * @param progress Fortschritt in %
+     * @param totalDur Gesamtdauer
+     * @return
+     */
     public int setCurrentDuration(int progress, int totalDur) {
         return (int) (((double) progress / 100) * ((double) totalDur / 1000)) * 1000;
     }
@@ -255,11 +318,19 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
     }
 
+    /**
+     * Bei Berühren der ProgressBar wird das fortlaufende Aktualisieren gestoppt
+     * @param seekBar
+     */
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
         mHandler.removeCallbacks(mUpdateDurTask);
     }
 
+    /**
+     * Bei Berühren der ProgressBar wird das fortlaufende Aktualisieren gestoppt
+     * @param seekBar
+     */
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         mHandler.removeCallbacks(mUpdateDurTask);
@@ -267,6 +338,10 @@ public class FMusic extends Fragment implements MediaPlayer.OnCompletionListener
         updateProgressBar();
     }
 
+    /**
+     * Wird ein Song zu Ende gespielt wird der nächste in der aktuellen playliste wiedergegeben
+     * @param mp
+     */
     @Override
     public void onCompletion(MediaPlayer mp) {
         nextSong();

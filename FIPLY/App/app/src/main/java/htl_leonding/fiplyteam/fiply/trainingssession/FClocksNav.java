@@ -15,12 +15,24 @@ public class FClocksNav extends Fragment {
 
     Button btnNavWatch, btnNavTimer;
 
+    /**
+     * Hier wird das fragment_clocksnav fragment angezeigt
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_clocksnav, container, false);
     }
 
+    /**
+     * Hier werden alle ViewElemente und Listener gesetzt
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

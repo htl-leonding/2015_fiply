@@ -12,6 +12,12 @@ public class FAppSettings extends PreferenceFragmentCompat {
     private Preference pref;
     PlaylistSongsRepository psr;
 
+    /**
+     * Diese Methode wird aufgerufen, wenn dieses PreferenceFragmentCompat zum ersten mal geöffnet wird
+     * Hier werden
+     * @param bundle
+     * @param s
+     */
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.preferences);

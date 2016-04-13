@@ -35,6 +35,10 @@ public class Settings extends Activity {
     PlaylistSongsRepository psr;
     final public int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
+    /**
+     * Wird beim Ersten Aufruf der SettingsActivity aufgerufen und dient dem setzen aller Ressourcen
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +82,11 @@ public class Settings extends Activity {
         refreshButtonStatus();
     }
 
+    /**
+     * Überprüft ob die MusicPermission gegeben ist
+     * Falls diese noch nicht gegeben ist, wird sie abgefragt
+     * @param context
+     */
     public void CheckMusicPermissionAndReadMusic(Context context) {
         int hasReadStoragePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
         if (hasReadStoragePermission != PackageManager.PERMISSION_GRANTED) {
@@ -96,6 +105,12 @@ public class Settings extends Activity {
         rm.ReadSongsIntoArrayList(context);
     }
 
+    /**
+     * Zeigt ein DialogFenster an, welches den User darüber informiert warum die App diese Permission benötigt.
+     * @param message
+     * @param okListener
+     * @param activity
+     */
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener, Activity activity) {
         new AlertDialog.Builder(activity)
                 .setMessage(message)
@@ -105,6 +120,9 @@ public class Settings extends Activity {
                 .show();
     }
 
+    /**
+     * Die "All"-Playlist wird in die Datenbank eingefügt
+     */
     private void fillPlaylistDb() {
         if (!rm.getSongs().isEmpty()) {
             ArrayList<HashMap<String, String>> alt = psr.getByPlaylistName("All");
@@ -122,6 +140,10 @@ public class Settings extends Activity {
         tvSongsCount.setText("Songs in der Bibliothek: " + psr.getByPlaylistName("All").size());
     }
 
+    /**
+     * Die Buttons zum einlesen der Music werden enabled oder disabled
+     * @param enable
+     */
     public void enableRefresh(Boolean enable){
         if(enable)
         {
@@ -137,6 +159,9 @@ public class Settings extends Activity {
         }
     }
 
+    /**
+     * Je nachdem ob die READ_EXTERNAL_STORAGE-Permission gegeben ist wird enableRefresh mit passenden Parameter aufgerufen
+     */
     private void refreshButtonStatus() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             enableRefresh(true);

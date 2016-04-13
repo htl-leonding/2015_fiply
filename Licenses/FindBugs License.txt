@@ -1,0 +1,1 @@
+FindBugs is licensed under the GNU LESSER GENERAL PUBLIC LICENSE 2016

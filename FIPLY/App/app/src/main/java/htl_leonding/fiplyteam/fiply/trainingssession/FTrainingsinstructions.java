@@ -49,12 +49,24 @@ public class FTrainingsinstructions extends Fragment {
     PhasenRepository phRep;
     PlaylistSongsRepository psr;
 
+    /**
+     * Hier wird das fragment_trainingsinstructions fragment angezeigt
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_trainingsinstructions, container, false);
     }
 
+    /**
+     * Hier werden alle RepositoryContexts, ViewElemente und Listener gesetzt
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -167,6 +179,9 @@ public class FTrainingsinstructions extends Fragment {
         updatePhaseAndGewicht();
     }
 
+    /**
+     * Diese Methode ermöglicht das Ausblenden der Uhren
+     */
     private void changeClocksVisible() {
         if (getActivity().findViewById(R.id.clocksLayout).getVisibility() != View.GONE) {
             getActivity().findViewById(R.id.clocksLayout).setVisibility(View.GONE);
@@ -178,6 +193,9 @@ public class FTrainingsinstructions extends Fragment {
         scrollView.post(scrDown); //Das Scrolldown muss so aufgerufen werden um sicherzustellen dass es nach dem invalidate() der Views aufgerufen wird
     }
 
+    /**
+     * Diese Methode ermöglicht das Ausblenden der Kontrollelemente des MusicPlayers
+     */
     private void changeMusicVisible() {
         if (getActivity().findViewById(R.id.musicLayout).getVisibility() != View.GONE) {
             getActivity().findViewById(R.id.musicLayout).setVisibility(View.GONE);
@@ -190,6 +208,10 @@ public class FTrainingsinstructions extends Fragment {
         }
     }
 
+    /**
+     * Wechselt die Übugn aus die gerade angezeigt wird
+     * @param ueId
+     */
     public void updateUebungsfields(int ueId) {
         try {
             setAktUebung(ueRep.getUebung(Long.valueOf(getArguments().getString("uebung" + ueId))));
@@ -206,6 +228,9 @@ public class FTrainingsinstructions extends Fragment {
         tvUebungEquipment.setText(getAktUebung().getString(7));
     }
 
+    /**
+     * setzt die Felder Phase und Gewicht
+     */
     public void updatePhaseAndGewicht() {
         try {
             setAktPhase(phRep.getPhase(Long.valueOf(getArguments().getString("phase"))));
@@ -216,6 +241,9 @@ public class FTrainingsinstructions extends Fragment {
         tvUebungWiederholungen.setText(getAktPhase().getString(7));
     }
 
+    /**
+     * Wechselt in das FFeedback Fragment und kann dort sien Feedback geben
+     */
     public void showFeedback(){
         FFeedback fFeedback = new FFeedback();
         fFeedback.setArguments(getArguments());

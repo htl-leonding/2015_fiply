@@ -13,6 +13,7 @@ public class FTrainingssession extends Fragment {
 
     /**
      * Lädt das fragment_trainingssession in das FrameLayout der MainActivity
+     * Diese Klasse lädt alle Kindfragmente und zeigt diese in sich an.
      *
      * @param inflater           default
      * @param container          default

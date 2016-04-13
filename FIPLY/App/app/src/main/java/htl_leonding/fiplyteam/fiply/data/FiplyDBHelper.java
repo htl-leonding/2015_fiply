@@ -30,6 +30,10 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
         return instance;
     }
 
+    /**
+     * Dieses onCreate beinhaltet Queries um alle Datenbanktabellen zu erstellen
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         final String SQL_CREATE_UEBUNGEN_TABLE = "create table " + UebungenEntry.TABLE_NAME +
@@ -97,6 +101,12 @@ public class FiplyDBHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_STATISTICS_TABLE);
     }
 
+    /**
+     * Wird eine Versionsänderung der Datenbank entdeckt, werden alle Tabellen neu erstellt
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + UebungenEntry.TABLE_NAME);

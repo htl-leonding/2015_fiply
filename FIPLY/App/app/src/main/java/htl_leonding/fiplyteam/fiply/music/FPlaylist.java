@@ -25,6 +25,9 @@ import java.util.List;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.PlaylistSongsRepository;
 
+/**
+ * Nähere Dokumentationen befinden sich im schriftlichen teil der Diplomarbeit im Kapitel Music
+ */
 public class FPlaylist extends Fragment {
 
     PlaylistSongsRepository psrep;
@@ -39,13 +42,25 @@ public class FPlaylist extends Fragment {
     Button btnSave, btnSelectAll, btnSelectNone, btBack;
     EditText etName;
 
-
+    /**
+     * Hier wird das fragment_playlist fragment angezeigt
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_playlist, container, false);
     }
 
+
+    /**
+     * Hier werden alle ViewElemente gesetzt
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -151,11 +166,17 @@ public class FPlaylist extends Fragment {
         });
     }
 
+    /**
+     * Diese Methode schließt das virtuelle Keyboard
+     */
     public void hideKeyboard() {
         InputMethodManager imms = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imms.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
 
+    /**
+     * Die Stringlisten (für Anzeigen) werden aktualisiert
+     */
     public void refreshSongStringLists() {
         selectedSongPathStrings.clear();
         songTitleStrings.clear();
@@ -166,6 +187,9 @@ public class FPlaylist extends Fragment {
         }
     }
 
+    /**
+     * In dieser Methoden werden alle Adapter und Listen initiert.
+     */
     public void setUpPlaylistAdapter() {
         songs = new ArrayList<>(psrep.getByPlaylistName("All"));
         if(songs.isEmpty())
