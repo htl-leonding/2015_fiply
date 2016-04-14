@@ -141,13 +141,14 @@ public class FTrainingsSettings extends Fragment {
 
         welcomeText.setText("Aktuelle Trainingsphase " + port.getPhaseIndex() + " von " + port.getPhasenListe().size() + "."); // Anzeige aktuelle Trainigsphase
         pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
-
+        uebs = null;
         uebs = new ArrayList<String>();
         for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) { // Holt sich die aktuellen Übungen und schreibt sie in die Liste
             uebs.add(String.valueOf(element.getUebungsName()));
             Log.wtf("WTF", element.getUebungsName());
         }
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.uebungslist_item, uebs);
+        uebList.setAdapter(null);
         uebList.setAdapter(adapt);
         String heutestehen = getResources().getString(R.string.heutestehen);
         String uebungenan = getResources().getString(R.string.uebungenan);

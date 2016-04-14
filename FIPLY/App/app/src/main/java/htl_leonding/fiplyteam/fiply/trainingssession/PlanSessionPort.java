@@ -65,9 +65,9 @@ public class PlanSessionPort {
     }
 
     public int getPhaseIndex() {
-        int cnt = 0;
+        int cnt = 4;
         for (Trainingsphase phase : getPhasenListe()) {
-            cnt++;
+            cnt--;
             if (phase.isActive()) {
                 return cnt;
             }
@@ -163,7 +163,11 @@ public class PlanSessionPort {
             phasenWiederholungen = cPhasen.getString(iPhasenWiederholungen);
             phasenPlanId = cPhasen.getString(iPhasenPlanId);
 
-            //if (Integer.valueOf(phasenPlanId) == chosen) {
+            System.out.println("aktuelle Id: " + phasenPlanId);
+            System.out.println("aktuelle chosen: " + chosen);
+
+
+            if (Integer.valueOf(phasenPlanId) - 1 == chosen) {
                 try {
                     convertedStartDate = format.parse(phasenStartDate);
                     convertedEndDate = format.parse(phasenEndDate);
@@ -178,7 +182,7 @@ public class PlanSessionPort {
                 tPhase.setUebungList(getInstruktFromPhasenId(phasenRowId));
 
                 getPhasenListe().add(tPhase);
-            //}
+            }
         }
     }
 

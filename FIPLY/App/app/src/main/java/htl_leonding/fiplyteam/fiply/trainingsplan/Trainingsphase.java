@@ -86,7 +86,22 @@ public class Trainingsphase {
     // Überprüft ob die Trainingsphase aktiv ist.
     public boolean isActive() {
         Date newDate = new Date();
-        if (newDate.after(getStartDate()) && newDate.before(getEndDate())) {
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(newDate);
+
+        Calendar endDate = Calendar.getInstance();
+        endDate.setTime(getEndDate());
+        Calendar startDate = Calendar.getInstance();
+        startDate.setTime(getStartDate());
+
+        boolean isTodayOne = (endDate.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
+                endDate.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                endDate.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
+
+        boolean isTodayTwo = (startDate.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
+                startDate.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                startDate.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
+        if ((newDate.after(getStartDate()) && newDate.before(getEndDate()) || isTodayOne || isTodayTwo)) {
             return true;
         }
         return false;
