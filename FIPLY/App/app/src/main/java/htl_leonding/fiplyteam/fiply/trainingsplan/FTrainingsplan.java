@@ -379,7 +379,7 @@ public class FTrainingsplan extends Fragment {
         String yday = daytwo.getSelectedItem().toString();
         String zday = daythree.getSelectedItem().toString();
         if (!xday.equals(days[0]) && !yday.equals(days[0]) && !zday.equals(days[0])
-                && myCalendar.getTime().after(new Date())) {
+                && !myCalendar.getTime().before(new Date())) {
             actualdays = new String[]{xday, yday, zday};
             return true;
         } else {
