@@ -143,7 +143,7 @@ public class FTrainingsSettings extends Fragment {
         pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
 
         uebs = new ArrayList<String>();
-        for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) { // Holt sich die akutellen Übungen und schreibt sie in die Liste
+        for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) { // Holt sich die aktuellen Übungen und schreibt sie in die Liste
             uebs.add(String.valueOf(element.getUebungsName()));
             Log.wtf("WTF", element.getUebungsName());
         }
