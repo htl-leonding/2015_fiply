@@ -344,14 +344,14 @@ public class FTrainingsplan extends Fragment {
                     phase.getPhasenName(), String.valueOf(phase.getPhasenDauer()), String.valueOf(phase.getPausenDauer()),
                     String.valueOf(phase.getSaetze()), String.valueOf(phase.getWiederholungen()), planId);
 
-            Cursor c = phasenRep.getPhaseByStartDate(startDate);
+            Cursor c = phasenRep.getPhaseByStartDate(phase.getStartDate());
             c.moveToFirst();
             int index = c.getColumnIndex(PhasenEntry.COLUMN_ROWID);
             String rowid = c.getString(index);
             System.out.println("Übungen:");
             for (Uebung ueb : phase.getUebungList()) {
                 instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), rowid);
-                System.out.println("Übung: " + ueb.getWochenTag() + ", " + ueb.getUebungsName());
+                System.out.println("Übung: " + ueb.getWochenTag() + ", " + ueb.getUebungsName() + ", PhasenId: " + rowid);
             }
             System.out.println("Übungsanzahl: " + phase.getUebungList().size());
         }

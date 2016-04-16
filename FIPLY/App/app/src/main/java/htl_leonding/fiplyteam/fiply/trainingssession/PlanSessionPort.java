@@ -120,6 +120,9 @@ public class PlanSessionPort {
 
         instruktListe = new LinkedList<Uebung>();
         Uebung uebung;
+
+        int count = 0;
+
         for (cInstruktion.moveToFirst(); !cInstruktion.isAfterLast(); cInstruktion.moveToNext()) {
             instruktWochentag = cInstruktion.getString(iInstruktionWochentag);
             instruktRepMax = cInstruktion.getString(iInstruktionRepMax);
@@ -131,7 +134,6 @@ public class PlanSessionPort {
             uebung.setRepmax(Integer.valueOf(instruktRepMax));
             uebung.setUebungsID(instruktUebungsId);
             uebung.setPhasenId(instruktPhasenId);
-
             try {
                 cUebungen = uebungRep.getUebung(Long.valueOf(instruktUebungsId));
             } catch (SQLException e) {
@@ -166,11 +168,6 @@ public class PlanSessionPort {
             phasenSaetze = cPhasen.getString(iPhasenSaetze);
             phasenWiederholungen = cPhasen.getString(iPhasenWiederholungen);
             phasenPlanId = cPhasen.getString(iPhasenPlanId);
-
-            System.out.println("aktuelle Id: " + phasenPlanId);
-            System.out.println("aktuelle chosen: " + chosen);
-
-
             if (Integer.valueOf(phasenPlanId) - 1 == chosen) {
                 try {
                     convertedStartDate = format.parse(phasenStartDate);
@@ -199,8 +196,6 @@ public class PlanSessionPort {
                 resultList.add(element);
             }
         }
-        System.out.println("Übungen insgesamt: " + instruktListe.size());
-        System.out.println("Übungen in der Phase: " + resultList.size());
         return resultList;
     }
 
