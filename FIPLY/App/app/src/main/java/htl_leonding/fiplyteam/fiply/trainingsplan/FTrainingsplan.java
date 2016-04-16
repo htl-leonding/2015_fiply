@@ -333,8 +333,10 @@ public class FTrainingsplan extends Fragment {
         cplan.moveToFirst();
         int iPlanId = cplan.getColumnIndex(PlanEntry.COLUMN_ROWID);
         String planId = cplan.getString(iPlanId);
+        System.out.println("Neu generiert PlanID: " + planId);
 
         for (Trainingsphase phase : trainingsphaseList) {
+            System.out.println("Phase: " + phase.getPhasenName() + ", "  + phase.getStartDate() + " - " + phase.getEndDate());
 
             String dbStartDate = format.format(phase.getStartDate());
             String dbEndDate = format.format(phase.getEndDate());
@@ -346,9 +348,12 @@ public class FTrainingsplan extends Fragment {
             c.moveToFirst();
             int index = c.getColumnIndex(PhasenEntry.COLUMN_ROWID);
             String rowid = c.getString(index);
+            System.out.println("Übungen:");
             for (Uebung ueb : phase.getUebungList()) {
                 instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), rowid);
+                System.out.println("Übung: " + ueb.getWochenTag() + ", " + ueb.getUebungsName());
             }
+            System.out.println("Übungsanzahl: " + phase.getUebungList().size());
         }
     }
 

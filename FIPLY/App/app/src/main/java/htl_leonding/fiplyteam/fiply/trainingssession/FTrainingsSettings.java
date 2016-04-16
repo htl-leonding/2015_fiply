@@ -127,7 +127,7 @@ public class FTrainingsSettings extends Fragment {
                 for (int i = 0; i < uebs.size(); i++) {
                     args.putString("uebung" + (i + 1), phase.getUebungByDay(day).get(i).getUebungsID());
                     args.putDouble("gewicht" + (i + 1), RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax())));
-                    gesgewicht += RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax()))*phase.getWiederholungen()*phase.getSaetze();
+                    gesgewicht += RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax())) * phase.getWiederholungen() * phase.getSaetze();
                 }
                 args.putString("phase", rowid);
                 args.putDouble("gesamtgewicht", gesgewicht);
@@ -138,8 +138,8 @@ public class FTrainingsSettings extends Fragment {
             }
         });
 
-
-        welcomeText.setText("Aktuelle Trainingsphase " + port.getPhaseIndex() + " von " + port.getPhasenListe().size() + "."); // Anzeige aktuelle Trainigsphase
+        int value = port.getPhaseIndex();
+        welcomeText.setText("Aktuelle Trainingsphase " + value + " von " + port.getPhasenListe().size() + "."); // Anzeige aktuelle Trainigsphase
         pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
         uebs = null;
         uebs = new ArrayList<String>();

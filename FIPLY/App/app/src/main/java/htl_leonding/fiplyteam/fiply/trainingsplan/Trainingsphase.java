@@ -59,6 +59,7 @@ public class Trainingsphase {
     // Holt sich die Übungen von einem bestimmten Tag
     public List<Uebung> getUebungByDay(String day) {
         List<Uebung> uebungen = new LinkedList<Uebung>();
+        List<Uebung> uebungen2 = getUebungList();
         for (Uebung element : getUebungList()) {
             if (element.getWochenTag().equals(day))
                 uebungen.add(element);
@@ -105,6 +106,37 @@ public class Trainingsphase {
             return true;
         }
         return false;
+    }
+
+    public int upcoming(){
+        System.out.println(getStartDate().toString());
+        System.out.println(getEndDate().toString());
+
+
+        Date newDate = new Date();
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(newDate);
+        Calendar endDate = Calendar.getInstance();
+        endDate.setTime(getEndDate());
+        Calendar startDate = Calendar.getInstance();
+        startDate.setTime(getStartDate());
+
+        boolean isTodayOne = (endDate.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
+                endDate.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                endDate.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
+
+        boolean isTodayTwo = (startDate.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
+                startDate.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                startDate.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
+
+        if (isTodayOne || isTodayTwo)
+            return 0;
+
+        if (cal2.before(startDate))
+            return 1;
+        if (cal2.after(endDate))
+            return -1;
+        return 0;
     }
 
     public int getPausenDauer() {

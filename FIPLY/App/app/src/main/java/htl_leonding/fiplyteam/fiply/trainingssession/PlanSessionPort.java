@@ -65,16 +65,20 @@ public class PlanSessionPort {
     }
 
     public int getPhaseIndex() {
-        int cnt = 4;
+        int cnt = 0;
+        int ind = 0;
         for (Trainingsphase phase : getPhasenListe()) {
-            cnt--;
-            if (phase.isActive()) {
-                return cnt;
-            }
+            cnt = cnt + phase.upcoming();
+            ind++;
+            if (ind == 3)
+                break;
         }
-        return 0;
+        if (cnt > 0)
+            return 1;
+        else if (cnt < 0)
+            return 3;
+        return 2;
     }
-
     public void init() {
         repPhasen = PhasenRepository.getInstance();
         cPhasen = repPhasen.getAllPhasen();
@@ -195,6 +199,8 @@ public class PlanSessionPort {
                 resultList.add(element);
             }
         }
+        System.out.println("Übungen insgesamt: " + instruktListe.size());
+        System.out.println("Übungen in der Phase: " + resultList.size());
         return resultList;
     }
 
