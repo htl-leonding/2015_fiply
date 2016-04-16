@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +30,7 @@ import java.util.Locale;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
 import htl_leonding.fiplyteam.fiply.menu.FMain;
 import htl_leonding.fiplyteam.fiply.trainingsplan.RepMax;
@@ -49,6 +51,7 @@ public class FTrainingsSettings extends Fragment {
     TextView title;
     ImageView imgView;
     ArrayList<String> uebs;
+    KeyValueRepository kvRep;
     String day = "";
 
     @Nullable
@@ -56,12 +59,14 @@ public class FTrainingsSettings extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActivity().setTitle(R.string.fsettingtitle);
+        kvRep = KeyValueRepository.getInstance();
         return inflater.inflate(R.layout.fragment_sessionsettings, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        kvRep.setContext(getContext());
         rep = PhasenRepository.getInstance();
         PhasenRepository.setContext(getContext());
         InstruktionenRepository.setContext(getContext());
@@ -70,6 +75,21 @@ public class FTrainingsSettings extends Fragment {
         if (!port.isGenerated()) { // Wenn kein Trainingsplan existiert kann diese View nicht besucht werden.
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage(R.string.alertnoplan)
+                    .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            displayFragment.displayMainMenu(new FMain(), getFragmentManager());
+            onDestroy();
+        }
+        int chosen = -1;
+        try {
+            chosen = Integer.valueOf(kvRep.getKeyValue("selectedPlan").getString(1));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (chosen == -1){
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage(R.string.alertnotchosen)
                     .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
             AlertDialog dialog = builder.create();
             dialog.show();
@@ -143,9 +163,18 @@ public class FTrainingsSettings extends Fragment {
         pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
         uebs = null;
         uebs = new ArrayList<String>();
+        try {
         for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) { // Holt sich die aktuellen Übungen und schreibt sie in die Liste
             uebs.add(String.valueOf(element.getUebungsName()));
             Log.wtf("WTF", element.getUebungsName());
+        }}catch(Exception e){
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage(R.string.alertnotchosen)
+                    .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            displayFragment.displayMainMenu(new FMain(), getFragmentManager());
+            onDestroy();
         }
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.uebungslist_item, uebs);
         uebList.setAdapter(null);
