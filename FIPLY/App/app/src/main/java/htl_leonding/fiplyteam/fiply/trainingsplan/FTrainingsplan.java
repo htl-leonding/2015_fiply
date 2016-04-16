@@ -336,22 +336,28 @@ public class FTrainingsplan extends Fragment {
         System.out.println("Neu generiert PlanID: " + planId);
 
         for (Trainingsphase phase : trainingsphaseList) {
-            System.out.println("Phase: " + phase.getPhasenName() + ", "  + phase.getStartDate() + " - " + phase.getEndDate());
+            System.out.println("Phase: " + phase.getPhasenName() + ", " + phase.getStartDate() + " - " + phase.getEndDate());
 
             String dbStartDate = format.format(phase.getStartDate());
             String dbEndDate = format.format(phase.getEndDate());
             phasenRep.insertPhase(dbStartDate, dbEndDate,
                     phase.getPhasenName(), String.valueOf(phase.getPhasenDauer()), String.valueOf(phase.getPausenDauer()),
                     String.valueOf(phase.getSaetze()), String.valueOf(phase.getWiederholungen()), planId);
+            Cursor cnew = phasenRep.getAllPhasen();
+            int newrowid = -1;
+
+            for (cnew.moveToFirst(); !cnew.isAfterLast(); cnew.moveToNext()){
+                newrowid++;
+            }
 
             Cursor c = phasenRep.getPhaseByStartDate(phase.getStartDate());
+
             c.moveToFirst();
-            int index = c.getColumnIndex(PhasenEntry.COLUMN_ROWID);
-            String rowid = c.getString(index);
+
             System.out.println("Übungen:");
             for (Uebung ueb : phase.getUebungList()) {
-                instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), rowid);
-                System.out.println("Übung: " + ueb.getWochenTag() + ", " + ueb.getUebungsName() + ", PhasenId: " + rowid);
+                instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), Integer.toString(newrowid));
+                System.out.println("Übung: " + ueb.getWochenTag() + ", " + ueb.getUebungsName() + ", PhasenId: " + newrowid);
             }
             System.out.println("Übungsanzahl: " + phase.getUebungList().size());
         }
