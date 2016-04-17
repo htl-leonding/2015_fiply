@@ -75,26 +75,35 @@ public class FTrainingsSettings extends Fragment {
         if (!port.isGenerated()) { // Wenn kein Trainingsplan existiert kann diese View nicht besucht werden.
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage(R.string.alertnoplan)
-                    .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
+                    .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
             AlertDialog dialog = builder.create();
             dialog.show();
             displayFragment.displayMainMenu(new FMain(), getFragmentManager());
             onDestroy();
-        }
-        int chosen = -1;
-        try {
-            chosen = Integer.valueOf(kvRep.getKeyValue("selectedPlan").getString(1));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if (chosen == -1){
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage(R.string.alertnotchosen)
-                    .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            displayFragment.displayMainMenu(new FMain(), getFragmentManager());
-            onDestroy();
+        }else {
+            int chosen = -1;
+            try {
+                chosen = Integer.valueOf(kvRep.getKeyValue("selectedPlan").getString(1));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if (chosen == -1) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage(R.string.alertnotchosen)
+                        .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                displayFragment.displayMainMenu(new FMain(), getFragmentManager());
+                onDestroy();
+            }
         }
 
         title = (TextView) getActivity().findViewById(R.id.sessionsettingstitle);
@@ -159,7 +168,7 @@ public class FTrainingsSettings extends Fragment {
         });
 
         int value = port.getPhaseIndex();
-        welcomeText.setText("Aktuelle Trainingsphase " + value + " von " + port.getPhasenListe().size() + "."); // Anzeige aktuelle Trainigsphase
+        welcomeText.setText("Aktuelle Trainingsphase " + value + " von 3."); // Anzeige aktuelle Trainigsphase
         pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
         uebs = null;
         uebs = new ArrayList<String>();
@@ -168,12 +177,6 @@ public class FTrainingsSettings extends Fragment {
             uebs.add(String.valueOf(element.getUebungsName()));
             Log.wtf("WTF", element.getUebungsName());
         }}catch(Exception e){
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage(R.string.alertnotchosen)
-                    .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            displayFragment.displayMainMenu(new FMain(), getFragmentManager());
             onDestroy();
         }
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.uebungslist_item, uebs);

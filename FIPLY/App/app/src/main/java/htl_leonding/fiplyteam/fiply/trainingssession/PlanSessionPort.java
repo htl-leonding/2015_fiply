@@ -42,10 +42,14 @@ public class PlanSessionPort {
     }
 
     public boolean isGenerated() {
-        if (getPhasenListe().size() > 0) {
-            return true;
+        Cursor clol = repPhasen.getAllPhasen();
+        int cnt = 0;
+        for (clol.moveToFirst(); !clol.isAfterLast(); clol.moveToNext()){
+            cnt++;
         }
-        return false;
+        if (cnt == 0)
+            return false;
+        return true;
     }
 
     public boolean isAnyUebungToday() {
