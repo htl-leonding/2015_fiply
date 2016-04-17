@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_gravity="right"
-            app:seriesColor="#ee0000"
+            app:seriesColor="#ff8400"
             app:seriesType="line" />
 
         <com.jjoe64.graphview.GraphView
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_gravity="right"
-            app:seriesColor="#ee0000"
+            app:seriesColor="#ff8400"
             app:seriesType="line" />
 
     </LinearLayout>

@@ -119,7 +119,7 @@ public class FPlanManagement extends Fragment {
             @Override
             public void run() {
                 try {
-                    changeFocus(planView, Integer.valueOf(Krep.getKeyValue("selectedPlan").getString(1)));
+                        changeFocus(planView, Integer.valueOf(Krep.getKeyValue("selectedPlan").getString(1)));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
