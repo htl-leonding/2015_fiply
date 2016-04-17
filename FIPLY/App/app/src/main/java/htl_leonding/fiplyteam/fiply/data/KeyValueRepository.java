@@ -211,7 +211,7 @@ public class KeyValueRepository {
             insertKeyValue("userAge", "21-30");
             insertKeyValue("userProf", "Not Fit");
             insertKeyValue("isUserCustomized", "true");
-            insertKeyValue("selectedPlan", "-1");
+            insertKeyValue("selectedPlan", "0");
         }
 
 
