@@ -5,4 +5,5 @@
     <integer name="redInt">15539236</integer>
     <integer name="yellowInt">16773632</integer>
     <integer name="greenInt">2273612</integer>
+    <integer name="yelGreenInt">11920925</integer>
 </resources>

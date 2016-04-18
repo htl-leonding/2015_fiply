@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -79,7 +80,7 @@ public class StatisticRepository {
         return lgsr;
     }
 
-    public LineGraphSeries<MoodTime> getSeriesForMoodTime() {
+    public PointsGraphSeries<MoodTime> getSeriesForMoodTime() {
         Cursor cDataPoints = getAllDataPoints();
         cDataPoints.moveToFirst();
 
@@ -90,7 +91,7 @@ public class StatisticRepository {
             cDataPoints.moveToNext();
         }
 
-        LineGraphSeries<MoodTime> lgsr = new LineGraphSeries<>(dataPoints);
+        PointsGraphSeries<MoodTime> lgsr = new PointsGraphSeries<>(dataPoints);
         return lgsr;
     }
 

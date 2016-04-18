@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
+import htl_leonding.fiplyteam.fiply.data.StatisticRepository;
 
 public class Reset extends Activity {
     KeyValueRepository kvr;
+    StatisticRepository str;
 
     /**
      * Wird beim Ersten Aufruf der ResetActivity aufgerufen und dient dem setzen aller Ressourcen
@@ -21,8 +23,11 @@ public class Reset extends Activity {
         super.onCreate(savedInstanceState);
 
         KeyValueRepository.setContext(this);
+        StatisticRepository.setContext(this);
         kvr = KeyValueRepository.getInstance();
         kvr.deleteAllKeyValues();
+        str = StatisticRepository.getInstance();
+        str.deleteAllDataPoints();
 
         Intent mStartActivity = new Intent(this, SplashActivity.class);
         PendingIntent mPendingIntent = PendingIntent.getActivity(this, 12345, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);

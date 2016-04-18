@@ -1,5 +1,6 @@
 package htl_leonding.fiplyteam.fiply.uebungskatalog;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
@@ -20,11 +22,11 @@ import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 public class FUebungFilter extends Fragment {
     //Layout Elemente
     KeyValueRepository kvr;
-    EditText filterName;
     ImageView bodyFilter;
     ImageView bodyFilterMask;
-    Button applyFilter;
     Button resetFilter;
+
+    Context context;
 
 
     @Nullable
@@ -43,8 +45,7 @@ public class FUebungFilter extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         kvr = KeyValueRepository.getInstance();
-        filterName = (EditText) getView().findViewById(R.id.etFilterUebungName);
-        applyFilter = (Button) getView().findViewById(R.id.btApplyFilter);
+        context = getContext();
         resetFilter = (Button) getView().findViewById(R.id.btResetFilter);
         bodyFilter = (ImageView) getView().findViewById(R.id.ivBodyFilter);
         bodyFilterMask = (ImageView) getView().findViewById(R.id.ivBodyFilterMask);
@@ -52,13 +53,6 @@ public class FUebungFilter extends Fragment {
         bodyFilterMask.setImageDrawable(getResources().getDrawable(R.drawable.userbodycolored));
         bodyFilter.setImageDrawable(getResources().getDrawable(R.drawable.userbody));
 
-        //Setzt den OnClickListener für den Button applyFilter, dieser setzt den Filter.
-        applyFilter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                kvr.updateKeyValue("filterName", filterName.getText().toString());
-            }
-        });
         //Setzt den OnClickListener für den Button resetFilter, dieser löscht den Filter
         resetFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,27 +73,38 @@ public class FUebungFilter extends Fragment {
                 //RED area is arms
                 if (closeMatch(getResources().getInteger(R.integer.redInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Arme");
+                    Toast.makeText(context,"Armübungen ausgewählt",Toast.LENGTH_SHORT).show();
                     kvr.updateKeyValue("filterMuskelGruppe", "Arme");
                 }
                 //BLACK area is Breast
                 else if (closeMatch(getResources().getInteger(R.integer.blackInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Brust");
+                    Toast.makeText(context,"Brustübungen ausgewählt",Toast.LENGTH_SHORT).show();
                     kvr.updateKeyValue("filterMuskelGruppe", "Brust");
                 }
                 //GREEN area is shoulders
                 else if (closeMatch(getResources().getInteger(R.integer.greenInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Schultern");
+                    Toast.makeText(context,"Schulterübungen ausgewählt",Toast.LENGTH_SHORT).show();
                     kvr.updateKeyValue("filterMuskelGruppe", "Schultern");
                 }
                 //BLUE are is legs
                 else if (closeMatch(getResources().getInteger(R.integer.blueInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Beine");
+                    Toast.makeText(context,"Beinübungen ausgewählt",Toast.LENGTH_SHORT).show();
                     kvr.updateKeyValue("filterMuskelGruppe", "Beine");
                 }
                 //YELLOW area is core(stomach)
                 else if (closeMatch(getResources().getInteger(R.integer.yellowInt), clickedColor, tolerance)) {
                     Log.wtf("Area clicked: ", "Bauch");
+                    Toast.makeText(context,"Bauchübungen ausgewählt",Toast.LENGTH_SHORT).show();
                     kvr.updateKeyValue("filterMuskelGruppe", "Bauch");
+                }
+                //YELLOW-GREEN are is back
+                else if (closeMatch(getResources().getInteger(R.integer.yelGreenInt), clickedColor, tolerance)) {
+                    Log.wtf("Area clicked: ", "Rücken");
+                    Toast.makeText(context,"Rückenübungen ausgewählt",Toast.LENGTH_SHORT).show();
+                    kvr.updateKeyValue("filterMuskelGruppe", "Rücken");
                 }
                 return true;
             }

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LabelFormatter;
+import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.sql.SQLException;
@@ -81,12 +83,34 @@ public class FStatistic extends Fragment {
         gvMood.getViewport().setYAxisBoundsManual(true);
         gvMood.getViewport().setMaxY(5);
         gvMood.getViewport().setMinY(0);
+        gvMood.getGridLabelRenderer().setLabelFormatter(new LabelFormatter() {
+            @Override
+            public String formatLabel(double value, boolean isValueX) {
+                return ""+(int)value+". Tag";
+            }
+
+            @Override
+            public void setViewport(Viewport viewport) {
+
+            }
+        });
 
 
         //gvLift
         gvLift.addSeries(str.getSeriesForLiftedWeight());
         gvLift.getViewport().setYAxisBoundsManual(true);
-        gvLift.getViewport().setMaxY(500);
+        gvLift.getViewport().setMaxY(3000);
         gvLift.getViewport().setMinY(0);
+        gvLift.getGridLabelRenderer().setLabelFormatter(new LabelFormatter() {
+            @Override
+            public String formatLabel(double value, boolean isValueX) {
+                return "" + (int) value+". Tag";
+            }
+
+            @Override
+            public void setViewport(Viewport viewport) {
+
+            }
+        });
     }
 }
