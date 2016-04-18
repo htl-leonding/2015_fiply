@@ -43,7 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/rbFeedbackMood"
         android:background="@color/darkPrimary"
-        android:gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="25dp"
         android:padding="5dp"
         android:text="@string/btnFeedbackShowStats"
         android:textColor="@color/darkTextColorDark" />

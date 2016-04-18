@@ -77,7 +77,7 @@ public class FFeedback extends Fragment {
         });
 
 
-        tvGewicht.setText("Du hast heute " + weight + " mal deine Maximalkraft gehoben!");
+        tvGewicht.setText("Du hast heute ca. " + weight + " mal deine Maximalkraft gehoben!");
 
         /*
         if(mainActivity.mInterstitialAd.isLoaded()) { //wenn die Werbung geladen ist, wird sie angezeigt

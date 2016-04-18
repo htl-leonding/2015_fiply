@@ -70,10 +70,10 @@
     <string name="fehler">Fehler</string>
     <string name="checkInput">Überprüfen Sie bitte ihre Eingabe.</string>
     <string name="fertig">Fertig!</string>
-    <string name="btnPlaylistSave">Save</string>
-    <string name="btnPlaylistSelectAll">ALL</string>
-    <string name="btnPlaylistSelectNone">NONE</string>
-    <string name="btnPlaylistBack">Back</string>
+    <string name="btnPlaylistSave">Speichern</string>
+    <string name="btnPlaylistSelectAll">Alle</string>
+    <string name="btnPlaylistSelectNone">Keine</string>
+    <string name="btnPlaylistBack">Zurück</string>
     <string name="startStatistic">Statistik</string>
     <string name="successmessagetrain">Dein persönlicher Trainingsplan wurde erfolgreich generiert.</string>
     <string name="fsettingtitle">Übersicht</string>
@@ -715,7 +715,7 @@
     <string name="btSettingsRefreshMusic">App neu starten und Musik zur Bibliothek hinzufügen</string>
     <string name="startSettings">Einstellungen</string>
     <string name="notificationInterval">Zeitspanne zwischen Erinnerungen</string>
-    <string name="notificationIntervalDefault">2</string>
+    <string name="notificationIntervalDefault">0</string>
     <string name="manageMusic">Musik verwalten</string>
     <string name="preferencesHeaderMusic">Musik</string>
     <string name="preferencesHeaderNotifications">Notifications</string>
