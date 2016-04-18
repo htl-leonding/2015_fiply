@@ -61,7 +61,7 @@ public class FFeedback extends Fragment {
         tvGewicht = (TextView) getActivity().findViewById(R.id.tvFeedbackGewicht);
         rbMood = (RatingBar) getActivity().findViewById(R.id.rbFeedbackMood);
         btnStats = (Button) getActivity().findViewById(R.id.btnFeedbackMood);
-        weight = getArguments().getDouble("gesamtgewicht");
+        weight = getArguments().getDouble("gesamtgewicht")/100;
         rbMood.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -77,7 +77,7 @@ public class FFeedback extends Fragment {
         });
 
 
-        tvGewicht.setText("Du hast heute insgesamt " + weight + " kg gestemmt!");
+        tvGewicht.setText("Du hast heute " + weight + " mal deine Maximalkraft gehoben!");
 
         /*
         if(mainActivity.mInterstitialAd.isLoaded()) { //wenn die Werbung geladen ist, wird sie angezeigt
