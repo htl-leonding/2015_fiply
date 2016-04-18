@@ -25,6 +25,7 @@ public class FUebungFilter extends Fragment {
     ImageView bodyFilter;
     ImageView bodyFilterMask;
     Button resetFilter;
+    Button back;
 
     Context context;
 
@@ -47,18 +48,30 @@ public class FUebungFilter extends Fragment {
         kvr = KeyValueRepository.getInstance();
         context = getContext();
         resetFilter = (Button) getView().findViewById(R.id.btResetFilter);
-        bodyFilter = (ImageView) getView().findViewById(R.id.ivBodyFilter);
+        back = (Button) getView().findViewById(R.id.btMuskelGruppeFilterBack);
+
         bodyFilterMask = (ImageView) getView().findViewById(R.id.ivBodyFilterMask);
+        bodyFilter = (ImageView) getView().findViewById(R.id.ivBodyFilter);
+
+
 
         bodyFilterMask.setImageDrawable(getResources().getDrawable(R.drawable.userbodycolored));
         bodyFilter.setImageDrawable(getResources().getDrawable(R.drawable.userbody));
+
 
         //Setzt den OnClickListener für den Button resetFilter, dieser löscht den Filter
         resetFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                kvr.updateKeyValue("filterName", "");
                 kvr.updateKeyValue("filterMuskelGruppe", "");
+                Toast.makeText(getContext(), "Muskelgruppenfilter zurückgesetzt", Toast.LENGTH_SHORT);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //senki sei back button code
             }
         });
 
