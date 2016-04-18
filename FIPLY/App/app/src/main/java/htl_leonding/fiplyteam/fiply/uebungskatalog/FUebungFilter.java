@@ -1,11 +1,13 @@
 package htl_leonding.fiplyteam.fiply.uebungskatalog;
 
+import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -26,9 +28,7 @@ public class FUebungFilter extends Fragment {
     ImageView bodyFilterMask;
     Button resetFilter;
     Button back;
-
     Context context;
-
 
     @Nullable
     @Override
@@ -73,7 +73,12 @@ public class FUebungFilter extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //senki sei back button code
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                //Fügt dieses Fragment zum Backstack hinzu, somit kann man bei drücken des BackButtons darauf zurückspringen
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.fraPlace, new FUebungskatalog());
+                fragmentTransaction.commit();
             }
         });
 
