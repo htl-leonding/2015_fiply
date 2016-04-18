@@ -220,7 +220,6 @@ public class KeyValueRepository {
         } else {
             updateKeyValue("filterName", "");
         }
-        Log.wtf("NumberTraining",getKeyValue("numberTraining").getString(1));
 
         if (getKeyValue("numberTraining").getCount() == 0) {
 
