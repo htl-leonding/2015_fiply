@@ -24,7 +24,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:clickable="true"
-        android:src="@drawable/"
+        android:src="@color/darkPrimary"
         app:elevation="100dp"
         app:rippleColor="@color/darkSecondary" />
 </RelativeLayout>
