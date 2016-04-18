@@ -2,6 +2,7 @@ package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ public class FFeedback extends Fragment {
     TextView tvGewicht;
     Button btnStats;
     RatingBar rbMood;
-    double mood;
+    double mood = 3;
     double weight;
     StatisticRepository srep;
     MainActivity mainActivity;
@@ -64,24 +65,20 @@ public class FFeedback extends Fragment {
         rbMood.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                setMood(Double.valueOf(rating));
+                setMood((double)rating);
             }
         });
 
         btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayFragment.displayMainMenu(new FStatistic(), getFragmentManager());
+                displayFragment.displayTrainingsession(new FStatistic(), getFragmentManager());
             }
         });
 
 
         tvGewicht.setText("Du hast heute insgesamt " + weight + " kg gestemmt!");
-        try {
-            srep.insertDataPoint(getMood(), weight);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
         /*
         if(mainActivity.mInterstitialAd.isLoaded()) { //wenn die Werbung geladen ist, wird sie angezeigt
             mainActivity.mInterstitialAd.show();
@@ -102,11 +99,23 @@ public class FFeedback extends Fragment {
         */
     }
 
+    @Override
+    public void onDestroyView() {
+        try {
+            srep.insertDataPoint(getMood(), weight);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        super.onDestroyView();
+    }
+
     public Double getMood() {
         return mood;
     }
 
     public void setMood(Double mood) {
+        Log.wtf("setMood", String.valueOf(mood));
         this.mood = mood;
     }
 }

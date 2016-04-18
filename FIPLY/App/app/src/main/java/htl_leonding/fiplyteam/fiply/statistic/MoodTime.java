@@ -1,5 +1,7 @@
 package htl_leonding.fiplyteam.fiply.statistic;
 
+import android.util.Log;
+
 import com.jjoe64.graphview.series.DataPointInterface;
 
 /**
@@ -13,17 +15,18 @@ public class MoodTime implements DataPointInterface {
 
 
     public MoodTime(double x, double y) {
-        _mood = x;
-        _timestamp = y;
+        Log.wtf("new MoodTime","x:"+x+"y:"+y);
+        _mood = y;
+        _timestamp = x;
     }
 
     @Override
     public double getX() {
-        return _mood;
+        return _timestamp;
     }
 
     @Override
     public double getY() {
-        return _timestamp;
+        return _mood;
     }
 }

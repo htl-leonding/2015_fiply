@@ -65,14 +65,14 @@ public class StatisticRepository {
 
 
     public LineGraphSeries<WeightLifted> getSeriesForLiftedWeight() {
-
+        Log.wtf("getSeries:", "Lifted Weight");
         Cursor cDataPoints = getAllDataPoints();
         cDataPoints.moveToFirst();
 
         WeightLifted[] dataPoints = new WeightLifted[cDataPoints.getCount()];
 
         for (int i = 0; i < dataPoints.length; i++) {
-            dataPoints[i] = new WeightLifted(Double.parseDouble(cDataPoints.getString(0)), cDataPoints.getDouble(2));
+            dataPoints[i] = new WeightLifted(cDataPoints.getDouble(1), cDataPoints.getDouble(3));
             cDataPoints.moveToNext();
         }
 
@@ -81,22 +81,25 @@ public class StatisticRepository {
     }
 
     public PointsGraphSeries<MoodTime> getSeriesForMoodTime() {
+        Log.wtf("getSeries:", "Mood");
+
         Cursor cDataPoints = getAllDataPoints();
         cDataPoints.moveToFirst();
 
         MoodTime[] dataPoints = new MoodTime[cDataPoints.getCount()];
 
         for (int i = 0; i < dataPoints.length; i++) {
-            dataPoints[i] = new MoodTime(Double.parseDouble(cDataPoints.getString(0)), cDataPoints.getDouble(1));
+            dataPoints[i] = new MoodTime(cDataPoints.getDouble(1), cDataPoints.getDouble(2));
             cDataPoints.moveToNext();
         }
 
-        PointsGraphSeries<MoodTime> lgsr = new PointsGraphSeries<>(dataPoints);
-        return lgsr;
+        PointsGraphSeries<MoodTime> pgsr = new PointsGraphSeries<>(dataPoints);
+        return pgsr;
     }
 
 
     public long insertDataPoint(double mood, double weight) throws SQLException {
+        Log.wtf("InsertDataPoint","mood:"+mood+"weight:"+weight);
         ContentValues initialValues = new ContentValues();
         initialValues.put(StatisticEntry.COLUMN_DATE, KeyValueRepository.getInstance().getNumberTraining());
         initialValues.put(StatisticEntry.COLUMN_MOOD, mood);

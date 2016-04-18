@@ -6,6 +6,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,18 +85,13 @@ public class FStatistic extends Fragment {
      * Füllt die Graphen mit den jeweiligen DatenPunkten
      */
     public void fillSeries() {
-        LineGraphSeries<WeightLifted> wllgs;
-        PointsGraphSeries<MoodTime> mtpgs;
 
-        mtpgs = str.getSeriesForMoodTime();
-        wllgs = str.getSeriesForLiftedWeight();
-
-
+        Log.wtf("Statistic", "Fill Series");
         //gvMood
-        gvMood.addSeries(mtpgs);
+        gvMood.addSeries(str.getSeriesForMoodTime());
         gvMood.getViewport().setYAxisBoundsManual(true);
         gvMood.getViewport().setMaxY(5);
-        gvMood.getViewport().setMinY(0);
+        gvMood.getViewport().setMinY(1);
         gvMood.getGridLabelRenderer().setNumHorizontalLabels(5);
         gvMood.getGridLabelRenderer().setNumVerticalLabels(5);
 
@@ -116,7 +112,7 @@ public class FStatistic extends Fragment {
 
 
         //gvLift
-        gvLift.addSeries(wllgs);
+        gvLift.addSeries(str.getSeriesForLiftedWeight());
         gvLift.getViewport().setYAxisBoundsManual(true);
         gvLift.getViewport().setMaxY(3000);
         gvLift.getViewport().setMinY(0);
