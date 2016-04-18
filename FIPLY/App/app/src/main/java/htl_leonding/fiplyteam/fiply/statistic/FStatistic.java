@@ -1,5 +1,8 @@
 package htl_leonding.fiplyteam.fiply.statistic;
 
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,8 +14,11 @@ import android.widget.TextView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LabelFormatter;
 import com.jjoe64.graphview.Viewport;
+import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
 
+import java.math.RoundingMode;
 import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
@@ -78,15 +84,27 @@ public class FStatistic extends Fragment {
      * Füllt die Graphen mit den jeweiligen DatenPunkten
      */
     public void fillSeries() {
+        LineGraphSeries<WeightLifted> wllgs;
+        PointsGraphSeries<MoodTime> mtpgs;
+
+        mtpgs = str.getSeriesForMoodTime();
+        wllgs = str.getSeriesForLiftedWeight();
+
+
         //gvMood
-        gvMood.addSeries(str.getSeriesForMoodTime());
+        gvMood.addSeries(mtpgs);
         gvMood.getViewport().setYAxisBoundsManual(true);
         gvMood.getViewport().setMaxY(5);
         gvMood.getViewport().setMinY(0);
+        gvMood.getGridLabelRenderer().setNumHorizontalLabels(5);
+        gvMood.getGridLabelRenderer().setNumVerticalLabels(5);
+
         gvMood.getGridLabelRenderer().setLabelFormatter(new LabelFormatter() {
             @Override
             public String formatLabel(double value, boolean isValueX) {
-                return ""+(int)value+". Tag";
+                if (isValueX)
+                    return "" + (int)((value*2)-1) + ". Tag";
+                return "" + (int) value;
             }
 
             @Override
@@ -96,15 +114,20 @@ public class FStatistic extends Fragment {
         });
 
 
+
         //gvLift
-        gvLift.addSeries(str.getSeriesForLiftedWeight());
+        gvLift.addSeries(wllgs);
         gvLift.getViewport().setYAxisBoundsManual(true);
         gvLift.getViewport().setMaxY(3000);
         gvLift.getViewport().setMinY(0);
+        gvMood.getGridLabelRenderer().setNumHorizontalLabels(5);
+        gvMood.getGridLabelRenderer().setNumVerticalLabels(5);
         gvLift.getGridLabelRenderer().setLabelFormatter(new LabelFormatter() {
             @Override
             public String formatLabel(double value, boolean isValueX) {
-                return "" + (int) value+". Tag";
+                if(isValueX)
+                    return ""+(int)((value*2)-1)+". Tag";
+                return ""+(int)value+" kg";
             }
 
             @Override

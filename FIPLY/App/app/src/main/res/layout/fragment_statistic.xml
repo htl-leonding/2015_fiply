@@ -41,7 +41,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Soviel hast du gehoben!"
             android:id="@+id/statisticWeightLabel"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp" />
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graphLift"

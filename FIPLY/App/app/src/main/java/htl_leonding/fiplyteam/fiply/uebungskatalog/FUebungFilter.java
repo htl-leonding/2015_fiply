@@ -58,6 +58,8 @@ public class FUebungFilter extends Fragment {
         bodyFilterMask.setImageDrawable(getResources().getDrawable(R.drawable.userbodycolored));
         bodyFilter.setImageDrawable(getResources().getDrawable(R.drawable.userbody));
 
+        bodyFilter.bringToFront();
+
 
         //Setzt den OnClickListener für den Button resetFilter, dieser löscht den Filter
         resetFilter.setOnClickListener(new View.OnClickListener() {

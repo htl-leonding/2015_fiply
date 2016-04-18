@@ -26,8 +26,10 @@ public class FFeedback extends Fragment {
     Button btnStats;
     RatingBar rbMood;
     double mood;
+    double weight;
     StatisticRepository srep;
     MainActivity mainActivity;
+
 
     /**
      * Hier wird das fragment_feedback fragment angezeigt
@@ -58,7 +60,7 @@ public class FFeedback extends Fragment {
         tvGewicht = (TextView) getActivity().findViewById(R.id.tvFeedbackGewicht);
         rbMood = (RatingBar) getActivity().findViewById(R.id.rbFeedbackMood);
         btnStats = (Button) getActivity().findViewById(R.id.btnFeedbackMood);
-
+        weight = getArguments().getDouble("gesamtgewicht");
         rbMood.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -73,9 +75,10 @@ public class FFeedback extends Fragment {
             }
         });
 
-        tvGewicht.setText("Du hast heute insgesamt " + getArguments().getDouble("gesamtgewicht") + " kg gestemmt!");
+
+        tvGewicht.setText("Du hast heute insgesamt " + weight + " kg gestemmt!");
         try {
-            srep.insertDataPoint(getMood(), getArguments().getDouble("gesamtgewicht"));
+            srep.insertDataPoint(getMood(), weight);
         } catch (SQLException e) {
             e.printStackTrace();
         }
