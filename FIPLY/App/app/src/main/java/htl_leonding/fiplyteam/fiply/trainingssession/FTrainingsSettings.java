@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -53,6 +54,8 @@ public class FTrainingsSettings extends Fragment {
     ArrayList<String> uebs;
     KeyValueRepository kvRep;
     String day = "";
+    ImageButton whatsrepmax;
+    TextView whatsrepmaxtext;
 
     @Nullable
     @Override
@@ -116,6 +119,40 @@ public class FTrainingsSettings extends Fragment {
         uebList = (ListView) getActivity().findViewById(R.id.listviewuebungen);
         chooseDay = (Button) getActivity().findViewById(R.id.choosedaybt);
         imgView = (ImageView) getActivity().findViewById(R.id.imageViewSleeping);
+        whatsrepmax = (ImageButton) getActivity().findViewById(R.id.whatsrepmax);
+
+        whatsrepmax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new android.app.AlertDialog.Builder(getContext())
+                        .setTitle(R.string.whatsrepmax)
+                        .setMessage(R.string.infowhatsrepmax)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setIcon(R.drawable.questionsmall)
+                        .show();
+            }
+        });
+        whatsrepmaxtext = (TextView) getActivity().findViewById(R.id.sessionsettingrepmax);
+        whatsrepmaxtext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new android.app.AlertDialog.Builder(getContext())
+                        .setTitle(R.string.whatsrepmax)
+                        .setMessage(R.string.infowhatsrepmax)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setIcon(R.drawable.questionsmall)
+                        .show();
+            }
+        });
+
         chooseDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { // Dialog zum bestellen der Übungen von einem bestimmten Tag.
@@ -169,7 +206,7 @@ public class FTrainingsSettings extends Fragment {
 
         int value = port.getPhaseIndex();
         welcomeText.setText("Aktuelle Trainingsphase " + value + " von 3."); // Anzeige aktuelle Trainigsphase
-        pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
+        pBar.setProgress((value / 3) * 100 - 10);
         uebs = null;
         uebs = new ArrayList<String>();
         try {
