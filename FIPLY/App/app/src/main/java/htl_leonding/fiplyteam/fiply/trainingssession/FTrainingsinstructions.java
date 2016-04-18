@@ -223,7 +223,7 @@ public class FTrainingsinstructions extends Fragment {
         tvUebungAnleitung.setText(getAktUebung().getString(3));
         tvUebungMuskelgruppe.setText(getAktUebung().getString(4));
         tvUebungSchwierigkeit.setText(getAktUebung().getString(5));
-        tvUebungGewicht.setText(getArguments().getDouble("gewicht" + ueId) + " kg");
+        tvUebungGewicht.setText(getArguments().getDouble("gewicht" + ueId) + "%");
         setVideoLink(getAktUebung().getString(6));
         tvUebungEquipment.setText(getAktUebung().getString(7));
     }
