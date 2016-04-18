@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 
+import java.sql.SQLException;
+
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.StatisticRepository;
 import htl_leonding.fiplyteam.fiply.menu.FMain;
@@ -72,7 +74,11 @@ public class FFeedback extends Fragment {
         });
 
         tvGewicht.setText("Du hast heute insgesamt " + getArguments().getDouble("gesamtgewicht") + " kg gestemmt!");
-        srep.insertDataPoint(getMood(), getArguments().getDouble("gesamtgewicht"));
+        try {
+            srep.insertDataPoint(getMood(), getArguments().getDouble("gesamtgewicht"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         if(mainActivity.mInterstitialAd.isLoaded()) { //wenn die Werbung geladen ist, wird sie angezeigt
             mainActivity.mInterstitialAd.show();

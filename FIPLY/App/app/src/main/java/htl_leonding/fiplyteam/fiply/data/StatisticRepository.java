@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 
 import htl_leonding.fiplyteam.fiply.data.FiplyContract.StatisticEntry;
@@ -15,6 +16,7 @@ import htl_leonding.fiplyteam.fiply.statistic.MoodTime;
 import htl_leonding.fiplyteam.fiply.statistic.WeightLifted;
 
 public class StatisticRepository {
+
     private static Context repoContext;
     private static StatisticRepository instance = null;
 
@@ -93,35 +95,15 @@ public class StatisticRepository {
     }
 
 
-    public long insertDataPoint(double mood, double weight) {
+    public long insertDataPoint(double mood, double weight) throws SQLException {
         ContentValues initialValues = new ContentValues();
-        initialValues.put(StatisticEntry.COLUMN_DATE, Calendar.DATE);
-        initialValues.put(StatisticEntry.COLUMN_MOOD, mood);
-        initialValues.put(StatisticEntry.COLUMN_LIFTEDWEIGHT, weight);
-        return db.insert(StatisticEntry.TABLE_NAME, null, initialValues);
-    }
-
-    public long insertDataPointWithDate(String date, double mood, double weight) {
-        ContentValues initialValues = new ContentValues();
-        initialValues.put(StatisticEntry.COLUMN_DATE, date);
+        initialValues.put(StatisticEntry.COLUMN_DATE, KeyValueRepository.getInstance().getNumberTraining());
         initialValues.put(StatisticEntry.COLUMN_MOOD, mood);
         initialValues.put(StatisticEntry.COLUMN_LIFTEDWEIGHT, weight);
         return db.insert(StatisticEntry.TABLE_NAME, null, initialValues);
     }
 
 
-    //insert some test stats
-    public void insertTestStats() {
-
-        deleteAllDataPoints();
-        insertDataPointWithDate("150221", 4, 20);
-        insertDataPointWithDate("150224", 2, 40);
-        insertDataPointWithDate("150228", 3, 90);
-        insertDataPointWithDate("150302", 2, 80);
-        insertDataPointWithDate("150306", 5, 60);
-        insertDataPointWithDate("150309", 4, 120);
-        insertDataPointWithDate("150312", 1, 140);
-    }
 
     public void deleteAllDataPoints() {
         db.delete(StatisticEntry.TABLE_NAME, null, null);

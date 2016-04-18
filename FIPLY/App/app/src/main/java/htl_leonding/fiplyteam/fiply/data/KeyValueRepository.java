@@ -220,6 +220,13 @@ public class KeyValueRepository {
         } else {
             updateKeyValue("filterName", "");
         }
+        Log.wtf("NumberTraining",getKeyValue("numberTraining").getString(1));
+
+        if (getKeyValue("numberTraining").getCount() == 0) {
+
+            insertKeyValue("numberTraining", "1");
+            Log.wtf("NumberTraining: ", "Inserted");
+        }
 
         if (getKeyValue("filterMuskelGruppe").getCount() == 0) {
             insertKeyValue("filterMuskelGruppe", "");
@@ -251,5 +258,13 @@ public class KeyValueRepository {
         else
             updateKeyValue("greeting", "Gute Nacht");
         return null;
+    }
+
+    public int getNumberTraining() throws SQLException {
+        int number = Integer.parseInt(getKeyValue("numberTraining").getString(1));
+
+        int temp = number + 1;
+        updateKeyValue("numberTraining", String.valueOf(temp));
+        return number;
     }
 }
