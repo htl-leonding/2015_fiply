@@ -9,13 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.LabelFormatter;
-import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.util.Date;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
@@ -36,9 +32,6 @@ public class FStatistic extends Fragment {
 
     //series of datapoints
     LineGraphSeries<WeightLifted> weightLiftedSeries;
-
-    //Formating tools
-    final DateFormat dateTimeFormatter = DateFormat.getDateTimeInstance();
 
 
     /**
@@ -73,6 +66,7 @@ public class FStatistic extends Fragment {
             e.printStackTrace();
         }
 
+        str.insertTestStats();
         fillSeries();
 
 
@@ -84,42 +78,19 @@ public class FStatistic extends Fragment {
      */
     public void fillSeries() {
         gvMood.addSeries(str.getSeriesForMoodTime());
-        gvMood.getGridLabelRenderer().setLabelFormatter(new LabelFormatter() {
-            @Override
-            public String formatLabel(double value, boolean isValueX) {
-                if (isValueX) {
-                    return dateTimeFormatter.format(new Date((long) value));
-                }
-                return null; // let graphview generate Y-axis label for us
-            }
-
-            @Override
-            public void setViewport(Viewport viewport) {
-
-            }
-        });
+        gvMood.getViewport().setXAxisBoundsManual(true);
         gvMood.getViewport().setYAxisBoundsManual(true);
+        gvMood.getViewport().setMaxX(200101);
+        gvMood.getViewport().setMinX(150101);
         gvMood.getViewport().setMaxY(5);
         gvMood.getViewport().setMinY(0);
 
 
         gvLift.addSeries(str.getSeriesForLiftedWeight());
-        gvLift.getGridLabelRenderer().setLabelFormatter(new LabelFormatter() {
-            @Override
-            public String formatLabel(double value, boolean isValueX) {
-                if (isValueX) {
-                    return dateTimeFormatter.format(new Date((long) value));
-                }
-                return null; // let graphview generate Y-axis label for us
-            }
-
-            @Override
-            public void setViewport(Viewport viewport) {
-
-            }
-        });
+        gvLift.getViewport().setXAxisBoundsManual(true);
         gvLift.getViewport().setYAxisBoundsManual(true);
-
+        gvMood.getViewport().setMaxX(200101);
+        gvMood.getViewport().setMinX(150101);
         gvMood.getViewport().setMaxY(500);
         gvMood.getViewport().setMinY(0);
     }

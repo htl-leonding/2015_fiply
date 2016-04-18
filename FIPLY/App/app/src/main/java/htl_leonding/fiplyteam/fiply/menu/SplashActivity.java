@@ -112,7 +112,6 @@ public class SplashActivity extends Activity {
                 }
                 uer.insertAllExercises();
                 kvr.setDefaultUserSettings();
-                str.deleteAllDataPoints();
                 fillTestTrainingsgplan();
             } catch (JSONException e) {
                 e.printStackTrace();

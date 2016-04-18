@@ -69,7 +69,7 @@ public class StatisticRepository {
         WeightLifted[] dataPoints = new WeightLifted[cDataPoints.getCount()];
 
         for (int i = 0; i < dataPoints.length; i++) {
-            dataPoints[i] = new WeightLifted(cDataPoints.getDouble(0), cDataPoints.getDouble(2));
+            dataPoints[i] = new WeightLifted(Double.parseDouble(cDataPoints.getString(0)), cDataPoints.getDouble(2));
             cDataPoints.moveToNext();
         }
 
@@ -84,7 +84,7 @@ public class StatisticRepository {
         MoodTime[] dataPoints = new MoodTime[cDataPoints.getCount()];
 
         for (int i = 0; i < dataPoints.length; i++) {
-            dataPoints[i] = new MoodTime(cDataPoints.getDouble(0), cDataPoints.getDouble(1));
+            dataPoints[i] = new MoodTime(Double.parseDouble(cDataPoints.getString(0)), cDataPoints.getDouble(1));
             cDataPoints.moveToNext();
         }
 
@@ -101,9 +101,27 @@ public class StatisticRepository {
         return db.insert(StatisticEntry.TABLE_NAME, null, initialValues);
     }
 
+    public long insertDataPointWithDate(String date, double mood, double weight) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(StatisticEntry.COLUMN_DATE, date);
+        initialValues.put(StatisticEntry.COLUMN_MOOD, mood);
+        initialValues.put(StatisticEntry.COLUMN_LIFTEDWEIGHT, weight);
+        return db.insert(StatisticEntry.TABLE_NAME, null, initialValues);
+    }
 
 
+    //insert some test stats
+    public void insertTestStats() {
 
+        deleteAllDataPoints();
+        insertDataPointWithDate("150221", 4, 20);
+        insertDataPointWithDate("150224", 2, 40);
+        insertDataPointWithDate("150228", 3, 90);
+        insertDataPointWithDate("150302", 2, 80);
+        insertDataPointWithDate("150306", 5, 60);
+        insertDataPointWithDate("150309", 4, 120);
+        insertDataPointWithDate("150312", 1, 140);
+    }
 
     public void deleteAllDataPoints() {
         db.delete(StatisticEntry.TABLE_NAME, null, null);
