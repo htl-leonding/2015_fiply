@@ -79,7 +79,7 @@ public class FFeedback extends Fragment {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        /*
         if(mainActivity.mInterstitialAd.isLoaded()) { //wenn die Werbung geladen ist, wird sie angezeigt
             mainActivity.mInterstitialAd.show();
         }
@@ -96,6 +96,7 @@ public class FFeedback extends Fragment {
                 mainActivity.requestNewInterstitial();
             }
         });
+        */
     }
 
     public Double getMood() {

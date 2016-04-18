@@ -125,7 +125,7 @@ public class FPlanManagement extends Fragment {
                 }
             }
         });
-
+    /*
     AdView mAdView = (AdView) getActivity()
             .findViewById(R.id.planAdView);
     int gender;
@@ -140,6 +140,7 @@ public class FPlanManagement extends Fragment {
             .setGender(gender)
             .build();
     mAdView.loadAd(adRequest);
+    */
     }
 
     // Löscht einen Plan.

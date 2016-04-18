@@ -713,5 +713,6 @@
     <string name="sessionsettingsrepmax">Was ist RepMax?</string>
     <string name="whatsrepmax">Was ist RepMax?</string>
     <string name="infowhatsrepmax">100 Prozent RepMax ist das maximale Gewicht, welches du bei einer Übung genau 1 Mal bewältigen kannst. In verschiedenen Übungen stehen unterschiedliche RepMax-Werte, mit denen du die Übung ausführen sollst.  Bevor du eine Übung das 1. Mal beginnst, stelle dein RepMax fest: Führe die Übung mit einem beliebigen Gewicht durch und merke dir die Wiederholungen die du damit schaffst. Nun kannst du mit dieser Formel 100 Prozent RepMax ausrechnen: (100*TG)/(102,78-2,78*WDH)= 100 Prozent RepMax. TG = Dein Probe-Trainingsgewicht, WDH = Die Wiederholungen die du geschafft hast. Das Gewicht, welches dabei herauskommt, sind deine 100 Prozent RepMax bei dieser Übung. Nun, wenn bei einer Übung dein RepMax zum Beispiel 29 Kilogramm lautet und du die Übung mit 60 Prozent RepMax ausführen sollst, lautet dein Trainingsgewicht 17.4  Kilogramm. Das ist das Startgewicht. Du sollst es im Laufe deines Trainings erhöhen, um die Schwierigkeit zu steigern und Fortschritte zu erreichen. Viel Spaß!</string>
+    <string name="detailRepMax">RepMax:</string>
 
 </resources>
