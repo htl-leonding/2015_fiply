@@ -16,15 +16,30 @@
         android:layout_alignParentTop="true" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabFilter"
+    android:id="@+id/fabFilter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:clickable="true"
+    android:src="@drawable/fabmuskelgruppe"
+    app:elevation="100dp"
+    android:background="@color/darkSecondary"
+    app:rippleColor="@color/darkSecondary" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabFilterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:clickable="true"
-        android:src="@color/darkPrimary"
+        android:src="@drawable/fabuebungsname"
         app:elevation="100dp"
-        app:rippleColor="@color/darkSecondary" />
+        android:background="@color/darkSecondary"
+        app:rippleColor="@color/darkSecondary"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/fabFilter" />
 </RelativeLayout>
