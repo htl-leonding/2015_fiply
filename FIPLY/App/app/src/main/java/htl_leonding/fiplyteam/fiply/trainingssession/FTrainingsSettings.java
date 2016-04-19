@@ -70,8 +70,8 @@ public class FTrainingsSettings extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         kvRep.setContext(getContext());
-        rep = PhasenRepository.getInstance();
         PhasenRepository.setContext(getContext());
+        rep = PhasenRepository.getInstance();
         InstruktionenRepository.setContext(getContext());
         port = PlanSessionPort.getInstance();
         port.init();
