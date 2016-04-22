@@ -1,16 +1,25 @@
 package htl_leonding.fiplyteam.fiply.statistic;
 
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LabelFormatter;
+import com.jjoe64.graphview.Viewport;
+import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
 
+import java.math.RoundingMode;
 import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
@@ -66,7 +75,6 @@ public class FStatistic extends Fragment {
             e.printStackTrace();
         }
 
-        str.insertTestStats();
         fillSeries();
 
 
@@ -77,21 +85,51 @@ public class FStatistic extends Fragment {
      * Füllt die Graphen mit den jeweiligen DatenPunkten
      */
     public void fillSeries() {
+
+        Log.wtf("Statistic", "Fill Series");
+        //gvMood
         gvMood.addSeries(str.getSeriesForMoodTime());
-        gvMood.getViewport().setXAxisBoundsManual(true);
         gvMood.getViewport().setYAxisBoundsManual(true);
-        gvMood.getViewport().setMaxX(200101);
-        gvMood.getViewport().setMinX(150101);
         gvMood.getViewport().setMaxY(5);
-        gvMood.getViewport().setMinY(0);
+        gvMood.getViewport().setMinY(1);
+        gvMood.getGridLabelRenderer().setNumHorizontalLabels(5);
+        gvMood.getGridLabelRenderer().setNumVerticalLabels(5);
+
+        gvMood.getGridLabelRenderer().setLabelFormatter(new LabelFormatter() {
+            @Override
+            public String formatLabel(double value, boolean isValueX) {
+                if (isValueX)
+                    return "" + (int)((value*2)-1) + ". Tag";
+                return "" + (int) value;
+            }
+
+            @Override
+            public void setViewport(Viewport viewport) {
+
+            }
+        });
 
 
+
+        //gvLift
         gvLift.addSeries(str.getSeriesForLiftedWeight());
-        gvLift.getViewport().setXAxisBoundsManual(true);
         gvLift.getViewport().setYAxisBoundsManual(true);
-        gvMood.getViewport().setMaxX(200101);
-        gvMood.getViewport().setMinX(150101);
-        gvMood.getViewport().setMaxY(500);
-        gvMood.getViewport().setMinY(0);
+        gvLift.getViewport().setMaxY(3000);
+        gvLift.getViewport().setMinY(0);
+        gvMood.getGridLabelRenderer().setNumHorizontalLabels(5);
+        gvMood.getGridLabelRenderer().setNumVerticalLabels(5);
+        gvLift.getGridLabelRenderer().setLabelFormatter(new LabelFormatter() {
+            @Override
+            public String formatLabel(double value, boolean isValueX) {
+                if(isValueX)
+                    return ""+(int)((value*2)-1)+". Tag";
+                return ""+(int)value+" kg";
+            }
+
+            @Override
+            public void setViewport(Viewport viewport) {
+
+            }
+        });
     }
 }

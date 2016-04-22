@@ -1,5 +1,6 @@
 package htl_leonding.fiplyteam.fiply.trainingssession;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ public class FTrainingsinstructions extends Fragment {
 
     TextView tvUebungName, tvUebungSchwierigkeit, tvUebungMuskelgruppe, tvUebungBeschreibung, tvUebungAnleitung,
             tvLinkVideo, tvUebungEquipment, tvUebungGewicht, tvUebungSaetze, tvUebungWiederholungen;
-    ImageButton ibLinkVideo;
+    ImageButton ibLinkVideo, ibUebungGewichtDesc;
     Button btnNextUeb, btnLastUeb, btnHideClocks, btnHideMusic, btnEndTraining;
     ScrollView scrollView;
 
@@ -93,9 +94,26 @@ public class FTrainingsinstructions extends Fragment {
         btnHideMusic = (Button) getActivity().findViewById(R.id.btnMusicHide);
         btnEndTraining = (Button) getActivity().findViewById(R.id.btnEndTraining);
         scrollView = (ScrollView) getActivity().findViewById(R.id.scrollViewInstructions);
+        ibUebungGewichtDesc = (ImageButton) getActivity().findViewById(R.id.staticDetailRepMax);
 
         aktUebungNr = 1;
         maxUebungNr = getArguments().getInt("uebungAnzahl");
+
+        ibUebungGewichtDesc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new android.app.AlertDialog.Builder(getContext())
+                        .setTitle(R.string.whatsrepmax)
+                        .setMessage(R.string.infowhatsrepmax)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setIcon(R.drawable.questionsmall)
+                        .show();
+            }
+        });
 
         btnHideClocks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,6 +195,9 @@ public class FTrainingsinstructions extends Fragment {
         }
         updateUebungsfields(aktUebungNr);
         updatePhaseAndGewicht();
+        btnLastUeb.setEnabled(false);
+        btnLastUeb.setAlpha(0.25f);
+        changeClocksVisible();
     }
 
     /**
@@ -223,7 +244,7 @@ public class FTrainingsinstructions extends Fragment {
         tvUebungAnleitung.setText(getAktUebung().getString(3));
         tvUebungMuskelgruppe.setText(getAktUebung().getString(4));
         tvUebungSchwierigkeit.setText(getAktUebung().getString(5));
-        tvUebungGewicht.setText(getArguments().getDouble("gewicht" + ueId) + " kg");
+        tvUebungGewicht.setText(getArguments().getDouble("gewicht" + ueId) + "%");
         setVideoLink(getAktUebung().getString(6));
         tvUebungEquipment.setText(getAktUebung().getString(7));
     }

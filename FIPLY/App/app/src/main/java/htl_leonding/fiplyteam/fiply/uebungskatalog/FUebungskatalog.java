@@ -1,6 +1,8 @@
 package htl_leonding.fiplyteam.fiply.uebungskatalog;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,12 +10,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 
@@ -27,6 +32,7 @@ public class FUebungskatalog extends Fragment {
     Context context;
     ListView uebungenLV;
     FloatingActionButton openFilter;
+    FloatingActionButton openNameFilter;
     SimpleCursorAdapter ueAdapter;
 
     /**
@@ -42,7 +48,6 @@ public class FUebungskatalog extends Fragment {
         context = getActivity();
         UebungenRepository.setContext(context);
         rep = UebungenRepository.getInstance();
-        //InsertTestUebungen();
         return inflater.inflate(R.layout.fragment_uebungskatalog, container, false);
     }
 
@@ -56,6 +61,7 @@ public class FUebungskatalog extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         openFilter = (FloatingActionButton) getView().findViewById(R.id.fabFilter);
+        openNameFilter = (FloatingActionButton) getView().findViewById(R.id.fabFilterName);
         kvr = KeyValueRepository.getInstance();
         int[] toViews = {R.id.ueListViewItem};
         String[] fromColumns = {rep.getAllUebungen().getColumnName(1)};
@@ -67,6 +73,14 @@ public class FUebungskatalog extends Fragment {
                 displayView(new FUebungFilter());
             }
         });
+        openNameFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterName();
+                //displayView(new FUebungNameFilter());
+            }
+        });
+
 
         uebungenLV = (ListView) getActivity().findViewById(R.id.ueList);
         try {
@@ -98,6 +112,35 @@ public class FUebungskatalog extends Fragment {
                 displayView(fUebungDetail);
             }
         });
+    }
+
+    // Popup, das nach dem Namen fragt wird hier erstellt.
+    private void filterName() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Filtertext:");
+        builder.setIcon(R.drawable.questionsmall);
+        final EditText input = new EditText(getContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                kvr.updateKeyValue("filterName", input.getText().toString());
+                displayView(new FUebungskatalog());
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                kvr.updateKeyValue("filterName", "");
+                Toast.makeText(getContext(), "Namensfilter zurückgesetzt", Toast.LENGTH_SHORT);
+                dialog.cancel();
+                displayView(new FUebungskatalog());
+            }
+        });
+
+        builder.show();
     }
 
     /**

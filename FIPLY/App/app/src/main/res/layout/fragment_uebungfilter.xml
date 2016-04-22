@@ -6,64 +6,60 @@
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="2"
         android:orientation="vertical"
-        android:rowCount="3"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:rowCount="4"
+        android:columnCount="2">
 
         <TextView
-            android:id="@+id/staticFilterUebungName"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:layout_weight="0.12"
-            android:text="Filter Name: " />
-
-        <EditText
-            android:id="@+id/etFilterUebungName"
-            android:layout_width="194dp"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="0" />
-
-        <ImageView
-            android:id="@+id/ivBodyFilterMask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_columnSpan="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Muskelgruppenfilter"
+            android:id="@+id/staticMuskelGruppenFilterLabel"
             android:layout_gravity="center_horizontal"
-            android:layout_row="1"
-            android:background="@color/darkSecondary"
-            android:clickable="true" />
+            android:layout_row="0"
+            android:layout_column="0" />
 
         <ImageView
             android:id="@+id/ivBodyFilter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_columnSpan="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
             android:layout_gravity="center_horizontal"
             android:layout_row="1"
-            android:visibility="visible" />
+            android:layout_columnSpan="1"
+            android:visibility="visible"
+            android:layout_column="0" />
 
-        <Button
-            android:id="@+id/btApplyFilter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
+        <ImageView
+            android:id="@+id/ivBodyFilterMask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
             android:layout_gravity="center_horizontal"
-            android:layout_row="2"
-            android:text="Apply Filter" />
+            android:layout_row="1"
+            android:layout_columnSpan="1"
+            android:background="@color/darkSecondary"
+            android:clickable="true"
+            android:layout_column="0" />
 
         <Button
             android:id="@+id/btResetFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="1"
+            android:layout_column="0"
             android:layout_gravity="center_horizontal"
             android:layout_row="2"
-            android:text="Reset Filter" />
+            android:text="Filter zurücksetzen" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zurück"
+            android:id="@+id/btMuskelGruppeFilterBack"
+            android:layout_row="3"
+            android:layout_gravity="center_horizontal"
+            android:layout_column="0" />
     </GridLayout>
 </ScrollView>

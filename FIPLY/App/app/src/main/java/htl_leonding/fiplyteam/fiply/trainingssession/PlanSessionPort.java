@@ -2,6 +2,7 @@ package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.database.Cursor;
 
+import java.security.Key;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -41,10 +42,14 @@ public class PlanSessionPort {
     }
 
     public boolean isGenerated() {
-        if (getPhasenListe().size() > 0) {
-            return true;
+        Cursor clol = repPhasen.getAllPhasen();
+        int cnt = 0;
+        for (clol.moveToFirst(); !clol.isAfterLast(); clol.moveToNext()){
+            cnt++;
         }
-        return false;
+        if (cnt == 0)
+            return false;
+        return true;
     }
 
     public boolean isAnyUebungToday() {
@@ -65,19 +70,24 @@ public class PlanSessionPort {
 
     public int getPhaseIndex() {
         int cnt = 0;
+        int ind = 0;
         for (Trainingsphase phase : getPhasenListe()) {
-            cnt++;
-            if (phase.isActive()) {
-                return cnt;
-            }
+            cnt = cnt + phase.upcoming();
+            ind++;
+            if (ind == 3)
+                break;
         }
-        return 0;
+        if (cnt > 0)
+            return 1;
+        else if (cnt < 0)
+            return 3;
+        return 2;
     }
-
     public void init() {
         repPhasen = PhasenRepository.getInstance();
         cPhasen = repPhasen.getAllPhasen();
         uebungRep = UebungenRepository.getInstance();
+        keyv = KeyValueRepository.getInstance();
 
         repInstruktionen = InstruktionenRepository.getInstance();
         cInstruktion = repInstruktionen.getAllInstructions();
@@ -90,6 +100,7 @@ public class PlanSessionPort {
         int iPhasenPausenDauer = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PAUSENDAUER);
         int iPhasenSaetze = cPhasen.getColumnIndex(PhasenEntry.COLUMN_SAETZE);
         int iPhasenWiederholungen = cPhasen.getColumnIndex(PhasenEntry.COLUMN_WIEDERHOLUNGEN);
+        int iPhasenPlanId = cPhasen.getColumnIndex(PhasenEntry.COLUMN_PLANID);
 
         int iInstruktionWochentag = cInstruktion.getColumnIndex(InstruktionenEntry.COLUMN_WOCHENTAG);
         int iInstruktionRepMax = cInstruktion.getColumnIndex(InstruktionenEntry.COLUMN_REPMAX);
@@ -104,6 +115,7 @@ public class PlanSessionPort {
         String phasenPausenDauer;
         String phasenSaetze;
         String phasenWiederholungen;
+        String phasenPlanId;
 
         String instruktWochentag;
         String instruktRepMax;
@@ -112,6 +124,9 @@ public class PlanSessionPort {
 
         instruktListe = new LinkedList<Uebung>();
         Uebung uebung;
+
+        int count = 0;
+
         for (cInstruktion.moveToFirst(); !cInstruktion.isAfterLast(); cInstruktion.moveToNext()) {
             instruktWochentag = cInstruktion.getString(iInstruktionWochentag);
             instruktRepMax = cInstruktion.getString(iInstruktionRepMax);
@@ -123,7 +138,6 @@ public class PlanSessionPort {
             uebung.setRepmax(Integer.valueOf(instruktRepMax));
             uebung.setUebungsID(instruktUebungsId);
             uebung.setPhasenId(instruktPhasenId);
-
             try {
                 cUebungen = uebungRep.getUebung(Long.valueOf(instruktUebungsId));
             } catch (SQLException e) {
@@ -139,6 +153,12 @@ public class PlanSessionPort {
         DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
         Date convertedStartDate;
         Date convertedEndDate;
+        int chosen = 0;
+        try {
+             chosen = Integer.valueOf(keyv.getKeyValue("selectedPlan").getString(1));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         Trainingsphase tPhase;
         setPhasenListe(new LinkedList<Trainingsphase>());
@@ -151,21 +171,23 @@ public class PlanSessionPort {
             phasenPausenDauer = cPhasen.getString(iPhasenPausenDauer);
             phasenSaetze = cPhasen.getString(iPhasenSaetze);
             phasenWiederholungen = cPhasen.getString(iPhasenWiederholungen);
+            phasenPlanId = cPhasen.getString(iPhasenPlanId);
+            if (Integer.valueOf(phasenPlanId) - 1 == chosen) {
+                try {
+                    convertedStartDate = format.parse(phasenStartDate);
+                    convertedEndDate = format.parse(phasenEndDate);
+                } catch (Exception e) {
+                    convertedStartDate = null;
+                    convertedEndDate = null;
+                }
 
-            try {
-                convertedStartDate = format.parse(phasenStartDate);
-                convertedEndDate = format.parse(phasenEndDate);
-            } catch (Exception e) {
-                convertedStartDate = null;
-                convertedEndDate = null;
+                tPhase = new Trainingsphase(phasenName, Integer.valueOf(phasenPausenDauer), Integer.valueOf(phasenDauer),
+                        Integer.valueOf(phasenSaetze), Integer.valueOf(phasenWiederholungen), 0, convertedStartDate);
+                tPhase.setEndDate(convertedEndDate);
+                tPhase.setUebungList(getInstruktFromPhasenId(phasenRowId));
+
+                getPhasenListe().add(tPhase);
             }
-
-            tPhase = new Trainingsphase(phasenName, Integer.valueOf(phasenPausenDauer), Integer.valueOf(phasenDauer),
-                    Integer.valueOf(phasenSaetze), Integer.valueOf(phasenWiederholungen), 0, convertedStartDate);
-            tPhase.setEndDate(convertedEndDate);
-            tPhase.setUebungList(getInstruktFromPhasenId(phasenRowId));
-
-            getPhasenListe().add(tPhase);
         }
     }
 

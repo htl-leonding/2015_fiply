@@ -136,6 +136,7 @@ public class PhasenRepository {
     public Cursor getIdsByPlanId(String id) {
         return db.query(true, PhasenEntry.TABLE_NAME, new String[]{
                 PhasenEntry.COLUMN_ROWID,
+                PhasenEntry.COLUMN_STARTDATE
         }, PhasenEntry.COLUMN_PLANID + "=" + id, null, null, null, null, null);
     }
 

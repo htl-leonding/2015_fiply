@@ -333,22 +333,33 @@ public class FTrainingsplan extends Fragment {
         cplan.moveToFirst();
         int iPlanId = cplan.getColumnIndex(PlanEntry.COLUMN_ROWID);
         String planId = cplan.getString(iPlanId);
+        System.out.println("Neu generiert PlanID: " + planId);
 
         for (Trainingsphase phase : trainingsphaseList) {
+            System.out.println("Phase: " + phase.getPhasenName() + ", " + phase.getStartDate() + " - " + phase.getEndDate());
 
             String dbStartDate = format.format(phase.getStartDate());
             String dbEndDate = format.format(phase.getEndDate());
             phasenRep.insertPhase(dbStartDate, dbEndDate,
                     phase.getPhasenName(), String.valueOf(phase.getPhasenDauer()), String.valueOf(phase.getPausenDauer()),
                     String.valueOf(phase.getSaetze()), String.valueOf(phase.getWiederholungen()), planId);
+            Cursor cnew = phasenRep.getAllPhasen();
+            int newrowid = -1;
 
-            Cursor c = phasenRep.getPhaseByStartDate(startDate);
-            c.moveToFirst();
-            int index = c.getColumnIndex(PhasenEntry.COLUMN_ROWID);
-            String rowid = c.getString(index);
-            for (Uebung ueb : phase.getUebungList()) {
-                instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), rowid);
+            for (cnew.moveToFirst(); !cnew.isAfterLast(); cnew.moveToNext()){
+                newrowid++;
             }
+
+            Cursor c = phasenRep.getPhaseByStartDate(phase.getStartDate());
+
+            c.moveToFirst();
+
+            System.out.println("Übungen:");
+            for (Uebung ueb : phase.getUebungList()) {
+                instRep.insertUebung(ueb.getWochenTag(), String.valueOf(ueb.getRepmax()), ueb.getUebungsID(), Integer.toString(newrowid));
+                System.out.println("Übung: " + ueb.getWochenTag() + ", " + ueb.getUebungsName() + ", PhasenId: " + newrowid);
+            }
+            System.out.println("Übungsanzahl: " + phase.getUebungList().size());
         }
     }
 
@@ -378,8 +389,14 @@ public class FTrainingsplan extends Fragment {
         String xday = dayone.getSelectedItem().toString();
         String yday = daytwo.getSelectedItem().toString();
         String zday = daythree.getSelectedItem().toString();
+
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(new Date());
+        boolean isToday = (myCalendar.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
+                                myCalendar.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                                myCalendar.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
         if (!xday.equals(days[0]) && !yday.equals(days[0]) && !zday.equals(days[0])
-                && myCalendar.getTime().after(new Date())) {
+                && (myCalendar.getTime().after(new Date()) || isToday)) {
             actualdays = new String[]{xday, yday, zday};
             return true;
         } else {

@@ -211,7 +211,7 @@ public class KeyValueRepository {
             insertKeyValue("userAge", "21-30");
             insertKeyValue("userProf", "Not Fit");
             insertKeyValue("isUserCustomized", "true");
-            insertKeyValue("selectedPlan", "-1");
+            insertKeyValue("selectedPlan", "0");
         }
 
 
@@ -219,6 +219,12 @@ public class KeyValueRepository {
             insertKeyValue("filterName", "");
         } else {
             updateKeyValue("filterName", "");
+        }
+
+        if (getKeyValue("numberTraining").getCount() == 0) {
+
+            insertKeyValue("numberTraining", "1");
+            Log.wtf("NumberTraining: ", "Inserted");
         }
 
         if (getKeyValue("filterMuskelGruppe").getCount() == 0) {
@@ -251,5 +257,13 @@ public class KeyValueRepository {
         else
             updateKeyValue("greeting", "Gute Nacht");
         return null;
+    }
+
+    public int getNumberTraining() throws SQLException {
+        int number = Integer.parseInt(getKeyValue("numberTraining").getString(1));
+
+        int temp = number + 1;
+        updateKeyValue("numberTraining", String.valueOf(temp));
+        return number;
     }
 }

@@ -2,6 +2,7 @@ package htl_leonding.fiplyteam.fiply.trainingssession;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
+
+import java.sql.SQLException;
 
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.StatisticRepository;
@@ -23,9 +26,11 @@ public class FFeedback extends Fragment {
     TextView tvGewicht;
     Button btnStats;
     RatingBar rbMood;
-    double mood;
+    double mood = 3;
+    double weight;
     StatisticRepository srep;
     MainActivity mainActivity;
+
 
     /**
      * Hier wird das fragment_feedback fragment angezeigt
@@ -56,24 +61,25 @@ public class FFeedback extends Fragment {
         tvGewicht = (TextView) getActivity().findViewById(R.id.tvFeedbackGewicht);
         rbMood = (RatingBar) getActivity().findViewById(R.id.rbFeedbackMood);
         btnStats = (Button) getActivity().findViewById(R.id.btnFeedbackMood);
-
+        weight = getArguments().getDouble("gesamtgewicht")/100;
         rbMood.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                setMood(Double.valueOf(rating));
+                setMood((double)rating);
             }
         });
 
         btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayFragment.displayMainMenu(new FStatistic(), getFragmentManager());
+                displayFragment.displayTrainingsession(new FStatistic(), getFragmentManager());
             }
         });
 
-        tvGewicht.setText("Du hast heute insgesamt " + getArguments().getDouble("gesamtgewicht") + " kg gestemmt!");
-        srep.insertDataPoint(getMood(), getArguments().getDouble("gesamtgewicht"));
 
+        tvGewicht.setText("Du hast heute ca. " + weight + " mal deine Maximalkraft gehoben!");
+
+        /*
         if(mainActivity.mInterstitialAd.isLoaded()) { //wenn die Werbung geladen ist, wird sie angezeigt
             mainActivity.mInterstitialAd.show();
         }
@@ -90,6 +96,18 @@ public class FFeedback extends Fragment {
                 mainActivity.requestNewInterstitial();
             }
         });
+        */
+    }
+
+    @Override
+    public void onDestroyView() {
+        try {
+            srep.insertDataPoint(getMood(), weight);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        super.onDestroyView();
     }
 
     public Double getMood() {
@@ -97,6 +115,7 @@ public class FFeedback extends Fragment {
     }
 
     public void setMood(Double mood) {
+        Log.wtf("setMood", String.valueOf(mood));
         this.mood = mood;
     }
 }

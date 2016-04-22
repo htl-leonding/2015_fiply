@@ -8,6 +8,7 @@ public class RepMax {
             return 0;
 
         int result = (int) Math.round((repMax * (102.78 - (2.78 * wiederholungen))) / 100);
-        return result;
+
+        return repMax;
     }
 }

@@ -9,6 +9,28 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal">
 
+        <ImageButton
+            android:layout_width="27dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/questionsmall"
+            android:id="@+id/whatsrepmax"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="5dp"
+            android:background="@null"/>
+
+        <TextView
+            android:id="@+id/sessionsettingrepmax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="36dp"
+            android:text="@string/sessionsettingsrepmax"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkPrimary"
+            android:textSize="15dp" />
+
         <TextView
             android:id="@+id/sessionsettingstitle"
             android:layout_width="wrap_content"

@@ -130,13 +130,25 @@
             android:textColor="@color/darkTextColorLight" />
 
         <TextView
-            android:id="@+id/staticDetailGewicht"
+            android:id="@+id/staticDetailRepMaxDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/staticDetailEquipment"
             android:layout_below="@+id/detailEquipment"
-            android:text="@string/detailGewicht"
+            android:layout_alignStart="@id/staticDetailEquipment"
+            android:text="@string/detailRepMax"
             android:textColor="@color/darkTextColorLight" />
+
+        <ImageButton
+            android:id="@+id/staticDetailRepMax"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detailEquipment"
+            android:layout_toRightOf="@id/staticDetailRepMaxDesc"
+            android:src="@drawable/questionsmall"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:paddingLeft="3dp"/>
 
         <TextView
             android:id="@+id/detailGewicht"
@@ -153,7 +165,7 @@
             android:id="@+id/staticDetailSaetze"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/staticDetailGewicht"
+            android:layout_alignStart="@id/staticDetailRepMaxDesc"
             android:layout_below="@+id/detailGewicht"
             android:text="@string/detailSaetze"
             android:textColor="@color/darkTextColorLight" />

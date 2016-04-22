@@ -70,10 +70,10 @@
     <string name="fehler">Fehler</string>
     <string name="checkInput">Überprüfen Sie bitte ihre Eingabe.</string>
     <string name="fertig">Fertig!</string>
-    <string name="btnPlaylistSave">Save</string>
-    <string name="btnPlaylistSelectAll">ALL</string>
-    <string name="btnPlaylistSelectNone">NONE</string>
-    <string name="btnPlaylistBack">Back</string>
+    <string name="btnPlaylistSave">Speichern</string>
+    <string name="btnPlaylistSelectAll">Alle</string>
+    <string name="btnPlaylistSelectNone">Keine</string>
+    <string name="btnPlaylistBack">Zurück</string>
     <string name="startStatistic">Statistik</string>
     <string name="successmessagetrain">Dein persönlicher Trainingsplan wurde erfolgreich generiert.</string>
     <string name="fsettingtitle">Übersicht</string>
@@ -381,7 +381,8 @@
   \"Beschreibung\":\"Mit geradem Rücken hinlegen,Gegengewicht in de Hände nehmen und mit ausgestreckten Armen hinter dem Kopf halten oder Bankende mit den Händen umgreifen\",
   \"Durchführung\":\"Bauch stets unter Spannung halten und ausgestreckte Beine kontrolliert nach oben bringen bis zum 90 Grad Winkel mit Oberkörper,Beine wieder zum Boden bewegen, dabei den Boden nicht berühhren\",
   \"Equipment\":\"Matte\",
-  \"Schwierigkeit\":\"Einfach\"
+  \"Schwierigkeit\":\"Einfach\",
+  \"Video\":\"https://www.youtube.com/watch?v=Zp8LxkYt73c\"
 },
 {
   \"Muskelgruppe\":\"Beine,Oberschenkel\",
@@ -389,7 +390,8 @@
   \"Beschreibung\":\"Schulterbreit unter die Langhantelstange stellen und diese etwa schulterbreit umgreifen, so dass die Arme in etwa auf Höh der Ellenbogen sind,Stange auf die Nackenmuskulatur oder die hintere Schultermuskulatur legen,Mit geradem Rücken und leichter Hohlkreuzstellung die Stange ausheben,Blick nach vorne gerichtet - Rücken gerade - Bauchmuskeln angespannt\",
   \"Durchführung\":\"Kontrolliert die Beine beugen - dabei wird der Oberkörper nach vorne gebeugt und der Po nach hinten geschoben,Knie müssen stets in die gleiche Richtung zeigen wie Fußspitzen - Knie müssen hinter bis maximal auf gleicher Höhe mit den Fußspitzen sein,Wenn die Oberschenkel etwa parallel (kann stark variieren) zum Boden sind, kontrolliert wieder aufrichten\",
   \"Equipment\":\"Langhantel\",
-  \"Schwierigkeit\":\"Schwierig\"
+  \"Schwierigkeit\":\"Schwierig\",
+  \"Video\":\"https://www.youtube.com/watch?v=LdYm9HXBCXM\"
 },
 {
   \"Muskelgruppe\":\"Beine,Beinbizeps,Oberschenkel\",
@@ -397,7 +399,8 @@
   \"Beschreibung\":\"Vom aufrechten schulterbreiten Stand einen großen Schritt nach vorne machen,Die Hüfte gerade halten und Balance halten\",
   \"Durchführung\":\"Hüfte absenken bis das hintere Knie knapp über dem Boden ist,Beim Einatmen wieder in die Ausgangslage zurückkehren,Das Knie des vorderen Fußes nie über die Zehenspitzen zeigen lassen\",
   \"Equipment\":\"evtl. Zusatzgewicht\",
-  \"Schwierigkeit\":\"Mittel\"
+  \"Schwierigkeit\":\"Mittel\",
+  \"Video\":\"https://www.youtube.com/watch?v=yzfUl8vRQpM\"
 },
 {
   \"Muskelgruppe\":\"Rücken,Unterer Rücken,Beine\",
@@ -405,7 +408,8 @@
   \"Beschreibung\":\"Schulterbreit vor die Langhantel stellen und etwas breiter als schulterbreit greifen, mindestesn jedoch so breit, dass bei der Ausführung der Übung die Ellenbogen nicht an die Knie stoßen,In die Hocke gehen, Rücken dabei stabil und leicht im Hohlkreuz,Bauchmuskeln sind angespannt - Blick starr nach vorne gerichtet,Der ganze Körper muss unter Spannung stehen und gehalten werden - Zu keinem Zeitpunkt darf der Rücken rund sein!\",
   \"Durchführung\":\"Beim Aufrichten die Langhantel möglichst nahe am Körper entlang führe,Die Kraft kommt aus den Beinen und dem unteren Rücken,Langsam, gleichmäßig und ohne Schwung die Beine strecken und gleichzeitig den Rücken aufrichten\",
   \"Equipment\":\"Langhantel\",
-  \"Schwierigkeit\":\"Schwierig\"
+  \"Schwierigkeit\":\"Schwierig\",
+      \"Video\":\"https://www.youtube.com/embed/GE9njW0EGLs\"
 },
 {
   \"Muskelgruppe\":\"Beine,Waden\",
@@ -413,7 +417,8 @@
   \"Beschreibung\":\"Suche eine beliebige Erhögung (Brett,Stepper,Gewichtsscheiben etc.) und nimm in jede Hand eine Kurzhantel oder eine Gewichtsscheibe,Mit den Fußballen auf das Brett stellen,Fersen in der Luft hängen lassen\",
   \"Durchführung\":\"Beim Ausatmen die Fersen abdrücken und die Waden bis zur maximal möglichen Streckung anheben\",
   \"Equipment\":\"evtl. Zusatzgewicht\",
-  \"Schwierigkeit\":\"Einfach\"
+  \"Schwierigkeit\":\"Einfach\",
+  \"Video\":\"https://www.youtube.com/watch?v=2ljdThlsg10\"
 },
 {
   \"Muskelgruppe\":\"Bauch,Gerader Bauchmuskel\",
@@ -421,7 +426,8 @@
   \"Beschreibung\":\"Vollständig anlehnen,Unterarme liegen auf den Armpolstern - die Griffe umgreifen,Beine fast ausgestreckt - nur leichte Beugung im Kniegelenk\",
   \"Durchführung\":\"Beim Ausatmen die Beine kontrolliert so weit wie möglich nach oben bewegen,Ohne Schwung arbeiten\",
   \"Equipment\":\"Fitnessstudio\",
-  \"Schwierigkeit\":\"Einfach\"
+  \"Schwierigkeit\":\"Einfach\",
+  \"Video\":\"https://www.youtube.com/watch?v=2N0PTThkTtw\"
 },
 {
   \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
@@ -429,7 +435,8 @@
   \"Beschreibung\":\"Schulterbreiter Stand,Langhantel etwas mehr als schulterbreit greifen,Handgelenke stets gerade und über Ellenbogen\",
   \"Durchführung\":\"Kontrolliert hochdrücken,Beim Absenken nicht zu tief senken - Oberarme nur etwas tiefer als Schultergelenk\",
   \"Equipment\":\"Langhantel\",
-  \"Schwierigkeit\":\"Mittel\"
+  \"Schwierigkeit\":\"Mittel\",
+  \"Video\":\"https://www.youtube.com/watch?v=AnyUUSqT1T0\"
 },
 {
   \"Muskelgruppe\":\"Schultern,Vordere Schulter\",
@@ -437,7 +444,8 @@
   \"Beschreibung\":\"Vollständig anlehnen,Handgelenke über den Ellenbogen,Ellenbogen stets vor dem Körper halten\",
   \"Durchführung\":\"Kontrolliert hochdrücken,Beim Absenken nicht zu tief senken - Oberarme nur etwas tiefer als Schultergelenk\",
   \"Equipment\":\"Fitnessstudio\",
-  \"Schwierigkeit\":\"Einfach\"
+  \"Schwierigkeit\":\"Einfach\",
+  \"Video\":\"https://www.youtube.com/watch?v=GknOWmbcK_M\"
 },
 {
   \"Muskelgruppe\":\"Schultern,Seitliche Schulter\",
@@ -461,7 +469,9 @@
   \"Beschreibung\":\"Stange am tiefen Block montieren,Mit dem Rücken zum Block stellen und Stange zwischen den Beinen durchführen,Stange im Obergriff greifen\",
   \"Durchführung\":\"Stange von den Beinen weg mit leichter Beugung im Ellenbogen nach vorne bis auf Brusthöhe heben - Schultern dabei stets fixiert halten\",
   \"Equipment\":\"Fitnessstudio\",
-  \"Schwierigkeit\":\"Einfach\"
+  \"Schwierigkeit\":\"Einfach\",
+  \"Video\":\"https://www.youtube.com/watch?v=XLKslVKpOus\"
+
 },
 {
   \"Muskelgruppe\":\"Schultern,Hintere Schulter\",
@@ -485,7 +495,8 @@
   \"Beschreibung\":\"Hüftbreiter Stand,SZ-Stange mit einer Handbreite Abstand im Obergriff nehmen,\",
   \"Durchführung\":\"SZ-Stange senkrecht und eng am Körper nach oben über die Ellenbogen bis zum Kinn heben\",
   \"Equipment\":\"SZ-Stange\",
-  \"Schwierigkeit\":\"Einfach\"
+  \"Schwierigkeit\":\"Einfach\",
+  \"Video\":\"https://www.youtube.com/watch?v=oH1MpWBHiuU\"
 },
 {
   \"Muskelgruppe\":\"Rücken,Oberer Rücken,Nacken\",
@@ -501,7 +512,8 @@
   \"Beschreibung\":\"Sz Stange schulterbreit im Untergriff greifen und mit geradem Rücken aufheben\",
   \"Durchführung\":\"Mit leichter Beugung im Ellenbogen Stange hocheben bis zum Punkt der maximalen Kontraktion,Ellenbogen nicht mitbewegen\",
   \"Equipment\":\"SZ-Stange\",
-  \"Schwierigkeit\":\"Einfach\"
+  \"Schwierigkeit\":\"Einfach\",
+      \"Video\":\"https://www.youtube.com/watch?v=p4BIu6wCBLQ\"
 },
 {
   \"Muskelgruppe\":\"Arme,Bizeps\",
@@ -549,7 +561,9 @@
   \"Beschreibung\":\"Mit geradem Rücken auf Flachbank legen,SZ-Stange eng im Obergriff nehmen - so, dass Daumen zum Körper zeigen,Oberarme gerade nach oben strecken\",
   \"Durchführung\":\"Oberarme bleiben stets an der gleichen Position,Von ausgestreckter Position Unterarme Richtung Kopf senken,Wieder bis zur vollständigen Streckung drücken\",
   \"Equipment\":\"SZ-Stange,Flachbank\",
-  \"Schwierigkeit\":\"Mittel\"
+  \"Schwierigkeit\":\"Mittel\",
+  \"Video\":\"https://www.youtube.com/watch?v=MyDkXuq1P8g\"
+
 },
 {
   \"Muskelgruppe\":\"Trizeps\",
@@ -636,7 +650,7 @@
   \"Name\":\"Rückenstabilisation\",
   \"Beschreibung\":\"Auf Händen und Knien am Boden/Matte/Handtuch abstützen (=Bankstellung). Arme und Beine dabei etwa schulterbreit und im 90 Grad Winkel zum Oberkörper. Auf geraden und stabilen Rücken achten.\",
   \"Durchführung\":\"Winkel im Knie beibehalten und abwechselnd ein Bein anheben bis Oberschenkel Linie sind und wieder in Grundstellung zurückkehren -> Beinwechsel.\",
-  \"Equipment\":\"Mappe\",
+  \"Equipment\":\"Matte\",
   \"Schwierigkeit\":\"Einfach\"
 },
 {
@@ -644,7 +658,7 @@
   \"Name\":\"Hüftheber\",
   \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme parallel zum Körper als Stütze ablegen. 90 Grad Winkel in den Knien halten (fortgeschritten -> Beine ausstrecken).\",
   \"Durchführung\":\"Hüfte vom Boden anheben und wieder absenken; dabei stets gesamten Rumpf unter Spannung halten.\",
-  \"Equipment\":\"Mappe\",
+  \"Equipment\":\"Matte\",
   \"Schwierigkeit\":\"Einfach\"
 },
 {
@@ -652,7 +666,7 @@
   \"Name\":\"Beinpendel\",
   \"Beschreibung\":\"Rücklings auf Boden/Matte/Handtuch legen und Hohlkreuz vermeiden. Arme im 90 Grad Winkel zum Oberkörper als Stütze ablegen und Beine ausstrecken (90 Grad im Hüftgelenk) Durchführung.\",
   \"Durchführung\":\"Beine zuerst langsam zu einer Seite – dann zur Grundstellung – und zur anderen Seite abwinkeln (bis ca. 45 Grad Winkel zwischen Boden und Grundstellung).\",
-  \"Equipment\":\"Mappe\",
+  \"Equipment\":\"Matte\",
   \"Schwierigkeit\":\"Einfach\"
 },
 {
@@ -660,7 +674,7 @@
   \"Name\":\"Seitliches Hüftheben\",
   \"Beschreibung\":\"Seitstützposition (side plank) einnehmen (am Unterarm abstützen).\",
   \"Durchführung\":\"Becken absenken und wieder anheben.\",
-  \"Equipment\":\"Mappe\",
+  \"Equipment\":\"Matte\",
   \"Schwierigkeit\":\"Einfach\"
 },
 {
@@ -668,7 +682,7 @@
   \"Name\":\"Trockenschwimmen\",
   \"Beschreibung\":\"Bäuchlings auf Boden/Matte/Handtuch hinlegen. Hohlkreuz einnehmen und leichte Gewichte nehmen (Hanteln, Wasserflasche, Handtuch,...). Beine gestreckt und geschlossen vom Körper abheben; Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten\",
   \"Durchführung\":\"Arme ausstrecken und Beine spreizen\",
-  \"Equipment\":\"Mappe\",
+  \"Equipment\":\"Matte\",
   \"Schwierigkeit\":\"Einfach\"
 },
 {
@@ -676,26 +690,43 @@
   \"Name\":\"Rückenstrecker am Gymnastikball\",
   \"Beschreibung\":\"Bäuchlings auf eine Gymnastikball legen, Knie sind am Boden und Beine angewinkelt. Arme im 90 Grad Winkel(zum Oberkörper und im Ellenbogen) halten.\",
   \"Durchführung\":\"Oberkörper absenken und wieder anheben; Arme dabei stets im gleichen Winkel halten.\",
-  \"Equipment\":\"Mappe\",
+  \"Equipment\":\"Matte\",
   \"Schwierigkeit\":\"Einfach\"
+},
+      {
+  \"Muskelgruppe\":\"Arme, Oberkörper\",
+  \"Name\":\"Liegestütze\",
+  \"Beschreibung\":\"Auf den Bauch legen und mit dem Fußballen die Beine auf dem Boden abstützen. Handflächen nach vorne auf den Boden legen.\",
+  \"Durchführung\":\"Oberkörper mittels Armbewegung nach oben heben ohne dabei die Arme ganz durchzustrecken. Bewegung wieder rückführen bis die Armebeuge einen rechten Winkel bildet.\",
+  \"Equipment\":\"Mappe\",
+  \"Schwierigkeit\":\"Einfach\",
+  \"Video\":\"https://www.youtube.com/embed/b33faUxJP5I\"
+
 }
 ]
 </string>
     <string name="titleplanmanagement">Trainingsplan Management</string>
     <string name="NoSongsFound">Keine Songs gefunden</string>
     <string name="AbovePlaylistManagement">Bitte wählen sie eine Playlist aus die sie bearbeiten wollen</string>
-    <string name="AboveSongManagement">Bitte kreuzen sie alle Songs an die sie in ihre Playlist speichen möchten</string>
+    <string name="AboveSongManagement">Bitte kreuzen sie alle Songs an die sie in ihre Playlist speichern möchten</string>
     <string name="tvSettingsMusic">Wenn sie Musik einlesen, können sie Playlisten erstellen und während dem Trainieren Musik hören</string>
     <string name="btSettingsMusic">Musik Erlaubnis abfragen</string>
     <string name="btSettingsCheckPermissions">Unsere App benötigt deine Erlaubnis um Musik abzuspielen</string>
     <string name="btSettingsRefreshMusic">App neu starten und Musik zur Bibliothek hinzufügen</string>
     <string name="startSettings">Einstellungen</string>
     <string name="notificationInterval">Zeitspanne zwischen Erinnerungen</string>
-    <string name="notificationIntervalDefault">2</string>
+    <string name="notificationIntervalDefault">0</string>
     <string name="manageMusic">Musik verwalten</string>
     <string name="preferencesHeaderMusic">Musik</string>
     <string name="preferencesHeaderNotifications">Notifications</string>
     <string name="deleteplanquastion">Bitte bestätigen Sie das Löschen des Trainingsplans</string>
     <string name="delete">Löschen</string>
     <string name="cancel">Abbrechen</string>
+    <string name="alertnotchosen">Bitte wählen sie einen Trainingsplan in dem Trainingsplanmenü aus!</string>
+    <string name="manageReset">Reset the app</string>
+    <string name="sessionsettingsrepmax">Was ist RepMax?</string>
+    <string name="whatsrepmax">Was ist RepMax?</string>
+    <string name="infowhatsrepmax">100 Prozent RepMax ist das maximale Gewicht, welches du bei einer Übung genau 1 Mal bewältigen kannst. In verschiedenen Übungen stehen unterschiedliche RepMax-Werte, mit denen du die Übung ausführen sollst.  Bevor du eine Übung das 1. Mal beginnst, stelle dein RepMax fest: Führe die Übung mit einem beliebigen Gewicht durch und merke dir die Wiederholungen die du damit schaffst. Nun kannst du mit dieser Formel 100 Prozent RepMax ausrechnen: (100*TG)/(102,78-2,78*WDH)= 100 Prozent RepMax. TG = Dein Probe-Trainingsgewicht, WDH = Die Wiederholungen die du geschafft hast. Das Gewicht, welches dabei herauskommt, sind deine 100 Prozent RepMax bei dieser Übung. Nun, wenn bei einer Übung dein RepMax zum Beispiel 29 Kilogramm lautet und du die Übung mit 60 Prozent RepMax ausführen sollst, lautet dein Trainingsgewicht 17.4  Kilogramm. Das ist das Startgewicht. Du sollst es im Laufe deines Trainings erhöhen, um die Schwierigkeit zu steigern und Fortschritte zu erreichen. Viel Spaß!</string>
+    <string name="detailRepMax">RepMax:</string>
+
 </resources>

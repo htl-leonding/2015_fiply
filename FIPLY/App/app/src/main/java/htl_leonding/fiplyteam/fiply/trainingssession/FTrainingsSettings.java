@@ -16,11 +16,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +31,7 @@ import java.util.Locale;
 import htl_leonding.fiplyteam.fiply.R;
 import htl_leonding.fiplyteam.fiply.data.FiplyContract;
 import htl_leonding.fiplyteam.fiply.data.InstruktionenRepository;
+import htl_leonding.fiplyteam.fiply.data.KeyValueRepository;
 import htl_leonding.fiplyteam.fiply.data.PhasenRepository;
 import htl_leonding.fiplyteam.fiply.menu.FMain;
 import htl_leonding.fiplyteam.fiply.trainingsplan.RepMax;
@@ -49,32 +52,61 @@ public class FTrainingsSettings extends Fragment {
     TextView title;
     ImageView imgView;
     ArrayList<String> uebs;
+    KeyValueRepository kvRep;
     String day = "";
+    ImageButton whatsrepmax;
+    TextView whatsrepmaxtext;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActivity().setTitle(R.string.fsettingtitle);
+        kvRep = KeyValueRepository.getInstance();
         return inflater.inflate(R.layout.fragment_sessionsettings, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rep = PhasenRepository.getInstance();
+        kvRep.setContext(getContext());
         PhasenRepository.setContext(getContext());
+        rep = PhasenRepository.getInstance();
         InstruktionenRepository.setContext(getContext());
         port = PlanSessionPort.getInstance();
         port.init();
         if (!port.isGenerated()) { // Wenn kein Trainingsplan existiert kann diese View nicht besucht werden.
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage(R.string.alertnoplan)
-                    .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall);
+                    .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
             AlertDialog dialog = builder.create();
             dialog.show();
             displayFragment.displayMainMenu(new FMain(), getFragmentManager());
             onDestroy();
+        }else {
+            int chosen = -1;
+            try {
+                chosen = Integer.valueOf(kvRep.getKeyValue("selectedPlan").getString(1));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if (chosen == -1) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage(R.string.alertnotchosen)
+                        .setTitle(R.string.fehler).setIcon(R.drawable.alertsmall)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                displayFragment.displayMainMenu(new FMain(), getFragmentManager());
+                onDestroy();
+            }
         }
 
         title = (TextView) getActivity().findViewById(R.id.sessionsettingstitle);
@@ -87,6 +119,40 @@ public class FTrainingsSettings extends Fragment {
         uebList = (ListView) getActivity().findViewById(R.id.listviewuebungen);
         chooseDay = (Button) getActivity().findViewById(R.id.choosedaybt);
         imgView = (ImageView) getActivity().findViewById(R.id.imageViewSleeping);
+        whatsrepmax = (ImageButton) getActivity().findViewById(R.id.whatsrepmax);
+
+        whatsrepmax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new android.app.AlertDialog.Builder(getContext())
+                        .setTitle(R.string.whatsrepmax)
+                        .setMessage(R.string.infowhatsrepmax)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setIcon(R.drawable.questionsmall)
+                        .show();
+            }
+        });
+        whatsrepmaxtext = (TextView) getActivity().findViewById(R.id.sessionsettingrepmax);
+        whatsrepmaxtext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new android.app.AlertDialog.Builder(getContext())
+                        .setTitle(R.string.whatsrepmax)
+                        .setMessage(R.string.infowhatsrepmax)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setIcon(R.drawable.questionsmall)
+                        .show();
+            }
+        });
+
         chooseDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { // Dialog zum bestellen der Übungen von einem bestimmten Tag.
@@ -127,7 +193,7 @@ public class FTrainingsSettings extends Fragment {
                 for (int i = 0; i < uebs.size(); i++) {
                     args.putString("uebung" + (i + 1), phase.getUebungByDay(day).get(i).getUebungsID());
                     args.putDouble("gewicht" + (i + 1), RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax())));
-                    gesgewicht += RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax()))*phase.getWiederholungen()*phase.getSaetze();
+                    gesgewicht += RepMax.getTrainingsgewicht(phase.getWiederholungen(), Integer.valueOf(phase.getUebungByDay(day).get(i).getRepmax())) * phase.getWiederholungen() * phase.getSaetze();
                 }
                 args.putString("phase", rowid);
                 args.putDouble("gesamtgewicht", gesgewicht);
@@ -138,16 +204,20 @@ public class FTrainingsSettings extends Fragment {
             }
         });
 
-
-        welcomeText.setText("Aktuelle Trainingsphase " + port.getPhaseIndex() + " von " + port.getPhasenListe().size() + "."); // Anzeige aktuelle Trainigsphase
-        pBar.setProgress((port.getPhaseIndex() / 3) * 100 - 10);
-
+        int value = port.getPhaseIndex();
+        welcomeText.setText("Aktuelle Trainingsphase " + value + " von 3."); // Anzeige aktuelle Trainigsphase
+        pBar.setProgress((value / 3) * 100 - 10);
+        uebs = null;
         uebs = new ArrayList<String>();
-        for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) { // Holt sich die akutellen Übungen und schreibt sie in die Liste
+        try {
+        for (Uebung element : port.getCurrentPhase().getUebungListOfToday()) { // Holt sich die aktuellen Übungen und schreibt sie in die Liste
             uebs.add(String.valueOf(element.getUebungsName()));
             Log.wtf("WTF", element.getUebungsName());
+        }}catch(Exception e){
+            onDestroy();
         }
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(), R.layout.uebungslist_item, uebs);
+        uebList.setAdapter(null);
         uebList.setAdapter(adapt);
         String heutestehen = getResources().getString(R.string.heutestehen);
         String uebungenan = getResources().getString(R.string.uebungenan);

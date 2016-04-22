@@ -14,4 +14,9 @@
         <intent android:targetPackage="htl_leonding.fiplyteam.fiply"
                 android:targetClass="htl_leonding.fiplyteam.fiply.menu.Settings" />
     </Preference>
+    <Preference android:key="preferencesReset"
+        android:title="@string/manageReset">
+        <intent android:targetPackage="htl_leonding.fiplyteam.fiply"
+            android:targetClass="htl_leonding.fiplyteam.fiply.menu.Reset" />
+    </Preference>
 </PreferenceScreen>

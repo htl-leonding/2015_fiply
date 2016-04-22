@@ -14,8 +14,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
@@ -147,10 +145,10 @@ public class SplashActivity extends Activity {
             prep.deleteAll();
 
             DateFormat format = new SimpleDateFormat("dd. MMMM yyyy", Locale.ENGLISH);
-            String[] actualdays = new String[]{"Montag", "Donnerstag", "Samstag"};
+            String[] actualdays = new String[]{"Dienstag", "Donnerstag", "Samstag"};
             Date startDate = new Date();
             Calendar car = Calendar.getInstance();
-            car.set(2015, 12, 1);
+            car.set(2016, 0, 1);
             startDate.setTime(car.getTimeInMillis());
             trainingsphaseList = new LinkedList<Trainingsphase>();
             GenerateAllgemein allgemein = new GenerateAllgemein(true, 1, actualdays, startDate);
