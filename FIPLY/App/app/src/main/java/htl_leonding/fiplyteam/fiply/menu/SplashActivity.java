@@ -148,6 +148,7 @@ public class SplashActivity extends Activity {
             String[] actualdays = new String[]{"Dienstag", "Donnerstag", "Samstag"};
             Date startDate = new Date();
             Calendar car = Calendar.getInstance();
+            //car.set(2016, 5, 1);  ??? y tho
             startDate.setTime(car.getTimeInMillis());
             trainingsphaseList = new LinkedList<Trainingsphase>();
             GenerateAllgemein allgemein = new GenerateAllgemein(true, 1, actualdays, startDate);
